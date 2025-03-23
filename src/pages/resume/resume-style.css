@@ -1,0 +1,109 @@
+.resume-hero {
+	font-family: Alegreya Sans, sans-serif;
+	font-weight: 500;
+	line-height: 1.3;
+	color: #000;
+	background: #f6f1e5;
+}
+
+@media (min-width: 768px) {
+	.resume-hero {
+		font-size: 48px;
+	}
+}
+
+.resume-hero a {
+	color: #000;
+	border-bottom: 1px solid #00000059;
+}
+
+.resume-hero a:hover {
+	border-bottom: 1px solid #000000a9;
+}
+
+.resume-hero a:visited {
+	color: #500051;
+}
+
+.resume-hero h1 {
+	font-size: calc(8px * 7);
+	line-height: 1.0;
+}
+
+@media (min-width: 768px) {
+	.resume-hero h1 {
+		font-size: calc(8px * 10);
+		line-height: 1.0;
+	}
+}
+
+.resume-page strong {
+	background: #f6f1e5;
+    font-weight: 400;
+}
+
+.resume-page .precentation-container {
+	padding-top: 64px;
+	padding-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+	.resume-page .precentation-container {
+		padding-top: 64px;
+		padding-bottom: 64px;
+	}
+}
+
+.resume-page .slide {
+	background: #fff;
+	font-family: Alegreya Sans, sans-serif;
+	font-size: calc(8px * 2.5);
+	line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+	.resume-page .slide {
+		font-size: calc(8px * 3);
+	}
+}
+
+.resume-page .slide p + ul {
+    margin: -24px 0 24px 0;
+}
+
+.resume-page .slide:nth-child(3n+1) {
+	background: #f9f9f9;
+}
+
+.resume-page .slide p {
+	margin: 0 0 24px 0;
+	max-width: 31em;
+}
+
+.resume-page .slide h2,
+.resume-page .slide h3 {
+	font-weight: 400;
+	margin: 0 0 1em 0;
+}
+
+.resume-page .slide h2 {
+	font-size: calc(8px * 5);
+	line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+	.resume-page .slide h2 {
+		font-size: calc(8px * 6);
+	}
+}
+
+.resume-page .slide h3 {
+	font-size: calc(8px * 4);
+	line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+	.resume-page .slide h3 {
+		font-size: calc(8px * 4);
+	}
+}

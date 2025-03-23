@@ -1,0 +1,53 @@
+.pet-project-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: flex-start;
+}
+
+.pet-project__item {
+	--count: 1;
+	padding: 16px;
+	color: #fff;
+	width: calc(100% / var(--count));
+	box-shadow:
+		inset 0 0 0px 1px #b0b0b026
+	;
+}
+
+.pet-project__item {
+	color: var(--color);
+}
+
+.pet-project__item a {
+	color: var(--color);
+	border-bottom: .1px solid var(--color);
+}
+
+@media (min-width: 768px) {
+	.pet-project__item {
+		--count: 2;
+	}
+}
+
+@media (min-width: 1380px) {
+	.pet-project__item {
+		--count: 4;
+	}
+}
+
+.pet-project__title {
+	font-size: 32px;
+	line-height: 1;
+	margin-bottom: 8px;
+	word-break: break-word;
+}
+
+.pet-project__description {
+	font-size: 16px;
+	line-height: 1.3;
+	opacity: 0.9;
+	max-width: 80%;
+	min-height: 150px;
+	overflow-wrap: break-word;
+}

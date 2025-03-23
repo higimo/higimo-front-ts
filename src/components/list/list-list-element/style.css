@@ -1,0 +1,42 @@
+.page.list-list {
+	background: #e2e2e2;
+	overflow: hidden;
+}
+
+.element-node {
+	padding-left: 2rem;
+	max-width: 45rem;
+	margin: 0 auto;
+}
+
+.element-node__title {
+}
+
+.element-node__meta,
+.element-node__meta a {
+	font-size: .8rem;
+	color: rgba(0, 0, 0, .75);
+}
+
+.element-node__meta a,
+.element-node__meta .pseudo-link {
+	cursor: pointer;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, .35)
+}
+
+.element-node__meta a:hover,
+.element-node__meta .pseudo-link:hover {
+	color: rgba(0, 0, 0, 1);
+}
+
+.element-node__data {
+	background: #fff;
+	padding: .2rem 1rem .2rem 1rem;
+	margin: .5rem 0;
+}
+
+.element-node__link {
+	display: flex;
+	gap: 8px;
+}

@@ -1,0 +1,36 @@
+.travel-invite {
+	background: #344d3d;
+	font-size: 24px;
+	line-height: 1.4;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+	.travel-invite {
+		font-size: 36px;
+	}
+}
+
+.travel-invite a {
+	color: #fff;
+	border-color: #ffffff59;
+}
+
+.travel-invite a:hover {
+	border-color: #fff;
+}
+
+.travel-invite__title {
+	font-size: 32px;
+	line-height: 1;
+}
+
+@media (min-width: 768px) {
+	.travel-invite__title {
+		font-size: 64px;
+	}
+}
+
+.travel-invite__title sup {
+	font-size: .5em;
+}

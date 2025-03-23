@@ -1,0 +1,42 @@
+import { FunctionComponent } from 'preact'
+
+import { ProjectFullInfoType } from '../../../types'
+import { MaybeLink } from '../../ui/maybe-link/maybe-link'
+
+import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+
+import './style.css'
+
+export const ProjectElement: FunctionComponent<ProjectFullInfoType> = props => {
+	const link = props.isLink == 'true' ? props.link : ROUTE_LINKS.projectDetail({
+		vendor: props.vendorCode,
+		project: props.code
+	})
+	const tags = props.tags || []
+
+	return (
+		<div className="project__item">
+			<div className="project__name">
+				<MaybeLink href={link} className="project__title">
+					<span dangerouslySetInnerHTML={{__html: props.name}} />
+				</MaybeLink>
+			</div>
+			<MaybeLink href={link} className="project__image">
+				<img
+					width="240"
+					height="240"
+					className="project__image-anons"
+					src={`/assets/project/${props.vendorCode}/${props.code}/asset/img/anons.${props.image}`}
+					loading="lazy"
+				/>
+				{!!tags.length && (
+					<div className="project__tag">
+						{tags.map(tag => (
+							<span className="label">{tag}</span>
+						))}
+					</div>
+				)}
+			</MaybeLink>
+		</div>
+	)
+}

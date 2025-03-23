@@ -1,0 +1,87 @@
+import { useRoute } from 'preact-iso'
+import { useMemo } from 'preact/hooks'
+import useApi, { API_STATUS } from '../../../../hook/use-api';
+
+import { TextContainer } from '../../../ui/text-container';
+import { NotFoundPage } from '../../../../pages/not-found-page';
+import { Loading } from '../../../accord/accord-single';
+
+import { API_ROUTE } from '../../../../api-route';
+
+import './style.css'
+
+type NasheType = {
+    id: number;
+    name: string;
+    time: number; // date
+    scene: number;
+}
+
+export const NasheLineupItem = () => {
+	const { params: { year } } = useRoute()
+	const curYear = year ? parseInt(year, 10) : 2017
+
+	// TODO BACKEND надо получить только один год
+	const [ nasheFullData ] = useApi<NasheType>(API_ROUTE.nashe);
+	const { mainScene, secondScene } = useMemo<{ mainScene: NasheType[], secondScene: NasheType[] }>(() => {
+		const filtredNasheLineup = nasheFullData.data.filter(nasheElement => {
+			return new Date(nasheElement.time).getFullYear() == curYear
+		})
+
+		const mainScene = filtredNasheLineup.filter(i => i.scene === 1)
+			.sort((left, right) => left.time - right.time)
+
+		const secondScene = filtredNasheLineup.filter(i => i.scene != 1)
+			.sort((left, right) => left.time - right.time)
+
+		return { mainScene, secondScene }
+
+	}, [nasheFullData.data, curYear])
+
+	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(nasheFullData.status)) {
+		return <Loading />
+	}
+
+	if (API_STATUS.LOADED === nasheFullData.status && !nasheFullData.data.length) {
+		return <NotFoundPage />
+	}
+
+	document.title = document.title = `Нашествие ${curYear}`
+
+	let day = null
+	return (
+		<div className="nashe-lineup">
+			<TextContainer>
+				<h1>Нашествие {year}</h1>
+			</TextContainer>
+			<TextContainer>
+				<h2>Главная сцена</h2>
+				<table className="line-up">
+					<tbody>
+						{mainScene.map(({ time, name }) => (
+							<tr>
+								<td className="date">{day !== new Date(time).getDate() ? day = new Date(time).getDate() : ''}</td>
+								<td className="time">{new Date(time).toTimeString().substr(0, 5)}</td>
+								<td className="artist-name">{name}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</TextContainer>
+			<TextContainer>
+				<h2>Сцена 2.0</h2>
+				<table className="line-up">
+					<tbody>
+						{secondScene.map(({ time, name }) => (
+							<tr>
+								<td className="date">{day !== new Date(time).getDate() ? day = new Date(time).getDate() : ''}</td>
+								<td className="time">{new Date(time).toTimeString().substr(0, 5)}</td>
+								<td className="artist-name">{name}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</TextContainer>
+		</div>
+	)
+}

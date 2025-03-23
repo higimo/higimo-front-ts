@@ -1,0 +1,59 @@
+.youtube-of-day {
+	padding-top: 128px;
+	padding-bottom: 256px;
+}
+
+.youtube-of-day.container {
+	width: 100%;
+}
+
+.youtube-of-day .youtube {
+	margin-right: 2rem;
+	width: 25vw;
+	max-width: 100%;
+}
+
+@media (min-width: 1280px) {
+	.youtube-of-day .youtube {
+		width: 15vw;
+	}
+}
+
+@media (max-width: 587px) {
+	.youtube-of-day .youtube {
+		width: 45vw;
+	}
+}
+
+.youtube-of-day .youtube__link {
+	display: flex;
+	margin-bottom: 2rem;
+	text-decoration: none;
+}
+
+.youtube-of-day .youtube__img {
+	transition: all 150ms ease-in;
+	width: auto;
+	height: auto;
+	max-width: 200px;
+	max-height: 110px;
+	object-fit: cover;
+	margin-bottom: .5rem;
+}
+
+.youtube-of-day .youtube__name {
+	font-size: 1rem;
+	color: #000;
+	white-space: initial;
+	display: inline;
+	line-height: 1.3;
+}
+
+.youtube-of-day .youtube__link:hover .youtube__name {
+	color: #0054b9;
+	border-bottom: 1px solid rgba(0, 84, 185, .35);
+}
+
+.youtube-of-day__more {
+	text-align: right;
+}

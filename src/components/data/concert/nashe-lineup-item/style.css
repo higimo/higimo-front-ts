@@ -1,0 +1,34 @@
+.nashe-lineup h1 {
+	page-break-before: always;
+	font-size: 3rem;
+	text-align: center;
+}
+.nashe-lineup .time {
+	opacity: .75;
+}
+
+.nashe-lineup td {
+	vertical-align: bottom;
+	padding: 0 .5rem;
+}
+.nashe-lineup h2 {
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1.1;
+	border-bottom-color: #ccc;
+}
+.nashe-lineup .artist-name {
+	font-size: 1.5rem;
+	line-height: 1.3;
+}
+.nashe-lineup .line-up {
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+@media (max-width: 768px) {
+	.nashe-lineup td {
+		padding-left: .25rem;
+        padding-right: .25rem;
+	}
+}

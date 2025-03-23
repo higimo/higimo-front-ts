@@ -1,0 +1,41 @@
+.library-admin {
+	max-width: 920px;
+	margin: 0 auto;
+}
+
+.library-admin__row {
+	display: flex;
+	padding: 8px 0;
+}
+
+.library-admin__label {
+	width: 20%;
+	color: #333;
+}
+
+.library-admin__input {
+	width: 50%;
+}
+
+.library-admin__button {
+	padding: 8px 16px;
+	border: none;
+	background: #007eff;
+	color: #fff;
+	border-radius: 2px;
+}
+
+.library-admin input {
+	border: 1px solic #ccc;
+	padding: 4px 8px;
+	width: 100%;
+	max-width: 450px;
+}
+
+.library-admin textarea {
+	border: 1px solic #ccc;
+	padding: 4px 8px;
+	min-height: 300px;
+	width: 100%;
+	max-width: 450px;
+}

@@ -1,0 +1,32 @@
+.bugreport-of-day {
+	padding-top: 64px;
+	padding-bottom: 64px;
+}
+
+.bugreport-of-day h2 {
+	text-align: center;
+}
+
+.bugreport-of-day .feedback-link__link {
+	width: 100%;
+	max-width: 40rem;
+	margin: 12px auto;
+	box-shadow: 0 10px 10px -10px #dcdcdcfe, 0 10px 30px 0px #dcdcdc82;
+	border-radius: 8px;
+	font-size: 20px;
+	transition: all 150ms ease-in;
+	border: 1px solid #ccc4;
+	text-align: center;
+}
+
+.bugreport-of-day .feedback-link__link:hover {
+	box-shadow: 0 10px 10px -10px #dcdcdcfe;
+	border: 1px solid #ccc;
+}
+
+@media (min-width: 780px) {
+	.bugreport-of-day .feedback-link__link {
+		font-size: 24px;
+	}
+}
+

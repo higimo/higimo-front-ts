@@ -1,0 +1,15 @@
+.tourism-main-menu {
+    background: rgba(255, 255, 255, .05);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.tourism-main-menu .text-container {
+    margin-bottom: 0;
+}
+
+.tourism-main-menu__links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}

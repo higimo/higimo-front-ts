@@ -1,0 +1,19 @@
+.logotype-mini {
+	letter-spacing: 0.04rem;
+	margin: 0 1rem 0 .3rem;
+}
+
+.logotype-mini__text {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+a.logotype-mini__text {
+	color: #000;
+	border: none;
+}
+
+a.logotype-mini__text:hover {
+	color: #283593;
+}

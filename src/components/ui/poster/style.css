@@ -1,0 +1,15 @@
+.poster {
+	height: 58vw;
+	width: 33%;
+}
+
+.poster:hover {
+	z-index: 1;
+}
+
+@media (min-width: 1380px) {
+	.poster {
+		width: 25%;
+		height: 48vw;
+	}
+}

@@ -1,0 +1,77 @@
+#watch {
+	position: relative;
+}
+
+#watch .frame-face {
+	position: relative;
+	width: 55vh;
+	height: 55vh;
+	margin: 5vh auto;
+	border-radius: 55vh;
+	background: linear-gradient(90deg, #bbddff, #7db3e9);
+}
+
+.frame-face:before {
+	content: '';
+	display: block;
+	width: calc(100% - 4px);
+	height: calc(100% - 4px);
+	background: linear-gradient(75deg, #0f65bb, #489ef5);
+	border-radius: 55vh;
+	position: relative;
+	top: 2px;
+	left: 2px;
+}
+
+#watch .hours-hand,
+#watch .minutes-hand,
+#watch .minute-mark,
+#watch .minute-mark:before,
+#watch .minute-mark:after {
+	background: #204a74;
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+	box-shadow: #183564 5px 5px 20px -3px;
+	transform-origin: bottom;
+}
+
+#watch .hours-hand {
+	height: 17vh;
+	width: .7vh;
+}
+
+#watch .minutes-hand {
+	height: 26vh;
+	width: .4vh;
+}
+
+#watch .minute-mark,
+#watch .minute-mark:before,
+#watch .minute-mark:after {
+	height: 26vh;
+	width: 1px;
+	background: transparent;
+	z-index: 2;
+	border-top: 2vh solid #52a8ff;
+}
+
+#watch .minute-mark:before,
+#watch .minute-mark:after {
+	content: ' ';
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#watch .minute-mark:before { transform: rotate(15deg); }
+#watch .minute-mark:after { transform: rotate(30deg); }
+
+#watch .minute-mark:nth-child(1) { transform: rotate(360deg); }
+#watch .minute-mark:nth-child(2) { transform: rotate(45deg); }
+#watch .minute-mark:nth-child(3) { transform: rotate(90deg); }
+#watch .minute-mark:nth-child(4) { transform: rotate(135deg); }
+#watch .minute-mark:nth-child(5) { transform: rotate(180deg); }
+#watch .minute-mark:nth-child(6) { transform: rotate(225deg); }
+#watch .minute-mark:nth-child(7) { transform: rotate(270deg); }
+#watch .minute-mark:nth-child(8) { transform: rotate(315deg); }

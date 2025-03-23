@@ -1,0 +1,36 @@
+.game-gallery__item {
+	font-family: Alegreya Sans, sans-serif;
+	padding-left: 1em;
+	background: #fff;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+	color: #000;
+	padding: 1rem .5rem;
+	border-radius: 5px;
+	max-width: 45rem;
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+	.game-gallery__item {
+		padding: 1rem 2rem;
+	}
+}
+
+.game-gallery__name {
+	margin: 0;
+	font-size: 2rem;
+	margin-bottom: .5rem;
+}
+
+.game-gallery__text {
+	margin: 0;
+	margin-bottom: .5rem;
+	margin-left: .5rem;
+}
+
+@media (min-width: 768px) {
+	.game-gallery__text {
+		margin-left: 2rem;
+	}
+}

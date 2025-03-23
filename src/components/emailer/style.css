@@ -1,0 +1,113 @@
+.emailer-tool {
+	align-items: center;
+	background: #42a5f5;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	font: 400 1rem/1.4 PT Sans, Tahoma, Sans-Serif;
+	height: 100vh;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	text-align: left;
+}
+
+.emailer-tool form {
+	min-height: 7em;
+	width: 100%;
+	max-width: 55rem;
+	display: flex;
+	align-items: center;
+}
+
+.emailer-tool input {
+	height: 2em;
+	width: calc(90% - 100px);
+	padding: .2em 1em;
+	box-sizing: border-box;
+	background: #64B5F6;
+	color: #fff;
+	border: 0;
+	outline: 0;
+}
+
+.emailer-tool button {
+	width: 100px;
+	height: 2em;
+	box-sizing: border-box;
+	background: #64B5F6;
+	color: #fff;
+	border: 0;
+}
+
+.emailer-tool label {
+	display: block;
+	color: #fff;
+	margin: 1em 0;
+}
+
+.emailer-tool .main-menu {
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+.emailer-tool .main-menu li {
+	display: inline-block;
+	list-style: none;
+	margin-right: 15px;
+}
+
+.emailer-tool .main-menu a {
+	color: #fff;
+	border-color: #ffffff63;
+	opacity: .75;
+}
+
+.emailer-tool .main-menu a:hover {
+	border-color: #ffff;
+	opacity: 1;
+}
+
+.emailer-tool .mayAbout {
+	margin-top: 4em;
+	color: #fff;
+}
+
+.emailer-tool .mayList {
+	text-align: left;
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	list-style-type: none;
+	line-height: 1.7;
+	color: #fff;
+	font-size: 1.2rem;
+}
+
+.emailer-tool .mayAbout a {
+	color: #fff;
+}
+
+.emailer-tool .mayAbout a:hover {
+	opacity: .8;
+}
+
+.emailer-tool .email {
+	width: 80%;
+	left: 10%;
+}
+
+.emailer-tool .email label {
+	display: inline-block;
+	width: 20%;
+}
+
+.emailer-tool .email input {
+	width: 69%;
+}
+
+.emailer-tool .email button {
+	width: 10%;
+}

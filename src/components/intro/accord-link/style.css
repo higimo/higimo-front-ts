@@ -1,0 +1,30 @@
+.accord-link {
+	font-size: 10vw;
+	line-height: 1.2;
+	padding: 16vw 0 20vw 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #f7f6f6;
+}
+
+@media (min-width: 768px) {
+	.accord-link {
+		font-size: 10vw;
+	}
+}
+
+@media (min-width: 1380px) {
+	.accord-link {
+		font-size: 13vw;
+	}
+}
+
+.accord-link__link {
+	color: #000;
+	border-color: #00000059;
+}
+
+.accord-link__link:hover {
+	border-color: #000;
+}

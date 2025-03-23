@@ -1,0 +1,272 @@
+.user {
+	background: linear-gradient(45deg, #158bd0, #38d7fb);
+	color: #fff;
+	font-weight: 800;
+	border-radius: 100%;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.meeting {
+	display: flex;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+	font-size: 15pt;
+}
+
+@media (min-width: 720px) {
+	.meeting {
+		font-size: 15pt;
+	}
+}
+
+.meeting-gallery {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.meeting__description {
+	font-size: 16px;
+	margin-bottom: 6px;
+	white-space: pre-wrap;
+}
+
+.meeting__information {
+	color: #939eaa;
+    display: flex;
+}
+
+.meeting__type {
+    font-size: 65%;
+}
+
+.meeting__type a {
+    border-color: #aeb6bf;
+    color: #939eaa;
+}
+
+.meeting-gallery__item {
+    display: flex;
+    flex-direction: column;
+	background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+.meeting__person {
+	width: 32%;
+}
+
+.meeting__quality {
+	max-width: calc(100% - 32% - 10rem);
+}
+
+.meeting__avatar {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	background: #2196f3;
+}
+
+.meeting__date {
+	font-size: 65%;
+    margin-right: 8px;
+}
+
+.meeting__quality {
+	grid-column-start: 2;
+	grid-column-end: 6;
+	grid-row-end: 3;
+	grid-row-start: 2;
+	max-width: 100%;
+	padding: 0;
+}
+
+.meeting__avatar .user:not(:nth-child(1)) {
+	display: none;
+}
+
+.person-data__name {
+	font-weight: 800;
+}
+
+.support {
+	font-size: 12pt;
+	line-height: 1.1;
+	opacity: .75;
+}
+
+select {
+	padding: 3px 7px;
+}
+
+option {
+	padding: 7px 14px;
+}
+
+form.container {
+	grid-template-columns: 35% 65%;
+}
+
+form.container .single-row {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+form.container .single-row:nth-child(2n-1) {
+	margin-bottom: -1rem;
+}
+
+form.container .single-row textarea {
+	width: 100%;
+	min-height: 6em;
+}
+
+.person-selector {
+	display: flex;
+	font-size: 10pt;
+	flex-wrap: wrap;
+	margin-top: .5rem;
+}
+
+.person-selector__person {
+	width: 22%;
+	padding-right: 3%;
+	padding-bottom: 3%;
+	word-break: break-word;
+	min-height: 32px;
+	transition: all 150ms ease-in;
+}
+
+.person-selector__person:nth-child(4n) {
+	margin-right: 0;
+}
+
+.person-selector__person--selected {
+	background: rgb(183 183 183 / 20%);
+}
+
+.tag {
+	text-align: center;
+}
+
+.tag__item {
+	display: inline-block;
+	margin-right: .2rem;
+	margin-bottom: .2rem;
+	background: #e3f5ff;
+	border-radius: .2rem;
+	padding: .15rem;
+	font-size: .8rem;
+	transition: all 100ms ease-in;
+}
+
+.tag__item--active {
+	background: #bee4f8;
+}
+
+.tag__item:hover {
+	background: #bee4f8;
+}
+
+.nokia-people-detail-card-item__meetings .meeting__persons {
+    display: none;
+}
+
+.nokia-people-detail-card-item__meetings .person {
+    font-size: 10pt;
+    background: linear-gradient(180deg, transparent 60%, #38d7fb61 80%, #7166ff61);
+    margin-right: 4px;
+    padding: 2px 4px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+
+.content {
+	margin-bottom: 5rem;
+	margin: 0 auto 45px auto;
+}
+
+.person-data {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.person-data__name {
+	width: 100%;
+}
+
+.person-data__description {
+	width: 100%;
+	background: #efefef;
+	padding: 1rem;
+}
+
+.person-data__meeting {
+	width: 80%;
+}
+
+.nokia-people-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.person-mini-profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 22%;
+	text-align: center;
+	margin-right: .5rem;
+	margin-bottom: .5rem;
+	background-color: #fff;
+	border-radius: 6px;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 10px 20px -5px #38c7fd30;
+    padding: 12px 4px;
+	position: relative;
+}
+
+.person-mini-profile__edit {
+	font-size: 75%;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.person-mini-profile__name {
+	font-size: 10pt;
+}
+
+.nokia-user-avatar {
+	background: linear-gradient(45deg, #158bd0, #38d7fb);
+	color: #fff;
+	font-weight: 800;
+	border-radius: 100%;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.8rem;
+	text-decoration: none;
+	margin-bottom: 12px;
+}
+
+.nokia-people-detail-card-item__name {
+	font-weight: 800;
+}
+
+.nokia-people-detail-card-item__alias,
+.nokia-people-detail-card-item__nick {
+	opacity: .5;
+}

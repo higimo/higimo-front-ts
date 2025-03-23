@@ -1,0 +1,11 @@
+.precentation-container {
+	padding-top: 64px;
+	padding-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+	.precentation-container {
+		padding-top: 164px;
+		padding-bottom: 164px;
+	}
+}

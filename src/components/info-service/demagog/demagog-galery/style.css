@@ -1,0 +1,10 @@
+.demagog__header {
+	font-size: 3rem;
+	line-height: 1;
+}
+
+.demagog__text {
+	font-size: 1.2rem;
+	line-height: 1.5;
+	max-width: 45rem;
+}

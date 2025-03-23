@@ -1,0 +1,17 @@
+.tag {
+	color: #0072ff;
+	border-radius: 5px;
+	background: #e5f1ff;
+	text-decoration: none;
+	border: none;
+	display: inline-block;
+	padding: 3px 11px;
+	margin-bottom: 6px;
+	margin-right: 6px;
+	font-size: calc(1rem / 1.14285714);
+	cursor: pointer;
+}
+
+.tag:hover {
+	background: #cbe3fe;
+}

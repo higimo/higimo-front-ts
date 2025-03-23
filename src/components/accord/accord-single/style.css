@@ -1,0 +1,20 @@
+.accord-single-page pre {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+@media (max-width: 576px) {
+	.accord-single-page pre {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.see-also-list {
+	margin-top: 2rem;
+	margin-left: 1rem;
+}
+
+.see-also-list__item {
+	margin-bottom: .25rem;
+}

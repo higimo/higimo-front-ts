@@ -1,0 +1,20 @@
+.link-gallery {
+	background: #fff;
+	padding: 2rem;
+	border-radius: 5px;
+	margin-bottom: 2rem;
+}
+.link-gallery.container {
+	margin-bottom: 2rem;
+}
+
+.link-gallery__item {
+}
+.link-gallery__link {
+}
+.link-gallery__link:hover {
+	opacity: .5;
+}
+.link-gallery__link:visited {
+	color: #d4852f;
+}

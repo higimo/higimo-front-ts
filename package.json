@@ -1,0 +1,35 @@
+{
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check-types": "tsc --noEmit"
+	},
+	"dependencies": {
+		"classnames": "^2.5.1",
+		"d3": "^7.9.0",
+		"http-build-query": "^0.7.0",
+		"js-cookie": "^3.0.5",
+		"markdown-it": "^14.1.0",
+		"preact": "^10.25.3",
+		"preact-iso": "^2.9.1",
+		"react-collapse": "^5.1.1",
+		"react-hook-form": "^7.54.2",
+		"react-yandex-maps": "^4.6.0"
+	},
+	"devDependencies": {
+		"@preact/preset-vite": "^2.9.3",
+		"@types/node": "^22.13.9",
+		"eslint": "^8.57.1",
+		"eslint-config-preact": "^1.5.0",
+		"typescript": "^5.8.2",
+		"vite": "^6.0.4",
+		"vite-bundle-analyzer": "^0.18.1",
+		"vite-plugin-html": "^3.2.2"
+	},
+	"eslintConfig": {
+		"extends": "preact"
+	}
+}

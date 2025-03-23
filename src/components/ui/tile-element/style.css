@@ -1,0 +1,77 @@
+.tile-element {
+	--color: #000;
+	--border-default: #0005;
+	--border-hover: #000;
+	--description-underline: none;
+	--description-underline--hover: none;
+	--shadow-hover: inset 0 0 45px -20px #8db8ff87, 0 0 0 1px #d3d3d354;
+	width: 100%;
+	margin-bottom: 12px;
+	border: 0;
+	color: var(--color);
+	border-radius: 6px;
+	transition: all 100ms ease-in;
+	padding: 6px 4px;
+}
+
+@media (min-width: 768px) {
+	.tile-element {
+		padding: 12px;
+	}
+}
+
+.tile-element:not(.tile-element--inactive):hover {
+	box-shadow: var(--shadow-hover);
+}
+
+.tile-element--inactive {
+	opacity: .5;
+}
+
+.tile-element__name {
+	font-weight: 500;
+	margin-bottom: 8px;
+	line-height: 1;
+}
+
+.tile-element__name-inner {
+	color: var(--color);
+}
+
+.tile-element:not(.tile-element--inactive) .tile-element__name-inner {
+	border-bottom: 1px solid var(--border-default);
+}
+
+.tile-element__image-container {
+	margin-right: 12px;
+}
+
+.tile-element__img {
+	width: 55px;
+	height: 55px;
+}
+
+.tile-element__preview {
+	line-height: 1.3;
+}
+
+.tile-element__description {
+	border-bottom: var(--description-underline);
+}
+
+.tile-element:not(.tile-element--inactive):hover .tile-element__name-inner {
+	border-color: var(--border-hover);
+}
+
+.tile-element a {
+	color: var(--color);
+	border-bottom: 1px solid var(--border-default);
+}
+
+.tile-element a:hover {
+	border-color: var(--border-hover);
+}
+
+.tile-element:not(.tile-element--inactive):hover .tile-element__description {
+	border-bottom: var(--description-underline--hover);
+}

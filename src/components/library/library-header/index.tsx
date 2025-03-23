@@ -1,0 +1,23 @@
+import { FunctionalComponent } from 'preact'
+
+import { TextContainer } from '../../ui/text-container'
+import { OnlyAdmin } from '../../util/only-admin'
+
+import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+
+import './style.css'
+
+export const LibraryHeader: FunctionalComponent = () => {
+	return (
+		<OnlyAdmin>
+			<div className="library-header">
+				<TextContainer>
+					<div className="library-header__list">
+						<a href={ROUTE_LINKS.libraryIndex}>Главная</a>
+						<a href={ROUTE_LINKS.libraryAdmin}>Админка</a>
+					</div>
+				</TextContainer>
+			</div>
+		</OnlyAdmin>
+	)
+}

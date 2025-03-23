@@ -1,0 +1,39 @@
+.best-link {
+	display: block;
+	border: none;
+	padding-bottom: 16px;
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-bottom: 32px;
+	max-width: 30rem;
+	line-height: 1.4;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 300ms ease-in;
+}
+
+.best-link__description {
+	text-align: start;
+	white-space: normal;
+	color: rgb(0, 0, 128);
+}
+
+.best-link__link {
+	margin-top: .4rem;
+	font-size: 13px;
+	word-break: break-all;
+	color: #006000;
+}
+
+.best-link__link a {
+	transition: all 150ms ease-in;
+}
+
+.best-link:hover {
+	background: rgba(0, 0, 0, .02);
+}
+
+.best-link:hover .best-link__description {
+	color: #d00;
+}

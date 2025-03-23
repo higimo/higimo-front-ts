@@ -1,0 +1,20 @@
+.choose-input-create__container {
+	margin-top: 1rem;
+}
+
+.choose-input-create__container > * {
+	margin-right: 16px;
+}
+
+.choose-input-create__container > *:last-child {
+	margin-right: 0;
+}
+
+.choose-input-create__input {
+	border: 1px solid #ccc;
+	font-size: 1rem;
+	color: #0072ff;
+	border-radius: 5px;
+	padding: 3px 11px;
+	background: #e5f1ff;
+}

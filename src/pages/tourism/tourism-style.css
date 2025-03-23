@@ -1,0 +1,38 @@
+.tourism-identy-page {
+    padding-top: 0;
+    padding-bottom: 64px;
+	font-family: Alegreya Sans, sans-serif;
+    background: #344d3d;
+    color: #fff;
+}
+
+.tourism-identy-page a {
+    color: #fff;
+    border-bottom: 1px solid #fff4;
+}
+
+.tourism-identy-page a:hover {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.tourism-identy-page .pseudo-link {
+    border-color: #fff4;
+}
+
+.tourism-identy-page .pseudo-link:hover {
+    border-color: #fff;
+}
+
+.tourism-identy-page h1 {
+    margin: 0;
+    padding: 24px 0;
+}
+
+.tourism-identy-page h2 {
+    padding: 16px 0 0 0;
+}
+
+.tourism-identy-page h1 {
+    text-align: center;
+}

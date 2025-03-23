@@ -1,0 +1,9 @@
+.tools-intro {
+	background: #efefef;
+	font-size: 18px;
+}
+
+.tools-intro__item {
+	margin-left: -4px;
+	margin-right: -4px;
+}

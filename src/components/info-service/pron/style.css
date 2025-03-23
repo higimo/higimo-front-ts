@@ -1,0 +1,33 @@
+.gallery-pron {
+	display: flex;
+	min-height: 60vh;
+}
+
+.gallery-pron__btn {
+	background-size: 100% 250%;
+	background: linear-gradient(1deg, #ff8319, #ff3b3b);
+	border-radius: 0.4rem;
+	border: 0;
+	box-shadow:
+		30px 10px 20px -20px #ff48346e,
+		-30px 10px 20px -20px #ff4e3180,
+		0px 20px 20px -10px #ff3a21c7,
+		0px 0px 20px #ff7a189c
+	;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1rem;
+	margin: auto;
+	padding: 1rem;
+	transition: all 100ms ease-in;
+}
+
+.gallery-pron__btn:hover {
+	background-size: 100% 100%;
+	box-shadow:
+		20px 10px 20px -20px #ff48346e,
+		-20px 10px 20px -20px #ff4e3180,
+		0px 10px 20px -10px #ff3a21c7,
+		0px -10px 20px -5px #ff7a189c
+	;
+}

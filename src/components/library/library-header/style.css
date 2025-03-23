@@ -1,0 +1,11 @@
+.library-header {
+}
+
+.library-header__list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.library-header__list a {
+	margin-right: 1rem;
+}

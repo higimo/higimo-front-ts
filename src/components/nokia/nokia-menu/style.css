@@ -1,0 +1,39 @@
+.nokia__menu {
+	width: 100%;
+}
+
+.menu {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 0 auto 30px auto;
+	flex-direction: row;
+	width: 100%;
+}
+
+@media (min-width: 720px) {
+	.menu {
+		flex-direction: column;
+	}
+}
+
+.menu__item {
+	cursor: pointer;
+	transition: all 150ms ease-in;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 255, .15);
+}
+
+.menu__item:hover {
+	background: #abd8ff;
+	border-bottom: 1px solid rgba(0, 0, 255, .75);
+}
+
+.menu__item.menu__item--active {
+	background: #abd8ff;
+	text-decoration: none;
+}
+
+.menu:hover .menu__item.menu__item--active {
+	background: transparent;
+}

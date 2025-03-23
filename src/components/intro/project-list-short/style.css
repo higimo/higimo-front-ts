@@ -1,0 +1,35 @@
+.project-list {
+	padding-top: 164px;
+	padding-bottom: 164px;
+}
+
+.project-list__header {
+	font-size: 32px;
+	line-height: 1;
+	color: #000;
+	margin: 0;
+}
+
+@media (min-width: 768px) {
+	.project-list__header {
+		font-size: 64px;
+	}
+}
+
+.project-list__filter {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.project-list__filter-item {
+	margin-right: 24px;
+	margin-bottom: 8px;
+	color: #00000080;
+	border-color: #0000002b;
+}
+
+.project-list__filter-item:hover {
+	color: #000;
+	border-color: #00000080;
+}

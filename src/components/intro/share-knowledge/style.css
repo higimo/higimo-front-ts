@@ -1,0 +1,25 @@
+.share-knowledge {
+	background:
+		radial-gradient(26% 82% at 29% -22%, rgba(255, 24, 24, .184) 0%, rgba(255, 24, 24, 0) 100%),
+		radial-gradient(44% 97% at 5% 87%, rgba(43, 68, 152, .2) 0%, rgba(3, 39, 226, 0) 100%),
+		radial-gradient(34% 71% at 84% 28%, rgba(3, 226, 159, .2) 0%, rgba(3, 226, 159, 0) 100%),
+		#2b4597;
+	color: #fff;
+}
+
+.share-knowledge__element {
+	--color: #fff;
+	--border-default: #fff5;
+	--border-hover: #fff;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	background: #ffffff0d;
+	padding: 12px;
+	box-shadow:
+		0 4px 5px rgba(0, 49, 94, .06),
+		0 4px 15px rgba(0, 57, 109, .07),
+		0 4px 35px rgba(0, 85, 164, .08);
+	max-width: 512px;
+	width: 100%;
+}

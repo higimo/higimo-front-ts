@@ -1,0 +1,9 @@
+.link-of-day {
+	padding-top: 128px;
+	padding-bottom: 256px;
+}
+
+.link-of-day__gallery {
+	display: flex;
+	justify-content: center;
+}

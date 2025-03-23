@@ -1,0 +1,40 @@
+.single-logism {
+	background: #fff;
+	color: #c94912;
+	font-family: Alegreya Sans, sans-serif;
+	font-weight: 300;
+}
+
+@media (min-width: 520px) {
+	.single-logism {
+		padding-top: 128px;
+		padding-bottom: 256px;
+	}
+}
+
+.single-logism a {
+	color: #003653;
+	border-color: #00365359;
+}
+
+.single-logism a:hover {
+	border-color: #003653b7;
+}
+
+.single-logism__text {
+	font-size: 48px;
+	line-height: 1;
+	margin-bottom: 32px;
+	overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+	.single-logism__text {
+		font-size: 96px;
+	}
+}
+
+.single-logism__navigation {
+	display: flex;
+	justify-content: flex-end;
+}

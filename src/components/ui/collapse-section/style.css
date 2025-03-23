@@ -1,0 +1,22 @@
+.collapse-section__header {
+	cursor: pointer;
+}
+
+.collapse-section__header > *:before {
+	content: ' ';
+	display: inline-block;
+	background-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 11 7' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1.5 1L5.5 5L9.5 1' stroke='%23666' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+	width: 20px;
+	height: 10px;
+    transition: all 150ms ease-in;
+	margin: 0 8px 0 0;
+	transform: translate(0px, -50%);
+}
+
+.collapse-section--unfold .collapse-section__header > *:before {
+	transform: rotate(-180deg) translate(0, 50%);
+}
+
+.ReactCollapse--collapse {
+	transition: height 150ms ease-in-out;
+}

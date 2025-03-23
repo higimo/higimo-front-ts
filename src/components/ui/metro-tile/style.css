@@ -1,0 +1,12 @@
+.metro-tile {
+	white-space: normal;
+	min-width: 256px;
+	height: 185px;
+	margin: 0 24px 0 0;
+}
+
+@media (min-width: 768px) {
+	.metro-tile {
+		min-width: 358px;
+	}
+}

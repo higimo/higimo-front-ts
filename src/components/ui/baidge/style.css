@@ -1,0 +1,32 @@
+.baidge {
+	display: inline-block;
+	transform: translateY(-50%);
+	padding: .05rem .25rem .15rem .25rem;
+	border-radius: .25rem;
+	line-height: .8;
+	font-size: 60%;
+}
+
+.baidge--yellow {
+	color: #779b08;
+	background: #e9ecd8;
+}
+
+.baidge--green {
+	color: #08769b;
+	background: #d8ece4;
+}
+
+.baidge--gray {color: #545454;
+    background: #efefef;
+}
+
+.baidge--blue {
+	color: #141470;
+    background: #d7def1;
+}
+
+.baidge--yellow {
+	color: #998b2e;
+    background: #f1edd7;
+}

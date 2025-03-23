@@ -1,0 +1,11 @@
+.horizontal-menu {
+	display: flex;
+	overflow: auto;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	justify-content: center;
+}
+
+.horizontal-element {
+	padding: .5rem 1rem;
+}

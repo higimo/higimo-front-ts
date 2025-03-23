@@ -1,0 +1,48 @@
+.ig-link-page {
+	background: #f7f8ff5c;
+	min-height: 65vh;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 48px;
+	padding-bottom: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ig-link-page__content {
+	max-width: 920px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.ig-link-page__item {
+	margin-bottom: 16px;
+	background: #fff;
+	box-shadow: 0 0.125rem 1rem rgb(27 40 50 / 4%), 0 0.125rem 2rem rgb(27 40 50 / 8%), 0 0 0 0.0625rem rgb(27 40 50 / 2%);
+	max-width: 480px;
+	padding: 16px;
+	border-radius: 4px;
+	width: 100%;
+}
+
+.ig-link-page__name {
+	font-size: 110%;
+	margin-bottom: 8px;
+}
+
+.ig-link-page__link {
+	color: #0000ee;
+}
+
+.ig-link-page__link:hover {
+	color: #0000ee;
+}
+
+.ig-link-page__description {
+	opacity: 0.85;
+	font-size: 85%;
+}
