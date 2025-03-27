@@ -10,6 +10,7 @@ import rak       from './img/rak.png'
 import tech      from './img/tech.png'
 import school    from './img/school.png'
 import obuchenie from './img/obuchenie.png'
+import intersection from './img/intersection.svg'
 
 import { shareKnowledgeData } from './data'
 
@@ -18,7 +19,7 @@ import './style.css'
 type KnowlageType = {
 	isArchive?: boolean;
 	link?: string;
-	imgId: 'screen' | 'rak' | 'tech' | 'school' | 'obuchenie';
+	imgId: 'screen' | 'rak' | 'tech' | 'school' | 'obuchenie' | 'intersection';
 	title: string;
 	description: string;
 }
@@ -29,6 +30,7 @@ const imageMapping: Record<KnowlageType['imgId'], string> = {
 	tech,
 	school,
 	obuchenie,
+	intersection,
 }
 
 const halfList = Math.round(shareKnowledgeData.length / 2)

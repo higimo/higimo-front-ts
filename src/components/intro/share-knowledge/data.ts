@@ -3,6 +3,12 @@ import { ROUTE_LINKS } from "../../../dic/ROUTE_LINKS";
 
 export const shareKnowledgeData = [
 	{
+		imgId: "intersection",
+		title: "Пересечения",
+		description: "Творческое объединение крутанов. Коллабимся и делаем.",
+		link: EXTERNAL_LINKS.intersection,
+	},
+	{
 		imgId: "rak",
 		title: "Раковарня 2.0",
 		description: "Коллаб канал про пользу, мотивацию, дизайн, кодинг и музыку.",
@@ -21,15 +27,16 @@ export const shareKnowledgeData = [
 		link: EXTERNAL_LINKS.canalScreen,
 	},
 	{
-		imgId: "school",
-		title: "Школа Ватриковского",
-		description: "Рассказываем, как не надламываясь и не выгорая делать дела. О лекциях сообщаем в телеге",
-		isArchive: true,
-	},
-	{
 		imgId: "obuchenie",
 		title: "Обучение",
 		description: "В 2017 году, я написал курс переподготовки по программированию и рассказал его в ННГУ.",
 		link: ROUTE_LINKS.learningIndex,
 	},
+	// {
+	// 	imgId: "school",
+	// 	title: "Школа Ватриковского",
+	// 	description: "Рассказываем, как не надламываясь и не выгорая делать дела. О лекциях сообщаем в телеге",
+	// 	link: EXTERNAL_LINKS.vatrikovskySchool,
+	// 	isArchive: true,
+	// },
 ] as const

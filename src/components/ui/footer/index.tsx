@@ -22,6 +22,7 @@ export const Footer: FunctionComponent = (props) => {
 				<div className="footer__column">
 					<div className="footer__header"><a href={ROUTE_LINKS.projectIndex}>Сделал</a></div>
 					<div className="footer__header">Делюсь знаниями</div>
+					<div className="footer__link"><a href={EXTERNAL_LINKS.intersection}>Пересечения</a></div>
 					<div className="footer__link"><a href={EXTERNAL_LINKS.canalRak}>Раковарня 2.0</a></div>
 					<div className="footer__link"><a href={EXTERNAL_LINKS.canalEfficient}>Техники → навыки → счастье</a></div>
 					<div className="footer__link"><a href={EXTERNAL_LINKS.canalScreen}>Скриншотил</a></div>

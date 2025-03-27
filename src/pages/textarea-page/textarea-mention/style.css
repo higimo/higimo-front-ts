@@ -1,0 +1,27 @@
+.mentions-input {
+	margin: 2rem auto;
+	position: relative;
+}
+
+.mentions-input__field {
+	width: 40rem;
+	height: 300px;
+}
+
+.suggestion-list {
+	overflow: auto;
+	scroll-behavior: smooth;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, .9);
+    width: 100%;
+}
+
+.suggestion-list__item {
+	font-size: 16px;
+}
+
+.suggestion-list__item--active {
+	background-color: #ccc;
+}

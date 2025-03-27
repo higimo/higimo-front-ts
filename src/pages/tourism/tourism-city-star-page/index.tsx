@@ -6,7 +6,7 @@ import { Breadcrumps } from '../../../components/ui/breadcrumps'
 import { TextContainer } from '../../../components/ui/text-container'
 import { TourismMainMenu } from '../../../components/tourism/tourism-main-menu'
 import { CityStars } from '../../../components/tourism/city-stars'
-import { TourismCityStarForm } from '../../../components/intro/tourism-city-star'
+import { TourismCityStarForm } from '../../../components/tourism-city-star'
 
 import '../tourism-style.css'
 

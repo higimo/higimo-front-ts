@@ -32,6 +32,8 @@ import { ProjectTagGallery } from "../../../components/project/project-tag-galle
 // 194 Сергей Слепнёв —
 // 195 Евгений Кречко —
 
+// TODO link #2196f3
+
 
 export const ProjectIndexPage: FunctionComponent = () => {
 	const { projectsList, uniqTags } = useProject();

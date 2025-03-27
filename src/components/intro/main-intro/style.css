@@ -3,6 +3,9 @@
 	background: #315efb;
 	font-size: 24px;
 	line-height: 1.3;
+	overflow: hidden;
+	position: relative;
+    z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -33,4 +36,82 @@
     .main-intro .logo {
         font-size:80px
     }
+}
+
+.main-intro p {
+	position: relative;
+	z-index: 2;
+}
+
+.animation {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+}
+/* Анимация появление из опасности и bottom 100px -> 0 */
+
+.animation img {
+	z-index: 1;
+	position: absolute;
+	transition: all 150ms ease-in-out;
+	left: 0;
+	bottom: 0;
+	transform-origin: 50% 50%;
+}
+
+.animation img:nth-child(1) { left: 0%; transform: translateX(70%) scale(3.5) translateY(-80%) rotate(7deg); }
+.animation img:nth-child(2) { left: 20%; transform: translateX(70%) scale(4.5) translateY(-80%) rotate(-5deg); }
+.animation img:nth-child(3) { left: 40%; transform: translateX(70%) scale(4) translateY(-80%) rotate(-10deg); }
+.animation img:nth-child(4) { left: 60%; transform: translateX(70%) scale(5.5) translateY(-80%) rotate(10deg); }
+.animation img:nth-child(5) { left: 80%; transform: translateX(120%) scale(5) translateY(-80%) rotate(15deg); }
+
+@media (min-width: 768px) {
+	.main-intro .text-container {
+		padding-right: 4em;
+	}
+
+	.animation {
+		bottom: auto;
+		top: 0;
+		height: 100%;
+	}
+	.animation img {
+		right: 0;
+		top: 0;
+	}
+	.animation img:nth-child(n) {
+		left: auto;
+	}
+
+	.animation img:nth-child(1) { top: 25%; transform: scale(3.5) translateX(-50%) rotate(14deg); }
+	.animation img:nth-child(2) { top: 35%; transform: scale(4.5) translateX(-50%) rotate(-5deg); }
+	.animation img:nth-child(3) { top: 45%; transform: scale(4) translateX(-50%) rotate(-17deg); }
+	.animation img:nth-child(4) { top: 55%; transform: scale(5.5) translateX(-50%) rotate(10deg); }
+	.animation img:nth-child(5) { top: 65%; transform: scale(5) translateX(-50%) rotate(7deg); }
+}
+
+@media (min-width: 1024px) {
+	.main-intro .text-container {
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+	.animation img:nth-child(n) {
+		left: auto;
+		right: auto;
+		top: auto;
+	}
+
+	.animation img:nth-child(1) { top: 25%; left: 0; transform: scale(3.5) translateX(20%) translateY(-80%) rotate(7deg); }
+	.animation img:nth-child(2) { top: 75%; left: 0; transform: scale(4.5) translateX(50%) translateY(-80%) rotate(-5deg); }
+	.animation img:nth-child(3) { top: 35%; right: 0; transform: scale(4) translateX(-70%) translateY(-80%) rotate(-10deg); }
+	.animation img:nth-child(4) { top: 60%; right: 0; transform: scale(5.5) translateX(-70%) translateY(-80%) rotate(10deg); }
+	.animation img:nth-child(5) { top: 90%; right: 0; transform: scale(5) translateX(-120%) translateY(-80%) rotate(-15deg); }
+}
+
+@media (min-width: 1380px) {
+	.main-intro .text-container {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }

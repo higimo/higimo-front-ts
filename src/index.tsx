@@ -82,6 +82,7 @@ import { ROUTE_LINKS } from './dic/ROUTE_LINKS';
 import './style.css';
 import { VkContextProvider } from './context/vk';
 import { NokiaContextProvider } from './context/nokia';
+import { TextareaPage } from './pages/textarea-page';
 
 const ResumeProductPage = lazy(() => import('./pages/resume/resume-product-page'))
 const ResumeHeadPage = lazy(() => import('./pages/resume/resume-head-page'))
@@ -131,6 +132,8 @@ export function App() {
 						<main>
 							<Router>
 								<Route path={ROUTE_LINKS.index} component={IndexPage} />
+
+								<Route path="/textarea" component={TextareaPage} />
 
 								{/* admin */}
 								<Route path={ROUTE_LINKS.login} component={LoginPage} />

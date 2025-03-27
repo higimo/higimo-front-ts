@@ -4,18 +4,25 @@ import cs from 'classnames'
 
 import { NokiaContext, NokiaContextType } from '../../../context/nokia'
 
-import { useForm } from 'react-hook-form'
-import { useContext, useState, useEffect, useLayoutEffect } from 'preact/hooks'
+import { Controller, useForm } from 'react-hook-form'
+import { useContext, useState, useEffect, useLayoutEffect, useMemo } from 'preact/hooks'
 import { useAuth } from '../../../hook/use-auth'
 import { useRoute } from 'preact-iso'
 
 import sendRequest from '../../../utils/send-request'
 
+import TextInput from 'react-autocomplete-input';
 import { ShowFormResult } from '../../form/show-form-result'
 
 import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
+
+import './style.css'
+
+const getUserSuggestions = (peoples: PeopleType[]): string[] => peoples.map(men => {
+	return `${men.name}${men.name.length ? ` (${men.name})` : null}`
+});
 
 const onSubmit = addStatus => values => {
 	sendRequest(
@@ -80,6 +87,7 @@ const getTopPersons: GetTopPersonsType = (links, people) => {
 }
 
 export const NokiaForm = () => {
+	const { control, register, handleSubmit, setValue, getValues, watch, formState, reset } = useForm<FormValues>()
 	const {
 		fetchData,
 		links,
@@ -90,15 +98,16 @@ export const NokiaForm = () => {
 		hashLink,
 	} = useContext(NokiaContext) as NokiaContextType
 	useLayoutEffect(fetchData, [])
-	
 
 	const { isAuth } = useAuth()
 	const { params: { meetingId = '-1' } } = useRoute()
 
-
-	const { register, handleSubmit, setValue, getValues, watch, formState, reset } = useForm<FormValues>()
 	const { personId, type, date } = watch()
 	const [ status, setStatus ] = useState([])
+
+	const peoplesSuggest = useMemo(() => {
+		return getUserSuggestions(people)
+	}, [people])
 
 	useEffect(() => {
 		if (parseInt(meetingId, 10) >= 0 && hashMeeting[meetingId] && hashLink[meetingId]) {
@@ -127,6 +136,9 @@ export const NokiaForm = () => {
 	const topPersons: PeopleType[] = getTopPersons(links, people).map(item => hashPeople[item.id])
 	const selectedPersonId = (personId || '').split(',').map(i => parseInt(i, 10)).filter(i => i)
 
+	console.log(peoplesSuggest)
+
+	// TODO Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
 	return (
 		<form className="container" onSubmit={handleSubmit(onSubmit(addStatus))}>
 			<div>
@@ -145,7 +157,26 @@ export const NokiaForm = () => {
 				<label>Как прошло?</label>
 			</div>
 			<div class="single-row">
-				<textarea {...register('description')} name="description" />
+				<Controller
+					name="description"
+					control={control}
+					defaultValue=""
+					render={({ field }) => (
+						<TextInput
+							{...field}
+							trigger="@"
+							maxOptions={0}
+							options={peoplesSuggest}
+							placeholder="Упомяните пользователя через @"
+							changeOnSelect={(trigger, slug) => {
+								setValue('personId', personId + ',' + slug)
+								
+								return trigger + slug
+							}}
+						/>
+					)}
+				/>
+				{/* <textarea {...register('description')} name="description" /> */}
 			</div>
 			<div>
 				<label>Тип встречи</label>

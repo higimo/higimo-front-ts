@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
 
-import { BackgroundImage } from '../../ui/background-image'
-import { FullWidthContainer, FullWidthColumn } from '../../ui/full-width-container'
-import { OnlyAdmin } from '../../util/only-admin'
+import { BackgroundImage } from '../ui/background-image'
+import { FullWidthContainer, FullWidthColumn } from '../ui/full-width-container'
+import { OnlyAdmin } from '../util/only-admin'
 
-import { EXTERNAL_LINKS } from '../../../dic/EXTERNAL_LINKS'
+import { EXTERNAL_LINKS } from '../../dic/EXTERNAL_LINKS'
 
 import './style.css'
 

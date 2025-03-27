@@ -20,6 +20,7 @@ export const EXTERNAL_LINKS = Object.freeze({
     botRole: "https://t.me/HeyRoleBot",
     botDoll: "https://t.me/taskDollBot",
     wishlist: "https://www.pinterest.at/higim0/список-желаний/",
+    vatrikovskySchool: "#TODO",
 
     vatrikovsky: 'https://vatrikovsky.ru/',
 

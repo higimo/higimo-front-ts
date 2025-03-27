@@ -1,6 +1,8 @@
 import { FunctionComponent } from 'preact'
 import { LogismType } from '../types'
 
+import cs from 'classnames'
+
 import useApi, { API_STATUS } from '../../../hook/use-api'
 
 import { Loading } from '../../accord/accord-single'
@@ -25,8 +27,10 @@ export const Logism: FunctionComponent = () => {
 		<div className="gallery-logism">
 			{logismList.data.map(({ text }) => (
 				<div
-					className="gallery-logism__item"
-					dangerouslySetInnerHTML={{__html: text}}
+					className={cs('gallery-logism__item', {
+						'gallery-logism__item--long': text.length > 100
+					})}
+					dangerouslySetInnerHTML={{ __html: text.replace(/(https?:\/\/.*)/g, '<a href="$1">источник</a>') }}
 				/>
 			))}
 		</div>
