@@ -11,11 +11,9 @@ export const NokiaIndex = () => {
 
 	useLayoutEffect(fetchData, [])
 
-	const sortMeet = meeting.sort((a, b) => b.date - a.date)
-
 	return (
 		<div className="meeting-gallery">
-			{sortMeet.slice(0, 200).map(item => (
+			{meeting.slice(0, 200).map(item => (
 				<div className={`meeting-gallery__item meeting type-${item.type}`}>
 					<div className="meeting__description">
 						{item.description}

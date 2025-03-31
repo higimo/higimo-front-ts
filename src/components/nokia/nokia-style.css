@@ -35,6 +35,8 @@
 	font-size: 16px;
 	margin-bottom: 6px;
 	white-space: pre-wrap;
+	max-width: 100%;
+    overflow: hidden;
 }
 
 .meeting__information {

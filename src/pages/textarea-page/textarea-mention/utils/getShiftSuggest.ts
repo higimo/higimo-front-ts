@@ -1,4 +1,4 @@
-const getShiftSuggest = (currentIndex: number, position: -1 | 1, arr: any[]) => {
+export const getShiftSuggest = (currentIndex: number, position: -1 | 1, arr: any[]) => {
 	if (arr.length === 0) {
 		return -1;
 	}

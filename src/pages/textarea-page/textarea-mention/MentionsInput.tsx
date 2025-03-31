@@ -5,9 +5,12 @@ import { useCallback, useState } from 'preact/hooks';
 import { isMention } from './utils/isMention';
 import { ChangeEvent } from 'preact/compat';
 import { getWrittenMention } from './utils/getWrittenMention';
+import { getShiftSuggest } from './utils/getShiftSuggest'
 
 import { MentionSuggest, MetionSelector } from './types';
 import { MentionList } from './MentionList';
+
+import { KEY } from './KEY'
 
 import './style.css'
 

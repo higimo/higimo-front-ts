@@ -21,7 +21,7 @@ export const ResumeProductPage: FunctionComponent = () => {
 				<TextContainer>
 					<h2>Опыт работы продактом в SuperJob 01.09.2023—31.12.2024</h2>
 					<p>
-						Моей работой и&nbsp;совокупными усилиями компании <strong>сократили балансный разрыв на&nbsp;18%</strong>
+						Моей работой и&nbsp;совокупными усилиями компании <strong>ускорили списания средств на&nbsp;18%</strong>
 					</p>
 					<p>
 						Руководческие достижения

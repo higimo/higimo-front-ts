@@ -8,11 +8,10 @@ import { LogismSingle } from "../../components/intro/logism-single"
 import { LookedThis } from "../../components/intro/looked-this"
 import { MainIntro } from "../../components/intro/main-intro"
 import { ProjectListShort } from "../../components/intro/project-list-short"
-import { RightNowIDo } from "../../components/intro/right-now-i-do"
 import { ShareKnowledge } from "../../components/intro/share-knowledge"
 import { ToolsIntro } from "../../components/intro/tools-intro"
 import { TravelInvite } from "../../components/intro/travel-invite"
-import { OnlyAdmin } from "../../components/util/only-admin"
+import { FunnyIntro } from "../../components/intro/funny-invite"
 
 export const IndexPage: FunctionComponent = () => {
 	document.title = 'higimo — программист на Java Script'
@@ -20,7 +19,6 @@ export const IndexPage: FunctionComponent = () => {
 	return [
 		<MainIntro />,
 		<LastUpdates />,
-		<OnlyAdmin><RightNowIDo /></OnlyAdmin>,
 		<ProjectListShort />,
 		<ContactList />,
 		// <OnlyAdmin><RomaSchool /></OnlyAdmin>,
@@ -29,6 +27,7 @@ export const IndexPage: FunctionComponent = () => {
 		<TravelInvite />,
 		<ToolsIntro />,
 		<AboutInvite />,
+		<FunnyIntro />,
 		<LookedThis />,
 		<LogismSingle />,
 		// <OnlyAdmin><DonatIntro /></OnlyAdmin>,

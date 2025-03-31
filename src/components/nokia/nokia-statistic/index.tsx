@@ -139,18 +139,16 @@ const prepareData = (meeting: MeetingType[]): PrepareDataResult => {
 export const NokiaStatistic: FunctionComponent = () => {
 	const viz = useRef<HTMLDivElement>(null)
 
-	const { meeting, fetchData } = useContext(NokiaContext) as NokiaContextType
-
-	console.log(meeting)
+	const { richMeeting, fetchData } = useContext(NokiaContext) as NokiaContextType
 
 	useLayoutEffect(fetchData, [])
 	
 	useEffect(() => {
 		updateChart({
 			viz,
-			data: prepareData(meeting),
+			data: prepareData(richMeeting),
 		})()
-	}, [meeting])
+	}, [richMeeting])
 
 	return (
 		<div

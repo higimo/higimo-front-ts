@@ -113,6 +113,8 @@ export default defineConfig(
 					output: {
 						manualChunks: {
 							'markdown-it': ['markdown-it'],
+							'd3': ['d3'],
+							'react-hook-form': ['react-hook-form'],
 						},
 					},
 				},

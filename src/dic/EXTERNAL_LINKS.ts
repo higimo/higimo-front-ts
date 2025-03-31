@@ -1,9 +1,12 @@
-export const EXTERNAL_LINKS = Object.freeze({
+export const EXTERNAL_LINKS = {
 	wikiIso3166: 'https://ru.wikipedia.org/wiki/ISO_3166-2:RU',
+
+    homePage: 'https://higimo.ru',
+    homePortfolio: 'https://higimo.ru/project/',
+    homeAnonsDeployCalendar: 'https://higimo.ru/project/higimo/deploy-calendar/',
 
     socialVk: 'https://vk.com/higimo',
     socialVkPhoto: 'https://vk.com/albums16174219',
-    feedBack: 'https://higimo.ru/feedback',
     socialTg: 'https://t.me/higimoblog',
     socialTwitter: 'https://twitter.com/higimo',
     socialIg: 'https://www.instagram.com/higimo/',
@@ -12,6 +15,7 @@ export const EXTERNAL_LINKS = Object.freeze({
     canalRak: "https://t.me/rakovarnya_2_0",
     canalRakAdmin: "https://t.me/+GVbrz97BUDHS-Eh0",
     canalEfficient: "https://t.me/efficient_and_happy",
+    techIntersection: "https://tech.intersection.team",
     canalScreen: "https://t.me/screenshotil",
     contactMail: "mailto:higimo@gmail.com",
     github: "https://github.com/higimo",
@@ -31,8 +35,6 @@ export const EXTERNAL_LINKS = Object.freeze({
     alsAutomatus: 'https://www.artlebedev.ru/automation/',
     intersection: 'https://intersection.team/',
 
-    homePortfolio: 'https://higimo.ru/project/',
-
     reactJs: 'https://reactjs.org/',
     afishaDaily: 'https://daily.afisha.ru/',
     rTop: 'https://r-top.ru/',
@@ -42,6 +44,6 @@ export const EXTERNAL_LINKS = Object.freeze({
     aboutKinopoisk: 'https://www.kinopoisk.ru/user/509833/votes/',
     aboutAnime: 'https://listanime.ru/userpage?userid=357&s=1&view=seen',
     aboutLivelib: 'https://www.livelib.ru/reader/higimo',
-})
+} as const
 
 export type ExternalLinksType = keyof typeof EXTERNAL_LINKS

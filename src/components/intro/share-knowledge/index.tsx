@@ -12,17 +12,9 @@ import school    from './img/school.png'
 import obuchenie from './img/obuchenie.png'
 import intersection from './img/intersection.svg'
 
-import { shareKnowledgeData } from './data'
+import { KnowlageType, shareKnowledgeData } from './data'
 
 import './style.css'
-
-type KnowlageType = {
-	isArchive?: boolean;
-	link?: string;
-	imgId: 'screen' | 'rak' | 'tech' | 'school' | 'obuchenie' | 'intersection';
-	title: string;
-	description: string;
-}
 
 const imageMapping: Record<KnowlageType['imgId'], string> = {
 	screen,
@@ -33,10 +25,9 @@ const imageMapping: Record<KnowlageType['imgId'], string> = {
 	intersection,
 }
 
-const halfList = Math.round(shareKnowledgeData.length / 2)
+const HALF_LIST = Math.round(shareKnowledgeData.length / 2)
 
-type TileElementConProps = KnowlageType
-const TileElementCon: FunctionComponent<TileElementConProps> = ({ isArchive, link, imgId, title, description }) => (
+const TileElementCon: FunctionComponent<KnowlageType> = ({ isArchive, link, imgId, name, description }) => (
 	<TileElement
 		className={cs(
 			'share-knowledge__element',
@@ -45,7 +36,7 @@ const TileElementCon: FunctionComponent<TileElementConProps> = ({ isArchive, lin
 		isInactive={isArchive}
 		href={link}
 		image={<img className="tile-element__img" src={imageMapping[imgId]} />}
-		name={title}
+		name={name}
 		description={description}
 	/>
 )
@@ -54,11 +45,11 @@ export const ShareKnowledge = () => (
 	<TilesGallery
 		className="share-knowledge"
 		title="Делюсь знаниями"
-		left={shareKnowledgeData.slice(0, halfList).map((item: KnowlageType) => (
-			<TileElementCon key={item.title} {...item} />
+		left={shareKnowledgeData.slice(0, HALF_LIST).map((item: KnowlageType) => (
+			<TileElementCon key={item.name} {...item} />
 		))}
-		right={shareKnowledgeData.slice(halfList, shareKnowledgeData.length).map((item: KnowlageType) => (
-			<TileElementCon key={item.title} {...item} />
+		right={shareKnowledgeData.slice(HALF_LIST, shareKnowledgeData.length).map((item: KnowlageType) => (
+			<TileElementCon key={item.name} {...item} />
 		))}
 	/>
 )

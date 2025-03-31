@@ -17,7 +17,7 @@ export const BlogInvite: FunctionComponent = () => (
 	<TilesGallery
 		className="blog-invite"
 		id={ANCHOR_LINKS.blog}
-		title="Пишу в блоги"
+		title="Пишу в блоги"
 		left={blogInviteData.slice(0, halfList).map(item => (
 			<TileElement
 				className={cs(

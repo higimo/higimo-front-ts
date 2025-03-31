@@ -93,6 +93,7 @@ const ROUTE_RESUME_LINKS = Object.freeze({
 	resumeIndex: '/resume/',
 	resumeHead: '/resume/head/',
 	resumeProduct: '/resume/product/',
+	resumeProductLegacy: '/resume/product-old/',
 })
 
 const ROUTE_THINGS_LINKS = Object.freeze({
@@ -171,6 +172,7 @@ export const ROUTE_LINKS = {
 	login: '/login/',
 	typo: '/typo/',
 	TODO: '#',
+	TODO_VATRIKOVSKY_SCHOOL: '#',
 } as const
 
 export type RouteLinksType = keyof typeof ROUTE_LINKS

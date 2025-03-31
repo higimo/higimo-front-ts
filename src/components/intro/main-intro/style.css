@@ -6,11 +6,13 @@
 	overflow: hidden;
 	position: relative;
     z-index: 1;
+	padding-bottom: 120px;
 }
 
 @media (min-width: 768px) {
 	.main-intro {
 		font-size: 36px;
+		padding-bottom: 164px;
 	}
 }
 

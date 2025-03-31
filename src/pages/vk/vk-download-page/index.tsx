@@ -81,8 +81,10 @@ const VkDownloadAlbum = () => {
     }, [isVkLogin, session, queue, setQueue])
 
     useEffect(() => {
-        getAlbums()
-    }, [])
+        if (isVkLogin) {
+            getAlbums()
+        }
+    }, [isVkLogin])
 
     useEffect(() => {
         if (queue.length) {
@@ -100,8 +102,6 @@ const VkDownloadAlbum = () => {
     //     setId(event.target.value)
     //     getAlbums()
     // }, [setId])
-
-    console.log('higimo', {photos, albums})
 
     return (
         <Fragment>

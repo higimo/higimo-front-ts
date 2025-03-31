@@ -1,11 +1,19 @@
 .mentions-input {
-	margin: 2rem auto;
 	position: relative;
+	padding: 2rem 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	background-color: #fff;
 }
 
 .mentions-input__field {
 	width: 40rem;
 	height: 300px;
+	border: none;
 }
 
 .suggestion-list {

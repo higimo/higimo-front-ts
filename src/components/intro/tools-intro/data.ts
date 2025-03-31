@@ -1,32 +1,14 @@
 import { EXTERNAL_LINKS } from "../../../dic/EXTERNAL_LINKS";
 import { ROUTE_LINKS } from "../../../dic/ROUTE_LINKS";
 
-export const toolsData = [
-	{
-		name: '🕑 Калькулятор времени',
-		link: EXTERNAL_LINKS.serviceTimer,
-		description: 'Когда нужно подсчитать сколько времени ушло в дне'
-	},
-	{
-		name: 'Комоджи (⌐■_■)',
-		link: ROUTE_LINKS.toolComoji,
-		description: 'Смайлики на случай важных переговоров'
-	},
-	{
-		name: '🖼 Фотографии во ВКонтакте',
-		link: ROUTE_LINKS.toolVkIndex,
-		description: 'Для удобной подписи и сортировки фотографий, используя всё пространство монитора, вместо узкой колонки оригинала'
-	},
-	{
-		name: '✉ Эмайлер',
-		link: ROUTE_LINKS.toolEmailer,
-		description: 'Пошлёт на почту страницу интернета, чтобы прочитать в статью в удобном месте, даже без интернета'
-	},
-	{
-		name: 'Волшебный шар',
-		link: ROUTE_LINKS.toolMagic,
-		description: 'Когда особенно хочется погадать'
-	},
+export type ToolDataType = {
+	name: string;
+	isAdmin?: boolean,
+	link?: typeof EXTERNAL_LINKS[keyof typeof EXTERNAL_LINKS] | typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS];
+	description: string;
+}
+
+export const hardToolList: ToolDataType[] = [
 	{
 		name: 'Пробби',
 		link: ROUTE_LINKS.petProject,
@@ -35,13 +17,65 @@ export const toolsData = [
 	{
 		name: 'Список списков',
 		link: ROUTE_LINKS.listListIndex,
-		description: 'Когда мания каталогизации становится слишком сильной, можно составлять списки из всего, что попадётся под руку'
+		description: 'Когда мания каталогизации становится слишком сильной, можно составлять списки из всего, что попадётся под руку'
 	},
 	{
-		name: 'Календарь деплоя',
-		link: EXTERNAL_LINKS.serviceDeploy,
-		description: 'Астрологи предсказали, когда лучше попридержать публикацию, и не гневать богов'
+		name: 'Нокиа',
+		isAdmin: true,
+		link: ROUTE_LINKS.nokiaIndex,
+		description: 'Менеджмент своих коннектов с людьми'
 	},
+	{
+		name: 'Путешествия',
+		isAdmin: true,
+		link: ROUTE_LINKS.tourismIndex,
+		description: 'Собираю инфу про свои путешествия, где был, какие города понравились, куда ходить'
+	},
+	{
+		name: '🖼 Фотографии во ВКонтакте',
+		link: ROUTE_LINKS.toolVkIndex,
+		description: 'Для удобной подписи и сортировки фотографий, используя всё пространство монитора, вместо узкой колонки оригинала'
+	},
+] as const
+
+export const unfinishedToolList: ToolDataType[] = [
+	{
+		name: 'Часы русского судного дня',
+		link: ROUTE_LINKS.clock,
+		description: 'Самопальный отчёт проишествий и когда страна остановится'
+	},
+	{
+		name: 'Прон',
+		isAdmin: true,
+		link: ROUTE_LINKS.pron,
+		description: 'Ну ты понел'
+	},
+	{
+		name: 'Демагог',
+		link: ROUTE_LINKS.demagog,
+		description: 'Справочник по демагогическим приёмам'
+	},
+	{
+		name: 'Пинарик',
+		isAdmin: true,
+		link: ROUTE_LINKS.pinarik,
+		description: 'Отслеживание своего довольства работая в календаре-хитмапе'
+	},
+] as const
+
+export const crashedToolList: ToolDataType[] = [
+	{
+		name: '✉ Эмайлер',
+		link: ROUTE_LINKS.toolEmailer,
+		description: 'Пошлёт на почту страницу интернета, чтобы прочитать в статью в удобном месте, даже без интернета'
+	},
+	{
+		name: 'RSS-читалка на почту',
+		description: 'Подписываешься здесь — получаешь на почту'
+	}	
+] as const
+
+export const botToolList: ToolDataType[] = [
 	{
 		name: 'Бот упоминаний',
 		link: EXTERNAL_LINKS.botRole,
@@ -52,8 +86,16 @@ export const toolsData = [
 		link: EXTERNAL_LINKS.botDoll,
 		description: 'Концентрироваться только на трёх заданиях. <a href="/project/bots/bot-of-three-tasks/">Анонс</a>'
 	},
+] as const
+
+export const toolListData: ToolDataType[] = [
+	...hardToolList,
+	...unfinishedToolList,
+	...crashedToolList,
+	...botToolList,
 	{
-		name: 'RSS-читалка на почту',
-		description: 'Подписываешься здесь — получаешь на почту'
-	}	
+		name: "☝ Логизмы",
+		link: ROUTE_LINKS.logism,
+		description: "Цитаты друзей, знаменитостей, чтобы помнить и направлять себя"
+	},
 ] as const

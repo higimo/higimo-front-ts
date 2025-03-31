@@ -6,6 +6,8 @@ import { TextContainer } from '../../ui/text-container'
 import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
 import { ANCHOR_LINKS } from '../../../dic/ANCHOR_LINKS'
 
+import { tourismMenuLinks } from '../../tourism/tourism-main-menu/tourismMenuLinks'
+
 import './style.css'
 
 export const TravelInvite: FunctionComponent = () => {
@@ -16,6 +18,13 @@ export const TravelInvite: FunctionComponent = () => {
 				<p>
 					Я был во многих городах России. Рассказываю, что в них посмотреть, чем они хороши, строю маршрут, показываю фотографии.
 				</p>
+				<div className="tourism-links">
+					{tourismMenuLinks.map(tourismMenu => (
+						<div className="tourism-links__item">
+							<a href={tourismMenu.href}>{tourismMenu.title}</a>
+						</div>
+					))}
+				</div>
 			</TextContainer>
 		</PrecentationContainer>
 	)

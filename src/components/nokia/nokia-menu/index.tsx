@@ -1,40 +1,42 @@
 import { HorizontalMenu, HorizontalElement } from '../../ui/horizontal-menu';
+import cs from 'classnames'
 
 import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
 
-export const NokiaMenu = () => (
-	<div className="nokia__menu">
-		<HorizontalMenu>
-			<HorizontalElement>
-				<a href={ROUTE_LINKS.nokiaIndex} className="menu__item">
-					Встречи
-				</a>
-			</HorizontalElement>
-			<HorizontalElement>
-				<a href={ROUTE_LINKS.nokiaPeople} className="menu__item">
-					Люди
-				</a>
-			</HorizontalElement>
-			<HorizontalElement>
-				<a href={ROUTE_LINKS.nokiaMessage} className="menu__item">
-					Переписки
-				</a>
-			</HorizontalElement>
-			<HorizontalElement>
-				<a href={ROUTE_LINKS.nokiaForm} className="menu__item">
-					Добавить встречу
-				</a>
-			</HorizontalElement>
-			<HorizontalElement>
-				<a href={ROUTE_LINKS.nokiaPeopleForm} className="menu__item">
-					+ person
-				</a>
-			</HorizontalElement>
-			<HorizontalElement>
-				<a href={ROUTE_LINKS.nokiaStatistic} className="menu__item">
-					Статистика
-				</a>
-			</HorizontalElement>
-		</HorizontalMenu>
-	</div>
-)
+import './style.css'
+import { useRoute } from 'preact-iso';
+import { compareRoute } from '../../../utils/compare-route';
+
+const menuLinks = [
+	{ href: ROUTE_LINKS.nokiaIndex, title: 'Встречи' },
+	{ href: ROUTE_LINKS.nokiaPeople, title: 'Люди' },
+	{ href: ROUTE_LINKS.nokiaMessage, title: 'Переписки' },
+	{ href: ROUTE_LINKS.nokiaForm, title: 'Добавить встречу' },
+	{ href: ROUTE_LINKS.nokiaPeopleForm, title: '+ person' },
+	{ href: ROUTE_LINKS.nokiaStatistic, title: 'Статистика' },
+]
+
+export const NokiaMenu = () => {
+
+	const { path } = useRoute()
+	
+	console.log(path, ROUTE_LINKS.nokiaIndex)
+	return (
+		<div className="nokia__menu">
+			<HorizontalMenu>
+				{menuLinks.map(menuLink => (
+					<HorizontalElement>
+						<a
+							href={menuLink.href}
+							className={cs('menu__item', {
+								'menu__item--active': compareRoute(menuLink.href, path)
+							})}
+						>
+							{menuLink.title}
+						</a>
+					</HorizontalElement>
+				))}
+			</HorizontalMenu>
+		</div>
+	)
+}

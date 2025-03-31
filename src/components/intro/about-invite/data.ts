@@ -1,21 +1,17 @@
 import { EXTERNAL_LINKS } from "../../../dic/EXTERNAL_LINKS";
 import { ROUTE_LINKS } from "../../../dic/ROUTE_LINKS";
 
-export const aboutInviteList = [
+export type AboutDataType = {
+	name: string;
+	link: string;
+	description: string;
+}
+
+export const aboutInviteList: AboutDataType[] = [
 	{
 		name: "Мои вещи",
 		link: ROUTE_LINKS.thingsIndex,
 		description: "Штуки, которые я использую в повседневной жизни"
-	},
-	{
-		name: "Настольные игры",
-		link: ROUTE_LINKS.gameIndex,
-		description: "Настолки, которые есть внутри моей компании, когда хочется поиграть, чтоб не спрашивать что ещё есть."
-	},
-	{
-		name: "Аккорды",
-		link: ROUTE_LINKS.accordIndex,
-		description: "Песни, которые я играю на гитарниках, чтобы было понятно чему можно подпеть или какой будет репертуар с моей стороны"
 	},
 	{
 		name: "Список желаний",
@@ -33,13 +29,43 @@ export const aboutInviteList = [
 		description: "Ссылки, важнейшее в интернете"
 	},
 	{
-		name: "Ютуб",
+		name: "Избранный ютуб",
 		link: ROUTE_LINKS.youtube,
 		description: "Избранные ссылки"
 	},
 	{
 		name: "FAQ",
 		link: ROUTE_LINKS.faqIndex,
-		description: "Чтобы не искать и компилировать ответ на сложный вопрос каждый раз, я собираю их в специальную копилку"
-	}
+		description: "Чтобы не искать и компилировать ответ на сложный вопрос каждый раз, я собираю их в специальную копилку"
+	},
+	{
+		name: "Мои вещички",
+		link: ROUTE_LINKS.thingsIndex,
+		description: "Перепись предметов, чтобы не отсматривать их каждый раз"
+	},
+	{
+		name: "Резюме",
+		link: ROUTE_LINKS.resumeIndex,
+		description: "На случай важных переговоров"
+	},
+	{
+		name: "Библиотека",
+		link: ROUTE_LINKS.libraryIndex,
+		description: "Книг многовато, чтобы случайно не купить повтор — переписал их"
+	},
+	{
+		name: 'Багрепорты',
+		link: ROUTE_LINKS.feedbackIndex,
+		description: 'Багрепорты, чтобы показать безболезненность и необходимость обратной связи. С ошибками не стоит мириться — о них стоит говорить.'
+	},
+	{
+		name: "Оценка городов",
+		link: ROUTE_LINKS.tourismCityIndex,
+		description: "Города где был, оцениваю по собственной системе"
+	},
+	{
+		name: "Список желаний",
+		link: EXTERNAL_LINKS.wishlist,
+		description: "Всё есть, подарков не нужно. Но вдруг когда-то сюда добавлю"
+	},
 ] as const

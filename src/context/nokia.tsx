@@ -1,4 +1,4 @@
-import { MeetingType, NokiaTagType, PeopleMeetingType, PeopleTag, PeopleType } from '../types'
+import { MeetingType, NokiaTagType, PeopleMeetingType, PeopleTag, PeopleType, RichMeetingType } from '../types'
 
 import { useCallback, useEffect, useState } from 'preact/hooks'
 
@@ -10,6 +10,7 @@ import { createContext } from 'preact'
 
 export type NokiaContextType = {
     fetchData: () => void;
+    richMeeting: RichMeetingType[];
     people: PeopleType[];
     meeting: MeetingType[];
     links: PeopleMeetingType[];
@@ -35,12 +36,16 @@ export const NokiaContextProvider = (props) => {
     const [ meeting, setMeeting ] = useState<MeetingType[]>([])
     const [ tag, setTag ] = useState<NokiaTagType[]>([])
     const [ peopleTag, setPeopleTag ] = useState<PeopleTag[]>([])
+    const [ richMeeting, setRichMeeting ] = useState<RichMeetingType[]>([])
 
-    const updateLinks = () => sendRequest('/api/v1/nokia/people-meeting', { values: { limit: 10 } })
+    const fetchRichMeeting = () => sendRequest('/api/v1/nokia/rich-meeting')
+        .then((list: RichMeetingType[]) => setRichMeeting(list))
+
+    const updateLinks = () => sendRequest('/api/v1/nokia/people-meeting', { values: { limit: 0/*10*/ } })
         .then((list: PeopleMeetingType[]) => setLinks(list))
     const updatePeople = () => sendRequest('/api/v1/nokia/people')
         .then((list: PeopleType[]) => setPeople(list))
-    const updateMeeting = () => sendRequest('/api/v1/nokia/meeting')
+    const updateMeeting = () => sendRequest('/api/v1/nokia/meeting', { values: { limit: 0/*10*/ } })
         .then((list: MeetingType[]) => setMeeting(list))
     const updateTag = () => sendRequest('/api/v1/nokia/tag')
         .then((list: NokiaTagType[]) => setTag(list))
@@ -51,6 +56,7 @@ export const NokiaContextProvider = (props) => {
 
     const fetchData = useCallback(() => {
         if (!isLoaded) {
+            fetchRichMeeting()
             updateLinks()
             updatePeople()
             updateMeeting()
@@ -83,6 +89,7 @@ export const NokiaContextProvider = (props) => {
         <NokiaContext.Provider
             value={{
                 fetchData,
+                richMeeting,
                 links,
                 people,
                 meeting,

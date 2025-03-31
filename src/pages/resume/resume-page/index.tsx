@@ -13,10 +13,11 @@ export const ResumePage: FunctionComponent = () => {
 	return (
 		<PrecentationContainer className="resume-hero">
 			<TextContainer>
-				<h1>Мои резюме</h1>
+				<h1>Моё резюме</h1>
 				<ul>
-					<li><a href={ROUTE_LINKS.resumeHead}>Резюме хеда продукта</a></li>
 					<li><a href={ROUTE_LINKS.resumeProduct}>Резюме продакт-менеджера</a></li>
+					{/* <li><a href={ROUTE_LINKS.resumeProductLegacy}>Резюме продакт-менеджера</a></li> */}
+					<li><a href={ROUTE_LINKS.resumeHead}>Резюме хеда продукта</a></li>
 				</ul>
 			</TextContainer>
 		</PrecentationContainer>

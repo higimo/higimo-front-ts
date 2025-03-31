@@ -115,6 +115,10 @@ export type PeopleMeetingType = {
     meeting_id: number;
 }
 
+export type RichMeetingType = MeetingType & {
+    meetLinks: PeopleType[];
+}
+
 export type PeopleTag = {
     id: number;
     peopleId: number;

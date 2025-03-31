@@ -50,6 +50,7 @@ export const ChooseInput: FunctionComponent<ChooseInputPropsType> = ({
 	// done,
 	// setDone,
 }) => {
+	// TODO useFormStatus
 	const [status, setStatus] = useState<FormStatusType>(FORM_STATUS.INIT)
 	const { register, setValue, watch, reset, handleSubmit } = useForm({ defaultValues: { choose: '' } })
 

@@ -34,3 +34,11 @@
 .travel-invite__title sup {
 	font-size: .5em;
 }
+
+.tourism-links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 16px;
+	font-size: 18px;
+}

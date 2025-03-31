@@ -1,4 +1,5 @@
 .looked-this {
+	font-family: Alegreya Sans, sans-serif;
 	position: relative;
 	background:
 		radial-gradient(26.63% 82.42% at 29.86% -22.36%, rgba(255, 24, 24, 0.276) 0%, rgba(255, 24, 24, 0) 100%),
@@ -9,6 +10,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	overflow: hidden;
 }
 
 .looked-this a {
@@ -21,9 +23,9 @@
 }
 
 .looked-this__title {
-	font-family: Alegreya Sans, sans-serif;
     font-weight: 500;
     font-variant: small-caps;
+	max-width: 4em;
 	font-size: 12vh;
 	line-height: 0.9;
     letter-spacing: .09em;

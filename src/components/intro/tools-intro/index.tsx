@@ -5,24 +5,17 @@ import { TileElement } from '../../ui/tile-element/tile-element'
 
 import { ANCHOR_LINKS } from '../../../dic/ANCHOR_LINKS'
 
-import { toolsData } from './data'
+import { ToolDataType, toolListData } from './data'
 
 import './style.css'
 
-type ToolsListType = {
-	name: string;
-	description: string;
-	link?: string;
-}
+const HALF_LIST = Math.round(toolListData.length / 2)
 
-const halfList = 6
-
-type TileElementConType = ToolsListType
-const TileElementCon: FunctionComponent<TileElementConType> = props => (
+const TileElementCon: FunctionComponent<ToolDataType> = props => (
 	<TileElement
 		className="tools-intro__item"
 		isInactive={!props.link}
-		href={props.link}
+		href={props.link as string}
 		name={props.name}
 		description={props.description}
 	/>
@@ -33,7 +26,7 @@ export const ToolsIntro: FunctionComponent = () => (
 		className="tools-intro"
 		id={ANCHOR_LINKS.service}
 		title="Сделал сервисов"
-		left={toolsData.slice(0, halfList).map(item => <TileElementCon {...item} />)}
-		right={toolsData.slice(halfList, toolsData.length).map(item => <TileElementCon {...item} />)}
+		left={toolListData.slice(0, HALF_LIST).map(item => <TileElementCon {...item} />)}
+		right={toolListData.slice(HALF_LIST, toolListData.length).map(item => <TileElementCon {...item} />)}
 	/>
 )

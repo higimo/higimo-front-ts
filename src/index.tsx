@@ -83,9 +83,13 @@ import './style.css';
 import { VkContextProvider } from './context/vk';
 import { NokiaContextProvider } from './context/nokia';
 import { TextareaPage } from './pages/textarea-page';
+import ResumeProduct2Page from './pages/resume/resume-product2-page';
 
 const ResumeProductPage = lazy(() => import('./pages/resume/resume-product-page'))
 const ResumeHeadPage = lazy(() => import('./pages/resume/resume-head-page'))
+
+
+// TODO vite.config.ts отделяет чанк с библиотекой, но не подгружает её асинхронно, так что для всех страни подгружается d3 и openapi
 
 // https://github.com/antfu-collective/taze
 // https://github.com/antfu/export-size
@@ -119,6 +123,34 @@ const ResumeHeadPage = lazy(() => import('./pages/resume/resume-head-page'))
 
 // TODO replace «from "(.*?)"» «from '$1'»
 // TODO интересный код событий для форм https://doka.guide/js/queuemicrotask/
+
+// https://higimo.ru/vk/
+// https://github.com/higimo/vk-photos-react/blob/master/src/scss/index.scss
+// https://github.com/higimo/analytics
+// https://github.com/higimo/list-new/blob/master/src/routes/list-list-add/index.js
+// https://github.com/higimo/museum
+
+
+// ### В ролях
+// 1 Дима Уткин — руководитель продукта соискателей
+// 182 Артём Сорокин — лид бекенда соискателей
+// 185 Влад Алексеев — лид команды поиска
+// 186 Андрей Дербенев — глава бекенда
+// 187 Евгений Касьяненко — глава фронтенда
+// 188 Серафима Павлова — лид фронтенда соискателей
+// 189 Арсен Афаунов — фронтендер
+// 190 Алексей Захаров — президент
+// 191 Владимир — бекендер
+// 192 Елена Никифорова — овнер соискателей
+// 28 Наташа Эллин — руководитель продукта работодателей
+// 32 Станислав Мавлютов — фронтендер
+// 34 Иван Спиридонов — фронтендер
+// 36 Влад Солодов — дизайнер
+// 193 Ян Подвойский —
+// 194 Сергей Слепнёв —
+// 195 Евгений Кречко —
+
+// TODO link #2196f3
 
 export function App() {
 	return (
@@ -173,7 +205,8 @@ export function App() {
 								{/* Инфостраницы о себе */}
 								<Route path={ROUTE_LINKS.resumeIndex} component={ResumePage} />
 								<Route path={ROUTE_LINKS.resumeHead} component={ResumeHeadPage} />
-								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductPage} />
+								<Route path={ROUTE_LINKS.resumeProductLegacy} component={ResumeProductPage} />
+								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProduct2Page} />
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
 								<Route path={ROUTE_LINKS.thingsIndex} component={ThingsIndexPage} />
 								<Route path={ROUTE_LINKS.thingsNotebook} component={ThingsNotebookPage} />

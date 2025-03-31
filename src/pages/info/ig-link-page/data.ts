@@ -1,3 +1,5 @@
+import { EXTERNAL_LINKS } from "../../../dic/EXTERNAL_LINKS";
+
 type LinkType = {
 	href: string;
 	title: string;
@@ -5,22 +7,22 @@ type LinkType = {
 }
 export const iglinksData: LinkType[] = [
 	{
-		href: 'https://higimo.ru',
+		href: EXTERNAL_LINKS.homePage,
 		title: 'Хомяк',
 		description: 'Личный сайт',
 	},
 	{
-		href: 'https://higimo.ru/project/higimo/deploy-calendar/',
+		href: EXTERNAL_LINKS.homeAnonsDeployCalendar,
 		title: 'Календарь деплоя',
 		description: 'Когда звёзды велят деплоить льву?',
 	},
 	{
-		href: 'https://tech.intersection.team/',
+		href: EXTERNAL_LINKS.techIntersection,
 		title: 'Сайт «Техники → навыки → счастье»',
 		description: 'Сайт техник',
 	},
 	{
-		href: 'https://t.me/efficient_and_happy',
+		href: EXTERNAL_LINKS.canalEfficient,
 		title: 'Канал «Техники → навыки → счастье»',
 		description: 'Телеграм-канал с техниками дважды в неделю (в архиве)',
 	},

@@ -2,13 +2,10 @@ import { FunctionComponent } from "preact"
 import { PeopleType } from '../../../types';
 import { NokiaContextType } from "../../../context/nokia";
 
-import { useState } from 'preact/hooks';
-
-// TODO вынести в отдельный компонент, мб использовать CollapseSection
-import { Collapse } from 'react-collapse'
 import { NokiaMeting } from '../nokia-meting';
 
 import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
+import { CollapseSection } from "../../ui/collapse-section";
 
 type NokiaPeopleDetailCardItemPropsType = {
     person: PeopleType;
@@ -20,15 +17,17 @@ type NokiaPeopleDetailCardItemPropsType = {
     people: NokiaContextType['people'];
 }
 export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = props => {
-	const [ fold, setFold ] = useState<boolean>(false)
-
-	const meets = props.links
+	const meetByPerson = props.links
 		.filter(mp => mp.people_id == props.person.id)
 		.map(mp => {
 			const curMeet = props.hashMeeting[mp.meeting_id]
+			if (!curMeet) {
+				return null
+			}
 			const persons = props.hashLink[curMeet.id].map(manId => props.hashPeople[manId])
 			return { ...mp, curMeet, persons }
 		})
+		.filter(Boolean)
 		.sort((a, b) => b.curMeet.date - a.curMeet.date)
 
 	return (
@@ -48,22 +47,15 @@ export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardI
 			{!!props.person.description && (
 				<div className="nokia-people-detail-card-item__description">{props.person.description}</div>
 			)}
-			<strong>
-				Встречи
-				{' '}
-				<button onClick={() => setFold(!fold)}>
-					{fold ? '↑↑↑' : '↓↓↓'}
-				</button>
-			</strong>
-			<Collapse isOpened={fold}>
+			<CollapseSection fold={true} header="Встречи">
 				<div className="nokia-people-detail-card-item__meetings">
-					{meets.map(({ curMeet, persons }) => {
+					{meetByPerson.map(({ curMeet, persons }) => {
 						return (
 							<NokiaMeting curMeet={curMeet} persons={persons} />
 						)
 					})}
 				</div>
-			</Collapse>
+			</CollapseSection>
 		</div>
 	)
 }

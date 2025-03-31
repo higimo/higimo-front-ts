@@ -3,19 +3,13 @@ import { FunctionComponent } from 'preact'
 import { TilesGallery } from '../../ui/tiles-gallery/tiles-gallery'
 import { TileElement } from '../../ui/tile-element/tile-element';
 
-import { aboutInviteList } from './data'
-
-type AboutListType = {
-	name: string;
-	link: string;
-	description: string;
-}
+import { AboutDataType, aboutInviteList } from './data'
 
 import './style.css'
 
-const halfList = 4
+const HALF_LIST = Math.round(aboutInviteList.length / 2)
 
-const TileElementCon: FunctionComponent<AboutListType> = (props) => (
+const TileElementCon: FunctionComponent<AboutDataType> = (props) => (
 	<TileElement
 		className="about-invite__item"
 		isInactive={!props.link}
@@ -29,7 +23,7 @@ export const AboutInvite: FunctionComponent = () => (
 	<TilesGallery
 		className="about-invite"
 		title="Храню знания"
-		left={aboutInviteList.slice(0, halfList).map(item => (<TileElementCon {...item} />))}
-		right={aboutInviteList.slice(halfList, aboutInviteList.length).map(item => (<TileElementCon {...item} />))}
+		left={aboutInviteList.slice(0, HALF_LIST).map(item => (<TileElementCon {...item} />))}
+		right={aboutInviteList.slice(HALF_LIST, aboutInviteList.length).map(item => (<TileElementCon {...item} />))}
 	/>
 )
