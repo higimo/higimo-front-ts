@@ -11,11 +11,11 @@ import { MentionsInput } from './textarea-mention/MentionsInput';
 
 export const TextareaPage: FunctionComponent = () => {
 	const [ popleList ] = useApi<PeopleType>('/api/v1/nokia/people')
-	const [ mentionList, setMentionList ] = useState<number[]>([])
+	const [ mentionList, setMentionList ] = useState<MentionSuggest[]>([])
 
-	const appendMentionList = useCallback((value: MentionSuggest) => {
-		setMentionList([...mentionList, value.id])
-	}, [mentionList, setMentionList])
+	const appendMentionList = useCallback((newMentionList: MentionSuggest[]) => {
+		setMentionList(newMentionList)
+	}, [setMentionList])
 
 	if (popleList.status === 'INIT' || popleList.status === 'LOADING') {
 		return <Loading />
@@ -31,8 +31,6 @@ export const TextareaPage: FunctionComponent = () => {
 		}))
 	}, [popleList.data])
 
-	// TODO удалять меншены!
-	// TODO значение по умолчанию
 	return (
 		<div className="nokia">
 			<pre>{JSON.stringify(mentionList, null, '\t')}</pre>

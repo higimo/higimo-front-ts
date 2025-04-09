@@ -52,6 +52,7 @@ export const unfinishedToolList: ToolDataType[] = [
 	},
 	{
 		name: 'Демагог',
+		isAdmin: true,
 		link: ROUTE_LINKS.demagog,
 		description: 'Справочник по демагогическим приёмам'
 	},

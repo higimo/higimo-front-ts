@@ -1,6 +1,6 @@
 import cs from 'classnames';
 import { FunctionComponent, createRef } from 'preact';
-import { useEffect } from 'preact/hooks';
+import { useCallback, useEffect } from 'preact/hooks';
 import { MentionSuggest } from './types';
 
 type MentionListPropsType = {
@@ -10,9 +10,7 @@ type MentionListPropsType = {
 };
 export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 	const listRef = createRef();
-	const handleClick = (value) => () => {
-		props.onSelect(value);
-	};
+	const handleClick = useCallback((value) => () => props.onSelect(value), [props.onSelect])
 	useEffect(() => {
 		const container = listRef.current;
 		if (!container || props.selectedSuggest === -1) return;
@@ -49,11 +47,14 @@ export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 		<div className="suggestion-list" ref={listRef}>
 			{props.suggestList.map((item, index) => (
 				<div
-					onClick={handleClick(item)}
+					onClick={() => {
+						console.log('click')
+						handleClick(item)()
+					}}
 					className={cs('suggestion-list__item', {
 						'suggestion-list__item--active': index === props.selectedSuggest
 					})}
-				>{item.display}</div>
+				>{item.display} 39021</div>
 			))}
 		</div>
 	);

@@ -8,8 +8,7 @@ import { ANCHOR_LINKS } from '../../../dic/ANCHOR_LINKS'
 import { ToolDataType, toolListData } from './data'
 
 import './style.css'
-
-const HALF_LIST = Math.round(toolListData.length / 2)
+import { useAuth } from '../../../hook/use-auth'
 
 const TileElementCon: FunctionComponent<ToolDataType> = props => (
 	<TileElement
@@ -21,12 +20,21 @@ const TileElementCon: FunctionComponent<ToolDataType> = props => (
 	/>
 )
 
-export const ToolsIntro: FunctionComponent = () => (
-	<TilesGallery
-		className="tools-intro"
-		id={ANCHOR_LINKS.service}
-		title="Сделал сервисов"
-		left={toolListData.slice(0, HALF_LIST).map(item => <TileElementCon {...item} />)}
-		right={toolListData.slice(HALF_LIST, toolListData.length).map(item => <TileElementCon {...item} />)}
-	/>
-)
+export const ToolsIntro: FunctionComponent = () => {
+	const { isAuth } = useAuth()
+	const toolList = toolListData.filter(toolItem => {
+		return toolItem.isAdmin && isAuth || !toolItem.isAdmin
+	})
+
+	const HALF_LIST = Math.round(toolList.length / 2)
+
+	return (
+		<TilesGallery
+			className="tools-intro"
+			id={ANCHOR_LINKS.service}
+			title="Сделал сервисов"
+			left={toolList.slice(0, HALF_LIST).map(item => <TileElementCon {...item} />)}
+			right={toolList.slice(HALF_LIST).map(item => <TileElementCon {...item} />)}
+		/>
+	)
+}

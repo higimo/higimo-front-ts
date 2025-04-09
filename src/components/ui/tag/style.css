@@ -15,3 +15,7 @@
 .tag:hover {
 	background: #cbe3fe;
 }
+
+.tag--active {
+	background: #a8d2ff;
+}

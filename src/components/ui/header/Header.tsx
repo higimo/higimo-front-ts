@@ -28,6 +28,17 @@ const menu = [
 	},
 ] as const
 
+const secretMenu = [
+	{
+		href: ROUTE_LINKS.nokiaIndex,
+		name: 'Нокиа',
+	},
+	{
+		href: ROUTE_LINKS.adminIndex,
+		name: 'Админ',
+	},
+] as const
+
 type HeaderPropsType = {}
 export const Header: FunctionComponent<HeaderPropsType> = () => {
 	const { isNotFound } = useGlobalContext()
@@ -41,11 +52,11 @@ export const Header: FunctionComponent<HeaderPropsType> = () => {
 				<Logotype />
 				<div className="main-header__menu">
 					{menu.map(i => <a href={i.href} key={i.href}>{i.name}</a>)}
-					<OnlyAdmin><a href={ROUTE_LINKS.nokiaIndex}>Нокиа</a></OnlyAdmin>
-					<OnlyAdmin><a href={ROUTE_LINKS.adminIndex}>Админ</a></OnlyAdmin>
+					<OnlyAdmin>
+						{secretMenu.map(i => <a href={i.href} key={i.href}>{i.name}</a>)}
+					</OnlyAdmin>
 				</div>
 			</div>
 		</header>
-
 	)
 }

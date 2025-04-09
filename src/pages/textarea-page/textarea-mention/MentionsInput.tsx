@@ -1,6 +1,6 @@
 import { FunctionComponent, JSX } from 'preact';
 
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback, useRef, useState } from 'preact/hooks';
 
 import { isMention } from './utils/isMention';
 import { ChangeEvent } from 'preact/compat';
@@ -13,17 +13,49 @@ import { MentionList } from './MentionList';
 import { KEY } from './KEY'
 
 import './style.css'
+import { getMentionList } from './utils/getMentionList';
 
 type MentionsInputPropsType = {
 	suggestList: MentionSuggest[];
-	onMention: (MentionSuggest) => void
+	onMention: (mentionList: MentionSuggest[]) => void
 }
 export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) => {
-	const [ value, setValue ] = useState<string>('')
-	const [ mentions, setMentions ] = useState<MentionSuggest>(null)
+	const [ inputValue, setInputValue ] = useState<string>('')
 	const [ showSuggestion, setShowSuggestion ] = useState<boolean>(false)
 	const [ selectedSuggest, setSelectedSuggest ] = useState<number>(0)
 	const [ filtredSuggestList, setFiltredSuggestList ] = useState<MentionSuggest[]>(props.suggestList)
+	const refTextarea = useRef<HTMLTextAreaElement>(null)
+
+	// TODO переименовать записываем в тексарею данны
+	const doSelectionMention = useCallback((targetMention: MentionSuggest) => {
+		setShowSuggestion(false)
+
+		const mention = getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
+		const resultValue = [
+			refTextarea.current.value.substring(0, mention.start),
+			`@{${targetMention.display.replace(' ', '_')}}`,
+			refTextarea.current.value.substring(mention.end),
+		].join('')
+		setInputValue(resultValue)
+
+		setTimeout(checkRemoveMention, 0)
+	}, [setShowSuggestion, setInputValue, refTextarea])
+
+	// TODO переименовать извлекаем упоминания и передаём наверх
+	const checkRemoveMention = useCallback(() => {
+		const list = getMentionList(refTextarea.current.value)
+		console.log('hi', list, refTextarea.current.value)
+		const mentionList = list.map(item => {
+			// TODO rename
+			const re = item.replace(/[}{]/g, '').replace('_', ' ')
+			for (const mentionItem of filtredSuggestList) {
+				if (mentionItem.display === re) {
+					return mentionItem
+				}
+			}
+		})
+		props.onMention(mentionList)
+	}, [props.onMention, refTextarea, filtredSuggestList])
 
 	const handleKeyDown = useCallback((event: JSX.TargetedKeyboardEvent<HTMLTextAreaElement>) => {
 		if (!showSuggestion) {
@@ -43,23 +75,18 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 		}
 		if (KEY.TAB === event.code || (KEY.ENTER === event.code)) {
 			event.preventDefault()
-			setShowSuggestion(false)
-			// @ts-ignore
-			const mention = getWrittenMention(event.target.value, event.target.selectionStart)
-
 			const targetMention = filtredSuggestList[selectedSuggest]
-			const resultValue = [
-				// @ts-ignore
-				event.target.value.substring(0, mention.start),
-				`@{${targetMention.display.replace(' ', '_')}}`,
-				// @ts-ignore
-				event.target.value.substring(mention.end),
-			].join('')
-			setValue(resultValue)
-			setMentions(targetMention) // Вроде и не нужно ни для чего
-			props.onMention(targetMention)
+
+			doSelectionMention(targetMention)
 		}
-	}, [showSuggestion, selectedSuggest, setSelectedSuggest, setShowSuggestion, setMentions, filtredSuggestList, setValue, props.onMention])
+	}, [
+		showSuggestion,
+		selectedSuggest,
+		setSelectedSuggest,
+		setShowSuggestion,
+		filtredSuggestList,
+		setInputValue
+	])
 
 	const filterSuggestion = useCallback((filter: MetionSelector) => {
 		if (!!filter) {
@@ -73,24 +100,27 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 		setSelectedSuggest(0)
 	}, [])
 
-	const handleChange = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
-		if (isMention(event.currentTarget.value, event.currentTarget.selectionStart)) {
+	const handleChange = useCallback(() => {
+		if (isMention(refTextarea.current.value, refTextarea.current.selectionStart)) {
 			setShowSuggestion(true)
 			filterSuggestion(
-				getWrittenMention(event.currentTarget.value, event.currentTarget.selectionStart)
+				getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
 			)
 		}
-		setValue(event.currentTarget.value)
-	}, [setValue, setShowSuggestion, filterSuggestion])
+		setInputValue(refTextarea.current.value)
+		setTimeout(checkRemoveMention, 0)
+	}, [setInputValue, setShowSuggestion, filterSuggestion])
 
-	const handleBlur = useCallback(() => setShowSuggestion(false), [setShowSuggestion])
+	const handleBlur = useCallback(() => {
+		setTimeout(() => setShowSuggestion(false), 200)
+	}, [setShowSuggestion])
 
 	return (
 		<div className="mentions-input">
-			<div>{JSON.stringify(mentions, null, '\t')}</div>
 			<textarea
+				ref={refTextarea}
 				className="mentions-input__field"
-				value={value}
+				value={inputValue}
 				onChange={handleChange}
 				onKeyDown={handleKeyDown}
 				onBlur={handleBlur}
@@ -99,7 +129,7 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 				<MentionList
 					suggestList={filtredSuggestList}
 					selectedSuggest={selectedSuggest}
-					onSelect={(value: MentionSuggest) => setMentions(value)}
+					onSelect={(value: MentionSuggest) => doSelectionMention(value)}
 				/>
 			)}
 		</div>

@@ -14,8 +14,8 @@ export const NokiaStatisticPage: FunctionComponent = () => {
 			<NokiaMenu />
 			<div className="nokia__content">
 				<h1>Статистика</h1>
-				<NokiaStatistic />
 			</div>
+			<NokiaStatistic />
 		</div>
 	)
 }

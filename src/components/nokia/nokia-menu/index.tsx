@@ -1,11 +1,14 @@
-import { HorizontalMenu, HorizontalElement } from '../../ui/horizontal-menu';
 import cs from 'classnames'
+
+import { useRoute } from 'preact-iso';
+
+import { compareRoute } from '../../../utils/compare-route';
+
+import { HorizontalMenu, HorizontalElement } from '../../ui/horizontal-menu';
 
 import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
 
 import './style.css'
-import { useRoute } from 'preact-iso';
-import { compareRoute } from '../../../utils/compare-route';
 
 const menuLinks = [
 	{ href: ROUTE_LINKS.nokiaIndex, title: 'Встречи' },
@@ -17,10 +20,8 @@ const menuLinks = [
 ]
 
 export const NokiaMenu = () => {
-
 	const { path } = useRoute()
 	
-	console.log(path, ROUTE_LINKS.nokiaIndex)
 	return (
 		<div className="nokia__menu">
 			<HorizontalMenu>

@@ -165,7 +165,7 @@ export type ProjectType = {
     description: string;
     date: string; // date
     image: string;
-    cover_size: string;
+    cover_size: 'high' | 'big' | 'normal' | 'small';
     text: string;
     hide: string;
     isLink: string;

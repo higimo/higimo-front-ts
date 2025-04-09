@@ -38,7 +38,7 @@ export const NokiaContextProvider = (props) => {
     const [ peopleTag, setPeopleTag ] = useState<PeopleTag[]>([])
     const [ richMeeting, setRichMeeting ] = useState<RichMeetingType[]>([])
 
-    const fetchRichMeeting = () => sendRequest('/api/v1/nokia/rich-meeting')
+    const fetchRichMeeting = () => sendRequest('/api/v1/nokia/rich-meeting', {values: {limit: 0}})
         .then((list: RichMeetingType[]) => setRichMeeting(list))
 
     const updateLinks = () => sendRequest('/api/v1/nokia/people-meeting', { values: { limit: 0/*10*/ } })
