@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import cs from 'classnames'
+
 import { ProjectFullInfoType } from '../../../types'
 import { MaybeLink } from '../../ui/maybe-link/maybe-link'
 
@@ -15,7 +17,7 @@ export const ProjectElement: FunctionComponent<ProjectFullInfoType> = props => {
 	const tags = props.tags || []
 
 	return (
-		<div className="project__item">
+		<div className={cs('project__item', `project__item--${props.cover_size}-size`)}>
 			<div className="project__name">
 				<MaybeLink href={link} className="project__title">
 					<span dangerouslySetInnerHTML={{__html: props.name}} />

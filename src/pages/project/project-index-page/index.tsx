@@ -10,7 +10,7 @@ export const ProjectIndexPage: FunctionComponent = () => {
 	const { projectsList, uniqTags } = useProject();
 
     return (
-		<div>
+		<div className="project-index-page">
             <TextContainer>
                 <h1>Сделал</h1>
             </TextContainer>

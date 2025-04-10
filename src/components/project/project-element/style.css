@@ -1,51 +1,52 @@
 :root {
-	--margin: 8px;
-	--items: 2;
+	--project-size: calc(624px * 0.75);
+	--project-gap: 16px;
+}
+
+
+.project-index-page .project__list {
+	font-family: Alegreya Sans, sans-serif;
+	font-size: 24pt;
+	margin: 30px auto 100px auto;
+}
+
+.project-index-page .project__row {
+	width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+    /* padding: 64px; */
+	/* background-color: #c7c7c734; */
+    margin: var(--project-gap) 0;
 }
 
 .project__item {
-	font-family: Alegreya Sans, sans-serif;
-	font-size: 24pt;
 	transition: all 150ms ease-in;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	pointer-events: none;
 	box-sizing: border-box;
-	background: #fff;
-	margin: var(--margin) var(--margin) calc(var(--margin) * 4);
-	width: calc(100vw / var(--items) - (var(--margin) * 3));
-}
-@media (max-width: 448px) {
-	:root {
-		--margin: 8px;
-		--items: 2;
-	}
+	padding: var(--project-gap) var(--project-gap) calc(var(--project-gap) * 2);
+	max-height: 85vh;
 }
 
-@media (min-width: 768px) {
-	:root {
-		--margin: 8px;
-		--items: 4;
-	}
+
+.project__item--high-size {
+	width: 100%;
 }
-
-@media (min-width: 1280px) {
-	:root {
-		--margin: 8px;
-		--items: 5;
-	}
+.project__item--big-size {
+	width: calc(50% - var(--project-gap) * 0);
+	height: calc(var(--project-size));
 }
-
-@media (min-width: 1440px) {
-	:root {
-		--margin: 4px;
-		--items: 6;
-	}
-
-	.project-list--short {
-		--items: 7;
-	}
+.project__item--normal-size {
+	width: calc(25% - var(--project-gap) * 0);
+	height: calc(var(--project-size));
+}
+.project__item--small-size {
+	width: 100%;
 }
 
 .project__name {
@@ -80,15 +81,25 @@ a.project__title {
 	border: 0;
 	margin-bottom: 4px;
 	overflow: hidden;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	height: 100%;
 }
 
 .project__image-anons {
 	width: 100%;
+	max-width: calc(var(--project-size) * 1);
+	max-width: fit-content;
 	height: auto;
 	pointer-events: all;
 	display: block;
 	transition: all 100ms ease-in;
 	transform: scale(0.975);
+}
+
+.project__item--big-size .project__image-anons {
+	max-width: calc(var(--project-size) * .75);
 }
 
 .project__item:hover .project__image-anons {
@@ -97,8 +108,8 @@ a.project__title {
 
 .project__more {
 	margin: 4px;
-	width: calc(100vw / var(--items) - var(--margin) * 2);
-	height: calc(100vw / var(--items) - var(--margin) * 2);
+	width: calc(100vw / var(--items) - var(--project-gap) * 2);
+	height: calc(100vw / var(--items) - var(--project-gap) * 2);
 	border: 1px solid #0000001a;
 	color: #000;
 	display: flex;
