@@ -5,17 +5,17 @@ import { filterType } from '../../project/project-tag-gallery/filter-type'
 import useApi, { API_STATUS } from '../../../hook/use-api'
 import { useMemo } from 'preact/hooks'
 
-import { ProjectElement } from '../../project/project-element'
 import { TextContainer } from '../../ui/text-container'
 import { ProjectTag } from '../../project/project-tag'
 import { NotFoundData } from '../../ui/not-found-data'
 import { Loading } from '../../accord/accord-single'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
 import { ANCHOR_LINKS } from '../../../dic/ANCHOR_LINKS'
 import { API_ROUTE } from '../../../api-route'
 
 import './style.css'
+import { ProjectList } from '../../project/project-list'
+import { ProjectMore } from '../../project/project-more/ProjectMore'
 
 export const ProjectListShort: FunctionComponent = () => {
 	const [ highProjectList ] = useApi<ProjectType>('/api/v1/project/project', {
@@ -64,10 +64,8 @@ export const ProjectListShort: FunctionComponent = () => {
 				<ProjectTag filterName={filterType.FILTER_TAG}>Пересечения</ProjectTag>
 				<ProjectTag filterName={filterType.FILTER_TAG}>хомяк</ProjectTag>
 			</TextContainer>
-			<div className="project__list">
-				{projectsList.map(item => <ProjectElement key={item.id} {...item} />)}
-				<a href={ROUTE_LINKS.projectIndex} className="project__more">Ещё<sup>{projectIds.data.length}</sup></a>
-			</div>
+			<ProjectList projectsList={projectsList} />
+			<ProjectMore count={projectIds.data.length} />
 		</div>
 	)
 }

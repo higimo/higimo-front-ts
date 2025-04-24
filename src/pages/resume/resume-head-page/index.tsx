@@ -12,6 +12,7 @@ import '../resume-style.css'
 
 export const ResumeHeadPage: FunctionComponent = () => {
 	document.title = 'В активном поиске'
+
 	return (
 		<div className="resume-head-page resume-page">
 			<PrecentationContainer className="resume-hero">

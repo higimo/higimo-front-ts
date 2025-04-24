@@ -1,0 +1,27 @@
+.bar-pov__gallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.bar-pov__snippet {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: calc(50% - 8px);
+    padding: 16px;
+    background: #ffffff0a;
+    border-radius: 4px;
+}
+
+.bar-pov__title {
+    font-size: 150%;
+    font-weight: 600;
+}
+
+.bar-pov__meta {
+    display: flex;
+    gap: 16px;
+}

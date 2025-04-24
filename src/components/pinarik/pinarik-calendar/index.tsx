@@ -14,7 +14,7 @@ import { API_ROUTE } from '../../../api-route'
 export const PinarikCalendar = () => {
 	const [ previewId, setPreviewId ] = useState(0)
 	const [ pinarikList ] = useApi<PinarikType>(API_ROUTE.pinarik)
-			
+
 	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(pinarikList.status)) {
 		return <Loading />
 	}

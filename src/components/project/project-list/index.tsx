@@ -1,6 +1,10 @@
+import { FunctionComponent } from 'preact';
 import { ProjectFullInfoType } from '../../../types';
 import { ProjectElement } from '../project-element'
 
+import './style.css'
+
+// TODO На широких экранах 5 в ряд делать? Одновременно в коде и css надо
 const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): number => {
 	if (coverSize === 'high') {
 		return 4
@@ -11,11 +15,11 @@ const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): 
 	if (coverSize === 'normal') {
 		return 1
 	}
-	// small 1 — их показывать невысокой, но длинной строкой шириной 4
+	// TODO small 1 — их показывать невысокой, но длинной строкой шириной 4
 	return 1
 }
 
-function packElements(elements: ProjectFullInfoType[]): ProjectFullInfoType[][] {
+function packElements(elements: ProjectFullInfoType[], itemInRow): ProjectFullInfoType[][] {
     const rows: ProjectFullInfoType[][] = [];
 
     for (const element of elements) {
@@ -31,7 +35,11 @@ function packElements(elements: ProjectFullInfoType[]): ProjectFullInfoType[][] 
             const rowWidth = row.reduce((sum, el) => sum + convertCoverSizeToWidth(el.cover_size), 0)
 
             if (rowWidth + convertCoverSizeToWidth(element.cover_size) <= 4) {
-                row.push(element)
+				if (convertCoverSizeToWidth(element.cover_size) == 2) {
+					row.unshift(element)
+				} else {
+					row.push(element)
+				}
                 placed = true
                 break
             }
@@ -45,18 +53,20 @@ function packElements(elements: ProjectFullInfoType[]): ProjectFullInfoType[][] 
     return rows;
 }
 
-export const ProjectList = (props) => {
-	const packedRows = packElements(props.projectsList);
+
+type ProjectListPropsType = {
+	projectsList: ProjectFullInfoType[]
+}
+export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
+	const packedRows = packElements(props.projectsList, 5);
 
 	return (
-		<div>
-			<div className="project__list">
-				{packedRows.map(row => (
-					<div className="project__row">
-						{row.map(item => <ProjectElement key={item.id} {...item} />)}
-					</div>
-				))}
-			</div>
+		<div className="project__list">
+			{packedRows.map(row => (
+				<div className="project__row">
+					{row.map(item => <ProjectElement key={item.id} {...item} />)}
+				</div>
+			))}
 		</div>
 	)
 }

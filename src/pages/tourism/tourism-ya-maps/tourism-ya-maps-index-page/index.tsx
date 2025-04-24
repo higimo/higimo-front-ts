@@ -15,14 +15,6 @@ const data = [
         href: ROUTE_LINKS.tourismMapsMoscowWalk,
         title: 'Я обхожу Москву (пока исключение не работает)',
     },
-    {
-        href: ROUTE_LINKS.tourismMapsDiagram,
-        title: 'кластеризация точек на карте',
-    },
-    {
-        href: ROUTE_LINKS.tourismMapsMany,
-        title: 'как загружать много точек на карте',
-    },
 ] as const
 
 export const TourismYaMapsIndexPage: FunctionComponent = () => {

@@ -19,6 +19,8 @@ import './style.css'
 const ALSO_ELEMENTS = 6;
 
 export const Loading = () => {
+	// TODO: придумать, как управлять этим заголовком, а то постоянно там не то
+	// document.title = 'Загружаю…'
 	return (
 		<TextContainer className="loading">
 			Загружаю…

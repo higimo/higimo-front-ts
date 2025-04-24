@@ -12,6 +12,8 @@ body * {
 body {
 	font: 400 14pt/1.4 PT Sans, Tahoma, Sans-Serif;
 	margin: 0;
+	background: #fff;
+	color: #000;
 }
 
 @media (max-width: 500px) {
@@ -112,21 +114,6 @@ p {
 
 .project.container {
 	max-width: 100%;
-}
-
-.project__list {
-	font-family: Alegreya Sans, sans-serif;
-	font-size: 24pt;
-	margin: 30px auto 100px auto;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-content: flex-start;
-	align-items: flex-start;
-}
-
-.page.project__list {
-	display: block;
 }
 
 .page.magic {

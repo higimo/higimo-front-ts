@@ -42,8 +42,6 @@ const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismMapsIndex: '/tourism/maps/',
 	tourismMapsRegion: '/tourism/maps/region/',
 	tourismMapsMoscowWalk: '/tourism/maps/moscow-walk/',
-	tourismMapsDiagram: '/tourism/maps/diagram/',
-	tourismMapsMany: '/tourism/maps/many/',
 	tourismCityIndex: '/tourism/city/',
 })
 

@@ -19,7 +19,7 @@ const getHumanDate = str => new Date(str || '').toLocaleDateString()
 
 // TODO useProject спорит с этим
 const useProjectViewer = (vendorProp: string, projectProp: string): [PortfolioProjectType | null, boolean] => {
-	const [isLoading, setIsLoading] = useState<boolean>(false)
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [curProject, setProject] = useState<PortfolioProjectType | null>(null)
 
 	useEffect(() => {
@@ -64,7 +64,6 @@ const useProjectViewer = (vendorProp: string, projectProp: string): [PortfolioPr
 	return [curProject, isLoading]
 }
 
-					
 // TODO: Добавить <WorkerInput projectId={id} />
 export const ProjectViewer: FunctionComponent = () => {
 	const { params: { vendor, project } } = useRoute()

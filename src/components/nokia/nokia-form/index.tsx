@@ -133,7 +133,7 @@ export const NokiaForm = () => {
 
 	const addStatus = val => setStatus(pState => [ ...pState, val ])
 
-	const topPersons: PeopleType[] = getTopPersons(links, people).map(item => hashPeople[item.id])
+	const topPersons: PeopleType[] = getTopPersons(links, people).map(item => hashPeople[item.id]).filter(Boolean)
 	const selectedPersonId = (personId || '').split(',').map(i => parseInt(i, 10)).filter(i => i)
 
 	console.log(peoplesSuggest)
@@ -162,6 +162,7 @@ export const NokiaForm = () => {
 					control={control}
 					defaultValue=""
 					render={({ field }) => (
+						// @ts-ignore
 						<TextInput
 							{...field}
 							trigger="@"

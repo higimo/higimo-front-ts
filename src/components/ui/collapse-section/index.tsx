@@ -1,8 +1,9 @@
-// TODO lazyload
-import { Collapse } from 'react-collapse'
 import cs from 'classnames'
 import { ComponentChild, FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
+import { lazy, Suspense } from "preact/compat"
+
+const LazyCollapse = lazy(() => import('react-collapse'))
 
 import './style.css'
 
@@ -13,19 +14,19 @@ type CollapseSectionPropsType = {
 export const CollapseSection: FunctionComponent<CollapseSectionPropsType> = ({ header, children, fold = true }) => {
 	const [ folded, setFolded ] = useState(!fold)
 
-	console.log()
-
 	return (
 		<div className={cs('collapse-section', { 'collapse-section--unfold': folded })}>
 			<div
 				onClick={() => setFolded(!folded)}
 				className="collapse-section__header"
 			>
-				{typeof header === 'string' ? <h3>{header}</h3> : {header}}
+				{typeof header === 'string' ? <h3>{header}</h3> : header}
 			</div>
-			<Collapse isOpened={folded}>
-				{children}
-			</Collapse>
+			<Suspense fallback={<div className="collapse-placeholder" />}>
+				<LazyCollapse isOpened={folded}>
+					{children}
+				</LazyCollapse>
+			</Suspense>
 		</div>
 	)
 }

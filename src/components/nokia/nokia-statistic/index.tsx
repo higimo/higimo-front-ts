@@ -195,6 +195,7 @@ const useTags = <T,>(initialValue: T[]): [T[], (newTagsList: T[]) => () => void]
 	const [selectedTags, setSelectedTags] = useState<T[]>(initialValue)
 
 	const handleTagClick = useCallback((newTagsList: T[]) => () => {
+		console.log('hig',newTagsList)
 		if (newTagsList.length === 0) {
 			setSelectedTags([])
 			return
@@ -227,18 +228,20 @@ export const NokiaStatistic: FunctionComponent = () => {
 	const [ selectedTypeTag, handleTypeTagClick ] = useTags<string>([])
 
 	const yearDataset = useMemo(() => {
-		console.log(richMeeting)
-		return [...new Set(richMeeting.map(item => new Date(item.date * 1000).getFullYear()))]
+		const dataset = [...new Set(richMeeting.map(item => new Date(item.date * 1000).getFullYear()))]
 			.filter(i => i != 1970)
 			.sort((a, b) => a - b)
+			handleYearTagClick(dataset)()
+		return dataset
 	}, [richMeeting])
-	const typeDataset = useMemo(() => [...new Set(meeting.map(item => item.type))], [meeting])
+	const typeDataset = useMemo(() => {
+		const dataset = [...new Set(meeting.map(item => item.type))]
+		handleTypeTagClick(dataset)()
+		return dataset
+	}, [meeting])
 
 	useLayoutEffect(fetchData, [])
 	
-	useEffect(() => {handleYearTagClick(yearDataset)}, [handleYearTagClick, yearDataset])
-	useEffect(() => {handleTypeTagClick(typeDataset)}, [handleTypeTagClick, typeDataset])
-
 	useEffect(() => {
 		updateChart({
 			viz,

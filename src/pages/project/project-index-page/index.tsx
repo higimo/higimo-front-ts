@@ -9,6 +9,8 @@ import { ProjectTagGallery } from "../../../components/project/project-tag-galle
 export const ProjectIndexPage: FunctionComponent = () => {
 	const { projectsList, uniqTags } = useProject();
 
+    document.title = 'Сделал'
+
     return (
 		<div className="project-index-page">
             <TextContainer>

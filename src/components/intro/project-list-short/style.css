@@ -1,4 +1,5 @@
-.project-list {
+.project-list--short {
+	font-family: Alegreya Sans, sans-serif;
 	padding-top: 164px;
 	padding-bottom: 164px;
 }
@@ -32,4 +33,38 @@
 .project-list__filter-item:hover {
 	color: #000;
 	border-color: #00000080;
+}
+
+.project-more {
+	overflow: hidden;
+	padding-bottom: 16px;
+}
+
+.project-more__button {
+	transition: all 150ms ease-in;
+    margin: 16px auto 8px auto;
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	text-align: center;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border-bottom: 0;
+    font-size: 40px;
+    line-height: .8;
+    opacity: .65;
+    background: #add8e6;
+    color: #000;
+}
+
+.project-more__button:hover {
+	opacity: 1;
+	transform: scale(1.08) rotate(-3deg) translateY(-1px);
+}
+
+.project-more__counter {
+	font-size: 100px;
 }

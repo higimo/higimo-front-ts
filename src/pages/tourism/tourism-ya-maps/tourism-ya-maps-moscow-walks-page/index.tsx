@@ -8,6 +8,7 @@ import { Breadcrumps } from '../../../../components/ui/breadcrumps'
 import { TourismMainMenu } from '../../../../components/tourism/tourism-main-menu'
 
 import '../../tourism-style.css'
+import { TourismMapsMoscowBar } from '../../../../components/tourism/tourism-maps-moscow-bar'
 
 export const TourismYaMapsMoscowWalksPage: FunctionComponent = () => {
 	const { path } = useRoute()
@@ -21,6 +22,7 @@ export const TourismYaMapsMoscowWalksPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Обхожу Москву</h1>
 			</TextContainer>
+			<TourismMapsMoscowBar />
 			<TourismMapsFigure />
 		</div>
 	)

@@ -41,8 +41,6 @@ export const globalRouter: Record<RouteType, string> = {
     [ROUTE_LINKS.tourismMapsIndex]: 'Интерактивные карты',
     [ROUTE_LINKS.tourismMapsRegion]: 'Карта регионов России',
     [ROUTE_LINKS.tourismMapsMoscowWalk]: 'Обхожу Москву',
-    [ROUTE_LINKS.tourismMapsDiagram]: 'Макет в виде круговой диаграммы',
-    [ROUTE_LINKS.tourismMapsMany]: 'Оптимальное добавление множества меток',
     [ROUTE_LINKS.tourismCityIndex]: 'Оценка городов',
 
     [ROUTE_LINKS.listListIndex]: 'ТУДУ',
@@ -66,6 +64,7 @@ export const globalRouter: Record<RouteType, string> = {
     [ROUTE_LINKS.resumeIndex]: 'ТУДУ',
     [ROUTE_LINKS.resumeHead]: 'ТУДУ',
     [ROUTE_LINKS.resumeProduct]: 'ТУДУ',
+    [ROUTE_LINKS.resumeProductLegacy]: 'ТУДУ',
 
     [ROUTE_LINKS.thingsIndex]: 'ТУДУ',
     [ROUTE_LINKS.thingsNotebook]: 'ТУДУ',

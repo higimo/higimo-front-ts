@@ -1,0 +1,30 @@
+.project__list {
+	font-family: Alegreya Sans, sans-serif;
+	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: var(--project-gap);
+	width: 100%;
+	margin: 0 auto;
+	padding-left: var(--project-gap);
+	padding-right: var(--project-gap);
+	max-width: calc(var(--project-size) * 2 + var(--project-gap) * 4); /* Заебало, пусть так пока */
+}
+
+@media (min-width: 768px) {
+	.project__list {
+		font-size: 24px;
+		padding-left: 32px;
+		padding-right: 32px;
+	}
+}
+
+.project__row {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+	align-items: flex-start;
+	gap: var(--project-gap);
+	width: 100%;
+}

@@ -25,16 +25,14 @@ export const ProjectElement: FunctionComponent<ProjectFullInfoType> = props => {
 			</div>
 			<MaybeLink href={link} className="project__image">
 				<img
-					width="240"
-					height="240"
 					className="project__image-anons"
 					src={`/assets/project/${props.vendorCode}/${props.code}/asset/img/anons.${props.image}`}
 					loading="lazy"
 				/>
 				{!!tags.length && (
-					<div className="project__tag">
+					<div className="project__tags">
 						{tags.map(tag => (
-							<span className="label">{tag}</span>
+							<span className="project__tag">{tag}</span>
 						))}
 					</div>
 				)}

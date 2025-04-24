@@ -63,9 +63,7 @@ import { NasheSinglePage } from './pages/tourism/nashe/nashe-single-page';
 import { TourismChecklistPage } from './pages/tourism/tourism-checklist-page';
 import { TourismIndexPage } from './pages/tourism/tourism-index';
 import { TourismWalkPage } from './pages/tourism/tourism-walk-index-page';
-import { TourismYaMapsDiagramPage } from './pages/tourism/tourism-ya-maps/tourism-ya-maps-diagram-page';
 import { TourismYaMapsIndexPage } from './pages/tourism/tourism-ya-maps/tourism-ya-maps-index-page';
-import { TourismYaMapsManyPage } from './pages/tourism/tourism-ya-maps/tourism-ya-maps-many-page';
 import { TourismYaMapsMoscowWalksPage } from './pages/tourism/tourism-ya-maps/tourism-ya-maps-moscow-walks-page';
 import { TourismYaMapsRegionPage } from './pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page';
 import { TourismWalkSinglePage } from './pages/tourism/tourism-walk-single-page';
@@ -88,7 +86,8 @@ import ResumeProduct2Page from './pages/resume/resume-product2-page';
 const ResumeProductPage = lazy(() => import('./pages/resume/resume-product-page'))
 const ResumeHeadPage = lazy(() => import('./pages/resume/resume-head-page'))
 
-
+// https://habr.com/ru/articles/321106/
+// https://github.com/preactjs/signals/tree/main
 // TODO vite.config.ts отделяет чанк с библиотекой, но не подгружает её асинхронно, так что для всех страни подгружается d3 и openapi
 
 // https://github.com/antfu-collective/taze
@@ -152,6 +151,14 @@ const ResumeHeadPage = lazy(() => import('./pages/resume/resume-head-page'))
 
 // TODO link #2196f3
 
+
+
+
+
+
+// TODO Добавить подкаст Хорошие новости в Блоги
+// TODO Добавить подкаст Кэмпа в Блоги
+// TODO в портфолио бот Хигимору
 export function App() {
 	return (
 		<LocationProvider>
@@ -262,8 +269,6 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
 								<Route path={ROUTE_LINKS.tourismChecklist} component={TourismChecklistPage} />
 								<Route path={ROUTE_LINKS.tourismMapsIndex} component={TourismYaMapsIndexPage} />
-								<Route path={ROUTE_LINKS.tourismMapsDiagram} component={TourismYaMapsDiagramPage} />
-								<Route path={ROUTE_LINKS.tourismMapsMany} component={TourismYaMapsManyPage} />
 								<Route path={ROUTE_LINKS.tourismMapsRegion} component={TourismYaMapsRegionPage} />
 								<Route path={ROUTE_LINKS.tourismMapsMoscowWalk} component={TourismYaMapsMoscowWalksPage} />
 								<Route path={ROUTE_LINKS.tourismCityIndex} component={TourismCityStarPage} />

@@ -15,7 +15,7 @@ export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (p
     const { tag } = useContext(NokiaContext) as NokiaContextType
 
     return (
-        <div className="tag">
+        <div className="nokia-tags-gallery">
             {tag.map(item => (
                 <div
                     className={cs('tag__item', { 'tag__item--active': item.id === props.filter})}

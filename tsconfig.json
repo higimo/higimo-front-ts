@@ -7,6 +7,10 @@
 		"allowJs": true,
 		"checkJs": true,
 
+		"baseUrl": "./src",
+		"outDir": "./dist",
+		"rootDir": "./src",
+
 		/* Preact Config */
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact",
@@ -16,5 +20,6 @@
 			"react-dom": ["./node_modules/preact/compat/"]
 		},
 	},
-	"include": ["node_modules/vite/client.d.ts", "**/*"]
+	"include": ["node_modules/vite/client.d.ts", "src/**/*"],
+	"exclude": ["dist"]
 }

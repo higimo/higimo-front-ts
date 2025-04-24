@@ -1,47 +1,7 @@
-import { createContext } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
-import { VkSessionType } from '../pages/vk/types.js';
-import { useEffect } from 'preact/hooks';
-
-export const useVKInit = () => {
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [error, setError] = useState<Error | null>(null);
-
-	useEffect(() => {
-		if (window.VK) {
-			setIsLoaded(true);
-			return;
-		}
-
-		window.vkAsyncInit = () => {
-			try {
-				VK.init({
-					apiId: 6661731,
-					apiVersion: 5.199,
-				});
-				setIsLoaded(true);
-			} catch (err) {
-				setError(err instanceof Error ? err : new Error("VK init failed"));
-			}
-		};
-
-		const script = document.createElement('script');
-		script.src = 'https://vk.com/js/api/openapi.js?169';
-		script.async = true;
-		script.onerror = () => setError(new Error('Failed to load VK API script'));
-
-		const container = document.getElementById('vk_api_transport') || document.body;
-		container.appendChild(script);
-
-		return () => {
-			if (script.parentNode) {
-				script.remove();
-			}
-		};
-	}, []);
-
-	return { isLoaded, error };
-};
+import { createContext } from 'preact'
+import { useCallback, useState } from 'preact/hooks'
+import { VkSessionType } from '../pages/vk/types.js'
+import { useEffect } from 'preact/hooks'
 
 declare global {
 	interface Window {
@@ -55,39 +15,90 @@ interface IVkContext {
     fetchLogin: () => void;
 }
 
-const defaultState: IVkContext = {
+const DEFAULT_SESSION: VkSessionType = null
+const DEFAULT_VK_STATE = {
     isVkLogin: false,
-	// @ts-ignore
-	session: {},
-	fetchLogin: () => {}
-};
+    session: DEFAULT_SESSION,
+    fetchLogin: () => {}
+}
 
-export const VkContext = createContext<IVkContext>(defaultState);
+export const VkContext = createContext<IVkContext>(DEFAULT_VK_STATE)
+
+export const useVKInit = () => {
+	const [state, setState] = useState({
+		isLoaded: false,
+        error: null,
+	})
+
+	useEffect(() => {
+		if (window.VK) {
+			setState(prev => ({ ...prev, isLoaded: true }))
+			return
+		}
+
+		window.vkAsyncInit = () => {
+			try {
+				VK.init({
+					apiId: 6661731,
+					apiVersion: 5.199,
+				})
+				setState(prev => ({ ...prev, isLoaded: true }))
+			} catch (err) {
+				setState(prev => ({
+                    ...prev,
+                    error: err instanceof Error ? err : new Error('VK init failed')
+                }))
+			}
+		}
+
+		const script = document.createElement('script')
+		script.src = 'https://vk.com/js/api/openapi.js?169'
+		script.async = true
+		script.onerror = () => setState(prev => ({
+			...prev,
+			error: new Error('Failed to load VK API script')
+		}))
+
+		const container = document.getElementById('vk_api_transport') || document.body
+		container.appendChild(script)
+
+		return () => {
+			if (script.parentNode) {
+				script.remove();
+			}
+			delete window.vkAsyncInit;
+		}
+	}, [])
+
+	return state
+}
 
 export const VkContextProvider = (props) => {
-	const [isVkLogin, setIsVkLogin] = useState<boolean>(false);
-	const [session, setSession] = useState<VkSessionType>(null);
-
+	const [ isVkLogin, setIsVkLogin ] = useState<boolean>(false)
+	const [ session, setSession ] = useState<VkSessionType>(DEFAULT_SESSION)
 	const { isLoaded, error } = useVKInit()
 	
-	const handleAuth = useCallback(({ status, session, ...other }) => {
+	const handleAuth = useCallback(({ status, session }) => {
 		setIsVkLogin(status === 'connected')
 		setSession(session)
-	}, [setIsVkLogin, setSession])
+	}, [])
 
 	const fetchLogin = useCallback(() => {
-		if (isLoaded) {
-			VK.Auth.login(handleAuth, 4)
-		}
-		if (error) {
-			console.error(error)
-		}
-	}, [handleAuth, isLoaded, error])
+		if (!isLoaded || isVkLogin) return
+
+		VK.Auth.login(handleAuth, 4)
+	}, [isLoaded, isVkLogin, handleAuth])
+
+	useEffect(() => {
+        if (error) {
+            console.error('VK Init error:', error)
+        }
+    }, [error])
 
 	return (
 		<VkContext.Provider value={{ isVkLogin, session, fetchLogin }}>
 			<div id="vk_api_transport"></div>
 			{props.children}
 		</VkContext.Provider>
-	);
+	)
 }
