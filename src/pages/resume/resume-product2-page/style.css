@@ -35,12 +35,6 @@
 	border-bottom: 1px solid rgba(0, 0, 0, .35);
 }
 
-@media print {
-	.resume-product2-page a {
-		border-bottom: none;
-	}
-}
-
 .resume-product2-page .contact {
 	display: flex;
 	gap: 16px;
@@ -51,15 +45,25 @@
 	margin-bottom: 2px;
 }
 .resume-product2-page .text-container {
-	margin-bottom: 16px;
+	margin-bottom: 12px;
 }
 .resume-product2-page p.mini-text {
 	font-size: 16px;
 	margin-top: 0;
 }
 
+.resume-page .small-text {
+	font-size: 16px;
+}
+.resume-page h2 {
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 1;
+	margin: 0;
+}
+
 .resume-product2-page .company__profession {
-	font-size: 125%;
+	font-size: 22px;
 	font-weight: 500;
 	line-height: 1;
 }
@@ -131,7 +135,7 @@
 }
 
 .resume-product2-page .company {
-	margin: 16px 0;
+	margin: 8px 0;
 }
 .resume-product2-page .company__name {
 	font-weight: 500;
@@ -166,13 +170,14 @@
 
 
 .resume-product2-page .skill_header {
-	font-size: 125%;
+	font-size: 22px;
 }
 .resume-product2-page .skill_content {
 	line-height: 1.5;
+	font-size: 16px;
 }
 .resume-product2-page .school {
-	margin: 16px 0;
+	margin: 8px 0;
 }
 .resume-product2-page .school__info {
 	display: flex;
@@ -193,5 +198,5 @@
 	display: block;
 }
 .resume-product2-page .about__header {
-	font-size: 125%;
+	font-size: 22px;
 }

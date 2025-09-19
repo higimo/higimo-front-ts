@@ -1,24 +1,22 @@
-import { PeopleMeetingType, PeopleType } from '../../../types'
+import { PeopleMeetingType, PeopleType } from 'types'
 
 import cs from 'classnames'
 
-import { NokiaContext, NokiaContextType } from '../../../context/nokia'
-
 import { Controller, useForm } from 'react-hook-form'
 import { useContext, useState, useEffect, useLayoutEffect, useMemo } from 'preact/hooks'
-import { useAuth } from '../../../hook/use-auth'
+import { useAuth } from 'hook/use-auth'
 import { useRoute } from 'preact-iso'
 
-import sendRequest from '../../../utils/send-request'
-
 import TextInput from 'react-autocomplete-input';
-import { ShowFormResult } from '../../form/show-form-result'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
 
 import './style.css'
+import sendRequest from 'utils/send-request'
+import { NokiaContext, NokiaContextType } from 'context/nokia'
+import { ShowFormResult } from 'components/form/show-form-result'
 
 const getUserSuggestions = (peoples: PeopleType[]): string[] => peoples.map(men => {
 	return `${men.name}${men.name.length ? ` (${men.name})` : null}`
@@ -111,11 +109,11 @@ export const NokiaForm = () => {
 
 	useEffect(() => {
 		if (parseInt(meetingId, 10) >= 0 && hashMeeting[meetingId] && hashLink[meetingId]) {
-			setValue('date'        , new Date(hashMeeting[meetingId].date * 1000).toISOString().substr(0, 10))
+			setValue('date'		, new Date(hashMeeting[meetingId].date * 1000).toISOString().substr(0, 10))
 			setValue('description' , hashMeeting[meetingId].description)
-			setValue('id'          , hashMeeting[meetingId].id)
-			setValue('type'        , hashMeeting[meetingId].type)
-			setValue('personId'    , hashLink[meetingId].join(','))
+			setValue('id'		  , hashMeeting[meetingId].id)
+			setValue('type'		, hashMeeting[meetingId].type)
+			setValue('personId'	, hashLink[meetingId].join(','))
 		}
 	}, [meetingId, hashMeeting[meetingId], hashLink[meetingId]])
 

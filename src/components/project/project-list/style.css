@@ -22,8 +22,8 @@
 
 .project__row {
 	display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: var(--project-gap);
 	width: 100%;

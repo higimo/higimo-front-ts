@@ -1,4 +1,4 @@
-import { EXTERNAL_LINKS } from '../../../dic/EXTERNAL_LINKS'
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import github from './img/github.svg'
 import gmail from './img/gmail.svg'
@@ -9,21 +9,21 @@ export const contactListData = [
 	{
 		img: gmail,
 		link: EXTERNAL_LINKS.contactMail,
-        name: 'Электропочта',
+		name: 'Электропочта',
 	},
 	{
-        img: tg,
+		img: tg,
 		link: EXTERNAL_LINKS.socialTg,
-        name: 'Телеграм',
+		name: 'Телеграм',
 	},
 	{
-        img: vk,
+		img: vk,
 		link: EXTERNAL_LINKS.socialVk,
-        name: 'ВКонтакте',
+		name: 'ВКонтакте',
 	},
 	{
 		img: github,
 		link: EXTERNAL_LINKS.github,
-        name: 'Гитхаб',
+		name: 'Гитхаб',
 	},
 ] as const

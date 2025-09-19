@@ -1,0 +1,28 @@
+.switcher-container {
+	display: inline-flex;
+	border: 1px solid #f0f0f03d;
+	border-radius: 8px;
+	overflow: auto;
+}
+
+.switcher-button {
+	border: none;
+	background: rgb(255, 255, 255, 5%);
+	color: #fff;
+	padding: 3px 11px;
+	border-radius: 2px;
+	cursor: pointer;
+	font-size: 14px;
+	white-space: nowrap;
+	transition: all 0.2s ease;
+}
+
+.switcher-button.active {
+	background: rgb(255, 255, 255, 85%);
+	color: #000;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.switcher-button:not(.active):hover {
+	background: rgb(255, 255, 255, 35%);
+}

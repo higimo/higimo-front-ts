@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LinksType } from '../../../../types'
+import { LinksType } from 'types'
 
 import './style.css'
 

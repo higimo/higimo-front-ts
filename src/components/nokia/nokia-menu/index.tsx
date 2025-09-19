@@ -2,11 +2,11 @@ import cs from 'classnames'
 
 import { useRoute } from 'preact-iso';
 
-import { compareRoute } from '../../../utils/compare-route';
+import { compareRoute } from 'utils/compare-route';
 
-import { HorizontalMenu, HorizontalElement } from '../../ui/horizontal-menu';
+import { HorizontalMenu, HorizontalElement } from 'components/ui/horizontal-menu';
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
 
 import './style.css'
 
@@ -17,6 +17,7 @@ const menuLinks = [
 	{ href: ROUTE_LINKS.nokiaForm, title: 'Добавить встречу' },
 	{ href: ROUTE_LINKS.nokiaPeopleForm, title: '+ person' },
 	{ href: ROUTE_LINKS.nokiaStatistic, title: 'Статистика' },
+	{ href: ROUTE_LINKS.nokiaPinarik, title: 'Пинарик' },
 ]
 
 export const NokiaMenu = () => {

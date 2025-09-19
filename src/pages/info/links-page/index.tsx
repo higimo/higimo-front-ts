@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../components/ui/text-container'
-import { LinksList } from '../../../components/info-service/links/links-list'
+import { TextContainer } from 'components/ui/text-container'
+import { LinksList } from 'components/info-service/links/links-list'
 
 export const LinksPage: FunctionComponent = () => {
 	document.title = 'Избранные ссылки'

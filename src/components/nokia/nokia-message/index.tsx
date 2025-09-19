@@ -1,10 +1,9 @@
-import { MeetingType } from '../../../types'
+import { MeetingType } from 'types'
 
 import { useContext, useLayoutEffect } from 'preact/hooks'
 
-import { NokiaContext } from '../../../context/nokia'
-
 import '../nokia-style.css'
+import { NokiaContext } from 'context/nokia'
 
 export const NokiaMessage = () => {
 	const {

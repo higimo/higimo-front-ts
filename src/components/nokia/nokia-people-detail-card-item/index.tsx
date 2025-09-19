@@ -1,20 +1,18 @@
 import { FunctionComponent } from "preact"
-import { PeopleType } from '../../../types';
-import { NokiaContextType } from "../../../context/nokia";
-
-import { NokiaMeting } from '../nokia-meting';
-
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
-import { CollapseSection } from "../../ui/collapse-section";
+import { PeopleType } from 'types';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { NokiaMeting } from "../nokia-meting";
+import { CollapseSection } from "components/ui/collapse-section";
+import { NokiaContextType } from "context/nokia";
 
 type NokiaPeopleDetailCardItemPropsType = {
-    person: PeopleType;
-    hashLink: NokiaContextType['hashLink'];
-    hashMeeting: NokiaContextType['hashMeeting'];
-    hashPeople: NokiaContextType['hashPeople'];
-    links: NokiaContextType['links'];
-    meeting: NokiaContextType['meeting'];
-    people: NokiaContextType['people'];
+	person: PeopleType;
+	hashLink: NokiaContextType['hashLink'];
+	hashMeeting: NokiaContextType['hashMeeting'];
+	hashPeople: NokiaContextType['hashPeople'];
+	links: NokiaContextType['links'];
+	meeting: NokiaContextType['meeting'];
+	people: NokiaContextType['people'];
 }
 export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = props => {
 	const meetByPerson = props.links

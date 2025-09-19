@@ -1,15 +1,14 @@
 import { FunctionComponent } from 'preact'
-import { CinemaType } from '../../../../types'
+import { CinemaType } from 'types'
 
 import { useRoute } from 'preact-iso'
-import useApi, { API_STATUS } from '../../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { NotFoundPage } from '../../../../pages/not-found-page'
+import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container'
 
-import { TextContainer } from '../../../ui/text-container'
-import { Loading } from '../../../accord/accord-single'
-
-import { API_ROUTE } from '../../../../api-route'
+import { NotFoundPage } from 'pages/not-found-page'
+import { API_ROUTE } from 'dic/api-route'
 
 export const CinemaScriptDetail: FunctionComponent = () => {
 	const { params: { idcode }} = useRoute()

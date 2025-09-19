@@ -1,15 +1,15 @@
-import { LibraryBookType } from '../types'
 import { FunctionComponent } from 'preact'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { LibraryBookElement } from '../library-book-element'
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import { API_ROUTE } from '../../../api-route'
 
 import './style.css'
+import { LibraryBookType } from '../types'
+import { API_ROUTE } from 'dic/api-route'
+import { LibraryBookElement } from '../library-book-element'
 
 export const LibraryGallery: FunctionComponent = () => {
 	const [ bookList ] = useApi<LibraryBookType>(API_ROUTE.lib)

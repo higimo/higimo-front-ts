@@ -4,7 +4,7 @@
 
 	var handlers  = {};
 	var onEnvLoad = [];
-	var env       = {};
+	var env	   = {};
 
 	// Key generation
 	function genKey() {
@@ -136,12 +136,12 @@
 
 		Server: function(methods, filter, options) {
 			this.methods   = methods || {};
-			this.filter    = filter;
+			this.filter	= filter;
 			this.options   = options || {};
-			this.id        = w.fastXDM._id++;
-			this.key       = genKey();
+			this.id		= w.fastXDM._id++;
+			this.key	   = genKey();
 			this.frameName = 'fXD' + this.key;
-			this.server    = true;
+			this.server	= true;
 
 			this.methods['%init%'] = this.methods.__fxdm_i = function() {
 				w.fastXDM.run(this.id);
@@ -156,7 +156,7 @@
 		Client: function(methods, options) {
 			this.methods = methods || {};
 			this.options = options || {};
-			this.id      = w.fastXDM._id++;
+			this.id	  = w.fastXDM._id++;
 			this.client  = true;
 
 			w.fastXDM.run(this.id);
@@ -275,10 +275,10 @@
 	}
 
 	w.fastXDM.Server.prototype.append = function(obj, options, attrs) {
-		var div       = document.createElement('DIV');
+		var div	   = document.createElement('DIV');
 		div.innerHTML = '<iframe name="' + this.frameName + '" ' + (attrs || '') + '></iframe>';
-		var frame     = div.firstChild;
-		var self      = this;
+		var frame	 = div.firstChild;
+		var self	  = this;
 
 		setTimeout(function() {
 			frame.frameBorder = '0';
@@ -297,8 +297,8 @@
 		for (var i = 0, len = args.length; i < len; i++) {
 			if (typeof(args[i]) === 'function') {
 				this.funcsCount = (this.funcsCount || 0) + 1;
-				var func        = args[i];
-				var funcName    = '_func' + this.funcsCount;
+				var func		= args[i];
+				var funcName	= '_func' + this.funcsCount;
 
 				this.methods[funcName] = function() {
 					func.apply(this, arguments);
@@ -403,12 +403,12 @@ if (!VK.xdConnectionCallbacks) {
 		xdReady: false,
 		access: {
 			FRIENDS:   0x2,
-			PHOTOS:    0x4,
-			AUDIO:     0x8,
-			VIDEO:     0x10,
+			PHOTOS:	0x4,
+			AUDIO:	 0x8,
+			VIDEO:	 0x10,
 			MATCHES:   0x20,
 			QUESTIONS: 0x40,
-			WIKI:      0x80
+			WIKI:	  0x80
 		}
 	});
 
@@ -1782,12 +1782,12 @@ if (!VK.Widgets) {
 		VK.extend(params, adsParams);
 
 		options.noDefaultParams   = true;
-		options.width             = adsParamsLocal.ads_ad_unit_width;
+		options.width			 = adsParamsLocal.ads_ad_unit_width;
 		options.allowTransparency = true;
 		defaults.startHeight = adsParamsLocal.ads_ad_unit_height;
-		defaults.minWidth    = adsParamsLocal.ads_ad_unit_width;
+		defaults.minWidth	= adsParamsLocal.ads_ad_unit_width;
 		funcs.adsOnInitLoader = adsOnInitLoader;
-		funcs.adsOnInit       = adsOnInit;
+		funcs.adsOnInit	   = adsOnInit;
 
 		return VK.Widgets._constructor('ads_rotate.php', objId, options, params, funcs, defaults, onDone);
 
@@ -1899,20 +1899,20 @@ if (!VK.Widgets) {
 			var iframeHandlerHtml = '<html><head></head><body style="padding: 0; margin: 0;"><div>' + handlerHtml + '</div></body></html>';
 
 			var iframeHandler = document.createElement('iframe');
-			iframeHandler.onload            = fixIframeHeight;
-			iframeHandler.id                = (iframe ? iframe.id : ('vkwidget-' + Math.round(Math.random() * 1000000))) + '_ads_html_handler';
-			iframeHandler.src               = 'about:blank';
-			iframeHandler.width             = '100%';
-			iframeHandler.height            = '100%';
-			iframeHandler.scrolling         = 'no';
-			iframeHandler.frameBorder       = '0';
+			iframeHandler.onload			= fixIframeHeight;
+			iframeHandler.id				= (iframe ? iframe.id : ('vkwidget-' + Math.round(Math.random() * 1000000))) + '_ads_html_handler';
+			iframeHandler.src			   = 'about:blank';
+			iframeHandler.width			 = '100%';
+			iframeHandler.height			= '100%';
+			iframeHandler.scrolling		 = 'no';
+			iframeHandler.frameBorder	   = '0';
 			iframeHandler.allowTransparency = true;
-			iframeHandler.style.overflow    = 'hidden';
-			iframeHandler.style.width       = width;
-			iframeHandler.style.height      = height;
+			iframeHandler.style.overflow	= 'hidden';
+			iframeHandler.style.width	   = width;
+			iframeHandler.style.height	  = height;
 
-			obj.style.width                 = width;
-			obj.style.height                = height;
+			obj.style.width				 = width;
+			obj.style.height				= height;
 
 			obj.appendChild(iframeHandler);
 
@@ -1928,7 +1928,7 @@ if (!VK.Widgets) {
 					var heightFix = Math.ceil(rect.bottom - rect.top);
 					if (heightFix) {
 						iframeHandler.style.height = heightFix;
-						obj.style.height           = heightFix;
+						obj.style.height		   = heightFix;
 					}
 				} catch (e) {}
 			}
@@ -2403,9 +2403,9 @@ if (!VK.Widgets) {
 			params.iframe_app = 1;
 		}
 		var pData = VK.Util.getPageData();
-		params.url      = params.url     || pData.url || "";
+		params.url	  = params.url	 || pData.url || "";
 		params.referrer = params.referrer || document.referrer || "";
-		params.title    = params.title   || pData.title  || document.title || "";
+		params.title	= params.title   || pData.title  || document.title || "";
 		for (i in params) {
 			if (i == 'title' && params[i].length > 80) params[i] = params[i].substr(0, 80)+'...';
 			if (i == 'description' && params[i].length > 160) params[i] = params[i].substr(0, 160)+'...';

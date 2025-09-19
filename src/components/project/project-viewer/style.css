@@ -431,23 +431,23 @@
 }
 
 .credits__item {
-    flex: 1 1 200px;
-    margin-right: 15px;
-    margin-bottom: 15px;
+	flex: 1 1 200px;
+	margin-right: 15px;
+	margin-bottom: 15px;
 }
 
 .author__image {
-    float: left;
-    margin-right: 15px;
-    max-width: 50px;
+	float: left;
+	margin-right: 15px;
+	max-width: 50px;
 }
 
 .author__information {
-    font-size: 12pt;
-    opacity: .8;
-    overflow: hidden;
+	font-size: 12pt;
+	opacity: .8;
+	overflow: hidden;
 }
 
 .author__name {
-    margin-bottom: calc(15px / 3);
+	margin-bottom: calc(15px / 3);
 }

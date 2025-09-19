@@ -1,5 +1,5 @@
 import { ProjectFullInfoType, ProjectTagType, ProjectType, TagNameType, VendorType } from "../types"
-import { filterType } from "../components/project/project-tag-gallery/filter-type"
+import { filterType } from "components/project/project-tag-gallery/filter-type"
 
 import { useEffect, useMemo, useState } from "preact/hooks"
 import { useRoute } from "preact-iso"
@@ -10,7 +10,10 @@ import sendRequest from "../utils/send-request"
 const mapingProjectToProjectFullInfo = (vendors: VendorType[], tags: ProjectTagType[], tagNames: TagNameType[]) => {
 	return (projectItem: ProjectType): ProjectFullInfoType => {
 		const vendorData: VendorType = vendors.find(vendor => vendor.id == projectItem.vendor)
-		const vendorCode = vendorData ? vendorData.code : ''
+		const vendorCode = vendorData ? vendorData.code : 'UNDEFINED'
+		if (!vendorData) {
+			console.log('vendorData undefined', vendorData, projectItem, vendors)
+		}
 
 		const curTagNames: string[] = tags.filter(tagLink => tagLink.projectId == projectItem.id)
 			.map(tagLink => {
@@ -27,25 +30,46 @@ const mapingProjectToProjectFullInfo = (vendors: VendorType[], tags: ProjectTagT
 	}
 }
 
+type DownloadDataType = {
+	projects: ProjectType[],
+	vendors: VendorType[],
+	tags: ProjectTagType[],
+	tagNames: TagNameType[],
+}
 export const useProject = () => {
-	const [projects, setProjects] = useState<ProjectType[]>([])
-	const [vendors, setVendors] = useState<VendorType[]>([])
-	const [tags, setTags] = useState<ProjectTagType[]>([])
-	const [tagNames, setTagNames] = useState<TagNameType[]>([])
+	const [downloadData, setDownloadData] = useState<DownloadDataType>({
+		projects: [],
+		vendors: [],
+		tags: [],
+		tagNames: [],
+	})
 
 	useEffect(() => {
 		(async () => {
-			setProjects(await sendRequest('/api/v1/project/project'))
-			setVendors(await sendRequest('/api/v1/project/vendor'))
-			setTags(await sendRequest('/api/v1/project/tag/tag'))
-			setTagNames(await sendRequest('/api/v1/project/tag/name'))
+			try {
+				const [projects, vendors, tags, tagNames] = await Promise.all([
+					sendRequest('/api/v1/project/project'),
+					sendRequest('/api/v1/project/vendor'),
+					sendRequest('/api/v1/project/tag/tag'),
+					sendRequest('/api/v1/project/tag/name')
+				])
+
+				setDownloadData({
+					projects,
+					vendors,
+					tags,
+					tagNames,
+				})
+			} catch (error) {
+				console.error('Error fetching data:', error)
+			}
 		})()
 	}, [])
 
 	let projectsList: ProjectFullInfoType[] = useMemo(
-		() => projects
-			.map(mapingProjectToProjectFullInfo(vendors, tags, tagNames)),
-		[ ...projects, ...vendors, ...tags, ...tagNames ]
+		() => downloadData.projects
+			.map(mapingProjectToProjectFullInfo(downloadData.vendors, downloadData.tags, downloadData.tagNames)),
+		[ ...downloadData.projects, ...downloadData.vendors, ...downloadData.tags, ...downloadData.tagNames ]
 	)
 
 	const { query } = useRoute()
@@ -56,7 +80,7 @@ export const useProject = () => {
 		projectsList = projectsList.filter(projectItem => projectItem.cover_size == query.filterSize)
 	}
 
-	const uniqTags: ProjectFullInfoType['tags'] = tagNames.map(tagName => tagName.title)
+	const uniqTags: ProjectFullInfoType['tags'] = downloadData.tagNames.map(tagName => tagName.title)
 
 	return { projectsList, uniqTags }
 }

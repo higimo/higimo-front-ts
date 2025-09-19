@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'preact';
 
 import { useEffect } from 'preact/hooks';
-import { useGlobalContext } from '../../context/global';
 
-import { ROUTE_LINKS } from '../../dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
 
 import './style.css'
+import { useGlobalContext } from 'context/global';
 
 export const NotFoundPage: FunctionComponent = () => {
 	const { toggleNotFound } = useGlobalContext()

@@ -1,32 +1,22 @@
 import { FunctionComponent } from 'preact'
-import { AccordType } from '../../../types';
+import { AccordType } from 'types';
 
 import { useMemo } from 'preact/hooks'
-import useApi, { API_STATUS } from '../../../hook/use-api';
+import useApi, { API_STATUS } from 'hook/use-api';
 
-import { getRandom } from '../../../utils/get-random';
+import { getRandom } from 'utils/get-random';
 
-import { NotFoundPage } from '../../../pages/not-found-page';
+import { Loading } from 'components/ui/loading';
+import { AccordElement } from 'components/accord/accord-element';
 
-import { AccordElement } from '../accord-element';
-import { TextContainer } from '../../ui/text-container';
+import { NotFoundPage } from 'pages/not-found-page';
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
-import { API_ROUTE } from '../../../api-route';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
 
 import './style.css'
+import { API_ROUTE } from 'dic/api-route';
 
 const ALSO_ELEMENTS = 6;
-
-export const Loading = () => {
-	// TODO: придумать, как управлять этим заголовком, а то постоянно там не то
-	// document.title = 'Загружаю…'
-	return (
-		<TextContainer className="loading">
-			Загружаю…
-		</TextContainer>
-	)
-}
 
 type AccordSinglePropsType = {
 	idcode: string;

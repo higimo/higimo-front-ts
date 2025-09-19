@@ -1,4 +1,4 @@
-import { VKAlbumType, VkPhotoType } from '../types';
+import { VKAlbumType, VkPhotoType } from 'types';
 
 
 export type VkResponceError = {

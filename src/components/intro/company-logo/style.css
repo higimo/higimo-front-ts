@@ -1,5 +1,11 @@
 .company-logo {
-    border-radius: .1em;
-    max-height: .75em;
-    vertical-align: baseline
+	transition: all 150ms ease-in;
+	border-radius: .1em;
+	max-height: .75em;
+	vertical-align: baseline
+}
+
+
+a:hover > .company-logo {
+	transform: scale(1.05) rotate(5deg);
 }

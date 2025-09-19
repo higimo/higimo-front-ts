@@ -1,11 +1,11 @@
 import { FunctionalComponent } from 'preact'
 
-import { TextContainer } from '../../ui/text-container'
-import { OnlyAdmin } from '../../util/only-admin'
+import { TextContainer } from 'components/ui/text-container'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { OnlyAdmin } from 'components/util/only-admin'
 
 export const LibraryHeader: FunctionalComponent = () => {
 	return (

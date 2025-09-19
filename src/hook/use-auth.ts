@@ -2,12 +2,11 @@ import
 { useEffect, useCallback, useContext, useState } from 'preact/hooks'
 import { useLocation } from 'preact-iso'
 
-import { AuthContext } from '../context/auth'
+import { getAuthPair } from 'utils/get-auth-pair'
 
-import { getAuthPair } from '../utils/get-auth-pair'
-import sendRequest from '../utils/send-request'
-
-import { ROUTE_LINKS } from '../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import sendRequest from 'utils/send-request'
+import { AuthContext } from 'context/auth'
 
 const isAuthorizedFunc = async () => {
 	const { login, pass } = getAuthPair()
@@ -28,11 +27,11 @@ export const AUTH_STATUS_DIC = {
 type AuthStatus = typeof AUTH_STATUS_DIC[keyof typeof AUTH_STATUS_DIC]
 
 let authState: {
-    status: AuthStatus;
-    isAuth: boolean;
+	status: AuthStatus;
+	isAuth: boolean;
 } = {
-    status: 'idle',
-    isAuth: false,
+	status: 'idle',
+	isAuth: false,
 };
 export const useAuth = () => {
 	const { route, path } = useLocation()
@@ -46,19 +45,19 @@ export const useAuth = () => {
 
 	useEffect(() => {
 		if (authState.status === 'idle') {
-            authState.status = 'loading';
-            setStatusLoading('loading');
+			authState.status = 'loading';
+			setStatusLoading('loading');
 
-            isAuthorizedFunc().then((isAuth) => {
-                authState.status = isAuth ? 'authenticated' : 'unauthenticated';
-                authState.isAuth = isAuth;
-                setIsAuth(isAuth);
-                setStatusLoading(authState.status);
-            });
-        } else {
-            setIsAuth(authState.isAuth);
-            setStatusLoading(authState.status);
-        }
+			isAuthorizedFunc().then((isAuth) => {
+				authState.status = isAuth ? 'authenticated' : 'unauthenticated';
+				authState.isAuth = isAuth;
+				setIsAuth(isAuth);
+				setStatusLoading(authState.status);
+			});
+		} else {
+			setIsAuth(authState.isAuth);
+			setStatusLoading(authState.status);
+		}
 	}, [setIsAuth, setStatusLoading])
 
 	return {

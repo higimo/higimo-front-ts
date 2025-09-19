@@ -2,12 +2,12 @@ import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { TilesGallery } from '../../ui/tiles-gallery/tiles-gallery'
-import { TileElement } from '../../ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element/tile-element'
 
 import { blogInviteData } from './data'
 
-import { ANCHOR_LINKS } from '../../../dic/ANCHOR_LINKS'
+import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'
 

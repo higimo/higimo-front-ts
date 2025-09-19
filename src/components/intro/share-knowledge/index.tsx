@@ -2,13 +2,13 @@ import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { TilesGallery } from '../../ui/tiles-gallery/tiles-gallery'
-import { TileElement } from '../../ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element/tile-element'
 
-import screen    from './img/screen.png'
-import rak       from './img/rak.png'
-import tech      from './img/tech.png'
-import school    from './img/school.png'
+import screen	from './img/screen.png'
+import rak	   from './img/rak.png'
+import tech	  from './img/tech.png'
+import school	from './img/school.png'
 import obuchenie from './img/obuchenie.png'
 import intersection from './img/intersection.svg'
 

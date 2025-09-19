@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../../components/ui/text-container'
-import { DemagogGalery } from '../../../../components/info-service/demagog/demagog-galery'
+import { TextContainer } from 'components/ui/text-container'
+import { DemagogGalery } from 'components/info-service/demagog/demagog-galery'
 
 import './style.css'
 

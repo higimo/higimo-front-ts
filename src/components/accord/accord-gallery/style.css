@@ -6,6 +6,12 @@
 .accord__link {
 	text-decoration: none;
 	line-height: 1.6;
+	color: #000;
+	border-bottom: 1px solid #00000059;
+}
+
+.accord__link:hover {
+	border-bottom: 1px solid #000;
 }
 
 .profile {

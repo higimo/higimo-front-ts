@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact';
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
-import { plural } from '../../../utils/plural';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { plural } from 'utils/plural';
 
 type ProjectMorePropsType = {
 	count: number;

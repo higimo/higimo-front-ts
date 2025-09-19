@@ -1,24 +1,22 @@
 import { FunctionComponent } from 'preact'
-import { YaMapType } from '../../../types'
+import { YaMapType } from 'types'
 
 import { useRoute } from 'preact-iso'
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { NotFoundPage } from '../../not-found-page'
-
-import { Breadcrumps } from '../../../components/ui/breadcrumps'
-import { TextContainer } from '../../../components/ui/text-container'
-import { TourismWalkItem } from '../../../components/tourism/tourism-walk-item'
-import { Loading } from '../../../components/accord/accord-single'
-import { TourismWalkGallery } from '../../../components/tourism/tourism-walk-gallery'
-import { TourismMainMenu } from '../../../components/tourism/tourism-main-menu'
-
-import { API_ROUTE } from '../../../api-route'
+import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TextContainer } from 'components/ui/text-container'
+import { TourismWalkItem } from 'components/tourism/tourism-walk-item'
+import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../tourism-style.css'
+import { Loading } from 'components/ui/loading'
+import { API_ROUTE } from 'dic/api-route'
+import { NotFoundPage } from 'pages/not-found-page'
 
 export const TourismWalkSinglePage: FunctionComponent = () => {
-	const { params: { idcode = '' }, path } = useRoute()
+	const { params: { idcode = '' } } = useRoute()
 	const [ yamapList ] = useApi<YaMapType>(API_ROUTE.yamap)
 
 	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(yamapList.status)) {
@@ -36,7 +34,7 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
 			<TextContainer>
-				<Breadcrumps path={path} />
+				<Breadcrumps />
 			</TextContainer>
 			<TextContainer>
 				<h1>{element.name}</h1>

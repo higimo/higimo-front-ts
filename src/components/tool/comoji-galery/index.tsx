@@ -1,16 +1,14 @@
 import { FunctionComponent } from 'preact'
-import { ComojiType } from '../../../types'
+import { ComojiType } from 'types'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { ComojiElement } from '../comoji-element'
-import { TextContainer } from '../../ui/text-container'
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
-
-import { API_ROUTE } from '../../../api-route'
-
+import { TextContainer } from 'components/ui/text-container'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 import './style.css'
+import { API_ROUTE } from 'dic/api-route'
+import { ComojiElement } from '../comoji-element'
 
 export const ComojiGalery: FunctionComponent = () => {
 	const [ comojiList ] = useApi<ComojiType>(API_ROUTE.comoji)

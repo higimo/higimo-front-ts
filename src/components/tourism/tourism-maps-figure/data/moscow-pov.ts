@@ -1,8 +1,4 @@
-type HigimoMapPoint = {
-	coord: [number, number];
-	title: string;
-	color: `#${string}` // hex
-}
+import { HigimoMapPoint } from "./types";
 
 export const moscowPovPoints: HigimoMapPoint[] = [
 	{

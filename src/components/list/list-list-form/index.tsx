@@ -4,11 +4,9 @@ import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
 
-import sendRequest from '../../../utils/send-request'
-
-import { ShowFormResult } from '../../form/show-form-result'
-
 import './style.css'
+import sendRequest from 'utils/send-request'
+import { ShowFormResult } from 'components/form/show-form-result'
 
 const ListListScheme = ['id', 'title', 'created_at', 'parent', 'code'] as const
 type ListListSchemeType = typeof ListListScheme[number]

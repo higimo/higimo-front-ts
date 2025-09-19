@@ -9,9 +9,9 @@ type TagPropsType = JSX.ObjectHTMLAttributes & {
 	active?: boolean;
 }
 
-export const Tag: FunctionComponent<TagPropsType> = ({children, active = false, ...props}) => (
+export const Tag: FunctionComponent<TagPropsType> = ({children, active = false, className, ...props}) => (
 	<span
-		className={cs('tag', { 'tag--active': active })}
+		className={cs('tag', { 'tag--active': active }, className)}
 		{...props}
 	>
 		{children}

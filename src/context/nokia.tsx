@@ -1,113 +1,113 @@
-import { MeetingType, NokiaTagType, PeopleMeetingType, PeopleTag, PeopleType, RichMeetingType } from '../types'
+import { MeetingType, NokiaTagType, PeopleMeetingType, PeopleTag, PeopleType, RichMeetingType } from 'types'
 
 import { useCallback, useEffect, useState } from 'preact/hooks'
 
 import sendRequest from '../utils/send-request'
 
-import { makeHashTable } from '../utils/make-hash-table'
+import { makeHashTable } from 'utils/make-hash-table'
 
 import { createContext } from 'preact'
 
 export type NokiaContextType = {
-    fetchData: () => void;
-    richMeeting: RichMeetingType[];
-    people: PeopleType[];
-    meeting: MeetingType[];
-    links: PeopleMeetingType[];
-    tag: NokiaTagType[];
-    peopleTag: PeopleTag[];
-    hashPeople: { [key in number]: PeopleType };
-    hashMeeting: { [key in number]: MeetingType };
-    hashLink: { [key in number]: number[] };
-    hashTag: { [key in number]: number[] };
-    hashPeopleTag: { [key in number]: number[] };
-    updateLinks: () => void;
-    updatePeople: () => void;
-    updateMeeting: () => void;
-    updateTag: () => void;
-    updatePeopleTag: () => void;
+	fetchData: () => void;
+	richMeeting: RichMeetingType[];
+	people: PeopleType[];
+	meeting: MeetingType[];
+	links: PeopleMeetingType[];
+	tag: NokiaTagType[];
+	peopleTag: PeopleTag[];
+	hashPeople: { [key in number]: PeopleType };
+	hashMeeting: { [key in number]: MeetingType };
+	hashLink: { [key in number]: number[] };
+	hashTag: { [key in number]: number[] };
+	hashPeopleTag: { [key in number]: number[] };
+	updateLinks: () => void;
+	updatePeople: () => void;
+	updateMeeting: () => void;
+	updateTag: () => void;
+	updatePeopleTag: () => void;
 }
 
 export const NokiaContext = createContext<NokiaContextType | null>(null)
 
 export const NokiaContextProvider = (props) => {
-    const [ links, setLinks ] = useState<PeopleMeetingType[]>([])
-    const [ people, setPeople ] = useState<PeopleType[]>([])
-    const [ meeting, setMeeting ] = useState<MeetingType[]>([])
-    const [ tag, setTag ] = useState<NokiaTagType[]>([])
-    const [ peopleTag, setPeopleTag ] = useState<PeopleTag[]>([])
-    const [ richMeeting, setRichMeeting ] = useState<RichMeetingType[]>([])
+	const [ links, setLinks ] = useState<PeopleMeetingType[]>([])
+	const [ people, setPeople ] = useState<PeopleType[]>([])
+	const [ meeting, setMeeting ] = useState<MeetingType[]>([])
+	const [ tag, setTag ] = useState<NokiaTagType[]>([])
+	const [ peopleTag, setPeopleTag ] = useState<PeopleTag[]>([])
+	const [ richMeeting, setRichMeeting ] = useState<RichMeetingType[]>([])
 
-    const fetchRichMeeting = () => sendRequest('/api/v1/nokia/rich-meeting', {values: {limit: 0}})
-        .then((list: RichMeetingType[]) => setRichMeeting(list))
+	const fetchRichMeeting = () => sendRequest('/api/v1/nokia/rich-meeting', {values: {limit: 0}})
+		.then((list: RichMeetingType[]) => setRichMeeting(list))
 
-    const updateLinks = () => sendRequest('/api/v1/nokia/people-meeting', { values: { limit: 0/*10*/ } })
-        .then((list: PeopleMeetingType[]) => setLinks(list))
-    const updatePeople = () => sendRequest('/api/v1/nokia/people')
-        .then((list: PeopleType[]) => setPeople(list))
-    const updateMeeting = () => sendRequest('/api/v1/nokia/meeting', { values: { limit: 0/*10*/ } })
-        .then((list: MeetingType[]) => setMeeting(list))
-    const updateTag = () => sendRequest('/api/v1/nokia/tag')
-        .then((list: NokiaTagType[]) => setTag(list))
-    const updatePeopleTag = () => sendRequest('/api/v1/nokia/people-tag')
-        .then((list: PeopleTag[]) => setPeopleTag(list))
+	const updateLinks = () => sendRequest('/api/v1/nokia/people-meeting', { values: { limit: 0/*10*/ } })
+		.then((list: PeopleMeetingType[]) => setLinks(list))
+	const updatePeople = () => sendRequest('/api/v1/nokia/people')
+		.then((list: PeopleType[]) => setPeople(list))
+	const updateMeeting = () => sendRequest('/api/v1/nokia/meeting', { values: { limit: 0/*10*/ } })
+		.then((list: MeetingType[]) => setMeeting(list))
+	const updateTag = () => sendRequest('/api/v1/nokia/tag')
+		.then((list: NokiaTagType[]) => setTag(list))
+	const updatePeopleTag = () => sendRequest('/api/v1/nokia/people-tag')
+		.then((list: PeopleTag[]) => setPeopleTag(list))
 
-    const [isLoaded, setIsLoaded] = useState<boolean>(false)
+	const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
-    const fetchData = useCallback(() => {
-        if (!isLoaded) {
-            fetchRichMeeting()
-            updateLinks()
-            updatePeople()
-            updateMeeting()
-            updateTag()
-            updatePeopleTag()
-        }
-        setIsLoaded(true)
-    }, [
-        isLoaded,
-        setIsLoaded,
-        updateLinks,
-        updatePeople,
-        updateMeeting,
-        updateTag,
-        updatePeopleTag,
-    ])
+	const fetchData = useCallback(() => {
+		if (!isLoaded) {
+			fetchRichMeeting()
+			updateLinks()
+			updatePeople()
+			updateMeeting()
+			updateTag()
+			updatePeopleTag()
+		}
+		setIsLoaded(true)
+	}, [
+		isLoaded,
+		setIsLoaded,
+		updateLinks,
+		updatePeople,
+		updateMeeting,
+		updateTag,
+		updatePeopleTag,
+	])
 
-    const hashPeople = makeHashTable(people, 'id')
-    const hashMeeting = makeHashTable(meeting, 'id')
-    const hashTag = makeHashTable(tag, 'id')
-    let hashLink = {}
-    links.forEach(link => {
-        hashLink[link.meeting_id] = [...(hashLink[link.meeting_id] || []), link.people_id]
-    })
-    let hashPeopleTag = {}
-    peopleTag.forEach(item => {
-        hashPeopleTag[item.tagId] = [...(hashPeopleTag[item.tagId] || []), item.peopleId]
-    })
-    return (
-        <NokiaContext.Provider
-            value={{
-                fetchData,
-                richMeeting,
-                links,
-                people,
-                meeting,
-                tag,
-                peopleTag,
-                hashPeople,
-                hashMeeting,
-                hashLink,
-                hashTag,
-                hashPeopleTag,
-                updateLinks,
-                updatePeople,
-                updateMeeting,
-                updateTag,
-                updatePeopleTag,
-            }}
-        >
-            {props.children}
-        </NokiaContext.Provider>
-    )
+	const hashPeople = makeHashTable(people, 'id')
+	const hashMeeting = makeHashTable(meeting, 'id')
+	const hashTag = makeHashTable(tag, 'id')
+	let hashLink = {}
+	links.forEach(link => {
+		hashLink[link.meeting_id] = [...(hashLink[link.meeting_id] || []), link.people_id]
+	})
+	let hashPeopleTag = {}
+	peopleTag.forEach(item => {
+		hashPeopleTag[item.tagId] = [...(hashPeopleTag[item.tagId] || []), item.peopleId]
+	})
+	return (
+		<NokiaContext.Provider
+			value={{
+				fetchData,
+				richMeeting,
+				links,
+				people,
+				meeting,
+				tag,
+				peopleTag,
+				hashPeople,
+				hashMeeting,
+				hashLink,
+				hashTag,
+				hashPeopleTag,
+				updateLinks,
+				updatePeople,
+				updateMeeting,
+				updateTag,
+				updatePeopleTag,
+			}}
+		>
+			{props.children}
+		</NokiaContext.Provider>
+	)
 }

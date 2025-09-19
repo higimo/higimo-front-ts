@@ -1,14 +1,19 @@
 import { createRef, Fragment } from 'preact'
 
 import { YMaps, Map } from 'react-yandex-maps'
-import { TextContainer } from '../../ui/text-container'
-import { Tag } from '../../ui/tag'
-import { useCallback, useEffect, useState } from 'preact/hooks'
+import { TextContainer } from 'components/ui/text-container'
+import { Tag } from 'components/ui/tag'
+import { useEffect, useState } from 'preact/hooks'
 
 import '../yandex-map.css'
-import { useWindowSize } from '../../../hook/use-window-size'
+import { useWindowSize } from 'hook/use-window-size'
 import { BAR_COLOR_MAPPING, barColor, barIcon, BarPovType, barTagsCategory } from '../tourism-maps-figure/data/bar-pov-moscow'
 import { TourismBarPointSnippet } from '../tourism-bar-point-snippet'
+
+// https://yandex.ru/dev/jsapi-v2-1/doc/ru/v2-1/ref/reference/option.presetStorage
+// https://yandex.ru/dev/maps/jsbox/2.1/polygon/
+// https://yandex.ru/dev/maps/archive/doc/jsapi/2-0/ru/ref/reference/GeoObject
+// https://yandex.ru/map-constructor/
 
 const MAP_MODE = {
 	INIT: 'INIT',
@@ -52,7 +57,7 @@ const updateMap = (map, yamaps, mode, stateData: { barPovMoscow: BarPovType[] },
 					iconColor: barColor(mapPoint.color),
 					iconSize: [15, 15],
 				}
-			));
+			))
 		})
 }
 
@@ -94,17 +99,17 @@ export const TourismMapsMoscowBar = () => {
 		<Fragment>
 			<TextContainer>
 				<div>
-					Отношение: <Tag onClick={handleColorTagClick(null)}>Сбросить</Tag>{' '}
+					Отношение: <Tag active={filter.color === null} onClick={handleColorTagClick(null)}>Сбросить</Tag>{' '}
 					{Object.keys(BAR_COLOR_MAPPING).map(colorName => (
-						<Tag onClick={handleColorTagClick(colorName)}>{colorName}</Tag>
+						<Tag active={filter.color === colorName} onClick={handleColorTagClick(colorName)}>{colorName}</Tag>
 					))}
 					<hr />
-					Теги: <Tag onClick={handleCategoryTagClick(null)}>Сбросить</Tag>{' '}
+					Теги: <Tag active={filter.tag === null} onClick={handleCategoryTagClick(null)}>Сбросить</Tag>{' '}
 					{Object.keys(barTagsCategory).map(item => (
 						<div>
 							{item}{' '}
 							{Object.keys(barTagsCategory[item]).map(subitem => (
-								<Tag onClick={handleCategoryTagClick(subitem)}>{subitem}</Tag>
+								<Tag active={filter.tag === subitem} onClick={handleCategoryTagClick(subitem)}>{subitem}</Tag>
 							))}
 						</div>
 					))}
@@ -135,13 +140,11 @@ export const TourismMapsMoscowBar = () => {
 				</YMaps>
 			</div>
 			{stateData.barPovMoscow && (
-				<TextContainer>
-					<div className="bar-pov__gallery">
-						{stateData.barPovMoscow.filter(barPovFilter(filter)).map((mapPoint: BarPovType) => (
-							<TourismBarPointSnippet {...mapPoint} />
-						))}
-					</div>
-				</TextContainer>
+				<div className="bar-pov__gallery">
+					{stateData.barPovMoscow.filter(barPovFilter(filter)).map((mapPoint: BarPovType) => (
+						<TourismBarPointSnippet {...mapPoint} />
+					))}
+				</div>
 			)}
 		</Fragment>
 	)

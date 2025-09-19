@@ -10,16 +10,16 @@ import './style.css'
 
 const logoMap = {
 	SJ: sj,
-    'Афиша Daily': daily,
-    ALS: als,
-    'R-top': rtop,
-    intersection: intersection,
+	'Афиша Daily': daily,
+	ALS: als,
+	'R-top': rtop,
+	intersection: intersection,
 } as const
 
 type NameCompanyType = keyof typeof logoMap
 
 type CompanyLogoType = {
-    name: NameCompanyType;
+	name: NameCompanyType;
 }
 
 export const CompanyLogo: FunctionComponent<CompanyLogoType> = props => (

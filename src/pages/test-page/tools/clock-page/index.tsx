@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../../components/ui/text-container'
-import { Clock } from '../../../../components/data/clock'
+import { TextContainer } from 'components/ui/text-container'
+import { Clock } from 'components/data/clock'
 
 import { clockData } from './data'
 	

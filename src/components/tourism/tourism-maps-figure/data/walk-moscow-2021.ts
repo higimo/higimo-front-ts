@@ -1,6 +1,8 @@
 // Это всё сохранено в гите 7 окт 2021
 
-export const moscowWalk2021Polygon = {
+import { YaMapPolygon } from "./types"
+
+export const moscowWalk2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1137,7 +1139,7 @@ export const moscowWalk2021Polygon = {
 	],
 }
 
-export const nagornaya2021Polygon = {
+export const nagornaya2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1158,7 +1160,7 @@ export const nagornaya2021Polygon = {
 	],
 }
 
-export const tekstilchiki2021Polygon = {
+export const tekstilchiki2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1174,7 +1176,7 @@ export const tekstilchiki2021Polygon = {
 	],
 }
 
-export const kuncevo2021Polygon = {
+export const kuncevo2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1215,7 +1217,7 @@ export const kuncevo2021Polygon = {
 	],
 }
 
-export const vladikino2021Polygon = {
+export const vladikino2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1235,7 +1237,7 @@ export const vladikino2021Polygon = {
 	],
 }
 
-export const izmaylovo2021Polygon = {
+export const izmaylovo2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1255,7 +1257,7 @@ export const izmaylovo2021Polygon = {
 	],
 }
 
-export const luberci2021Polygon = {
+export const luberci2021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1347,7 +1349,7 @@ export const luberci2021Polygon = {
 	],
 }
 
-export const luberci22021Polygon = {
+export const luberci22021Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1376,7 +1378,7 @@ export const luberci22021Polygon = {
 	],
 }
 
-export const stateYear2021 = [
+export const stateYear2021: YaMapPolygon[] = [
 	moscowWalk2021Polygon,
 	nagornaya2021Polygon,
 	tekstilchiki2021Polygon,

@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'preact'
 
-import { PrecentationContainer } from '../../../components/ui/precentation-container/PrecentationContainer'
-import { TextContainer } from '../../../components/ui/text-container'
-import { ContactList } from '../../../components/intro/contact-list'
-import { CollapseSection } from '../../../components/ui/collapse-section'
-import { OtherResume } from '../../../components/other-resume'
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
+import { ContactList } from 'components/intro/contact-list'
+import { CollapseSection } from 'components/ui/collapse-section'
+import { OtherResume } from 'components/other-resume'
 
-import { EXTERNAL_LINKS } from '../../../dic/EXTERNAL_LINKS'
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import '../resume-style.css'
 

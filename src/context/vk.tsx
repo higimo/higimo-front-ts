@@ -1,6 +1,6 @@
+import { VkSessionType } from 'pages/vk/types';
 import { createContext } from 'preact'
 import { useCallback, useState } from 'preact/hooks'
-import { VkSessionType } from '../pages/vk/types.js'
 import { useEffect } from 'preact/hooks'
 
 declare global {
@@ -10,16 +10,16 @@ declare global {
 }
 
 interface IVkContext {
-    isVkLogin: boolean;
-    session: VkSessionType;
-    fetchLogin: () => void;
+	isVkLogin: boolean;
+	session: VkSessionType;
+	fetchLogin: () => void;
 }
 
 const DEFAULT_SESSION: VkSessionType = null
 const DEFAULT_VK_STATE = {
-    isVkLogin: false,
-    session: DEFAULT_SESSION,
-    fetchLogin: () => {}
+	isVkLogin: false,
+	session: DEFAULT_SESSION,
+	fetchLogin: () => {}
 }
 
 export const VkContext = createContext<IVkContext>(DEFAULT_VK_STATE)
@@ -27,7 +27,7 @@ export const VkContext = createContext<IVkContext>(DEFAULT_VK_STATE)
 export const useVKInit = () => {
 	const [state, setState] = useState({
 		isLoaded: false,
-        error: null,
+		error: null,
 	})
 
 	useEffect(() => {
@@ -45,9 +45,9 @@ export const useVKInit = () => {
 				setState(prev => ({ ...prev, isLoaded: true }))
 			} catch (err) {
 				setState(prev => ({
-                    ...prev,
-                    error: err instanceof Error ? err : new Error('VK init failed')
-                }))
+					...prev,
+					error: err instanceof Error ? err : new Error('VK init failed')
+				}))
 			}
 		}
 
@@ -90,10 +90,10 @@ export const VkContextProvider = (props) => {
 	}, [isLoaded, isVkLogin, handleAuth])
 
 	useEffect(() => {
-        if (error) {
-            console.error('VK Init error:', error)
-        }
-    }, [error])
+		if (error) {
+			console.error('VK Init error:', error)
+		}
+	}, [error])
 
 	return (
 		<VkContext.Provider value={{ isVkLogin, session, fetchLogin }}>

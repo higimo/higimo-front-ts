@@ -23,12 +23,12 @@
 }
 
 .looked-this__title {
-    font-weight: 500;
-    font-variant: small-caps;
+	font-weight: 500;
+	font-variant: small-caps;
 	max-width: 4em;
 	font-size: 12vh;
 	line-height: 0.9;
-    letter-spacing: .09em;
+	letter-spacing: .09em;
 	margin: 0;
 	text-align: center;
 	transform: matrix(1, -0.15, 0, 0.9, 0, 0);

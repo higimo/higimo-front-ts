@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { NokiaMenu } from '../../../components/nokia/nokia-menu'
-import { NokiaMessage } from '../../../components/nokia/nokia-message'
+import { NokiaMenu } from 'components/nokia/nokia-menu'
+import { NokiaMessage } from 'components/nokia/nokia-message'
 
 import '../nokia-style.css'
 

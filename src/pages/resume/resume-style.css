@@ -39,7 +39,7 @@
 
 .resume-page strong {
 	background: #f6f1e5;
-    font-weight: 400;
+	font-weight: 400;
 }
 
 .resume-page .precentation-container {
@@ -68,7 +68,7 @@
 }
 
 .resume-page .slide p + ul {
-    margin: -24px 0 24px 0;
+	margin: -24px 0 24px 0;
 }
 
 .resume-page .slide:nth-child(3n+1) {

@@ -1,14 +1,14 @@
 import { FunctionComponent } from 'preact'
-import { NokiaTagType } from '../../../types'
+import { NokiaTagType } from 'types'
 
 import { useContext, useLayoutEffect, useState } from 'preact/hooks'
 
-import { NokiaMenu } from '../../../components/nokia/nokia-menu'
-import { NokiaPeopleList } from '../../../components/nokia/nokia-people-list'
-import { NokiaTagsGallery } from '../../../components/nokia/nokia-tags-gallery'
+import { NokiaMenu } from 'components/nokia/nokia-menu'
+import { NokiaPeopleList } from 'components/nokia/nokia-people-list'
+import { NokiaTagsGallery } from 'components/nokia/nokia-tags-gallery'
 
 import '../nokia-style.css'
-import { NokiaContext } from '../../../context/nokia'
+import { NokiaContext } from 'context/nokia'
 
 export const NokiaPeopleListPage: FunctionComponent = () => {
 	document.title = 'Нокиа сервис'

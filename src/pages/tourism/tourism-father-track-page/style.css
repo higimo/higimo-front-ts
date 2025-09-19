@@ -1,0 +1,13 @@
+.car-list {
+    font-family: monospace;
+    white-space: break-spaces;
+}
+
+.car-teleport {
+    opacity: .65;
+    margin-left: 100px;
+}
+
+.car-roadmap--maybe {
+    opacity: .65;
+}

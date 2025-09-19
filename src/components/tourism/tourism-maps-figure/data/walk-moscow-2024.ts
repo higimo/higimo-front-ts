@@ -1,4 +1,6 @@
-export const moscow2024Polygon = {
+import { YaMapPolygon } from "./types"
+
+export const moscow2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -858,7 +860,7 @@ export const moscow2024Polygon = {
 	],
 }
 
-export const kuncevo2024Polygon = {
+export const kuncevo2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -907,7 +909,7 @@ export const kuncevo2024Polygon = {
 	],
 }
 
-export const vladikino2024Polygon = {
+export const vladikino2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -927,7 +929,7 @@ export const vladikino2024Polygon = {
 	],
 }
 
-export const luberci2024Polygon = {
+export const luberci2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1042,7 +1044,7 @@ export const luberci2024Polygon = {
 	],
 }
 
-export const kahovskaya2024Polygon = {
+export const kahovskaya2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1060,7 +1062,7 @@ export const kahovskaya2024Polygon = {
 	],
 }
 
-export const nextyugozapad2024Polygon = {
+export const nextyugozapad2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1076,7 +1078,7 @@ export const nextyugozapad2024Polygon = {
 }
 
 // Говорово Компьютерный клуб
-export const solncevo2024Polygon = {
+export const solncevo2024Polygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1107,7 +1109,7 @@ export const solncevo2024Polygon = {
 }
 
 // Биберево
-export const bibirevoPolygon = {
+export const bibirevoPolygon: YaMapPolygon = {
 	type: "Polygon",
 	coordinates: [
 		[
@@ -1120,7 +1122,7 @@ export const bibirevoPolygon = {
 	],
 }
 
-export const stateYear2024 = [
+export const stateYear2024: YaMapPolygon[] = [
 	moscow2024Polygon,
 	kuncevo2024Polygon,
 	vladikino2024Polygon,

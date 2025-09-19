@@ -1,14 +1,14 @@
 import { FunctionComponent } from 'preact'
-import { VkPhotoType } from '../../../types'
+import { VkPhotoType } from 'types'
 
 import { useCallback, useContext, useEffect, useLayoutEffect, useState } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
 
-import { VkContext } from '../../../context/vk'
-import { useMessage } from '../../ui/message-container/useMessage'
-import { TextContainer } from '../../ui/text-container'
-import { VkApi } from '../../../utils/VkApi'
-import { printVkError } from '../../../utils/print-vk-error'
+import { useMessage } from 'components/ui/message-container/useMessage'
+import { TextContainer } from 'components/ui/text-container'
+import { VkApi } from 'utils/VkApi'
+import { printVkError } from 'utils/print-vk-error'
+import { VkContext } from 'context/vk'
 
 export const VkPhotoToolAlbumEdit: FunctionComponent = () => {
 	const { isVkLogin, session, fetchLogin } = useContext(VkContext)

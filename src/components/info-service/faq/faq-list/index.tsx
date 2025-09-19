@@ -1,15 +1,15 @@
 import { FunctionComponent } from 'preact'
-import { FaqType } from '../../../../types'
+import { FaqType } from 'types'
 
-import useApi, { API_STATUS } from '../../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { NotFoundData } from '../../../ui/not-found-data'
-import { Loading } from '../../../accord/accord-single'
+import { Loading } from 'components/ui/loading'
 
-import { ROUTE_LINKS } from '../../../../dic/ROUTE_LINKS'
-import { API_ROUTE } from '../../../../api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { API_ROUTE } from 'dic/api-route'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 export const FaqList: FunctionComponent = () => {
 	const [ faqList ] = useApi<FaqType>(API_ROUTE.faq)

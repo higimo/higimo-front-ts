@@ -1,16 +1,15 @@
 import { FunctionComponent } from 'preact'
-import { LogismType } from '../types'
 
 import cs from 'classnames'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
-
-import { API_ROUTE } from '../../../api-route'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 import '../logism/style.css'
+import { API_ROUTE } from 'dic/api-route'
+import { LogismType } from '../types'
 
 export const Logism: FunctionComponent = () => {
 	const [ logismList ] = useApi<LogismType>(API_ROUTE.logism)

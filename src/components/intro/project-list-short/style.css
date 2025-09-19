@@ -42,22 +42,22 @@
 
 .project-more__button {
 	transition: all 150ms ease-in;
-    margin: 16px auto 8px auto;
-    display: flex;
+	margin: 16px auto 8px auto;
+	display: flex;
 	flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
-    width: 100%;
-    max-width: 320px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border-bottom: 0;
-    font-size: 40px;
-    line-height: .8;
-    opacity: .65;
-    background: #add8e6;
-    color: #000;
+	width: 100%;
+	max-width: 320px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border-bottom: 0;
+	font-size: 40px;
+	line-height: .8;
+	opacity: .65;
+	background: #add8e6;
+	color: #000;
 }
 
 .project-more__button:hover {

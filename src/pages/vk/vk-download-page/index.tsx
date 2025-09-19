@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact';
-import { TextContainer } from '../../../components/ui/text-container';
-import { VkDownloadAlbum } from '../../../components/vk/vk-download-album';
+
+import { TextContainer } from 'components/ui/text-container';
+import { VkDownloadAlbum } from 'components/vk/vk-download-album';
 
 export const VkDownloadPage: FunctionComponent = () => {
 	document.title = 'Скачать свои альбомы'

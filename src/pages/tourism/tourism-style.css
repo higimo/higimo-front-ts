@@ -1,38 +1,49 @@
 .tourism-identy-page {
-    padding-top: 0;
-    padding-bottom: 64px;
+	padding-top: 0;
+	padding-bottom: 64px;
 	font-family: Alegreya Sans, sans-serif;
-    background: #344d3d;
-    color: #fff;
+	background: #344d3d;
+	color: #fff;
+	min-height: 75vh;
 }
 
 .tourism-identy-page a {
-    color: #fff;
-    border-bottom: 1px solid #fff4;
+	color: #fff;
+	border-bottom: 1px solid #fff4;
 }
 
 .tourism-identy-page a:hover {
-    color: #fff;
-    border-bottom: 1px solid #fff;
+	color: #fff;
+	border-bottom: 1px solid #fff;
 }
 
 .tourism-identy-page .pseudo-link {
-    border-color: #fff4;
+	border-color: #fff4;
 }
 
 .tourism-identy-page .pseudo-link:hover {
-    border-color: #fff;
+	border-color: #fff;
 }
 
 .tourism-identy-page h1 {
-    margin: 0;
-    padding: 24px 0;
+	margin: 0;
+	padding: 24px 0;
 }
 
 .tourism-identy-page h2 {
-    padding: 16px 0 0 0;
+	padding: 16px 0 0 0;
+}
+
+.tourism-identy-page h2.statistic-header {
+	color: burlywood;
+	font-size: 200%;
 }
 
 .tourism-identy-page h1 {
-    text-align: center;
+	text-align: center;
+}
+
+.tourism-identy-page .precentation-container {
+	padding-top: 80px;
+	padding-bottom: 80px;
 }

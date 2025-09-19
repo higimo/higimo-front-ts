@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../vk-style.css'
 

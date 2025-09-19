@@ -1,17 +1,15 @@
 import { FunctionComponent } from 'preact'
-import { NokiaTagType } from '../../../types'
+import { NokiaTagType } from 'types'
 
 import { useContext } from 'preact/hooks'
 
-import { NokiaContext, NokiaContextType } from '../../../context/nokia'
-
-import { PersonMiniProfile } from '../person-mini-profile'
-
 import '../nokia-style.css'
+import { NokiaContext, NokiaContextType } from 'context/nokia'
+import { PersonMiniProfile } from '../person-mini-profile'
 
 type NokiaPeopleListPropsType = {
 	filter: NokiaTagType['id'];
-    updateFilter: (tag: NokiaTagType["id"]) => void;
+	updateFilter: (tag: NokiaTagType["id"]) => void;
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (props) => {
 	const {

@@ -1,12 +1,11 @@
 import { FunctionComponent } from 'preact'
 
-import { BackgroundImage } from '../ui/background-image'
-import { FullWidthContainer, FullWidthColumn } from '../ui/full-width-container'
-import { OnlyAdmin } from '../util/only-admin'
-
-import { EXTERNAL_LINKS } from '../../dic/EXTERNAL_LINKS'
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import './style.css'
+import { BackgroundImage } from 'components/ui/background-image'
+import { FullWidthColumn, FullWidthContainer } from 'components/ui/full-width-container'
+import { OnlyAdmin } from 'components/util/only-admin'
 
 export const TourismCityStarForm: FunctionComponent = () => (
 	<OnlyAdmin>

@@ -1,15 +1,15 @@
 import { YaMapType } from "../../../types"
 
-import useApi, { API_STATUS } from "../../../hook/use-api"
+import useApi, { API_STATUS } from "hook/use-api"
 
-import { TextContainer } from "../../ui/text-container"
-import { NotFoundData } from "../../ui/not-found-data"
-import { Loading } from "../../accord/accord-single"
+import { NotFoundData } from "components/ui/not-found-data"
 
-import { ROUTE_LINKS } from "../../../dic/ROUTE_LINKS"
-import { API_ROUTE } from "../../../api-route"
+import { Loading } from "components/ui/loading"
 
+import 'pages/tourism/tourism-style.css'
 import './style.css'
+import { API_ROUTE } from "dic/api-route"
+import { ROUTE_LINKS } from "dic/ROUTE_LINKS"
 
 export const TourismWalkGallery = () => {
 	const [ yamapList ] = useApi<YaMapType>(API_ROUTE.yamap)
@@ -24,17 +24,16 @@ export const TourismWalkGallery = () => {
 
 	return (
 		<div className="tourism-walk-gallery">
-			<TextContainer>
-				<div className="tourism-walk-gallery__list">
-					{yamapList.data.map(item => (
-						<div className="tourism-walk-gallery__item">
-							<a href={ROUTE_LINKS.tourismWalkDetail({ idcode: item.code })}>
-								{item.name}
-							</a>
-						</div>
-					))}
-				</div>
-			</TextContainer>
+			<h3>Конструктор карт</h3>
+			<ul className="tourism-walk-gallery__list">
+				{yamapList.data.map(item => (
+					<li className="tourism-walk-gallery__item">
+						<a href={ROUTE_LINKS.tourismWalkDetail({ idcode: item.code })}>
+							{item.name}
+						</a>
+					</li>
+				))}
+			</ul>
 		</div>
 	)
 }

@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { PronIndex } from '../../../../components/info-service/pron'
+import { PronIndex } from 'components/info-service/pron'
 
 export const PronPage: FunctionComponent = props => {
 	document.title = 'pron'

@@ -1,20 +1,18 @@
-import { ProjectType } from '../../../types'
+import { ProjectType } from 'types'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'preact/hooks'
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 import { useRoute } from 'preact-iso'
 
-import { Message } from '../../ui/message'
-import { ShowFormResult } from '../../form/show-form-result'
-import { NotFoundData } from '../../ui/not-found-data'
-import { Loading } from '../../accord/accord-single'
-
-import sendRequest from '../../../utils/send-request'
-
-import { API_ROUTE } from '../../../api-route'
+import { Message } from 'components/ui/message'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { Loading } from 'components/ui/loading'
 
 import './style.css'
+import sendRequest from 'utils/send-request'
+import { API_ROUTE } from 'dic/api-route'
+import { ShowFormResult } from 'components/form/show-form-result'
 
 const onSubmit = setStatus => async values => {
 	const res = await sendRequest(

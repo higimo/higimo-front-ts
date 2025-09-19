@@ -1,25 +1,25 @@
 .feedback-link {
 	display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
+	flex-wrap: wrap;
+	gap: 24px;
 	font-family: Alegreya Sans, sans-serif;
 }
 
 .feedback-link__link {
 	background: #fff;
-    width: calc(25% - 24px);
-    border: 1px solid #e5e6ea;
-    padding: 1em;
-    line-height: 1.2;
-    border-radius: 8px;
-    color: #000;
+	width: calc(25% - 24px);
+	border: 1px solid #e5e6ea;
+	padding: 1em;
+	line-height: 1.2;
+	border-radius: 8px;
+	color: #000;
 	transition: all 100ms ease-in;
 }
 
 .feedback-link__name {
 	display: inline;
 	word-wrap: break-word;
-    border-bottom: 1px solid rgba(0, 0, 0, .15);
+	border-bottom: 1px solid rgba(0, 0, 0, .15);
 }
 
 .feedback-link__link:hover {

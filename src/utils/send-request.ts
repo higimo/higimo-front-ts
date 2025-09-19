@@ -3,9 +3,9 @@ import { getAuthPair } from './get-auth-pair'
 import httpBuildQuery from 'http-build-query'
 
 export interface SendRequestOptions {
-    method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-    auth?: { login: string; pass: string } | null;
-    values?: Record<string, any>;
+	method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+	auth?: { login: string; pass: string } | null;
+	values?: Record<string, any>;
 }
 
 const sendRequest = <T = any>(

@@ -12,7 +12,7 @@
 	overflow: hidden;
 	border-radius: var(--project-border-radius);
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 }
 
 .project__item--high-size { width: 100%; }
@@ -26,7 +26,7 @@
 }
 
 .project__image {
-    display: flex;
+	display: flex;
 	height: 100%;
 	position: relative;
 	pointer-events: all;
@@ -37,9 +37,9 @@
 .project__image-anons {
 	transition: all 75ms ease-in-out;
 	transform: scale(0.975);
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
 	max-height: var(--project-image-max-heigth);
 	border-radius: var(--project-border-radius);
 }
@@ -74,7 +74,7 @@ a.project__title {
 .project__tags {
 	transition: all 150ms ease-in;
 	display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 	gap: 4px;
 	position: absolute;
 	left: 0;

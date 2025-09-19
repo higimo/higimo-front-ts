@@ -1,0 +1,55 @@
+:root {
+	--factoid-gap: 32px;
+	--factoid-row: 4;
+}
+
+.factoid-row {
+	padding: 16px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	gap: var(--factoid-gap);
+}
+
+.factoid {
+	display: flex;
+	flex-direction: column;
+	/* TODO: правильная ширина, наконец-то! */
+	width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
+	min-width: 140px;
+}
+.factoid__digit {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin-bottom: 2px;
+}
+.factoid__digit-counter {
+	font-size: 300%;
+	line-height: 0.75;
+	font-feature-settings: 'lnum', 'tnum';
+}
+.factoid__digit-dimension {
+	font-size: 85%;
+}
+.factoid__description {
+	font-size: 85%;
+	line-height: 1.1;
+}
+@media (min-width: 768px) {
+	.factoid {
+		min-width: 270px;
+	}
+	.factoid__digit-counter {
+		font-size: 800%;
+	}
+	.factoid__digit-dimension {
+		font-size: 120%;
+		opacity: .7;
+	}
+	.factoid__description {
+		font-size: 100%;
+		line-height: 1.1;
+	}
+}

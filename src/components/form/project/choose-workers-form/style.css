@@ -1,0 +1,66 @@
+.workers-form {
+	max-width: 600px;
+	margin: 20px auto;
+	padding: 20px;
+	border: 1px solid #eee;
+	border-radius: 8px;
+}
+
+.workers-list {
+	margin-top: 15px;
+}
+
+.worker-item {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.worker-item:last-child {
+	border-bottom: none;
+}
+
+.worker-info {
+	margin-bottom: 10px;
+}
+
+.worker-tag {
+	cursor: pointer;
+	background-color: #f0f0f0;
+	padding: 5px 10px;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+.worker-tag:hover {
+	background-color: #e0e0e0;
+}
+
+.worker-role label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+
+.worker-role input {
+	padding: 8px 12px;
+	width: 100%;
+	max-width: 300px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.submit-button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.submit-button:hover {
+	background-color: #45a049;
+}

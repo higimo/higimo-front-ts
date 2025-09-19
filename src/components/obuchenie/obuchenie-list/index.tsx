@@ -1,15 +1,15 @@
 import { FunctionComponent } from 'preact'
-import { LectionType } from '../../../types'
+import { LectionType } from 'types'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
-import { API_ROUTE } from '../../../api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { API_ROUTE } from 'dic/api-route'
 
 export const ObuchenieList: FunctionComponent = () => {
 	const [ lectionList ] = useApi<LectionType>(API_ROUTE.lection)

@@ -1,9 +1,10 @@
 .tourism-main-menu {
-    background: rgba(55, 131, 84, .42);
-    position: sticky;
-    top: 48px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 2px 4px -2px rgb(0, 0, 0, .05), 0 6px 12px -4px rgb(0, 0, 0, .05), 0 18px 36px -8px rgb(0, 0, 0, .05);
+	z-index: 2;
+	background: rgba(55, 131, 84, .42);
+	position: sticky;
+	top: 48px;
+	backdrop-filter: blur(6px);
+	box-shadow: 0 2px 4px -2px rgb(0, 0, 0, .05), 0 6px 12px -4px rgb(0, 0, 0, .05), 0 18px 36px -8px rgb(0, 0, 0, .05);
 }
 
 @media (max-width: 576px) {

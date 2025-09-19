@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { YoutubeType } from '../../../types'
+import { YoutubeType } from 'types'
 
 import './style.css'
 

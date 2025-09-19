@@ -1,21 +1,21 @@
 import { FunctionComponent } from 'preact'
-import { ProjectType, VendorType } from '../../../types'
-import { filterType } from '../../project/project-tag-gallery/filter-type'
+import { ProjectType, VendorType } from 'types'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 import { useMemo } from 'preact/hooks'
 
-import { TextContainer } from '../../ui/text-container'
-import { ProjectTag } from '../../project/project-tag'
-import { NotFoundData } from '../../ui/not-found-data'
-import { Loading } from '../../accord/accord-single'
+import { TextContainer } from 'components/ui/text-container'
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import { ANCHOR_LINKS } from '../../../dic/ANCHOR_LINKS'
-import { API_ROUTE } from '../../../api-route'
+import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'
-import { ProjectList } from '../../project/project-list'
-import { ProjectMore } from '../../project/project-more/ProjectMore'
+import { Loading } from 'components/ui/loading'
+import { API_ROUTE } from 'dic/api-route'
+import { ProjectTag } from 'components/project/project-tag'
+import { filterType } from 'components/project/project-tag-gallery/filter-type'
+import { ProjectList } from 'components/project/project-list'
+import { ProjectMore } from 'components/project/project-more/ProjectMore'
 
 export const ProjectListShort: FunctionComponent = () => {
 	const [ highProjectList ] = useApi<ProjectType>('/api/v1/project/project', {

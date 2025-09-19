@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { NokiaMenu } from '../../../components/nokia/nokia-menu'
-import { NokiaPeopleDetailCard } from '../../../components/nokia/nokia-people-detail-card'
+import { NokiaMenu } from 'components/nokia/nokia-menu'
+import { NokiaPeopleDetailCard } from 'components/nokia/nokia-people-detail-card'
 
 import '../nokia-style.css'
 

@@ -11,12 +11,7 @@ export const aboutInviteList: AboutDataType[] = [
 	{
 		name: "Мои вещи",
 		link: ROUTE_LINKS.thingsIndex,
-		description: "Штуки, которые я использую в повседневной жизни"
-	},
-	{
-		name: "Список желаний",
-		link: EXTERNAL_LINKS.wishlist,
-		description: "Если думаете, что мне подарить — есть пара идей"
+		description: "Перепись предметов, чтобы не отсматривать их каждый раз"
 	},
 	{
 		name: "Кинолог",
@@ -37,11 +32,6 @@ export const aboutInviteList: AboutDataType[] = [
 		name: "FAQ",
 		link: ROUTE_LINKS.faqIndex,
 		description: "Чтобы не искать и компилировать ответ на сложный вопрос каждый раз, я собираю их в специальную копилку"
-	},
-	{
-		name: "Мои вещички",
-		link: ROUTE_LINKS.thingsIndex,
-		description: "Перепись предметов, чтобы не отсматривать их каждый раз"
 	},
 	{
 		name: "Резюме",

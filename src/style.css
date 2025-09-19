@@ -147,9 +147,9 @@ p {
 }
 
 .magic-ball {
-    position: relative;
-    width: 100%;
-    height: 70vh;
+	position: relative;
+	width: 100%;
+	height: 70vh;
 }
 
 .epos {
@@ -276,7 +276,7 @@ p {
 
 .organisation-list {
 	margin: 0 auto;
-    max-width: 540px;
+	max-width: 540px;
 	font-size: 1.2rem;
 	line-height: 1.8;
 	padding: 0;
@@ -328,7 +328,7 @@ form.container {
 	grid-template-columns: 9rem 16rem;
 	grid-gap: 1rem;
 	padding: 32px;
-    border-radius: 16px;
+	border-radius: 16px;
 	background: #e6d6902e;
 	box-shadow:
 		0 1px 1px 0px #09789180,
@@ -364,5 +364,20 @@ h3 {
 }
 
 .nowrap {
-    white-space: nowrap
+	white-space: nowrap
+}
+
+.yandex-map {
+	animation: ani 500ms forwards;
+}
+
+@keyframes ani {
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

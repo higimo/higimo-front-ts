@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { Emailer } from '../../../../components/emailer'
+import { Emailer } from 'components/emailer'
 
 export const EmailerPage: FunctionComponent = () => {
 	document.title = 'Эмайлер'

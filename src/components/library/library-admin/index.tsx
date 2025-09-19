@@ -3,8 +3,8 @@ import { FunctionalComponent } from 'preact'
 import { useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
-import sendRequest, { SendRequestOptions } from '../../../utils/send-request'
-import { getAuthPair } from '../../../utils/get-auth-pair'
+import sendRequest, { SendRequestOptions } from 'utils/send-request'
+import { getAuthPair } from 'utils/get-auth-pair'
 
 import './style.css'
 
@@ -24,7 +24,7 @@ type FormValues = {
 	anons: string;
 }
 
-// TODO смотреть src\components\choose-input\index.tsx
+// TODO добавить комбобокс
 export const LibraryAdmin: FunctionalComponent = () => {
 	const [ status, setStatus ] = useState()
 	const { register, handleSubmit, reset } = useForm<FormValues>()

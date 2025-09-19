@@ -4,11 +4,11 @@ import cookies from 'js-cookie'
 
 import { useForm } from 'react-hook-form'
 import { useLocation, useRoute } from 'preact-iso'
-import { useAuth } from '../../../hook/use-auth'
+import { useAuth } from 'hook/use-auth'
 
-import sendRequest, { SendRequestOptions } from '../../../utils/send-request'
+import sendRequest, { SendRequestOptions } from 'utils/send-request'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 

@@ -1,19 +1,19 @@
 import { FunctionComponent } from 'preact'
-import { CreditsType, PortfolioProjectType, ProjectTagType, ProjectType, TagNameType, VendorType, WorkerType } from '../../../types'
-import { filterType } from '../project-tag-gallery/filter-type'
+import { CreditsType, PortfolioProjectType, ProjectTagType, ProjectType, TagNameType, VendorType, WorkerType } from 'types'
 
 import { useEffect, useState } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
 
-import { NotFoundPage } from '../../../pages/not-found-page'
-
-import sendRequest from '../../../utils/send-request'
-
-import { ProjectTag } from '../project-tag'
-import { Loading } from '../../accord/accord-single'
-import { TextContainer } from '../../ui/text-container'
+import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
+import sendRequest from 'utils/send-request'
+import { NotFoundPage } from 'pages/not-found-page'
+import { OnlyAdmin } from 'components/util/only-admin'
+import { WorkerInput } from 'components/form/project/worker-input'
+import { ProjectTag } from '../project-tag'
+import { filterType } from '../project-tag-gallery/filter-type'
 
 const getHumanDate = str => new Date(str || '').toLocaleDateString()
 
@@ -64,7 +64,6 @@ const useProjectViewer = (vendorProp: string, projectProp: string): [PortfolioPr
 	return [curProject, isLoading]
 }
 
-// TODO: Добавить <WorkerInput projectId={id} />
 export const ProjectViewer: FunctionComponent = () => {
 	const { params: { vendor, project } } = useRoute()
 
@@ -92,13 +91,17 @@ export const ProjectViewer: FunctionComponent = () => {
 			<TextContainer>
 				<h1>{name}</h1>
 			</TextContainer>
-			{console.log(text)}
 			<div
 				className="content"
 				dangerouslySetInnerHTML={{
 					__html: text.replace(/\.\/asset/g, `/assets/${baseurl}/asset`).replace(/\/\//g, '/')
 				}}
 			/>
+			<OnlyAdmin>
+				<div className="project-viewer__credits">
+					<WorkerInput projectId={curProject.id} />
+				</div>
+			</OnlyAdmin>
 			{!!(curProject.role || []).length && (
 				<div className="project-viewer__credits">
 					{(curProject.role || []).map(role => (

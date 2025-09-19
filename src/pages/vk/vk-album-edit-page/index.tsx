@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'preact'
-import { VkPhotoToolAlbumEdit } from '../../../components/vk/vk-photo-tool-album-edit';
+
+import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit';
+import { TextContainer } from 'components/ui/text-container';
 
 import '../vk-style.css'
-import { TextContainer } from '../../../components/ui/text-container';
 
 export const VkAlbumEditPage: FunctionComponent = () => {
 	document.title = 'Просмотр альбома'

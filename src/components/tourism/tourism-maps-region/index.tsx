@@ -1,9 +1,9 @@
-import {createRef} from 'preact'
+import { createRef } from 'preact'
 
-import {
-	YMaps,
-	Map,
-} from 'react-yandex-maps'
+import { YMaps, Map } from 'react-yandex-maps'
+
+import '../yandex-map.css'
+import { useWindowSize } from 'hook/use-window-size'
 
 const districtVisited = [
 	'RU-VLA', 'RU-VGG', 'RU-KGD', 'RU-KIR', 'RU-LEN', 'RU-MOS', 'RU-NIZ', 'RU-NGR',
@@ -22,15 +22,14 @@ const districtVacant = [
 
 const getDistrictColor = (iso) => {
 	return (
-		districtVisited.includes(iso) ? '#ff00ff' :
-			(districtVacant.includes(iso) ? '#8396bf' : '#b7b7b7')
+		districtVisited.includes(iso) ? '#ff4aff' :
+			(districtVacant.includes(iso) ? '#5a7bc3' : '#b7b7b7')
 	)
-		
 }
 
 export const TourismMapsRegion = () => {
-	// @ts-ignore
-	const mapRef = createRef(null)
+	const mapRef = createRef()
+	const { width, height } = useWindowSize();
 
 	const handleMapLoad = ymaps => {
 		(async () => {
@@ -46,32 +45,34 @@ export const TourismMapsRegion = () => {
 				collection.add(new ymaps.GeoObject(feature, {
 					fillColor: getDistrictColor(feature.properties.iso3166),
 					strokeColor: getDistrictColor(feature.properties.iso3166),
-					strokeOpacity: 0.3,
-					fillOpacity: 0.3,
+					strokeOpacity: 0.4,
+					fillOpacity: 0.4,
 				}))
 			})
 		})()
 	}
 
 	return (
-		<YMaps query={{ lang: 'ru_RU' }}>
-			<Map
-				// @ts-ignore
-				instanceRef={mapRef}
-				onLoad={handleMapLoad}
-				width="1000px"
-				height="500px"
-				defaultState={{
-					center: [65, 100],
-					zoom: 2,
-				}}
-				modules={[
-					'borders',
-					'GeoObjectCollection',
-					'GeoObject',
-				]}
-			>
-			</Map>
-		</YMaps>
+		<div className="yandex-map">
+			<YMaps query={{ lang: 'ru_RU' }}>
+				<Map
+					// @ts-ignore
+					instanceRef={mapRef}
+					onLoad={handleMapLoad}
+					width={Math.min(width * .85, 1200)}
+					height={Math.min(height * .6, 750)}
+					defaultState={{
+						center: [65, 100],
+						zoom: 3,
+					}}
+					modules={[
+						'borders',
+						'GeoObjectCollection',
+						'GeoObject',
+					]}
+				>
+				</Map>
+			</YMaps>
+		</div>
 	)
 }

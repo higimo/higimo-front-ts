@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact';
-import { ProjectFullInfoType } from '../../../types';
-import { ProjectElement } from '../project-element'
+import { ProjectFullInfoType } from 'types';
 
 import './style.css'
+import { ProjectElement } from '../project-element';
 
 // TODO На широких экранах 5 в ряд делать? Одновременно в коде и css надо
 const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): number => {
@@ -20,37 +20,37 @@ const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): 
 }
 
 function packElements(elements: ProjectFullInfoType[], itemInRow): ProjectFullInfoType[][] {
-    const rows: ProjectFullInfoType[][] = [];
+	const rows: ProjectFullInfoType[][] = [];
 
-    for (const element of elements) {
-        if (convertCoverSizeToWidth(element.cover_size) === 4) {
-            rows.push([element])
-            continue
-        }
+	for (const element of elements) {
+		if (convertCoverSizeToWidth(element.cover_size) === 4) {
+			rows.push([element])
+			continue
+		}
 
-        let placed = false
+		let placed = false
 
-        for (let i = Math.max(0, rows.length - 6); i < rows.length; i++) {
-            const row = rows[i]
-            const rowWidth = row.reduce((sum, el) => sum + convertCoverSizeToWidth(el.cover_size), 0)
+		for (let i = Math.max(0, rows.length - 6); i < rows.length; i++) {
+			const row = rows[i]
+			const rowWidth = row.reduce((sum, el) => sum + convertCoverSizeToWidth(el.cover_size), 0)
 
-            if (rowWidth + convertCoverSizeToWidth(element.cover_size) <= 4) {
+			if (rowWidth + convertCoverSizeToWidth(element.cover_size) <= 4) {
 				if (convertCoverSizeToWidth(element.cover_size) == 2) {
 					row.unshift(element)
 				} else {
 					row.push(element)
 				}
-                placed = true
-                break
-            }
-        }
+				placed = true
+				break
+			}
+		}
 
-        if (!placed) {
-            rows.push([element])
-        }
-    }
+		if (!placed) {
+			rows.push([element])
+		}
+	}
 
-    return rows;
+	return rows;
 }
 
 

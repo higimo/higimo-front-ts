@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { PrecentationContainer } from '../../ui/precentation-container/PrecentationContainer'
-import { TextContainer } from '../../ui/text-container'
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
 
 import { contactListData } from './contactListData'
 

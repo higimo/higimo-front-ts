@@ -1,24 +1,23 @@
 import { FunctionComponent } from 'preact'
-import { UpdateNewsType } from './types'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { getDate } from '../../../utils/get-date'
+import { getDate } from 'utils/get-date'
 
-import { TilesGallery } from '../../ui/tiles-gallery/tiles-gallery'
-import { TileElement } from '../../ui/tile-element/tile-element'
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
+import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element/tile-element'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import tg     from './img/tg.svg'
+import tg	 from './img/tg.svg'
 import tech   from './img/tech.png'
 import higimo from './img/higimo.png'
 import screen from './img/screen.png'
-import rak    from './img/rak.png'
-
-import { API_ROUTE } from '../../../api-route'
+import rak	from './img/rak.png'
 
 import './style.css'
+import { UpdateNewsType } from './types'
+import { API_ROUTE } from 'dic/api-route'
 
 const imgMapping = {
 	'Техники → навыки → счастье': [tg, tech],

@@ -1,27 +1,27 @@
 .last-updates {
-    background: #efefef;
-    font-size: 18px
+	background: #efefef;
+	font-size: 18px
 }
 
 @media (min-width: 768px) {
-    .last-updates {
-        font-size:24px
-    }
+	.last-updates {
+		font-size:24px
+	}
 }
 
 .last-updates .tiles-gallery__container {
-    column-gap: 16px;
-    columns: 320px 4;
-    display: block;
-    max-width: 100%
+	column-gap: 16px;
+	columns: 320px 4;
+	display: block;
+	max-width: 100%
 }
 
 .last-updates .tiles-gallery__container .tile-element {
-    display: inline-block
+	display: inline-block
 }
 
 .last-updates .tiles-gallery__content {
-    max-width: 100%
+	max-width: 100%
 }
 
 .post-element {

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TilesGallery } from '../../ui/tiles-gallery/tiles-gallery'
-import { TileElement } from '../../ui/tile-element/tile-element';
+import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element/tile-element';
 
 import { AboutDataType, aboutInviteList } from './data'
 
@@ -24,6 +24,6 @@ export const AboutInvite: FunctionComponent = () => (
 		className="about-invite"
 		title="Храню знания"
 		left={aboutInviteList.slice(0, HALF_LIST).map(item => (<TileElementCon {...item} />))}
-		right={aboutInviteList.slice(HALF_LIST, aboutInviteList.length).map(item => (<TileElementCon {...item} />))}
+		right={aboutInviteList.slice(HALF_LIST).map(item => (<TileElementCon {...item} />))}
 	/>
 )

@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../components/ui/text-container'
-import { ContactList } from '../../../components/intro/contact-list'
-import { OtherResume } from '../../../components/other-resume'
-import { PrecentationContainer } from '../../../components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
+import { ContactList } from 'components/intro/contact-list'
+import { OtherResume } from 'components/other-resume'
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
 
 import '../resume-style.css'
 

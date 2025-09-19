@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../ui/text-container'
+import { TextContainer } from 'components/ui/text-container'
 
-import { EXTERNAL_LINKS } from '../../../dic/EXTERNAL_LINKS'
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 

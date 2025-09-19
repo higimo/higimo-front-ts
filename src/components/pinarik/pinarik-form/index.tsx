@@ -5,16 +5,15 @@ import cs from 'classnames'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Dispatch, StateUpdater }  from 'preact/hooks'
 
-import { useAuth } from '../../../hook/use-auth'
-import { useFormStatus } from '../../../hook/use-form-status'
+import { useAuth } from 'hook/use-auth'
+import { useFormStatus } from 'hook/use-form-status'
 
-import sendRequest from '../../../utils/send-request'
-import { getAuthPair } from '../../../utils/get-auth-pair'
-
-import { FormButton } from '../../form/form-button'
-import { ShowFormResult } from '../../form/show-form-result'
+import { getAuthPair } from 'utils/get-auth-pair'
 
 import './style.css'
+import sendRequest from 'utils/send-request'
+import { FormButton } from 'components/form/form-button'
+import { ShowFormResult } from 'components/form/show-form-result'
 
 const onSubmit = addStatus => values => {
 	const { login, pass } = getAuthPair()

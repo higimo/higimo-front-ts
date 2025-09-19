@@ -1,24 +1,24 @@
+import { useRoute } from 'preact-iso'
+
 import { FunctionComponent } from 'preact'
 
-import { MaybeLink } from '../maybe-link/maybe-link'
-
-import { globalRouter } from '../../../router'
 
 import './style.css'
+import { MaybeLink } from '../maybe-link/maybe-link'
+import { globalRouter } from 'dic/router'
 
 const convertPathToUrl = (path: string) => {
 	const parts = path.split('/').filter(Boolean)
-    return parts.reduce(
+	return parts.reduce(
 		(acc, part) => acc.concat(`${acc[acc.length - 1]}/${part}/`.replace('//', '/')),
 		['/']
 	)
 }
 
-type BreadcrumpsPropsType = {
-	path: string;
-}
-export const Breadcrumps: FunctionComponent<BreadcrumpsPropsType> = (props) => {
-	const breadcrumbs = convertPathToUrl(props.path)
+export const Breadcrumps: FunctionComponent = () => {
+	const { path } = useRoute()
+	
+	const breadcrumbs = convertPathToUrl(path)
 	const breadcrumbsLength = breadcrumbs.length - 1
 	return (
 		<div className="breadcrumbs">

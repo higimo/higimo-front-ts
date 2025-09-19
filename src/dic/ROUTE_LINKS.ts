@@ -27,6 +27,7 @@ const ROUTE_NOKIA_LINKS = Object.freeze({
 	nokiaPeopleEdit_CONST: '/nokia/people/:personId/edit/',
 	nokiaPeopleEdit: generateLink<'personId'>('/nokia/people/:personId/edit/'),
 	nokiaStatistic: '/nokia/statistic/',
+	nokiaPinarik: '/nokia/pinarik/',
 })
 
 const ROUTE_TOURISM_LINKS = Object.freeze({
@@ -35,14 +36,15 @@ const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismNashe_CONST: '/tourism/nashe/:year/',
 	tourismNashe2017: '/tourism/nashe/2017/',
 	tourismNashe2018: '/tourism/nashe/2018/',
-	tourismWalkIndex: '/tourism/walk/',
 	tourismWalkDetail: generateLink<'idcode'>('/tourism/walk/:idcode/'),
 	tourismWalkDetail_CONST: '/tourism/walk/:idcode/',
 	tourismChecklist: '/tourism/checklist/',
-	tourismMapsIndex: '/tourism/maps/',
 	tourismMapsRegion: '/tourism/maps/region/',
-	tourismMapsMoscowWalk: '/tourism/maps/moscow-walk/',
+	tourismMapsMoscowWalkaround: '/tourism/maps/moscow-walkaround/',
+	tourismMapsMoscowBar: '/tourism/maps/moscow-bar/',
 	tourismCityIndex: '/tourism/city/',
+	tourismVisited: '/tourism/visited/',
+	tourismFatherTrack: '/tourism/father-track/',
 })
 
 const ROUTE_LIST_LIST_LINKS = Object.freeze({
@@ -150,7 +152,6 @@ const ROUTE_LIBRARY_LINKS = Object.freeze({
 // Сервисы о себе
 const ROUTE_SERVICE_ABOUT_ME_LINKS = Object.freeze({
 	...ROUTE_LIBRARY_LINKS,
-	pinarik: '/pinarik/',
 })
 
 export const ROUTE_LINKS = {

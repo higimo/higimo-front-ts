@@ -1,16 +1,14 @@
-import { LectionType } from '../../../types'
+import { LectionType } from 'types'
 
 import markdownit from 'markdown-it'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 import { useRoute } from 'preact-iso'
 
-import { NotFoundPage } from '../../../pages/not-found-page'
-
-import { TextContainer } from '../../ui/text-container'
-import { Loading } from '../../accord/accord-single'
-
-import { API_ROUTE } from '../../../api-route'
+import { TextContainer } from 'components/ui/text-container'
+import { Loading } from 'components/ui/loading'
+import { NotFoundPage } from 'pages/not-found-page'
+import { API_ROUTE } from 'dic/api-route'
 
 export const ObuchenieSingle = () => {
 	const { params: { idcode } } = useRoute()

@@ -2,10 +2,9 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { PrecentationContainer } from '../precentation-container/PrecentationContainer'
-import { TextContainer } from '../text-container'
-
 import './style.css'
+import { PrecentationContainer } from '../precentation-container/PrecentationContainer';
+import { TextContainer } from '../text-container';
 
 /**
 * @param id Ссылка для якоря, чтоб подскраливать

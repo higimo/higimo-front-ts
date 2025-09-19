@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { ObuchenieList } from '../../../../../components/obuchenie/obuchenie-list'
+import { ObuchenieList } from 'components/obuchenie/obuchenie-list'
 
 export const ObuchenieListPage: FunctionComponent = () => {
 	document.title = 'Обучение'

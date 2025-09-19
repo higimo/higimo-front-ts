@@ -1,24 +1,25 @@
 import { createRef, Fragment } from 'preact'
 
 import { YMaps, Map } from 'react-yandex-maps'
-import { TextContainer } from '../../ui/text-container'
-import { Tag } from '../../ui/tag'
+import { TextContainer } from 'components/ui/text-container'
+import { Tag } from 'components/ui/tag'
 import { useEffect, useState } from 'preact/hooks'
 
 import '../yandex-map.css'
-import { useWindowSize } from '../../../hook/use-window-size'
+import { useWindowSize } from 'hook/use-window-size'
+import { HigimoMapPoint, YaMapPolygon } from './data/types'
 
 const MAP_MODE = {
 	INIT: 'INIT',
 	2024: '2024',
 	2021: '2021',
 	'2021vs2024': '2021vs2024',
+	'POV': 'POV',
 }
 
-const loadStateData = async () => {
-	// TODO: всё же вернуть moscowPovPoints
-	const { stateYear2021, stateYear2024 } = await import('./data/common')
-	return { stateYear2021, stateYear2024 }
+const loadStateData = async (): Promise<MoscowWalkaroundStateDataType> => {
+	const { stateYear2021, stateYear2024, moscowPovPoints } = await import('./data/common')
+	return { stateYear2021, stateYear2024, moscowPovPoints }
 }
 
 const updateMap = (map, yamaps, mode, stateData) => {
@@ -76,13 +77,30 @@ const updateMap = (map, yamaps, mode, stateData) => {
 			}))
 		})
 	}
+
+	if (mode === MAP_MODE.POV) {
+		stateData.moscowPovPoints.forEach(stateItem => {
+			map.geoObjects.add(new yamaps.Placemark(
+				stateItem.coord,
+				{
+					hintContent: stateItem.title,
+				},
+			))
+		})
+	}
 }
 
-export const TourismMapsFigure = () => {
+type MoscowWalkaroundStateDataType = {
+	stateYear2021: YaMapPolygon[];
+	stateYear2024: YaMapPolygon[];
+	moscowPovPoints: HigimoMapPoint[];
+}
+
+export const TourismMoscowWalkaround = () => {
 	const refMap = createRef()
 	const [ mode, setMode ] = useState(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)
-	const [stateData, setStateData] = useState(null)
+	const [stateData, setStateData] = useState<MoscowWalkaroundStateDataType>(null)
 	const { width } = useWindowSize();
 
 	const handleMapLoad = ymaps => {
@@ -103,9 +121,10 @@ export const TourismMapsFigure = () => {
 	return (
 		<Fragment>
 			<TextContainer>
-				<Tag onClick={() => setMode(MAP_MODE[2024])}>2024 год</Tag>
-				<Tag onClick={() => setMode(MAP_MODE[2021])}>2021 год</Tag>
-				<Tag onClick={() => setMode(MAP_MODE['2021vs2024'])}>Сравнение 2021 и 2024</Tag>
+				<Tag active={mode === MAP_MODE[2024]} onClick={() => setMode(MAP_MODE[2024])}>2024 год</Tag>
+				<Tag active={mode === MAP_MODE[2021]} onClick={() => setMode(MAP_MODE[2021])}>2021 год</Tag>
+				<Tag active={mode === MAP_MODE['2021vs2024']} onClick={() => setMode(MAP_MODE['2021vs2024'])}>Сравнение 2021 и 2024</Tag>
+				<Tag active={mode === MAP_MODE.POV} onClick={() => setMode(MAP_MODE.POV)}>Точки интереса</Tag>
 			</TextContainer>
 			<div className="yandex-map">
 				<YMaps query={{ lang: 'ru_RU' }}>
@@ -114,7 +133,7 @@ export const TourismMapsFigure = () => {
 						instanceRef={refMap}
 						onLoad={handleMapLoad}
 						width={Math.min(width * .85, 1200)}
-						height='500px'
+						height='900px'
 						defaultState={{
 							zoom: 11,
 							center: [55.73, 37.75],

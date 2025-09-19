@@ -1,0 +1,13 @@
+.choose-tag__group {
+	margin-left: 32px;
+}
+
+.choose-tag {
+	margin-left: -32px;
+}
+
+.choose-tag__worker-gallery {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}

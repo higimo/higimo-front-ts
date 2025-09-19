@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../../../components/ui/text-container'
-import { PetProjectForm } from '../../../../../components/tool/pet-project-form'
+import { TextContainer } from 'components/ui/text-container'
+import { PetProjectForm } from 'components/tool/pet-project-form'
 
 import '../../pet-project.css'
 

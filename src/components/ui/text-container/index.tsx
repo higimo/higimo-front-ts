@@ -6,7 +6,8 @@ import './style.css'
 
 type TextContainerPropsType = {
 	className?: string;
+	style?: any;
 }
 export const TextContainer: FunctionComponent<TextContainerPropsType> = props => (
-	<div className={cs('text-container', props.className)}>{props.children}</div>
+	<div className={cs('text-container', props.className)} style={props.style}>{props.children}</div>
 )

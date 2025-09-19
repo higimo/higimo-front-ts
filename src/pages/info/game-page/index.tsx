@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../components/ui/text-container'
-import { TableGame } from '../../../components/data/table-game'
+import { TextContainer } from 'components/ui/text-container'
+import { TableGame } from 'components/data/table-game'
 
 export const GamePage: FunctionComponent = () => {
 	document.title = 'Настольные игры'

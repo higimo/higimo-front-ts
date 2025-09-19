@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { FeedbackItem } from '../../../../../components/info-service/feedback/feedback-item'
+import { FeedbackItem } from 'components/info-service/feedback/feedback-item'
 
 import '../../feedback-style.css'
 

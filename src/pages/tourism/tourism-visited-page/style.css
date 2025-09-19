@@ -1,0 +1,15 @@
+.tourism-visualizer-switcher {
+	margin: 16px;
+	justify-content: center;
+}
+.tourism-sort-filter {
+	margin: 16px;
+	justify-content: space-between;
+}
+.tourism-sort-filter .switcher-container {
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+.switcher--center {
+	justify-content: center;
+}

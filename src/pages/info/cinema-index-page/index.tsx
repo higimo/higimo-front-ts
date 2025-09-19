@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../components/ui/text-container'
-import { CinemaIndex } from '../../../components/data/cinema/cinema-index'
+import { TextContainer } from 'components/ui/text-container'
+import { CinemaIndex } from 'components/data/cinema/cinema-index'
 
 export const CinemaIndexPage: FunctionComponent = () => {
 	document.title = 'Кино'

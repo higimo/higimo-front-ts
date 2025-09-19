@@ -1,14 +1,10 @@
-import { LinksType } from "../../../../types"
-
-import useApi, { API_STATUS } from "../../../../hook/use-api"
-
-import { TextContainer } from "../../../ui/text-container"
-import { LinksElement } from "../links-element"
-import { Loading } from "../../../accord/accord-single"
-import { NotFoundData } from "../../../ui/not-found-data"
-
-
-import { API_ROUTE } from "../../../../api-route"
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { TextContainer } from 'components/ui/text-container'
+import { API_ROUTE } from 'dic/api-route'
+import useApi, { API_STATUS } from 'hook/use-api'
+import { LinksType } from 'types'
+import { LinksElement } from '../links-element'
 
 export const LinksList = () => {
 	const [ links ] = useApi<LinksType>(API_ROUTE.link)

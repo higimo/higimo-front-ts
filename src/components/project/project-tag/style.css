@@ -3,35 +3,35 @@
 }
 
 .project-tag__category-group {
-    display: flex;
-    gap: 8px;
-    margin: 0 0 4px 0;
+	display: flex;
+	gap: 8px;
+	margin: 0 0 4px 0;
 }
 
 .project-tag__category-name {
-    padding-right: 16px;
-    display: inline-block;
-    font-size: 16px;
+	padding-right: 16px;
+	display: inline-block;
+	font-size: 16px;
 }
 
 .project-tag_element {
-    display: inline-block;
-    margin-right: 8px;
-    font-size: 16px;
-    line-height: 1.2;
-    color: rgba(14, 66, 111, 1);
-    cursor: pointer;
-    transition: all 100ms ease-in;
-    padding-bottom: 2px;
-    background: linear-gradient(0deg, rgba(14, 66, 111, .15) 1px, transparent 1px);
-    border-bottom: none;
-    text-decoration: none;
+	display: inline-block;
+	margin-right: 8px;
+	font-size: 16px;
+	line-height: 1.2;
+	color: rgba(14, 66, 111, 1);
+	cursor: pointer;
+	transition: all 100ms ease-in;
+	padding-bottom: 2px;
+	background: linear-gradient(0deg, rgba(14, 66, 111, .15) 1px, transparent 1px);
+	border-bottom: none;
+	text-decoration: none;
 }
 
 .project-tag_element:hover {
-    background: linear-gradient(0deg, rgba(14, 66, 111, .35) 3px, transparent 3px);
+	background: linear-gradient(0deg, rgba(14, 66, 111, .35) 3px, transparent 3px);
 }
 
 span.project-tag_element {
-    background: linear-gradient(0deg, rgba(14, 66, 111, .55) 3px, transparent 3px);
+	background: linear-gradient(0deg, rgba(14, 66, 111, .55) 3px, transparent 3px);
 }

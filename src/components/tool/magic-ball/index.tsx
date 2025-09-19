@@ -2,7 +2,7 @@ import { Component } from 'preact'
 import { useState } from 'preact/hooks';
 
 var phrases = [
-    'Бес&shy;спорно',
+	'Бес&shy;спорно',
 	'Пред&shy;решено',
 	'Никаких сомнений',
 	'Опреде&shy;лённо да',

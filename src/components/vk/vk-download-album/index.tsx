@@ -1,14 +1,14 @@
 import { FunctionComponent, Fragment } from 'preact';
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks';
-import { useMessage } from '../../ui/message-container/useMessage';
-import { TextContainer } from '../../ui/text-container';
-import { VkContext } from '../../../context/vk';
-import { VKAlbumType } from '../../../types';
-import { printVkError } from '../../../utils/print-vk-error';
-import { useQueue } from '../../../hook/use-queue';
-import { VkApi } from '../../../utils/VkApi';
+import { useMessage } from 'components/ui/message-container/useMessage';
+import { TextContainer } from 'components/ui/text-container';
+import { VKAlbumType } from 'types';
+import { printVkError } from 'utils/print-vk-error';
+import { useQueue } from 'hook/use-queue';
+import { VkApi } from 'utils/VkApi';
 
 import './style.css'
+import { VkContext } from 'context/vk';
 
 export const ALBUM_MAX_COUNT = 3;
 export const QUEUE_TIMER = 1500;

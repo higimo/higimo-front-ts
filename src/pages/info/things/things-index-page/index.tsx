@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../../components/ui/text-container'
-import { ThingsIndex } from '../../../../components/data/things/things-index/ThingsIndex'
+import { TextContainer } from 'components/ui/text-container'
+import { ThingsIndex } from 'components/data/things/things-index/ThingsIndex'
 
 export const ThingsIndexPage: FunctionComponent = () => {
 	document.title = 'Мои вещи'

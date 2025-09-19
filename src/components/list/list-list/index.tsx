@@ -1,15 +1,12 @@
-import { ListerItem } from "../../../types"
-
 import { useRoute } from "preact-iso"
-import useApi, { API_STATUS } from "../../../hook/use-api"
 
-import { convertFlatListToIerah } from "../utils"
-
+import { Loading } from 'components/ui/loading'
+import { API_ROUTE } from "dic/api-route"
+import { NotFoundData } from "components/ui/not-found-data"
+import useApi, { API_STATUS } from "hook/use-api"
+import { ListerItem } from "types"
 import { ListListElement } from "../list-list-element"
-import { Loading } from "../../accord/accord-single"
-import { NotFoundData } from "../../ui/not-found-data"
-
-import { API_ROUTE } from "../../../api-route"
+import { convertFlatListToIerah } from "../utils"
 
 export const ListList = () => {
 	const { params: { idcode = '' } } = useRoute()

@@ -1,15 +1,14 @@
 import { FunctionComponent } from 'preact';
 
-import useApi, { API_STATUS } from '../../../hook/use-api';
+import useApi, { API_STATUS } from 'hook/use-api';
 
-import { TextContainer } from '../../ui/text-container';
-import { Loading } from '../../accord/accord-single';
-import { TableGameType } from '../../../types';
-import { NotFoundData } from '../../ui/not-found-data';
-
-import { API_ROUTE } from '../../../api-route';
+import { TextContainer } from 'components/ui/text-container';
+import { Loading } from 'components/ui/loading'
+import { TableGameType } from 'types';
+import { NotFoundData } from 'components/ui/not-found-data';
 
 import './style.css'
+import { API_ROUTE } from 'dic/api-route';
 
 export const TableGame: FunctionComponent = () => {
 	const [ games ] = useApi<TableGameType>(API_ROUTE.tableGame)

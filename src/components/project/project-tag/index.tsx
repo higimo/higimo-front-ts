@@ -1,21 +1,21 @@
 import { FunctionComponent } from 'preact'
-import { ProjectRoutingFilterNameType } from '../project-tag-gallery/filter-type'
 
 import httpBuildQuery from 'http-build-query'
 
 import { useLocation } from 'preact-iso'
 import { useCallback } from 'preact/hooks'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { ProjectRoutingFilterNameType } from '../project-tag-gallery/filter-type'
 
 const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}): string => {
 	return `${ROUTE_LINKS.projectIndex}?${httpBuildQuery(params)}`
 }
 
 type ProjectTagPropsType = {
-    filterName: ProjectRoutingFilterNameType;
+	filterName: ProjectRoutingFilterNameType;
 	children: string;
 }
 export const ProjectTag: FunctionComponent<ProjectTagPropsType> = props => {

@@ -1,4 +1,4 @@
-import { PeopleType } from '../../../types'
+import { PeopleType } from 'types'
 
 import { useForm } from 'react-hook-form'
 import { useContext, useState, useEffect, useLayoutEffect } from 'preact/hooks'
@@ -6,13 +6,10 @@ import { useRoute } from 'preact-iso'
 
 // import initInformationAction from '../../action/meeting'
 
-import { NokiaContext, NokiaContextType } from '../../../context/nokia'
-
-import sendRequest from '../../../utils/send-request'
-
-import { ShowFormResult } from '../../form/show-form-result'
-
 import '../nokia-style.css'
+import sendRequest from 'utils/send-request'
+import { NokiaContext, NokiaContextType } from 'context/nokia'
+import { ShowFormResult } from 'components/form/show-form-result'
 
 type OnSubmitType = (fewe: any) => (jfeiow: any) => void
 const onSubmit: OnSubmitType = addStatus => values => {

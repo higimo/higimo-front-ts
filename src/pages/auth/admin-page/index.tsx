@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { AUTH_STATUS_DIC, useAuth } from '../../../hook/use-auth'
-import { TextContainer } from '../../../components/ui/text-container'
-import { EXTERNAL_LINKS } from '../../../dic/EXTERNAL_LINKS'
+import { AUTH_STATUS_DIC, useAuth } from 'hook/use-auth'
+import { TextContainer } from 'components/ui/text-container'
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 export const AdminPage: FunctionComponent = () => {
 	document.title = 'Настольные игры'

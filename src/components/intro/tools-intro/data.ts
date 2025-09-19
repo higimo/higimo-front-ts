@@ -59,7 +59,7 @@ export const unfinishedToolList: ToolDataType[] = [
 	{
 		name: 'Пинарик',
 		isAdmin: true,
-		link: ROUTE_LINKS.pinarik,
+		link: ROUTE_LINKS.nokiaPinarik,
 		description: 'Отслеживание своего довольства работая в календаре-хитмапе'
 	},
 ] as const

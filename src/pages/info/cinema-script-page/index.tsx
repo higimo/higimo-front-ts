@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../components/ui/text-container'
-import { ScriptList } from '../../../components/data/cinema/script-list'
+import { TextContainer } from 'components/ui/text-container'
+import { ScriptList } from 'components/data/cinema/script-list'
 
 export const CinemaScriptPage: FunctionComponent = () => {
 	document.title = 'Кино'

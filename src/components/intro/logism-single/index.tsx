@@ -1,17 +1,17 @@
 import { FunctionComponent } from 'preact'
-import { LogismType } from '../../logism/types'
 
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { PrecentationContainer } from '../../ui/precentation-container/PrecentationContainer'
-import { TextContainer } from '../../ui/text-container'
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
-import { API_ROUTE } from '../../../api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { LogismType } from 'components/logism/types'
+import { API_ROUTE } from 'dic/api-route'
 
 export const LogismSingle: FunctionComponent = () => {
 	const [ logismDetail ] = useApi<LogismType>(API_ROUTE.logismSingle)

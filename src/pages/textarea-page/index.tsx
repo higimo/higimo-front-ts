@@ -1,13 +1,13 @@
 import { FunctionComponent } from 'preact'
-import { PeopleType } from '../../types';
+import { PeopleType } from 'types';
 
 import { useCallback, useMemo, useState } from 'preact/compat';
-import useApi from '../../hook/use-api';
+import useApi from 'hook/use-api';
 
-import { Loading } from '../../components/accord/accord-single';
-import { NotFoundData } from '../../components/ui/not-found-data';
+import { NotFoundData } from 'components/ui/not-found-data';
 import { MentionSuggest } from './textarea-mention/types';
 import { MentionsInput } from './textarea-mention/MentionsInput';
+import { Loading } from 'components/ui/loading';
 
 export const TextareaPage: FunctionComponent = () => {
 	const [ popleList ] = useApi<PeopleType>('/api/v1/nokia/people')

@@ -1,13 +1,11 @@
 import { FunctionComponent } from "preact";
-import { CinemaType } from "../../../../types";
 
-import useApi, { API_STATUS } from "../../../../hook/use-api"
-
-import { Loading } from "../../../accord/accord-single";
-import { NotFoundData } from "../../../ui/not-found-data";
-
-import { ROUTE_LINKS } from "../../../../dic/ROUTE_LINKS";
-import { API_ROUTE } from "../../../../api-route";
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from "components/ui/not-found-data";
+import { API_ROUTE } from "dic/api-route";
+import { ROUTE_LINKS } from "dic/ROUTE_LINKS";
+import useApi, { API_STATUS } from "hook/use-api";
+import { CinemaType } from "types";
 
 export const ScriptList: FunctionComponent = () => {
 	const [ cinema ] = useApi<CinemaType>(API_ROUTE.cinemaShort)

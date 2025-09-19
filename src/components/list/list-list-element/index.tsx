@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'preact'
-import { ListListType } from '../../../types'
+import { ListListType } from 'types'
 
-import { useAuth } from '../../../hook/use-auth'
+import { useAuth } from 'hook/use-auth'
 
 import sendRequest from '../../../utils/send-request'
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 

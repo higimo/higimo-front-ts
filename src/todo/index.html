@@ -1,0 +1,476 @@
+<style type="text/css">
+	body {
+		font: 400 14pt PT Sans, sans-serif;
+	}
+
+	h1 {
+		font-size: 16pt;
+		font-weight: 400;
+	}
+
+	.container {
+		display: grid;
+		grid-template-columns: 33% 33% 33%;
+			grid-column-gap: 10px;
+		grid-row-gap: 15px;
+		justify-items: start;
+		justify-content: start;
+	}
+
+	.meta {
+		grid-column: 2/4;
+		grid-row: 1;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.property-item {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	.property-item__modificator {
+		font-size: 25pt;
+		order: 1;
+	}
+
+	.property-item__count {
+		order: 2;
+		font-size: 12pt;
+	}
+
+	.property-item__name {
+		order: 3;
+		font-size: 12pt;
+	}
+
+	.meta-item {
+		display: flex;
+		flex-direction: row;
+		text-align: center;
+		margin-bottom: 15px;
+		margin-right: 15px;
+	}
+
+	.meta-item__name {
+		order: 1;
+		font-size: 12pt;
+		margin-right: calc(15px / 2);
+		opacity: .5;
+	}
+
+	.meta-item__text {
+		order: 2;
+		font-size: 12pt;
+	}
+
+	.meta-item {
+		display: flex;
+		flex-direction: row;
+		text-align: center;
+		margin-bottom: 15px;
+		margin-right: 15px;
+	}
+
+	.meta-item__name {
+		order: 1;
+		font-size: 12pt;
+		margin-right: calc(15px / 2);
+		opacity: .5;
+	}
+
+	.meta-item__text {
+		order: 2;
+		font-size: 12pt;
+	}
+
+	.line-number {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.line-number__count {
+		margin-right: 15px;
+	}
+
+	.property-line-number {
+	}
+
+	.property-line-number__header {
+	}
+
+	.property-line-number__item {
+		display: flex;
+		flex-direction: row;
+		font-size: 12pt;
+	}
+
+	.property-line-number__count {
+		margin-right: 15px;
+	}
+
+	.property-line-number__title {
+	}
+
+	.flex-row {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.flex-col {
+		display: flex;
+		flex-direction: column;
+	}
+	h3 {
+		font-size: 12pt;
+		font-weight: 400;
+		text-align: center;
+		opacity: .6;
+		margin: 15px 0 0 0;
+	}
+
+	p {
+		margin: 0 0 calc(15px / 2) 0;
+	}
+
+	.opacity {
+		opacity: .5;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		list-style-type: none;
+		margin-bottom: calc(15px / 3);
+	}
+
+	.hits__item {
+		margin-right: 15px;
+	}
+</style>
+<div class="container">
+	<h1>Рюрик Крепкая наковальня</h1>
+	<div class="meta">
+		<div class="meta-item">
+			<div class="meta-item__name">Перс</div>
+			<div class="meta-item__text">Бард, холмовой дварф</div>
+		</div>
+		<div class="meta-item">
+			<div class="meta-item__name">Предыстория</div>
+			<div class="meta-item__text">артист</div>
+		</div>
+		<div class="meta-item">
+			<div class="meta-item__name">мировоззрение</div>
+			<div class="meta-item__text">????????</div>
+		</div>
+		<div class="meta-item">
+			<div class="meta-item__name">Опыт</div>
+			<div class="meta-item__text">165</div>
+		</div>
+	</div>
+	<div class="flex-col">
+		<div class="flex-row">
+			<div class="flex-row__item">
+				<div class="property">
+					<div class="property-item">
+						<div class="property-item__name">Сила</div>
+						<div class="property-item__count">14</div>
+						<div class="property-item__modificator">+2</div>
+					</div>
+					<div class="property-item">
+						<div class="property-item__name">Ловкость</div>
+						<div class="property-item__count">16</div>
+						<div class="property-item__modificator">+3</div>
+					</div>
+					<div class="property-item">
+						<div class="property-item__name">Телосложение</div>
+						<div class="property-item__count">6</div>
+						<div class="property-item__modificator">-2</div>
+					</div>
+					<div class="property-item">
+						<div class="property-item__name">Интеллект</div>
+						<div class="property-item__count">14</div>
+						<div class="property-item__modificator">+2</div>
+					</div>
+					<div class="property-item">
+						<div class="property-item__name">Мудрость</div>
+						<div class="property-item__count">15</div>
+						<div class="property-item__modificator">+2</div>
+					</div>
+					<div class="property-item">
+						<div class="property-item__name">Харизма</div>
+						<div class="property-item__count">17</div>
+						<div class="property-item__modificator">+3</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex-row__item">
+				<div class="line-number">
+					<div class="line-number__count">+0</div>
+					<div class="line-number__title">Вдохновение</div>
+				</div>
+				<div class="line-number">
+					<div class="line-number__count">+2</div>
+					<div class="line-number__title">Бонус мастерства</div>
+				</div>
+				<div class="save-throws property-line-number">
+					<h3 class="property-line-number__header">Спасброски</h3>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Силы</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Ловкости</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Телосложения</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Интеллекта</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Мудрости</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Харизмы</div>
+					</div>
+				</div>
+				<div class="property-line-number">
+					<h3 class="property-line-number__header">Навыки</h3>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Акробатика (лов)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Анализ (инт)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Атлетика (сил)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Внимательность (мдр)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Выживание (мдр)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Выступление (хар)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Запугивание (хар)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">История (инт)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Ловкость рук (лов)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Магия (инт)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Медицина (мдр)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Обман (хар)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Природа (инт)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Проницательность (мдр)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Религия (инт)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Скрытность (лов)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Убеждение (хар)</div>
+					</div>
+					<div class="property-line-number__item">
+						<div class="property-line-number__count opacity">__</div>
+						<div class="property-line-number__title">Уход за животными (мдр)</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="line-number">
+			<div class="line-number__count opacity">__</div>
+			<div class="line-number__title">Пассивная мудрость (внимательность)</div>
+		</div>
+		<div>
+			<h3>Прочие владения и языки</h3>
+			<ul>
+				<li>Владение боевым и ручным топорами</li>
+				<li>Владение боевым молотом</li>
+				<li>Пивоварение</li>
+				<li>Общий и дварфский языки</li>
+			</ul>
+		</div>
+	</div>
+	<div class="flex-col">
+		<div class="property flex-row">
+			<div class="property-item hits__item">
+				<div class="property-item__name">Максимум хитов</div>
+				<div class="property-item__modificator">8</div>
+			</div>
+			<div class="property-item hits__item">
+				<div class="property-item__name">Текущие хиты</div>
+				<div class="property-item__modificator opacity">__</div>
+			</div>
+			<div class="property-item hits__item">
+				<div class="property-item__name">Временные хиты</div>
+				<div class="property-item__modificator opacity">__</div>
+			</div>
+		</div>
+		<div class="line-number">
+			<div class="line-number__count opacity">__</div>
+			<div class="line-number__title">Кость хитов</div>
+		</div>
+		<div class="line-number">
+			<div class="line-number__count opacity">__</div>
+			<div class="line-number__title">Временные хиты</div>
+		</div>
+		<div>
+			<h3>Спасброски от смерти</h3>
+			<div class="line-number">
+				<div class="line-number__count">Успехи   </div>
+				<div class="line-number__title opacity">__ __ __</div>
+			</div>
+			<div class="line-number">
+				<div class="line-number__count">Провалы</div>
+				<div class="line-number__title opacity">__ __ __</div>
+			</div>
+		</div>
+		<div>
+			<h3>Атаки и заклинания</h3>
+			<div class="line-number">
+				<div class="line-number__count">Рапира</div>
+				<div class="line-number__title">+5 1к8 +3</div>
+			</div>
+			<div class="line-number">
+				<div class="line-number__count">Кинжал</div>
+				<div class="line-number__title">+5 1к4 +3</div>
+			</div>
+			<div class="line-number">
+				<div class="line-number__count opacity">________</div>
+				<div class="line-number__title opacity">___________</div>
+			</div>
+			<div class="line-number">
+				<div class="line-number__count opacity">________</div>
+				<div class="line-number__title opacity">___________</div>
+			</div>
+			<div class="line-number">
+				<div class="line-number__count opacity">________</div>
+				<div class="line-number__title opacity">___________</div>
+			</div>
+			<div class="line-number">
+				<div class="line-number__count opacity">________</div>
+				<div class="line-number__title opacity">___________</div>
+			</div>
+		</div>
+
+		<h3>Снаряжение</h3>
+		<ul>
+			<li>Флейта, лютня</li>
+			<li>Набор для грима</li>
+			<li>Кулончик от поклонницы</li>
+			<li>Поясной кошель</li>
+			<li>Костюм</li>
+			<li>Рапира</li>
+			<li>Кожанный доспех</li>
+			<li>Кинжал</li>
+			<li>Набор для грима</li>
+			<li>Набор актёра</li>
+			<li>3 кг апельсинов</li>
+		</ul>
+	</div>
+	<div>
+		<h3>Черты характера</h3>
+		<p>
+			Превыше всего я ценю свершенство
+		</p>
+		<h3>Идеалы</h3>
+		<p>
+			Всё ради денег и славы, жадность.
+		</p>
+		<h3>Привязанности</h3>
+		<p>
+			Я хочу быть знаменитым
+		</p>
+		<h3>Слабости</h3>
+		<p>
+			Чревоугодие
+		</p>
+
+		<h3>Умения и особенности</h3>
+		<ul>
+			<li>Тёмное зрение</li>
+			<li>Дварфская устойчивость</li>
+			<li>Тяжёлый доспех не снижает скорость</li>
+			<li>Знание камня</li>
+			<li>Использование заклинаний</li>
+			<li>Вдохновение барда</li>
+			<li>По многочисленным просьбам</li>
+		</ul>
+	</div>
+	<div>
+		<h3>Заклинания</h3>
+		<ul>
+			<li>Волна грома</li>
+			<li>Лечащее слово</li>
+			<li>Обнаружение магии</li>
+			<li>Очарование личности</li>
+		</ul>
+
+		<h3>Прочие владения и языки</h3>
+		<ul>
+			<li>Владею боевым ручным топором и лёгким боевым молотом</li>
+			<li>Пивоварение</li>
+			<li>Общий и дварфский языки</li>
+		</ul>
+	</div>
+	<div>
+		<h3>История персонажа</h3>
+		<p>
+			Маленький Рюрик с детством тяготел к высокому искусству, но стать великим каменщиком или кузнецом было невозможно из-за кровных уз.
+		</p>
+		<p>
+			Тогда юный дварф начал учиться музыке. Постигал магию мелодии и доводил мастерство до совершенство. К своему совершеннолетию он выучил все сказания и песни дварфов, и заскучал.
+		</p>
+		<p>
+			В поисках новых песен он он отправился в странствие. Было страшно, потому что он не умел держать меч, а его оружием была песня. Бард старался держаться в стороне от битвы и занимал наблюдательные позиции, чтобы всё хорошо запомнить и рассказывать о храбрости своей и своих путников в ближайшем трактире.
+		</p>
+		<p>
+			Постепенно Рюрику вошло в привычку находить небольшой отряд приключенцев, намётанным глазом, вписываться с ними в поход и сочинять новую песню. К сожалению, группы быстро закисают и перстают искать новые преключения, тогда жажда наживы и славы тянет барда подальше от этих земель к новой группе, чтобы начать всё заново.
+		</p>
+	</div>
+</div>

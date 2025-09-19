@@ -1,0 +1,75 @@
+.tourism-card-geo {
+	animation: ani 500ms forwards;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 0 16px;
+
+	--factoid-row: 1;
+}
+@media (min-width: 768px) {
+	.tourism-card-geo {
+		--factoid-row: 2;
+	}
+}
+@media (min-width: 1024px) {
+	.tourism-card-geo {
+		--factoid-row: 3;
+	}
+}
+@media (min-width: 1380px) {
+	.tourism-card-geo {
+		--factoid-row: 4;
+	}
+}
+.tourism-card-geo__item {
+	border: 2px dashed rgba(255, 255, 255, .15);
+	color: rgba(255, 255, 255, .65);
+	border-radius: 4px;
+	padding: 16px;
+	width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
+	display: grid;
+	gap: 8px;
+	grid-template-areas:
+		"title coord"
+		"type country"
+		"population country"
+		"description description";
+	grid-auto-rows: max-content;
+}
+.tourism-card-geo__item--visited {
+	background-color: rgb(37, 61, 46, .7);
+	color: #fff;
+	border-style: solid;
+	border-color: rgba(255, 255, 255, .3);;
+}
+.tourism-card-geo__title {
+	grid-area: title;
+	font-size: 150%;
+	line-height: 1;
+}
+.tourism-card-geo__coord {
+	grid-area: coord;
+	font-size: 50%;
+	opacity: .5;
+	text-align: end;
+	align-self: end;
+}
+.tourism-card-geo__country {
+	grid-area: country;
+	font-size: 75%;
+	text-align: end;
+	align-self: end;
+}
+.tourism-card-geo__description {
+	grid-area: description;
+	overflow-wrap: anywhere;
+}
+.tourism-card-geo__population {
+	grid-area: population;
+}
+.tourism-card-geo__type {
+	grid-area: type;
+	font-size: 75%;
+}

@@ -1,16 +1,16 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { FeedbackElement, FeedbackType } from '../../../../types'
+import { FeedbackElement, FeedbackType } from 'types'
 
 import { useRoute } from 'preact-iso'
-import useApi, { API_STATUS } from '../../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
-import { Loading } from '../../../accord/accord-single'
-import { NotFoundData } from '../../../ui/not-found-data'
+import { Loading } from 'components/ui/loading'
 
-import { ROUTE_LINKS } from '../../../../dic/ROUTE_LINKS'
-import { API_ROUTE } from '../../../../api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { API_ROUTE } from 'dic/api-route'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 type GetBasenameType = (string) => string
 const getBasename: GetBasenameType = (str) => (str + '').substring(str.lastIndexOf('/') + 1)

@@ -1,13 +1,11 @@
 import { FunctionComponent } from 'preact'
 
-import { useGlobalContext } from '../../../context/global'
-
-import { OnlyAdmin } from '../../util/only-admin'
-import { Logotype } from '../logotype-mini'
-
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { useGlobalContext } from 'context/global'
+import { Logotype } from '../logotype-mini'
+import { OnlyAdmin } from 'components/util/only-admin'
 
 const menu = [
 	{

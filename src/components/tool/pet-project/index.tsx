@@ -1,17 +1,16 @@
-import { PetProjectType } from '../../../types'
+import { PetProjectType } from 'types'
 
 import { useMemo } from 'preact/hooks'
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
 import { petProjectGradient } from './gradient-dic'
 import { textProjects } from './text-project'
 
-import { NotFoundData } from '../../ui/not-found-data'
-import { Loading } from '../../accord/accord-single'
-
-import { API_ROUTE } from '../../../api-route'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { Loading } from 'components/ui/loading'
 
 import './style.css'
+import { API_ROUTE } from 'dic/api-route'
 
 // petProjectGradient[Math.floor(Math.random() * gradient.length) | 1]
 const gradients = petProjectGradient

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../../components/ui/text-container'
-import { ComojiGalery } from '../../../../components/tool/comoji-galery'
+import { TextContainer } from 'components/ui/text-container'
+import { ComojiGalery } from 'components/tool/comoji-galery'
 
 export const ComojiPage: FunctionComponent = () => {
 	document.title = 'Комоджи смайлы'

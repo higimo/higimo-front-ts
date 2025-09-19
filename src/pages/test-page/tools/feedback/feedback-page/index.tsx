@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from '../../../../../components/ui/text-container'
-import { FeedbackGallery } from '../../../../../components/info-service/feedback/feedback-gallery'
+import { TextContainer } from 'components/ui/text-container'
+import { FeedbackGallery } from 'components/info-service/feedback/feedback-gallery'
 
 import '../../feedback-style.css'
 

@@ -1,15 +1,14 @@
-import { PinarikType } from '../../../types'
+import { PinarikType } from 'types'
 
 import { useState } from 'preact/hooks'
-import useApi, { API_STATUS } from '../../../hook/use-api'
+import useApi, { API_STATUS } from 'hook/use-api'
 
 import { Fragment } from 'preact/jsx-runtime'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { API_ROUTE } from 'dic/api-route'
 import { PinarikEventPreview } from '../pinarik-event-preview'
 import { PinarikElement } from '../pinarik-element'
-import { Loading } from '../../accord/accord-single'
-import { NotFoundData } from '../../ui/not-found-data'
-
-import { API_ROUTE } from '../../../api-route'
 
 export const PinarikCalendar = () => {
 	const [ previewId, setPreviewId ] = useState(0)

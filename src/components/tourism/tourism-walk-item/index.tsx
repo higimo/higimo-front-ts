@@ -1,5 +1,5 @@
 import { FunctionComponent } from "preact"
-import { YaMapType } from '../../../types'
+import { YaMapType } from 'types'
 
 type TourismWalkItemPropsType = {
 	map: YaMapType['map'];

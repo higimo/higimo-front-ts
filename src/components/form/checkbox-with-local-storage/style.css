@@ -1,16 +1,16 @@
 .smart-checkbox {
-    font-size: 24pt;
-    display: flex;
-    align-items: center;
+	font-size: 24pt;
+	display: flex;
+	align-items: center;
 }
 
 .smart-checkbox__input {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin: 0 16px 0 0;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin: 0 16px 0 0;
 }
 
 .smart-checkbox__label {
-    line-height: 1;
+	line-height: 1;
 }

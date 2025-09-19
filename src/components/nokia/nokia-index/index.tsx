@@ -1,10 +1,9 @@
 import { useContext, useLayoutEffect } from 'preact/hooks'
 
-import { NokiaContext, NokiaContextType } from '../../../context/nokia'
-
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
+import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 export const NokiaIndex = () => {
 	const { meeting, fetchData } = useContext(NokiaContext) as NokiaContextType

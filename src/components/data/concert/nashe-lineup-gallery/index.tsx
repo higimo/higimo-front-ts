@@ -2,12 +2,13 @@ import { FunctionComponent } from 'preact'
 
 import { useRoute } from 'preact-iso'
 
-import { compareRoute } from '../../../../utils/compare-route'
+import { compareRoute } from 'utils/compare-route'
 
-import { TextContainer } from '../../../ui/text-container'
-import { MaybeLink } from '../../../ui/maybe-link/maybe-link'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import { ROUTE_LINKS } from '../../../../dic/ROUTE_LINKS'
+import './style.css'
+import { TextContainer } from 'components/ui/text-container'
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 const links = [
 	{
@@ -25,7 +26,7 @@ export const NasheLineupGallery: FunctionComponent = () => {
 
 	return (
 		<TextContainer>
-			<div className="tourism-walk-gallery">
+			<div className="nashe-lineup-gallery">
 				{links.map(linkElement => (
 					<MaybeLink href={linkElement.href} isHref={!compareRoute(linkElement.href, path)}>
 						{linkElement.title}
