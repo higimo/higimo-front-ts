@@ -1,68 +1,55 @@
 import { FunctionComponent } from 'preact'
-import { AccordType } from 'types';
 
-import { useMemo } from 'preact/hooks'
-import useApi, { API_STATUS } from 'hook/use-api';
+import { AccordType } from 'types'
 
-import { getRandom } from 'utils/get-random';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
-import { Loading } from 'components/ui/loading';
-import { AccordElement } from 'components/accord/accord-element';
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useRandomElements } from 'hook/use-random-elements'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
-import { NotFoundPage } from 'pages/not-found-page';
+import { Loading } from 'components/ui/loading'
+import { SeeAlsoSection } from 'components/accord/see-also-section'
+import { AccordContent } from 'components/accord/accord-content'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { NotFoundPage } from 'pages/not-found-page'
 
 import './style.css'
-import { API_ROUTE } from 'dic/api-route';
 
-const ALSO_ELEMENTS = 6;
+const ALSO_ELEMENTS = 6
 
 type AccordSinglePropsType = {
-	idcode: string;
+	idcode: string
 }
+
 export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode }) => {
-	const [ list ] = useApi<AccordType>(API_ROUTE.accord)
-	const [ songSingle ] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode }))
+	const [list] = useApi<AccordType>(API_ROUTE.accord)
+	const [songSingle] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode }))
 
-	const seeAlsoList = useMemo(
-		() => list.data.splice(getRandom(list.data.length - ALSO_ELEMENTS - 1), ALSO_ELEMENTS),
-		[idcode, list.data]
-	)
+	const isLoading = useLoadingState([songSingle.status, list.status])
+	const isListEmpty = useEmptyDataState(list.data)
+	const isSongEmpty = useEmptyDataState(songSingle.data)
+	const seeAlsoList = useRandomElements(list.data, ALSO_ELEMENTS)
 
-	if (
-		([API_STATUS.INIT, API_STATUS.LOADING].includes(songSingle.status)) ||
-		([API_STATUS.INIT, API_STATUS.LOADING].includes(list.status))) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (
-		(list.status === API_STATUS.LOADED && !list.data.length) ||
-		(songSingle.status === API_STATUS.LOADED && !songSingle.data.length)) {
+	if (isListEmpty || isSongEmpty) {
 		return <NotFoundPage />
 	}
 
-	document.title = songSingle.data[0].name
-	
+	const currentSong = songSingle.data[0]
+
 	return (
 		<div className="container accord-single-page">
-			<pre>
-				{songSingle.data[0].text}
-			</pre>
+			<AccordContent song={currentSong} />
 			<div className="backlink">
 				<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
 			</div>
-			<div className="see-also-list">
-				{seeAlsoList.map(item => (
-					<AccordElement
-						{...item}
-						isMostView={false}
-						isNew={false}
-						showAlf={false}
-						showBaidge={false}
-					/>
-				))}
-			</div>
+			<SeeAlsoSection items={seeAlsoList} />
 		</div>
 	)
 }

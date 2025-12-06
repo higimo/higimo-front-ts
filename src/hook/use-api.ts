@@ -8,11 +8,13 @@ export const API_STATUS = {
 	LOADING: 'LOADING',
 	LOADED: 'LOADED',
 	ERROR: 'ERROR',
-}
+} as const
 
+export type ApiStatusNameType = keyof typeof API_STATUS;
+export type ApiStatusValueType = typeof API_STATUS[keyof typeof API_STATUS];
 
 type ApiState<T> = {
-	status: 'INIT' | 'LOADING' | 'LOADED';
+	status: ApiStatusNameType;
 	data: T[];
 	error?: Error;
 };
