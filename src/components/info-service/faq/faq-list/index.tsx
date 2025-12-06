@@ -1,24 +1,28 @@
 import { FunctionComponent } from 'preact'
 import { FaqType } from 'types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
-import { API_ROUTE } from 'dic/api-route'
-import { NotFoundData } from 'components/ui/not-found-data'
 
 export const FaqList: FunctionComponent = () => {
 	const [ faqList ] = useApi<FaqType>(API_ROUTE.faq)
-	
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(faqList.status)) {
+	const isLoading = useLoadingState([faqList.status])
+	const isListEmpty = useEmptyDataState(faqList.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === faqList.status && !faqList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

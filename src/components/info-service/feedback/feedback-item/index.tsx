@@ -2,15 +2,17 @@ import { Fragment, FunctionComponent } from 'preact'
 import { FeedbackElement, FeedbackType } from 'types'
 
 import { useRoute } from 'preact-iso'
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
-import { API_ROUTE } from 'dic/api-route'
-import { NotFoundData } from 'components/ui/not-found-data'
 
 type GetBasenameType = (string) => string
 const getBasename: GetBasenameType = (str) => (str + '').substring(str.lastIndexOf('/') + 1)
@@ -20,18 +22,17 @@ const getRandomElementFromArray: GetRandomElementFromArrayType = (arr) => (arr.l
 
 export const FeedbackItem: FunctionComponent = () => {
 	const { params: { idcode = '' }} = useRoute()
-
 	const [ blockElementList ] = useApi<FeedbackElement>(API_ROUTE.feedbackBlock({ idcode }))
 	const [ feedbackList ] = useApi<FeedbackType>(API_ROUTE.feedback)
+	const isLoading = useLoadingState([blockElementList.status, feedbackList.status])
+	const isBlockElementListEmpty = useEmptyDataState(blockElementList.data)
+	const isFeedbackListEmpty = useEmptyDataState(blockElementList.data)
 	
-	if (([API_STATUS.INIT, API_STATUS.LOADING].includes(blockElementList.status)) ||
-		([API_STATUS.INIT, API_STATUS.LOADING].includes(feedbackList.status))) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if ((API_STATUS.LOADED === blockElementList.status && !blockElementList.data.length) ||
-		(API_STATUS.LOADED === feedbackList.status && !feedbackList.data.length) ||
-		!idcode.length) {
+	if (isBlockElementListEmpty || isFeedbackListEmpty || !idcode.length) {
 		return <NotFoundData />
 	}
 

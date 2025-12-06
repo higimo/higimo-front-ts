@@ -1,23 +1,28 @@
 import { FunctionComponent } from 'preact'
 import { DemagogType } from 'types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
 
-import './style.css'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { API_ROUTE } from 'dic/api-route'
 import { DemagogElement } from '../demagog-element'
+import { API_ROUTE } from 'dic/api-route'
+
+import './style.css'
 
 export const DemagogGalery: FunctionComponent = () => {
 	const [ demagog ] = useApi<DemagogType>(API_ROUTE.demagog)
-	
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(demagog.status)) {
+	const isLoading = useLoadingState([demagog.status])
+	const isListEmpty = useEmptyDataState(demagog.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === demagog.status && !demagog.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

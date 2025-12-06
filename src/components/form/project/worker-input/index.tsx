@@ -1,18 +1,22 @@
 import { WorkerType } from 'types'
 
 import { useState } from 'preact/hooks'
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+
 import { Loading } from 'components/ui/loading'
 import { CollapseSection } from 'components/ui/collapse-section'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { WorkersTree } from 'components/form/project/workers-tree'
+import { ChooseWorkersForm } from 'components/form/project/choose-workers-form'
+import { CreateWorker } from 'components/form/project/create-worker'
 
+import { API_ROUTE } from 'dic/api-route'
+
+import sendRequest from 'utils/send-request'
 
 import './style.css'
-import { API_ROUTE } from 'dic/api-route'
-import { NotFoundData } from 'components/ui/not-found-data'
-import { WorkersTree } from '../workers-tree'
-import { ChooseWorkersForm } from '../choose-workers-form'
-import sendRequest from 'utils/send-request'
-import { CreateWorker } from '../create-worker'
 
 // TODO: Анонсы. Портфолио таблицей как на хомяке Далера
 // TODO: Анонсы. Показать людей, с которыми работал
@@ -28,16 +32,18 @@ const onSubmit = values => {
 
 export const WorkerInput = ({ projectId }) => {
 	const [ workers, fetchWorkers ] = useApi<WorkerType>(API_ROUTE.projectWorker)
-
 	const [ chooseWorker, setChooseWorker ] = useState<WorkerType[]>([])
+	const isLoading = useLoadingState([workers.status])
+	const isListEmpty = useEmptyDataState(workers.data)
+
 	const handleClickChose = (worker: WorkerType) => setChooseWorker(prev => [...prev, worker])
 	const handleRemoveChose = (worker: WorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(workers.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === workers.status && !workers.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

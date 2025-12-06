@@ -1,15 +1,17 @@
-import cs from 'classnames'
 import { useRoute } from 'preact-iso'
 import { useMemo } from 'preact/hooks'
-import useApi, { API_STATUS } from 'hook/use-api';
+import useApi from 'hook/use-api';
+import { useLoadingState } from 'hook/use-loading-state';
+import { useEmptyDataState } from 'hook/use-empty-data-state';
 
 import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container';
 
+import { NotFoundPage } from 'pages/not-found-page';
+
+import { API_ROUTE } from 'dic/api-route';
 
 import './style.css'
-import { API_ROUTE } from 'dic/api-route';
-import { NotFoundPage } from 'pages/not-found-page';
-import { TextContainer } from 'components/ui/text-container';
 
 type NasheType = {
 	id: number;
@@ -40,11 +42,14 @@ export const NasheLineupItem = () => {
 
 	}, [nasheFullData.data, curYear])
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(nasheFullData.status)) {
+	const isLoading = useLoadingState([nasheFullData.status])
+	const isListEmpty = useEmptyDataState(nasheFullData.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === nasheFullData.status && !nasheFullData.data.length) {
+	if (isListEmpty) {
 		return <NotFoundPage />
 	}
 

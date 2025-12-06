@@ -1,21 +1,23 @@
 import { FunctionComponent } from 'preact'
 import { ProjectType, VendorType } from 'types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
 import { useMemo } from 'preact/hooks'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { TextContainer } from 'components/ui/text-container'
 import { NotFoundData } from 'components/ui/not-found-data'
-
-import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-
-import './style.css'
 import { Loading } from 'components/ui/loading'
-import { API_ROUTE } from 'dic/api-route'
 import { ProjectTag } from 'components/project/project-tag'
 import { filterType } from 'components/project/project-tag-gallery/filter-type'
 import { ProjectList } from 'components/project/project-list'
 import { ProjectMore } from 'components/project/project-more/ProjectMore'
+
+import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
+import { API_ROUTE } from 'dic/api-route'
+
+import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
 	const [ highProjectList ] = useApi<ProjectType>('/api/v1/project/project', {
@@ -24,16 +26,16 @@ export const ProjectListShort: FunctionComponent = () => {
 	})
 	const [ projectIds ] = useApi<number>(API_ROUTE.projectIds)
 	const [ vendorList ] = useApi<VendorType>(API_ROUTE.projectVendor)
-		
-	if (([API_STATUS.INIT, API_STATUS.LOADING].includes(highProjectList.status)) ||
-		([API_STATUS.INIT, API_STATUS.LOADING].includes(projectIds.status)) ||
-		([API_STATUS.INIT, API_STATUS.LOADING].includes(vendorList.status))) {
+	const isLoading = useLoadingState([highProjectList.status, projectIds.status, vendorList.status])
+	const isHighProjectListEmpty = useEmptyDataState(highProjectList.data)
+	const isProjectIdsEmpty = useEmptyDataState(projectIds.data)
+	const isVendorListEmpty = useEmptyDataState(vendorList.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if ((API_STATUS.LOADED === highProjectList.status && !highProjectList.data.length) ||
-		(API_STATUS.LOADED === projectIds.status && !projectIds.data.length) ||
-		(API_STATUS.LOADED === vendorList.status && !vendorList.data.length)) {
+	if (isHighProjectListEmpty || isProjectIdsEmpty || isVendorListEmpty) {
 		return <NotFoundData />
 	}
 

@@ -1,19 +1,26 @@
+import { LinksType } from 'types'
+
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
+import { LinksElement } from 'components/info-service/links/links-element'
+
 import { API_ROUTE } from 'dic/api-route'
-import useApi, { API_STATUS } from 'hook/use-api'
-import { LinksType } from 'types'
-import { LinksElement } from '../links-element'
 
 export const LinksList = () => {
 	const [ links ] = useApi<LinksType>(API_ROUTE.link)
+	const isLoading = useLoadingState([links.status])
+	const isListEmpty = useEmptyDataState(links.data)
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(links.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === links.status && !links.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

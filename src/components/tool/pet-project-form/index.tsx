@@ -2,17 +2,21 @@ import { ProjectType } from 'types'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'preact/hooks'
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
 import { useRoute } from 'preact-iso'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Message } from 'components/ui/message'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { Loading } from 'components/ui/loading'
+import { ShowFormResult } from 'components/form/show-form-result'
+
+import sendRequest from 'utils/send-request'
+
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
-import sendRequest from 'utils/send-request'
-import { API_ROUTE } from 'dic/api-route'
-import { ShowFormResult } from 'components/form/show-form-result'
 
 const onSubmit = setStatus => async values => {
 	const res = await sendRequest(
@@ -39,14 +43,16 @@ type FormValues = {
 export const PetProjectForm = () => {
 	const { params: { projectId = '-1'} } = useRoute()
 	const[ probbiSingle ] = useApi<ProjectType>(API_ROUTE.probbiSingle({ projectId }))
+	const isLoading = useLoadingState([probbiSingle.status])
+	const isListEmpty = useEmptyDataState(probbiSingle.data)
 			
-		if ([API_STATUS.INIT, API_STATUS.LOADING].includes(probbiSingle.status)) {
-			return <Loading />
-		}
+	if (isLoading) {
+		return <Loading />
+	}
 	
-		if (API_STATUS.LOADED === probbiSingle.status && !probbiSingle.data.length) {
-			return <NotFoundData />
-		}
+	if (isListEmpty) {
+		return <NotFoundData />
+	}
 
 	let defaultValues: Partial<ProjectType> = {}
 	const { register, handleSubmit, formState, setValue, reset } = useForm<FormValues>({

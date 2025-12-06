@@ -1,20 +1,26 @@
 import { FunctionComponent } from "preact";
+import { CinemaType } from "types";
+
+import useApi from "hook/use-api";
+import { useLoadingState } from "hook/use-loading-state";
+import { useEmptyDataState } from "hook/use-empty-data-state";
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from "components/ui/not-found-data";
+
 import { API_ROUTE } from "dic/api-route";
 import { ROUTE_LINKS } from "dic/ROUTE_LINKS";
-import useApi, { API_STATUS } from "hook/use-api";
-import { CinemaType } from "types";
 
 export const ScriptList: FunctionComponent = () => {
 	const [ cinema ] = useApi<CinemaType>(API_ROUTE.cinemaShort)
+	const isLoading = useLoadingState([cinema.status])
+	const isListEmpty = useEmptyDataState(cinema.data)
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(cinema.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === cinema.status && !cinema.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

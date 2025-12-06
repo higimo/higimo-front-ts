@@ -1,12 +1,17 @@
 import { useRoute } from "preact-iso"
+import { ListerItem } from "types"
+
+import useApi from "hook/use-api"
+import { useLoadingState } from "hook/use-loading-state"
+import { useEmptyDataState } from "hook/use-empty-data-state"
 
 import { Loading } from 'components/ui/loading'
-import { API_ROUTE } from "dic/api-route"
 import { NotFoundData } from "components/ui/not-found-data"
-import useApi, { API_STATUS } from "hook/use-api"
-import { ListerItem } from "types"
-import { ListListElement } from "../list-list-element"
+import { ListListElement } from "components/list/list-list-element"
+
 import { convertFlatListToIerah } from "../utils"
+
+import { API_ROUTE } from "dic/api-route"
 
 export const ListList = () => {
 	const { params: { idcode = '' } } = useRoute()
@@ -17,12 +22,14 @@ export const ListList = () => {
 			code: idcode,
 		},
 	})
-		
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(listlistList.status)) {
+	const isLoading = useLoadingState([listlistList.status])
+	const isListEmpty = useEmptyDataState(listlistList.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === listlistList.status && !listlistList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

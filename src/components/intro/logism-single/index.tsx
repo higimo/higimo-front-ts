@@ -1,6 +1,9 @@
 import { FunctionComponent } from 'preact'
+import { LogismType } from 'components/logism/types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
 import { TextContainer } from 'components/ui/text-container'
@@ -8,19 +11,20 @@ import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
-import { LogismType } from 'components/logism/types'
-import { API_ROUTE } from 'dic/api-route'
 
 export const LogismSingle: FunctionComponent = () => {
 	const [ logismDetail ] = useApi<LogismType>(API_ROUTE.logismSingle)
-		
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(logismDetail.status)) {
+	const isLoading = useLoadingState([logismDetail.status])
+	const isListEmpty = useEmptyDataState(logismDetail.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === logismDetail.status && !logismDetail.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

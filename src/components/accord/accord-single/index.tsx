@@ -27,7 +27,6 @@ type AccordSinglePropsType = {
 export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode }) => {
 	const [list] = useApi<AccordType>(API_ROUTE.accord)
 	const [songSingle] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode }))
-
 	const isLoading = useLoadingState([songSingle.status, list.status])
 	const isListEmpty = useEmptyDataState(list.data)
 	const isSongEmpty = useEmptyDataState(songSingle.data)

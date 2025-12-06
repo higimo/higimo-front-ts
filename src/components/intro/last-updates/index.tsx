@@ -1,6 +1,9 @@
 import { FunctionComponent } from 'preact'
+import { UpdateNewsType } from './types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { getDate } from 'utils/get-date'
 
@@ -9,6 +12,8 @@ import { TileElement } from 'components/ui/tile-element/tile-element'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
+import { API_ROUTE } from 'dic/api-route'
+
 import tg	 from './img/tg.svg'
 import tech   from './img/tech.png'
 import higimo from './img/higimo.png'
@@ -16,8 +21,6 @@ import screen from './img/screen.png'
 import rak	from './img/rak.png'
 
 import './style.css'
-import { UpdateNewsType } from './types'
-import { API_ROUTE } from 'dic/api-route'
 
 const imgMapping = {
 	'Техники → навыки → счастье': [tg, tech],
@@ -51,12 +54,14 @@ const TileElementCon = props => (
 
 export const LastUpdates: FunctionComponent = () => {
 	const [ newsList ] = useApi<UpdateNewsType>(API_ROUTE.updateNews, { limit: 12 })
-	
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(newsList.status)) {
+	const isLoading = useLoadingState([newsList.status])
+	const isListEmpty = useEmptyDataState(newsList.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === newsList.status && !newsList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

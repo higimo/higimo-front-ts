@@ -2,23 +2,28 @@ import { FunctionComponent } from 'preact'
 import { CinemaType } from 'types'
 
 import { useRoute } from 'preact-iso'
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
+
 import { API_ROUTE } from 'dic/api-route'
 
 export const CinemaScriptDetail: FunctionComponent = () => {
 	const { params: { idcode }} = useRoute()
 	const [ cinemaDetail ] = useApi<CinemaType>(API_ROUTE.cinemaSingle({ idcode }))
+	const isLoading = useLoadingState([cinemaDetail.status])
+	const isListEmpty = useEmptyDataState(cinemaDetail.data)
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(cinemaDetail.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === cinemaDetail.status && !cinemaDetail.data.length) {
+	if (isListEmpty) {
 		return <NotFoundPage />
 	}
 

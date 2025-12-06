@@ -1,23 +1,29 @@
 import { FunctionComponent } from 'preact'
 import { ComojiType } from 'types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import './style.css'
+import { ComojiElement } from 'components/tool/comoji-element'
+
 import { API_ROUTE } from 'dic/api-route'
-import { ComojiElement } from '../comoji-element'
+
+import './style.css'
 
 export const ComojiGalery: FunctionComponent = () => {
 	const [ comojiList ] = useApi<ComojiType>(API_ROUTE.comoji)
+	const isLoading = useLoadingState([comojiList.status])
+	const isListEmpty = useEmptyDataState(comojiList.data)
 			
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(comojiList.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === comojiList.status && !comojiList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

@@ -2,22 +2,28 @@ import { FunctionComponent } from 'preact'
 import { FaqType } from 'types';
 
 import { useRoute } from 'preact-iso';
-import useApi, { API_STATUS } from 'hook/use-api';
+import useApi from 'hook/use-api';
+import { useLoadingState } from 'hook/use-loading-state';
+import { useEmptyDataState } from 'hook/use-empty-data-state';
 
 import { Loading } from 'components/ui/loading'
-import { NotFoundPage } from 'pages/not-found-page';
 import { TextContainer } from 'components/ui/text-container';
+
+import { NotFoundPage } from 'pages/not-found-page';
+
 import { API_ROUTE } from 'dic/api-route';
 
 export const FaqSingle: FunctionComponent = () => {
 	const { params: { idcode = ''} } = useRoute()
 	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
-	
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(faqDetail.status)) {
+	const isLoading = useLoadingState([faqDetail.status])
+	const isListEmpty = useEmptyDataState(faqDetail.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === faqDetail.status && !faqDetail.data.length || !idcode.length) {
+	if (isListEmpty) {
 		return <NotFoundPage />
 	}
 

@@ -2,23 +2,29 @@ import { LectionType } from 'types'
 
 import markdownit from 'markdown-it'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
 import { useRoute } from 'preact-iso'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'
+
 import { NotFoundPage } from 'pages/not-found-page'
+
 import { API_ROUTE } from 'dic/api-route'
 
 export const ObuchenieSingle = () => {
 	const { params: { idcode } } = useRoute()
 	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode }))
+	const isLoading = useLoadingState([lectionDetail.status])
+	const isListEmpty = useEmptyDataState(lectionDetail.data)
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(lectionDetail.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === lectionDetail.status && !lectionDetail.data.length) {
+	if (isListEmpty) {
 		return <NotFoundPage />
 	}
 

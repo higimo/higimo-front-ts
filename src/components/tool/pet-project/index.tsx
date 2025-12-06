@@ -1,16 +1,19 @@
 import { PetProjectType } from 'types'
 
 import { useMemo } from 'preact/hooks'
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
-import { petProjectGradient } from './gradient-dic'
-import { textProjects } from './text-project'
+import { petProjectGradient } from 'components/tool/pet-project/gradient-dic'
+import { textProjects } from 'components/tool/pet-project/text-project'
 
 import { NotFoundData } from 'components/ui/not-found-data'
 import { Loading } from 'components/ui/loading'
 
-import './style.css'
 import { API_ROUTE } from 'dic/api-route'
+
+import './style.css'
 
 // petProjectGradient[Math.floor(Math.random() * gradient.length) | 1]
 const gradients = petProjectGradient
@@ -21,12 +24,14 @@ const getDescription = (str) => (str || '').replace(/(https:\/\/[\S]+)/g, '<a hr
 
 export const PetProject = () => {
 	const [ unsortProjectList ] = useApi<PetProjectType>(API_ROUTE.probbi)
+	const isLoading = useLoadingState([unsortProjectList.status])
+	const isListEmpty = useEmptyDataState(unsortProjectList.data)
 			
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(unsortProjectList.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === unsortProjectList.status && !unsortProjectList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

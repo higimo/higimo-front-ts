@@ -1,24 +1,29 @@
 import { FunctionComponent } from 'preact'
+import { LogismType } from '../types'
 
 import cs from 'classnames'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import '../logism/style.css'
 import { API_ROUTE } from 'dic/api-route'
-import { LogismType } from '../types'
+
+import '../logism/style.css'
 
 export const Logism: FunctionComponent = () => {
 	const [ logismList ] = useApi<LogismType>(API_ROUTE.logism)
-		
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(logismList.status)) {
+	const isLoading = useLoadingState([logismList.status])
+	const isListEmpty = useEmptyDataState(logismList.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === logismList.status && !logismList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

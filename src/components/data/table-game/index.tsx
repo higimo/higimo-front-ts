@@ -1,23 +1,28 @@
 import { FunctionComponent } from 'preact';
+import { TableGameType } from 'types';
 
-import useApi, { API_STATUS } from 'hook/use-api';
+import useApi from 'hook/use-api';
+import { useLoadingState } from 'hook/use-loading-state';
+import { useEmptyDataState } from 'hook/use-empty-data-state';
 
 import { TextContainer } from 'components/ui/text-container';
 import { Loading } from 'components/ui/loading'
-import { TableGameType } from 'types';
 import { NotFoundData } from 'components/ui/not-found-data';
 
-import './style.css'
 import { API_ROUTE } from 'dic/api-route';
+
+import './style.css'
 
 export const TableGame: FunctionComponent = () => {
 	const [ games ] = useApi<TableGameType>(API_ROUTE.tableGame)
+	const isLoading = useLoadingState([games.status])
+	const isListEmpty = useEmptyDataState(games.data)
 
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(games.status)) {
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === games.status && !games.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 

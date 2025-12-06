@@ -1,24 +1,28 @@
 import { FunctionComponent } from 'preact'
+import { LibraryBookType } from '../types'
 
-import useApi, { API_STATUS } from 'hook/use-api'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { LibraryBookElement } from 'components/library/library-book-element'
 
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
-import { LibraryBookType } from '../types'
-import { API_ROUTE } from 'dic/api-route'
-import { LibraryBookElement } from '../library-book-element'
 
 export const LibraryGallery: FunctionComponent = () => {
 	const [ bookList ] = useApi<LibraryBookType>(API_ROUTE.lib)
-		
-	if ([API_STATUS.INIT, API_STATUS.LOADING].includes(bookList.status)) {
+	const isLoading = useLoadingState([bookList.status])
+	const isListEmpty = useEmptyDataState(bookList.data)
+
+	if (isLoading) {
 		return <Loading />
 	}
 
-	if (API_STATUS.LOADED === bookList.status && !bookList.data.length) {
+	if (isListEmpty) {
 		return <NotFoundData />
 	}
 
