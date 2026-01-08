@@ -5,6 +5,7 @@ import daily from './img/daily.svg'
 import als from './img/als.png'
 import rtop from './img/rtop.svg'
 import intersection from './img/intersection.svg'
+import kidguru from './img/kidgu.ru.svg'
 
 import './style.css'
 
@@ -14,6 +15,7 @@ const logoMap = {
 	ALS: als,
 	'R-top': rtop,
 	intersection: intersection,
+	kidguru: kidguru,
 } as const
 
 type NameCompanyType = keyof typeof logoMap

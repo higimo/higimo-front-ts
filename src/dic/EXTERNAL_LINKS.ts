@@ -34,6 +34,7 @@ export const EXTERNAL_LINKS = {
 	alsHigimo: 'https://artlebedev.ru/higimo',
 	alsAutomatus: 'https://www.artlebedev.ru/automation/',
 	intersection: 'https://intersection.team/',
+	kidguru: 'https://kidgu.ru/',
 
 	reactJs: 'https://reactjs.org/',
 	afishaDaily: 'https://daily.afisha.ru/',
