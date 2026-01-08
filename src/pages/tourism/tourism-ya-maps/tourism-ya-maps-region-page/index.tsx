@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { TourismMapsRegion } from 'components/tourism/tourism-maps-region'
 import { Breadcrumps } from 'components/ui/breadcrumps'
@@ -10,7 +12,7 @@ import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import '../../tourism-style.css'
 
 export const TourismYaMapsRegionPage: FunctionComponent = () => {
-	document.title = 'Карта регионов России'
+	usePageTitle('Карта регионов России')
 
 	return (
 		<div className="tourism-identy-page">

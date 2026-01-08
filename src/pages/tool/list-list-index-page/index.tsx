@@ -1,9 +1,11 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { ListList } from 'components/list/list-list'
 
 export const ListListIndexPage: FunctionComponent = () => {
-	document.title = 'Список списков'
+	usePageTitle('Список списков')
 
 	return (
 		<div className="list-list">

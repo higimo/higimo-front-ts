@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { NasheLineupItem } from 'components/data/concert/nashe-lineup-item'
@@ -10,7 +12,7 @@ import '../../tourism-style.css'
 import './style.css'
 
 export const NasheSinglePage: FunctionComponent = () => {
-	document.title = 'Нашествие'
+	usePageTitle('Нашествие')
 
 	return (
 		<div className="nashe-single-page tourism-identy-page">

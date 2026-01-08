@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks'
 import { useLazyLoadData } from 'hook/use-lazy-load-data'
+import { usePageTitle } from 'hook/use-page-title';
 
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
@@ -169,8 +170,6 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 		rostovNaDonuPlace: PovType[],
     }>(import('components/tourism/tourism-maps-figure/data/father-track'))
 
-    console.log('higimo', )
-
     const lines = stateData?.mainTrack
     const cities = stateData?.cities
     const rostovNaDonuPlace = stateData?.rostovNaDonuPlace
@@ -190,7 +189,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 
 	// const total = stateData.russiaCity.filter(handleFilterMapPoint(filter)).sort(handleSort(sort))
 
-	document.title = 'Результаты путешествий'
+	usePageTitle('Результаты путешествий')
 
     if (!stateData) {
         return null

@@ -1,12 +1,14 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { FeedbackGallery } from 'components/info-service/feedback/feedback-gallery'
 
 import '../../feedback-style.css'
 
 export const FeedbackIndexPage: FunctionComponent = () => {
-	document.title = 'Багрепорты от higimo'
+	usePageTitle('Багрепорты от higimo')
 
 	return (
 		<div className="feedback-page">

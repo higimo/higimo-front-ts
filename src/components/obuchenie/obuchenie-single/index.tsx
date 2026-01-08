@@ -28,6 +28,7 @@ export const ObuchenieSingle = () => {
 		return <NotFoundPage />
 	}
 
+	// TODO usePageTitle
 	document.title = lectionDetail.data[0].name
 
 	var md = new markdownit({

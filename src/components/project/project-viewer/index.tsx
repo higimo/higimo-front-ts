@@ -79,6 +79,7 @@ export const ProjectViewer: FunctionComponent = () => {
 
 	const { date, name, text = '' } = curProject
 	const baseurl = location.pathname
+	// TODO usePageTitle
 	document.title = name
 
 	return (

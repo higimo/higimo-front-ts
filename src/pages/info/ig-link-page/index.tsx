@@ -1,11 +1,13 @@
 import { FunctionComponent } from 'preact';
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { iglinksData } from './data';
 
 import './style.css'
 
 export const IgLinkPage: FunctionComponent = () => {
-	document.title = 'Ссылки в био инсты'
+	usePageTitle('Ссылки в био инсты')
 
 	return (
 		<div className="ig-link-page">

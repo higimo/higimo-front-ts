@@ -1,12 +1,14 @@
 import { Fragment, FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { Clock } from 'components/data/clock'
 
 import { clockData } from './data'
 	
 export const ClockPage: FunctionComponent = () => {
-	document.title = 'Часы русского судного дня'
+	usePageTitle('Часы русского судного дня')
 
 	return (
 		<Fragment>

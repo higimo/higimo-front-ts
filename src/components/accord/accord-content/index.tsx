@@ -1,14 +1,14 @@
 import { FunctionComponent } from "preact"
-import { useEffect } from "preact/hooks"
 import { AccordType } from "types"
+
+import { usePageTitle } from "hook/use-page-title"
+
 
 /**
  * Компонент для отображения содержимого аккорда
  */
 export const AccordContent: FunctionComponent<{ song: AccordType }> = ({ song }) => {
-	useEffect(() => {
-		document.title = song.name
-	}, [song.name])
+	usePageTitle(song.name)
 	
 	return <pre>{song.text}</pre>
 }

@@ -1,5 +1,7 @@
 import { FunctionComponent } from "preact"
 
+import { usePageTitle } from "hook/use-page-title"
+
 import { AboutInvite } from "components/intro/about-invite"
 import { BlogInvite } from "components/intro/blog-invite"
 import { ContactList } from "components/intro/contact-list"
@@ -14,8 +16,7 @@ import { TravelInvite } from "components/intro/travel-invite"
 import { FunnyIntro } from "components/intro/funny-invite"
 
 export const IndexPage: FunctionComponent = () => {
-	// document.title = 'higimo — программист на Java Script'
-	document.title = 'Менеджер продукта — higimo'
+	usePageTitle('Менеджер продукта — higimo') // higimo — программист на Java Script
 
 	return [
 		<MainIntro />,

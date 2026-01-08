@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'preact';
 
+import { usePageTitle } from 'hook/use-page-title';
 import { useEffect } from 'preact/hooks';
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
@@ -14,7 +15,7 @@ export const NotFoundPage: FunctionComponent = () => {
 		return () => toggleNotFound(false)
 	}, [])
 
-	document.title = 'Ошибка 404: страница не найдена'
+	usePageTitle('Ошибка 404: страница не найдена')
 
 	return (
 		<div className="not-found-page">

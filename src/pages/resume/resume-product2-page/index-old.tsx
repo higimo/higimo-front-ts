@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 
 import avatar2 from './avatar2.jpeg'
@@ -42,7 +44,7 @@ const skillSet = [
 ]
 
 export const ResumeProduct2Page: FunctionComponent = () => {
-	document.title = 'В активном поиске'
+	usePageTitle('В активном поиске')
 
 	return (
 		<div className="resume-product2-page resume-page">

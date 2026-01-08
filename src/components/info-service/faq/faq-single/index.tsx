@@ -26,7 +26,8 @@ export const FaqSingle: FunctionComponent = () => {
 	if (isListEmpty) {
 		return <NotFoundPage />
 	}
-
+	
+	// TODO usePageTitle
 	document.title = faqDetail.data[0].name
 
 	return (

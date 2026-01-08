@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
@@ -9,7 +11,7 @@ import { TourismCityStarForm } from 'components/tourism-city-star'
 import '../tourism-style.css'
 
 export const TourismCityStarPage: FunctionComponent = () => {
-	document.title = 'Оценки городов'
+	usePageTitle('Оценки городов')
 	
 	return (
 		<div className="tourism-identy-page">

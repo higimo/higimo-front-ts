@@ -1,12 +1,14 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { DemagogGalery } from 'components/info-service/demagog/demagog-galery'
 
 import './style.css'
 
 export const DemagogPage: FunctionComponent = () => {
-	document.title = 'Справочник демагога'
+	usePageTitle('Справочник демагога')
 
 	return (
 		<div className="demagog-page">

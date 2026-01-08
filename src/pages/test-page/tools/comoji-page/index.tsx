@@ -1,10 +1,12 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { ComojiGalery } from 'components/tool/comoji-galery'
 
 export const ComojiPage: FunctionComponent = () => {
-	document.title = 'Комоджи смайлы'
+	usePageTitle('Комоджи смайлы')
 
 	return (
 		<div className="tool-index-page">

@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -8,7 +10,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import '../resume-style.css'
 
 export const ResumePage: FunctionComponent = () => {
-	document.title = 'Дмитрий Уткин в активном поиске'
+	usePageTitle('Дмитрий Уткин в активном поиске')
 
 	return (
 		<PrecentationContainer className="resume-hero">

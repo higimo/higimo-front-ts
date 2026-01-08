@@ -27,6 +27,7 @@ export const CinemaScriptDetail: FunctionComponent = () => {
 		return <NotFoundPage />
 	}
 
+	// TODO usePageTitle
 	document.title = cinemaDetail.data[0].title
 
 	return (

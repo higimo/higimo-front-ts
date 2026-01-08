@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 // import { NasheAlbums } from 'components/data/concert/nashe-albums'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
@@ -11,7 +13,7 @@ import '../../tourism-style.css'
 import './style.css'
 
 export const NasheIndexPage: FunctionComponent = () => {
-	document.title = 'Нашествие'
+	usePageTitle('Нашествие')
 
 	return (
 		<div className="nashe-index-page tourism-identy-page">

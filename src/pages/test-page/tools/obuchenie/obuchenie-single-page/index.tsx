@@ -1,9 +1,11 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { ObuchenieSingle } from 'components/obuchenie/obuchenie-single'
 
 export const ObuchenieSinglePage: FunctionComponent = () => {
-	document.title = 'Обучение'
+	usePageTitle('Обучение')
 
 	return (
 		<div className="obuchenie-page">

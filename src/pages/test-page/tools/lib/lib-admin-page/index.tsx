@@ -1,10 +1,12 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { LibraryHeader } from 'components/library/library-header'
 import { LibraryAdmin } from 'components/library/library-admin'
 
 export const LibAdminPage: FunctionComponent = () => {
-	document.title = 'Библиотека'
+	usePageTitle('Библиотека')
 
 	return (
 		<div className="lib-page">

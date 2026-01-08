@@ -1,5 +1,7 @@
 import { FunctionComponent } from "preact"
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from "components/ui/text-container"
 import { TourismWalkGallery } from "components/tourism/tourism-walk-gallery"
 import { TourismNashestviePreview } from "components/tourism/tourism-nashestvie-preview"
@@ -36,7 +38,7 @@ const data = [
 ] as const
 
 export const TourismIndexPage: FunctionComponent = () => {
-	document.title = 'Туризм'
+	usePageTitle('Туризм')
 
 	return (
 		<div className="tourism-identy-page">

@@ -2,10 +2,11 @@ import { useRoute } from 'preact-iso'
 
 import { FunctionComponent } from 'preact'
 
+import { MaybeLink } from '../maybe-link/maybe-link'
+
+import { globalRouter } from 'dic/router'
 
 import './style.css'
-import { MaybeLink } from '../maybe-link/maybe-link'
-import { globalRouter } from 'dic/router'
 
 const convertPathToUrl = (path: string) => {
 	const parts = path.split('/').filter(Boolean)

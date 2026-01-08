@@ -1,5 +1,6 @@
 import { FunctionComponent } from "preact"
 
+import { usePageTitle } from 'hook/use-page-title';
 import { useProject } from "hook/use-project";
 
 import { ProjectList } from "components/project/project-list"
@@ -12,7 +13,7 @@ import { ProjectTagGallery } from "components/project/project-tag-gallery";
 export const ProjectIndexPage: FunctionComponent = () => {
 	const { projectsList, uniqTags } = useProject();
 
-	document.title = 'Сделал'
+	usePageTitle('Сделал')
 
 	return (
 		<div className="project-index-page">

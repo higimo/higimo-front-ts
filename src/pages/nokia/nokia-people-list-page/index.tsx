@@ -1,6 +1,8 @@
 import { FunctionComponent } from 'preact'
 import { NokiaTagType } from 'types'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { useContext, useLayoutEffect, useState } from 'preact/hooks'
 
 import { NokiaMenu } from 'components/nokia/nokia-menu'
@@ -11,7 +13,7 @@ import '../nokia-style.css'
 import { NokiaContext } from 'context/nokia'
 
 export const NokiaPeopleListPage: FunctionComponent = () => {
-	document.title = 'Нокиа сервис'
+	usePageTitle('Нокиа сервис')
 
 	const { fetchData } = useContext(NokiaContext)
 	useLayoutEffect(fetchData, [])

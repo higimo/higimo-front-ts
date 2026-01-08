@@ -1,11 +1,13 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../vk-style.css'
 
 export const VkIndexPage: FunctionComponent = () => {
-	document.title = 'VK tool index'
+	usePageTitle('VK tool index')
 
 	return (
 		<div className="vk-photo">

@@ -1,12 +1,14 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { PetProjectForm } from 'components/tool/pet-project-form'
 
 import '../../pet-project.css'
 
 export const PetProjectFormPage: FunctionComponent = () => {
-	document.title = 'пэт-проекта'
+	usePageTitle('пэт-проекта')
 
 	return (
 		<div className="pet-project">

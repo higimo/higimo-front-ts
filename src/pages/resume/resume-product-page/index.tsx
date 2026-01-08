@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { ContactList } from 'components/intro/contact-list'
 import { OtherResume } from 'components/other-resume'
@@ -8,7 +10,7 @@ import { PrecentationContainer } from 'components/ui/precentation-container/Prec
 import '../resume-style.css'
 
 export const ResumeProductPage: FunctionComponent = () => {
-	document.title = 'В активном поиске'
+	usePageTitle('В активном поиске')
 
 	return (
 		<div className="resume-product-page resume-page">

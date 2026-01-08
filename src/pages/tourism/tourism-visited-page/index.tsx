@@ -1,6 +1,8 @@
 import { useState } from 'preact/hooks'
 import { useLazyLoadData } from 'hook/use-lazy-load-data'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
 import { Breadcrumps } from 'components/ui/breadcrumps'
@@ -178,7 +180,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 
 	const total = stateData.russiaCity.filter(handleFilterMapPoint(filter)).sort(handleSort(sort))
 
-	document.title = 'Результаты путешествий'
+	usePageTitle('Результаты путешествий')
 
 	return (
 		<div className="tourism-identy-page">

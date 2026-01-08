@@ -45,6 +45,7 @@ export const FeedbackItem: FunctionComponent = () => {
 			<div className="feed">
 				{blockElementList.data.map(({ create_at, name, theme, text, image, file }) => {
 					if (theme) {
+						// TODO usePageTitle
 						return <h1 title={document.title = theme}>{theme}</h1>
 					} else {
 						return (

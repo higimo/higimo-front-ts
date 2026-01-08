@@ -1,10 +1,12 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { ScriptList } from 'components/data/cinema/script-list'
 
 export const CinemaScriptPage: FunctionComponent = () => {
-	document.title = 'Кино'
+	usePageTitle('Кино')
 
 	return (
 		<div className="cinema-page">

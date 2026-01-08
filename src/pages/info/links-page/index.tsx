@@ -1,10 +1,12 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { LinksList } from 'components/info-service/links/links-list'
 
 export const LinksPage: FunctionComponent = () => {
-	document.title = 'Избранные ссылки'
+	usePageTitle('Избранные ссылки')
 
 	return (
 		<div className="links-page">

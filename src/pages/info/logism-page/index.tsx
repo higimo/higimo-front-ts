@@ -1,8 +1,10 @@
+import { usePageTitle } from 'hook/use-page-title';
+
 import { FunctionComponent } from 'preact'
 import { Logism } from 'components/logism/logism'
 
 export const LogismPage: FunctionComponent = () => {
-	document.title = 'Логизмы'
+	usePageTitle('Логизмы')
 
 	return <Logism />
 }

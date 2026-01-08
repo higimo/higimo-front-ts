@@ -1,10 +1,12 @@
 import { FunctionComponent } from 'preact'
 
+import { usePageTitle } from 'hook/use-page-title';
+
 import { TextContainer } from 'components/ui/text-container'
 import { ToolIndex } from 'components/tool/tool-index'
 
 export const ToolIndexPage: FunctionComponent = () => {
-	document.title = 'ToolPage'
+	usePageTitle('ToolPage')
 
 	return (
 		<div className="tool-index-page">
