@@ -1,7 +1,7 @@
-import { FunctionComponent } from "preact"
-import { AccordType } from "types"
+import { FunctionComponent } from 'preact'
+import { AccordType } from 'types'
 
-import { usePageTitle } from "hook/use-page-title"
+import { usePageTitle } from 'hook/use-page-title'
 
 
 /**

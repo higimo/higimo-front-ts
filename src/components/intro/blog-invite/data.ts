@@ -1,4 +1,4 @@
-import { EXTERNAL_LINKS } from "../../../dic/EXTERNAL_LINKS";
+import { EXTERNAL_LINKS } from '../../../dic/EXTERNAL_LINKS';
 
 type BlogListType = {
 	isArhive?: boolean;

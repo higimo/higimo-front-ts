@@ -1,4 +1,4 @@
-import { generateLink } from "./ROUTE_LINKS"
+import { generateLink } from './ROUTE_LINKS'
 
 export const API_ROUTE = {
 	accord: '/api/v1/accord',

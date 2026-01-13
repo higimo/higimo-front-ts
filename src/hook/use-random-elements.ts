@@ -1,5 +1,5 @@
 import { getRandom } from 'utils/get-random'
-import { useMemo } from "preact/hooks"
+import { useMemo } from 'preact/hooks'
 
 export const useRandomElements = <T,>(items: T[], count: number): T[] => 
 	useMemo(() => {

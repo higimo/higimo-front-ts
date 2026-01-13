@@ -1,4 +1,4 @@
-import { ROUTE_LINKS } from "../../../dic/ROUTE_LINKS";
+import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
 
 
 export const tourismMenuLinks = [

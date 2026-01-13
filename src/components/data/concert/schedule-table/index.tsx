@@ -1,10 +1,10 @@
-import { FunctionComponent } from "preact"
-import { NasheType } from "../types"
+import { FunctionComponent } from 'preact'
+import { NasheType } from '../types'
 
-import { useState } from "preact/hooks"
+import { useState } from 'preact/hooks'
 
-import { TextContainer } from "components/ui/text-container"
-import { TableRow } from "components/data/concert/table-row"
+import { TextContainer } from 'components/ui/text-container'
+import { TableRow } from 'components/data/concert/table-row'
 
 interface ScheduleTableProps {
 	data: NasheType[]

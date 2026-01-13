@@ -1,6 +1,6 @@
 import cs from 'classnames'
-import { FunctionComponent } from "preact";
-import { PovType } from "../tourism-maps-figure/data/russia-city2";
+import { FunctionComponent } from 'preact';
+import { PovType } from '../tourism-maps-figure/data/russia-city2';
 
 import './style.css'
 

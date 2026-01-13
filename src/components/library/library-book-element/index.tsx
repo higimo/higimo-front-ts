@@ -1,5 +1,5 @@
-import { FunctionComponent } from "preact"
-import { LibraryBookType } from "../types"
+import { FunctionComponent } from 'preact'
+import { LibraryBookType } from '../types'
 
 export const LibraryBookElement: FunctionComponent<LibraryBookType> = (book) => {
 	return (

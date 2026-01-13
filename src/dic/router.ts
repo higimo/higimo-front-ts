@@ -1,4 +1,4 @@
-import { ROUTE_LINKS } from "./ROUTE_LINKS";
+import { ROUTE_LINKS } from './ROUTE_LINKS';
 
 type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS['projectDetail_CONST']
 	| typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS['projectDetail_CONST']

@@ -1,7 +1,7 @@
-import { FunctionComponent } from "preact";
-import { BarPovType } from "../tourism-maps-figure/data/bar-pov-moscow";
+import { FunctionComponent } from 'preact';
+import { BarPovType } from '../tourism-maps-figure/data/bar-pov-moscow';
 import './style.css'
-import { Tag } from "../../ui/tag";
+import { Tag } from '../../ui/tag';
 
 export const TourismBarPointSnippet: FunctionComponent<BarPovType> = (mapPoint) => (
 	<div className="bar-pov__snippet">

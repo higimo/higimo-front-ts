@@ -1,6 +1,6 @@
 // Это всё сохранено в гите 7 окт 2021
 
-import { YaMapPolygon } from "./types"
+import { YaMapPolygon } from './types'
 
 export const moscowWalk2021Polygon: YaMapPolygon = {
 	type: "Polygon",

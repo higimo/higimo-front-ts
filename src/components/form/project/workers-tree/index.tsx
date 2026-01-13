@@ -1,6 +1,6 @@
 import { WorkerType } from 'types'
-import { FunctionComponent } from "preact";
-import { useMemo } from "preact/hooks";
+import { FunctionComponent } from 'preact';
+import { useMemo } from 'preact/hooks';
 
 import './style.css'
 import { Tag } from 'components/ui/tag';

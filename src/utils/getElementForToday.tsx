@@ -1,4 +1,4 @@
-import { FeedbackType } from "../types";
+import { FeedbackType } from '../types';
 
 // Алгоритм распределения массива по дням года без повторения, но в течении дня это тот же элемент
 export const getElementForToday = (elements: FeedbackType[]): FeedbackType => {

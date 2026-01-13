@@ -1,4 +1,4 @@
-import { useToast } from ".";
+import { useToast } from '.';
 
 function SomeComponent() {
   const { showToast } = useToast();

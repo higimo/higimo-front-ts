@@ -1,6 +1,6 @@
 import { WorkerType } from 'types'
-import { FunctionComponent } from "preact";
-import { FieldError, useForm } from "react-hook-form";
+import { FunctionComponent } from 'preact';
+import { FieldError, useForm } from 'react-hook-form';
 import './style.css'
 import { CollapseSection } from 'components/ui/collapse-section';
 

@@ -1,8 +1,8 @@
-import { FunctionComponent } from "preact"
-import { ComojiType } from "../../../types"
+import { FunctionComponent } from 'preact'
+import { ComojiType } from '../../../types'
 
-import getRandomColor from "../../../utils/get-random-color"
-import { copyToClipboard } from "../../../utils/copy-to-clipboard"
+import getRandomColor from '../../../utils/get-random-color'
+import { copyToClipboard } from '../../../utils/copy-to-clipboard'
 
 export const ComojiElement: FunctionComponent<ComojiType> = props => (
 	<div className="comoji">

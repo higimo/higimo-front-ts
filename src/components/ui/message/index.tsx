@@ -1,5 +1,5 @@
 import cs from 'classnames'
-import { ComponentChild, FunctionComponent } from "preact";
+import { ComponentChild, FunctionComponent } from 'preact';
 
 import './style.css'
 

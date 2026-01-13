@@ -1,17 +1,17 @@
-import { useRoute } from "preact-iso"
-import { ListerItem } from "types"
+import { useRoute } from 'preact-iso'
+import { ListerItem } from 'types'
 
-import useApi from "hook/use-api"
-import { useLoadingState } from "hook/use-loading-state"
-import { useEmptyDataState } from "hook/use-empty-data-state"
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from "components/ui/not-found-data"
-import { ListListElement } from "components/list/list-list-element"
+import { NotFoundData } from 'components/ui/not-found-data'
+import { ListListElement } from 'components/list/list-list-element'
 
-import { convertFlatListToIerah } from "../utils"
+import { convertFlatListToIerah } from '../utils'
 
-import { API_ROUTE } from "dic/api-route"
+import { API_ROUTE } from 'dic/api-route'
 
 export const ListList = () => {
 	const { params: { idcode = '' } } = useRoute()

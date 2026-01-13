@@ -1,14 +1,14 @@
-import { YaMapType } from "../../../types"
+import { YaMapType } from '../../../types'
 
-import useApi from "hook/use-api"
-import { useLoadingState } from "hook/use-loading-state"
-import { useEmptyDataState } from "hook/use-empty-data-state"
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
-import { NotFoundData } from "components/ui/not-found-data"
-import { Loading } from "components/ui/loading"
+import { NotFoundData } from 'components/ui/not-found-data'
+import { Loading } from 'components/ui/loading'
 
-import { API_ROUTE } from "dic/api-route"
-import { ROUTE_LINKS } from "dic/ROUTE_LINKS"
+import { API_ROUTE } from 'dic/api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import 'pages/tourism/tourism-style.css'
 import './style.css'

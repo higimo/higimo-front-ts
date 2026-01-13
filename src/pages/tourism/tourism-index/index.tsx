@@ -1,19 +1,19 @@
-import { FunctionComponent } from "preact"
+import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title';
 
-import { TextContainer } from "components/ui/text-container"
-import { TourismWalkGallery } from "components/tourism/tourism-walk-gallery"
-import { TourismNashestviePreview } from "components/tourism/tourism-nashestvie-preview"
-import { TourismMainMenu } from "components/tourism/tourism-main-menu"
-import { Breadcrumps } from "components/ui/breadcrumps"
-import { CityStarsIntro } from "components/tourism/city-stars-intro"
+import { TextContainer } from 'components/ui/text-container'
+import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
+import { TourismNashestviePreview } from 'components/tourism/tourism-nashestvie-preview'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { Breadcrumps } from 'components/ui/breadcrumps'
+import { CityStarsIntro } from 'components/tourism/city-stars-intro'
 
-import { ROUTE_LINKS } from "dic/ROUTE_LINKS"
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../tourism-style.css'
 import './style.css'
-import { PrecentationContainer } from "components/ui/precentation-container/PrecentationContainer"
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
 
 import listImg from './img/list.svg'
 import passportImg from './img/passport.svg'

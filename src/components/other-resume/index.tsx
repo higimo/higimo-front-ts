@@ -1,11 +1,11 @@
-import { useRoute } from "preact-iso"
+import { useRoute } from 'preact-iso'
 
-import { compareRoute } from "../../utils/compare-route"
+import { compareRoute } from '../../utils/compare-route'
 
-import { PrecentationContainer } from "../ui/precentation-container/PrecentationContainer"
-import { TextContainer } from "../ui/text-container"
-import { MaybeLink } from "../ui/maybe-link/maybe-link"
-import { ROUTE_LINKS } from "../../dic/ROUTE_LINKS"
+import { PrecentationContainer } from '../ui/precentation-container/PrecentationContainer'
+import { TextContainer } from '../ui/text-container'
+import { MaybeLink } from '../ui/maybe-link/maybe-link'
+import { ROUTE_LINKS } from '../../dic/ROUTE_LINKS'
 
 
 export const OtherResume = () => {

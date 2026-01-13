@@ -1,15 +1,15 @@
-import { FunctionComponent } from "preact";
-import { CinemaType } from "types";
+import { FunctionComponent } from 'preact';
+import { CinemaType } from 'types';
 
-import useApi from "hook/use-api";
-import { useLoadingState } from "hook/use-loading-state";
-import { useEmptyDataState } from "hook/use-empty-data-state";
+import useApi from 'hook/use-api';
+import { useLoadingState } from 'hook/use-loading-state';
+import { useEmptyDataState } from 'hook/use-empty-data-state';
 
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from "components/ui/not-found-data";
+import { NotFoundData } from 'components/ui/not-found-data';
 
-import { API_ROUTE } from "dic/api-route";
-import { ROUTE_LINKS } from "dic/ROUTE_LINKS";
+import { API_ROUTE } from 'dic/api-route';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
 
 export const ScriptList: FunctionComponent = () => {
 	const [ cinema ] = useApi<CinemaType>(API_ROUTE.cinemaShort)

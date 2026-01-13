@@ -1,7 +1,7 @@
-import { FunctionComponent } from "preact";
-import { DemagogType } from "../../../../types";
+import { FunctionComponent } from 'preact';
+import { DemagogType } from '../../../../types';
 
-import { TextContainer } from "../../../ui/text-container";
+import { TextContainer } from '../../../ui/text-container';
 
 export const DemagogElement: FunctionComponent<DemagogType> = item => (
 	<TextContainer className="demagog__element">

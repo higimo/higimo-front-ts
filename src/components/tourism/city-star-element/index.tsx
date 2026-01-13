@@ -1,4 +1,4 @@
-import { FunctionComponent } from "preact";
+import { FunctionComponent } from 'preact';
 
 type CityType = {
 	title: string;

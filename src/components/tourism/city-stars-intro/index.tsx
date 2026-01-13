@@ -1,7 +1,7 @@
-import { useEffect, useState } from "preact/hooks"
-import { TextContainer } from "../../ui/text-container"
-import { CityStarElement } from "../city-star-element"
-import { ROUTE_LINKS } from "../../../dic/ROUTE_LINKS"
+import { useEffect, useState } from 'preact/hooks'
+import { TextContainer } from '../../ui/text-container'
+import { CityStarElement } from '../city-star-element'
+import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS'
 
 import townImg from './img/town.svg'
 

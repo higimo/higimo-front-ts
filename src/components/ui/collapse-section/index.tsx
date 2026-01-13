@@ -1,7 +1,7 @@
 import cs from 'classnames'
-import { ComponentChild, FunctionComponent } from "preact";
-import { useState } from "preact/hooks";
-import { lazy, Suspense } from "preact/compat"
+import { ComponentChild, FunctionComponent } from 'preact';
+import { useState } from 'preact/hooks';
+import { lazy, Suspense } from 'preact/compat'
 
 const LazyCollapse = lazy(() => import('react-collapse'))
 

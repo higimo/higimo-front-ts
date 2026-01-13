@@ -1,8 +1,8 @@
-import { FunctionComponent } from "preact"
-import { AccordModeType } from "../../../types"
+import { FunctionComponent } from 'preact'
+import { AccordModeType } from '../../../types'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { Tag } from "components/ui/tag"
-import { filterMapping } from "../utils"
+import { Tag } from 'components/ui/tag'
+import { filterMapping } from '../utils'
 
 let alf = ''
 

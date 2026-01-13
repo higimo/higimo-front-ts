@@ -1,4 +1,4 @@
-import { useCallback, useState } from "preact/hooks"
+import { useCallback, useState } from 'preact/hooks'
 
 type UseTagsType = <T,>(initialValue: T[]) => [T[], (newTagsList: T[]) => () => void]
 

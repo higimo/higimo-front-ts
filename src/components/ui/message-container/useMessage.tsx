@@ -1,4 +1,4 @@
-import { MessageContainer } from ".";
+import { MessageContainer } from '.';
 
 /**
  * Возвращает контейнер и добавлялку месседжей

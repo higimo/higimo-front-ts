@@ -1,7 +1,7 @@
-import { useEffect } from "preact/hooks"
+import { useEffect } from 'preact/hooks'
 
-import { formatTime } from "utils/format-time"
-import { getDateFromTimestamp } from "utils/get-date-from-timestamp"
+import { formatTime } from 'utils/format-time'
+import { getDateFromTimestamp } from 'utils/get-date-from-timestamp'
 
 interface TableRowProps {
     time: number

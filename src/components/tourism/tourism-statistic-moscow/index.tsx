@@ -1,6 +1,6 @@
-import { FactoidRow } from "components/ui/factoid-row"
-import { TextContainer } from "components/ui/text-container"
-import { Fragment } from "preact/jsx-runtime"
+import { FactoidRow } from 'components/ui/factoid-row'
+import { TextContainer } from 'components/ui/text-container'
+import { Fragment } from 'preact/jsx-runtime'
 
 export const TourismStatisticMoscow = ({ total }) => {
 	const russianPov = total.filter(item => item.country === 'Россия')

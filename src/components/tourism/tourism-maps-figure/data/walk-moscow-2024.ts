@@ -1,4 +1,4 @@
-import { YaMapPolygon } from "./types"
+import { YaMapPolygon } from './types'
 
 export const moscow2024Polygon: YaMapPolygon = {
 	type: "Polygon",

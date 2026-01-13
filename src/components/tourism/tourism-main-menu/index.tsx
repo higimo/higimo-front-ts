@@ -1,8 +1,8 @@
-import { FunctionComponent } from "preact";
+import { FunctionComponent } from 'preact';
 
-import { HorizontalElement, HorizontalMenu } from "../../ui/horizontal-menu";
+import { HorizontalElement, HorizontalMenu } from '../../ui/horizontal-menu';
 
-import { tourismMenuLinks } from "./tourismMenuLinks";
+import { tourismMenuLinks } from './tourismMenuLinks';
 
 import './style.css'
 

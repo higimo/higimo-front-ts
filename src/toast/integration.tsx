@@ -1,4 +1,4 @@
-import { ToastContainer } from ".";
+import { ToastContainer } from '.';
 
 function App() {
   return (

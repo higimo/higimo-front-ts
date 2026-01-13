@@ -1,4 +1,4 @@
-import { MetionSelector } from "../types";
+import { MetionSelector } from '../types';
 
 export const getWrittenMention = (value: string, caretPosition: number): MetionSelector => {
 	if (caretPosition < 1 || caretPosition > value.length) {

@@ -1,5 +1,5 @@
-import { FunctionComponent } from "preact";
-import { Tag } from "components/ui/tag";
+import { FunctionComponent } from 'preact';
+import { Tag } from 'components/ui/tag';
 
 const FILTER_OPTIONS = [
 	{ key: 'new', label: 'нью' },

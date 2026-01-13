@@ -1,6 +1,6 @@
-import { FunctionComponent } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import { Message } from "../message";
+import { FunctionComponent } from 'preact';
+import { useEffect, useState } from 'preact/hooks';
+import { Message } from '../message';
 
 // type ToastPropsType = MessageContent & {
 //   removeToast: (id: string) => void;

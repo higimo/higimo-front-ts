@@ -1,4 +1,4 @@
-import { useEffect } from "preact/hooks"
+import { useEffect } from 'preact/hooks'
 
 /**
  * Хук для управления заголовком страницы

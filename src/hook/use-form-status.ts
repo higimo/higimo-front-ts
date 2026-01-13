@@ -1,5 +1,5 @@
-import { useState } from "preact/hooks"
-import { HigimoServerResponse } from "../types"
+import { useState } from 'preact/hooks'
+import { HigimoServerResponse } from '../types'
 
 export const useFormStatus: () => [ HigimoServerResponse, (val: HigimoServerResponse) => void] = () => {
 	const [ status, setStatus ] = useState<HigimoServerResponse>([])
