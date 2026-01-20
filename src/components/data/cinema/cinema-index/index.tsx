@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
 
+import { TextContainer } from 'components/ui/text-container'
+import { ScriptList } from 'components/data/cinema/script-list'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { TextContainer } from 'components/ui/text-container'
-import { ScriptList } from '../script-list'
 
 export const CinemaIndex: FunctionComponent = () => (
 	<TextContainer>

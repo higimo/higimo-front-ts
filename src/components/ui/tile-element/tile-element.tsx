@@ -2,8 +2,9 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link';
+
 import './style.css'
-import { MaybeLink } from '../maybe-link/maybe-link';
 
 type TileElementPropsType = {
 	isInactive?: boolean;

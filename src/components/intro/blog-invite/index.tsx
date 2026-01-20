@@ -5,7 +5,7 @@ import cs from 'classnames'
 import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
 import { TileElement } from 'components/ui/tile-element/tile-element'
 
-import { blogInviteData } from './data'
+import { blogInviteData } from 'components/intro/blog-invite/data'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 

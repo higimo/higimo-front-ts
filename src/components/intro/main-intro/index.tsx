@@ -3,13 +3,13 @@ import { FunctionComponent } from 'preact'
 import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
 import { PseudoLink } from 'components/ui/pseudo-link'
 import { TextContainer } from 'components/ui/text-container'
+import { CompanyLogo } from 'components/intro/company-logo'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { CompanyLogo } from '../company-logo'
 
 export const MainIntro: FunctionComponent = () => (
 	<PrecentationContainer className="main-intro">

@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'preact';
 
+import { Factoid, FactoidType } from 'components/ui/factoid';
+
 import './style.css'
-import { Factoid, FactoidType } from '../factoid';
 
 type FactoidRowType = {
 	countInRow: number;

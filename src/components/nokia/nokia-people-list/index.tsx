@@ -3,9 +3,11 @@ import { NokiaTagType } from 'types'
 
 import { useContext } from 'preact/hooks'
 
-import '../nokia-style.css'
+import { PersonMiniProfile } from 'components/nokia/person-mini-profile'
+
 import { NokiaContext, NokiaContextType } from 'context/nokia'
-import { PersonMiniProfile } from '../person-mini-profile'
+
+import '../nokia-style.css'
 
 type NokiaPeopleListPropsType = {
 	filter: NokiaTagType['id'];

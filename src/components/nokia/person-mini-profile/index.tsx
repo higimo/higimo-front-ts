@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'preact';
-import { PeopleType } from '../../../types';
-import { NokiaContextType } from '../../../context/nokia';
+import { PeopleType } from 'types';
 
-import { NokiaUserAvatar } from '../nokia-user-avatar';
+import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar';
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
+import { NokiaContextType } from 'context/nokia';
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
 
 type PersonMiniProfilePropsType = {
 	hashLink: NokiaContextType['hashLink'];

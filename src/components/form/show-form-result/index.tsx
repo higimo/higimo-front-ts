@@ -1,6 +1,7 @@
 import { ComponentChildren, JSX } from 'preact';
-import { HigimoServerResponse } from '../../../types';
-import { Message } from '../../ui/message';
+import { HigimoServerResponse } from 'types';
+
+import { Message } from 'components/ui/message';
 
 type ShowFormResultPropsType<T> = {
 	status: HigimoServerResponse;

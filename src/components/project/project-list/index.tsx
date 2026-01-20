@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'preact';
 import { ProjectFullInfoType } from 'types';
 
+import { ProjectElement } from 'components/project/project-element';
+
 import './style.css'
-import { ProjectElement } from '../project-element';
 
 // TODO На широких экранах 5 в ряд делать? Одновременно в коде и css надо
 const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): number => {

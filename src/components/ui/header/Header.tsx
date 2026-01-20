@@ -4,7 +4,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 import { useGlobalContext } from 'context/global'
-import { Logotype } from '../logotype-mini'
+import { Logotype } from 'components/ui/logotype-mini'
 import { OnlyAdmin } from 'components/util/only-admin'
 
 const menu = [

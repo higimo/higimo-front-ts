@@ -8,7 +8,7 @@ import { useCallback } from 'preact/hooks'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { ProjectRoutingFilterNameType } from '../project-tag-gallery/filter-type'
+import { ProjectRoutingFilterNameType } from 'components/project/project-tag-gallery/filter-type'
 
 const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}): string => {
 	return `${ROUTE_LINKS.projectIndex}?${httpBuildQuery(params)}`

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact';
-import { MeetingType, PeopleType } from '../../../types';
+import { MeetingType, PeopleType } from 'types';
 
-import { ROUTE_LINKS } from '../../../dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
 
 type NokiaMetingPropsType = {
 	curMeet: MeetingType;

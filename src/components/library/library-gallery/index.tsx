@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LibraryBookType } from '../types'
+import { LibraryBookType } from 'types'
 
 import useApi from 'hook/use-api'
 import { useLoadingState } from 'hook/use-loading-state'

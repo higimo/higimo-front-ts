@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { PeopleType } from 'types';
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
-import { NokiaMeting } from '../nokia-meting';
+import { NokiaMeting } from 'components/nokia/nokia-meting';
 import { CollapseSection } from 'components/ui/collapse-section';
 import { NokiaContextType } from 'context/nokia';
 

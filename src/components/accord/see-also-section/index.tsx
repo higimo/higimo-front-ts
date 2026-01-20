@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { AccordType } from 'types'
-import { AccordElement } from '../accord-element'
+
+import { AccordElement } from 'components/accord/accord-element'
 
 /**
  * Компонент для See Also секции

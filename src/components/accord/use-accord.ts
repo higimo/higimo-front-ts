@@ -1,7 +1,7 @@
 import { API_ROUTE } from 'dic/api-route'
 import useApi from 'hook/use-api'
 import { AccordModeType, AccordType } from 'types'
-import { filterMapping, median } from './utils'
+import { filterMapping, median } from 'components/accord/utils'
 
 const NEWS_ACCORD_LENGTH = 30
 

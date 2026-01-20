@@ -1,4 +1,4 @@
-import { getAuthPair } from './get-auth-pair'
+import { getAuthPair } from 'utils/get-auth-pair'
 
 import httpBuildQuery from 'http-build-query'
 

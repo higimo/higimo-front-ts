@@ -1,4 +1,4 @@
-import { YaMapType } from '../../../types'
+import { YaMapType } from 'types'
 
 import useApi from 'hook/use-api'
 import { useLoadingState } from 'hook/use-loading-state'

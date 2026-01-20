@@ -8,7 +8,7 @@ import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { Loading } from 'components/ui/loading'
 
 import { NotFoundData } from 'components/ui/not-found-data'
-import { DemagogElement } from '../demagog-element'
+import { DemagogElement } from 'components/info-service/demagog/demagog-element'
 import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'

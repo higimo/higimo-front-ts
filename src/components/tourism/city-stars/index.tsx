@@ -1,12 +1,13 @@
+import { FunctionComponent } from 'preact'
+
 import cs from 'classnames'
 
 import { useEffect, useState } from 'preact/hooks'
 
 import { TextContainer } from 'components/ui/text-container'
-import { FunctionComponent } from 'preact'
+import { CityStarElement } from 'components/tourism/city-star-element'
 
 import './style.css'
-import { CityStarElement } from '../city-star-element'
 
 const CITY_PREVIEW_DIC = {
 	LIST: 'LIST',

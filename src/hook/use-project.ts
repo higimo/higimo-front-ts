@@ -1,10 +1,10 @@
-import { ProjectFullInfoType, ProjectTagType, ProjectType, TagNameType, VendorType } from '../types'
+import { ProjectFullInfoType, ProjectTagType, ProjectType, TagNameType, VendorType } from 'types'
 import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import { useEffect, useMemo, useState } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
 
-import sendRequest from '../utils/send-request'
+import sendRequest from 'utils/send-request'
 
 
 const mapingProjectToProjectFullInfo = (vendors: VendorType[], tags: ProjectTagType[], tagNames: TagNameType[]) => {

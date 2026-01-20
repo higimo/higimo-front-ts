@@ -1,13 +1,13 @@
 import { FunctionComponent } from 'preact'
 
 import { useState } from 'preact/hooks'
+import { useAccord } from 'components/accord/use-accord'
 
 import { TextContainer } from 'components/ui/text-container'
+import { AccordTagGallery } from 'components/accord/accord-baidge-gallery'
+import { AccordElement } from 'components/accord/accord-element'
 
 import './style.css'
-import { useAccord } from '../use-accord'
-import { AccordTagGallery } from '../accord-baidge-gallery'
-import { AccordElement } from '../accord-element'
 
 export const AccordGallery: FunctionComponent = () => {
 	const [filter, setFilter] = useState('')

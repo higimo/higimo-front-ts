@@ -121,7 +121,6 @@ const ResumeHeadPage = lazy(() => import('pages/resume/resume-head-page'))
 
 // https://habr.com/ru/articles/673640/ добавить куда-то
 
-// TODO replace «from '(.*?)'» «from '$1'»
 // TODO интересный код событий для форм https://doka.guide/js/queuemicrotask/
 
 // https://higimo.ru/vk/

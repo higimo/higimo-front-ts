@@ -1,10 +1,13 @@
 import { useContext, useLayoutEffect } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
 
-import '../nokia-style.css'
-import { NotFoundPage } from 'pages/not-found-page'
+import { NokiaPeopleDetailCardItem } from 'components/nokia/nokia-people-detail-card-item'
+
 import { NokiaContext, NokiaContextType } from 'context/nokia'
-import { NokiaPeopleDetailCardItem } from '../nokia-people-detail-card-item'
+
+import { NotFoundPage } from 'pages/not-found-page'
+
+import '../nokia-style.css'
 
 export const NokiaPeopleDetailCard = () => {
 	const { params: { personId = '-1'}} = useRoute()

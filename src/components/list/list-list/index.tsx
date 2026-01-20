@@ -9,7 +9,7 @@ import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { ListListElement } from 'components/list/list-list-element'
 
-import { convertFlatListToIerah } from '../utils'
+import { convertFlatListToIerah } from 'components/list/utils'
 
 import { API_ROUTE } from 'dic/api-route'
 

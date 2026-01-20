@@ -1,6 +1,6 @@
 import { Component, h } from 'preact'
-// import * as component from '../common'
-import sendRequest from '../../utils/send-request'
+
+import sendRequest from 'utils/send-request'
 
 export class ListkeeperFromUrl extends Component {
 	state = {
@@ -37,19 +37,21 @@ export class ListkeeperFromUrl extends Component {
 		}
 	}
 
-	// @ts-ignore
-	render({ config: { childComponent, className } }) {
-		return (
-			<div className={`${className} listkeeper-from-url`}>
-				{this.state.list.map(item => h(
-					// @ts-ignore
-					component[childComponent],
-					{
-						...item,
-						data: this.state.data,
-					}
-				))}
-			</div>
-		)
+	render() {
+		return null
 	}
+	// render({ config: { childComponent, className } }) {
+		// return (
+			// <div className={`${className} listkeeper-from-url`}>
+			// 	{this.state.list.map(item => h(
+			// 		// @ts-ignore
+			// 		component[childComponent],
+			// 		{
+			// 			...item,
+			// 			data: this.state.data,
+			// 		}
+			// 	))}
+			// </div>
+		// )
+	// }
 }

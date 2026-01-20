@@ -1,14 +1,16 @@
 import { createRef, Fragment } from 'preact'
 
+import { useEffect, useState } from 'preact/hooks'
+import { useWindowSize } from 'hook/use-window-size'
+
 import { YMaps, Map } from 'react-yandex-maps'
 import { TextContainer } from 'components/ui/text-container'
 import { Tag } from 'components/ui/tag'
-import { useEffect, useState } from 'preact/hooks'
+import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
+
+import { BAR_COLOR_MAPPING, barColor, barIcon, BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 
 import '../yandex-map.css'
-import { useWindowSize } from 'hook/use-window-size'
-import { BAR_COLOR_MAPPING, barColor, barIcon, BarPovType, barTagsCategory } from '../tourism-maps-figure/data/bar-pov-moscow'
-import { TourismBarPointSnippet } from '../tourism-bar-point-snippet'
 
 // https://yandex.ru/dev/jsapi-v2-1/doc/ru/v2-1/ref/reference/option.presetStorage
 // https://yandex.ru/dev/maps/jsbox/2.1/polygon/

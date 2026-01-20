@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NasheType } from '../types'
+import { NasheType } from 'components/data/concert/types'
 
 import { useState } from 'preact/hooks'
 

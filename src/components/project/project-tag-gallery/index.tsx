@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'preact'
-import { ProjectFullInfoType } from '../../../types'
-import { filterType } from './filter-type'
+import { ProjectFullInfoType } from 'types'
+import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import { useMemo } from 'preact/hooks'
 
-import { ProjectTag } from '../project-tag'
-import { TextContainer } from '../../ui/text-container'
+import { ProjectTag } from 'components/project/project-tag'
+import { TextContainer } from 'components/ui/text-container';
 
 const TAG_CATEGORY_MAP = {
 	'Размер': [

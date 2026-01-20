@@ -1,8 +1,8 @@
 import { MeetingType, NokiaTagType, PeopleMeetingType, PeopleTag, PeopleType, RichMeetingType } from 'types'
 
-import { useCallback, useEffect, useState } from 'preact/hooks'
+import { useCallback, useState } from 'preact/hooks'
 
-import sendRequest from '../utils/send-request'
+import sendRequest from 'utils/send-request'
 
 import { makeHashTable } from 'utils/make-hash-table'
 

@@ -3,7 +3,7 @@ import { ListListType } from 'types'
 
 import { useAuth } from 'hook/use-auth'
 
-import sendRequest from '../../../utils/send-request'
+import sendRequest from 'utils/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 

@@ -2,6 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import { useLocation } from 'preact-iso'
 
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link';
+
 import { compareRoute } from 'utils/compare-route'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
@@ -9,7 +11,6 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import avatar from './avatar.jpg'
 
 import './style.css'
-import { MaybeLink } from '../maybe-link/maybe-link'
 
 export const Logotype: FunctionComponent = () => {
 	const { path } = useLocation()
