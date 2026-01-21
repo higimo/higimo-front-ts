@@ -1,8 +1,8 @@
 // Список музеев Москвы для посещения
 // TODO: Показать на сайте
 type MoscowMuseumType = {
-	name: string;
-	adress: string;
+	name: string
+	adress: string
 }
 const moscowMuseum: MoscowMuseumType[] = [
 	{

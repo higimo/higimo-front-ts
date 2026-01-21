@@ -1,10 +1,10 @@
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS';
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export type AboutDataType = {
-	name: string;
-	link: string;
-	description: string;
+	name: string
+	link: string
+	description: string
 }
 
 export const aboutInviteList: AboutDataType[] = [

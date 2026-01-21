@@ -51,14 +51,14 @@ export const barIcon = (barIconName: BarIconDictType): BarIconColorType => BAR_I
 
 
 export type BarPovType = {
-	title: string;
-	type: 'bar-pub' | 'bar' | 'restoran' | 'gastro-pub';
-	adress?: string;
-	description?: string;
-	coord: [number, number];
-	tags: BarPovTagType[];
-	icon: BarIconDictType;
-	color: BarMoodDictType;
+	title: string
+	type: 'bar-pub' | 'bar' | 'restoran' | 'gastro-pub'
+	adress?: string
+	description?: string
+	coord: [number, number]
+	tags: BarPovTagType[]
+	icon: BarIconDictType
+	color: BarMoodDictType
 }
 
 export const barPovMoscow: BarPovType[] = [

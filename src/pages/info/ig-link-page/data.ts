@@ -1,9 +1,9 @@
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS';
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 type LinkType = {
-	href: string;
-	title: string;
-	description: string;
+	href: string
+	title: string
+	description: string
 }
 export const iglinksData: LinkType[] = [
 	{

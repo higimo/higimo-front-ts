@@ -1,4 +1,4 @@
-import { useMemo } from 'preact/hooks';
+import { useMemo } from 'preact/hooks'
 
 /**
  * Хук для разделения данных по сценам

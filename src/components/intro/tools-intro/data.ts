@@ -1,11 +1,11 @@
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS';
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export type ToolDataType = {
-	name: string;
+	name: string
 	isAdmin?: boolean,
-	link?: typeof EXTERNAL_LINKS[keyof typeof EXTERNAL_LINKS] | typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS];
-	description: string;
+	link?: typeof EXTERNAL_LINKS[keyof typeof EXTERNAL_LINKS] | typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS]
+	description: string
 }
 
 export const hardToolList: ToolDataType[] = [

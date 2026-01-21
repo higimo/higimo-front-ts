@@ -1,4 +1,4 @@
-import { HigimoMapPoint } from './types';
+import { HigimoMapPoint } from './types'
 
 export const moscowPovPoints: HigimoMapPoint[] = [
 	{

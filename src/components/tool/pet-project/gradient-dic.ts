@@ -1,6 +1,6 @@
 type GradientDicType = {
-	g: string;
-	c: string;
+	g: string
+	c: string
 }
 export const petProjectGradient: GradientDicType[] = [
 	{ g: 'linear-gradient(25deg, #8f30f3 14.16%, #4446f8 82.3%)', c: '#fff' },

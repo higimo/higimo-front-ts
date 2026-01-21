@@ -27,36 +27,36 @@ export const AUTH_STATUS_DIC = {
 type AuthStatus = typeof AUTH_STATUS_DIC[keyof typeof AUTH_STATUS_DIC]
 
 let authState: {
-	status: AuthStatus;
-	isAuth: boolean;
+	status: AuthStatus
+	isAuth: boolean
 } = {
 	status: 'idle',
 	isAuth: false,
-};
+}
 export const useAuth = () => {
 	const { route, path } = useLocation()
 	const { login, pass } = getAuthPair()
 	const redirectToLogin = useCallback(() => {
 		route(`${ROUTE_LINKS.login}?backpath=${path}`, true)
 	}, [path])
-	const { isAuth, setIsAuth } = useContext(AuthContext);
-	const [ statusLoading, setStatusLoading ] = useState<AuthStatus>(authState.status);
+	const { isAuth, setIsAuth } = useContext(AuthContext)
+	const [ statusLoading, setStatusLoading ] = useState<AuthStatus>(authState.status)
 
 
 	useEffect(() => {
 		if (authState.status === 'idle') {
-			authState.status = 'loading';
-			setStatusLoading('loading');
+			authState.status = 'loading'
+			setStatusLoading('loading')
 
 			isAuthorizedFunc().then((isAuth) => {
-				authState.status = isAuth ? 'authenticated' : 'unauthenticated';
-				authState.isAuth = isAuth;
-				setIsAuth(isAuth);
-				setStatusLoading(authState.status);
-			});
+				authState.status = isAuth ? 'authenticated' : 'unauthenticated'
+				authState.isAuth = isAuth
+				setIsAuth(isAuth)
+				setStatusLoading(authState.status)
+			})
 		} else {
-			setIsAuth(authState.isAuth);
-			setStatusLoading(authState.status);
+			setIsAuth(authState.isAuth)
+			setStatusLoading(authState.status)
 		}
 	}, [setIsAuth, setStatusLoading])
 

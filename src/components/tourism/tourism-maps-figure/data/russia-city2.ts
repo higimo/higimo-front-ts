@@ -1,109 +1,109 @@
 // Точка интереса дороги россии самые красивые
 // TODO: Зарядье
 // TODO: Добавить Байкал
-type CountryTitle = 'Россия' | 'Абхазия' | 'Эстония';
+type CountryTitle = 'Россия' | 'Абхазия' | 'Эстония'
 
 interface PovTitle {
-	title: string;
+	title: string
 }
 
 interface PovCoord {
-	coord: [number, number];
+	coord: [number, number]
 }
 
 interface PovVisited {
-	visited: boolean;
+	visited: boolean
 }
 
 interface PovColor {
-	color: `#${string}`;
+	color: `#${string}`
 }
 
 interface PovDescription {
-	description?: string;
+	description?: string
 }
 
 interface GlobalAdministrativePosition {
-	country: CountryTitle;
-	region: string;
-	okrug?: string;
-	nearMoscow: boolean;
+	country: CountryTitle
+	region: string
+	okrug?: string
+	nearMoscow: boolean
 }
 
 interface RussianAdmPosition {
-	region: string;
-	okrug?: string;
+	region: string
+	okrug?: string
 }
 
 interface Country extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited {
-	type: 'страна';
-	title: CountryTitle;
-	country?: never;
-	region?: never;
-	okrug?: never;
-	city?: never;
-	population: number;
+	type: 'страна'
+	title: CountryTitle
+	country?: never
+	region?: never
+	okrug?: never
+	city?: never
+	population: number
 }
 interface SubjectFederation extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited {
-	type: 'республика' | 'край' | 'область' | 'город федерального значения' | 'автономный область' | 'автономный округ';
-	country: 'Россия';
-	centerCity: string;
-	area: number;
-	population: number;
-	okato: number;
-	inside: string;
+	type: 'республика' | 'край' | 'область' | 'город федерального значения' | 'автономный область' | 'автономный округ'
+	country: 'Россия'
+	centerCity: string
+	area: number
+	population: number
+	okato: number
+	inside: string
 }
 interface AdmOrkugMoscow extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited {
-	type: 'административный округ Москвы';
-	country: 'Россия';
-	area: number;
-	population: number;
+	type: 'административный округ Москвы'
+	country: 'Россия'
+	area: number
+	population: number
 }
 interface TownMoscow extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited {
-	type: 'поселение Москвы';
-	country: 'Россия';
-	area: number;
-	population: number;
+	type: 'поселение Москвы'
+	country: 'Россия'
+	area: number
+	population: number
 }
 interface DistrictMoscow extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited {
-	type: 'район Москвы';
-	country: 'Россия';
-	moscowOkrug: string;
-	population?: never;
+	type: 'район Москвы'
+	country: 'Россия'
+	moscowOkrug: string
+	population?: never
 }
 
 
 interface Castle extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited, GlobalAdministrativePosition {
-	type: 'вымерший город' | 'крепость' | 'каньон' | 'парк' | 'монастырь' | 'каменоломни';
-	city?: string;
-	population: number;
+	type: 'вымерший город' | 'крепость' | 'каньон' | 'парк' | 'монастырь' | 'каменоломни'
+	city?: string
+	population: number
 }
 
 interface Town extends PovTitle, PovCoord, PovDescription, PovColor, PovVisited, GlobalAdministrativePosition {
-	type: 'округ Москвы' | 'город' | 'деревня' | 'столица' | 'ЗАТО';
-	population: number;
+	type: 'округ Москвы' | 'город' | 'деревня' | 'столица' | 'ЗАТО'
+	population: number
 }
 
 interface Teatre extends PovTitle, PovCoord, PovDescription, PovVisited, RussianAdmPosition {
-	type: 'театр';
-	population?: never;
+	type: 'театр'
+	population?: never
 }
 interface Build extends PovTitle, PovCoord, PovDescription, PovVisited, RussianAdmPosition {
-	type: 'здание';
-	population?: never;
+	type: 'здание'
+	population?: never
 }
 interface Landmark extends PovTitle, PovCoord, PovDescription, PovVisited, RussianAdmPosition {
-	type: 'достопримечательность';
-	population?: never;
+	type: 'достопримечательность'
+	population?: never
 }
 interface Church extends PovTitle, PovCoord, PovDescription, PovVisited, RussianAdmPosition {
-	type: 'церковь';
-	population?: never;
+	type: 'церковь'
+	population?: never
 }
 interface Memorial extends PovTitle, PovCoord, PovDescription, PovVisited, RussianAdmPosition {
-	type: 'памятник';
-	population?: never;
-	bad: boolean;
+	type: 'памятник'
+	population?: never
+	bad: boolean
 }
   
 export type PovType = Country

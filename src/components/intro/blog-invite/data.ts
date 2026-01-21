@@ -1,10 +1,10 @@
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS';
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 type BlogListType = {
-	isArhive?: boolean;
-	name: string;
-	link: string;
-	description: string;
+	isArhive?: boolean
+	name: string
+	link: string
+	description: string
 }
 
 export const blogInviteData: BlogListType[] = [

@@ -1,12 +1,12 @@
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS';
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export type KnowlageType = {
-	isArchive?: boolean;
-	link?: string;
-	imgId: 'screen' | 'rak' | 'tech' | 'school' | 'obuchenie' | 'intersection';
-	name: string;
-	description: string;
+	isArchive?: boolean
+	link?: string
+	imgId: 'screen' | 'rak' | 'tech' | 'school' | 'obuchenie' | 'intersection'
+	name: string
+	description: string
 }
 
 export const shareKnowledgeData: KnowlageType[] = [
