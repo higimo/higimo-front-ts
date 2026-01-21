@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'preact'
+import { ProjectRoutingFilterNameType } from 'components/project/project-tag-gallery/filter-type'
 
 import httpBuildQuery from 'http-build-query'
 
@@ -7,16 +8,16 @@ import { useCallback } from 'preact/hooks'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+
 import './style.css'
-import { ProjectRoutingFilterNameType } from 'components/project/project-tag-gallery/filter-type'
 
 const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}): string => {
 	return `${ROUTE_LINKS.projectIndex}?${httpBuildQuery(params)}`
 }
 
 type ProjectTagPropsType = {
-	filterName: ProjectRoutingFilterNameType;
-	children: string;
+	filterName: ProjectRoutingFilterNameType
+	children: string
 }
 export const ProjectTag: FunctionComponent<ProjectTagPropsType> = props => {
 	const { query, route } = useLocation()
@@ -24,7 +25,7 @@ export const ProjectTag: FunctionComponent<ProjectTagPropsType> = props => {
 	const handleRemove = useCallback((event) => {
 		if (query[props.filterName] == props.children) {
 			event.preventDefault()
-			delete query[props.filterName];
+			delete query[props.filterName]
 			route(getProjectUrl(query))
 			return false
 		}

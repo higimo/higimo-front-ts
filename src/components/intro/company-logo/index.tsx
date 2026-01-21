@@ -21,7 +21,7 @@ const logoMap = {
 type NameCompanyType = keyof typeof logoMap
 
 type CompanyLogoType = {
-	name: NameCompanyType;
+	name: NameCompanyType
 }
 
 export const CompanyLogo: FunctionComponent<CompanyLogoType> = props => (

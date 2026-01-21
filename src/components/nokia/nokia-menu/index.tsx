@@ -1,12 +1,12 @@
 import cs from 'classnames'
 
-import { useRoute } from 'preact-iso';
+import { useRoute } from 'preact-iso'
 
-import { compareRoute } from 'utils/compare-route';
+import { compareRoute } from 'utils/compare-route'
 
-import { HorizontalMenu, HorizontalElement } from 'components/ui/horizontal-menu';
+import { HorizontalMenu, HorizontalElement } from 'components/ui/horizontal-menu'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 

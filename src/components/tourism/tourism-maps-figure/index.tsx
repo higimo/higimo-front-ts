@@ -1,13 +1,14 @@
 import { createRef, Fragment } from 'preact'
+import { HigimoMapPoint, YaMapPolygon } from './data/types'
+
+import { useEffect, useState } from 'preact/hooks'
+import { useWindowSize } from 'hook/use-window-size'
 
 import { YMaps, Map } from 'react-yandex-maps'
 import { TextContainer } from 'components/ui/text-container'
 import { Tag } from 'components/ui/tag'
-import { useEffect, useState } from 'preact/hooks'
 
 import '../yandex-map.css'
-import { useWindowSize } from 'hook/use-window-size'
-import { HigimoMapPoint, YaMapPolygon } from './data/types'
 
 const MAP_MODE = {
 	INIT: 'INIT',
@@ -24,7 +25,7 @@ const loadStateData = async (): Promise<MoscowWalkaroundStateDataType> => {
 
 const updateMap = (map, yamaps, mode, stateData) => {
 	if (!map || !yamaps || !stateData.stateYear2021 || !stateData.stateYear2024 || mode === MAP_MODE.INIT) {
-		return null;
+		return null
 	}
 
 	map.geoObjects.removeAll()
@@ -91,9 +92,9 @@ const updateMap = (map, yamaps, mode, stateData) => {
 }
 
 type MoscowWalkaroundStateDataType = {
-	stateYear2021: YaMapPolygon[];
-	stateYear2024: YaMapPolygon[];
-	moscowPovPoints: HigimoMapPoint[];
+	stateYear2021: YaMapPolygon[]
+	stateYear2024: YaMapPolygon[]
+	moscowPovPoints: HigimoMapPoint[]
 }
 
 export const TourismMoscowWalkaround = () => {
@@ -101,7 +102,7 @@ export const TourismMoscowWalkaround = () => {
 	const [ mode, setMode ] = useState(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)
 	const [stateData, setStateData] = useState<MoscowWalkaroundStateDataType>(null)
-	const { width } = useWindowSize();
+	const { width } = useWindowSize()
 
 	const handleMapLoad = ymaps => {
 		if (mode === MAP_MODE.INIT) {

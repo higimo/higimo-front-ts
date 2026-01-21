@@ -1,5 +1,4 @@
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
-
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const tourismMenuLinks = [
 	{ href: ROUTE_LINKS.tourismChecklist, title: 'Чек-лист путешественника' },
@@ -8,4 +7,4 @@ export const tourismMenuLinks = [
 	{ href: ROUTE_LINKS.tourismMapsMoscowWalkaround, title: 'Обхожу Москву' },
 	{ href: ROUTE_LINKS.tourismMapsMoscowBar, title: 'Московские бары' },
 	{ href: ROUTE_LINKS.tourismNashe, title: 'Нашествие' },
-];
+]

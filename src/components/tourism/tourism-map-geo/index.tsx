@@ -1,18 +1,18 @@
-import { Fragment, FunctionComponent } from 'preact';
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2';
+import { Fragment, FunctionComponent } from 'preact'
+import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
 
-import { useWindowSize } from 'hook/use-window-size';
+import { useWindowSize } from 'hook/use-window-size'
 
-import { YMaps, Map, Clusterer, Placemark, FullscreenControl, Polyline } from 'react-yandex-maps';
+import { YMaps, Map, Clusterer, Placemark, FullscreenControl, Polyline } from 'react-yandex-maps'
 
 // TODO: посещение рек РФ
 
 type TourismMapGeoPropsType = {
-	items?: PovType[];
-	lines?: number[][];
+	items?: PovType[]
+	lines?: number[][]
 }
 export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items, lines }) => {
-	const { width, height } = useWindowSize();
+	const { width, height } = useWindowSize()
 
 	return (
 		<Fragment>

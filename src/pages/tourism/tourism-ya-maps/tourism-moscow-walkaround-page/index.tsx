@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
 import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps-figure'
 import { Breadcrumps } from 'components/ui/breadcrumps'

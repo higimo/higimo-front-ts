@@ -1,12 +1,12 @@
 import cs from 'classnames'
 
-import { FunctionComponent } from 'preact';
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2';
+import { FunctionComponent } from 'preact'
+import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
 
 import './style.css'
 
 type TourismCardGeoPropsType = {
-	items: PovType[];
+	items: PovType[]
 }
 export const TourismCardGeo: FunctionComponent<TourismCardGeoPropsType> = ({ items }) => {
 	return (

@@ -1,4 +1,4 @@
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 
 export const Loading = () => (
 	<TextContainer className="loading">

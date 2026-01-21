@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks'
 import { useLazyLoadData } from 'hook/use-lazy-load-data'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
@@ -91,40 +91,40 @@ const typeFilters = {
 	[TYPE_MAP.CITY]: ['город'],
 	[TYPE_MAP.VILLAGE]: ['деревня'],
 	[TYPE_MAP.ZATO]: ['ЗАТО'],
-};
+}
 
 const handleFilterMapPoint = (filter) => (item: PovType) => {
 	// Посещённость
-	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false;
-	if (filter.visited === VISITED_MAP.WANTED && 'visited' in item && item.visited) return false;
+	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false
+	if (filter.visited === VISITED_MAP.WANTED && 'visited' in item && item.visited) return false
 
 	// Страна
-	if (filter.type === TYPE_MAP.RUSSIA && 'country' in item && item.country !== 'Россия') return false;
-	if (filter.type === TYPE_MAP.WORLD && 'country' in item && item.country === 'Россия') return false;
+	if (filter.type === TYPE_MAP.RUSSIA && 'country' in item && item.country !== 'Россия') return false
+	if (filter.type === TYPE_MAP.WORLD && 'country' in item && item.country === 'Россия') return false
 
 	if (typeFilters[filter.type] && !typeFilters[filter.type].includes(item.type)) {
-		return false;
+		return false
 	}
 
-	return true;
+	return true
 }
 
 const handleSort = (sort) => (a: PovType, b: PovType) => {
 	if (SORT_MAP.INIT === sort) {
-		return 0;
+		return 0
 	}
 	if (SORT_MAP.VISITED === sort) {
 		// @ts-ignore
-		return b.visited - a.visited;
+		return b.visited - a.visited
 	}
 	if (SORT_MAP.WANTED === sort) {
 		// @ts-ignore
-		return a.visited - b.visited;
+		return a.visited - b.visited
 	}
 	if (SORT_MAP.ALPHABET === sort) {
 		return a.title.localeCompare(b.title)
 	}
-	return 0;
+	return 0
 }
 
 const FILTER_TAGS = [
@@ -155,7 +155,7 @@ const FILTER_TAGS = [
 	{ type: TYPE_MAP.CITY, label: 'Города' },
 	{ type: TYPE_MAP.VILLAGE, label: 'Деревни' },
 	{ type: TYPE_MAP.ZATO, label: 'ЗАТО' }
-];
+]
 
 // Следующим этапом подгружу оставшиеся списки для посещений: крепости, памятники, музеи, POI Москвы, станции метро Москвы. И введу метку «хочу». Потому что ЗАТО я хочу посетить только один — Центр подготовки космонавтов, но хорошо бы собрать и остальные. Когда дособеру — можно будет и на БД переносить.
 
@@ -173,7 +173,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 	const [sort, setSort] = useState(SORT_MAP.INIT)
 
 	if ((stateData?.russiaCity?.length || 0) === 0) {
-		return null;
+		return null
 	}
 
 	const totalStatistic = stateData.russiaCity.slice(0)
@@ -195,7 +195,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 					Я путешествую по спискам, где бы хотел побывать. Там города и отдельные места, например, Байкал и озеро Рица, парк Кудыкина гора. В России я бы хотел побывать во всех регионах и значимых городах. Ещё я хочу побывать во всех русских крепостях: кремли и замки вроде Изборска — они прекрасны.
 				</p>
 				<p>
-					Под статистикой можно ознакомиться, где я ещё не был и вписаться со мной в путешествие ;)
+					Под статистикой можно ознакомиться, где я ещё не был и вписаться со мной в путешествие)
 				</p>
 			</TextContainer>
 			<TourismStatisticWorld total={totalStatistic} />
@@ -209,7 +209,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			<TextContainer>
 				<h2>Список для путешествий</h2>
 				<p>
-					Можно отобразить таблицей, карточками и посмотреть на карте. С белой подложкой то, где я уже был. Где не был — можно вписаться в путешествие ;)
+					Можно отобразить таблицей, карточками и посмотреть на карте. С белой подложкой то, где я уже был. Где не был — можно вписаться в путешествие)
 				</p>
 			</TextContainer>
 			<TextContainer>

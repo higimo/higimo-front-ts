@@ -1,20 +1,21 @@
-import { FunctionComponent, JSX } from 'preact';
+import { FunctionComponent, JSX } from 'preact'
 
-import { useCallback, useRef, useState } from 'preact/hooks';
+import { useCallback, useRef, useState } from 'preact/hooks'
 
-import { MentionList } from './MentionList';
+import { MentionList } from './MentionList'
+import { MentionSuggest, MetionSelector } from './types'
 
 import { KEY } from './KEY'
 
+import { getWrittenMention } from './utils/getWrittenMention'
+import { getMentionList } from './utils/getMentionList'
+import { isMention } from './utils/isMention'
+import { getShiftSuggest } from './utils/getShiftSuggest'
+
 import './style.css'
-import { MentionSuggest, MetionSelector } from './types';
-import { getWrittenMention } from './utils/getWrittenMention';
-import { getMentionList } from './utils/getMentionList';
-import { isMention } from './utils/isMention';
-import { getShiftSuggest } from './utils/getShiftSuggest';
 
 type MentionsInputPropsType = {
-	suggestList: MentionSuggest[];
+	suggestList: MentionSuggest[]
 	onMention: (mentionList: MentionSuggest[]) => void
 }
 // TODO: добавить в нокиа

@@ -1,9 +1,10 @@
 import { createRef } from 'preact'
 
+import { useWindowSize } from 'hook/use-window-size'
+
 import { YMaps, Map } from 'react-yandex-maps'
 
 import '../yandex-map.css'
-import { useWindowSize } from 'hook/use-window-size'
 
 const districtVisited = [
 	'RU-VLA', 'RU-VGG', 'RU-KGD', 'RU-KIR', 'RU-LEN', 'RU-MOS', 'RU-NIZ', 'RU-NGR',
@@ -29,7 +30,7 @@ const getDistrictColor = (iso) => {
 
 export const TourismMapsRegion = () => {
 	const mapRef = createRef()
-	const { width, height } = useWindowSize();
+	const { width, height } = useWindowSize()
 
 	const handleMapLoad = ymaps => {
 		(async () => {

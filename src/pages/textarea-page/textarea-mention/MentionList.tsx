@@ -1,32 +1,32 @@
-import cs from 'classnames';
-import { FunctionComponent, createRef } from 'preact';
-import { useCallback, useEffect } from 'preact/hooks';
-import { MentionSuggest } from './types';
+import cs from 'classnames'
+import { FunctionComponent, createRef } from 'preact'
+import { useCallback, useEffect } from 'preact/hooks'
+import { MentionSuggest } from './types'
 
 type MentionListPropsType = {
-	onSelect: (value: MentionSuggest) => void;
-	suggestList: MentionSuggest[];
-	selectedSuggest: number;
-};
+	onSelect: (value: MentionSuggest) => void
+	suggestList: MentionSuggest[]
+	selectedSuggest: number
+}
 export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
-	const listRef = createRef();
+	const listRef = createRef()
 	const handleClick = useCallback((value) => () => props.onSelect(value), [props.onSelect])
 	useEffect(() => {
-		const container = listRef.current;
-		if (!container || props.selectedSuggest === -1) return;
+		const container = listRef.current
+		if (!container || props.selectedSuggest === -1) return
 
-		const activeItem = container.querySelector('.suggestion-list__item--active') as HTMLElement;
-		if (!activeItem) return;
+		const activeItem = container.querySelector('.suggestion-list__item--active') as HTMLElement
+		if (!activeItem) return
 
 		// Получаем все необходимые размеры и позиции
-		const containerHeight = container.clientHeight;
-		const containerScrollTop = container.scrollTop;
-		const itemOffsetTop = activeItem.offsetTop;
-		const itemHeight = activeItem.offsetHeight;
+		const containerHeight = container.clientHeight
+		const containerScrollTop = container.scrollTop
+		const itemOffsetTop = activeItem.offsetTop
+		const itemHeight = activeItem.offsetHeight
 
 		// Вычисляем видимую область
-		const itemTop = itemOffsetTop - containerScrollTop;
-		const itemBottom = itemTop + itemHeight;
+		const itemTop = itemOffsetTop - containerScrollTop
+		const itemBottom = itemTop + itemHeight
 
 		// Определяем, нужно ли скроллить и в каком направлении
 		if (itemTop < 0) {
@@ -34,15 +34,15 @@ export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 			container.scrollTo({
 				top: itemOffsetTop - 4, // Небольшой отступ 4px сверху
 				behavior: 'smooth'
-			});
+			})
 		} else if (itemBottom > containerHeight) {
 			// Элемент ниже видимой области - скроллим вниз
 			container.scrollTo({
 				top: itemOffsetTop - containerHeight + itemHeight + 4, // Отступ 4px снизу
 				behavior: 'smooth'
-			});
+			})
 		}
-	}, [props.selectedSuggest]);
+	}, [props.selectedSuggest])
 	return (
 		<div className="suggestion-list" ref={listRef}>
 			{props.suggestList.map((item, index) => (
@@ -57,5 +57,5 @@ export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 				>{item.display} 39021</div>
 			))}
 		</div>
-	);
-};
+	)
+}

@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'preact';
-import { VKAlbumType } from 'types';
+import { FunctionComponent } from 'preact'
+import { VKAlbumType } from 'types'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const VkAlbumElement: FunctionComponent<VKAlbumType> = (album) => (
 	<a href={ROUTE_LINKS.toolVkAlbumSingle({ albumId: album.id })} className="album-element">

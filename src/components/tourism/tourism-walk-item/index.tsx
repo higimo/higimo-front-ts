@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { YaMapType } from 'types'
 
 type TourismWalkItemPropsType = {
-	map: YaMapType['map'];
+	map: YaMapType['map']
 }
 export const TourismWalkItem: FunctionComponent<TourismWalkItemPropsType> = ({ map }) => {
 	return (

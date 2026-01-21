@@ -1,20 +1,19 @@
-import { FunctionComponent } from 'preact';
-import { PeopleType } from 'types';
+import { FunctionComponent } from 'preact'
+import { PeopleType } from 'types'
+import { NokiaContextType } from 'context/nokia'
 
-import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar';
+import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
 
-import { NokiaContextType } from 'context/nokia';
-
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type PersonMiniProfilePropsType = {
-	hashLink: NokiaContextType['hashLink'];
-	hashMeeting: NokiaContextType['hashMeeting'];
-	hashPeople: NokiaContextType['hashPeople'];
-	links: NokiaContextType['links'];
-	meeting: NokiaContextType['meeting'];
-	people: NokiaContextType['people'];
-	person: PeopleType;
+	hashLink: NokiaContextType['hashLink']
+	hashMeeting: NokiaContextType['hashMeeting']
+	hashPeople: NokiaContextType['hashPeople']
+	links: NokiaContextType['links']
+	meeting: NokiaContextType['meeting']
+	people: NokiaContextType['people']
+	person: PeopleType
 }
 
 export const PersonMiniProfile: FunctionComponent<PersonMiniProfilePropsType> = props => (

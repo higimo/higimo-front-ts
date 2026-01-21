@@ -7,8 +7,9 @@ import { useTags } from 'hook/use-tags'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import '../nokia-style.css'
 import { NokiaContext, NokiaContextType } from 'context/nokia'
+
+import '../nokia-style.css'
 
 // TODO https://www.npmjs.com/package/@observablehq/plot
 
@@ -37,10 +38,10 @@ const COLORS = [
 ]
 
 type ResultDatasetItem = {
-	date: Date;
-	[key: MeetingType['type']]: number | Date;
+	date: Date
+	[key: MeetingType['type']]: number | Date
 }
-type PrepareDataResult = [string[], ResultDatasetItem[]];
+type PrepareDataResult = [string[], ResultDatasetItem[]]
 
 const loadD3Modules = async () => {
 	const { 
@@ -66,8 +67,8 @@ const loadD3Modules = async () => {
 }
 
 type updateChatPropsType = {
-	viz: MutableRef<HTMLDivElement>;
-	data: PrepareDataResult;
+	viz: MutableRef<HTMLDivElement>
+	data: PrepareDataResult
 }
 const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 	const origDataset = data[1]
@@ -96,7 +97,7 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 						y0: d[0],
 						key: column.key,
 						value: d.data[column.key],
-					}));
+					}))
 				}
 			)
 
@@ -112,7 +113,7 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 
 		const color = d3.scaleOrdinal()
 			.domain(category)
-			.range(COLORS);
+			.range(COLORS)
 
 		const svg = d3
 			.select(viz.current)

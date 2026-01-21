@@ -1,4 +1,4 @@
-import { JSX } from 'preact';
+import { JSX } from 'preact'
 import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
@@ -6,7 +6,7 @@ import cs from 'classnames'
 import './style.css'
 
 type TagPropsType = JSX.ObjectHTMLAttributes & {
-	active?: boolean;
+	active?: boolean
 }
 
 export const Tag: FunctionComponent<TagPropsType> = ({children, active = false, className, ...props}) => (

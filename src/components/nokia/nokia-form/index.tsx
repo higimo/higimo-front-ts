@@ -1,4 +1,5 @@
 import { PeopleMeetingType, PeopleType } from 'types'
+import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 import cs from 'classnames'
 
@@ -7,20 +8,20 @@ import { useContext, useState, useEffect, useLayoutEffect, useMemo } from 'preac
 import { useAuth } from 'hook/use-auth'
 import { useRoute } from 'preact-iso'
 
-import TextInput from 'react-autocomplete-input';
+import TextInput from 'react-autocomplete-input'
+import { ShowFormResult } from 'components/form/show-form-result'
+
+import sendRequest from 'utils/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
-
 import './style.css'
-import sendRequest from 'utils/send-request'
-import { NokiaContext, NokiaContextType } from 'context/nokia'
-import { ShowFormResult } from 'components/form/show-form-result'
+
 
 const getUserSuggestions = (peoples: PeopleType[]): string[] => peoples.map(men => {
 	return `${men.name}${men.name.length ? ` (${men.name})` : null}`
-});
+})
 
 const onSubmit = addStatus => values => {
 	sendRequest(
@@ -52,16 +53,16 @@ const onSubmit = addStatus => values => {
 }
 
 type FormValues = {
-	id: string;
-	type: string;
-	personId: string;
-	date: string;
-	description: string;
+	id: string
+	type: string
+	personId: string
+	date: string
+	description: string
 }
 
 type TopPersonType = {
-	count: number;
-	id: number;
+	count: number
+	id: number
 }
 type structTopPersonType = (count: number, id: number) => TopPersonType
 const structTopPerson: structTopPersonType = (count, id) => ({ count, id })

@@ -10,8 +10,8 @@ import { NokiaContext, NokiaContextType } from 'context/nokia'
 import '../nokia-style.css'
 
 type NokiaPeopleListPropsType = {
-	filter: NokiaTagType['id'];
-	updateFilter: (tag: NokiaTagType["id"]) => void;
+	filter: NokiaTagType['id']
+	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (props) => {
 	const {

@@ -1,16 +1,18 @@
 import { FunctionComponent } from 'preact'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { useAuth } from 'hook/use-auth'
+import { useGlobalContext } from 'context/global'
+
+import { contactListData } from 'components/intro/contact-list/contactListData'
+import { blogInviteData } from 'components/intro/blog-invite/data'
+import { shareKnowledgeData } from 'components/intro/share-knowledge/data'
+import { aboutInviteList } from 'components/intro/about-invite/data'
+import { toolListData } from 'components/intro/tools-intro/data'
+import { funnyList } from 'components/intro/funny-invite/data'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { useGlobalContext } from 'context/global';
-import { useAuth } from 'hook/use-auth';
-import { contactListData } from 'components/intro/contact-list/contactListData';
-import { blogInviteData } from 'components/intro/blog-invite/data';
-import { shareKnowledgeData } from 'components/intro/share-knowledge/data';
-import { funnyList } from 'components/intro/funny-invite/data';
-import { aboutInviteList } from 'components/intro/about-invite/data';
-import { toolListData } from 'components/intro/tools-intro/data';
 
 const SLICE_ABOUT = 6
 const SLICE_TOOL = 3

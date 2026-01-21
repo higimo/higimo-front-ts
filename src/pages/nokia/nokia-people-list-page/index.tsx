@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'preact'
 import { NokiaTagType } from 'types'
 
-import { usePageTitle } from 'hook/use-page-title';
-
+import { usePageTitle } from 'hook/use-page-title'
 import { useContext, useLayoutEffect, useState } from 'preact/hooks'
 
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPeopleList } from 'components/nokia/nokia-people-list'
 import { NokiaTagsGallery } from 'components/nokia/nokia-tags-gallery'
 
-import '../nokia-style.css'
 import { NokiaContext } from 'context/nokia'
+
+import '../nokia-style.css'
 
 export const NokiaPeopleListPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')

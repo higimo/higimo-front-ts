@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact';
-import { Tag } from 'components/ui/tag';
+import { FunctionComponent } from 'preact'
+import { Tag } from 'components/ui/tag'
 
 const FILTER_OPTIONS = [
 	{ key: 'new', label: 'нью' },
@@ -16,11 +16,11 @@ const FILTER_OPTIONS = [
 	{ key: 'bard', label: 'барды' },
 	{ key: 'noList', label: 'Без списков' },
 	{ key: 'manyList', label: 'во многих списках' },
-];
+]
 
 type AccordTagGalleryPropsType = {
-	handleFilter: (string) => () => void;
-	filter: string;
+	handleFilter: (string) => () => void
+	filter: string
 }
 export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({ handleFilter, filter }) => {
 	return (

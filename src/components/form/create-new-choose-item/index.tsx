@@ -16,8 +16,8 @@ const defaultInputs = (register: UseFormRegister<FieldValues>) => (
 )
 
 type CreateNewChooseItemPropsType = {
-	onSubmit: any;
-	getInputs: any;
+	onSubmit: any
+	getInputs: any
 }
 export const CreateNewChooseItem: FunctionComponent<CreateNewChooseItemPropsType> = ({
 	onSubmit,

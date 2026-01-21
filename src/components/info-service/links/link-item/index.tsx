@@ -1,9 +1,10 @@
 import { FunctionalComponent } from 'preact'
+
 import './style.css'
 
 type LinkItemPropsType = {
-	href: string;
-	name: string;
+	href: string
+	name: string
 }
 export const LinkItem: FunctionalComponent<LinkItemPropsType> = ({ href, name }) => (
 	<div className="container link-gallery">

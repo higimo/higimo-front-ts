@@ -5,7 +5,7 @@ import { filterType } from 'components/project/project-tag-gallery/filter-type'
 import { useMemo } from 'preact/hooks'
 
 import { ProjectTag } from 'components/project/project-tag'
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 
 const TAG_CATEGORY_MAP = {
 	'Размер': [
@@ -49,8 +49,8 @@ const TAG_CATEGORY_MAP = {
 
 
 type MappedCategory = {
-	title: string;
-	tags: ProjectFullInfoType['tags'];
+	title: string
+	tags: ProjectFullInfoType['tags']
 }
 
 const ProjectTagCategory: FunctionComponent<{ tags: ProjectFullInfoType['tags'] }> = (props) => {

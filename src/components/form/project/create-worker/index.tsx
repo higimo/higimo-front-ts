@@ -1,11 +1,11 @@
 import { WorkerType } from 'types'
-import { FunctionComponent } from 'preact';
-import { FieldError, useForm } from 'react-hook-form';
+import { FunctionComponent } from 'preact'
+import { FieldError, useForm } from 'react-hook-form'
 import './style.css'
-import { CollapseSection } from 'components/ui/collapse-section';
+import { CollapseSection } from 'components/ui/collapse-section'
 
 type CreateWorkerPropsType = {
-	onSubmit: (roles: WorkerType) => Promise<boolean>;
+	onSubmit: (roles: WorkerType) => Promise<boolean>
 }
 
 // TODO: сейчас не сообщает, если какое-то поле забуду

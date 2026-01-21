@@ -1,8 +1,8 @@
-import { useRoute } from 'preact-iso'
-
 import { FunctionComponent } from 'preact'
 
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link';
+import { useRoute } from 'preact-iso'
+
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 import { globalRouter } from 'dic/router'
 

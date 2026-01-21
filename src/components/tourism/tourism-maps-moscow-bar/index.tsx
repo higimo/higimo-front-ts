@@ -41,7 +41,7 @@ const barPovFilter = (filter) => (mapPoint: BarPovType) => {
 
 const updateMap = (map, yamaps, mode, stateData: { barPovMoscow: BarPovType[] }, filter) => {
 	if (!map || !yamaps || !stateData.barPovMoscow || mode === MAP_MODE.INIT) {
-		return null;
+		return null
 	}
 
 	map.geoObjects.removeAll()
@@ -68,7 +68,7 @@ export const TourismMapsMoscowBar = () => {
 	const [ mode, setMode ] = useState(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)
 	const [stateData, setStateData] = useState<{ barPovMoscow: BarPovType[] }>({ barPovMoscow: [] })
-	const { width, height } = useWindowSize();
+	const { width, height } = useWindowSize()
 	const [ filter, setFilter ] = useState({
 		color: null,
 		tag: null,

@@ -16,12 +16,12 @@ const onSubmit = ({ setStatus }) => values => {
 }
 
 type FormValues = {
-	author: string;
-	name: string;
-	addon: string;
-	isbn: string;
-	img: string;
-	anons: string;
+	author: string
+	name: string
+	addon: string
+	isbn: string
+	img: string
+	anons: string
 }
 
 // TODO добавить комбобокс

@@ -1,19 +1,19 @@
 import { useRoute } from 'preact-iso'
-import useApi from 'hook/use-api';
-import { useLoadingState } from 'hook/use-loading-state';
-import { useEmptyDataState } from 'hook/use-empty-data-state';
-import { usePageTitle } from 'hook/use-page-title';
-import { useScenesData } from 'hook/use-scenes-data';
-import { useYearFilter } from 'hook/use-year-filter';
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { usePageTitle } from 'hook/use-page-title'
+import { useScenesData } from 'hook/use-scenes-data'
+import { useYearFilter } from 'hook/use-year-filter'
 
 import { Loading } from 'components/ui/loading'
-import { TextContainer } from 'components/ui/text-container';
-import { ScheduleTable } from 'components/data/concert/schedule-table';
-import { NasheType } from 'components/data/concert/types';
+import { TextContainer } from 'components/ui/text-container'
+import { ScheduleTable } from 'components/data/concert/schedule-table'
+import { NasheType } from 'components/data/concert/types'
 
-import { NotFoundPage } from 'pages/not-found-page';
+import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route';
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 

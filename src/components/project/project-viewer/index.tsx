@@ -20,7 +20,7 @@ import './style.css'
 export const ProjectViewer: FunctionComponent = () => {
 	const { params: { vendor, project } } = useRoute()
 
-	const [curProject, isLoading] = useProjectViewer(vendor, project);
+	const [curProject, isLoading] = useProjectViewer(vendor, project)
 
 	if (isLoading) {
 		return <Loading />

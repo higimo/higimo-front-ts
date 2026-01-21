@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
 import { ListList } from 'components/list/list-list'
 

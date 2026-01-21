@@ -1,36 +1,36 @@
-import { useState, useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks'
 
 type QueueHook<T> = {
 	/**
 	 * Текущая очередь
 	 */
-	queue: T[];
+	queue: T[]
 	/**
 	 * Добавление элемента в очередь
 	 * @param item 
 	 * @returns 
 	 */
-	push: (item: T) => void;
+	push: (item: T) => void
 	/**
 	 * Извлечь из очереди
 	 * @returns 
 	 */
-	pull: () => T | undefined;
+	pull: () => T | undefined
 	/**
 	 * просмотр первого элемента без извлечения
 	 * @returns 
 	 */
-	view: () => T | undefined;
+	view: () => T | undefined
 	/**
 	 * очистка очереди
 	 * @returns 
 	 */
-	clear: () => void;
+	clear: () => void
 	/**
 	 * текущий размер очереди
 	 */
-	size: number;
-};
+	size: number
+}
 
 /**
  * FIFO логика - строго соблюдается принцип "первым пришел - первым ушел"
@@ -38,29 +38,29 @@ type QueueHook<T> = {
  * @returns 
  */
 export function useQueue<T>(initialQueue: T[] = []): QueueHook<T> {
-	const [queue, setQueue] = useState<T[]>(initialQueue);
+	const [queue, setQueue] = useState<T[]>(initialQueue)
 
 	const push = useCallback((item: T) => {
-		setQueue(prevQueue => [...prevQueue, item]);
-	}, []);
+		setQueue(prevQueue => [...prevQueue, item])
+	}, [])
 
 	const pull = useCallback(() => {
-		let item: T | undefined;
+		let item: T | undefined
 		setQueue(prevQueue => {
-			if (prevQueue.length === 0) return prevQueue;
-			item = prevQueue[0];
-			return prevQueue.slice(1);
-		});
-		return item;
-	}, []);
+			if (prevQueue.length === 0) return prevQueue
+			item = prevQueue[0]
+			return prevQueue.slice(1)
+		})
+		return item
+	}, [])
 
 	const view = useCallback(() => {
-		return queue.length > 0 ? queue[0] : undefined;
-	}, [queue]);
+		return queue.length > 0 ? queue[0] : undefined
+	}, [queue])
 
 	const clear = useCallback(() => {
-		setQueue([]);
-	}, []);
+		setQueue([])
+	}, [])
 
 	return {
 		queue,
@@ -69,5 +69,5 @@ export function useQueue<T>(initialQueue: T[] = []): QueueHook<T> {
 		view,
 		clear,
 		size: queue.length,
-	};
+	}
 }

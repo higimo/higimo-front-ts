@@ -25,17 +25,17 @@ const onSubmit: OnSubmitType = addStatus => values => {
 }
 
 interface PersonFormData {
-	id: number;
-	label: string;
-	name: string;
-	alias: string;
-	nick: string;
-	description: string;
+	id: number
+	label: string
+	name: string
+	alias: string
+	nick: string
+	description: string
 }
 type FormValues = PersonFormData
 
 export const NokiaAddPerson = props => {
-	const { params: { personId = '-1' }} = useRoute();
+	const { params: { personId = '-1' }} = useRoute()
 	const { fetchData, people } = useContext(NokiaContext) as NokiaContextType
 	useLayoutEffect(fetchData, [])
 	

@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'preact';
-import { MeetingType, PeopleType } from 'types';
+import { FunctionComponent } from 'preact'
+import { MeetingType, PeopleType } from 'types'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type NokiaMetingPropsType = {
-	curMeet: MeetingType;
-	persons: PeopleType[];
+	curMeet: MeetingType
+	persons: PeopleType[]
 }
 export const NokiaMeting: FunctionComponent<NokiaMetingPropsType> = (props) => {
 	return (

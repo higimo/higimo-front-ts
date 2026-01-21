@@ -1,13 +1,12 @@
-import { useState } from 'preact/hooks';
-import './style.css';
+import './style.css'
 
 type SwitcherProps = {
 	options: {
-		title: string;
-		active: boolean;
-		onClick: () => void;
-	}[];
-};
+		title: string
+		active: boolean
+		onClick: () => void
+	}[]
+}
 
 export const Switcher = ({ options }: SwitcherProps) => {
 	return (
@@ -22,5 +21,5 @@ export const Switcher = ({ options }: SwitcherProps) => {
 				</button>
 			))}
 		</div>
-	);
-};
+	)
+}

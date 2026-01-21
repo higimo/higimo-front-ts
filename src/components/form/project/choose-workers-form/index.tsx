@@ -1,18 +1,21 @@
 import { WorkerType } from 'types'
-import { FunctionComponent } from 'preact';
-import { FieldError, useForm } from 'react-hook-form';
+import { FunctionComponent } from 'preact'
+
+import { FieldError, useForm } from 'react-hook-form'
+import { useState } from 'preact/hooks'
+
+import { Message } from 'components/ui/message'
+import { Tag } from 'components/ui/tag'
+
 import './style.css'
-import { useState } from 'preact/hooks';
-import { Message } from 'components/ui/message';
-import { Tag } from 'components/ui/tag';
 
 type FormValues = {
-	roles: Record<string, string>; // { [workerId]: role }
+	roles: Record<string, string> // { [workerId]: role }
 }
 type ChooseWorkersFormPropsType = {
-	workers: WorkerType[];
-	onRemoveWorker: (worker: WorkerType) => void;
-	onSubmit: (roles: Record<string, string>) => Promise<boolean>;
+	workers: WorkerType[]
+	onRemoveWorker: (worker: WorkerType) => void
+	onSubmit: (roles: Record<string, string>) => Promise<boolean>
 }
 export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = ({
 	workers,
@@ -24,18 +27,18 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 		handleSubmit,
 		formState: { errors },
 		reset,
-	} = useForm<FormValues>();
+	} = useForm<FormValues>()
 	const [error, setError] = useState<null | string>(null)
   
 	const handleFormSubmit = async (data: FormValues) => {
-		const res = await onSubmit(data.roles);
+		const res = await onSubmit(data.roles)
 		if (res) {
 			reset()
 			setError(null)
 		} else {
 			setError('Что-то пошло не так, сорян')
 		}
-	};
+	}
 
 	const ShowError = ({ filerError }: { filerError?: FieldError }) => {
 		if (!filerError) {
@@ -90,5 +93,5 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 				</button>
 			)}
 		</form>
-	);
-};
+	)
+}

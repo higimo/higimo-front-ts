@@ -9,23 +9,23 @@ import { makeHashTable } from 'utils/make-hash-table'
 import { createContext } from 'preact'
 
 export type NokiaContextType = {
-	fetchData: () => void;
-	richMeeting: RichMeetingType[];
-	people: PeopleType[];
-	meeting: MeetingType[];
-	links: PeopleMeetingType[];
-	tag: NokiaTagType[];
-	peopleTag: PeopleTag[];
-	hashPeople: { [key in number]: PeopleType };
-	hashMeeting: { [key in number]: MeetingType };
-	hashLink: { [key in number]: number[] };
-	hashTag: { [key in number]: number[] };
-	hashPeopleTag: { [key in number]: number[] };
-	updateLinks: () => void;
-	updatePeople: () => void;
-	updateMeeting: () => void;
-	updateTag: () => void;
-	updatePeopleTag: () => void;
+	fetchData: () => void
+	richMeeting: RichMeetingType[]
+	people: PeopleType[]
+	meeting: MeetingType[]
+	links: PeopleMeetingType[]
+	tag: NokiaTagType[]
+	peopleTag: PeopleTag[]
+	hashPeople: { [key in number]: PeopleType }
+	hashMeeting: { [key in number]: MeetingType }
+	hashLink: { [key in number]: number[] }
+	hashTag: { [key in number]: number[] }
+	hashPeopleTag: { [key in number]: number[] }
+	updateLinks: () => void
+	updatePeople: () => void
+	updateMeeting: () => void
+	updateTag: () => void
+	updatePeopleTag: () => void
 }
 
 export const NokiaContext = createContext<NokiaContextType | null>(null)

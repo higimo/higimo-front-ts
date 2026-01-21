@@ -1,10 +1,12 @@
-import { FunctionComponent } from 'preact';
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
-import { plural } from 'utils/plural';
+import { FunctionComponent } from 'preact'
+
+import { plural } from 'utils/plural'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type ProjectMorePropsType = {
-	count: number;
-};
+	count: number
+}
 export const ProjectMore: FunctionComponent<ProjectMorePropsType> = ({ count }) => (
 	<div className="project-more">
 		<a href={ROUTE_LINKS.projectIndex} className="project-more__button">
@@ -13,4 +15,4 @@ export const ProjectMore: FunctionComponent<ProjectMorePropsType> = ({ count }) 
 			{plural(count, ['проект', 'проекта', 'проектов'])}
 		</a>
 	</div>
-);
+)

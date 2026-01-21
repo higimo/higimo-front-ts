@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'preact';
-import { BarPovType } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow';
+import { FunctionComponent } from 'preact'
+import { BarPovType } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 
-import { Tag } from 'components/ui/tag';
+import { Tag } from 'components/ui/tag'
 
 import './style.css'
 

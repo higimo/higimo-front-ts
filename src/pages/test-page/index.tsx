@@ -19,7 +19,7 @@ const CardRow: FunctionComponent = ({ children }) => {
 }
 
 type CardPropsType = {
-	src: string;
+	src: string
 }
 const Card: FunctionComponent<CardPropsType> = ({ src }) => {
 	return (
@@ -46,7 +46,7 @@ const BillboardRow: FunctionComponent = ({ children }) => {
 }
 
 type BillboardCardPropsType = {
-	src: string;
+	src: string
 }
 const BillboardCard: FunctionComponent<BillboardCardPropsType> = ({ src }) => {
 	return (
@@ -57,8 +57,8 @@ const BillboardCard: FunctionComponent<BillboardCardPropsType> = ({ src }) => {
 }
 
 type LayoutPropsType = {
-	sidebar?: ComponentChildren;
-	content: ComponentChildren;
+	sidebar?: ComponentChildren
+	content: ComponentChildren
 }
 const Layout: FunctionComponent<LayoutPropsType> = ({ sidebar, content }) => {
 	return (

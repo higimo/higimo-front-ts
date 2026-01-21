@@ -1,17 +1,17 @@
 import { FunctionComponent } from 'preact'
-import { FaqType } from 'types';
+import { FaqType } from 'types'
 
-import { useRoute } from 'preact-iso';
-import useApi from 'hook/use-api';
-import { useLoadingState } from 'hook/use-loading-state';
-import { useEmptyDataState } from 'hook/use-empty-data-state';
+import { useRoute } from 'preact-iso'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 
-import { NotFoundPage } from 'pages/not-found-page';
+import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route';
+import { API_ROUTE } from 'dic/api-route'
 
 export const FaqSingle: FunctionComponent = () => {
 	const { params: { idcode = ''} } = useRoute()

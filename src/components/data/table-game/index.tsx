@@ -1,15 +1,15 @@
-import { FunctionComponent } from 'preact';
-import { TableGameType } from 'types';
+import { FunctionComponent } from 'preact'
+import { TableGameType } from 'types'
 
-import useApi from 'hook/use-api';
-import { useLoadingState } from 'hook/use-loading-state';
-import { useEmptyDataState } from 'hook/use-empty-data-state';
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data';
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import { API_ROUTE } from 'dic/api-route';
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 

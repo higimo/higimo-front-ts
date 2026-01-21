@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'preact';
+import { FunctionComponent } from 'preact'
 
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const TourismNashestviePreview: FunctionComponent = () => (
 	<TextContainer className="tourism-nashestvie-preview">

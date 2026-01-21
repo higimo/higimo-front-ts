@@ -1,5 +1,5 @@
 import { CheckboxWithLocalStorage } from 'components/form/checkbox-with-local-storage'
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 
 const organizeListData = [
 	'все зарядить',

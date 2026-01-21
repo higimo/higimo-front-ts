@@ -1,10 +1,10 @@
 export type MentionSuggest = {
-	id: number;
-	display: string;
-};
+	id: number
+	display: string
+}
 
 export type MetionSelector = {
-	text: string;
-	start: number;
-	end: number;
-};
+	text: string
+	start: number
+	end: number
+}

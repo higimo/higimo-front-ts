@@ -1,73 +1,73 @@
-import { render } from 'preact';
-import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso';
+import { render } from 'preact'
+import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso'
 
-import { Header } from 'components/ui/header/Header';
-import { Footer } from 'components/ui/footer';
+import { Header } from 'components/ui/header/Header'
+import { Footer } from 'components/ui/footer'
 
 import { GlobalProvider } from './context/global'
 
 import { AuthProvider } from './context/auth'
 
-import { AccordGallery } from 'components/accord/accord-gallery';
-import { AccordSingle } from 'components/accord/accord-single';
-import { PrivateRoute } from 'components/util/private-route/PrivateRoute';
+import { AccordGallery } from 'components/accord/accord-gallery'
+import { AccordSingle } from 'components/accord/accord-single'
+import { PrivateRoute } from 'components/util/private-route/PrivateRoute'
 
-import { IndexPage } from 'pages/index-page';
-import { NotFoundPage } from 'pages/not-found-page';
-import { LoginPage } from 'pages/auth/login-page';
-import { AdminPage } from 'pages/auth/admin-page';
-import { IgLinkPage } from 'pages/info/ig-link-page';
-import { GamePage } from 'pages/info/game-page';
-import { LinksPage } from 'pages/info/links-page';
-import { LogismPage } from 'pages/info/logism-page';
-import { ThingsIndexPage } from 'pages/info/things/things-index-page';
-import { ThingsNotebookPage } from 'pages/info/things/things-notebook-page';
-import { ThingsVeloPage } from 'pages/info/things/things-velo-page';
-import { TestPage } from 'pages/test-page';
-import { ResumePage } from 'pages/resume/resume-page';
-import { CinemaScriptPage } from 'pages/info/cinema-script-page';
-import { CinemaSinglePage } from 'pages/info/cinema-single-page';
-import { CinemaIndexPage } from 'pages/info/cinema-index-page';
-import { YoutubePage } from 'pages/info/youtube-page';
-import { ProjectIndexPage } from 'pages/project/project-index-page';
-import { ProjectSinglePage } from 'pages/project/project-single-page';
-import { DemagogPage } from 'pages/test-page/tools/demagog-page';
-import { ClockPage } from 'pages/test-page/tools/clock-page';
-import { FaqListPage } from 'pages/test-page/tools/faq/faq-list-page';
-import { FaqSinglePage } from 'pages/test-page/tools/faq/faq-single-page';
-import { FeedbackIndexPage } from 'pages/test-page/tools/feedback/feedback-page';
-import { FeedbackSinglePage } from 'pages/test-page/tools/feedback/feedback-single-page';
-import { ObuchenieListPage } from 'pages/test-page/tools/obuchenie/obuchenie-list-page';
-import { ObuchenieSinglePage } from 'pages/test-page/tools/obuchenie/obuchenie-single-page';
-import { PronPage } from 'pages/test-page/tools/pron-page';
-import { PinarikPage } from 'pages/nokia/pinarik-page';
-import { LibIndexPage } from 'pages/test-page/tools/lib/lib-index-page';
-import { LibAdminPage } from 'pages/test-page/tools/lib/lib-admin-page';
-import { ToolIndexPage } from 'pages/test-page/tools/tool-page';
-import { EmailerPage } from 'pages/test-page/tools/emailer-page';
-import { ComojiPage } from 'pages/test-page/tools/comoji-page';
-import { MagicBallPage } from 'pages/test-page/tools/magic-ball-page';
-import { PetProjectPage } from 'pages/test-page/tools/pet-project/pet-project-page';
-import { PetProjectFormPage } from 'pages/test-page/tools/pet-project/pet-project-form-page';
-import { ListListIndexPage } from 'pages/tool/list-list-index-page';
-import { ListListFormPage } from 'pages/tool/list-list-form-page';
-import { NokiaIndexPage } from 'pages/nokia/nokia-index-page';
-import { NokiaMessagePage } from 'pages/nokia/nokia-message-page';
-import { NokiaFormPage } from 'pages/nokia/nokia-form-page';
-import { NokiaPeopleListPage } from 'pages/nokia/nokia-people-list-page';
-import { NokiaAddPersonPage } from 'pages/nokia/nokia-add-person-page';
-import { NokiaPeopleDetailCardPage } from 'pages/nokia/nokia-people-detail-card-page';
-import { NokiaStatisticPage } from 'pages/nokia/nokia-statistic-page';
-import { NasheIndexPage } from 'pages/tourism/nashe/nashe-page';
-import { NasheSinglePage } from 'pages/tourism/nashe/nashe-single-page';
-import { TourismChecklistPage } from 'pages/tourism/tourism-checklist-page';
-import { TourismIndexPage } from 'pages/tourism/tourism-index';
-import { TourismMoscowWalkaroundPage } from 'pages/tourism/tourism-ya-maps/tourism-moscow-walkaround-page';
-import { TourismMoscowBarPage } from 'pages/tourism/tourism-ya-maps/tourism-moscow-bar';
-import { TourismYaMapsRegionPage } from 'pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page';
-import { TourismWalkSinglePage } from 'pages/tourism/tourism-walk-single-page';
-import { TourismCityStarPage } from 'pages/tourism/tourism-city-star-page';
-import { TourismVisitedPage } from 'pages/tourism/tourism-visited-page';
+import { IndexPage } from 'pages/index-page'
+import { NotFoundPage } from 'pages/not-found-page'
+import { LoginPage } from 'pages/auth/login-page'
+import { AdminPage } from 'pages/auth/admin-page'
+import { IgLinkPage } from 'pages/info/ig-link-page'
+import { GamePage } from 'pages/info/game-page'
+import { LinksPage } from 'pages/info/links-page'
+import { LogismPage } from 'pages/info/logism-page'
+import { ThingsIndexPage } from 'pages/info/things/things-index-page'
+import { ThingsNotebookPage } from 'pages/info/things/things-notebook-page'
+import { ThingsVeloPage } from 'pages/info/things/things-velo-page'
+import { TestPage } from 'pages/test-page'
+import { ResumePage } from 'pages/resume/resume-page'
+import { CinemaScriptPage } from 'pages/info/cinema-script-page'
+import { CinemaSinglePage } from 'pages/info/cinema-single-page'
+import { CinemaIndexPage } from 'pages/info/cinema-index-page'
+import { YoutubePage } from 'pages/info/youtube-page'
+import { ProjectIndexPage } from 'pages/project/project-index-page'
+import { ProjectSinglePage } from 'pages/project/project-single-page'
+import { DemagogPage } from 'pages/test-page/tools/demagog-page'
+import { ClockPage } from 'pages/test-page/tools/clock-page'
+import { FaqListPage } from 'pages/test-page/tools/faq/faq-list-page'
+import { FaqSinglePage } from 'pages/test-page/tools/faq/faq-single-page'
+import { FeedbackIndexPage } from 'pages/test-page/tools/feedback/feedback-page'
+import { FeedbackSinglePage } from 'pages/test-page/tools/feedback/feedback-single-page'
+import { ObuchenieListPage } from 'pages/test-page/tools/obuchenie/obuchenie-list-page'
+import { ObuchenieSinglePage } from 'pages/test-page/tools/obuchenie/obuchenie-single-page'
+import { PronPage } from 'pages/test-page/tools/pron-page'
+import { PinarikPage } from 'pages/nokia/pinarik-page'
+import { LibIndexPage } from 'pages/test-page/tools/lib/lib-index-page'
+import { LibAdminPage } from 'pages/test-page/tools/lib/lib-admin-page'
+import { ToolIndexPage } from 'pages/test-page/tools/tool-page'
+import { EmailerPage } from 'pages/test-page/tools/emailer-page'
+import { ComojiPage } from 'pages/test-page/tools/comoji-page'
+import { MagicBallPage } from 'pages/test-page/tools/magic-ball-page'
+import { PetProjectPage } from 'pages/test-page/tools/pet-project/pet-project-page'
+import { PetProjectFormPage } from 'pages/test-page/tools/pet-project/pet-project-form-page'
+import { ListListIndexPage } from 'pages/tool/list-list-index-page'
+import { ListListFormPage } from 'pages/tool/list-list-form-page'
+import { NokiaIndexPage } from 'pages/nokia/nokia-index-page'
+import { NokiaMessagePage } from 'pages/nokia/nokia-message-page'
+import { NokiaFormPage } from 'pages/nokia/nokia-form-page'
+import { NokiaPeopleListPage } from 'pages/nokia/nokia-people-list-page'
+import { NokiaAddPersonPage } from 'pages/nokia/nokia-add-person-page'
+import { NokiaPeopleDetailCardPage } from 'pages/nokia/nokia-people-detail-card-page'
+import { NokiaStatisticPage } from 'pages/nokia/nokia-statistic-page'
+import { NasheIndexPage } from 'pages/tourism/nashe/nashe-page'
+import { NasheSinglePage } from 'pages/tourism/nashe/nashe-single-page'
+import { TourismChecklistPage } from 'pages/tourism/tourism-checklist-page'
+import { TourismIndexPage } from 'pages/tourism/tourism-index'
+import { TourismMoscowWalkaroundPage } from 'pages/tourism/tourism-ya-maps/tourism-moscow-walkaround-page'
+import { TourismMoscowBarPage } from 'pages/tourism/tourism-ya-maps/tourism-moscow-bar'
+import { TourismYaMapsRegionPage } from 'pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page'
+import { TourismWalkSinglePage } from 'pages/tourism/tourism-walk-single-page'
+import { TourismCityStarPage } from 'pages/tourism/tourism-city-star-page'
+import { TourismVisitedPage } from 'pages/tourism/tourism-visited-page'
 
 import { VkIndexPage } from 'pages/vk/vk-index-page'
 import { VkAlbumEditPage } from 'pages/vk/vk-album-edit-page'
@@ -75,14 +75,14 @@ import { VkAlbumListPage } from 'pages/vk/vk-album-list-page'
 import { VkDownloadPage } from 'pages/vk/vk-download-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import './style.css';
-import { VkContextProvider } from './context/vk';
-import { NokiaContextProvider } from './context/nokia';
-import { TextareaPage } from 'pages/textarea-page';
-import ResumeProduct2Page from 'pages/resume/resume-product2-page';
-import { TourismFatherTrackPage } from 'pages/tourism/tourism-father-track-page';
+import './style.css'
+import { VkContextProvider } from './context/vk'
+import { NokiaContextProvider } from './context/nokia'
+import { TextareaPage } from 'pages/textarea-page'
+import ResumeProduct2Page from 'pages/resume/resume-product2-page'
+import { TourismFatherTrackPage } from 'pages/tourism/tourism-father-track-page'
 
 const ResumeProductPage = lazy(() => import('pages/resume/resume-product-page'))
 const ResumeHeadPage = lazy(() => import('pages/resume/resume-head-page'))
@@ -328,7 +328,7 @@ export function App() {
 				</AuthProvider>
 			</ErrorBoundary>
 		</LocationProvider>
-	);
+	)
 }
 
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById('app'))

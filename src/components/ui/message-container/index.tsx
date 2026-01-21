@@ -1,20 +1,21 @@
-import { FunctionComponent } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { FunctionComponent } from 'preact'
 
-import { Message } from 'components/ui/message';
+import { useEffect, useState } from 'preact/hooks'
+
+import { Message } from 'components/ui/message'
 
 // type ToastPropsType = MessageContent & {
-//   removeToast: (id: string) => void;
+//   removeToast: (id: string) => void
 // }
 
 // const Toast: React.FC<ToastPropsType> = ({ id, message, removeToast }) => {
 // 	useEffect(() => {
 // 		const timer = setTimeout(() => {
-// 			removeToast(id);
-// 		}, 8000);
+// 			removeToast(id)
+// 		}, 8000)
 
-// 		return () => clearTimeout(timer);
-// 	}, [id, removeToast]);
+// 		return () => clearTimeout(timer)
+// 	}, [id, removeToast])
 
 // 	return (
 // 		<div className="toast">
@@ -24,25 +25,25 @@ import { Message } from 'components/ui/message';
 // 				onClick={() => removeToast(id)}
 // 				aria-label="Закрыть уведомление"
 // 			>
-// 				&times;
+// 				&times
 // 			</button>
 // 		</div>
-// 	);
-// };
+// 	)
+// }
 
 type MessageContent = {
-	id: string;
-	message: string;
+	id: string
+	message: string
 }
 type MessageContainerPropsType = {
 	/**
 	 * Через сколько скроется в секундах
 	 */
-	autoCloseDelay?: number;
+	autoCloseDelay?: number
 }
   
 export const MessageContainer: FunctionComponent<MessageContainerPropsType> = ({ autoCloseDelay = 40 }) => {
-	const [messages, setMessages] = useState<MessageContent[]>([]);
+	const [messages, setMessages] = useState<MessageContent[]>([])
 
 	const removeMessage = (id: string) => {
 		setMessages(prev => prev.filter((toast) => toast.id !== id))
@@ -76,6 +77,6 @@ export const MessageContainer: FunctionComponent<MessageContainerPropsType> = ({
 				/>
 			))}
 		</div>
-	);
-};
+	)
+}
 

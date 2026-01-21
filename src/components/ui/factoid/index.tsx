@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'preact';
+import { FunctionComponent } from 'preact'
 
 export type FactoidType = {
-	digit: number;
-	digitFrom: string;
-	description: string;
+	digit: number
+	digitFrom: string
+	description: string
 }
 export const Factoid: FunctionComponent<FactoidType> = ({ digit, digitFrom, description }) => {
 	return (

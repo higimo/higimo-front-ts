@@ -35,9 +35,9 @@ const onSubmit = setStatus => async values => {
 // Ис админ заменить на разграничения прав
 
 type FormValues = {
-	id: number;
-	name: string;
-	description: string;
+	id: number
+	name: string
+	description: string
 }
 
 export const PetProjectForm = () => {

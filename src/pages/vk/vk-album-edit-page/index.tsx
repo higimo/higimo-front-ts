@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
-import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit';
-import { TextContainer } from 'components/ui/text-container';
+import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
+import { TextContainer } from 'components/ui/text-container'
 
 import '../vk-style.css'
 

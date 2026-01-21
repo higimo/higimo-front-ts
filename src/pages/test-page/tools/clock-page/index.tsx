@@ -1,6 +1,6 @@
 import { Fragment, FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 import { Clock } from 'components/data/clock'

@@ -2,8 +2,8 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer';
-import { TextContainer } from 'components/ui/text-container';
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
@@ -14,11 +14,11 @@ import './style.css'
 * @param right Контент справа, опционально
 */
 type TilesGalleryProps = {
-	className?: string;
-	id?: string;
-	title: string;
-	left: ComponentChildren;
-	right?: ComponentChildren;
+	className?: string
+	id?: string
+	title: string
+	left: ComponentChildren
+	right?: ComponentChildren
 }
 
 export const TilesGallery: FunctionComponent<TilesGalleryProps> = ({ id, title, left, right, className }) => (

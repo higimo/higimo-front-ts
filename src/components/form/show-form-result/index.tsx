@@ -1,12 +1,12 @@
-import { ComponentChildren, JSX } from 'preact';
-import { HigimoServerResponse } from 'types';
+import { ComponentChildren, JSX } from 'preact'
+import { HigimoServerResponse } from 'types'
 
-import { Message } from 'components/ui/message';
+import { Message } from 'components/ui/message'
 
 type ShowFormResultPropsType<T> = {
-	status: HigimoServerResponse;
-	reset: () => void;
-	children?: ComponentChildren;
+	status: HigimoServerResponse
+	reset: () => void
+	children?: ComponentChildren
 }
 export const ShowFormResult = <T,>(props: ShowFormResultPropsType<T>): JSX.Element => {
 	return (

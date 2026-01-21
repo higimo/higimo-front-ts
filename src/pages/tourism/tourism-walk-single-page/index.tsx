@@ -5,7 +5,6 @@ import { useRoute } from 'preact-iso'
 import useApi from 'hook/use-api'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { usePageTitle } from 'hook/use-page-title';
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'

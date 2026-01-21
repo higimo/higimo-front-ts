@@ -1,32 +1,32 @@
 import { WorkerType } from 'types'
-import { FunctionComponent } from 'preact';
-import { useMemo } from 'preact/hooks';
+import { FunctionComponent } from 'preact'
+import { useMemo } from 'preact/hooks'
 
 import './style.css'
-import { Tag } from 'components/ui/tag';
+import { Tag } from 'components/ui/tag'
 
 type WorkerRoleGroup = {
-	role: string;
-	workers: WorkerType[];
-};
+	role: string
+	workers: WorkerType[]
+}
 
 type WorkerCompanyGroup = {
-	company: string;
-	roles: WorkerRoleGroup[];
-};
+	company: string
+	roles: WorkerRoleGroup[]
+}
 
 type WorkersTreeProps = {
-	workers: WorkerType[];
-	onWorkerSelect: (worker: WorkerType) => void;
-};
+	workers: WorkerType[]
+	onWorkerSelect: (worker: WorkerType) => void
+}
 
 export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWorkerSelect }) => {
 	const workerTree = useMemo(() => {
-		const workerCompanies = [...new Set(workers.map(i => i.company))];
+		const workerCompanies = [...new Set(workers.map(i => i.company))]
 		
 		return workerCompanies.map(workerCompany => {
-			const companyWorkers = workers.filter(i => i.company === workerCompany);
-			const workerRoles = [...new Set(companyWorkers.map(i => i.role))];
+			const companyWorkers = workers.filter(i => i.company === workerCompany)
+			const workerRoles = [...new Set(companyWorkers.map(i => i.role))]
 			
 			return {
 				company: workerCompany || 'Без компании',
@@ -34,18 +34,18 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 					return {
 						role: workerRole || 'Без роли',
 						workers: companyWorkers.filter(worker => worker.role === workerRole),
-					};
+					}
 				}),
-			};
-		});
-	}, [workers]);
+			}
+		})
+	}, [workers])
 
 	const handleClickWorker = useMemo(
 		() => (worker: WorkerType) => {
-			onWorkerSelect(worker);
+			onWorkerSelect(worker)
 		},
 		[onWorkerSelect]
-	);
+	)
 
 	return (
 		<div className="workers-tree">
@@ -82,5 +82,5 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}

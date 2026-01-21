@@ -1,26 +1,27 @@
-import { useEffect, useState } from 'preact/hooks';
-import './Toast.css';
+import { useEffect, useState } from 'preact/hooks'
+
+import './Toast.css'
 
 interface ToastProps {
-  id: string;
-  message: string;
-  removeToast: (id: string) => void;
+  id: string
+  message: string
+  removeToast: (id: string) => void
 }
 
 interface ToastContainerProps {
-  autoCloseDelay?: number;
-  maxWidth?: number;
-  gap?: number;
+  autoCloseDelay?: number
+  maxWidth?: number
+  gap?: number
 }
 
 const Toast: React.FC<ToastProps> = ({ id, message, removeToast }) => {
   useEffect(() => {
 	const timer = setTimeout(() => {
-	  removeToast(id);
-	}, 8000);
+	  removeToast(id)
+	}, 8000)
 
-	return () => clearTimeout(timer);
-  }, [id, removeToast]);
+	return () => clearTimeout(timer)
+  }, [id, removeToast])
 
   return (
 	<div className="toast">
@@ -33,28 +34,28 @@ const Toast: React.FC<ToastProps> = ({ id, message, removeToast }) => {
 		&times;
 	  </button>
 	</div>
-  );
-};
+  )
+}
 
 export const ToastContainer: React.FC<ToastContainerProps> = ({
   autoCloseDelay = 8000,
   maxWidth = 320,
   gap = 8,
 }) => {
-  const [toasts, setToasts] = useState<Array<{ id: string; message: string }>>([]);
+  const [toasts, setToasts] = useState<Array<{ id: string; message: string }>>([])
 
   const addToast = (message: string) => {
 	const newToast = {
 	  id: Date.now().toString(),
 	  message,
-	};
+	}
 
-	setToasts((prev) => [newToast, ...prev]);
-  };
+	setToasts((prev) => [newToast, ...prev])
+  }
 
   const removeToast = (id: string) => {
-	setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  };
+	setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }
 
   return (
 	<div className="toast-container">
@@ -67,23 +68,23 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 		/>
 	  ))}
 	</div>
-  );
-};
+  )
+}
 
 // Хук для удобного использования тостов
 export const useToast = () => {
-  const [toastContainer, setToastContainer] = useState<React.ReactElement | null>(null);
+  const [toastContainer, setToastContainer] = useState<React.ReactElement | null>(null)
 
   const showToast = (message: string) => {
 	// Если контейнер еще не создан, создаем его
 	if (!toastContainer) {
-	  setToastContainer(<ToastContainer />);
+	  setToastContainer(<ToastContainer />)
 	}
 
 	// Добавляем тост
-	const event = new CustomEvent('add-toast', { detail: { message } });
-	window.dispatchEvent(event);
-  };
+	const event = new CustomEvent('add-toast', { detail: { message } })
+	window.dispatchEvent(event)
+  }
 
-  return { showToast, ToastContainer: toastContainer };
-};
+  return { showToast, ToastContainer: toastContainer }
+}

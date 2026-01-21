@@ -22,8 +22,8 @@ const TAG_LABELS: Record<string, string> = {
 }
 
 type AccordElementPropsType = Pick<AccordModeType, 'id' | 'name' | 'isMostView' | 'isNew' | 'view'> & {
-	showAlf?: boolean;
-	showBaidge?: boolean;
+	showAlf?: boolean
+	showBaidge?: boolean
 }
 
 export const AccordElement: FunctionComponent<AccordElementPropsType> = ({ 

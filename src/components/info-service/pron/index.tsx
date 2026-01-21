@@ -1,18 +1,18 @@
 import { FunctionComponent } from 'preact'
 
-import useApi from 'hook/use-api';
-import { useLoadingState } from 'hook/use-loading-state';
-import { useEmptyDataState } from 'hook/use-empty-data-state';
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data';
+import { NotFoundData } from 'components/ui/not-found-data'
 
-import { API_ROUTE } from 'dic/api-route';
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
 type PronType = {
-	code: string;
+	code: string
 }
 
 export const PronIndex: FunctionComponent = () => {

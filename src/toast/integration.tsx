@@ -1,4 +1,4 @@
-import { ToastContainer } from '.';
+import { ToastContainer } from '.'
 
 function App() {
   return (
@@ -6,5 +6,5 @@ function App() {
 	  {/* ...другие компоненты... */}
 	  <ToastContainer />
 	</div>
-  );
+  )
 }

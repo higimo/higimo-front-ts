@@ -1,15 +1,18 @@
 import cs from 'classnames'
-import { ComponentChild, FunctionComponent } from 'preact';
-import { useState } from 'preact/hooks';
-import { lazy, Suspense } from 'preact/compat'
 
-const LazyCollapse = lazy(() => import('react-collapse'))
+import { useState } from 'preact/hooks'
+
+import { ComponentChild, FunctionComponent } from 'preact'
+
+import { lazy, Suspense } from 'preact/compat'
 
 import './style.css'
 
+const LazyCollapse = lazy(() => import('react-collapse'))
+
 type CollapseSectionPropsType = {
-	header: ComponentChild;
-	fold?: boolean;
+	header: ComponentChild
+	fold?: boolean
 }
 export const CollapseSection: FunctionComponent<CollapseSectionPropsType> = ({ header, children, fold = true }) => {
 	const [ folded, setFolded ] = useState(!fold)

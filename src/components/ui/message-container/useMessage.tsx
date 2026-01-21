@@ -1,4 +1,4 @@
-import { MessageContainer } from '.';
+import { MessageContainer } from '.'
 
 /**
  * Возвращает контейнер и добавлялку месседжей
@@ -6,8 +6,8 @@ import { MessageContainer } from '.';
  */
 export const useMessage = () => {
 	const showMessage = (message: string) => {
-		window.dispatchEvent(new CustomEvent('add-message', { detail: { message } }));
-	};
+		window.dispatchEvent(new CustomEvent('add-message', { detail: { message } }))
+	}
 
-  return { showMessage, MessageContainer };
-};
+  return { showMessage, MessageContainer }
+}

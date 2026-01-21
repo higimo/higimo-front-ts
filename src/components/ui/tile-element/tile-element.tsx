@@ -2,17 +2,17 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link';
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 import './style.css'
 
 type TileElementPropsType = {
-	isInactive?: boolean;
-	className: string;
-	href: string;
-	image?: ComponentChildren;
-	name: ComponentChildren;
-	description: string;
+	isInactive?: boolean
+	className: string
+	href: string
+	image?: ComponentChildren
+	name: ComponentChildren
+	description: string
 }
 export const TileElement: FunctionComponent<TileElementPropsType> = props => (
 	<MaybeLink

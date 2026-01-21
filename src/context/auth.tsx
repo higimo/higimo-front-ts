@@ -1,9 +1,10 @@
-import { createContext, FunctionComponent } from 'preact';
-import { useState } from 'preact/hooks';
+import { createContext, FunctionComponent } from 'preact'
+
+import { useState } from 'preact/hooks'
 
 interface AuthContextType {
-	isAuth: boolean;
-	setIsAuth: (value: boolean) => void;
+	isAuth: boolean
+	setIsAuth: (value: boolean) => void
 }
 
 const defAuth: AuthContextType = {

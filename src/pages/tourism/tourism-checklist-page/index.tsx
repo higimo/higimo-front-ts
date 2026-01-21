@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'preact';
-import { TextContainer } from 'components/ui/text-container';
+import { FunctionComponent } from 'preact'
+import { TextContainer } from 'components/ui/text-container'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
-import { TourismChecklist } from 'components/tourism/tourism-checklist';
-import { Breadcrumps } from 'components/ui/breadcrumps';
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu';
+import { TourismChecklist } from 'components/tourism/tourism-checklist'
+import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../tourism-style.css'
 

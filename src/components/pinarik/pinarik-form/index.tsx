@@ -9,11 +9,12 @@ import { useAuth } from 'hook/use-auth'
 import { useFormStatus } from 'hook/use-form-status'
 
 import { getAuthPair } from 'utils/get-auth-pair'
-
-import './style.css'
 import sendRequest from 'utils/send-request'
+
 import { FormButton } from 'components/form/form-button'
 import { ShowFormResult } from 'components/form/show-form-result'
+
+import './style.css'
 
 const onSubmit = addStatus => values => {
 	const { login, pass } = getAuthPair()
@@ -26,9 +27,9 @@ const onSubmit = addStatus => values => {
 }
 
 type FormValues = {
-	date: string;
-	score: string;
-	description: string;
+	date: string
+	score: string
+	description: string
 }
 
 type PinarikFormPropsType = {

@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'preact';
+import { FunctionComponent } from 'preact'
 
 type CityType = {
-	title: string;
-	star: string;
+	title: string
+	star: string
 }
 export const CityStarElement: FunctionComponent<CityType> = (city) => {
 	return (

@@ -1,18 +1,20 @@
-import { VkSessionType } from 'pages/vk/types';
-import { createContext } from 'preact'
+import { VkSessionType } from 'pages/vk/types'
+
 import { useCallback, useState } from 'preact/hooks'
 import { useEffect } from 'preact/hooks'
 
+import { createContext } from 'preact'
+
 declare global {
 	interface Window {
-		vkAsyncInit?: () => void;
+		vkAsyncInit?: () => void
 	}
 }
 
 interface IVkContext {
-	isVkLogin: boolean;
-	session: VkSessionType;
-	fetchLogin: () => void;
+	isVkLogin: boolean
+	session: VkSessionType
+	fetchLogin: () => void
 }
 
 const DEFAULT_SESSION: VkSessionType = null
@@ -64,9 +66,9 @@ export const useVKInit = () => {
 
 		return () => {
 			if (script.parentNode) {
-				script.remove();
+				script.remove()
 			}
-			delete window.vkAsyncInit;
+			delete window.vkAsyncInit
 		}
 	}, [])
 

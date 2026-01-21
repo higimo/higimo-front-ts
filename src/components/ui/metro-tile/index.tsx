@@ -5,8 +5,8 @@ import cs from 'classnames'
 import './style.css'
 
 type MetroTilePropsType = {
-	className?: string;
-	href?: string;
+	className?: string
+	href?: string
 }
 export const MetroTile: FunctionComponent<MetroTilePropsType> = props => (
 	<div className={cs('metro-tile', props.className)}>{props.children}</div>

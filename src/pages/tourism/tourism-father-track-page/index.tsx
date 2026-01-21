@@ -1,29 +1,17 @@
-import { useState } from 'preact/hooks'
 import { useLazyLoadData } from 'hook/use-lazy-load-data'
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
-import { Breadcrumps } from 'components/ui/breadcrumps'
-import { FullWidthContainer } from 'components/ui/full-width-container'
-import { Switcher } from 'components/ui/switcher'
-import { Tag } from 'components/ui/tag'
 
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
-import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
-import { TourismStatisticMoscow } from 'components/tourism/tourism-statistic-moscow'
-import { TourismStatisticMustPov } from 'components/tourism/tourism-statistic-must-pov'
-import { TourismStatisticRussia } from 'components/tourism/tourism-statistic-russia'
-import { TourismStatisticWorld } from 'components/tourism/tourism-statistic-world'
-import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
+import { Coord } from 'components/tourism/tourism-maps-figure/data/father-track'
 
 import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/tourism-data/city-types'
 
 import 'pages/tourism/tourism-style.css'
-import { Coord } from 'components/tourism/tourism-maps-figure/data/father-track'
-import { BackgroundImage } from 'components/ui/background-image'
 import './style.css'
 
 const VISUALIZATOR_MAP = {
@@ -92,40 +80,40 @@ const typeFilters = {
 	[TYPE_MAP.CITY]: ['город'],
 	[TYPE_MAP.VILLAGE]: ['деревня'],
 	[TYPE_MAP.ZATO]: ['ЗАТО'],
-};
+}
 
 const handleFilterMapPoint = (filter) => (item: PovType) => {
 	// Посещённость
-	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false;
-	if (filter.visited === VISITED_MAP.WANTED && 'visited' in item && item.visited) return false;
+	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false
+	if (filter.visited === VISITED_MAP.WANTED && 'visited' in item && item.visited) return false
 
 	// Страна
-	if (filter.type === TYPE_MAP.RUSSIA && 'country' in item && item.country !== 'Россия') return false;
-	if (filter.type === TYPE_MAP.WORLD && 'country' in item && item.country === 'Россия') return false;
+	if (filter.type === TYPE_MAP.RUSSIA && 'country' in item && item.country !== 'Россия') return false
+	if (filter.type === TYPE_MAP.WORLD && 'country' in item && item.country === 'Россия') return false
 
 	if (typeFilters[filter.type] && !typeFilters[filter.type].includes(item.type)) {
-		return false;
+		return false
 	}
 
-	return true;
+	return true
 }
 
 const handleSort = (sort) => (a: PovType, b: PovType) => {
 	if (SORT_MAP.INIT === sort) {
-		return 0;
+		return 0
 	}
 	if (SORT_MAP.VISITED === sort) {
 		// @ts-ignore
-		return b.visited - a.visited;
+		return b.visited - a.visited
 	}
 	if (SORT_MAP.WANTED === sort) {
 		// @ts-ignore
-		return a.visited - b.visited;
+		return a.visited - b.visited
 	}
 	if (SORT_MAP.ALPHABET === sort) {
 		return a.title.localeCompare(b.title)
 	}
-	return 0;
+	return 0
 }
 
 const FILTER_TAGS = [
@@ -156,7 +144,7 @@ const FILTER_TAGS = [
 	{ type: TYPE_MAP.CITY, label: 'Города' },
 	{ type: TYPE_MAP.VILLAGE, label: 'Деревни' },
 	{ type: TYPE_MAP.ZATO, label: 'ЗАТО' }
-];
+]
 
 // Следующим этапом подгружу оставшиеся списки для посещений: крепости, памятники, музеи, POI Москвы, станции метро Москвы. И введу метку «хочу». Потому что ЗАТО я хочу посетить только один — Центр подготовки космонавтов, но хорошо бы собрать и остальные. Когда дособеру — можно будет и на БД переносить.
 
@@ -182,7 +170,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 	// const [sort, setSort] = useState(SORT_MAP.INIT)
 
 	// if ((stateData?.russiaCity?.length || 0) === 0) {
-	// 	return null;
+	// 	return null
 	// }
 
 	// const totalStatistic = stateData.russiaCity.slice(0)

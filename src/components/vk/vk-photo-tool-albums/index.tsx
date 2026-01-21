@@ -18,8 +18,8 @@ export const VkPhotoAlbumList: FunctionComponent = () => {
 	const { showMessage, MessageContainer } = useMessage()
 
 	useLayoutEffect(() => {
-		fetchLogin();
-	}, [fetchLogin]);
+		fetchLogin()
+	}, [fetchLogin])
 
 	const fetchAlbums = useCallback(async (ownerId) => {
 		try {

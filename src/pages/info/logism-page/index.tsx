@@ -1,4 +1,4 @@
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
 import { FunctionComponent } from 'preact'
 import { Logism } from 'components/logism/logism'

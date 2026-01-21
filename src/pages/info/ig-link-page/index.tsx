@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'preact';
+import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title';
+import { usePageTitle } from 'hook/use-page-title'
 
-import { iglinksData } from './data';
+import { iglinksData } from './data'
 
 import './style.css'
 

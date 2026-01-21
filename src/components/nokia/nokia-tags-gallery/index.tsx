@@ -1,14 +1,14 @@
-import { FunctionComponent } from 'preact';
-import { NokiaTagType } from 'types';
+import { FunctionComponent } from 'preact'
+import { NokiaTagType } from 'types'
+import { NokiaContext, NokiaContextType } from 'context/nokia'
+
+import { useContext } from 'preact/hooks'
 
 import cs from 'classnames'
 
-import { useContext } from 'preact/hooks';
-import { NokiaContext, NokiaContextType } from 'context/nokia';
-
 type NokiaTagsGalleryPropsType = {
-	filter: NokiaTagType['id'];
-	updateFilter: (tag: NokiaTagType["id"]) => void;
+	filter: NokiaTagType['id']
+	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (props) => {
 	const { tag } = useContext(NokiaContext) as NokiaContextType

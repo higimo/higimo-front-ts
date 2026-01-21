@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from 'components/ui/text-container';
+import { TextContainer } from 'components/ui/text-container'
 
 export const NasheAlbums: FunctionComponent = () => (
 	<TextContainer>

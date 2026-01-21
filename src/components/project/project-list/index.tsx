@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'preact';
-import { ProjectFullInfoType } from 'types';
+import { FunctionComponent } from 'preact'
+import { ProjectFullInfoType } from 'types'
 
-import { ProjectElement } from 'components/project/project-element';
+import { ProjectElement } from 'components/project/project-element'
 
 import './style.css'
 
@@ -21,7 +21,7 @@ const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): 
 }
 
 function packElements(elements: ProjectFullInfoType[], itemInRow): ProjectFullInfoType[][] {
-	const rows: ProjectFullInfoType[][] = [];
+	const rows: ProjectFullInfoType[][] = []
 
 	for (const element of elements) {
 		if (convertCoverSizeToWidth(element.cover_size) === 4) {
@@ -51,7 +51,7 @@ function packElements(elements: ProjectFullInfoType[], itemInRow): ProjectFullIn
 		}
 	}
 
-	return rows;
+	return rows
 }
 
 
@@ -59,7 +59,7 @@ type ProjectListPropsType = {
 	projectsList: ProjectFullInfoType[]
 }
 export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
-	const packedRows = packElements(props.projectsList, 5);
+	const packedRows = packElements(props.projectsList, 5)
 
 	return (
 		<div className="project__list">

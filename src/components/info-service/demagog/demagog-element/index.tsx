@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact';
-import { DemagogType } from 'types';
+import { FunctionComponent } from 'preact'
+import { DemagogType } from 'types'
 
 import { TextContainer } from 'components/ui/text-container'
 
