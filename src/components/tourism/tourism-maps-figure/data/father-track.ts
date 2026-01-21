@@ -967,196 +967,196 @@ export const rostovNaDonuPlace: PovType[] = [
 		bad: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание',
 		title: '[Do 01] Цирк',
 		coord: [47.2245, 39.7053],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание',
 		title: '[Do 02] Зоопарк',
 		coord: [47.2474, 39.6719],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 03] Ростовский краеведческий музей',
 		coord: [47.2237, 39.7222],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 04] Ростовский музей изобразительных искусств (корпус на Пушкинской)',
 		coord: [47.2257, 39.7159],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 05] Ростовский музей изобразительных искусств (корпус на Чехова)',
 		coord: [47.2254, 39.7234],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 06] Музей современного изобразительного искусства на Дмитровской',
 		coord: [47.2206, 39.7129],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 07] Ростовский музей железнодорожной техники',
 		coord: [47.1905, 39.6364],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 08] Ростовский музей космонавтики',
 		coord: [47.2108, 39.6192],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Do 09] Музей ГУВД по Ростовской области',
 		coord: [47.2194, 39.7027],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // музей
 		title: '[Do 10] Академический театр драмы им. Максима Горького',
 		coord: [47.2285, 39.7447],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр',
 		title: '[Do 11] Ростовский музыкальный театр',
 		coord: [47.2247, 39.7325],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр',
 		title: '[Do 12] Ростовская областная филармония',
 		coord: [47.2261, 39.7383],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр',
 		title: '[Do 13] Театр 18+',
 		coord: [47.2314, 39.7601],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 14] Парк им. Максима Горького',
 		coord: [47.2224, 39.7098],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 15] Парк Революции',
 		coord: [47.2299, 39.7453],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 16] Парк культуры и отдыха «1 Мая»',
 		coord: [47.2273, 39.7398],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 17] Парк им. Николая Островского',
 		coord: [47.2443, 39.7592],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 18] Парк Авиаторов',
 		coord: [47.2514, 39.7887],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 19] Детский Парк им. Вити Черевичкина',
 		coord: [47.2273, 39.7493],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 20] Ботанический сад',
 		coord: [47.2353, 39.6533],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 21] Левбердон',
 		coord: [47.2121, 39.7313],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 22] Зеленый остров',
 		coord: [47.2136, 39.778],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'театр', // парк
 		title: '[Do 23] Покровский сквер',
 		coord: [47.2258, 39.7319],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание',
 		title: 'Центральный рынок',
 		coord: [47.2166, 39.71],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание',
 		title: '[Buy 02] Пролетарский рынок',
 		coord: [47.2322, 39.7617],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Vicinity 01] Аксайский военно-исторический музей',
 		coord: [47.2717, 39.8918],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание', // музей
 		title: '[Vicinity 02] Археологический музей-заповедник «Танаис»',
 		coord: [47.2691, 39.3351],
 		region: 'Ростов-на-Дону',
 		visited: false,
 	},
 	{
-		type: 'Feature',
+		type: 'здание',
 		title: 'Ростов арена',
 		coord: [47.209696506390145, 39.73736002197228],
 		region: 'Ростов-на-Дону',

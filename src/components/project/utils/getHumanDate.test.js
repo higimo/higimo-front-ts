@@ -12,6 +12,7 @@ describe('getHumanDate', () => {
   })
 
   test('работает без аргументов', () => {
+    // @ts-ignore for unit-test
     const result = getHumanDate()
     expect(typeof result).toBe('string')
   })

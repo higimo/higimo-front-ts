@@ -3,6 +3,7 @@ import { getProjectText } from './getProjectText'
 
 describe('getProjectText - расширенные тесты', () => {
     beforeEach(() => {
+        // @ts-ignore for unit-test
         global.location = { pathname: '/projects/my-project' }
     })
   
