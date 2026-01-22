@@ -1,14 +1,14 @@
 import { generateLink } from './ROUTE_LINKS'
 
 export const API_ROUTE = {
-	nasheSingle: generateLink<'year'>('/api/v1/nashe/:year'),
-	nashe: '/api/v1/nashe',
 	tableGame: '/api/v1/table-game',
 	demagog: '/api/v1/demagog',
 	accord: '/api/v2/accord',
 	accordSingle: generateLink<'idcode'>('/api/v2/accord/:idcode'),
 	cinemaShort: '/api/v2/cinema',
 	cinemaSingle: generateLink<'idcode'>('/api/v2/cinema/:idcode'),
+	nashe: '/api/v2/nashe',
+	nasheSingle: generateLink<'year'>('/api/v2/nashe/:year'),
 	
 	faq: '/api/v1/faq',
 	faqSingle: generateLink<'idcode'>('/api/v1/faq/:idcode'),

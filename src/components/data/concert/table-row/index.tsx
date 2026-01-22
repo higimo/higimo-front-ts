@@ -1,32 +1,19 @@
-import { useEffect } from 'preact/hooks'
-
 import { formatTime } from 'utils/format-time'
-import { getDateFromTimestamp } from 'utils/get-date-from-timestamp'
 
 interface TableRowProps {
     time: number
     name: string
     visit: number
-    currentDay: number | null
-    onDayChange: (day: number) => void
+    day: number | null
 }
 
 /**
  * Компонент для отображения строки таблицы
  */
-export const TableRow: React.FC<TableRowProps> = ({ time, name, visit, currentDay, onDayChange }) => {
-    const day = getDateFromTimestamp(time)
-    const showDay = currentDay !== day
-    
-    useEffect(() => {
-        if (showDay) {
-            onDayChange(day)
-        }
-    }, [showDay, day, onDayChange])
-    
+export const TableRow: React.FC<TableRowProps> = ({ time, name, visit, day }) => {
     return (
         <tr>
-            <td className="date">{showDay ? day : ''}</td>
+            <td className="date">{day}</td>
             <td className="time">{formatTime(time)}</td>
             <td className="artist-name">{visit ? '★' : ''} {name}</td>
         </tr>
