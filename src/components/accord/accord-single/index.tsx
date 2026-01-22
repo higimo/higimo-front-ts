@@ -40,7 +40,7 @@ export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode 
 		return <NotFoundPage />
 	}
 
-	const currentSong = songSingle.data[0]
+	const currentSong = songSingle.data as unknown as AccordType // TODO: fix useApi
 
 	return (
 		<div className="container accord-single-page">

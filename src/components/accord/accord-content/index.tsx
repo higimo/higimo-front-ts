@@ -3,9 +3,8 @@ import { AccordType } from 'types'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-
 /**
- * Компонент для отображения содержимого аккорда
+ * Показывает аккорды песни и устанавливается title
  */
 export const AccordContent: FunctionComponent<{ song: AccordType }> = ({ song }) => {
 	usePageTitle(song.name)
