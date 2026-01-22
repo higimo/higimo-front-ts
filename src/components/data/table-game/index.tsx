@@ -31,7 +31,7 @@ export const TableGame: FunctionComponent = () => {
 			{games.data.map(({ id, name, text }) => (
 				<div key={id} className="game-gallery__item">
 					<div className="game-gallery__name">{name}</div>
-					<div className="game-gallery__text">{text}</div>
+					<div className="game-gallery__text" dangerouslySetInnerHTML={{ __html: text}} />
 				</div>
 			))}
 		</TextContainer>
