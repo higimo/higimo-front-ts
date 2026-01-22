@@ -12,12 +12,17 @@ import { TextContainer } from 'components/ui/text-container'
 import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/api-route'
+import { usePageTitle } from 'hook/use-page-title'
 
 export const FaqSingle: FunctionComponent = () => {
 	const { params: { idcode = ''} } = useRoute()
 	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
 	const isLoading = useLoadingState([faqDetail.status])
 	const isListEmpty = useEmptyDataState(faqDetail.data)
+
+	const currentElement = faqDetail.data as unknown as FaqType
+
+	usePageTitle(`${currentElement.name} | higimio FAQ` || 'FAQ')
 
 	if (isLoading) {
 		return <Loading />
@@ -27,18 +32,15 @@ export const FaqSingle: FunctionComponent = () => {
 		return <NotFoundPage />
 	}
 	
-	// TODO usePageTitle
-	document.title = faqDetail.data[0].name
-
 	return (
 		<div className="faq-page">
 			<TextContainer>
-				<h1>{faqDetail.data[0].name}321</h1>
+				<h1>{currentElement.name}</h1>
 			</TextContainer>
 			<TextContainer>
 				<div
 					className="container"
-					dangerouslySetInnerHTML={{__html: faqDetail.data[0].text}}
+					dangerouslySetInnerHTML={{__html: currentElement.text}}
 				/>
 			</TextContainer>
 		</div>
