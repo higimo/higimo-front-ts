@@ -18,7 +18,7 @@ const sendRequest = <T = any>(
 		auth = null,
 		values = {}
 	}: SendRequestOptions = {}
-): Promise<T> => new Promise((resolve) => {
+): Promise<T> => new Promise((resolve, reject) => {
 	if (typeof window !== 'undefined') {
 		var xhttp = new XMLHttpRequest()
 		xhttp.onreadystatechange = function() {
@@ -32,6 +32,16 @@ const sendRequest = <T = any>(
 					json = this.responseText
 				}
 				resolve(json)
+			}
+			if (this.readyState == 4 && this.status !== 200) {
+				const error = new Error(`HTTP ${this.status}: ${this.statusText || 'Request failed'}`)
+				error.name = 'ApiError'
+				console.error(error, {
+					status: this.status,
+					response: this.responseText,
+					url,
+				})
+				reject(error)
 			}
 		}
 
