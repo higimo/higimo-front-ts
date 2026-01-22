@@ -6,6 +6,7 @@ import useApi from 'hook/use-api'
 import { useRoute } from 'preact-iso'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'
@@ -20,6 +21,10 @@ export const ObuchenieSingle = () => {
 	const isLoading = useLoadingState([lectionDetail.status])
 	const isListEmpty = useEmptyDataState(lectionDetail.data)
 
+	const currentLection = lectionDetail.data as unknown as LectionType
+
+	usePageTitle(currentLection.name)
+
 	if (isLoading) {
 		return <Loading />
 	}
@@ -27,9 +32,6 @@ export const ObuchenieSingle = () => {
 	if (isListEmpty) {
 		return <NotFoundPage />
 	}
-
-	// TODO usePageTitle
-	document.title = lectionDetail.data[0].name
 
 	var md = new markdownit({
 		html: true,
@@ -40,12 +42,12 @@ export const ObuchenieSingle = () => {
 	return (
 		<div className="test">
 			<TextContainer>
-				<h1>{lectionDetail.data[0].name}</h1>
+				<h1>{currentLection.name}</h1>
 			</TextContainer>
 			<TextContainer>
 				<div
 					className="container"
-					dangerouslySetInnerHTML={{__html: md.render(lectionDetail.data[0].text || '')}}
+					dangerouslySetInnerHTML={{__html: md.render(currentLection.text || '')}}
 				/>
 			</TextContainer>
 		</div>

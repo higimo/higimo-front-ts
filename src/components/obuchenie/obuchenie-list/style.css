@@ -1,17 +1,30 @@
 .obuchenie-list {
-	margin: 0 auto;
-	max-width: 45rem;
+	margin: 24px auto;
+	margin-top: 48px;
+	max-width: 55rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.obuchenie-list__element {
+    width: calc(50% - 16px);
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    background: #efefef36;
+    padding: 16px;
+	min-height: 140px;
+	color: #3984d4;
+}
+
+.obuchenie-list__element:hover {
+	color: #000;
+	border-color: #969696;
 }
 
 .obuchenie-list__link {
-	padding: .5rem 0;
-	margin-bottom: .5rem;
-	display: block;
+	padding: .1em 0;
 	transition: all 150ms ease-in;
-}
-
-.obuchenie-list__link:hover {
-	color: #000;
 }

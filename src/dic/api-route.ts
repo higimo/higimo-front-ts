@@ -14,11 +14,11 @@ export const API_ROUTE = {
 	faqSingle: generateLink<'idcode'>('/api/v2/faq/:idcode'),
 	feedback: '/api/v2/feedback',
 	feedbackBlock: generateLink<'idcode'>('/api/v2/feedback/:idcode'),
-	link: '/api/v1/links',
+	link: '/api/v2/links',
 	pron: '/api/v1/pron',
 	
-	lection: '/api/v1/lection',
-	lectionSingle: generateLink<'idcode'>('/api/v1/lection/:idcode'),
+	lection: '/api/v2/lection',
+	lectionSingle: generateLink<'idcode'>('/api/v2/lection/:idcode'),
 	logismSingle: '/api/v1/logism/single',
 	updateNews: '/api/v1/update-news/',
 

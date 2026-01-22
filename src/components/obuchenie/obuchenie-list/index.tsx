@@ -29,7 +29,15 @@ export const ObuchenieList: FunctionComponent = () => {
 	return (
 		<div className="obuchenie-list">
 			{lectionList.data.map(({ id, name, code }) => (
-				<a key={id} href={ROUTE_LINKS.learningDetail({ idcode: code })} className="obuchenie-list__link">{name}</a>
+				<a
+					key={id}
+					href={ROUTE_LINKS.learningDetail({ idcode: code })}
+					className="obuchenie-list__element"
+				>
+					<div className="obuchenie-list__name">
+						{name}
+					</div>
+				</a>
 			))}
 		</div>
 	)
