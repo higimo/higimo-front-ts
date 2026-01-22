@@ -13,11 +13,23 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/api-route'
 
+import { usePageTitle } from 'hook/use-page-title'
+
 export const CinemaScriptDetail: FunctionComponent = () => {
 	const { params: { idcode }} = useRoute()
 	const [ cinemaDetail ] = useApi<CinemaType>(API_ROUTE.cinemaSingle({ idcode }))
 	const isLoading = useLoadingState([cinemaDetail.status])
 	const isListEmpty = useEmptyDataState(cinemaDetail.data)
+
+	const currentCinema = cinemaDetail.data as unknown as CinemaType
+
+	// console.log({
+	// 	few: cinemaDetail.status,
+	// 	isLoading,
+	// 	isListEmpty
+	// })
+
+	usePageTitle(currentCinema.title || 'Кино')
 
 	if (isLoading) {
 		return <Loading />
@@ -27,14 +39,11 @@ export const CinemaScriptDetail: FunctionComponent = () => {
 		return <NotFoundPage />
 	}
 
-	// TODO usePageTitle
-	document.title = cinemaDetail.data[0].title
-
 	return (
 		<TextContainer>
-			<h1>Из фильма «{cinemaDetail.data[0].title}»</h1>
+			<h1>Из фильма «{currentCinema.title}»</h1>
 			<div
-				dangerouslySetInnerHTML={{__html: cinemaDetail.data[0].text}}
+				dangerouslySetInnerHTML={{__html: currentCinema.text}}
 			/>
 		</TextContainer>
 	)
