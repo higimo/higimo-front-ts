@@ -33,26 +33,44 @@ export type FaqType = {
 	text: string
 }
 
-export type FeedbackType = {
+export type FeedbackPageType = {
 	id: number,
-	name: string
-	code: string | null
-	sort: number
-	create_at: number
 	title: string
-	description: string | null
+	sort: number
+	code: string | null
+	created_at: string // datetime
+}
+
+type FeedbackBlockType = {
+	id: number
+	page: number
+	sort: number
+	created_at: string // datetime
+	theme: string | null
+	name: string
+	text: string | null
+	image: string | null
+	file: string | null
+}
+
+type FeedBackNavigation = {
+	id: number
+	title: string
+	code: string | null,
+	sort: number
 }
 
 export type FeedbackElement = {
 	id: number
-	page: number
+	title: string
 	sort: number
-	create_at: string
-	theme: string | null
-	name: string
-	text: string
-	image: string | null
-	file: string | null
+	code: string | null
+	created_at: string // datetime
+	blocks: FeedbackBlockType[]
+	navigation: {
+		prev: FeedBackNavigation | null,
+		next: FeedBackNavigation | null
+	}
 }
 
 export type YaMapType = {

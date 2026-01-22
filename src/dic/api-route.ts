@@ -10,10 +10,10 @@ export const API_ROUTE = {
 	tableGame: '/api/v2/favorite/table-games',
 	demagog: '/api/v2/demagog',
 	
-	feedback: '/api/v1/feedback',
-	feedbackBlock: generateLink<'idcode'>('/api/v1/feedback/block/:idcode'),
 	faq: '/api/v2/faq',
 	faqSingle: generateLink<'idcode'>('/api/v2/faq/:idcode'),
+	feedback: '/api/v2/feedback',
+	feedbackBlock: generateLink<'idcode'>('/api/v2/feedback/:idcode'),
 	link: '/api/v1/links',
 	pron: '/api/v1/pron',
 	
