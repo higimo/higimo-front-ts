@@ -4,7 +4,7 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import avatar2 from './avatar2.jpeg'
+import avatar3 from './avatar3.jpg'
 
 import '../resume-style.css'
 import './style.css'
@@ -54,7 +54,7 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 	return (
 		<div className="resume-product2-page resume-page">
 			<TextContainer>
-				<img src={avatar2} className="resume-avatar" />
+				<img src={avatar3} className="resume-avatar" />
 				<h2>Резюме на позицию Product manager</h2>
 				<p className="small-text">Дмитрий Уткин</p>
 				<div className="contact">
@@ -66,14 +66,34 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 			</TextContainer>
 			<TextContainer>
 				<p className="small-text">
-					Опытный Product Manager (4,5 года) с экспертизой в ML, UNIT-экономике, JTBD, Traction-моделировании и кратном росте. Создал стратегию кратного роста, увеличил выручку на 11% в HRtech. Глубоко понимаю разработку (10 лет опыта разработчиком). Наймом увеличил команду в 2 раза с нулевым attrition.
+					Опытный Product Manager (5 лет) с экспертизой в ML, UNIT-экономике, JTBD, Traction-моделировании и кратном росте. Разработал платформу для стартапа. Для HRTech создал стратегию роста и увеличил выручку на 11%, удвоив и окупив команду разработки. Хорошо понимаю разработчиков и дизайнеров (10 лет опыта разработчиком).
 				</p>
 				<p className="small-text">
-					Ищу внутрекорпоративные, платформенные, ML и B2C/B2B продукты для запуска и масштабирования.
+					Ищу внутрекорпоративные, платформенные, ML, B2C/B2B продукты для запуска и масштабирования.
 				</p>
 			</TextContainer>
 			<TextContainer>
 				<div className="expirience">
+					<div className="expirience__element company">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div className="company__profession">Руководитель</div>
+								<div className="company__name"><a href="https://kidgu.ru">kidgu.ru</a></div>
+							</div>
+							<div className="company__timing">
+								<div className="company__period">март 2025 — декабрь 2025</div>
+								<div className="company__time">(9 месяцев)</div>
+							</div>
+						</div>
+						<div className="company__description">
+							<p>
+								Сервис поиска детских специалистов
+							</p>
+							<p>
+								Проанализировал рынок, спроектировал и разработал продукт. Нанял команду.
+							</p>
+						</div>
+					</div>
 					<div className="expirience__element company">
 						<div className="company__meta">
 							<div className="company__staff">
@@ -125,9 +145,18 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 					</div>
 
 					<div class="staff__element company">
-						<h2>Разработчик фронтенд на React, бекенд на Битриксе</h2>
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">10 лет фулл-стек разработки</div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">2012—2022</div>
+								<div class="company__time">(10 лет)</div>
+							</div>
+						</div>
+						<h2></h2>
 						<p className="small-text">
-							@<a href="https://daily.afisha.ru">Афиша Дейли</a>, @<a href="https://artlebedev.ru">Студия Артемия Лебедева</a>, @<a href="https://ispring.ru">iSpring</a> // 2012—2022 (10 лет)
+							@<a href="https://daily.afisha.ru">Афиша Дейли</a>, @<a href="https://artlebedev.ru">Студия Артемия Лебедева</a>, @<a href="https://ispring.ru">iSpring</a>. React, Битрикс, Laravel.
 						</p>
 						<div className="company__meta">
 							<div className="company__staff">

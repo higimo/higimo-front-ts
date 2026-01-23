@@ -1,6 +1,6 @@
 .resume-product2-page {
 	font-family: Alegreya Sans, sans-serif;
-	font-size: 18px;
+	font-size: px;
 	padding: 32px 0;
 }
 
@@ -117,7 +117,9 @@
 }
 
 .resume-product2-page .company__name {
-	margin-left: 16px;
+	font-size: 14px;
+	margin-left: 12px;
+	padding-top: 2px;
 }
 .resume-product2-page .company--table .company__name {
 	margin-left: 8px;
