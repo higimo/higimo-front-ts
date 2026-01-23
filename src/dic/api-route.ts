@@ -9,28 +9,28 @@ export const API_ROUTE = {
 	nasheSingle: generateLink<'year'>('/api/v2/nashe/:year'),
 	tableGame: '/api/v2/favorite/table-games',
 	demagog: '/api/v2/demagog',
-	
+
 	faq: '/api/v2/faq',
 	faqSingle: generateLink<'idcode'>('/api/v2/faq/:idcode'),
 	feedback: '/api/v2/feedback',
 	feedbackBlock: generateLink<'idcode'>('/api/v2/feedback/:idcode'),
 	link: '/api/v2/links',
 	pron: '/api/v1/pron',
-	
+
 	lection: '/api/v2/lection',
 	lectionSingle: generateLink<'idcode'>('/api/v2/lection/:idcode'),
-	logismSingle: '/api/v1/logism/single',
 	updateNews: '/api/v1/update-news/',
 
 	projectIds: '/api/v1/project/project/ids',
 	projectWorker: '/api/v1/project/worker',
 	projectVendor: '/api/v1/project/vendor',
 	projectProject: '/api/v1/project/project',
-	
+
 	youtube: '/api/v1/youtube',
 	lib: '/api/v1/lib',
-	logism: '/api/v1/logism',
-	
+	logism: '/api/v2/logism',
+	logismSingle: '/api/v1/logism/single',
+
 	pinarik: '/api/v1/pinarik',
 	comoji: '/api/v1/comoji',
 	probbi: '/api/v1/probbi',
