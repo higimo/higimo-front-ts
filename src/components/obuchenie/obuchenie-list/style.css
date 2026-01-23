@@ -17,6 +17,7 @@
     padding: 16px;
 	min-height: 140px;
 	color: #3984d4;
+	transition: all 150ms ease-in;
 }
 
 .obuchenie-list__element:hover {
@@ -26,5 +27,4 @@
 
 .obuchenie-list__link {
 	padding: .1em 0;
-	transition: all 150ms ease-in;
 }
