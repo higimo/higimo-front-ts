@@ -19,7 +19,7 @@ export const API_ROUTE = {
 
 	lection: '/api/v2/lection',
 	lectionSingle: generateLink<'idcode'>('/api/v2/lection/:idcode'),
-	updateNews: '/api/v1/update-news/',
+	updateNews: '/api/v2/update-news/',
 
 	projectIds: '/api/v1/project/project/ids',
 	projectWorker: '/api/v1/project/worker',
