@@ -15,7 +15,7 @@ export const API_ROUTE = {
 	feedback: '/api/v2/feedback',
 	feedbackBlock: generateLink<'idcode'>('/api/v2/feedback/:idcode'),
 	link: '/api/v2/links',
-	pron: '/api/v1/pron',
+	pron: '/api/v2/pron',
 
 	lection: '/api/v2/lection',
 	lectionSingle: generateLink<'idcode'>('/api/v2/lection/:idcode'),
