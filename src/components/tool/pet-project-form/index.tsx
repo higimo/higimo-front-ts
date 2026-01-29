@@ -20,7 +20,7 @@ import './style.css'
 
 const onSubmit = setStatus => async values => {
 	const res = await sendRequest(
-		`/api/v1/probbi/${values.id}`,
+		API_ROUTE.probbiSingle({ projectId: values.id }),
 		{
 			method: 'POST',
 			values,

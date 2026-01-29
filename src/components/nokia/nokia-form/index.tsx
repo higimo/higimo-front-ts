@@ -14,10 +14,10 @@ import { ShowFormResult } from 'components/form/show-form-result'
 import sendRequest from 'utils/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
 import '../nokia-style.css'
 import './style.css'
-
 
 const getUserSuggestions = (peoples: PeopleType[]): string[] => peoples.map(men => {
 	return `${men.name}${men.name.length ? ` (${men.name})` : null}`
@@ -25,7 +25,7 @@ const getUserSuggestions = (peoples: PeopleType[]): string[] => peoples.map(men 
 
 const onSubmit = addStatus => values => {
 	sendRequest(
-		`/api/v1/nokia/meeting/${values.id}`,
+		API_ROUTE.nokiaMeetingSingle({ id: values.id }),
 		{
 			method: 'POST',
 			values: {
@@ -39,7 +39,7 @@ const onSubmit = addStatus => values => {
 		// TODO: BACKEND Дописать редактирование связей
 		values.personId.split(',').map(peopleId => {
 			sendRequest(
-				'/api/v1/nokia/people-meeting',
+				API_ROUTE.nokiaPeopleMeeting,
 				{
 					method: 'POST',
 					values: {

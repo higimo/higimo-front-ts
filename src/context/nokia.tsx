@@ -8,6 +8,8 @@ import { makeHashTable } from 'utils/make-hash-table'
 
 import { createContext } from 'preact'
 
+import { API_ROUTE } from 'dic/api-route'
+
 export type NokiaContextType = {
 	fetchData: () => void
 	richMeeting: RichMeetingType[]
@@ -38,18 +40,18 @@ export const NokiaContextProvider = (props) => {
 	const [ peopleTag, setPeopleTag ] = useState<PeopleTag[]>([])
 	const [ richMeeting, setRichMeeting ] = useState<RichMeetingType[]>([])
 
-	const fetchRichMeeting = () => sendRequest('/api/v1/nokia/rich-meeting', {values: {limit: 0}})
+	const fetchRichMeeting = () => sendRequest(API_ROUTE.nokiaRichMeeting, {values: {limit: 0}})
 		.then((list: RichMeetingType[]) => setRichMeeting(list))
 
-	const updateLinks = () => sendRequest('/api/v1/nokia/people-meeting', { values: { limit: 0/*10*/ } })
+	const updateLinks = () => sendRequest(API_ROUTE.nokiaPeopleMeeting, { values: { limit: 0/*10*/ } })
 		.then((list: PeopleMeetingType[]) => setLinks(list))
-	const updatePeople = () => sendRequest('/api/v1/nokia/people')
+	const updatePeople = () => sendRequest(API_ROUTE.nokiaPeople)
 		.then((list: PeopleType[]) => setPeople(list))
-	const updateMeeting = () => sendRequest('/api/v1/nokia/meeting', { values: { limit: 0/*10*/ } })
+	const updateMeeting = () => sendRequest(API_ROUTE.nokiaMeeting, { values: { limit: 0/*10*/ } })
 		.then((list: MeetingType[]) => setMeeting(list))
-	const updateTag = () => sendRequest('/api/v1/nokia/tag')
+	const updateTag = () => sendRequest(API_ROUTE.nokiaTags)
 		.then((list: NokiaTagType[]) => setTag(list))
-	const updatePeopleTag = () => sendRequest('/api/v1/nokia/people-tag')
+	const updatePeopleTag = () => sendRequest(API_ROUTE.nokiaPeopleTag)
 		.then((list: PeopleTag[]) => setPeopleTag(list))
 
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)

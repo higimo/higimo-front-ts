@@ -9,8 +9,10 @@ import { MentionSuggest } from './textarea-mention/types'
 import { MentionsInput } from './textarea-mention/MentionsInput'
 import { Loading } from 'components/ui/loading'
 
+import { API_ROUTE } from 'dic/api-route'
+
 export const TextareaPage: FunctionComponent = () => {
-	const [ popleList ] = useApi<PeopleType>('/api/v1/nokia/people')
+	const [ popleList ] = useApi<PeopleType>(API_ROUTE.nokiaPerson)
 	const [ mentionList, setMentionList ] = useState<MentionSuggest[]>([])
 
 	const appendMentionList = useCallback((newMentionList: MentionSuggest[]) => {

@@ -3,12 +3,13 @@ import { FunctionComponent } from 'preact'
 import cookies from 'js-cookie'
 
 import { useForm } from 'react-hook-form'
-import { useLocation, useRoute } from 'preact-iso'
+import { useLocation } from 'preact-iso'
 import { useAuth } from 'hook/use-auth'
 
 import sendRequest, { SendRequestOptions } from 'utils/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
@@ -24,7 +25,7 @@ const onSubmit = route => data => {
 	const searchParams = new URLSearchParams(location.search)
 	const backpath = searchParams.get('backpath')
 
-	sendRequest('/api/v1/auth/login', requestOptions)
+	sendRequest(API_ROUTE.login, requestOptions)
 		.then(isAuthorized => {
 			if (isAuthorized) {
 				cookies.set('name', login)

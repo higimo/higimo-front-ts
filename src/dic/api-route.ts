@@ -1,6 +1,8 @@
 import { generateLink } from './ROUTE_LINKS'
 
 export const API_ROUTE = {
+	login: '/api/v1/auth/login',
+	
 	accord: '/api/v2/accord',
 	accordSingle: generateLink<'idcode'>('/api/v2/accord/:idcode'),
 	cinemaShort: '/api/v2/cinema',
@@ -42,6 +44,18 @@ export const API_ROUTE = {
 	yamap: '/api/v2/map/yamaps',
 	lister: '/api/v2/lister/item',
 	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
+
+	nokiaPerson: '/api/v1/nokia/people',
+	nokiaRichMeeting: '/api/v1/nokia/rich-meeting',
+	nokiaPeopleMeeting: '/api/v1/nokia/people-meeting',
+	nokiaPeople: '/api/v1/nokia/people',
+	nokiaMeeting: '/api/v1/nokia/meeting',
+	nokiaTags: '/api/v1/nokia/tag',
+	nokiaPeopleTag: '/api/v1/nokia/people-tag',
+	nokiaPeopleSingle: generateLink<'id'>('/api/v1/nokia/people/:id'),
+	nokiaMeetingSingle: generateLink<'id'>('/api/v1/nokia/meeting/:id'),
+
+	// TODO: оказывается, есть в проекте /api/v1, которые не через это работают — исправь
 } as const
 
 export type ApiRouteType = Exclude<

@@ -10,12 +10,14 @@ import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 import sendRequest from 'utils/send-request'
 
+import { API_ROUTE } from 'dic/api-route'
+
 import '../nokia-style.css'
 
 type OnSubmitType = (fewe: any) => (jfeiow: any) => void
 const onSubmit: OnSubmitType = addStatus => values => {
 	sendRequest(
-		`/api/v1/nokia/people/${values.id}`,
+		API_ROUTE.nokiaPeopleSingle({ id: values.id }),
 		{
 			method: 'POST',
 			values: values,

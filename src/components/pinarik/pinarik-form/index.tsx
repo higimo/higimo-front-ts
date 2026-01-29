@@ -14,12 +14,14 @@ import sendRequest from 'utils/send-request'
 import { FormButton } from 'components/form/form-button'
 import { ShowFormResult } from 'components/form/show-form-result'
 
+import { API_ROUTE } from 'dic/api-route'
+
 import './style.css'
 
 const onSubmit = addStatus => values => {
 	const { login, pass } = getAuthPair()
 
-	sendRequest('/api/v1/pinarik', {
+	sendRequest(API_ROUTE.pinarik, {
 		method: 'POST',
 		values,
 		auth: { login, pass },

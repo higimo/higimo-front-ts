@@ -4,15 +4,17 @@ import { useLocation } from 'preact-iso'
 
 import { getAuthPair } from 'utils/get-auth-pair'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import sendRequest from 'utils/send-request'
 import { AuthContext } from 'context/auth'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/api-route'
 
 const isAuthorizedFunc = async () => {
 	const { login, pass } = getAuthPair()
 	let result = false
 	if (!!login && !!pass) {
-		result = await sendRequest('/api/v1/auth/login', { method: 'POST', auth: { login, pass } })
+		result = await sendRequest(API_ROUTE.login, { method: 'POST', auth: { login, pass } })
 	}
 	return result
 }
