@@ -28,16 +28,16 @@ export const LogismSingle: FunctionComponent = () => {
 		return <NotFoundData />
 	}
 
+	const logism = logismDetail.data as unknown as LogismType
+
 	return (
 		<PrecentationContainer className="single-logism">
-			{logismDetail.data.map(({ text }) => (
-				<TextContainer>
-					<div
-						className="single-logism__text"
-						dangerouslySetInnerHTML={{__html: text}}
-					/>
-				</TextContainer>
-			))}
+			<TextContainer>
+				<div
+					className="single-logism__text"
+					dangerouslySetInnerHTML={{__html: logism.text}}
+				/>
+			</TextContainer>
 			<TextContainer className="single-logism__navigation">
 				<a href={ROUTE_LINKS.logism} className="single-logism__link">Другие логизмы →</a>
 			</TextContainer>

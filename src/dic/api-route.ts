@@ -33,7 +33,7 @@ export const API_ROUTE = {
 	youtube: '/api/v1/youtube',
 	lib: '/api/v2/lib',
 	logism: '/api/v2/logism',
-	logismSingle: '/api/v1/logism/single',
+	logismSingle: '/api/v2/logism/single',
 
 	pinarik: '/api/v1/pinarik',
 	comoji: '/api/v2/comoji',
