@@ -89,12 +89,13 @@ body {
 }
 
 a {
+	color: #3984d4;
 	text-decoration: none;
-	border-bottom: 1px solid #0000ee59;
+	border-bottom: 1px solid #3984d459;
 }
 
 a:hover {
-	border-color: #00e;
+	border-color: #3984d4;
 }
 
 p {
