@@ -6,7 +6,7 @@ import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { FeedbackCard } from 'components/info-service/feedback/feedback-card'
+import { FeedbackCard } from 'components/info-service/feedback/feedback-element'
 
 import { API_ROUTE } from 'dic/api-route'
 
