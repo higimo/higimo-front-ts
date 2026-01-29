@@ -45,7 +45,7 @@ export class ToolPage extends Component {
 				}
 			}
 
-			xhttp.open(this.state.method, `/api/v1/${uri}`, true)
+			xhttp.open(this.state.method, `/api/v2/${uri}`, true)
 
 			xhttp.setRequestHeader('Authorization', `Basic ${btoa(`${this.state.login}:${this.state.password}`)}`)
 			if (this.state.method === 'GET') {

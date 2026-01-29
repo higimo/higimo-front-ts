@@ -1,5 +1,6 @@
+// TODO: надо документировать, сложно читается
 export const generateLink = <T extends string>(link: string) => (params: Record<T, string>) => Object.keys(params)
-	.reduce((carryLink, key) => carryLink.replace(`:${key}`, params[key]), link) as `/api/v1/${string}`
+	.reduce((carryLink, key) => carryLink.replace(`:${key}`, params[key]), link) as `/api/v2/${string}`
 
 const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectIndex: '/project/',
