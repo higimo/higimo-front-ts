@@ -21,10 +21,14 @@ export const API_ROUTE = {
 	lectionSingle: generateLink<'idcode'>('/api/v2/lection/:idcode'),
 	updateNews: '/api/v2/update-news/',
 
-	projectIds: '/api/v1/project/project/ids',
-	projectWorker: '/api/v1/project/worker',
-	projectVendor: '/api/v1/project/vendor',
-	projectProject: '/api/v1/project/project',
+	projectIds: '/api/v2/project/project/ids',
+	projectWorker: '/api/v2/project/authors',
+	projectVendor: '/api/v2/project/vendor',
+	projectProject: '/api/v2/project/project',
+	projectTags: '/api/v2/project/tags',
+	projectSingle: generateLink<'vendorCode' | 'projectCode'>('/api/v2/project/:vendorCode/:projectCode'),
+	attachAuthor: '/api/v2/project/worker', // post
+	attachAuthor_BAD_WAY: '/api/v2/project/credits', // post
 
 	youtube: '/api/v1/youtube',
 	lib: '/api/v1/lib',

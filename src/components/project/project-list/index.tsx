@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'preact'
-import { ProjectFullInfoType } from 'types'
+import { NewProjectType, ProjectFullInfoType } from 'types'
 
 import { ProjectElement } from 'components/project/project-element'
 
 import './style.css'
 
 // TODO На широких экранах 5 в ряд делать? Одновременно в коде и css надо
-const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): number => {
+const convertCoverSizeToWidth = (coverSize: NewProjectType['cover_size']): number => {
 	if (coverSize === 'high') {
 		return 4
 	}
@@ -20,8 +20,8 @@ const convertCoverSizeToWidth = (coverSize: ProjectFullInfoType['cover_size']): 
 	return 1
 }
 
-function packElements(elements: ProjectFullInfoType[], itemInRow): ProjectFullInfoType[][] {
-	const rows: ProjectFullInfoType[][] = []
+function packElements(elements: NewProjectType[]): NewProjectType[][] {
+	const rows: NewProjectType[][] = []
 
 	for (const element of elements) {
 		if (convertCoverSizeToWidth(element.cover_size) === 4) {
@@ -54,12 +54,11 @@ function packElements(elements: ProjectFullInfoType[], itemInRow): ProjectFullIn
 	return rows
 }
 
-
 type ProjectListPropsType = {
-	projectsList: ProjectFullInfoType[]
+	projectsList: NewProjectType[]
 }
 export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
-	const packedRows = packElements(props.projectsList, 5)
+	const packedRows = packElements(props.projectsList)
 
 	return (
 		<div className="project__list">

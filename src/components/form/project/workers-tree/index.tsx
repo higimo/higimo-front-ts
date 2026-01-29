@@ -1,4 +1,4 @@
-import { WorkerType } from 'types'
+import { NewProjectWorkerType } from 'types'
 import { FunctionComponent } from 'preact'
 import { useMemo } from 'preact/hooks'
 
@@ -7,7 +7,7 @@ import { Tag } from 'components/ui/tag'
 
 type WorkerRoleGroup = {
 	role: string
-	workers: WorkerType[]
+	workers: NewProjectWorkerType[]
 }
 
 type WorkerCompanyGroup = {
@@ -16,8 +16,8 @@ type WorkerCompanyGroup = {
 }
 
 type WorkersTreeProps = {
-	workers: WorkerType[]
-	onWorkerSelect: (worker: WorkerType) => void
+	workers: NewProjectWorkerType[]
+	onWorkerSelect: (worker: NewProjectWorkerType) => void
 }
 
 export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWorkerSelect }) => {
@@ -41,7 +41,7 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 	}, [workers])
 
 	const handleClickWorker = useMemo(
-		() => (worker: WorkerType) => {
+		() => (worker: NewProjectWorkerType) => {
 			onWorkerSelect(worker)
 		},
 		[onWorkerSelect]
@@ -70,7 +70,7 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 													className="worker-tag"
 													onClick={() => handleClickWorker(worker)}
 												>
-													{[worker.name, worker.family, worker.login].filter(Boolean).join(' ')}
+													{[worker.full_name, worker.login].filter(Boolean).join(' ')}
 												</Tag>
 											))}
 										</div>

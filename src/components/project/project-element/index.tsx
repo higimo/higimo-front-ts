@@ -2,16 +2,16 @@ import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { ProjectFullInfoType } from 'types'
+import { NewProjectType } from 'types'
 import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-export const ProjectElement: FunctionComponent<ProjectFullInfoType> = props => {
-	const link = props.isLink == 'true' ? props.link : ROUTE_LINKS.projectDetail({
-		vendor: props.vendorCode,
+export const ProjectElement: FunctionComponent<NewProjectType> = props => {
+	const link = props.isLink ? props.link : ROUTE_LINKS.projectDetail({
+		vendor: props.vendor.code,
 		project: props.code
 	})
 	const tags = props.tags || []
@@ -26,13 +26,13 @@ export const ProjectElement: FunctionComponent<ProjectFullInfoType> = props => {
 			<MaybeLink href={link} className="project__image">
 				<img
 					className="project__image-anons"
-					src={`https://storage.yandexcloud.net/higimo-home/project/${props.vendorCode}/${props.code}/asset/img/anons.${props.image}`}
+					src={`https://storage.yandexcloud.net/higimo-home/project/${props.vendor.code}/${props.code}/asset/img/anons.${props.image}`}
 					loading="lazy"
 				/>
 				{!!tags.length && (
 					<div className="project__tags">
 						{tags.map(tag => (
-							<span className="project__tag">{tag}</span>
+							<span className="project__tag">{tag.title}</span>
 						))}
 					</div>
 				)}

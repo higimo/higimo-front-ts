@@ -1,4 +1,4 @@
-import { WorkerType } from 'types'
+import { NewProjectWorkerType } from 'types'
 
 import { useState } from 'preact/hooks'
 import useApi from 'hook/use-api'
@@ -24,20 +24,21 @@ import './style.css'
 
 const onSubmit = values => {
 	console.log('onSubmit', values)
-	// sendRequest('/api/v1/project/worker' + (!!values.id ? `/${values.id}` : ''), {
+	// sendRequest(API_ROUTE.attachAuthor + (!!values.id ? `/${values.id}` : ''), {
 	// 	method: 'POST',
 	// 	values,
 	// }).then(data => console.log(data))
 }
 
 export const WorkerInput = ({ projectId }) => {
-	const [ workers, fetchWorkers ] = useApi<WorkerType>(API_ROUTE.projectWorker)
-	const [ chooseWorker, setChooseWorker ] = useState<WorkerType[]>([])
+	// TODO: обновить по API v2
+	const [ workers, fetchWorkers ] = useApi<NewProjectWorkerType>(API_ROUTE.projectWorker)
+	const [ chooseWorker, setChooseWorker ] = useState<NewProjectWorkerType[]>([])
 	const isLoading = useLoadingState([workers.status])
 	const isListEmpty = useEmptyDataState(workers.data)
 
-	const handleClickChose = (worker: WorkerType) => setChooseWorker(prev => [...prev, worker])
-	const handleRemoveChose = (worker: WorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
+	const handleClickChose = (worker: NewProjectWorkerType) => setChooseWorker(prev => [...prev, worker])
+	const handleRemoveChose = (worker: NewProjectWorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
 
 	if (isLoading) {
 		return <Loading />
@@ -59,7 +60,7 @@ export const WorkerInput = ({ projectId }) => {
 					onRemoveWorker={handleRemoveChose}
 					onSubmit={async (data) => {
 						let results = Object.entries(data).map(async ([workerId, role]) => {
-							return await sendRequest('/api/v1/project/credits', {
+							return await sendRequest(API_ROUTE.attachAuthor_BAD_WAY, {
 								method: 'POST',
 								values: {
 									project: projectId,
@@ -78,7 +79,7 @@ export const WorkerInput = ({ projectId }) => {
 				/>
 				<CreateWorker
 					onSubmit={async (data) => {
-						const res = await sendRequest('/api/v1/project/worker', {
+						const res = await sendRequest(API_ROUTE.attachAuthor, {
 							method: 'POST',
 							values: data
 						})

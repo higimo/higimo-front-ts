@@ -49,6 +49,8 @@ const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> =
 // type ApiUrlType = typeof API_ROUTE[keyof typeof API_ROUTE]
 type ApiUrlType = ApiRouteType
 
+// TODO: Добавить ещё POST, DELETE
+// TODO: Добавить вывод сразу useLoadingState
 const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T>, initialState as ApiState<T>)
 

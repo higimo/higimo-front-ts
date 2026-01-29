@@ -1,4 +1,4 @@
-import { WorkerType } from 'types'
+import { NewProjectWorkerType } from 'types'
 import { FunctionComponent } from 'preact'
 
 import { FieldError, useForm } from 'react-hook-form'
@@ -13,8 +13,8 @@ type FormValues = {
 	roles: Record<string, string> // { [workerId]: role }
 }
 type ChooseWorkersFormPropsType = {
-	workers: WorkerType[]
-	onRemoveWorker: (worker: WorkerType) => void
+	workers: NewProjectWorkerType[]
+	onRemoveWorker: (worker: NewProjectWorkerType) => void
 	onSubmit: (roles: Record<string, string>) => Promise<boolean>
 }
 export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = ({
@@ -67,7 +67,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 									className="worker-tag"
 									onClick={() => onRemoveWorker(worker)}
 								>
-									{[worker.name, worker.family, worker.login].filter(Boolean).join(' ')}
+									{[worker.full_name, worker.login].filter(Boolean).join(' ')}
 								</Tag>
 							</div>
 							<div className="worker-role">

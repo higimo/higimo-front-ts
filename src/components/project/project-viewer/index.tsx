@@ -3,12 +3,14 @@ import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import { useRoute } from 'preact-iso'
 import { useProjectViewer } from 'components/project/hooks/useProjectViewer'
+import { usePageTitle } from 'hook/use-page-title'
 
 import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { WorkerInput } from 'components/form/project/worker-input'
 import { ProjectTag } from 'components/project/project-tag'
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 import { getHumanDate } from 'components/project/utils/getHumanDate'
 import { getProjectText } from 'components/project/utils/getProjectText'
@@ -20,13 +22,14 @@ import './style.css'
 export const ProjectViewer: FunctionComponent = () => {
 	const { params: { vendor, project } } = useRoute()
 
-	const [curProject, isLoading] = useProjectViewer(vendor, project)
+	const [curProject, isLoading, isEmpty] = useProjectViewer(vendor, project)
+
+	usePageTitle(curProject.name)
 
 	if (isLoading) {
 		return <Loading />
 	}
-
-	if (!curProject) {
+	if (isEmpty) {
 		return <NotFoundPage />
 	}
 
@@ -55,16 +58,17 @@ export const ProjectViewer: FunctionComponent = () => {
 					<WorkerInput projectId={curProject.id} />
 				</div>
 			</OnlyAdmin>
-			{!!(curProject.role || []).length && (
+			{!!curProject.credits.length && (
 				<div className="project-viewer__credits">
-					{(curProject.role || []).map(role => (
+					{(curProject.credits || []).map(author => (
 						<div className="project-viewer__person person">
 							<div className="person__name">
-								{role.name} {role.family}
-								{(!role.name.length && !role.family.length) && role.login}
+								<MaybeLink isHref={!!author.worker.link?.length} href={author.worker.link}>
+									{author.worker.full_name}
+								</MaybeLink>
 							</div>
 							<div className="person__role">
-								{role.role}
+								{author.role}
 							</div>
 						</div>
 					))}

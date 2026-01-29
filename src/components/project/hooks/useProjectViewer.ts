@@ -1,50 +1,25 @@
-import { useEffect, useState } from 'preact/hooks'
-import { CreditsType, PortfolioProjectType, ProjectTagType, ProjectType, TagNameType, VendorType, WorkerType } from 'types'
-import sendRequest from 'utils/send-request'
+import { NewProjectType } from 'types'
 
-// TODO useProject спорит с этим
-export const useProjectViewer = (vendorProp: string, projectProp: string): [PortfolioProjectType | null, boolean] => {
-    const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [curProject, setProject] = useState<PortfolioProjectType | null>(null)
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
-    useEffect(() => {
-        (async () => {
-            if (!projectProp || !projectProp) {
-                return null
-            }
+import { API_ROUTE } from 'dic/api-route'
 
-            setIsLoading(true)
-            const vendors: VendorType[] = await sendRequest(`/api/v1/project/vendor/${vendorProp}`)
-            const projects: ProjectType[] = await sendRequest(`/api/v1/project/project/${projectProp}`)
-            const credits: CreditsType[] = await sendRequest(`/api/v1/project/credits`)
-            const workers: WorkerType[] = await sendRequest(`/api/v1/project/worker`)
-            const tagMaping: ProjectTagType[] = await sendRequest(`/api/v1/project/tag/tag`)
-            const tagName: TagNameType[] = await sendRequest(`/api/v1/project/tag/name`)
-            setIsLoading(false)
+type UseProjectViewerType = (vendorCode: string, projectCode: string) => [NewProjectType, boolean, boolean]
 
-            if (!vendors.length || !projects.length || !credits.length || !workers.length) {
-                return null
-            }
+/**
+ * Вернёт дательную информацию по кейсу
+ * @param vendorCode код вендора
+ * @param projectCode код проекта
+ * @returns 
+*/
+export const useProjectViewer: UseProjectViewerType = (vendorCode, projectCode) => {
+    const [projectApi] = useApi<NewProjectType>(API_ROUTE.projectSingle({ vendorCode, projectCode }))
+    const isLoadingApi = useLoadingState([projectApi.status])
+    const isEmptyApi = useEmptyDataState(projectApi.data)
 
-            setProject({
-                ...projects
-                    .find(proj => proj.vendor == vendors[0].id && proj.code === projectProp),
-                vendor: vendors[0],
-                role: credits.filter(titr => {
-                    return titr.project == projects[0].id
-                }).map(titr => {
-                    return {
-                        ...workers.find(worker => worker.id == titr.worker),
-                        ...titr,
-                    }
-                }),
-                tags: tagMaping.filter(tagMap => tagMap.projectId === projects[0].id)
-                    .map(tagMap => {
-                        return tagName.find(item => item.id === tagMap.tagId)
-                    })
-            })
-        })()
-    }, [vendorProp, projectProp])
+    const currentProjectApi = projectApi.data as unknown as NewProjectType
 
-    return [curProject, isLoading]
+    return [currentProjectApi, isLoadingApi, isEmptyApi]
 }

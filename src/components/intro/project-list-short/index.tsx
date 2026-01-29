@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { ProjectType, VendorType } from 'types'
+import { NewProjectType, NewProjectIdsType } from 'types'
 
 import useApi from 'hook/use-api'
-import { useMemo } from 'preact/hooks'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 
@@ -20,37 +19,25 @@ import { API_ROUTE } from 'dic/api-route'
 import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
-	const [ highProjectList ] = useApi<ProjectType>('/api/v1/project/project', {
+	const [ projectIds ] = useApi<NewProjectIdsType>(API_ROUTE.projectIds) // TODO: заменить на meta.count 
+	const [ highProjectList ] = useApi<NewProjectType>(API_ROUTE.projectProject, {
 		filter: { cover_size: 'high'},
 		limit: 6
 	})
-	const [ projectIds ] = useApi<number>(API_ROUTE.projectIds)
-	const [ vendorList ] = useApi<VendorType>(API_ROUTE.projectVendor)
-	const isLoading = useLoadingState([highProjectList.status, projectIds.status, vendorList.status])
+
+	const isLoading = useLoadingState([highProjectList.status, projectIds.status])
 	const isHighProjectListEmpty = useEmptyDataState(highProjectList.data)
 	const isProjectIdsEmpty = useEmptyDataState(projectIds.data)
-	const isVendorListEmpty = useEmptyDataState(vendorList.data)
 
 	if (isLoading) {
 		return <Loading />
 	}
 
-	if (isHighProjectListEmpty || isProjectIdsEmpty || isVendorListEmpty) {
+	if (isHighProjectListEmpty || isProjectIdsEmpty) {
 		return <NotFoundData />
 	}
 
-	const projectsList = useMemo(() => {
-		return highProjectList.data
-			.slice(0, 5)
-			.map(item => {
-				const vendorData: Partial<VendorType> = (vendorList.data || []).find(vendor => vendor.id == item.vendor)
-				const vendorCode = vendorData.code || ''
-				return {
-					...item,
-					vendorCode,
-				}
-			})
-	}, [ ...highProjectList.data, ...vendorList.data ])
+	const projectsList = highProjectList.data
 
 	return (
 		<div className="project-list project-list--short" id={ANCHOR_LINKS.done}>

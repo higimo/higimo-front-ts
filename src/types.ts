@@ -162,75 +162,63 @@ export type PinarikType = {
 	description: string
 }
 
-export type ProjectIdsType = {
+
+/**
+ * ===================================
+ *             Портфолио
+ * ===================================
+ */
+
+export type NewProjectIdsType = {
 	id: number
 	vendor: number
 	code: string
 }
-
-export type CreditsType = {
-	id: number
-	worker: number
-	project: number
-	role: string
-}
-
-export type ProjectType = {
-	id: number
-	vendor: number
-	name: string
-	code: string
-	description: string
-	date: string // date
-	image: string
-	cover_size: 'high' | 'big' | 'normal' | 'small'
-	text: string
-	hide: string
-	isLink: string
-	link: string
-}
-
-export type ProjectTagType = {
-	id: number
-	projectId: number
-	tagId: number
-}
-
-export type TagNameType = {
+export type NewProjectTag = {
 	id: number
 	title: string
 }
-
-export type VendorType = {
-	id: number
-	code: string
-	title: string
-	description: string
-}
-
-export type WorkerType = {
-	id: number
-	name: string
-	family: string
-	image: string
+export type NewProjectWorkerType = {
+	id: number,
+	full_name: string
 	login: string
 	company: string
+	image: null
 	role: string
-	link: string
+	link?: string
 }
-
-export type WorkerProjectType = WorkerType & CreditsType
-
-export type PortfolioProjectType = Omit<ProjectType, 'vendor'> & {
-	vendor: VendorType
-	role: WorkerProjectType[]
-	tags: TagNameType[]
+export type NewProjectCreditsType = {
+	role: string
+	worker: NewProjectWorkerType
 }
-
-export type ProjectFullInfoType = ProjectType & {
-	vendorCode: VendorType['code']
-	tags?: string[]
+export type NewProjectVendorType = {
+	id: number
+	code: string
+	title: string
 }
+// TODO: Вот бы добавить следующий и предыдущий кейс
+export type NewProjectType = {
+	id: number
+	vendor_id: number
+	name: string
+	code: string
+	date: string // yyy-mm-dd
+	image: 'png' | 'jpg'
+	cover_size: 'high' | 'big' | 'normal' | 'small'
+	vendor: NewProjectVendorType
+	tags: NewProjectTag[]
+	isLink: boolean
+	link: null
+
+	credits?: NewProjectCreditsType[] // TODO: добавить бы это по-другому
+
+	description?: string // TODO: добавить бы это по-другому
+	text?: string // TODO: добавить бы это по-другому
+} & ({ isLink: false } | { isLink: true, link: string })
+
+
+
+
 
 export type PetProjectType = {
 	name: string
