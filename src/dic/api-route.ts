@@ -8,6 +8,7 @@ export const API_ROUTE = {
 	nashe: '/api/v2/nashe',
 	nasheSingle: generateLink<'year'>('/api/v2/nashe/:year'),
 	tableGame: '/api/v2/favorite/table-games',
+	youtube: '/api/v2/favorite/youtubes',
 	demagog: '/api/v2/demagog',
 
 	faq: '/api/v2/faq',
@@ -30,7 +31,6 @@ export const API_ROUTE = {
 	attachAuthor: '/api/v2/project/worker', // post
 	attachAuthor_BAD_WAY: '/api/v2/project/credits', // post
 
-	youtube: '/api/v1/youtube',
 	lib: '/api/v2/lib',
 	logism: '/api/v2/logism',
 	logismSingle: '/api/v2/logism/single',
