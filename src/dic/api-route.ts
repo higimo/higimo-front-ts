@@ -36,7 +36,7 @@ export const API_ROUTE = {
 	logismSingle: '/api/v1/logism/single',
 
 	pinarik: '/api/v1/pinarik',
-	comoji: '/api/v1/comoji',
+	comoji: '/api/v2/comoji',
 	probbi: '/api/v1/probbi',
 	probbiSingle: generateLink<'projectId'>('/api/v1/probbi/:projectId'),
 	yamap: '/api/v1/ya-map',
