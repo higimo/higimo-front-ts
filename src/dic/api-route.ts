@@ -40,7 +40,8 @@ export const API_ROUTE = {
 	probbi: '/api/v1/probbi',
 	probbiSingle: generateLink<'projectId'>('/api/v1/probbi/:projectId'),
 	yamap: '/api/v1/ya-map',
-	lister: '/api/v1/lister/item',
+	lister: '/api/v2/lister/item',
+	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
 } as const
 
 export type ApiRouteType = Exclude<

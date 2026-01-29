@@ -86,12 +86,28 @@ export type LinksType = {
 	description: string
 }
 
+export type ListPropertyType = {
+	id: number
+	item_id: number
+	property_id: number
+	value: string
+	property: {
+		id: number
+		item_id: number
+		name: string
+		type: string
+	}
+}
+
 export type ListerItem = {
 	id: number
+	parent_id: number
 	title: string
-	created_at: number
-	parent: number
 	code: string
+	created_at: number
+	children?: ListerItem[];
+	parent?: ListerItem;
+	values?: ListPropertyType[];
 }
 
 export type ListerProperty = {

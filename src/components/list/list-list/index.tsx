@@ -16,11 +16,12 @@ import { API_ROUTE } from 'dic/api-route'
 export const ListList = () => {
 	const { params: { idcode = '' } } = useRoute()
 	const [ listlistList ] = useApi<ListerItem>(API_ROUTE.lister, {
-		withChild: 'true',
 		filter: {
 			id: idcode,
-			code: idcode,
 		},
+		withParent: 'true',
+		withChild: 'true',
+		withProps: 'true',
 	})
 	const isLoading = useLoadingState([listlistList.status])
 	const isListEmpty = useEmptyDataState(listlistList.data)
@@ -33,13 +34,10 @@ export const ListList = () => {
 		return <NotFoundData />
 	}
 
-	const arr = convertFlatListToIerah(listlistList.data)
-	const parent = arr.filter(i => !i.parent)
-
 	return (
 		<div className="list-list">
-			{parent.map((item, iter) => (
-				<ListListElement key={iter} {...item} />
+			{listlistList.data.map((item, iter) => (
+				<ListListElement key={iter} listItem={item} />
 			))}
 		</div>
 	)

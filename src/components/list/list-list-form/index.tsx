@@ -7,6 +7,7 @@ import { useRoute } from 'preact-iso'
 import './style.css'
 import sendRequest from 'utils/send-request'
 import { ShowFormResult } from 'components/form/show-form-result'
+import { API_ROUTE } from 'dic/api-route'
 
 const ListListScheme = ['id', 'title', 'created_at', 'parent', 'code'] as const
 type ListListSchemeType = typeof ListListScheme[number]
@@ -52,7 +53,7 @@ const scheme: FormScheme<ListListSchemeType>[] = [
 
 const onSubmit = addStatus => values => {
 	values.title.split('\n').filter(i => i).forEach(title => {
-		sendRequest('/api/v1/lister/item' + (!!values.id ? `/${values.id}` : ''), {
+		sendRequest(API_ROUTE.lister + (!!values.id ? `/${values.id}` : ''), {
 			method: 'POST',
 			values: {
 				...values,
@@ -74,7 +75,7 @@ export const ListListForm: FunctionComponent = () => {
 	const addStatus = val => setStatus(pState => [ ...pState, val ])
 
 	useEffect(() => {
-		sendRequest(`/api/v1/lister/item/${idcode}`)
+		sendRequest(API_ROUTE.listerItemSingle({ id: idcode }))
 			.then(val => setValues(val[0]))
 	}, [idcode])
 
