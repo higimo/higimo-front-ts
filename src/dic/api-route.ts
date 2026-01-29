@@ -39,7 +39,7 @@ export const API_ROUTE = {
 	comoji: '/api/v2/comoji',
 	probbi: '/api/v1/probbi',
 	probbiSingle: generateLink<'projectId'>('/api/v1/probbi/:projectId'),
-	yamap: '/api/v1/ya-map',
+	yamap: '/api/v2/map/yamaps',
 	lister: '/api/v2/lister/item',
 	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
 } as const
