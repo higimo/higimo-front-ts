@@ -6,12 +6,14 @@ import { useForm } from 'react-hook-form'
 import sendRequest, { SendRequestOptions } from 'utils/send-request'
 import { getAuthPair } from 'utils/get-auth-pair'
 
+import { API_ROUTE } from 'dic/api-route'
+
 import './style.css'
 
 const onSubmit = ({ setStatus }) => values => {
 	const { login, pass } = getAuthPair()
 	const requestOptions: SendRequestOptions = { method: 'POST', auth: { login, pass }, values }
-	sendRequest('/api/v1/lib', requestOptions)
+	sendRequest(API_ROUTE.lib, requestOptions)
 		.then(res => setStatus(res))
 }
 

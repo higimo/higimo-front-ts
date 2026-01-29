@@ -31,7 +31,7 @@ export const API_ROUTE = {
 	attachAuthor_BAD_WAY: '/api/v2/project/credits', // post
 
 	youtube: '/api/v1/youtube',
-	lib: '/api/v1/lib',
+	lib: '/api/v2/lib',
 	logism: '/api/v2/logism',
 	logismSingle: '/api/v1/logism/single',
 
