@@ -14,7 +14,7 @@ export const NokiaPeopleDetailCardPage: FunctionComponent = () => {
 		<div className="nokia">
 			<NokiaMenu />
 			<div className="nokia__content">
-				<h1>Встречи</h1>
+				<h1>Профиль</h1>
 				<NokiaPeopleDetailCard />
 			</div>
 		</div>

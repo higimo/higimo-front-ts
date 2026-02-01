@@ -53,6 +53,16 @@
 	color: #939eaa;
 }
 
+.meeting__person-gallery {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.meeting__person-name {
+	font-size: 65%;
+}
+
 .meeting-gallery__item {
 	display: flex;
 	flex-direction: column;
@@ -180,11 +190,11 @@ form.container .single-row textarea {
 	background: #bee4f8;
 }
 
-.nokia-people-detail-card-item__meetings .meeting__persons {
+person-full-data__meetings .meeting__persons {
 	display: none;
 }
 
-.nokia-people-detail-card-item__meetings .person {
+person-full-data__meetings .person {
 	font-size: 10pt;
 	background: linear-gradient(180deg, transparent 60%, #38d7fb61 80%, #7166ff61);
 	margin-right: 4px;
@@ -220,6 +230,7 @@ form.container .single-row textarea {
 .nokia-people-list {
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 32px;
 }
 
 .person-mini-profile {
@@ -246,7 +257,13 @@ form.container .single-row textarea {
 }
 
 .person-mini-profile__name {
-	font-size: 10pt;
+	font-size: 85%;
+}
+.person-mini-profile__alias {
+	font-size: 85%;
+}
+.person-mini-profile__nick {
+	font-size: 85%;
 }
 
 .nokia-user-avatar {
@@ -264,12 +281,12 @@ form.container .single-row textarea {
 	margin-bottom: 12px;
 }
 
-.nokia-people-detail-card-item__name {
+person-full-data__name {
 	font-weight: 800;
 }
 
-.nokia-people-detail-card-item__alias,
-.nokia-people-detail-card-item__nick {
+person-full-data__alias,
+person-full-data__nick {
 	opacity: .5;
 }
 
@@ -287,4 +304,28 @@ form.container .single-row textarea {
 	border-radius: 4px;
 	pointer-events: none;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.meeting__persons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.meeting__person-name {
+	font-size: 65%;
+}
+
+.person-full-data__notes {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.person-note {
+	background: #fff;
+	box-shadow: 0px 8px 24px -12px #b1edff;
+	border: 1px solid #dbf6fe;
+	padding: 22px;
+	border-radius: 12px;
 }

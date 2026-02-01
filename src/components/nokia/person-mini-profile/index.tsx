@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PeopleType } from 'types'
+import { NewPersonType, PeopleType } from 'types'
 import { NokiaContextType } from 'context/nokia'
 
 import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
@@ -7,30 +7,27 @@ import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type PersonMiniProfilePropsType = {
-	hashLink: NokiaContextType['hashLink']
-	hashMeeting: NokiaContextType['hashMeeting']
-	hashPeople: NokiaContextType['hashPeople']
-	links: NokiaContextType['links']
-	meeting: NokiaContextType['meeting']
-	people: NokiaContextType['people']
-	person: PeopleType
+	person: NewPersonType
 }
 
-export const PersonMiniProfile: FunctionComponent<PersonMiniProfilePropsType> = props => (
-	<a href={ROUTE_LINKS.nokiaPeopleDetail({ personId: props.person.id.toString() })} className="person-mini-profile">
-		<NokiaUserAvatar name={props.person.name} />
+export const PersonMiniProfile: FunctionComponent<PersonMiniProfilePropsType> = ({ person }) => (
+	<a
+		href={ROUTE_LINKS.nokiaPeopleDetail({ personId: person.id.toString() })}
+		className="person-mini-profile"
+	>
+		<NokiaUserAvatar name={person.name} />
 		<div className="person-mini-profile__name">
-			{props.person.name}
-			{' '}
-			<small>
-				{props.person.alias}
-				{' '}
-				{props.person.nick}
-			</small>
+			{person.name}
+		</div>
+		<div className="person-mini-profile__alias">
+			{person.alias}
+		</div>
+		<div className="person-mini-profile__nick">
+			{person.nick}
 		</div>
 		<div className="person-mini-profile__buttons">
 			<div className="person-mini-profile__edit">
-				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: props.person.id.toString() })}>edit</a>
+				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id.toString() })}>edit</a>
 			</div>
 		</div>
 	</a>

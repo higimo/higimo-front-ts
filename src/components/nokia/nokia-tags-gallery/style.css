@@ -1,0 +1,17 @@
+.nokia-tags-gallery {
+	display: flex;
+	flex-direction: column;
+}
+
+.nokia-tags-gallery__group {
+	display: flex;
+	flex-direction: row;
+}
+
+.nokia-tags-gallery__group-name {
+	font-size: 85%;
+	min-width: 100px;
+}
+
+.nokia-tags-gallery__group-tags {
+}

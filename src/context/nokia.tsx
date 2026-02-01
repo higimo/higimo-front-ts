@@ -1,10 +1,8 @@
-import { MeetingType, NokiaTagType, PeopleMeetingType, PeopleTag, PeopleType, RichMeetingType } from 'types'
+import { MeetingType, NewNokiaTagGroupType, NewPersonType, NewRichMeetingType, NewTagType, PeopleMeetingType, PeopleTag, PeopleType } from 'types'
 
-import { useCallback, useState } from 'preact/hooks'
-
-import sendRequest from 'utils/send-request'
-
-import { makeHashTable } from 'utils/make-hash-table'
+import useApi from 'hook/use-api'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { createContext } from 'preact'
 
@@ -12,11 +10,13 @@ import { API_ROUTE } from 'dic/api-route'
 
 export type NokiaContextType = {
 	fetchData: () => void
-	richMeeting: RichMeetingType[]
-	people: PeopleType[]
+	richMeeting: NewRichMeetingType[]
+	persons: NewPersonType[]
+	tags: NewTagType[]
+	tagGroups: NewNokiaTagGroupType[]
+
 	meeting: MeetingType[]
 	links: PeopleMeetingType[]
-	tag: NokiaTagType[]
 	peopleTag: PeopleTag[]
 	hashPeople: { [key in number]: PeopleType }
 	hashMeeting: { [key in number]: MeetingType }
@@ -33,80 +33,45 @@ export type NokiaContextType = {
 export const NokiaContext = createContext<NokiaContextType | null>(null)
 
 export const NokiaContextProvider = (props) => {
-	const [ links, setLinks ] = useState<PeopleMeetingType[]>([])
-	const [ people, setPeople ] = useState<PeopleType[]>([])
-	const [ meeting, setMeeting ] = useState<MeetingType[]>([])
-	const [ tag, setTag ] = useState<NokiaTagType[]>([])
-	const [ peopleTag, setPeopleTag ] = useState<PeopleTag[]>([])
-	const [ richMeeting, setRichMeeting ] = useState<RichMeetingType[]>([])
+	// Это всё надо завернуть в fetch-и, чтобы загружать только сильно потом по useLayoutEffect
+	// Наверно, лучше отказаться от контекста, в пользу запроса конкретных данных на странице, бекенд это позволяет теперь, а раньше требовалось из-за связи данных прямо на фронте
+	const [richMeeting] = useApi<NewRichMeetingType>(API_ROUTE.nokiaRichMeeting)
+	const isLoadingRichMeeting = useLoadingState([richMeeting.status])
+	const isEmptyRichMeeting = useEmptyDataState(richMeeting.data)
 
-	const fetchRichMeeting = () => sendRequest(API_ROUTE.nokiaRichMeeting, {values: {limit: 0}})
-		.then((list: RichMeetingType[]) => setRichMeeting(list))
+	const [persons] = useApi<NewPersonType>(API_ROUTE.nokiaPerson)
+	const isLoadingPersons = useLoadingState([richMeeting.status])
+	const isEmptyPersons = useEmptyDataState(richMeeting.data)
 
-	const updateLinks = () => sendRequest(API_ROUTE.nokiaPeopleMeeting, { values: { limit: 0/*10*/ } })
-		.then((list: PeopleMeetingType[]) => setLinks(list))
-	const updatePeople = () => sendRequest(API_ROUTE.nokiaPeople)
-		.then((list: PeopleType[]) => setPeople(list))
-	const updateMeeting = () => sendRequest(API_ROUTE.nokiaMeeting, { values: { limit: 0/*10*/ } })
-		.then((list: MeetingType[]) => setMeeting(list))
-	const updateTag = () => sendRequest(API_ROUTE.nokiaTags)
-		.then((list: NokiaTagType[]) => setTag(list))
-	const updatePeopleTag = () => sendRequest(API_ROUTE.nokiaPeopleTag)
-		.then((list: PeopleTag[]) => setPeopleTag(list))
+	const [tags] = useApi<NewTagType>(API_ROUTE.nokiaTags)
+	const isLoadingTags = useLoadingState([richMeeting.status])
+	const isEmptyTags = useEmptyDataState(richMeeting.data)
 
-	const [isLoaded, setIsLoaded] = useState<boolean>(false)
-
-	const fetchData = useCallback(() => {
-		if (!isLoaded) {
-			fetchRichMeeting()
-			updateLinks()
-			updatePeople()
-			updateMeeting()
-			updateTag()
-			updatePeopleTag()
-		}
-		setIsLoaded(true)
-	}, [
-		isLoaded,
-		setIsLoaded,
-		updateLinks,
-		updatePeople,
-		updateMeeting,
-		updateTag,
-		updatePeopleTag,
-	])
-
-	const hashPeople = makeHashTable(people, 'id')
-	const hashMeeting = makeHashTable(meeting, 'id')
-	const hashTag = makeHashTable(tag, 'id')
-	let hashLink = {}
-	links.forEach(link => {
-		hashLink[link.meeting_id] = [...(hashLink[link.meeting_id] || []), link.people_id]
-	})
-	let hashPeopleTag = {}
-	peopleTag.forEach(item => {
-		hashPeopleTag[item.tagId] = [...(hashPeopleTag[item.tagId] || []), item.peopleId]
-	})
+	const [tagGroups] = useApi<NewNokiaTagGroupType>(API_ROUTE.nokiaTagGroup)
+	const isLoadingTagGroups = useLoadingState([richMeeting.status])
+	const isEmptyTagGroups = useEmptyDataState(richMeeting.data)
 	return (
 		<NokiaContext.Provider
 			value={{
-				fetchData,
-				richMeeting,
-				links,
-				people,
-				meeting,
-				tag,
-				peopleTag,
-				hashPeople,
-				hashMeeting,
-				hashLink,
-				hashTag,
-				hashPeopleTag,
-				updateLinks,
-				updatePeople,
-				updateMeeting,
-				updateTag,
-				updatePeopleTag,
+				fetchData: () => {},
+				richMeeting: richMeeting.data,
+				persons: persons.data,
+				tags: tags.data,
+				tagGroups: tagGroups.data,
+
+				links: [],
+				meeting: [],
+				peopleTag: [],
+				hashPeople: [],
+				hashMeeting: [],
+				hashLink: [],
+				hashTag: [],
+				hashPeopleTag: [],
+				updateLinks: () => {},
+				updatePeople: () => {},
+				updateMeeting: () => {},
+				updateTag: () => {},
+				updatePeopleTag: () => {},
 			}}
 		>
 			{props.children}

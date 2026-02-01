@@ -128,6 +128,65 @@ export type ListListType = ListerItem & {
 	child?: ListerItem[]
 }
 
+/**
+ * =========================================
+ * Нокиа
+ * =========================================
+ */
+
+export type NewNokiaTagGroupType = string
+export type NewTagType = {
+	id: number
+	name: string
+	group: string
+}
+export type NewPersonType = {
+	id: number
+	name: string
+	alias: string
+	nick: string
+	description: string
+	tags: NewTagType[]
+}
+export type NewRichMeetingType = {
+	id: number,
+	date: number // unixtime / 1000
+	date_start: string // "2024-01-15T10:00:00Z"
+	date_end: string // "2024-01-15T11:30:00Z"
+	description: string
+	type: string // "meeting"
+	person: NewPersonType[]
+}
+export type NewNokiaNoteType = {
+    id: number
+    text: string
+    person_id: number
+}
+export type NewNokiaMicroPersonType = Omit<NewPersonType, 'tags'>
+export type NewNokiaMicroMeeting = {
+    id: number
+    date: number
+    date_end: string
+    date_start : string
+    description : string
+    person: NewNokiaMicroPersonType[]
+    type: string
+}
+export type NewNokiaPersonFullType = {
+	id: number
+	name: string
+	alias: string
+	nick: string
+	description: string
+	tags: NewTagType[]
+    notes: NewNokiaNoteType[]
+    meetings: NewNokiaMicroMeeting[]
+}
+export type NewNokiaMeetingStatisticType = {
+    id: number
+    date: number
+    type: string
+}
 export type MeetingType = {
 	id: number
 	date: number

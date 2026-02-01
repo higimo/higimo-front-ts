@@ -17,7 +17,6 @@ const ROUTE_ACCORD_LINKS = Object.freeze({
 const ROUTE_NOKIA_LINKS = Object.freeze({
 	// href: '/nokia/',
 	nokiaIndex: '/nokia/',
-	nokiaMessage: '/nokia/message/',
 	nokiaForm: '/nokia/form/',
 	nokiaFormEdit_CONST: '/nokia/form/:meetingId/',
 	nokiaFormEdit: generateLink<'meetingId'>('/nokia/form/:meetingId/'),

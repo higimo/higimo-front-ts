@@ -9,45 +9,27 @@ import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 import '../nokia-style.css'
 
+const filterPersons = (person, filter) => person.tags.find(tag => tag.id === filter)
+
 type NokiaPeopleListPropsType = {
 	filter: NokiaTagType['id']
 	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (props) => {
-	const {
-		links,
-		people,
-		meeting,
-		hashPeople,
-		hashMeeting,
-		hashPeopleTag,
-		hashLink,
-	} = useContext(NokiaContext) as NokiaContextType
+	const { persons } = useContext(NokiaContext) as NokiaContextType
 
-	if (!people.length || !meeting.length || !links.length) {
+	if (!persons.length) {
 		return null
 	}
+
+	const filtredPerson = props.filter ? persons.filter(person => filterPersons(person, props.filter)) : persons
 
 	return (
 		<div>
 			<div className="content">
 				<div className="nokia-people-list">
-					{people.filter(person => {
-						if (!props.filter) {
-							return true
-						}
-
-						return (hashPeopleTag[props.filter]).includes(person.id)
-					}).map(person => (
-						<PersonMiniProfile
-							hashLink={hashLink}
-							hashMeeting={hashMeeting}
-							hashPeople={hashPeople}
-							links={links}
-							meeting={meeting}
-							people={people}
-							person={person}
-						/>
+					{filtredPerson.map(person => (
+						<PersonMiniProfile person={person} />
 					))}
 				</div>
 			</div>

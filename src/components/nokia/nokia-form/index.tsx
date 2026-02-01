@@ -1,4 +1,4 @@
-import { PeopleMeetingType, PeopleType } from 'types'
+import { NewPersonType, PeopleMeetingType, PeopleType } from 'types'
 import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 import cs from 'classnames'
@@ -90,7 +90,7 @@ export const NokiaForm = () => {
 	const {
 		fetchData,
 		links,
-		people,
+		persons,
 		meeting,
 		hashPeople,
 		hashMeeting,
@@ -98,44 +98,41 @@ export const NokiaForm = () => {
 	} = useContext(NokiaContext) as NokiaContextType
 	useLayoutEffect(fetchData, [])
 
-	const { isAuth } = useAuth()
 	const { params: { meetingId = '-1' } } = useRoute()
 
 	const { personId, type, date } = watch()
 	const [ status, setStatus ] = useState([])
 
 	const peoplesSuggest = useMemo(() => {
-		return getUserSuggestions(people)
-	}, [people])
+		return getUserSuggestions(persons)
+	}, [persons])
 
-	useEffect(() => {
-		if (parseInt(meetingId, 10) >= 0 && hashMeeting[meetingId] && hashLink[meetingId]) {
-			setValue('date'		, new Date(hashMeeting[meetingId].date * 1000).toISOString().substr(0, 10))
-			setValue('description' , hashMeeting[meetingId].description)
-			setValue('id'		  , hashMeeting[meetingId].id)
-			setValue('type'		, hashMeeting[meetingId].type)
-			setValue('personId'	, hashLink[meetingId].join(','))
-		}
-	}, [meetingId, hashMeeting[meetingId], hashLink[meetingId]])
+	// useEffect(() => {
+	// 	if (parseInt(meetingId, 10) >= 0 && hashMeeting[meetingId] && hashLink[meetingId]) {
+	// 		setValue('date'		, new Date(hashMeeting[meetingId].date * 1000).toISOString().substr(0, 10))
+	// 		setValue('description' , hashMeeting[meetingId].description)
+	// 		setValue('id'		  , hashMeeting[meetingId].id)
+	// 		setValue('type'		, hashMeeting[meetingId].type)
+	// 		setValue('personId'	, hashLink[meetingId].join(','))
+	// 	}
+	// }, [meetingId, hashMeeting[meetingId], hashLink[meetingId]])
 
-	if (
-		!isAuth ||
-		!links.length ||
-		!people.length ||
-		!meeting.length ||
-		!Object.keys(hashPeople).length ||
-		!Object.keys(hashMeeting).length ||
-		!Object.keys(hashLink).length
-	) {
-		return null
-	}
+	// if (
+	// 	!links.length ||
+	// 	!persons.length ||
+	// 	!meeting.length ||
+	// 	!Object.keys(hashPeople).length ||
+	// 	!Object.keys(hashMeeting).length ||
+	// 	!Object.keys(hashLink).length
+	// ) {
+	// 	return null
+	// }
 
 	const addStatus = val => setStatus(pState => [ ...pState, val ])
 
-	const topPersons: PeopleType[] = getTopPersons(links, people).map(item => hashPeople[item.id]).filter(Boolean)
+    // TODO: как получать top персон по встречам?
+	const topPersons: NewPersonType[] = persons.slice(0, 10)
 	const selectedPersonId = (personId || '').split(',').map(i => parseInt(i, 10)).filter(i => i)
-
-	console.log(peoplesSuggest)
 
 	// TODO Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
 	return (
@@ -170,7 +167,7 @@ export const NokiaForm = () => {
 							placeholder="Упомяните пользователя через @"
 							changeOnSelect={(trigger, slug) => {
 								setValue('personId', personId + ',' + slug)
-								
+
 								return trigger + slug
 							}}
 						/>

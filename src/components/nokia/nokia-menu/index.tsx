@@ -13,7 +13,6 @@ import './style.css'
 const menuLinks = [
 	{ href: ROUTE_LINKS.nokiaIndex, title: 'Встречи' },
 	{ href: ROUTE_LINKS.nokiaPeople, title: 'Люди' },
-	{ href: ROUTE_LINKS.nokiaMessage, title: 'Переписки' },
 	{ href: ROUTE_LINKS.nokiaForm, title: 'Добавить встречу' },
 	{ href: ROUTE_LINKS.nokiaPeopleForm, title: '+ person' },
 	{ href: ROUTE_LINKS.nokiaStatistic, title: 'Статистика' },
@@ -22,7 +21,7 @@ const menuLinks = [
 
 export const NokiaMenu = () => {
 	const { path } = useRoute()
-	
+
 	return (
 		<div className="nokia__menu">
 			<HorizontalMenu>

@@ -8,40 +8,33 @@ import { NokiaContext, NokiaContextType } from 'context/nokia'
 import { NotFoundPage } from 'pages/not-found-page'
 
 import '../nokia-style.css'
+import { NewNokiaPersonFullType } from 'types'
+import useApi from 'hook/use-api'
+import { API_ROUTE } from 'dic/api-route'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { Loading } from 'components/ui/loading'
 
 export const NokiaPeopleDetailCard = () => {
 	const { params: { personId = '-1'}} = useRoute()
-	const {
-		fetchData,
-		links,
-		people,
-		meeting,
-		hashPeople,
-		hashMeeting,
-		hashLink,
-	} = useContext(NokiaContext) as NokiaContextType
-	useLayoutEffect(fetchData, [])
 
-	if (!people.length || !meeting.length || !links.length) {
-		return null
+	const [personSingle] = useApi<NewNokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: parseInt(personId, 10).toString() }))
+	const isLoadingPersonSingle = useLoadingState([personSingle.status])
+	const isEmptyPersonSingle = useEmptyDataState(personSingle.data)
+
+	if (isLoadingPersonSingle) {
+		return <Loading />
 	}
 
-	const curPerson = people.find(i => i.id == parseInt(personId, 10)) || null
-	if (!curPerson) {
+	if (isEmptyPersonSingle) {
 		return <NotFoundPage />
 	}
 
+	const currentPerson = personSingle.data as unknown as NewNokiaPersonFullType
+
 	return (
 		<div className="content">
-			<NokiaPeopleDetailCardItem
-				person={curPerson}
-				hashLink={hashLink}
-				hashMeeting={hashMeeting}
-				hashPeople={hashPeople}
-				links={links}
-				meeting={meeting}
-				people={people}
-			/>
+			<NokiaPeopleDetailCardItem person={currentPerson} />
 		</div>
 	)
 }

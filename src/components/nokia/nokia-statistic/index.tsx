@@ -1,13 +1,20 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { MeetingType } from 'types'
+import { MeetingType, NewNokiaMeetingStatisticType } from 'types'
 
-import { useContext, useRef, useEffect, MutableRef, useLayoutEffect, useMemo } from 'preact/hooks'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useRef, useEffect, MutableRef, useMemo } from 'preact/hooks'
 import { useTags } from 'hook/use-tags'
+import useApi from 'hook/use-api'
 
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { NokiaContext, NokiaContextType } from 'context/nokia'
+import { Loading } from 'components/ui/loading'
+
+import { NotFoundPage } from 'pages/not-found-page'
+
+import { API_ROUTE } from 'dic/api-route'
 
 import '../nokia-style.css'
 
@@ -44,14 +51,14 @@ type ResultDatasetItem = {
 type PrepareDataResult = [string[], ResultDatasetItem[]]
 
 const loadD3Modules = async () => {
-	const { 
-		select, selectAll, 
+	const {
+		select, selectAll,
 		scaleLinear, scaleBand, scaleOrdinal,
 		axisLeft, axisBottom,
 		stack, max,
 		timeFormat
 	} = await import('d3')
-  
+
 	return {
 		select,
 		selectAll,
@@ -141,10 +148,10 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 			.attr('height', d => y(d.y0) - y(d.y))
 			.on('mouseover', (event, d) => {
 				d3.select(this).style('opacity', 0.8)
-				
+
 				tooltip.transition()
 					.style('opacity', 1)
-				
+
 				tooltip.html(`
 				  <div><strong>${d.key}</strong></div>
 				  <div>${d.value || 0} — ${d3.timeFormat('%d.%m.%Y')(d.x)}</div>
@@ -161,7 +168,7 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 		svg.append('g')
 			.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`)
 			.call(d3.axisLeft(y))
-			
+
 		svg.append('g')
 			.attr('transform', `translate(0,${height + MARGIN.top})`)
 			.call(
@@ -198,13 +205,14 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 	}
 }
 
-const prepareData = (meeting: MeetingType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
-	let meetingTypeDic: { [key: MeetingType['type']]: number } = {}
+const prepareData = (meeting: NewNokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
+	let meetingTypeDic: { [key: NewNokiaMeetingStatisticType['type']]: number } = {}
 	let resultDataset: {
 		[key: string]: {
-			[key: MeetingType['type']]: number
+			[key: NewNokiaMeetingStatisticType['type']]: number
 		}
 	} = {}
+
 	for (let curMeeting of meeting) {
 		const date = new Date(parseInt(curMeeting.date + '000', 10))
 		const monthNumber = ('0' + (date.getMonth() + 1)).slice(-2)
@@ -214,11 +222,11 @@ const prepareData = (meeting: MeetingType[], selectedYearTag: number[], selected
 		const isSelectedtype = !selectedTypeTag.includes(curMeeting.type) // Только выбранный год
 		const isFailYear = yearNumber == 1970 // Пропускаем битый год
 		const isFailType = !curMeeting.type.length // Пропускаем битые типы
-		
+
 		if (isSelectedYear || isFailYear || isFailType || isSelectedtype) {
 			continue
 		}
-		
+
 		const keyMonth = `${yearNumber}-${monthNumber}-01`
 		if (!resultDataset[keyMonth]) {
 			resultDataset[keyMonth] = {
@@ -247,31 +255,45 @@ const prepareData = (meeting: MeetingType[], selectedYearTag: number[], selected
 
 export const NokiaStatistic: FunctionComponent = () => {
 	const viz = useRef<HTMLDivElement>(null)
-	const { richMeeting, meeting, fetchData } = useContext(NokiaContext) as NokiaContextType
+
+	const [meetingStatistic] = useApi<NewNokiaMeetingStatisticType>(API_ROUTE.nokiaStatistic)
+	const isLoadingMeetingStatistic = useLoadingState([meetingStatistic.status])
+	const isEmptyMeetingStatistic = useEmptyDataState(meetingStatistic.data)
+
+	// TODO: удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
 	const [ selectedYearTag, handleYearTagClick ] = useTags<number>([])
 	const [ selectedTypeTag, handleTypeTagClick ] = useTags<string>([])
 
+	const statistic = meetingStatistic.data || []
+
 	const yearDataset = useMemo(() => {
-		const dataset = [...new Set(richMeeting.map(item => new Date(item.date * 1000).getFullYear()))]
+		const dataset = [...new Set(statistic.map(item => new Date(item.date * 1000).getFullYear()))]
 			.filter(i => i != 1970)
 			.sort((a, b) => a - b)
 			handleYearTagClick(dataset)()
 		return dataset
-	}, [richMeeting])
+	}, [statistic])
 	const typeDataset = useMemo(() => {
-		const dataset = [...new Set(meeting.map(item => item.type))]
+		const dataset = [...new Set(statistic.map(item => item.type))]
 		handleTypeTagClick(dataset)()
 		return dataset
-	}, [meeting])
+	}, [statistic])
 
-	useLayoutEffect(fetchData, [])
-	
 	useEffect(() => {
 		updateChart({
 			viz,
-			data: prepareData(richMeeting, selectedYearTag, selectedTypeTag),
+			data: prepareData(statistic, selectedYearTag, selectedTypeTag),
 		})()
-	}, [richMeeting, selectedYearTag, selectedTypeTag])
+	}, [statistic, selectedYearTag, selectedTypeTag])
+
+
+	// TODO: надо поставить это ниже, а то ломаются хуки ниже
+	if (isLoadingMeetingStatistic) {
+		return <Loading />
+	}
+	if (isEmptyMeetingStatistic) {
+		return <NotFoundPage />
+	}
 
 	return (
 		<Fragment>

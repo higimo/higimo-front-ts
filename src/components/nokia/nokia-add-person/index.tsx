@@ -17,7 +17,7 @@ import '../nokia-style.css'
 type OnSubmitType = (fewe: any) => (jfeiow: any) => void
 const onSubmit: OnSubmitType = addStatus => values => {
 	sendRequest(
-		API_ROUTE.nokiaPeopleSingle({ id: values.id }),
+		API_ROUTE.nokiaPersonSingle({ id: values.id }),
 		{
 			method: 'POST',
 			values: values,
@@ -38,15 +38,15 @@ type FormValues = PersonFormData
 
 export const NokiaAddPerson = props => {
 	const { params: { personId = '-1' }} = useRoute()
-	const { fetchData, people } = useContext(NokiaContext) as NokiaContextType
+	const { fetchData, persons } = useContext(NokiaContext) as NokiaContextType
 	useLayoutEffect(fetchData, [])
-	
-	if (!people.length) {
+
+	if (!persons.length) {
 		return null
 	}
 	let defaultValue: Partial<PeopleType> = {}
 	if (personId) {
-		defaultValue = people.find(i => parseInt(personId, 10) == i.id) || {}
+		defaultValue = persons.find(i => parseInt(personId, 10) == i.id) || {}
 	}
 	const { register, handleSubmit, setValue, formState, reset } = useForm<FormValues>({})
 	useEffect(() => {
@@ -61,6 +61,7 @@ export const NokiaAddPerson = props => {
 
 	const addStatus = val => setStatus(pState => [ ...pState, val ])
 
+    // TODO: добавить указание тегов
 	return (
 		<form className="container" onSubmit={handleSubmit(onSubmit(addStatus))}>
 			<div>

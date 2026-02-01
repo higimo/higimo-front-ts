@@ -7,6 +7,7 @@ import { NokiaIndex } from 'components/nokia/nokia-index'
 
 import '../nokia-style.css'
 
+// Добавить фильтрацию по типам встреч
 export const NokiaIndexPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
 

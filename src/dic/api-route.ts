@@ -37,7 +37,6 @@ export const API_ROUTE = {
 	logism: '/api/v2/logism',
 	logismSingle: '/api/v2/logism/single',
 
-	pinarik: '/api/v1/pinarik',
 	comoji: '/api/v2/comoji',
 	probbi: '/api/v1/probbi',
 	probbiSingle: generateLink<'projectId'>('/api/v1/probbi/:projectId'),
@@ -45,17 +44,14 @@ export const API_ROUTE = {
 	lister: '/api/v2/lister/item',
 	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
 
-	nokiaPerson: '/api/v1/nokia/people',
-	nokiaRichMeeting: '/api/v1/nokia/rich-meeting',
-	nokiaPeopleMeeting: '/api/v1/nokia/people-meeting',
-	nokiaPeople: '/api/v1/nokia/people',
-	nokiaMeeting: '/api/v1/nokia/meeting',
-	nokiaTags: '/api/v1/nokia/tag',
-	nokiaPeopleTag: '/api/v1/nokia/people-tag',
-	nokiaPeopleSingle: generateLink<'id'>('/api/v1/nokia/people/:id'),
-	nokiaMeetingSingle: generateLink<'id'>('/api/v1/nokia/meeting/:id'),
-
-	// TODO: оказывается, есть в проекте /api/v1, которые не через это работают — исправь
+	pinarik: '/api/v2/nokia/pinarik',
+	nokiaRichMeeting: '/api/v2/nokia/meeting/rich',
+	nokiaMeetingSingle: generateLink<'id'>('/api/v2/nokia/meeting/:id'),
+	nokiaPerson: '/api/v2/nokia/people',
+	nokiaPersonSingle: generateLink<'id'>('/api/v2/nokia/people/:id'),
+	nokiaTags: '/api/v2/nokia/tag',
+	nokiaTagGroup: '/api/v2/nokia/tag/groups/list',
+	nokiaStatistic: '/api/v2/nokia/meeting/statistic',
 } as const
 
 export type ApiRouteType = Exclude<

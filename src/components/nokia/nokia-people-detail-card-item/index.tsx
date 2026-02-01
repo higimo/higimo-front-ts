@@ -1,59 +1,50 @@
 import { FunctionComponent } from 'preact'
-import { PeopleType } from 'types'
+import { NewNokiaPersonFullType } from 'types'
 
-import { NokiaContextType } from 'context/nokia'
-
-import { NokiaMeting } from 'components/nokia/nokia-meting'
 import { CollapseSection } from 'components/ui/collapse-section'
-
+import { NokiaMeeting } from 'components/nokia/nokia-meeting'
+import { NokiaNote } from 'components/nokia/nokia-note'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type NokiaPeopleDetailCardItemPropsType = {
-	person: PeopleType
-	hashLink: NokiaContextType['hashLink']
-	hashMeeting: NokiaContextType['hashMeeting']
-	hashPeople: NokiaContextType['hashPeople']
-	links: NokiaContextType['links']
-	meeting: NokiaContextType['meeting']
-	people: NokiaContextType['people']
+	person: NewNokiaPersonFullType
 }
-export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = props => {
-	const meetByPerson = props.links
-		.filter(mp => mp.people_id == props.person.id)
-		.map(mp => {
-			const curMeet = props.hashMeeting[mp.meeting_id]
-			if (!curMeet) {
-				return null
-			}
-			const persons = props.hashLink[curMeet.id].map(manId => props.hashPeople[manId])
-			return { ...mp, curMeet, persons }
-		})
-		.filter(Boolean)
-		.sort((a, b) => b.curMeet.date - a.curMeet.date)
-
+export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = ({ person }) => {
 	return (
-		<div className="nokia-people-detail-card-item">
-			<div className="nokia-people-detail-card-item__name">
-				{props.person.name}
+		<div className="nokia-people-detail person-full-data">
+			<div className="person-full-data__edit">
+				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id.toString() })}>Редактировать профиль</a>
 			</div>
-			<div className="nokia-people-detail-card-item__edit">
-				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: props.person.id.toString() })}>Редактировать профиль</a>
+			<div className="person-full-data__header">
+				<div className="person-full-data__name">
+					{person.name}
+				</div>
+				<div className="person-full-data__alias">
+					<small>Алиас:</small> {person.alias}
+				</div>
+				<div className="person-full-data__nick">
+					<small>Ник:</small> {person.nick}
+				</div>
 			</div>
-			<div className="nokia-people-detail-card-item__alias">
-				<small>Алиас:</small> {props.person.alias}
-			</div>
-			<div className="nokia-people-detail-card-item__nick">
-				<small>Ник:</small> {props.person.nick}
-			</div>
-			{!!props.person.description && (
-				<div className="nokia-people-detail-card-item__description">{props.person.description}</div>
+			<h3>Описание</h3>
+			{!!person.description && (
+				<div className="person-full-data__description">{person.description}</div>
 			)}
 			<CollapseSection fold={true} header="Встречи">
-				<div className="nokia-people-detail-card-item__meetings">
-					{meetByPerson.map(({ curMeet, persons }) => {
+				<div className="person-full-data__meetings">
+					{person.meetings.map((meeting) => {
 						return (
-							<NokiaMeting curMeet={curMeet} persons={persons} />
+							<NokiaMeeting meeting={meeting} />
+						)
+					})}
+				</div>
+			</CollapseSection>
+			<CollapseSection fold={true} header="Заметки">
+				<div className="person-full-data__notes">
+					{person.notes.map((note) => {
+						return (
+							<NokiaNote note={note} />
 						)
 					})}
 				</div>
