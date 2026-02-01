@@ -2,7 +2,7 @@ import { generateLink } from './ROUTE_LINKS'
 
 export const API_ROUTE = {
 	login: '/api/v1/auth/login',
-	
+
 	accord: '/api/v2/accord',
 	accordSingle: generateLink<'idcode'>('/api/v2/accord/:idcode'),
 	cinemaShort: '/api/v2/cinema',
@@ -38,8 +38,8 @@ export const API_ROUTE = {
 	logismSingle: '/api/v2/logism/single',
 
 	comoji: '/api/v2/comoji',
-	probbi: '/api/v1/probbi',
-	probbiSingle: generateLink<'projectId'>('/api/v1/probbi/:projectId'),
+	probbi: '/api/v2/probbi',
+	probbiSingle: generateLink<'projectId'>('/api/v2/probbi/:projectId'),
 	yamap: '/api/v2/map/yamaps',
 	lister: '/api/v2/lister/item',
 	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
