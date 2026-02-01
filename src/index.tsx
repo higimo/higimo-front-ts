@@ -52,7 +52,6 @@ import { PetProjectFormPage } from 'pages/test-page/tools/pet-project/pet-projec
 import { ListListIndexPage } from 'pages/tool/list-list-index-page'
 import { ListListFormPage } from 'pages/tool/list-list-form-page'
 import { NokiaIndexPage } from 'pages/nokia/nokia-index-page'
-import { NokiaMessagePage } from 'pages/nokia/nokia-message-page'
 import { NokiaFormPage } from 'pages/nokia/nokia-form-page'
 import { NokiaPeopleListPage } from 'pages/nokia/nokia-people-list-page'
 import { NokiaAddPersonPage } from 'pages/nokia/nokia-add-person-page'
@@ -222,12 +221,12 @@ export function App() {
 								{/* Портфолио */}
 								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
 								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
-								
+
 								{/* Список списков */}
 								<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />
 								<Route path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />
 								<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />
-								
+
 								{/* Аккорды */}
 								<Route path={ROUTE_LINKS.accordIndex} component={AccordGallery} />
 								<Route path={ROUTE_LINKS.accordDetail_CONST} component={AccordSingle} />
@@ -277,7 +276,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.petProjectCreate} component={PetProjectFormPage} />
 								<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
 
-								
+
 								{/* // TODO: Придумать, как подключать форму, но иметь все приколы контекста */}
 								{/* TODO единый контекст на все урлы */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
@@ -317,7 +316,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismMapsMoscowWalkaround} component={TourismMoscowWalkaroundPage} />
 								<Route path={ROUTE_LINKS.tourismMapsMoscowBar} component={TourismMoscowBarPage} />
 								<Route path={ROUTE_LINKS.tourismCityIndex} component={TourismCityStarPage} />
-								
+
 								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
 								<Route path={ROUTE_LINKS.tourismNashe_CONST} component={NasheSinglePage} />
 
