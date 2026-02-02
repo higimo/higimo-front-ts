@@ -1,38 +1,44 @@
 .resume-product2-page {
 	font-family: Alegreya Sans, sans-serif;
-	font-size: px;
-	padding: 32px 0;
+	font-size: 16px;
+	line-height: 1.4;
+	margin: 32px 0;
 }
 
 .resume-product2-page .resume-avatar {
 	float: right;
-	max-width: 150px;
-	border-radius: 4px;
+	max-width: 146px;
+	border-radius: 50%;
 }
 
 .resume-product2-page .text-container {
 	max-width: 21cm;
+	margin-bottom: 8px;
 }
 
-.resume-product2-page em {
-	font-size: 16px;
+.resume-product2-page h2 {
+	font-size: 22px;
+	line-height: .9;
+	margin: 0 0 8px 0;
 }
+
+.resume-page strong {
+	background: none;
+	font-weight: 500;
+}
+
 .resume-product2-page p {
 	margin: 0;
 }
 
 .resume-product2-page p:not(:first-of-type) {
-	margin-top: 8px;
-}
-
-.resume-product2-page .about__description p:not(:first-of-type) {
 	margin-top: 4px;
 }
 
 .resume-product2-page a {
-	color: #000;
+	color: #0154ac;
 	text-decoration: none;
-	border-bottom: 1px solid rgba(0, 0, 0, .35);
+	border-bottom: 1px solid #0154ac59;
 }
 
 .resume-product2-page .contact {
@@ -40,165 +46,46 @@
 	gap: 16px;
 }
 
-.resume-product2-page .experience-summary__item {
-	font-size: 16px;
-	margin-bottom: 2px;
-}
-.resume-product2-page .text-container {
-	margin-bottom: 12px;
-}
-.resume-product2-page p.mini-text {
-	font-size: 16px;
-	margin-top: 0;
-}
-
-.resume-page .small-text {
-	font-size: 16px;
-}
-.resume-page h2 {
+.resume-product2-page .company__meta {
 	font-size: 22px;
-	font-weight: 500;
 	line-height: 1;
-	margin: 0;
-}
-
-.resume-product2-page .company__profession {
-	font-size: 22px;
-	font-weight: 500;
-	line-height: 1;
-}
-.resume-product2-page .company__description {
-	font-size: 16px;
-}
-
-.resume-product2-page .expirience {
-	margin: 16px 0;
-}
-.resume-product2-page .expirience__header {
-	font-weight: 700;
-}
-.resume-product2-page .company__period,
-.resume-product2-page .company__time {
-	font-size: 16px;
-}
-
-
-.resume-product2-page ul {
-	margin: 8px 0;
-	padding: 0;
-}
-.resume-product2-page ul {
-	list-style-type: none;
-}
-.resume-product2-page ul > li:before {
-	content: "— ";
-}
-
-
-.resume-product2-page p+ul,
-.resume-product2-page p+ol {
-	margin-top: 4px;
-}
-.resume-product2-page p {
-	margin: 8px 0 0 0;
-}
-.resume-product2-page li {
+	display: flex;
+	gap: 12px;
 	margin-bottom: 4px;
 }
 
-
-
-
-
-
-
-.company__staff {
+.resume-product2-page .company__staff {
 	display: flex;
-}
-
-.resume-product2-page .company__name {
-	font-size: 14px;
-	margin-left: 12px;
-	padding-top: 2px;
-}
-.resume-product2-page .company--table .company__name {
-	margin-left: 8px;
-}
-.resume-product2-page .company__name:before {
-	content: '@';
-}
-.resume-product2-page .company__meta {
-	display: flex;
-	flex-direction: column;
-}
-.resume-product2-page .company__timing {
-	display: flex;
-	gap: .25em;
-}
-
-.resume-product2-page .company {
-	margin: 8px 0;
-}
-.resume-product2-page .company__name {
-	font-weight: 500;
-}
-
-
-
-.resume-product2-page .company--table:nth-child(5) {
-	margin-top: -8px;
-}
-.resume-product2-page .company--table {
-	border-top: 1px solid #ccc;
-	padding-top: 8px;
-	margin: 0 0 8px 0;
-	display: grid;
 	gap: 4px;
-	grid-template-areas: "A B";
-	grid-template-columns: 1fr 1fr;
+}
+
+.resume-product2-page .company__timing {
 	font-size: 16px;
-	line-height: 1.2;
-}
-.resume-product2-page .company--table .company__profession {
-	font-size: 100%;
-}
-.company__timing {
-	line-height: 1;
+	display: flex;
+	gap: 4px;
+	align-items: flex-end;
 }
 
-
-
-
-
-
-.resume-product2-page .skill_header {
-	font-size: 22px;
+.resume-product2-page .expirience__element:not(:first-of-type) {
+	margin-top: 12px;
 }
-.resume-product2-page .skill_content {
-	line-height: 1.5;
-	font-size: 16px;
+
+.resume-product2-page .skill {
+	display: flex;
+	gap: 16px;
+	font-size: 14px;
 }
 .resume-product2-page .school {
-	margin: 8px 0;
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
 }
 .resume-product2-page .school__info {
 	display: flex;
-	gap: 16px;
+	gap: 4px;
 }
-.school__base {
+.resume-product2-page .school__base {
 	display: flex;
-	gap: 8px;
+	gap: 4px;
 }
-.school__company:before {
-	content: '@'
-}
-.resume-product2-page .experience {
-	margin: 16px 0;
-}
-.resume-product2-page .about {
-	margin: 16px 0;
-	display: block;
-}
-.resume-product2-page .about__header {
-	font-size: 22px;
-}
+
