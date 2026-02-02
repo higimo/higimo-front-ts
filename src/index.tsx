@@ -78,7 +78,6 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 import { VkContextProvider } from './context/vk'
-import { NokiaContextProvider } from './context/nokia'
 import { TextareaPage } from 'pages/textarea-page'
 import ResumeProduct2Page from 'pages/resume/resume-product2-page'
 import { TourismFatherTrackPage } from 'pages/tourism/tourism-father-track-page'
@@ -204,7 +203,6 @@ export function App() {
 				<AuthProvider>
 					<GlobalProvider>
 						<VkContextProvider>
-						<NokiaContextProvider>
 						<Header />
 						<main>
 							<Router>
@@ -324,7 +322,6 @@ export function App() {
 							</Router>
 						</main>
 						<Footer />
-						</NokiaContextProvider>
 						</VkContextProvider>
 					</GlobalProvider>
 				</AuthProvider>

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewNokiaMicroMeeting, PeopleType } from 'types'
+import { NewNokiaMicroMeeting } from 'types'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 

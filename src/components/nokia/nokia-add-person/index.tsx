@@ -1,12 +1,15 @@
-import { PeopleType } from 'types'
+import { NewPersonType } from 'types'
 
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useForm } from 'react-hook-form'
-import { useContext, useState, useEffect, useLayoutEffect } from 'preact/hooks'
+import { useLoadingState } from 'hook/use-loading-state'
 import { useRoute } from 'preact-iso'
+import { useState, useEffect } from 'preact/hooks'
+import useApi from 'hook/use-api'
 
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 import { ShowFormResult } from 'components/form/show-form-result'
-
-import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 import sendRequest from 'utils/send-request'
 
@@ -38,23 +41,36 @@ type FormValues = PersonFormData
 
 export const NokiaAddPerson = props => {
 	const { params: { personId = '-1' }} = useRoute()
-	const { fetchData, persons } = useContext(NokiaContext) as NokiaContextType
-	useLayoutEffect(fetchData, [])
 
-	if (!persons.length) {
-		return null
+	const [persons] = useApi<NewPersonType>(API_ROUTE.nokiaPerson)
+	const isLoadingPersons = useLoadingState([persons.status])
+	const isEmptyPersons = useEmptyDataState(persons.data)
+
+	const [singlePerson] = useApi<NewPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
+	const isLoadingSinglePerson = useLoadingState([singlePerson.status])
+	const isEmptySinglePerson = useEmptyDataState(singlePerson.data)
+
+	if (isLoadingPersons) {
+		return <Loading />
 	}
-	let defaultValue: Partial<PeopleType> = {}
-	if (personId) {
-		defaultValue = persons.find(i => parseInt(personId, 10) == i.id) || {}
+	if (isEmptyPersons)	{
+		// Персоны не прогрузились
+		return (
+			<NotFoundData />
+		)
 	}
+
 	const { register, handleSubmit, setValue, formState, reset } = useForm<FormValues>({})
 	useEffect(() => {
-		setValue('id', defaultValue.id || null)
-		setValue('name', defaultValue.name)
-		setValue('alias', defaultValue.alias)
-		setValue('nick', defaultValue.nick)
-		setValue('description', defaultValue.description)
+		const currentPerson = singlePerson.data as unknown as NewPersonType
+
+		if (parseInt(personId, 10) && !isLoadingSinglePerson && !isEmptySinglePerson) {
+			setValue('id', currentPerson.id || null)
+			setValue('name', currentPerson.name)
+			setValue('alias', currentPerson.alias)
+			setValue('nick', currentPerson.nick)
+			setValue('description', currentPerson.description)
+		}
 	}, [props.url])
 
 	const [status, setStatus] = useState([])

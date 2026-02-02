@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewPersonType, PeopleType } from 'types'
-import { NokiaContextType } from 'context/nokia'
+import { NewPersonType } from 'types'
 
 import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
 

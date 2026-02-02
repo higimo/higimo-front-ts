@@ -1,15 +1,17 @@
-import { NewPersonType, PeopleMeetingType, PeopleType } from 'types'
-import { NokiaContext, NokiaContextType } from 'context/nokia'
+import { NewNokiaMicroPersonType, NewPersonType, NewRichMeetingType, PeopleMeetingType, PeopleType } from 'types'
 
 import cs from 'classnames'
 
 import { Controller, useForm } from 'react-hook-form'
-import { useContext, useState, useEffect, useLayoutEffect, useMemo } from 'preact/hooks'
-import { useAuth } from 'hook/use-auth'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
 import { useRoute } from 'preact-iso'
+import { useState, useEffect, useMemo } from 'preact/hooks'
+import useApi from 'hook/use-api'
 
-import TextInput from 'react-autocomplete-input'
+import { Loading } from 'components/ui/loading'
 import { ShowFormResult } from 'components/form/show-form-result'
+import TextInput from 'react-autocomplete-input'
 
 import sendRequest from 'utils/send-request'
 
@@ -19,8 +21,11 @@ import { API_ROUTE } from 'dic/api-route'
 import '../nokia-style.css'
 import './style.css'
 
-const getUserSuggestions = (peoples: PeopleType[]): string[] => peoples.map(men => {
-	return `${men.name}${men.name.length ? ` (${men.name})` : null}`
+const getUserSuggestions = (persons: NewNokiaMicroPersonType[]): string[] => persons.map(person => {
+	return [
+		person.name,
+		person.nick,
+	].filter(Boolean).join(' ') + ` [${person.id}]`
 })
 
 const onSubmit = addStatus => values => {
@@ -37,18 +42,18 @@ const onSubmit = addStatus => values => {
 	)
 	.then(meetingId => {
 		// TODO: BACKEND Дописать редактирование связей
-		values.personId.split(',').map(peopleId => {
-			sendRequest(
-				API_ROUTE.nokiaPeopleMeeting,
-				{
-					method: 'POST',
-					values: {
-						people_id: peopleId,
-						meeting_id: meetingId,
-					}
-				}
-			).then(addStatus)
-		})
+		// values.personId.split(',').map(peopleId => {
+		// 	sendRequest(
+		// 		API_ROUTE.nokiaPeopleMeeting,
+		// 		{
+		// 			method: 'POST',
+		// 			values: {
+		// 				people_id: peopleId,
+		// 				meeting_id: meetingId,
+		// 			}
+		// 		}
+		// 	).then(addStatus)
+		// })
 	})
 }
 
@@ -60,79 +65,49 @@ type FormValues = {
 	description: string
 }
 
-type TopPersonType = {
-	count: number
-	id: number
-}
-type structTopPersonType = (count: number, id: number) => TopPersonType
-const structTopPerson: structTopPersonType = (count, id) => ({ count, id })
-
-type GetTopPersonsType = (links: PeopleMeetingType[], people: PeopleType[]) => TopPersonType[]
-const getTopPersons: GetTopPersonsType = (links, people) => {
-	let result: TopPersonType[] = links.reduce((accum, item) => {
-		accum[item.people_id] = accum[item.people_id] || structTopPerson(0, item.people_id)
-		accum[item.people_id].count += 1
-		return accum
-	}, [])
-	result.sort((a, b) => {
-		return b.count - a.count
-	})
-	people.forEach(person => {
-		if (!result.some(i => i.id == person.id)) {
-			result.push(structTopPerson(0, person.id))
-		}
-	})
-	return result
-}
-
 export const NokiaForm = () => {
-	const { control, register, handleSubmit, setValue, getValues, watch, formState, reset } = useForm<FormValues>()
-	const {
-		fetchData,
-		links,
-		persons,
-		meeting,
-		hashPeople,
-		hashMeeting,
-		hashLink,
-	} = useContext(NokiaContext) as NokiaContextType
-	useLayoutEffect(fetchData, [])
-
 	const { params: { meetingId = '-1' } } = useRoute()
+
+	const [singleMeeting] = useApi<NewRichMeetingType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
+	const isLoadingSingleMeeting = useLoadingState([singleMeeting.status])
+	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)
+
+	const [persons] = useApi<NewPersonType>(API_ROUTE.nokiaPerson)
+	const isLoadingPersons = useLoadingState([persons.status])
+	const isEmptyPersons = useEmptyDataState(persons.data)
+
+	const [topPersons] = useApi<NewPersonType>(API_ROUTE.nokiaTopPerson)
+	const isLoadingTopPersons = useLoadingState([topPersons.status])
+	const isEmptyTopPersons = useEmptyDataState(topPersons.data)
+
+	const { control, register, handleSubmit, setValue, watch, getValues, formState, reset } = useForm<FormValues>()
 
 	const { personId, type, date } = watch()
 	const [ status, setStatus ] = useState([])
 
 	const peoplesSuggest = useMemo(() => {
-		return getUserSuggestions(persons)
-	}, [persons])
+		return getUserSuggestions(persons.data)
+	}, [persons.data])
 
-	// useEffect(() => {
-	// 	if (parseInt(meetingId, 10) >= 0 && hashMeeting[meetingId] && hashLink[meetingId]) {
-	// 		setValue('date'		, new Date(hashMeeting[meetingId].date * 1000).toISOString().substr(0, 10))
-	// 		setValue('description' , hashMeeting[meetingId].description)
-	// 		setValue('id'		  , hashMeeting[meetingId].id)
-	// 		setValue('type'		, hashMeeting[meetingId].type)
-	// 		setValue('personId'	, hashLink[meetingId].join(','))
-	// 	}
-	// }, [meetingId, hashMeeting[meetingId], hashLink[meetingId]])
+	useEffect(() => {
+		const currentSingleMeeting = singleMeeting.data as unknown as NewRichMeetingType
 
-	// if (
-	// 	!links.length ||
-	// 	!persons.length ||
-	// 	!meeting.length ||
-	// 	!Object.keys(hashPeople).length ||
-	// 	!Object.keys(hashMeeting).length ||
-	// 	!Object.keys(hashLink).length
-	// ) {
-	// 	return null
-	// }
+		if (parseInt(meetingId, 10) >= 0 && !isLoadingSingleMeeting && !isEmptySingleMeeting) {
+			setValue('id', currentSingleMeeting.id.toString())
+			setValue('date', new Date(currentSingleMeeting.date * 1000).toISOString().substr(0, 10))
+			setValue('description', currentSingleMeeting.description)
+			setValue('type', currentSingleMeeting.type)
+			setValue('personId', currentSingleMeeting.person.map(i => i.id).join(','))
+		}
+	}, [meetingId, isLoadingSingleMeeting, isEmptySingleMeeting, singleMeeting.data])
 
 	const addStatus = val => setStatus(pState => [ ...pState, val ])
 
-    // TODO: как получать top персон по встречам?
-	const topPersons: NewPersonType[] = persons.slice(0, 10)
 	const selectedPersonId = (personId || '').split(',').map(i => parseInt(i, 10)).filter(i => i)
+
+	if (isLoadingSingleMeeting || isLoadingPersons || isLoadingTopPersons) {
+		return <Loading />
+	}
 
 	// TODO Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
 	return (
@@ -153,6 +128,7 @@ export const NokiaForm = () => {
 				<label>Как прошло?</label>
 			</div>
 			<div class="single-row">
+				<span>Упомяните пользователя через @</span>
 				<Controller
 					name="description"
 					control={control}
@@ -163,12 +139,13 @@ export const NokiaForm = () => {
 							{...field}
 							trigger="@"
 							maxOptions={0}
+							regex={'^[a-zA-Z0-9_\\-а-яА-ЯёЁ]+$'}
 							options={peoplesSuggest}
-							placeholder="Упомяните пользователя через @"
 							changeOnSelect={(trigger, slug) => {
-								setValue('personId', personId + ',' + slug)
+								const [_, name, id] = slug.match(/(.*?) \[(\d+)\]$/s)
+								setValue('personId', personId + ',' + id)
 
-								return trigger + slug
+								return trigger + name
 							}}
 						/>
 					)}
@@ -179,11 +156,12 @@ export const NokiaForm = () => {
 				<label>Тип встречи</label>
 			</div>
 			<div>
-				<select {...register('type')} name="type">
+				<input type="text" {...register('type')} name="type" />
+				{/* <select {...register('type')} name="type">
 					<option selected={type === 'offline'} value="offline">дружеская</option>
 					<option selected={type === 'work'} value="work">деловая</option>
 					<option selected={type === 'net'} value="net">интернет</option>
-				</select>
+				</select> */}
 			</div>
 			<div className="single-row">
 				<label>С кем </label>
@@ -194,12 +172,13 @@ export const NokiaForm = () => {
 				{!!selectedPersonId.length && (
 					<div className="support">
 						<small>
-							{selectedPersonId.map(persId => (hashPeople[persId] || {}).name ?? []).join(', ')}
+							{selectedPersonId.map(persId => (persons.data.find(i => i.id == persId).name)).join(', ')}
 						</small>
 					</div>
 				)}
+				{/* Надо сделать единый компонент для всей нокии, что-то типа тегов NokiaPersonTag */}
 				<div className="person-selector">
-					{topPersons.map(person => (
+					{topPersons.data.map(person => (
 						<div
 							onClick={() => setValue('personId', [...(getValues().personId || '').split(','), person.id].filter(Boolean).join(','))}
 							className={cs(

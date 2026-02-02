@@ -1,19 +1,18 @@
-import { useContext, useLayoutEffect } from 'preact/hooks'
+import { NewNokiaPersonFullType } from 'types'
+
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
 import { useRoute } from 'preact-iso'
+import useApi from 'hook/use-api'
 
+import { Loading } from 'components/ui/loading'
 import { NokiaPeopleDetailCardItem } from 'components/nokia/nokia-people-detail-card-item'
-
-import { NokiaContext, NokiaContextType } from 'context/nokia'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import '../nokia-style.css'
-import { NewNokiaPersonFullType } from 'types'
-import useApi from 'hook/use-api'
 import { API_ROUTE } from 'dic/api-route'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { Loading } from 'components/ui/loading'
+
+import '../nokia-style.css'
 
 export const NokiaPeopleDetailCard = () => {
 	const { params: { personId = '-1'}} = useRoute()

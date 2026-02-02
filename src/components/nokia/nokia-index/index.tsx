@@ -1,19 +1,33 @@
-import { useContext, useLayoutEffect } from 'preact/hooks'
+import { NewRichMeetingType } from 'types'
 
-import { NokiaContext, NokiaContextType } from 'context/nokia'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
+import { Loading } from 'components/ui/loading'
+
+import { NotFoundPage } from 'pages/not-found-page'
+
+import { API_ROUTE } from 'dic/api-route'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
 
 export const NokiaIndex = () => {
-	const { richMeeting, fetchData } = useContext(NokiaContext) as NokiaContextType
+	const [richMeeting] = useApi<NewRichMeetingType>(API_ROUTE.nokiaRichMeeting)
+	const isLoadingRichMeeting = useLoadingState([richMeeting.status])
+	const isEmptyRichMeeting = useEmptyDataState(richMeeting.data)
 
-	useLayoutEffect(fetchData, [])
+	if (isLoadingRichMeeting) {
+		return <Loading />
+	}
+	if (isEmptyRichMeeting) {
+		return <NotFoundPage />
+	}
 
 	return (
 		<div className="meeting-gallery">
-			{richMeeting.map(item => (
+			{richMeeting.data.map(item => (
 				<div className={`meeting-gallery__item meeting type-${item.type}`}>
 					<div className="meeting__description">
 						{item.description}
