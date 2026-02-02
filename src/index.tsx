@@ -287,21 +287,19 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
 
 
-								{/* // TODO: Придумать, как подключать форму, но иметь все приколы контекста */}
-								{/* TODO единый контекст на все урлы */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeople} component={NokiaPeopleListPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaFormPage} />
-								{/* TODO: пока не работает ни фронт, ни бэк */}
+								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaFormPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
-								{/* TODO: пока не работает ни фронт, ни бэк */}
+								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleForm} component={NokiaAddPersonPage} />
-								{/* TODO: пока не работает ни фронт, ни бэк */}
+								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
-								{/* TODO: даже не проверял */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
+
 
 								{/* TODO В провайдер и единый роут? */}
 								{/* TODO Не скачивает данные, обман! */}
