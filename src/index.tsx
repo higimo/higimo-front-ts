@@ -4,18 +4,13 @@ import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso
 import { Header } from 'components/ui/header/Header'
 import { Footer } from 'components/ui/footer'
 
-import { GlobalProvider } from './context/global'
-
 import { AuthProvider } from './context/auth'
+import { GlobalProvider } from './context/global'
+import { VkContextProvider } from './context/vk'
 
 import { AccordGallery } from 'components/accord/accord-gallery'
 import { AccordSingle } from 'components/accord/accord-single'
 import { PrivateRoute } from 'components/util/private-route/PrivateRoute'
-
-import { TestPage } from 'pages/test-page'
-import { LoginPage } from 'pages/auth/login-page'
-import { AdminPage } from 'pages/auth/admin-page'
-import { NotFoundPage } from 'pages/not-found-page'
 
 import { IndexPage } from 'pages/index-page'
 
@@ -82,20 +77,22 @@ import { VkDownloadPage } from 'pages/vk/vk-download-page'
 import { VkIndexPage } from 'pages/vk/vk-index-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
-import { TextareaPage } from 'pages/textarea-page'
-
 import { ResumePage } from 'pages/resume/resume-page'
 import ResumeProduct2Page from 'pages/resume/resume-product2-page'
+const ResumeProductPage = lazy(() => import('pages/resume/resume-product-page'))
+const ResumeHeadPage = lazy(() => import('pages/resume/resume-head-page'))
 
+import { AdminPage } from 'pages/auth/admin-page'
+import { LoginPage } from 'pages/auth/login-page'
+import { TestPage } from 'pages/test-page'
+import { TextareaPage } from 'pages/textarea-page'
 import { ToolIndexPage } from 'pages/test-page/tools/tool-page'
+
+import { NotFoundPage } from 'pages/not-found-page'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { VkContextProvider } from './context/vk'
-
-const ResumeProductPage = lazy(() => import('pages/resume/resume-product-page'))
-const ResumeHeadPage = lazy(() => import('pages/resume/resume-head-page'))
 
 // https://habr.com/ru/articles/321106/
 // https://github.com/preactjs/signals/tree/main
@@ -275,7 +272,6 @@ export function App() {
 								<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
 
-								{/* TODO: /tool/vk не работает */}
 								{/* <Route path="/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} /> */}
 								<Route path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
 								{/* TODO починить его, полностью не работает теперь */}
@@ -301,6 +297,7 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
+								{/* TODO: /tool/vk не работает */}
 								{/* TODO В провайдер и единый роут? */}
 								{/* TODO Не скачивает данные, обман! */}
 								<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
@@ -313,20 +310,16 @@ export function App() {
 
 								{/* Туризм */}
 								<Route path={ROUTE_LINKS.tourismIndex} component={TourismIndexPage} />
-
 								<Route path={ROUTE_LINKS.tourismChecklist} component={TourismChecklistPage} />
-
-								<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
-								<Route path={ROUTE_LINKS.tourismFatherTrack} component={TourismFatherTrackPage} />
-
-								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
-								<Route path={ROUTE_LINKS.tourismMapsRegion} component={TourismYaMapsRegionPage} />
-								<Route path={ROUTE_LINKS.tourismMapsMoscowWalkaround} component={TourismMoscowWalkaroundPage} />
-								<Route path={ROUTE_LINKS.tourismMapsMoscowBar} component={TourismMoscowBarPage} />
 								<Route path={ROUTE_LINKS.tourismCityIndex} component={TourismCityStarPage} />
-
-								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
+								<Route path={ROUTE_LINKS.tourismFatherTrack} component={TourismFatherTrackPage} />
+								<Route path={ROUTE_LINKS.tourismMapsMoscowBar} component={TourismMoscowBarPage} />
+								<Route path={ROUTE_LINKS.tourismMapsMoscowWalkaround} component={TourismMoscowWalkaroundPage} />
+								<Route path={ROUTE_LINKS.tourismMapsRegion} component={TourismYaMapsRegionPage} />
 								<Route path={ROUTE_LINKS.tourismNashe_CONST} component={NasheSinglePage} />
+								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
+								<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
+								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
 
 								<Route default component={NotFoundPage} />
 							</Router>
