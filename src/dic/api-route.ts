@@ -1,7 +1,8 @@
 import { generateLink } from './ROUTE_LINKS'
 
 export const API_ROUTE = {
-	login: '/api/v1/auth/login',
+	login: '/api/v2/auth/login',
+	authMe: '/api/v2/auth/me',
 
 	accord: '/api/v2/accord',
 	accordSingle: generateLink<'idcode'>('/api/v2/accord/:idcode'),

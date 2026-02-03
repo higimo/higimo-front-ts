@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
-import { AUTH_STATUS_DIC, useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/use-auth'
 
 import { TextContainer } from 'components/ui/text-container'
 
@@ -10,8 +10,8 @@ import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 export const AdminPage: FunctionComponent = () => {
 	usePageTitle('Настольные игры')
 
-	const { isAuth, statusLoading, redirectToLogin } = useAuth()
-	if (!isAuth && AUTH_STATUS_DIC.AUTHENTICATED === statusLoading) {
+	const { isAuth, isAuthLoading, redirectToLogin } = useAuth()
+	if (!isAuth && !isAuthLoading) {
 		redirectToLogin()
 	}
 

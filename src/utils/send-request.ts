@@ -2,6 +2,37 @@ import { getAuthPair } from 'utils/get-auth-pair'
 
 import httpBuildQuery from 'http-build-query'
 
+export class ApiError extends Error {
+	public status: number
+	public url?: string
+	public response?: any
+
+	constructor(message: string, status: number, url?: string, response?: any) {
+		super(message)
+
+		this.name = 'ApiError'
+		this.status = status
+		this.url = url
+		this.response = response
+
+		if (Error.captureStackTrace) {
+			Error.captureStackTrace(this, ApiError)
+		}
+	}
+
+	// Дополнительные методы если нужно
+	public toJSON() {
+		return {
+			name: this.name,
+			message: this.message,
+			status: this.status,
+			url: this.url,
+			response: this.response,
+			stack: this.stack
+		}
+	}
+}
+
 export interface SendRequestOptions {
 	method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 	auth?: {
@@ -34,8 +65,7 @@ const sendRequest = <T = any>(
 				resolve(json)
 			}
 			if (this.readyState == 4 && this.status !== 200) {
-				const error = new Error(`HTTP ${this.status}: ${this.statusText || 'Request failed'}`)
-				error.name = 'ApiError'
+				const error = new ApiError(this.statusText, this.status, url)
 				console.error(error, {
 					status: this.status,
 					response: this.responseText,

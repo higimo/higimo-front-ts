@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'preact'
 
+import { useAuth } from 'hook/use-auth'
+
 import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
 import { TileElement } from 'components/ui/tile-element/tile-element'
 
@@ -8,7 +10,6 @@ import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { ToolDataType, toolListData } from './data'
 
 import './style.css'
-import { useAuth } from 'hook/use-auth'
 
 const TileElementCon: FunctionComponent<ToolDataType> = props => (
 	<TileElement

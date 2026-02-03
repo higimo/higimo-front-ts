@@ -2,9 +2,9 @@ import { AUTH_STATUS_DIC, useAuth } from 'hook/use-auth'
 import { Route, RouteProps } from 'preact-iso'
 
 export const PrivateRoute = (props: RouteProps<{}>) => {
-	const { isAuth, statusLoading, redirectToLogin } = useAuth()
+	const { isAuth, isAuthLoading, redirectToLogin } = useAuth()
 
-	if (!isAuth && AUTH_STATUS_DIC.AUTHENTICATED === statusLoading) {
+	if (!isAuth && !isAuthLoading) {
 		redirectToLogin()
 	}
 	return <Route {...props} />
