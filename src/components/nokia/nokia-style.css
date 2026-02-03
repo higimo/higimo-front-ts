@@ -190,11 +190,11 @@ form.container .single-row textarea {
 	background: #bee4f8;
 }
 
-person-full-data__meetings .meeting__persons {
+.person-full-data__meetings .meeting__persons {
 	display: none;
 }
 
-person-full-data__meetings .person {
+.person-full-data__meetings .person {
 	font-size: 10pt;
 	background: linear-gradient(180deg, transparent 60%, #38d7fb61 80%, #7166ff61);
 	margin-right: 4px;
@@ -281,12 +281,12 @@ person-full-data__meetings .person {
 	margin-bottom: 12px;
 }
 
-person-full-data__name {
+.person-full-data__name {
 	font-weight: 800;
 }
 
-person-full-data__alias,
-person-full-data__nick {
+.person-full-data__alias,
+.person-full-data__nick {
 	opacity: .5;
 }
 
@@ -328,4 +328,64 @@ person-full-data__nick {
 	border: 1px solid #dbf6fe;
 	padding: 22px;
 	border-radius: 12px;
+}
+
+.nokia {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	background-color: #e5e5e54d;
+}
+
+@media (min-width: 720px) {
+	.nokia {
+		flex-wrap: nowrap;
+	}
+}
+
+.nokia__content {
+	width: 100%;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (min-width: 720px) {
+	.nokia__content {
+		max-width: 50rem;
+	}
+}
+
+form.container.nokia-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 24px;
+	margin: 12px 0 32px 0;
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: none;
+	border: 1px solid #ccc;
+}
+
+.nokia-form .form-row {
+	display: grid;
+	grid-template-columns: 1fr 6fr;
+	grid-gap: 16px;
+	align-items: end;
+}
+
+.nokia-form .form-row__label {
+	font-size: 85%;
+	text-align: right;
+	width: 100%;
+	margin-right: 0;
+}
+
+.nokia-form input,
+.nokia-form textarea {
+	background: #fff;
+	color: #000;
+	border: 1px solid #d3d3d3;
+	padding: 4px 4px;
 }

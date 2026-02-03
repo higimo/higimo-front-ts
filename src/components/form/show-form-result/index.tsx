@@ -12,7 +12,7 @@ export const ShowFormResult = <T,>(props: ShowFormResultPropsType<T>): JSX.Eleme
 	return (
 		<div className="show-form-result">
 			<Message result text={<>Результат: <pre>{JSON.stringify(props.status, null, '\t')}</pre></>} />
-			<button onClick={() => props.reset()} className="default-form__submit">reset</button>
+			<button onClick={props.reset} className="default-form__submit">reset</button>
 			{props.children}
 		</div>
 	)

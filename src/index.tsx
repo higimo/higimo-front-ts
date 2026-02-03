@@ -292,9 +292,9 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaFormPage} />
 								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaFormPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
 								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleForm} component={NokiaAddPersonPage} />
+								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
 								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />

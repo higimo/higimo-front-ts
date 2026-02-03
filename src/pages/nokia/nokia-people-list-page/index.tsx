@@ -8,7 +8,7 @@ import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPeopleList } from 'components/nokia/nokia-people-list'
 import { NokiaTagsGallery } from 'components/nokia/nokia-tags-gallery'
 
-import '../nokia-style.css'
+import '../../../components/nokia/nokia-style.css'
 
 export const NokiaPeopleListPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
