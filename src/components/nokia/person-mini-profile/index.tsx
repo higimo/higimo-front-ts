@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'preact'
-import { NewPersonType } from 'types'
+import { NokiaPersonType } from 'types'
 
 import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type PersonMiniProfilePropsType = {
-	person: NewPersonType
+	person: NokiaPersonType
 }
 
 export const PersonMiniProfile: FunctionComponent<PersonMiniProfilePropsType> = ({ person }) => (

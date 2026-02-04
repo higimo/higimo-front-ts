@@ -1,4 +1,4 @@
-import { NewRichMeetingType } from 'types'
+import { NokiaRichMeetingType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -14,7 +14,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import '../nokia-style.css'
 
 export const NokiaIndex = () => {
-	const [richMeeting] = useApi<NewRichMeetingType>(API_ROUTE.nokiaRichMeeting)
+	const [richMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaRichMeeting)
 	const isLoadingRichMeeting = useLoadingState([richMeeting.status])
 	const isEmptyRichMeeting = useEmptyDataState(richMeeting.data)
 

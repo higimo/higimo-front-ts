@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewTagType } from 'types'
+import { NokiaTagType } from 'types'
 
 import { usePageTitle } from 'hook/use-page-title'
 import { useState } from 'preact/hooks'
@@ -13,8 +13,8 @@ import '../../../components/nokia/nokia-style.css'
 export const NokiaPeopleListPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
 
-	const [filter, setFilter] = useState<NewTagType['id']>(null)
-	const updateFilter = (tag: NewTagType['id']) => setFilter(filter === tag ? null : tag)
+	const [filter, setFilter] = useState<NokiaTagType['id']>(null)
+	const updateFilter = (tag: NokiaTagType['id']) => setFilter(filter === tag ? null : tag)
 
 	return (
 		<div className="nokia">

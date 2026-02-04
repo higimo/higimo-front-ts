@@ -1,5 +1,5 @@
 import { FunctionComponent } from "preact"
-import { NewNokiaMicroPersonType, NewPersonType } from "types"
+import { NokiaMicroPersonType, NokiaPersonType } from "types"
 
 import { useEmptyDataState } from "hook/use-empty-data-state"
 import { useLoadingState } from "hook/use-loading-state"
@@ -22,7 +22,7 @@ export const NokiaPersonFormController: FunctionComponent<PersonFormContainerPro
 }) => {
 	const { params: { personId = DEFAULT_PERSON_ID } } = useRoute()
 
-	const [singlePerson] = useApi<NewPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
+	const [singlePerson] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 	const isLoadingSinglePerson = useLoadingState([singlePerson.status])
 	const isEmptySinglePerson = useEmptyDataState(singlePerson.data)
 
@@ -32,8 +32,8 @@ export const NokiaPersonFormController: FunctionComponent<PersonFormContainerPro
 
 	const isEditMode = personId !== DEFAULT_PERSON_ID
 
-	const currentPerson = singlePerson.data as unknown as NewPersonType
-	const initialData: NewNokiaMicroPersonType | undefined = !isEmptySinglePerson && isEditMode ? {
+	const currentPerson = singlePerson.data as unknown as NokiaPersonType
+	const initialData: NokiaMicroPersonType | undefined = !isEmptySinglePerson && isEditMode ? {
 		id:          currentPerson.id,
 		name:        currentPerson.name,
 		alias:       currentPerson.alias,

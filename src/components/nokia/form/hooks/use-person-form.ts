@@ -1,4 +1,4 @@
-import { NewNokiaMicroPersonType } from 'types'
+import { NokiaMicroPersonType } from 'types'
 
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
@@ -11,11 +11,11 @@ export interface UsePersonFormProps {
 }
 
 export interface UsePersonFormReturn {
-	formMethods: ReturnType<typeof useForm<NewNokiaMicroPersonType>>
+	formMethods: ReturnType<typeof useForm<NokiaMicroPersonType>>
 	status: any[]
 	isSubmitting: boolean
 	isSubmitted: boolean
-	onSubmit: (data: NewNokiaMicroPersonType) => Promise<void>
+	onSubmit: (data: NokiaMicroPersonType) => Promise<void>
 	resetForm: () => void
 }
 
@@ -23,13 +23,13 @@ export const usePersonForm = ({
 	personApi,
 	isEditMode,
 }: UsePersonFormProps): UsePersonFormReturn => {
-	const formMethods = useForm<NewNokiaMicroPersonType>({})
+	const formMethods = useForm<NokiaMicroPersonType>({})
 
 	const [status, setStatus] = useState<any[]>([])
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [isSubmitted, setIsSubmitted] = useState(false)
 
-	const onSubmit = useCallback(async (data: NewNokiaMicroPersonType) => {
+	const onSubmit = useCallback(async (data: NokiaMicroPersonType) => {
 		setIsSubmitting(true)
 		try {
 			const result = await personApi.createOrUpdate(data)

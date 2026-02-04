@@ -134,22 +134,22 @@ export type ListListType = ListerItem & {
  * =========================================
  */
 
-export type NewNokiaTagGroupType = string
+export type NokiaTagGroupType = string
 
-export type NewTagType = {
+export type NokiaTagType = {
 	id: number
 	name: string
-	group: NewNokiaTagGroupType
+	group: NokiaTagGroupType
 }
-export type NewPersonType = {
+export type NokiaPersonType = {
 	id: number
 	name: string
 	alias: string
 	nick: string
 	description: string
-	tags: NewTagType[]
+	tags: NokiaTagType[]
 }
-export type NewMeetingApiType = {
+export type NokiaMeetingApiType = {
 	id: number,
 	type: string         // "meeting"
 	date: number         // unixtime / 1000
@@ -157,41 +157,41 @@ export type NewMeetingApiType = {
 	date_end: string     // "2024-01-15T11:30:00Z"
 	description: string
 }
-export type NewRichMeetingType = {
+export type NokiaRichMeetingType = {
 	id: number,
 	type: string       // "meeting"
 	date: number       // unixtime / 1000
 	date_start: string // "2024-01-15T10:00:00Z"
 	date_end: string   // "2024-01-15T11:30:00Z"
 	description: string
-	person: NewPersonType[]
+	person: NokiaPersonType[]
 }
-export type NewNokiaNoteType = {
+export type NokiaNoteType = {
     id: number
     text: string
     person_id: number
 }
-export type NewNokiaMicroPersonType = Omit<NewPersonType, 'tags'>
-export type NewNokiaMicroMeeting = {
+export type NokiaMicroPersonType = Omit<NokiaPersonType, 'tags'>
+export type NokiaMicroMeeting = {
     id: number
     date: number
     date_end: string
     date_start : string
     description : string
-    person: NewNokiaMicroPersonType[]
+    person: NokiaMicroPersonType[]
     type: string
 }
-export type NewNokiaPersonFullType = {
+export type NokiaPersonFullType = {
 	id: number
 	name: string
 	alias: string
 	nick: string
 	description: string
-	tags: NewTagType[]
-    notes: NewNokiaNoteType[]
-    meetings: NewNokiaMicroMeeting[]
+	tags: NokiaTagType[]
+    notes: NokiaNoteType[]
+    meetings: NokiaMicroMeeting[]
 }
-export type NewNokiaMeetingStatisticType = {
+export type NokiaMeetingStatisticType = {
     id: number
     date: number
     type: string

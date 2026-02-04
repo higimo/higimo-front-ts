@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewNokiaPersonFullType } from 'types'
+import { NokiaPersonFullType } from 'types'
 
 import { CollapseSection } from 'components/ui/collapse-section'
 import { NokiaMeeting } from 'components/nokia/nokia-meeting'
@@ -8,7 +8,7 @@ import { NokiaNote } from 'components/nokia/nokia-note'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type NokiaPeopleDetailCardItemPropsType = {
-	person: NewNokiaPersonFullType
+	person: NokiaPersonFullType
 }
 export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = ({ person }) => {
 	return (

@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
-import { NewNokiaNoteType } from 'types'
+import { NokiaNoteType } from 'types'
 
 type NokiaNotePropsType = {
-	note: NewNokiaNoteType
+	note: NokiaNoteType
 }
 export const NokiaNote: FunctionComponent<NokiaNotePropsType> = ({ note }) => {
 	return (

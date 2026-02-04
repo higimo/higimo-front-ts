@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'preact'
-import { NewNokiaMicroMeeting } from 'types'
+import { NokiaMicroMeeting } from 'types'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 // TODO: есть какие-то другие ещё встречи, почему они отдельно от этого?
 // TODO: этот переименовать в MICRO
 type NokiaMetingPropsType = {
-	meeting: NewNokiaMicroMeeting
+	meeting: NokiaMicroMeeting
 }
 export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting }) => {
 	return (

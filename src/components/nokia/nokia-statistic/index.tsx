@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { MeetingType, NewNokiaMeetingStatisticType } from 'types'
+import { MeetingType, NokiaMeetingStatisticType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -205,11 +205,11 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 	}
 }
 
-const prepareData = (meeting: NewNokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
-	let meetingTypeDic: { [key: NewNokiaMeetingStatisticType['type']]: number } = {}
+const prepareData = (meeting: NokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
+	let meetingTypeDic: { [key: NokiaMeetingStatisticType['type']]: number } = {}
 	let resultDataset: {
 		[key: string]: {
-			[key: NewNokiaMeetingStatisticType['type']]: number
+			[key: NokiaMeetingStatisticType['type']]: number
 		}
 	} = {}
 
@@ -256,7 +256,7 @@ const prepareData = (meeting: NewNokiaMeetingStatisticType[], selectedYearTag: n
 export const NokiaStatistic: FunctionComponent = () => {
 	const viz = useRef<HTMLDivElement>(null)
 
-	const [meetingStatistic] = useApi<NewNokiaMeetingStatisticType>(API_ROUTE.nokiaStatistic)
+	const [meetingStatistic] = useApi<NokiaMeetingStatisticType>(API_ROUTE.nokiaStatistic)
 	const isLoadingMeetingStatistic = useLoadingState([meetingStatistic.status])
 	const isEmptyMeetingStatistic = useEmptyDataState(meetingStatistic.data)
 

@@ -1,4 +1,4 @@
-import { NewNokiaPersonFullType } from 'types'
+import { NokiaPersonFullType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -17,7 +17,7 @@ import '../nokia-style.css'
 export const NokiaPeopleDetailCard = () => {
 	const { params: { personId = '-1'}} = useRoute()
 
-	const [personSingle] = useApi<NewNokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: parseInt(personId, 10).toString() }))
+	const [personSingle] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: parseInt(personId, 10).toString() }))
 	const isLoadingPersonSingle = useLoadingState([personSingle.status])
 	const isEmptyPersonSingle = useEmptyDataState(personSingle.data)
 
@@ -29,7 +29,7 @@ export const NokiaPeopleDetailCard = () => {
 		return <NotFoundPage />
 	}
 
-	const currentPerson = personSingle.data as unknown as NewNokiaPersonFullType
+	const currentPerson = personSingle.data as unknown as NokiaPersonFullType
 
 	return (
 		<div className="content">
