@@ -141,29 +141,29 @@ export type NokiaTagType = {
 	name: string
 	group: NokiaTagGroupType
 }
-export type NokiaPersonType = {
+export type NokiaPersonApiType = {
 	id: number
 	name: string
 	alias: string
 	nick: string
 	description: string
+}
+export type NokiaPersonType = NokiaPersonApiType & {
 	tags: NokiaTagType[]
 }
 export type NokiaMeetingApiType = {
 	id: number,
-	type: string         // "meeting"
-	date: number         // unixtime / 1000
-	date_start: string   // "2024-01-15T10:00:00Z"
-	date_end: string     // "2024-01-15T11:30:00Z"
+	/** 'meeting' 'tg' 'offline' */
+	type: string
+	/** unixtime / 1000 */
+	date: number
+	/** "2024-01-15T10:00:00Z" */
+	date_start: string
+	/** "2024-01-15T10:00:00Z" */
+	date_end: string
 	description: string
 }
-export type NokiaRichMeetingType = {
-	id: number,
-	type: string       // "meeting"
-	date: number       // unixtime / 1000
-	date_start: string // "2024-01-15T10:00:00Z"
-	date_end: string   // "2024-01-15T11:30:00Z"
-	description: string
+export type NokiaRichMeetingType = NokiaMeetingApiType & {
 	person: NokiaPersonType[]
 }
 export type NokiaNoteType = {
@@ -171,16 +171,17 @@ export type NokiaNoteType = {
     text: string
     person_id: number
 }
-export type NokiaMicroPersonType = Omit<NokiaPersonType, 'tags'>
+// TODO: надо исправить см. NokiaMeetingApiType
 export type NokiaMicroMeeting = {
     id: number
     date: number
     date_end: string
     date_start : string
     description : string
-    person: NokiaMicroPersonType[]
+    person: NokiaPersonApiType[]
     type: string
 }
+// TODO: надо исправить
 export type NokiaPersonFullType = {
 	id: number
 	name: string

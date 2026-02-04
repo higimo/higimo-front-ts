@@ -1,5 +1,5 @@
 import { FunctionComponent } from "preact"
-import { NokiaMicroPersonType, NokiaPersonType } from "types"
+import { NokiaPersonApiType, NokiaPersonType } from "types"
 
 import { useEmptyDataState } from "hook/use-empty-data-state"
 import { useLoadingState } from "hook/use-loading-state"
@@ -33,7 +33,7 @@ export const NokiaPersonFormController: FunctionComponent<PersonFormContainerPro
 	const isEditMode = personId !== DEFAULT_PERSON_ID
 
 	const currentPerson = singlePerson.data as unknown as NokiaPersonType
-	const initialData: NokiaMicroPersonType | undefined = !isEmptySinglePerson && isEditMode ? {
+	const initialData: NokiaPersonApiType | undefined = !isEmptySinglePerson && isEditMode ? {
 		id:          currentPerson.id,
 		name:        currentPerson.name,
 		alias:       currentPerson.alias,
