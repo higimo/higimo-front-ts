@@ -3,12 +3,6 @@ import { NewNokiaMicroPersonType } from 'types'
 
 import sendRequest from 'utils/send-request'
 
-export interface PersonApi {
-	// getAll(): Promise<NewNokiaMicroPersonType[]>
-	// getById(id: string): Promise<NewNokiaMicroPersonType>
-	createOrUpdate(person: Partial<NewNokiaMicroPersonType>): Promise<any>
-}
-
 /**
  * Удаляет все пустые значения из объекта
  * Пустыми считаются: null, undefined, '', [], {}
@@ -43,6 +37,12 @@ const omit = (obj, ...keys) => {
 	return Object.fromEntries(
 		Object.entries(obj).filter(([key]) => !keysToRemove.has(key))
 	)
+}
+
+export interface PersonApi {
+	// getAll(): Promise<NewNokiaMicroPersonType[]>
+	// getById(id: string): Promise<NewNokiaMicroPersonType>
+	createOrUpdate(person: Partial<NewNokiaMicroPersonType>): Promise<any>
 }
 
 export class PersonApiService implements PersonApi {

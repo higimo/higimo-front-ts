@@ -8,12 +8,11 @@ import useApi from "hook/use-api"
 
 import { Loading } from "components/ui/loading"
 import { NokiaPersonFormContainer } from "components/nokia/form/nokia-person-form-container"
-import { NotFoundData } from "components/ui/not-found-data"
 import { PersonApiService } from "components/nokia/form/person-api"
 
 import { API_ROUTE } from "dic/api-route"
 
-const DEFAULT_PRESON_ID = '-1'
+const DEFAULT_PERSON_ID = '-1'
 
 interface PersonFormContainerProps {
   personApi?: PersonApiService
@@ -21,7 +20,7 @@ interface PersonFormContainerProps {
 export const NokiaPersonFormController: FunctionComponent<PersonFormContainerProps> = ({
 	personApi = new PersonApiService()
 }) => {
-	const { params: { personId = DEFAULT_PRESON_ID } } = useRoute()
+	const { params: { personId = DEFAULT_PERSON_ID } } = useRoute()
 
 	const [singlePerson] = useApi<NewPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 	const isLoadingSinglePerson = useLoadingState([singlePerson.status])
@@ -31,15 +30,15 @@ export const NokiaPersonFormController: FunctionComponent<PersonFormContainerPro
 		return <Loading />
 	}
 
-	const isEditMode = personId !== DEFAULT_PRESON_ID
+	const isEditMode = personId !== DEFAULT_PERSON_ID
 
-	const currentSingle = singlePerson.data as unknown as NewPersonType
+	const currentPerson = singlePerson.data as unknown as NewPersonType
 	const initialData: NewNokiaMicroPersonType | undefined = !isEmptySinglePerson && isEditMode ? {
-		id: currentSingle.id,
-		name: currentSingle.name,
-		alias: currentSingle.alias,
-		nick: currentSingle.nick,
-		description: currentSingle.description,
+		id:          currentPerson.id,
+		name:        currentPerson.name,
+		alias:       currentPerson.alias,
+		nick:        currentPerson.nick,
+		description: currentPerson.description,
 	} : undefined
 
 	return (
