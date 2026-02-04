@@ -4,7 +4,6 @@ import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso
 import { Header } from 'components/ui/header/Header'
 import { Footer } from 'components/ui/footer'
 
-import { AuthProvider } from './context/auth'
 import { GlobalProvider } from './context/global'
 import { VkContextProvider } from './context/vk'
 
@@ -209,7 +208,6 @@ export function App() {
 	return (
 		<LocationProvider>
 			<ErrorBoundary onError={(e) => console.log(e)}>
-				<AuthProvider>
 					<GlobalProvider>
 						<VkContextProvider>
 						<Header />
@@ -327,7 +325,6 @@ export function App() {
 						<Footer />
 						</VkContextProvider>
 					</GlobalProvider>
-				</AuthProvider>
 			</ErrorBoundary>
 		</LocationProvider>
 	)
