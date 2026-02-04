@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewPersonType, NokiaTagType } from 'types'
+import { NewPersonType, NewTagType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -17,8 +17,8 @@ import '../nokia-style.css'
 const filterPersons = (person, filter) => person.tags.find(tag => tag.id === filter)
 
 type NokiaPeopleListPropsType = {
-	filter: NokiaTagType['id']
-	updateFilter: (tag: NokiaTagType["id"]) => void
+	filter: NewTagType['id']
+	updateFilter: (tag: NewTagType["id"]) => void
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (props) => {
 	const [persons] = useApi<NewPersonType>(API_ROUTE.nokiaPerson)

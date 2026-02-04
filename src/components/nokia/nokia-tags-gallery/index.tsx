@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewNokiaTagGroupType, NewTagType, NokiaTagType } from 'types'
+import { NokiaTagGroupType, NewTagType } from 'types'
 
 import cs from 'classnames'
 
@@ -16,14 +16,14 @@ import { API_ROUTE } from 'dic/api-route'
 import './style.css'
 
 type NokiaTagsGalleryPropsType = {
-	filter: NokiaTagType['id']
-	updateFilter: (tag: NokiaTagType["id"]) => void
+	filter: NewTagType['id']
+	updateFilter: (tag: NewTagType["id"]) => void
 }
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (props) => {
 	// TODO: как проверять, что есть теги без группы?
 	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
 	const [tags] = useApi<NewTagType>(API_ROUTE.nokiaTags)
-	const [tagGroups] = useApi<NewNokiaTagGroupType>(API_ROUTE.nokiaTagGroup)
+	const [tagGroups] = useApi<NokiaTagGroupType>(API_ROUTE.nokiaTagGroup)
 	const isLoading = useLoadingState([tags.status, tagGroups.status])
 	const isEmptyTags = useEmptyDataState(tags.data)
 	const isEmptyTagGroups = useEmptyDataState(tagGroups.data)

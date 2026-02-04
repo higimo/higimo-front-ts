@@ -135,10 +135,11 @@ export type ListListType = ListerItem & {
  */
 
 export type NewNokiaTagGroupType = string
+
 export type NewTagType = {
 	id: number
 	name: string
-	group: string
+	group: NewNokiaTagGroupType
 }
 export type NewPersonType = {
 	id: number
@@ -148,13 +149,21 @@ export type NewPersonType = {
 	description: string
 	tags: NewTagType[]
 }
+export type NewMeetingApiType = {
+	id: number,
+	type: string         // "meeting"
+	date: number         // unixtime / 1000
+	date_start: string   // "2024-01-15T10:00:00Z"
+	date_end: string     // "2024-01-15T11:30:00Z"
+	description: string
+}
 export type NewRichMeetingType = {
 	id: number,
-	date: number // unixtime / 1000
+	type: string       // "meeting"
+	date: number       // unixtime / 1000
 	date_start: string // "2024-01-15T10:00:00Z"
-	date_end: string // "2024-01-15T11:30:00Z"
+	date_end: string   // "2024-01-15T11:30:00Z"
 	description: string
-	type: string // "meeting"
 	person: NewPersonType[]
 }
 export type NewNokiaNoteType = {
@@ -187,54 +196,32 @@ export type NewNokiaMeetingStatisticType = {
     date: number
     type: string
 }
-export type MeetingType = {
-	id: number
-	date: number
-	description: string
-	type: string
-}
 
-export type PeopleType = {
-	id: number
-	name: string
-	alias: string
-	nick: string
-	description: string
-}
-
-export type PeopleMeetingType = {
-	id: number
-	people_id: number
-	meeting_id: number
-}
-
-export type RichMeetingType = MeetingType & {
-	meetLinks: PeopleType[]
-}
-
-export type PeopleTag = {
-	id: number
-	peopleId: number
-	tagId: number
-}
-
-export type NokiaTagType = {
-	id: number
-	name: number
-}
-
-export type LectionType = {
-	id: number
-	name: string
-	code: string
-	text: string
-}
+/**
+ * ===================================
+ *             Пинарик
+ * ===================================
+ */
 
 export type PinarikType = {
 	id: number,
 	date: string // 2020-05-14
 	score: number,
 	description: string
+}
+
+
+/**
+ * ===================================
+ *             Лекции
+ * ===================================
+ */
+
+export type LectionType = {
+	id: number
+	name: string
+	code: string
+	text: string
 }
 
 
