@@ -34,7 +34,7 @@ export class ApiError extends Error {
 }
 
 export interface SendRequestOptions {
-	method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
+	method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
 	auth?: {
 		login: string
 		pass: string
