@@ -1,18 +1,18 @@
 import { FunctionComponent } from 'preact'
-import { NewNokiaMicroPersonType } from 'types'
+import { NokiaPersonApiType } from 'types'
 
 import { useEffect } from 'preact/hooks'
 import { usePersonForm } from 'components/nokia/form/hooks/use-person-form'
 
 import { PersonApi } from 'components/nokia/form/person-api'
-import { PersonFormFields } from 'components/nokia/form/person-form-fields'
+import { NokiaPersonFormFields } from 'components/nokia/form/nokia-person-form-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
 
 import '../../nokia-style.css'
 
 interface NokiaPersonFormContainerProps {
 	personApi: PersonApi
-	initialData: NewNokiaMicroPersonType | undefined
+	initialData: NokiaPersonApiType | undefined
 	isEditMode: boolean
 }
 
@@ -35,7 +35,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 	useEffect(() => {
 		if (initialData) {
 			Object.entries(initialData).forEach(([key, value]) => {
-				setValue(key as keyof NewNokiaMicroPersonType, value)
+				setValue(key as keyof NokiaPersonApiType, value)
 			})
 		}
 	}, [initialData, setValue])
@@ -44,7 +44,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 
 	return (
 		<form className="container nokia-form" onSubmit={handleFormSubmit}>
-			<PersonFormFields formMethods={formMethods} />
+			<NokiaPersonFormFields formMethods={formMethods} />
 
 			<div className="form__button">
 				<button
@@ -56,9 +56,9 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 				</button>
 
 				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult<NewNokiaMicroPersonType>
+					<ShowFormResult<NokiaPersonApiType>
 						status={status}
-						reset={resetForm}
+						reset={() => reset(/*{ date: date }*/)}
 					/>
 				)}
 			</div>

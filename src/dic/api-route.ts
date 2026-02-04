@@ -46,8 +46,10 @@ export const API_ROUTE = {
 	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
 
 	pinarik: '/api/v2/nokia/pinarik',
+	nokiaMeeting: 'api/v2/nokia/meeting',
 	nokiaRichMeeting: '/api/v2/nokia/meeting/rich',
 	nokiaMeetingSingle: generateLink<'id'>('/api/v2/nokia/meeting/:id'),
+	nokiaSyncPersonForMeeting: generateLink<'meetingId'>('/api/v2/nokia/meeting/:meetingId/person/sync'),
 	nokiaPerson: '/api/v2/nokia/people',
 	nokiaPersonSingle: generateLink<'id'>('/api/v2/nokia/people/:id'),
 	nokiaTopPerson: '/api/v2/nokia/people/top',

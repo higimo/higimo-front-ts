@@ -3,18 +3,18 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { NokiaMenu } from 'components/nokia/nokia-menu'
-import { NokiaForm } from 'components/nokia/nokia-form'
+import { NokiaMetingFormController } from 'components/nokia/form/nokia-meting-form-controller'
 
 import '../../../components/nokia/nokia-style.css'
 
-export const NokiaFormPage: FunctionComponent = () => {
-	usePageTitle('Нокиа сервис')
+export const NokiaMeetingFormPage: FunctionComponent = () => {
+	usePageTitle('Редактирование и создание встречи // Нокиа')
 
 	return (
 		<div className="nokia">
 			<NokiaMenu />
 			<div className="nokia__content">
-				<NokiaForm />
+				<NokiaMetingFormController />
 			</div>
 		</div>
 	)

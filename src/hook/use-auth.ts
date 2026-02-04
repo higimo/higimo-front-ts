@@ -52,7 +52,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
 
 interface UseAuthReturn {
 	isAuth: boolean
-	isAuthLoading: boolean
+	isAuthLoaded: boolean
 	redirectToLogin: () => void
 	routeTo: (url: string, replace?: boolean) => void
 }
@@ -83,7 +83,7 @@ export const useAuth = (): UseAuthReturn => {
 
 	return {
 		isAuth: state.isAuth,
-		isAuthLoading: state.status !== 'LOADED',
+		isAuthLoaded: state.status === AUTH_STATUS_DIC.LOADED,
 		redirectToLogin,
 		routeTo: route,
 	}

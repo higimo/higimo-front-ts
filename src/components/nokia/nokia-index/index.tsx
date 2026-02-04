@@ -12,6 +12,7 @@ import { API_ROUTE } from 'dic/api-route'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
+import { NokiaPersonTag } from '../nokia-person-tag'
 
 export const NokiaIndex = () => {
 	const [richMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaRichMeeting)
@@ -42,9 +43,7 @@ export const NokiaIndex = () => {
 					</div>
 					<div className="meeting__person-gallery">
 						{item.person.map(person => (
-							<div className="meeting__person-name">
-								{person.name}
-							</div>
+							<NokiaPersonTag person={person} />
 						))}
 					</div>
 				</div>

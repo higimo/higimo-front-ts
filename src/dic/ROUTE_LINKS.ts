@@ -17,14 +17,17 @@ const ROUTE_ACCORD_LINKS = Object.freeze({
 const ROUTE_NOKIA_LINKS = Object.freeze({
 	// href: '/nokia/',
 	nokiaIndex: '/nokia/',
-	nokiaForm: '/nokia/form/',
-	nokiaFormEdit_CONST: '/nokia/form/:meetingId/',
-	nokiaFormEdit: generateLink<'meetingId'>('/nokia/form/:meetingId/'),
+
+	nokiaForm: '/nokia/meeting/',
+	nokiaFormEdit_CONST: '/nokia/meeting/:meetingId/',
+	nokiaFormEdit: generateLink<'meetingId'>('/nokia/meeting/:meetingId/'),
+
 	nokiaPeople: '/nokia/people/',
 	nokiaPeopleForm: '/nokia/people/add/',
 	nokiaPeopleDetail_CONST: '/nokia/people/:personId/',
 	nokiaPeopleDetail: generateLink<'personId'>('/nokia/people/:personId/'),
 	nokiaPeopleEdit_CONST: '/nokia/people/:personId/edit/',
+
 	nokiaPeopleEdit: generateLink<'personId'>('/nokia/people/:personId/edit/'),
 	nokiaStatistic: '/nokia/statistic/',
 	nokiaPinarik: '/nokia/pinarik/',

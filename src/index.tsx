@@ -51,7 +51,7 @@ import { ListListFormPage } from 'pages/tool/list-list-form-page'
 import { ListListIndexPage } from 'pages/tool/list-list-index-page'
 
 import { NokiaAddPersonPage } from 'pages/nokia/nokia-add-person-page'
-import { NokiaFormPage } from 'pages/nokia/nokia-form-page'
+import { NokiaMeetingFormPage } from 'pages/nokia/nokia-form-page'
 import { NokiaIndexPage } from 'pages/nokia/nokia-index-page'
 import { NokiaPeopleDetailCardPage } from 'pages/nokia/nokia-people-detail-card-page'
 import { NokiaPeopleListPage } from 'pages/nokia/nokia-people-list-page'
@@ -283,9 +283,9 @@ export function App() {
 
 								<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeople} component={NokiaPeopleListPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaFormPage} />
+								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaMeetingFormPage} />
 								{/* TODO: нет отправки на бэк */}
-								<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaFormPage} />
+								<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaMeetingFormPage} />
 								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleForm} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
