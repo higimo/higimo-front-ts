@@ -4,10 +4,10 @@ import sendRequest from 'utils/send-request'
 import { ApiRouteType } from 'dic/api-route'
 
 export const API_STATUS = {
-	INIT: 'INIT',
+	INIT:    'INIT',
 	LOADING: 'LOADING',
-	LOADED: 'LOADED',
-	ERROR: 'ERROR',
+	LOADED:  'LOADED',
+	ERROR:   'ERROR',
 } as const
 
 export type ApiStatusNameType = keyof typeof API_STATUS
@@ -23,22 +23,22 @@ type ApiAction<T> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
 	| { type: 'LOADED'; payload: T[] }
-	| { type: 'ERROR'; payload: Error }
+	| { type: 'ERROR';  payload: Error }
 
 const initialState = {
-	status: 'INIT',
+	status: API_STATUS.INIT,
 	data: [],
 }
 
 const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
 	switch (action.type) {
-		case 'INIT':
+		case API_STATUS.INIT:
 			return { ...state, status: 'INIT' }
-		case 'LOADING':
+		case API_STATUS.LOADING:
 			return { ...state, status: 'LOADING' }
-		case 'LOADED':
+		case API_STATUS.LOADED:
 			return { ...state, status: 'LOADED', data: action.payload }
-		case 'ERROR':
+		case API_STATUS.ERROR:
 			return { ...state, status: 'LOADED', error: action.payload }
 		default:
 			throw new Error('Unknown action type')
@@ -56,11 +56,11 @@ const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiStat
 
 	const fetchData = async () => {
 		try {
-			dispatch({ type: 'LOADING' })
+			dispatch({ type: API_STATUS.LOADING })
 			const data: T[] = await sendRequest(url as string, { values })
-			dispatch({ type: 'LOADED', payload: data })
+			dispatch({ type: API_STATUS.LOADED, payload: data })
 		} catch (error) {
-			dispatch({ type: 'ERROR', payload: error as Error })
+			dispatch({ type: API_STATUS.ERROR, payload: error as Error })
 		}
 	}
 
