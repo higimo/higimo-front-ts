@@ -1,0 +1,22 @@
+.tag {
+	text-align: center;
+}
+
+.tag__item {
+	display: inline-block;
+	margin-right: .2rem;
+	margin-bottom: .2rem;
+	background: #e3f5ff;
+	border-radius: .2rem;
+	padding: .15rem;
+	font-size: .8rem;
+	transition: all 100ms ease-in;
+}
+
+.tag__item--active {
+	background: #bee4f8;
+}
+
+.tag__item:hover {
+	background: #bee4f8;
+}

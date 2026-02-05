@@ -2,13 +2,13 @@ import { FunctionComponent } from 'preact'
 
 import { NokiaTagGroupType, NokiaTagType } from 'types'
 
-import cs from 'classnames'
-
+import { useCallback } from 'preact/hooks'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
 import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
+import { NokiaTag } from 'components/nokia/nokia-tag'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
@@ -20,7 +20,7 @@ type NokiaTagsGalleryPropsType = {
 	filter: NokiaTagType['id']
 	updateFilter: (tag: NokiaTagType["id"]) => void
 }
-export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (props) => {
+export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = ({ filter, updateFilter }) => {
 	// TODO: как проверять, что есть теги без группы?
 	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
 	const [tags] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
@@ -28,6 +28,8 @@ export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (p
 	const isLoading = useLoadingState([tags.status, tagGroups.status])
 	const isEmptyTags = useEmptyDataState(tags.data)
 	const isEmptyTagGroups = useEmptyDataState(tagGroups.data)
+
+	const handleClick = useCallback((tagId: NokiaTagType['id']) => () => updateFilter(tagId), [updateFilter])
 
 	if (isLoading) {
 		return <Loading />
@@ -44,13 +46,12 @@ export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (p
 						{tagGroup}
 					</div>
 					<div className="nokia-tags-gallery__group-tags">
-						{tags.data.filter(i => i.group === tagGroup).map(item => (
-							<div
-								className={cs('tag__item', { 'tag__item--active': item.id === props.filter})}
-								onClick={() => props.updateFilter(item.id)}
-							>
-								{item.name}
-							</div>
+						{tags.data.filter(i => i.group === tagGroup).map(tag => (
+							<NokiaTag
+								tag={tag}
+								onClick={handleClick(tag.id)}
+								isActive={tag.id === filter}
+							/>
 						))}
 					</div>
 				</div>

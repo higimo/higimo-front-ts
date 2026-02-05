@@ -172,14 +172,8 @@ export type NokiaNoteType = {
     person_id: number
 }
 // TODO: надо исправить см. NokiaMeetingApiType
-export type NokiaMicroMeeting = {
-    id: number
-    date: number
-    date_end: string
-    date_start : string
-    description : string
+export type NokiaMeetingWithPersonType = NokiaMeetingApiType & {
     person: NokiaPersonApiType[]
-    type: string
 }
 // TODO: надо исправить
 export type NokiaPersonFullType = {
@@ -190,7 +184,7 @@ export type NokiaPersonFullType = {
 	description: string
 	tags: NokiaTagType[]
     notes: NokiaNoteType[]
-    meetings: NokiaMicroMeeting[]
+    meetings: NokiaMeetingWithPersonType[]
 }
 export type NokiaMeetingStatisticType = {
     id: number

@@ -31,7 +31,6 @@ const onSubmit = values => {
 }
 
 export const WorkerInput = ({ projectId }) => {
-	// TODO: обновить по API v2
 	const [ workers, fetchWorkers ] = useApi<PortfolioWorkerType[]>(API_ROUTE.projectWorker)
 	const [ chooseWorker, setChooseWorker ] = useState<PortfolioWorkerType[]>([])
 	const isLoading = useLoadingState([workers.status])

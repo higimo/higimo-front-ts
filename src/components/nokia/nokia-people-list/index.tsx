@@ -6,7 +6,7 @@ import { useLoadingState } from 'hook/use-loading-state'
 import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
-import { PersonMiniProfile } from 'components/nokia/person-mini-profile'
+import { PersonCard } from 'components/nokia/person-card'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
@@ -35,13 +35,11 @@ export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (pro
 	const filtredPerson = props.filter ? persons.data.filter(person => filterPersons(person, props.filter)) : persons.data
 
 	return (
-		<div>
-			<div className="content">
-				<div className="nokia-people-list">
-					{filtredPerson.map(person => (
-						<PersonMiniProfile person={person} />
-					))}
-				</div>
+		<div className="content">
+			<div className="nokia-people-list">
+				{filtredPerson.map(person => (
+					<PersonCard person={person} />
+				))}
 			</div>
 		</div>
 	)

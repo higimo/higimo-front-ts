@@ -1,0 +1,32 @@
+.person-mini-profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 22%;
+	text-align: center;
+	margin-right: .5rem;
+	margin-bottom: .5rem;
+	background-color: #fff;
+	border-radius: 6px;
+	border: 1px solid #e1e1e1;
+	box-shadow: 0 10px 20px -5px #38c7fd30;
+	padding: 12px 4px;
+	position: relative;
+}
+
+.person-mini-profile__edit {
+	font-size: 75%;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+.person-mini-profile__name {
+	font-size: 85%;
+}
+.person-mini-profile__alias {
+	font-size: 85%;
+}
+.person-mini-profile__nick {
+	font-size: 85%;
+}

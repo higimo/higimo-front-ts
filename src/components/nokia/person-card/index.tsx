@@ -5,11 +5,13 @@ import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+import './style.css'
+
 type PersonMiniProfilePropsType = {
 	person: NokiaPersonType
 }
 
-export const PersonMiniProfile: FunctionComponent<PersonMiniProfilePropsType> = ({ person }) => (
+export const PersonCard: FunctionComponent<PersonMiniProfilePropsType> = ({ person }) => (
 	<a
 		href={ROUTE_LINKS.nokiaPeopleDetail({ personId: person.id.toString() })}
 		className="person-mini-profile"

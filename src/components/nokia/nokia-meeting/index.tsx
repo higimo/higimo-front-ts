@@ -1,12 +1,15 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMicroMeeting } from 'types'
+import { NokiaMeetingWithPersonType } from 'types'
+
+import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-// TODO: есть какие-то другие ещё встречи, почему они отдельно от этого?
-// TODO: этот переименовать в MICRO
+import '../nokia-style.css'
+
+// TODO: есть компонент с другими встречами, почему этот отдельно?
 type NokiaMetingPropsType = {
-	meeting: NokiaMicroMeeting
+	meeting: NokiaMeetingWithPersonType
 }
 export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting }) => {
 	return (
@@ -26,7 +29,7 @@ export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting 
 				</div>
 				<div className="meeting__persons">
 					{meeting.person.map(person => (
-						<span className="meeting__person-name">{person.name} </span>
+						<NokiaPersonTag person={person} />
 					))}
 				</div>
 			</div>

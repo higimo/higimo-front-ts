@@ -24,16 +24,13 @@ export const NokiaPeopleDetailCard = () => {
 	if (isLoadingPersonSingle) {
 		return <Loading />
 	}
-
 	if (isEmptyPersonSingle) {
 		return <NotFoundPage />
 	}
 
-	const currentPerson = personSingle.data
-
 	return (
 		<div className="content">
-			<NokiaPeopleDetailCardItem person={currentPerson} />
+			<NokiaPeopleDetailCardItem person={personSingle.data} />
 		</div>
 	)
 }
