@@ -1,0 +1,32 @@
+.project-viewer__tags {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 1cm calc(50% - 950px / 2);
+	max-width: 100%;
+	background: #cddc3926;
+}
+
+.project-viewer__credits {
+	--credits-gap: 16px;
+	--credits-row: 4;
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--credits-gap);
+	margin: 0;
+	padding: 24px calc(50% - 950px / 2);
+	max-width: 100%;
+	background: #cddc3926;
+}
+
+.portfolio-person {
+	max-width: calc((100% - ((var(--credits-row) - 1) * var(--credits-gap))) / var(--credits-row));
+	width: 100%;
+	font-size: 16px;
+}
+
+.portfolio-person__role {
+	font-size: 85%;
+}
+

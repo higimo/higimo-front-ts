@@ -93,6 +93,12 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
+/* TODO: внедрять правильную ширину */
+// --factoid-gap: 32px;
+// --factoid-row: 4;
+// width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
+
+
 // TODO: уменьшить бандл, там d3 что-то косячно импортируется
 
 // https://habr.com/ru/articles/321106/

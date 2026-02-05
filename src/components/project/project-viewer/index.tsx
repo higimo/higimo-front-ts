@@ -50,7 +50,7 @@ export const ProjectViewer: FunctionComponent = () => {
 				}}
 			/>
 			<OnlyAdmin>
-				<div className="project-viewer__credits">
+				<div>
 					<WorkerInput projectId={curProject.id} />
 				</div>
 			</OnlyAdmin>

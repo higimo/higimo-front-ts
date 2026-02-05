@@ -3,6 +3,8 @@ import { PortfolioCreditsType } from 'types';
 
 import { PortfolioWorker } from 'components/project/portfolio-worker';
 
+import './style.css'
+
 type PortfolioCreditsGalleryPropsType = {
 	credits: PortfolioCreditsType[];
 };
