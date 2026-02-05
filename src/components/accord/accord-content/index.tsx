@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'preact'
+import { Fragment, FunctionComponent } from 'preact'
 import { AccordType } from 'types'
 
 import { usePageTitle } from 'hook/use-page-title'
@@ -8,6 +8,13 @@ import { usePageTitle } from 'hook/use-page-title'
  */
 export const AccordContent: FunctionComponent<{ song: AccordType }> = ({ song }) => {
 	usePageTitle(song.name)
-	
-	return <pre>{song.text}</pre>
+
+	return (
+		<Fragment>
+			<div className="accord-title">
+				<strong>{song.name}</strong>
+			</div>
+			<pre>{song.text}</pre>
+		</Fragment>
+	)
 }

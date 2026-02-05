@@ -35,16 +35,13 @@ export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode 
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty || isSongEmpty) {
 		return <NotFoundPage />
 	}
 
-	const currentSong = songSingle.data as unknown as AccordType // TODO: fix useApi
-
 	return (
 		<div className="container accord-single-page">
-			<AccordContent song={currentSong} />
+			<AccordContent song={songSingle.data} />
 			<div className="backlink">
 				<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
 			</div>

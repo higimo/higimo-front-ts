@@ -1,6 +1,6 @@
 .accord-single-page pre {
-	margin-left: 1rem;
-	margin-right: 1rem;
+	margin-left: 24px;
+	margin-right: 24px;
 }
 
 @media (max-width: 576px) {
@@ -11,10 +11,26 @@
 }
 
 .see-also-list {
-	margin-top: 2rem;
-	margin-left: 1rem;
+	margin-top: 24px;
+	margin-left: 24px;
+}
+@media (max-width: 576px) {
+	.see-also-list {
+		margin-left: 0;
+	}
 }
 
 .see-also-list__item {
-	margin-bottom: .25rem;
+	margin-bottom: 24px;
+}
+
+.accord-title {
+	margin: 24px;
+}
+
+@media (max-width: 576px) {
+	.accord-title {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
