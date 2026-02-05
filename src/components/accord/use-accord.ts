@@ -1,12 +1,15 @@
-import { API_ROUTE } from 'dic/api-route'
-import useApi from 'hook/use-api'
 import { AccordModeType, AccordType } from 'types'
+
+import useApi from 'hook/use-api'
+
 import { filterMapping, median } from 'components/accord/utils'
+
+import { API_ROUTE } from 'dic/api-route'
 
 const NEWS_ACCORD_LENGTH = 30
 
 export const useAccord = (filter: string = ''): AccordModeType[] => {
-	const [ accordUnsortList ] = useApi<AccordType>(API_ROUTE.accord)
+	const [ accordUnsortList ] = useApi<AccordType[]>(API_ROUTE.accord)
 
 	const length = accordUnsortList.data.length
 	const minimumViewed = median(accordUnsortList.data.map(i => i.view))

@@ -1,22 +1,22 @@
 import { FunctionComponent } from 'preact'
 import { DemagogType } from 'types'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
-import { Loading } from 'components/ui/loading'
-
-import { NotFoundData } from 'components/ui/not-found-data'
 import { DemagogElement } from 'components/info-service/demagog/demagog-element'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
+
 import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
 export const DemagogGalery: FunctionComponent = () => {
-	const [ demagog ] = useApi<DemagogType>(API_ROUTE.demagog)
-	const isLoading = useLoadingState([demagog.status])
-	const isListEmpty = useEmptyDataState(demagog.data)
+	const [ demagogList ] = useApi<DemagogType[]>(API_ROUTE.demagog)
+	const isLoading = useLoadingState([demagogList.status])
+	const isListEmpty = useEmptyDataState(demagogList.data)
 
 	if (isLoading) {
 		return <Loading />
@@ -28,7 +28,7 @@ export const DemagogGalery: FunctionComponent = () => {
 
 	return (
 		<div className="demagog">
-			{demagog.data.map(item => <DemagogElement {...item} />)}
+			{demagogList.data.map(item => <DemagogElement {...item} />)}
 		</div>
 	)
 }

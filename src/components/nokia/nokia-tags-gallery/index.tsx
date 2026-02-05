@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'preact'
+
 import { NokiaTagGroupType, NokiaTagType } from 'types'
 
 import cs from 'classnames'
@@ -22,8 +23,8 @@ type NokiaTagsGalleryPropsType = {
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = (props) => {
 	// TODO: как проверять, что есть теги без группы?
 	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
-	const [tags] = useApi<NokiaTagType>(API_ROUTE.nokiaTags)
-	const [tagGroups] = useApi<NokiaTagGroupType>(API_ROUTE.nokiaTagGroup)
+	const [tags] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
+	const [tagGroups] = useApi<NokiaTagGroupType[]>(API_ROUTE.nokiaTagGroup)
 	const isLoading = useLoadingState([tags.status, tagGroups.status])
 	const isEmptyTags = useEmptyDataState(tags.data)
 	const isEmptyTagGroups = useEmptyDataState(tagGroups.data)

@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'preact'
 import { YaMapType } from 'types'
 
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import { usePageTitle } from 'hook/use-page-title'
 import { useRoute } from 'preact-iso'
 import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'
@@ -18,11 +19,10 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { API_ROUTE } from 'dic/api-route'
 
 import '../tourism-style.css'
-import { usePageTitle } from 'hook/use-page-title'
 
 export const TourismWalkSinglePage: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
-	const [ yamapList ] = useApi<YaMapType>(API_ROUTE.yamap)
+	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 	const isLoading = useLoadingState([yamapList.status])
 	const isListEmpty = useEmptyDataState(yamapList.data)
 
@@ -35,7 +35,6 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 	if (isListEmpty) {
 		return <NotFoundPage />
 	}
-
 
 	return (
 		<div className="tourism-identy-page">

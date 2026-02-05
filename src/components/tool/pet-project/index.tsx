@@ -23,10 +23,10 @@ const gradients = petProjectGradient
 const getDescription = (str) => (str || '').replace(/(https:\/\/[\S]+)/g, '<a href="$1">Ссылка</a>').substring(0, 320)
 
 export const PetProject = () => {
-	const [ unsortProjectList ] = useApi<PetProjectType>(API_ROUTE.probbi)
+	const [ unsortProjectList ] = useApi<PetProjectType[]>(API_ROUTE.probbi)
 	const isLoading = useLoadingState([unsortProjectList.status])
 	const isListEmpty = useEmptyDataState(unsortProjectList.data)
-			
+
 	if (isLoading) {
 		return <Loading />
 	}

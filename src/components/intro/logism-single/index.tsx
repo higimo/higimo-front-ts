@@ -1,17 +1,17 @@
 import { FunctionComponent } from 'preact'
 import { LogismType } from 'components/logism/types'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
-import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
@@ -28,14 +28,12 @@ export const LogismSingle: FunctionComponent = () => {
 		return <NotFoundData />
 	}
 
-	const logism = logismDetail.data as unknown as LogismType
-
 	return (
 		<PrecentationContainer className="single-logism">
 			<TextContainer>
 				<div
 					className="single-logism__text"
-					dangerouslySetInnerHTML={{__html: logism.text}}
+					dangerouslySetInnerHTML={{__html: logismDetail.data.text}}
 				/>
 			</TextContainer>
 			<TextContainer className="single-logism__navigation">

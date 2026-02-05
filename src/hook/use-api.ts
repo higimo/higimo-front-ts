@@ -15,7 +15,7 @@ export type ApiStatusValueType = typeof API_STATUS[keyof typeof API_STATUS]
 
 type ApiState<T> = {
 	status: ApiStatusNameType
-	data: T[]
+	data: T
 	error?: Error
 }
 

@@ -29,7 +29,7 @@ export const NokiaPeopleDetailCard = () => {
 		return <NotFoundPage />
 	}
 
-	const currentPerson = personSingle.data as unknown as NokiaPersonFullType
+	const currentPerson = personSingle.data
 
 	return (
 		<div className="content">

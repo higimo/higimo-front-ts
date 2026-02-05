@@ -260,6 +260,7 @@ export type NewProjectVendorType = {
 	title: string
 }
 // TODO: Вот бы добавить следующий и предыдущий кейс
+// TODO: убрать New
 export type NewProjectType = {
 	id: number
 	vendor_id: number

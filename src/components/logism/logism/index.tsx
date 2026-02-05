@@ -3,9 +3,9 @@ import { LogismType } from 'components/logism/types'
 
 import cs from 'classnames'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
@@ -15,7 +15,7 @@ import { API_ROUTE } from 'dic/api-route'
 import '../logism/style.css'
 
 export const Logism: FunctionComponent = () => {
-	const [ logismList ] = useApi<LogismType>(API_ROUTE.logism)
+	const [ logismList ] = useApi<LogismType[]>(API_ROUTE.logism)
 	const isLoading = useLoadingState([logismList.status])
 	const isListEmpty = useEmptyDataState(logismList.data)
 

@@ -21,7 +21,7 @@ type NokiaPeopleListPropsType = {
 	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (props) => {
-	const [persons] = useApi<NokiaPersonType>(API_ROUTE.nokiaPerson)
+	const [persons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaPerson)
 	const isLoadingPersons = useLoadingState([persons.status])
 	const isEmptyPersons = useEmptyDataState(persons.data)
 

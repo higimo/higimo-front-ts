@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { MeetingType, NokiaMeetingStatisticType } from 'types'
+import { NokiaMeetingStatisticType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -46,7 +46,7 @@ const COLORS = [
 
 type ResultDatasetItem = {
 	date: Date
-	[key: MeetingType['type']]: number | Date
+	[key: NokiaMeetingStatisticType['type']]: number | Date
 }
 type PrepareDataResult = [string[], ResultDatasetItem[]]
 
@@ -205,7 +205,7 @@ const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 	}
 }
 
-const prepareData = (meeting: NokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
+const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
 	let meetingTypeDic: { [key: NokiaMeetingStatisticType['type']]: number } = {}
 	let resultDataset: {
 		[key: string]: {
@@ -213,7 +213,7 @@ const prepareData = (meeting: NokiaMeetingStatisticType[], selectedYearTag: numb
 		}
 	} = {}
 
-	for (let curMeeting of meeting) {
+	for (let curMeeting of meetings) {
 		const date = new Date(parseInt(curMeeting.date + '000', 10))
 		const monthNumber = ('0' + (date.getMonth() + 1)).slice(-2)
 		const yearNumber = date.getFullYear()
@@ -256,7 +256,7 @@ const prepareData = (meeting: NokiaMeetingStatisticType[], selectedYearTag: numb
 export const NokiaStatistic: FunctionComponent = () => {
 	const viz = useRef<HTMLDivElement>(null)
 
-	const [meetingStatistic] = useApi<NokiaMeetingStatisticType>(API_ROUTE.nokiaStatistic)
+	const [meetingStatistic] = useApi<NokiaMeetingStatisticType[]>(API_ROUTE.nokiaStatistic)
 	const isLoadingMeetingStatistic = useLoadingState([meetingStatistic.status])
 	const isEmptyMeetingStatistic = useEmptyDataState(meetingStatistic.data)
 
@@ -286,8 +286,6 @@ export const NokiaStatistic: FunctionComponent = () => {
 		})()
 	}, [statistic, selectedYearTag, selectedTypeTag])
 
-
-	// TODO: надо поставить это ниже, а то ломаются хуки ниже
 	if (isLoadingMeetingStatistic) {
 		return <Loading />
 	}

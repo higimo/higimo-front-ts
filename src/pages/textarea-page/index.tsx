@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PeopleType } from 'types'
+import { NokiaPersonApiType } from 'types'
 
 import { useCallback, useMemo, useState } from 'preact/compat'
 import useApi from 'hook/use-api'
@@ -12,7 +12,7 @@ import { Loading } from 'components/ui/loading'
 import { API_ROUTE } from 'dic/api-route'
 
 export const TextareaPage: FunctionComponent = () => {
-	const [ popleList ] = useApi<PeopleType>(API_ROUTE.nokiaPerson)
+	const [ popleList ] = useApi<NokiaPersonApiType[]>(API_ROUTE.nokiaPerson)
 	const [ mentionList, setMentionList ] = useState<MentionSuggest[]>([])
 
 	const appendMentionList = useCallback((newMentionList: MentionSuggest[]) => {

@@ -1,20 +1,19 @@
+import { FeedbackElement } from 'types'
 import { Fragment, FunctionComponent } from 'preact'
-import { FeedbackElement, FeedbackPageType } from 'types'
 
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import { usePageTitle } from 'hook/use-page-title'
 import { useRoute } from 'preact-iso'
 import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { usePageTitle } from 'hook/use-page-title'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { getDate } from 'utils/get-date'
 
 type GetBasenameType = (string) => string
 const getBasename: GetBasenameType = (str) => (str + '').substring(str.lastIndexOf('/') + 1)
@@ -27,14 +26,14 @@ export const FeedbackItem: FunctionComponent = () => {
 	const isBlockElementListEmpty = useEmptyDataState(blockElementList.data)
 	const isFeedbackListEmpty = useEmptyDataState(blockElementList.data)
 
-	const currentPage = blockElementList.data as unknown as FeedbackElement // TODO fix useApi
-	
-	usePageTitle([currentPage?.title, 'higimo Багрепорты'].filter(Boolean).join(' | '))
+	const currentPage = blockElementList.data
+
+	usePageTitle(currentPage?.title, 'higimo Багрепорты')
 
 	if (isLoading) {
 		return <Loading />
 	}
-	
+
 	if (isBlockElementListEmpty || isFeedbackListEmpty || !idcode.length) {
 		return <NotFoundData />
 	}

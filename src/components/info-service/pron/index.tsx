@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
@@ -16,7 +16,7 @@ type PronType = {
 }
 
 export const PronIndex: FunctionComponent = () => {
-	const [ pronList ] = useApi<PronType>(API_ROUTE.pron)
+	const [ pronList ] = useApi<PronType[]>(API_ROUTE.pron)
 	const isLoading = useLoadingState([pronList.status])
 	const isListEmpty = useEmptyDataState(pronList.data)
 

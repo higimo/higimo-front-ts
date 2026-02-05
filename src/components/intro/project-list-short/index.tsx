@@ -1,26 +1,26 @@
 import { FunctionComponent } from 'preact'
 import { NewProjectType, NewProjectIdsType } from 'types'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
-import { TextContainer } from 'components/ui/text-container'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { Loading } from 'components/ui/loading'
-import { ProjectTag } from 'components/project/project-tag'
-import { filterType } from 'components/project/project-tag-gallery/filter-type'
+import { NotFoundData } from 'components/ui/not-found-data'
 import { ProjectList } from 'components/project/project-list'
 import { ProjectMore } from 'components/project/project-more/ProjectMore'
+import { ProjectTag } from 'components/project/project-tag'
+import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/api-route'
+import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
-	const [ projectIds ] = useApi<NewProjectIdsType>(API_ROUTE.projectIds) // TODO: заменить на meta.count 
-	const [ highProjectList ] = useApi<NewProjectType>(API_ROUTE.projectProject, {
+	const [ projectIds ] = useApi<NewProjectIdsType[]>(API_ROUTE.projectIds) // TODO: заменить на meta.count
+	const [ highProjectList ] = useApi<NewProjectType[]>(API_ROUTE.projectProject, {
 		filter: { cover_size: 'high'},
 		limit: 6
 	})

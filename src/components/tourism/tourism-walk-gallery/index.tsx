@@ -1,23 +1,23 @@
 import { YaMapType } from 'types'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
-import { NotFoundData } from 'components/ui/not-found-data'
 import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 import { API_ROUTE } from 'dic/api-route'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import 'pages/tourism/tourism-style.css'
+import '../../../pages/tourism/tourism-style.css'
 import './style.css'
 
 export const TourismWalkGallery = () => {
-	const [ yamapList ] = useApi<YaMapType>(API_ROUTE.yamap)
+	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 	const isLoading = useLoadingState([yamapList.status])
 	const isListEmpty = useEmptyDataState(yamapList.data)
-			
+
 	if (isLoading) {
 		return <Loading />
 	}

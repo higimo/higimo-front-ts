@@ -5,6 +5,7 @@ import { useLoadingState } from 'hook/use-loading-state'
 import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
+import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
@@ -12,12 +13,11 @@ import { API_ROUTE } from 'dic/api-route'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
-import { NokiaPersonTag } from '../nokia-person-tag'
 
 export const NokiaIndex = () => {
-	const [richMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaRichMeeting)
-	const isLoadingRichMeeting = useLoadingState([richMeeting.status])
-	const isEmptyRichMeeting = useEmptyDataState(richMeeting.data)
+	const [richMeetings] = useApi<NokiaRichMeetingType[]>(API_ROUTE.nokiaRichMeeting)
+	const isLoadingRichMeeting = useLoadingState([richMeetings.status])
+	const isEmptyRichMeeting = useEmptyDataState(richMeetings.data)
 
 	if (isLoadingRichMeeting) {
 		return <Loading />
@@ -28,7 +28,7 @@ export const NokiaIndex = () => {
 
 	return (
 		<div className="meeting-gallery">
-			{richMeeting.data.map(item => (
+			{richMeetings.data.map(item => (
 				<div className={`meeting-gallery__item meeting type-${item.type}`}>
 					<div className="meeting__description">
 						{item.description}

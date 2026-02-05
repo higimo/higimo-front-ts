@@ -1,24 +1,24 @@
 import { FunctionComponent } from 'preact'
 import { UpdateNewsType } from './types'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
+
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { TileElement } from 'components/ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
 
 import { getDate } from 'utils/get-date'
 
-import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element/tile-element'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
-
 import { API_ROUTE } from 'dic/api-route'
 
-import tg	 from './img/tg.svg'
-import tech   from './img/tech.png'
 import higimo from './img/higimo.png'
-import screen from './img/screen.png'
 import rak	from './img/rak.png'
+import screen from './img/screen.png'
+import tech   from './img/tech.png'
+import tg	 from './img/tg.svg'
 
 import './style.css'
 
@@ -53,7 +53,7 @@ const TileElementCon = props => (
 )
 
 export const LastUpdates: FunctionComponent = () => {
-	const [ newsList ] = useApi<UpdateNewsType>(API_ROUTE.updateNews, { limit: 12 })
+	const [ newsList ] = useApi<UpdateNewsType[]>(API_ROUTE.updateNews, { limit: 12 })
 	const isLoading = useLoadingState([newsList.status])
 	const isListEmpty = useEmptyDataState(newsList.data)
 

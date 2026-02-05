@@ -1,16 +1,16 @@
 import { NewProjectWorkerType } from 'types'
 
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
 import { useState } from 'preact/hooks'
 import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
 
-import { Loading } from 'components/ui/loading'
+import { ChooseWorkersForm } from 'components/form/project/choose-workers-form'
 import { CollapseSection } from 'components/ui/collapse-section'
+import { CreateWorker } from 'components/form/project/create-worker'
+import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { WorkersTree } from 'components/form/project/workers-tree'
-import { ChooseWorkersForm } from 'components/form/project/choose-workers-form'
-import { CreateWorker } from 'components/form/project/create-worker'
 
 import { API_ROUTE } from 'dic/api-route'
 
@@ -32,7 +32,7 @@ const onSubmit = values => {
 
 export const WorkerInput = ({ projectId }) => {
 	// TODO: обновить по API v2
-	const [ workers, fetchWorkers ] = useApi<NewProjectWorkerType>(API_ROUTE.projectWorker)
+	const [ workers, fetchWorkers ] = useApi<NewProjectWorkerType[]>(API_ROUTE.projectWorker)
 	const [ chooseWorker, setChooseWorker ] = useState<NewProjectWorkerType[]>([])
 	const isLoading = useLoadingState([workers.status])
 	const isListEmpty = useEmptyDataState(workers.data)

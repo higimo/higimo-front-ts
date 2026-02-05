@@ -1,16 +1,16 @@
-import { FunctionComponent } from "preact"
-import { NokiaPersonApiType, NokiaPersonType } from "types"
+import { FunctionComponent } from 'preact'
+import { NokiaPersonApiType, NokiaPersonType } from 'types'
 
-import { useEmptyDataState } from "hook/use-empty-data-state"
-import { useLoadingState } from "hook/use-loading-state"
-import { useRoute } from "preact-iso"
-import useApi from "hook/use-api"
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useRoute } from 'preact-iso'
+import useApi from 'hook/use-api'
 
-import { Loading } from "components/ui/loading"
-import { NokiaPersonFormContainer } from "components/nokia/form/nokia-person-form-container"
-import { PersonApiService } from "components/nokia/form/person-api"
+import { Loading } from 'components/ui/loading'
+import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'
+import { PersonApiService } from 'components/nokia/form/person-api'
 
-import { API_ROUTE } from "dic/api-route"
+import { API_ROUTE } from 'dic/api-route'
 
 const DEFAULT_PERSON_ID = '-1'
 
@@ -32,7 +32,7 @@ export const NokiaPersonFormController: FunctionComponent<PersonFormContainerPro
 
 	const isEditMode = personId !== DEFAULT_PERSON_ID
 
-	const currentPerson = singlePerson.data as unknown as NokiaPersonType
+	const currentPerson = singlePerson.data
 	const initialData: NokiaPersonApiType | undefined = !isEmptySinglePerson && isEditMode ? {
 		id:          currentPerson.id,
 		name:        currentPerson.name,

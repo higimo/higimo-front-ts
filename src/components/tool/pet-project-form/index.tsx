@@ -1,15 +1,15 @@
-import { ProjectType } from 'types'
+import { PetProjectType } from 'types'
 
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useForm } from 'react-hook-form'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useRoute } from 'preact-iso'
 import { useState, useEffect } from 'preact/hooks'
 import useApi from 'hook/use-api'
-import { useRoute } from 'preact-iso'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
 
+import { Loading } from 'components/ui/loading'
 import { Message } from 'components/ui/message'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { Loading } from 'components/ui/loading'
 import { ShowFormResult } from 'components/form/show-form-result'
 
 import sendRequest from 'utils/send-request'
@@ -42,19 +42,18 @@ type FormValues = {
 
 export const PetProjectForm = () => {
 	const { params: { projectId = '-1'} } = useRoute()
-	const[ probbiSingle ] = useApi<ProjectType>(API_ROUTE.probbiSingle({ projectId }))
+	const[ probbiSingle ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
 	const isLoading = useLoadingState([probbiSingle.status])
 	const isListEmpty = useEmptyDataState(probbiSingle.data)
-			
+
 	if (isLoading) {
 		return <Loading />
 	}
-	
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
 
-	let defaultValues: Partial<ProjectType> = {}
+	let defaultValues: Partial<PetProjectType> = {}
 	const { register, handleSubmit, formState, setValue, reset } = useForm<FormValues>({
 		defaultValues
 	})

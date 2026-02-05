@@ -21,14 +21,12 @@ export const ObuchenieSingle = () => {
 	const isLoading = useLoadingState([lectionDetail.status])
 	const isListEmpty = useEmptyDataState(lectionDetail.data)
 
-	const currentLection = lectionDetail.data as unknown as LectionType
-
+	const currentLection = lectionDetail.data
 	usePageTitle(currentLection.name)
 
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundPage />
 	}

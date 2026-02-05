@@ -1,20 +1,20 @@
 import { FunctionComponent } from 'preact'
 import { LectionType } from 'types'
 
-import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
 export const ObuchenieList: FunctionComponent = () => {
-	const [ lectionList ] = useApi<LectionType>(API_ROUTE.lection)
+	const [ lectionList ] = useApi<LectionType[]>(API_ROUTE.lection)
 	const isLoading = useLoadingState([lectionList.status])
 	const isListEmpty = useEmptyDataState(lectionList.data)
 

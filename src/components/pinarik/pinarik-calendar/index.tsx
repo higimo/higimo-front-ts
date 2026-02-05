@@ -1,21 +1,21 @@
 import { PinarikType } from 'types'
 import { Fragment } from 'preact/jsx-runtime'
 
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
 import { useState } from 'preact/hooks'
 import useApi from 'hook/use-api'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { PinarikEventPreview } from 'components/pinarik/pinarik-event-preview'
 import { PinarikElement } from 'components/pinarik/pinarik-element'
+import { PinarikEventPreview } from 'components/pinarik/pinarik-event-preview'
 
 import { API_ROUTE } from 'dic/api-route'
 
 export const PinarikCalendar = () => {
 	const [ previewId, setPreviewId ] = useState(0)
-	const [ pinarikList ] = useApi<PinarikType>(API_ROUTE.pinarik)
+	const [ pinarikList ] = useApi<PinarikType[]>(API_ROUTE.pinarik)
 	const isLoading = useLoadingState([pinarikList.status])
 	const isListEmpty = useEmptyDataState(pinarikList.data)
 

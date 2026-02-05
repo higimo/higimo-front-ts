@@ -3,13 +3,13 @@ import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType, NokiaRichMeet
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
-import { useRoute } from 'preact-iso'
 import { useMemo } from 'preact/hooks'
+import { useRoute } from 'preact-iso'
 import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 import { MeetingApiService } from '../person-api'
 
@@ -41,12 +41,12 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 	const isLoadingSingleMeeting = useLoadingState([singleMeeting.status])
 	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)
 
-	const [persons] = useApi<NokiaPersonType>(API_ROUTE.nokiaPerson)
+	const [persons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaPerson)
 	const isLoadingPersons = useLoadingState([persons.status])
 	const isEmptyPersons = useEmptyDataState(persons.data)
 
 	// TODO: получать самых популярных за последние пол года
-	const [topPersons] = useApi<NokiaPersonType>(API_ROUTE.nokiaTopPerson)
+	const [topPersons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
 	const isLoadingTopPersons = useLoadingState([topPersons.status])
 	const isEmptyTopPersons = useEmptyDataState(topPersons.data)
 
@@ -59,7 +59,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 
 	const isEditMode = meetingId !== DEFAULT_MEETING_ID
 
-	const currentMeeting = singleMeeting.data as unknown as NokiaRichMeetingType
+	const currentMeeting = singleMeeting.data
 	const initialMeetData: NokiaMeetingApiType | undefined = !isEmptySingleMeeting && isEditMode ? {
 		id:          currentMeeting.id,
 		type:        currentMeeting.type,

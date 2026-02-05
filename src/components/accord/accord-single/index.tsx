@@ -1,20 +1,19 @@
 import { FunctionComponent } from 'preact'
-
 import { AccordType } from 'types'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { API_ROUTE } from 'dic/api-route'
-
-import useApi from 'hook/use-api'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useRandomElements } from 'hook/use-random-elements'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
+import useApi from 'hook/use-api'
 
+import { AccordContent } from 'components/accord/accord-content'
 import { Loading } from 'components/ui/loading'
 import { SeeAlsoSection } from 'components/accord/see-also-section'
-import { AccordContent } from 'components/accord/accord-content'
 
 import { NotFoundPage } from 'pages/not-found-page'
+
+import { API_ROUTE } from 'dic/api-route'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
@@ -25,12 +24,13 @@ type AccordSinglePropsType = {
 }
 
 export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode }) => {
-	const [list] = useApi<AccordType>(API_ROUTE.accord)
+	const [accords] = useApi<AccordType[]>(API_ROUTE.accord)
 	const [songSingle] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode }))
-	const isLoading = useLoadingState([songSingle.status, list.status])
-	const isListEmpty = useEmptyDataState(list.data)
+	const isLoading = useLoadingState([songSingle.status, accords.status])
+	const isListEmpty = useEmptyDataState(accords.data)
 	const isSongEmpty = useEmptyDataState(songSingle.data)
-	const seeAlsoList = useRandomElements(list.data, ALSO_ELEMENTS)
+	// TODO: пусть бекенд присылает эти данные
+	const seeAlsoList = useRandomElements(accords.data, ALSO_ELEMENTS)
 
 	if (isLoading) {
 		return <Loading />

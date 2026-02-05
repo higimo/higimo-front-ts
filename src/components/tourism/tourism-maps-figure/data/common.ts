@@ -1,3 +1,4 @@
+// TODO: вынести в БД
 import { barPovMoscow } from './bar-pov-moscow'
 import { moscowPovPoints } from './moscow-pov'
 import { russiaCity } from './russia-city2'

@@ -15,10 +15,10 @@ import { API_ROUTE } from 'dic/api-route'
 import './style.css'
 
 export const ComojiGalery: FunctionComponent = () => {
-	const [ comojiList ] = useApi<ComojiType>(API_ROUTE.comoji)
+	const [ comojiList ] = useApi<ComojiType[]>(API_ROUTE.comoji)
 	const isLoading = useLoadingState([comojiList.status])
 	const isListEmpty = useEmptyDataState(comojiList.data)
-			
+
 	if (isLoading) {
 		return <Loading />
 	}
