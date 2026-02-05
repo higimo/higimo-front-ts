@@ -7,7 +7,6 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../nokia-style.css'
 
-// TODO: есть компонент с другими встречами, почему этот отдельно?
 type NokiaMetingPropsType = {
 	meeting: NokiaMeetingWithPersonType
 }

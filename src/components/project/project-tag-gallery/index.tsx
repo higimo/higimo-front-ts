@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PortfolioTag, ProjectFullInfoType } from 'types'
+import { PortfolioTag } from 'types'
 import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import { useMemo } from 'preact/hooks'

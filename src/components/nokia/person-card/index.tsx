@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NokiaPersonType } from 'types'
 
+import { NokiaTag } from 'components/nokia/nokia-tag'
 import { NokiaUserAvatar } from 'components/nokia/nokia-user-avatar'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
@@ -25,6 +26,9 @@ export const PersonCard: FunctionComponent<PersonMiniProfilePropsType> = ({ pers
 		</div>
 		<div className="person-mini-profile__nick">
 			{person.nick}
+		</div>
+		<div className="person-mini-profile__tags">
+			{person.tags.map(tag => (<NokiaTag tag={tag} />))}
 		</div>
 		<div className="person-mini-profile__buttons">
 			<div className="person-mini-profile__edit">

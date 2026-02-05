@@ -1,11 +1,17 @@
+.nokia-people-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 32px;
+}
+
 .person-mini-profile {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 22%;
+	gap: 6px;
+	width: calc(25% - 8px);
 	text-align: center;
-	margin-right: .5rem;
-	margin-bottom: .5rem;
 	background-color: #fff;
 	border-radius: 6px;
 	border: 1px solid #e1e1e1;

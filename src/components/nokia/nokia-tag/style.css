@@ -4,6 +4,7 @@
 
 .tag__item {
 	display: inline-block;
+	cursor: pointer;
 	margin-right: .2rem;
 	margin-bottom: .2rem;
 	background: #e3f5ff;

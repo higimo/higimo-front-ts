@@ -204,12 +204,6 @@ form.container .single-row textarea {
 	width: 80%;
 }
 
-.nokia-people-list {
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 32px;
-}
-
 .nokia-user-avatar {
 	background: linear-gradient(45deg, #158bd0, #38d7fb);
 	color: #fff;
