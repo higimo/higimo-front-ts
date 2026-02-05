@@ -14,7 +14,7 @@ import { API_ROUTE } from 'dic/api-route'
 import './style.css'
 
 export const FaqList: FunctionComponent = () => {
-	const [ faqList ] = useApi<FaqType>(API_ROUTE.faq)
+	const [ faqList ] = useApi<FaqType[]>(API_ROUTE.faq)
 	const isLoading = useLoadingState([faqList.status])
 	const isListEmpty = useEmptyDataState(faqList.data)
 

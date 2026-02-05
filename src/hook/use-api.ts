@@ -22,7 +22,7 @@ type ApiState<T> = {
 type ApiAction<T> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
-	| { type: 'LOADED'; payload: T[] }
+	| { type: 'LOADED'; payload: T }
 	| { type: 'ERROR';  payload: Error }
 
 const initialState = {
@@ -51,13 +51,14 @@ type ApiUrlType = ApiRouteType
 
 // TODO: Добавить ещё POST, DELETE
 // TODO: Добавить вывод сразу useLoadingState
+// TODO: что если пользоваться ServiceApi, в дополнение к простым строчкам?
 const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T>, initialState as ApiState<T>)
 
 	const fetchData = async () => {
 		try {
 			dispatch({ type: API_STATUS.LOADING })
-			const data: T[] = await sendRequest(url as string, { values })
+			const data: T = await sendRequest(url as string, { values })
 			dispatch({ type: API_STATUS.LOADED, payload: data })
 		} catch (error) {
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })

@@ -1,11 +1,14 @@
-import { WorkerType } from 'types'
 import { FunctionComponent } from 'preact'
+import { PortfolioWorkerType } from 'types'
+
 import { FieldError, useForm } from 'react-hook-form'
-import './style.css'
+
 import { CollapseSection } from 'components/ui/collapse-section'
 
+import './style.css'
+
 type CreateWorkerPropsType = {
-	onSubmit: (roles: WorkerType) => Promise<boolean>
+	onSubmit: (roles: PortfolioWorkerType) => Promise<boolean>
 }
 
 // TODO: сейчас не сообщает, если какое-то поле забуду
@@ -16,7 +19,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 		formState: { errors },
 		reset,
 		setError,
-	} = useForm<WorkerType>()
+	} = useForm<PortfolioWorkerType>()
 
 	const ShowError = ({ filerError }: { filerError?: FieldError }) => {
 		if (!filerError) {
@@ -26,8 +29,8 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 			<span className="error-message">{filerError.message}</span>
 		)
 	}
-	
-	const handleFormSubmit = async (data: WorkerType) => {
+
+	const handleFormSubmit = async (data: PortfolioWorkerType) => {
 		const res = await onSubmit(data)
 		if (res) {
 			reset()
@@ -36,6 +39,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 			setError('company', { type: 'custom', message: 'При отправке произошла ошибка' })
 		}
 	}
+
 	return (
 		<div>
 			<CollapseSection fold={true} header="Добавить человека">
@@ -45,30 +49,30 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 						<input
 							autocomplete="higimo"
 							type="text"
-							{...register('name', { required: 'Обязательное поле' })}
-							className={errors.name ? 'error' : ''}
+							{...register('full_name', { required: 'Обязательное поле' })}
+							className={errors.full_name ? 'error' : ''}
 						/>
-						<ShowError filerError={errors.name} />
+						<ShowError filerError={errors.full_name} />
 					</div>
-			
+
 					<div className="form-group">
 						<label htmlFor="family">Фамилия:</label>
-						<input
+						{/* <input
 							autocomplete="higimo"
 							type="text"
 							{...register('family', { required: 'Обязательное поле' })}
 							className={errors.family ? 'error' : ''}
 						/>
-						<ShowError filerError={errors.family} />
+						<ShowError filerError={errors.family} /> */}
 					</div>
-				
+
 					<div className="form-group">
 						<label htmlFor="image">Ссылка на фотку:</label>
 						<input type="text" {...register('image')} />
-						<ShowError filerError={errors.name} />
+						<ShowError filerError={errors.image} />
 						{errors.image && <span className="error-message">{errors.image.message}</span>}
 					</div>
-				
+
 					<div className="form-group">
 						<label htmlFor="login">Ник:</label>
 						<input
@@ -79,17 +83,17 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 						/>
 						<ShowError filerError={errors.login} />
 					</div>
-				
+
 					<div className="form-group">
 						<label htmlFor="company">Где работал:</label>
 						<input type="text" {...register('company')} />
 					</div>
-				
+
 					<div className="form-group">
 						<label htmlFor="role">Роль:</label>
 						<input type="text" {...register('role')} />
 					</div>
-				
+
 					<div className="form-group">
 						<label htmlFor="link">Ссылка на хомяк:</label>
 						<input
@@ -104,9 +108,15 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 						/>
 						<ShowError filerError={errors.link} />
 					</div>
+
 					<ShowError filerError={errors.company} />
-				
-					<button type="submit" className="submit-button">Добавить человека</button>
+
+					<button
+						type="submit"
+						className="submit-button"
+					>
+						Добавить человека
+					</button>
 				</form>
 			</CollapseSection>
 		</div>

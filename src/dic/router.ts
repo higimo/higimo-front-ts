@@ -26,7 +26,6 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.accordIndex]: 'ТУДУ',
 
 	[ROUTE_LINKS.nokiaIndex]: 'ТУДУ',
-	[ROUTE_LINKS.nokiaMessage]: 'ТУДУ',
 	[ROUTE_LINKS.nokiaForm]: 'ТУДУ',
 	[ROUTE_LINKS.nokiaPeople]: 'ТУДУ',
 	[ROUTE_LINKS.nokiaPeopleForm]: 'ТУДУ',

@@ -8,8 +8,8 @@ export const convertFlatListToIerah = (list: ListerItem[]): ListListType[] => {
 	}
 	for (let i = 0, l = list.length; i < l; i++) {
 		if (list[i].parent) {
-			if (hashMap[list[i].parent]) {
-				hashMap[list[i].parent].child.push(list[i])
+			if (hashMap[list[i].parent_id]) {
+				hashMap[list[i].parent_id].child.push(list[i])
 			} else {
 				list[i].parent = null
 			}

@@ -10,8 +10,8 @@ import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 export const AdminPage: FunctionComponent = () => {
 	usePageTitle('Настольные игры')
 
-	const { isAuth, isAuthLoading, redirectToLogin } = useAuth()
-	if (!isAuth && !isAuthLoading) {
+	const { isAuth, isAuthLoaded, redirectToLogin } = useAuth()
+	if (!isAuth && isAuthLoaded) {
 		redirectToLogin()
 	}
 
