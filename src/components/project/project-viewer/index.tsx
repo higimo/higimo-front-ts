@@ -24,7 +24,7 @@ export const ProjectViewer: FunctionComponent = () => {
 
 	const [curProject, isLoading, isEmpty] = useProjectViewer(vendor, project)
 
-	usePageTitle(curProject.name)
+	usePageTitle(curProject.name ? `${curProject.name} | Проект Хигимо` : 'Проект Хигимо')
 
 	if (isLoading) {
 		return <Loading />
@@ -34,8 +34,6 @@ export const ProjectViewer: FunctionComponent = () => {
 	}
 
 	const { date, name, text = '' } = curProject
-	// TODO usePageTitle
-	document.title = name
 
 	return (
 		<div className="project-viewer">

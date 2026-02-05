@@ -18,6 +18,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { API_ROUTE } from 'dic/api-route'
 
 import '../tourism-style.css'
+import { usePageTitle } from 'hook/use-page-title'
 
 export const TourismWalkSinglePage: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
@@ -25,18 +26,17 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 	const isLoading = useLoadingState([yamapList.status])
 	const isListEmpty = useEmptyDataState(yamapList.data)
 
+	const element = yamapList.data.find(item => item.code === idcode)
+	usePageTitle(element.name || 'Карта прогулки')
+
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundPage />
 	}
 
-	const element = yamapList.data.find(item => item.code === idcode)
-	// TODO usePageTitle
-	document.title = element.name
-	
+
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
