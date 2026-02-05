@@ -93,6 +93,8 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
+// TODO: уменьшить бандл, там d3 что-то косячно импортируется
+
 // https://habr.com/ru/articles/321106/
 // https://github.com/preactjs/signals/tree/main
 // TODO vite.config.ts отделяет чанк с библиотекой, но не подгружает её асинхронно, так что для всех страни подгружается d3 и openapi

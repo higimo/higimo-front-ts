@@ -185,7 +185,6 @@ export const TourismVisitedPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			{/* TODO: да пусть он внутри себя получает эту переменную! */}
 			<Breadcrumps />
 			<TextContainer>
 				<h1>Результаты путешествий</h1>

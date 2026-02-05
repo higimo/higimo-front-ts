@@ -15,7 +15,7 @@ export const CinemaIndexPage: FunctionComponent = () => {
 			</TextContainer>
 			<CinemaIndex />
 			<TextContainer>
-				{/* TODO: показать оценки фильмов */}
+				{/* TODO: показать оценки фильмов и аниме */}
 				Однажды, я выведу здесь оценки фильмов
 			</TextContainer>
 		</div>
