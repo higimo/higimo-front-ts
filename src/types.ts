@@ -156,7 +156,7 @@ export type NokiaMeetingApiType = {
 	/** 'meeting' 'tg' 'offline' */
 	type: string
 	/** unixtime / 1000 */
-	date: number
+	date: number // TODO: заменить на бэке на date
 	/** "2024-01-15T10:00:00Z" */
 	date_start: string
 	/** "2024-01-15T10:00:00Z" */

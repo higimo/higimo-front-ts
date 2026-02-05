@@ -79,7 +79,7 @@ export interface MeetingApi {
 
 export class MeetingApiService implements MeetingApi {
 	async createOrUpdate(meeting: Partial<NokiaRichMeetingType>): Promise<any> {
-		console.log('MeetingApiService', meeting)
+		console.log('MeetingApiService.createOrUpdate', meeting)
 		const method = meeting.id ? 'PUT' : 'POST'
 		const endpoint = meeting.id
 			? API_ROUTE.nokiaMeetingSingle({ id: meeting.id.toString() })
@@ -87,20 +87,18 @@ export class MeetingApiService implements MeetingApi {
 
 		return sendRequest(endpoint, {
 			method,
-			values: {
-				...compact(omit(meeting, 'id')),
-				date: new Date(meeting.date).getTime() / 1000,
-			}
+			values: compact(omit(meeting, 'id'))
 		})
 	}
 
 	async syncPerson(meetingId: number, persons: NokiaPersonApiType[]): Promise<any> {
+		console.log('MeetingApiService.createOrUpdate', persons)
 		return sendRequest(
 			API_ROUTE.nokiaSyncPersonForMeeting({ meetingId: meetingId.toString() }),
 			{
 				method: 'POST',
 				values: {
-					ids: persons.map(i => i.id)
+					person_ids: persons.map(i => i.id)
 				}
 		})
 	}

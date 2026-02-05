@@ -40,11 +40,47 @@ export const useMeetingForm = ({
 
 	const onSubmit = useCallback(async (data: MeetingFormValues) => {
 		setIsSubmitting(true)
+
 		try {
-			const result = await meetingApi.createOrUpdate(data)
-			setStatus(prev => [...prev, result])
+			const resultMeeting = await meetingApi.createOrUpdate({
+				id:          data.id,
+				type:        data.type,
+				date:        data.date,
+				date_start:  data.date_start,
+				date_end:    data.date_end,
+				description: data.description,
+			})
+
+			const meetingId = resultMeeting.id || data.id
+
+			if (!meetingId) {
+				throw new Error('Meeting ID not found')
+			}
+
+			let resultPerson = null
+			if (data.persons && data.persons.length > 0) {
+				resultPerson = await meetingApi.syncPerson(meetingId, data.persons)
+			}
+
+			setStatus(prev => [
+				...prev,
+				{
+					type: 'meeting',
+					data: resultMeeting,
+				},
+				...(resultPerson ? [{
+					type: 'persons',
+					data: resultPerson,
+				}] : [])
+			])
+
+			if (resultMeeting.id) {
+				formMethods.setValue('id', resultMeeting.id)
+			}
+
 			setIsSubmitted(true)
 		} catch (error) {
+			console.error('[NOKIA] submit error:', error)
 			setStatus(prev => [...prev, { error }])
 		} finally {
 			setIsSubmitting(false)

@@ -46,8 +46,13 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 
 	useEffect(() => {
 		if (initialData) {
-			Object.entries(initialData).forEach(([key, value]) => {
-				setValue(key as keyof NokiaMeetingApiType, value)
+			Object.entries(initialData).forEach(([key, value]: [keyof NokiaMeetingApiType, any]) => {
+				if (key === 'date') {
+					// @ts-ignore
+					setValue(key, new Date(value * 1000).toISOString().substring(0, 10))
+				} else {
+					setValue(key, value)
+				}
 			})
 		}
 		if (initialPersons) {
