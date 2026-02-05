@@ -1,13 +1,4 @@
-import { FunctionComponent } from 'preact'
-import { PortfolioTag } from 'types'
-import { filterType } from 'components/project/project-tag-gallery/filter-type'
-
-import { useMemo } from 'preact/hooks'
-
-import { ProjectTag } from 'components/project/project-tag'
-import { TextContainer } from 'components/ui/text-container'
-
-const TAG_CATEGORY_MAP = {
+export const TAG_CATEGORY_MAP = {
 	'Размер': [
 		'грандиозный', 'большой', 'нормальный',
 		// 'малый',
@@ -45,56 +36,4 @@ const TAG_CATEGORY_MAP = {
 		'конверсия',
 		// 'качество резюме',
 	]
-} as const
-
-type MappedCategory = {
-	title: string
-	tags: PortfolioTag[]
-}
-
-const ProjectTagCategory: FunctionComponent<{ tags: PortfolioTag[] }> = (props) => {
-	// TODO как сделать категорию тегов ДРУГОЕ?
-	const mappedTags: MappedCategory[] = useMemo(() => {
-		const tagCategories = Object.keys(TAG_CATEGORY_MAP)
-
-		let tmpMappedTags = {}
-		for (const tag of props.tags) {
-			for (const tagCategory of tagCategories) {
-				if (TAG_CATEGORY_MAP[tagCategory].includes(tag.title)) {
-					if (!tmpMappedTags[tagCategory]) {
-						tmpMappedTags[tagCategory] = {
-							title: tagCategory,
-							tags: [],
-						}
-					}
-					tmpMappedTags[tagCategory].tags.push(tag)
-				}
-			}
-		}
-
-		return Object.values(tmpMappedTags)
-	}, [props.tags])
-
-	return mappedTags.map(mappedCategory => (
-		<div className="project-tag__category-group">
-			<div className="project-tag__list">
-				<div className="project-tag__category-name">{mappedCategory.title}</div>
-				{mappedCategory.tags.map(tag => (
-					<ProjectTag filterName={filterType.FILTER_TAG}>{tag.title}</ProjectTag>
-				))}
-			</div>
-		</div>
-	))
-}
-
-type ProjectTagGalleryPropsType = {
-	tags: PortfolioTag[],
-}
-export const ProjectTagGallery: FunctionComponent<ProjectTagGalleryPropsType> = ({ tags }) => {
-	return (
-		<TextContainer className="project-tag">
-			<ProjectTagCategory tags={tags} />
-		</TextContainer>
-	)
-}
-
+} as const;

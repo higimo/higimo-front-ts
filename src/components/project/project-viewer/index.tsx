@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'preact'
-import { filterType } from 'components/project/project-tag-gallery/filter-type'
+import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
 
 import { useRoute } from 'preact-iso'
 import { useProjectViewer } from 'components/project/hooks/useProjectViewer'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { Loading } from 'components/ui/loading'
-import { TextContainer } from 'components/ui/text-container'
 import { OnlyAdmin } from 'components/util/only-admin'
-import { WorkerInput } from 'components/form/project/worker-input'
+import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
 import { ProjectTag } from 'components/project/project-tag'
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+import { TextContainer } from 'components/ui/text-container'
+import { WorkerInput } from 'components/form/project/worker-input'
 
 import { getHumanDate } from 'components/project/utils/getHumanDate'
 import { getProjectText } from 'components/project/utils/getProjectText'
@@ -38,9 +38,7 @@ export const ProjectViewer: FunctionComponent = () => {
 	return (
 		<div className="project-viewer">
 			<TextContainer className="project-viewer__date">
-				<div className="date">
-					{getHumanDate(date)}
-				</div>
+				{getHumanDate(date)}
 			</TextContainer>
 			<TextContainer>
 				<h1>{name}</h1>
@@ -56,22 +54,7 @@ export const ProjectViewer: FunctionComponent = () => {
 					<WorkerInput projectId={curProject.id} />
 				</div>
 			</OnlyAdmin>
-			{!!curProject.credits.length && (
-				<div className="project-viewer__credits">
-					{(curProject.credits || []).map(author => (
-						<div className="project-viewer__person person">
-							<div className="person__name">
-								<MaybeLink isHref={!!author.worker.link?.length} href={author.worker.link}>
-									{author.worker.full_name}
-								</MaybeLink>
-							</div>
-							<div className="person__role">
-								{author.role}
-							</div>
-						</div>
-					))}
-				</div>
-			)}
+			<PortfolioCreditsGallery credits={curProject.credits} />
 			{/* TODO TAGS применить мапинг категоризации тегов */}
 			{!!(curProject.tags || []).length && (
 				<TextContainer className="project-viewer__tags">

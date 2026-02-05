@@ -5,7 +5,7 @@ import { useProject } from 'hook/use-project'
 
 import { ProjectList } from 'components/project/project-list'
 import { TextContainer } from 'components/ui/text-container'
-import { ProjectTagGallery } from 'components/project/project-tag-gallery'
+import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
 import { Loading } from 'components/ui/loading'
 import { NotFoundPage } from 'pages/not-found-page'
 
@@ -37,7 +37,7 @@ export const ProjectIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Сделал</h1>
 			</TextContainer>
-			<ProjectTagGallery tags={tagList} />
+			<ProjectTagGroupGallery tags={tagList} />
 			<ProjectList projectsList={projectList} />
 		</div>
 	)

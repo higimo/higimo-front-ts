@@ -14,7 +14,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/api-route'
-import { filterType } from 'components/project/project-tag-gallery/filter-type'
+import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
 
 import './style.css'
 

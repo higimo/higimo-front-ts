@@ -1,5 +1,5 @@
 import { PortfolioTag, PortfolioProjectType } from 'types'
-import { filterType } from 'components/project/project-tag-gallery/filter-type'
+import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
 
 import { useRoute } from 'preact-iso'
 

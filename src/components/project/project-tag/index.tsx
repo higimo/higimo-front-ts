@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ProjectRoutingFilterNameType } from 'components/project/project-tag-gallery/filter-type'
+import { ProjectRoutingFilterNameType } from 'components/project/project-tag-group-gallery/filter-type'
 
 import httpBuildQuery from 'http-build-query'
 
