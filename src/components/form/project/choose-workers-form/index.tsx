@@ -1,4 +1,4 @@
-import { NewProjectWorkerType } from 'types'
+import { PortfolioWorkerType } from 'types'
 import { FunctionComponent } from 'preact'
 
 import { FieldError, useForm } from 'react-hook-form'
@@ -13,8 +13,8 @@ type FormValues = {
 	roles: Record<string, string> // { [workerId]: role }
 }
 type ChooseWorkersFormPropsType = {
-	workers: NewProjectWorkerType[]
-	onRemoveWorker: (worker: NewProjectWorkerType) => void
+	workers: PortfolioWorkerType[]
+	onRemoveWorker: (worker: PortfolioWorkerType) => void
 	onSubmit: (roles: Record<string, string>) => Promise<boolean>
 }
 export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = ({
@@ -29,7 +29,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 		reset,
 	} = useForm<FormValues>()
 	const [error, setError] = useState<null | string>(null)
-  
+
 	const handleFormSubmit = async (data: FormValues) => {
 		const res = await onSubmit(data.roles)
 		if (res) {
@@ -48,14 +48,14 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 			<span className="error-message">{filerError.message}</span>
 		)
 	}
-  
+
 	return (
 		<form onSubmit={handleSubmit(handleFormSubmit)} className="workers-form">
 			<h3>Добавляемые работники</h3>
 			<p>
 				Нажимай на теги, чтобы удалить лишних. Если добавил — перезагрузи страницу
 			</p>
-			
+
 			{workers.length === 0 ? (
 				<p>Нет выбранных работников</p>
 			) : (
@@ -86,7 +86,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 			{error && (
 				<Message error text={error} />
 			)}
-	
+
 			{workers.length > 0 && (
 				<button type="submit" className="submit-button">
 					Сохранить роли

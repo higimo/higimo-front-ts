@@ -1,4 +1,4 @@
-import { NewProjectWorkerType } from 'types'
+import { PortfolioWorkerType } from 'types'
 import { FunctionComponent } from 'preact'
 import { useMemo } from 'preact/hooks'
 
@@ -7,7 +7,7 @@ import { Tag } from 'components/ui/tag'
 
 type WorkerRoleGroup = {
 	role: string
-	workers: NewProjectWorkerType[]
+	workers: PortfolioWorkerType[]
 }
 
 type WorkerCompanyGroup = {
@@ -16,18 +16,18 @@ type WorkerCompanyGroup = {
 }
 
 type WorkersTreeProps = {
-	workers: NewProjectWorkerType[]
-	onWorkerSelect: (worker: NewProjectWorkerType) => void
+	workers: PortfolioWorkerType[]
+	onWorkerSelect: (worker: PortfolioWorkerType) => void
 }
 
 export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWorkerSelect }) => {
 	const workerTree = useMemo(() => {
 		const workerCompanies = [...new Set(workers.map(i => i.company))]
-		
+
 		return workerCompanies.map(workerCompany => {
 			const companyWorkers = workers.filter(i => i.company === workerCompany)
 			const workerRoles = [...new Set(companyWorkers.map(i => i.role))]
-			
+
 			return {
 				company: workerCompany || 'Без компании',
 				roles: workerRoles.map(workerRole => {
@@ -41,7 +41,7 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 	}, [workers])
 
 	const handleClickWorker = useMemo(
-		() => (worker: NewProjectWorkerType) => {
+		() => (worker: PortfolioWorkerType) => {
 			onWorkerSelect(worker)
 		},
 		[onWorkerSelect]
@@ -57,12 +57,12 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 					{workerTree.map((companyGroup, companyIndex) => (
 						<div key={`company-${companyIndex}`} className="company-group">
 							<div className="company-name">{companyGroup.company}</div>
-							
+
 							<div className="role-groups">
 								{companyGroup.roles.map((roleGroup, roleIndex) => (
 									<div key={`role-${companyIndex}-${roleIndex}`} className="role-group">
 										<div className="role-name">{roleGroup.role}</div>
-										
+
 										<div className="worker-tags">
 											{roleGroup.workers.map(worker => (
 												<Tag

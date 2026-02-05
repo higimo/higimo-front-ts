@@ -1,4 +1,4 @@
-import { NewProjectWorkerType } from 'types'
+import { PortfolioWorkerType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -32,13 +32,13 @@ const onSubmit = values => {
 
 export const WorkerInput = ({ projectId }) => {
 	// TODO: обновить по API v2
-	const [ workers, fetchWorkers ] = useApi<NewProjectWorkerType[]>(API_ROUTE.projectWorker)
-	const [ chooseWorker, setChooseWorker ] = useState<NewProjectWorkerType[]>([])
+	const [ workers, fetchWorkers ] = useApi<PortfolioWorkerType[]>(API_ROUTE.projectWorker)
+	const [ chooseWorker, setChooseWorker ] = useState<PortfolioWorkerType[]>([])
 	const isLoading = useLoadingState([workers.status])
 	const isListEmpty = useEmptyDataState(workers.data)
 
-	const handleClickChose = (worker: NewProjectWorkerType) => setChooseWorker(prev => [...prev, worker])
-	const handleRemoveChose = (worker: NewProjectWorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
+	const handleClickChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => [...prev, worker])
+	const handleRemoveChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
 
 	if (isLoading) {
 		return <Loading />

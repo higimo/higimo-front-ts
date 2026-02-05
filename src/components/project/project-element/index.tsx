@@ -2,14 +2,14 @@ import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { NewProjectType } from 'types'
+import { PortfolioProjectType } from 'types'
 import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-export const ProjectElement: FunctionComponent<NewProjectType> = props => {
+export const ProjectElement: FunctionComponent<PortfolioProjectType> = props => {
 	const link = props.isLink ? props.link : ROUTE_LINKS.projectDetail({
 		vendor: props.vendor.code,
 		project: props.code

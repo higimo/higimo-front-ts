@@ -1,4 +1,4 @@
-import { NewProjectTag, NewProjectType } from 'types'
+import { PortfolioTag, PortfolioProjectType } from 'types'
 import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import { useRoute } from 'preact-iso'
@@ -11,8 +11,8 @@ import { useEmptyDataState } from './use-empty-data-state'
 type UseProjectType = () => {
     isLoading: boolean
     isEmpty: boolean
-    projectList: NewProjectType[]
-    tagList: NewProjectTag[]
+    projectList: PortfolioProjectType[]
+    tagList: PortfolioTag[]
 }
 /**
  * Вернёт список проектов
@@ -20,8 +20,8 @@ type UseProjectType = () => {
 export const useProject: UseProjectType = () => {
 	const { query } = useRoute()
 
-	const [projectListRaw] = useApi<NewProjectType[]>(API_ROUTE.projectProject)
-	const [tagList] = useApi<NewProjectTag[]>(API_ROUTE.projectTags)
+	const [projectListRaw] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProject)
+	const [tagList] = useApi<PortfolioTag[]>(API_ROUTE.projectTags)
 	const isLoading = useLoadingState([projectListRaw.status, tagList.status])
 	const isProjectListEmpty = useEmptyDataState(projectListRaw.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)

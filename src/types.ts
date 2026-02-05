@@ -232,16 +232,16 @@ export type LectionType = {
  * ===================================
  */
 
-export type NewProjectIdsType = {
+export type PortfolioProjectIdsType = {
 	id: number
 	vendor: number
 	code: string
 }
-export type NewProjectTag = {
+export type PortfolioTag = {
 	id: number
 	title: string
 }
-export type NewProjectWorkerType = {
+export type PortfolioWorkerType = {
 	id: number,
 	full_name: string
 	login: string
@@ -250,18 +250,17 @@ export type NewProjectWorkerType = {
 	role: string
 	link?: string
 }
-export type NewProjectCreditsType = {
+export type PortfolioCreditsType = {
 	role: string
-	worker: NewProjectWorkerType
+	worker: PortfolioWorkerType
 }
-export type NewProjectVendorType = {
+export type PortfolioVendorType = {
 	id: number
 	code: string
 	title: string
 }
 // TODO: Вот бы добавить следующий и предыдущий кейс
-// TODO: убрать New
-export type NewProjectType = {
+export type PortfolioProjectType = {
 	id: number
 	vendor_id: number
 	name: string
@@ -269,12 +268,12 @@ export type NewProjectType = {
 	date: string // yyy-mm-dd
 	image: 'png' | 'jpg'
 	cover_size: 'high' | 'big' | 'normal' | 'small'
-	vendor: NewProjectVendorType
-	tags: NewProjectTag[]
+	vendor: PortfolioVendorType
+	tags: PortfolioTag[]
 	isLink: boolean
 	link: null
 
-	credits?: NewProjectCreditsType[] // TODO: добавить бы это по-другому
+	credits?: PortfolioCreditsType[] // TODO: добавить бы это по-другому
 
 	description?: string // TODO: добавить бы это по-другому
 	text?: string // TODO: добавить бы это по-другому

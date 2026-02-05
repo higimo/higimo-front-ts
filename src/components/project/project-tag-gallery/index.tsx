@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NewProjectTag, ProjectFullInfoType } from 'types'
+import { PortfolioTag, ProjectFullInfoType } from 'types'
 import { filterType } from 'components/project/project-tag-gallery/filter-type'
 
 import { useMemo } from 'preact/hooks'
@@ -13,7 +13,7 @@ const TAG_CATEGORY_MAP = {
 		// 'малый',
 	],
 	'Роль': [
-		'менеджмент', 'дизайнер', 'разработчик', 'верстальщик', 'автор', 'музыкант', 
+		'менеджмент', 'дизайнер', 'разработчик', 'верстальщик', 'автор', 'музыкант',
 	],
 	'Агентство': [
 		'Студия Лебедева', 'Эртоп', 'хомяк', 'Рамблер', 'SuperJob', 'Пересечения',
@@ -30,7 +30,7 @@ const TAG_CATEGORY_MAP = {
 	],
 	// 'Технология': [
 	//	 'Битрикс', 'имприматур', 'электропочта', 'фронтенд', 'Реакт', 'бекенд', 'фуллстек',
-	//	 'физическое устройство', 'Вайзер', 'Вордпресс', 'Телеграм', 'Википедия', 'ВК', 
+	//	 'физическое устройство', 'Вайзер', 'Вордпресс', 'Телеграм', 'Википедия', 'ВК',
 	// ],
 	'Продукт': [
 		// 'A/B-тест',
@@ -49,10 +49,10 @@ const TAG_CATEGORY_MAP = {
 
 type MappedCategory = {
 	title: string
-	tags: NewProjectTag[]
+	tags: PortfolioTag[]
 }
 
-const ProjectTagCategory: FunctionComponent<{ tags: NewProjectTag[] }> = (props) => {
+const ProjectTagCategory: FunctionComponent<{ tags: PortfolioTag[] }> = (props) => {
 	// TODO как сделать категорию тегов ДРУГОЕ?
 	const mappedTags: MappedCategory[] = useMemo(() => {
 		const tagCategories = Object.keys(TAG_CATEGORY_MAP)
@@ -74,7 +74,7 @@ const ProjectTagCategory: FunctionComponent<{ tags: NewProjectTag[] }> = (props)
 
 		return Object.values(tmpMappedTags)
 	}, [props.tags])
-	
+
 	return mappedTags.map(mappedCategory => (
 		<div className="project-tag__category-group">
 			<div className="project-tag__list">
@@ -88,7 +88,7 @@ const ProjectTagCategory: FunctionComponent<{ tags: NewProjectTag[] }> = (props)
 }
 
 type ProjectTagGalleryPropsType = {
-	tags: NewProjectTag[],
+	tags: PortfolioTag[],
 }
 export const ProjectTagGallery: FunctionComponent<ProjectTagGalleryPropsType> = ({ tags }) => {
 	return (
