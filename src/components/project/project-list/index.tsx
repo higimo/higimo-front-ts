@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PortfolioProjectType, ProjectFullInfoType } from 'types'
+import { PortfolioProjectType } from 'types'
 
 import { ProjectElement } from 'components/project/project-element'
 

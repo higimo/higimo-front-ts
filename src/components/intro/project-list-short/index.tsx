@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PortfolioProjectType, PortfolioProjectIdsType } from 'types'
+import { PortfolioProjectType, PortfolioIdsType } from 'types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -19,7 +19,7 @@ import { filterType } from 'components/project/project-tag-gallery/filter-type'
 import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
-	const [ projectIds ] = useApi<PortfolioProjectIdsType[]>(API_ROUTE.projectIds) // TODO: заменить на meta.count
+	const [ projectIds ] = useApi<PortfolioIdsType[]>(API_ROUTE.projectIds) // TODO: заменить на meta.count
 	const [ highProjectList ] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProject, {
 		filter: { cover_size: 'high'},
 		limit: 6

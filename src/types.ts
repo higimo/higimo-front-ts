@@ -232,7 +232,7 @@ export type LectionType = {
  * ===================================
  */
 
-export type PortfolioProjectIdsType = {
+export type PortfolioIdsType = {
 	id: number
 	vendor: number
 	code: string
@@ -258,25 +258,28 @@ export type PortfolioVendorType = {
 	id: number
 	code: string
 	title: string
+	description?: string
 }
-// TODO: Вот бы добавить следующий и предыдущий кейс
-export type PortfolioProjectType = {
+// TODO: бекенд Вот бы добавить следующий и предыдущий кейс
+
+export type PortfolioProjectApiType = {
 	id: number
 	vendor_id: number
+	vendor: PortfolioVendorType
 	name: string
 	code: string
 	date: string // yyy-mm-dd
 	image: 'png' | 'jpg'
 	cover_size: 'high' | 'big' | 'normal' | 'small'
-	vendor: PortfolioVendorType
-	tags: PortfolioTag[]
 	isLink: boolean
 	link: null
-
-	credits?: PortfolioCreditsType[] // TODO: добавить бы это по-другому
-
-	description?: string // TODO: добавить бы это по-другому
-	text?: string // TODO: добавить бы это по-другому
+}
+// TODO: отделить тип для сингл страницы от остальных
+export type PortfolioProjectType = PortfolioProjectApiType & {
+	tags: PortfolioTag[]
+	credits?: PortfolioCreditsType[]
+	description?: string
+	text?: string
 } & ({ isLink: false } | { isLink: true, link: string })
 
 
