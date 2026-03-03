@@ -1,12 +1,13 @@
 import { PortfolioTag, PortfolioProjectType } from 'types'
+
 import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
 
+import { useEmptyDataState } from './use-empty-data-state'
+import { useLoadingState } from './use-loading-state'
 import { useRoute } from 'preact-iso'
+import useApi from './use-api'
 
 import { API_ROUTE } from 'dic/api-route'
-import useApi from './use-api'
-import { useLoadingState } from './use-loading-state'
-import { useEmptyDataState } from './use-empty-data-state'
 
 type UseProjectType = () => {
     isLoading: boolean
@@ -26,6 +27,7 @@ export const useProject: UseProjectType = () => {
 	const isProjectListEmpty = useEmptyDataState(projectListRaw.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
+	// TODO: useTag применить
 	let projectList = projectListRaw.data
 	if (query[filterType.FILTER_TAG]) {
 		projectList = projectListRaw.data.filter(projectItem => {
