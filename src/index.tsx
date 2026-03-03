@@ -15,6 +15,7 @@ import { IndexPage } from 'pages/index-page'
 
 import { ProjectIndexPage } from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
+import { ProjectTablePage } from 'pages/project/project-table-page'
 
 import { ClockPage } from 'pages/test-page/tools/clock-page'
 import { ComojiPage } from 'pages/test-page/tools/comoji-page'
@@ -92,6 +93,10 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { ProjectTest } from 'components/project/project-test'
+
+// TODO: проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
+
 
 /* TODO: внедрять правильную ширину */
 // --factoid-gap: 32px;
@@ -229,7 +234,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.login} component={LoginPage} />
 								<PrivateRoute path={ROUTE_LINKS.adminIndex} component={AdminPage} />
 
-								<Route path={ROUTE_LINKS.typo} component={TestPage} />
+								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 								{/* Портфолио */}
 								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
@@ -281,27 +286,25 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
 
 								{/* <Route path="/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} /> */}
-								<Route path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
+								<PrivateRoute path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
 								{/* TODO починить его, полностью не работает теперь */}
 								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
 								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
 								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />
 								<Route path={ROUTE_LINKS.petProject} component={PetProjectPage} />
-								<Route path={ROUTE_LINKS.petProjectCreate} component={PetProjectFormPage} />
+								<PrivateRoute path={ROUTE_LINKS.petProjectCreate} component={PetProjectFormPage} />
 								<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
 
 
 								<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeople} component={NokiaPeopleListPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaMeetingFormPage} />
-								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaMeetingFormPage} />
-								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleForm} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
-								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
+								{/* TODO: нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
