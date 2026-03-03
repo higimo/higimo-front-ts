@@ -266,7 +266,7 @@ export type PortfolioProjectApiType = {
 	image: 'png' | 'jpg'
 	cover_size: 'high' | 'big' | 'normal' | 'small'
 	isLink: boolean
-	link: null
+	link?: string
 }
 // TODO: отделить тип для сингл страницы от остальных
 export type PortfolioProjectType = PortfolioProjectApiType & {
@@ -274,7 +274,7 @@ export type PortfolioProjectType = PortfolioProjectApiType & {
 	credits?: PortfolioCreditsType[]
 	description?: string
 	text?: string
-} & ({ isLink: false } | { isLink: true, link: string })
+}
 
 
 
