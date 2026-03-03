@@ -3,17 +3,16 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 import { useProject } from 'hook/use-project'
 
-import { ProjectList } from 'components/project/project-list'
-import { TextContainer } from 'components/ui/text-container'
-import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
 import { Loading } from 'components/ui/loading'
+import { ProjectList } from 'components/project/project-list'
+import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
+import { TextContainer } from 'components/ui/text-container'
+
 import { NotFoundPage } from 'pages/not-found-page'
 
 // TODO: Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
 // TODO: Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
-
 // TODO: показать график когда публиковался на горизонтальном таймлайне, просто названиями
-
 export const ProjectIndexPage: FunctionComponent = () => {
 	const {
 		isLoading,
@@ -27,7 +26,6 @@ export const ProjectIndexPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isEmpty) {
 		return <NotFoundPage />
 	}
