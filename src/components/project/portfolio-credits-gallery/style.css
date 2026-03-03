@@ -30,3 +30,39 @@
 	font-size: 85%;
 }
 
+.credits {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	justify-content: center;
+	background: rgba(245, 220, 131, 0.1);
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.credits:before {
+	content: 'В главных ролях:';
+	width: 100%;
+	margin-bottom: 1rem;
+	padding-left: calc((100% - 45rem) / 2);
+	padding-right: calc((100% - 45rem) / 2);
+}
+
+.credits__columns {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.credits__columns:first-child {
+	margin-left: 0;
+}
+
+.credits__columns:last-child {
+	margin-right: 0;
+}
+.credits__item {
+	flex: 1 1 200px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+

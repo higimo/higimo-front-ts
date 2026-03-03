@@ -1,0 +1,98 @@
+.portfolio-table-container {
+	width: 100%;
+	margin: 12px auto;
+	overflow-x: auto;
+}
+
+.portfolio-table-empty {
+	padding: 32px;
+	text-align: center;
+	color: var(--text-secondary, #666);
+	font-size: 14px;
+	background-color: var(--background-secondary, #fafafa);
+	border-radius: 8px;
+	border: 1px dashed var(--border-color, #e0e0e0);
+}
+
+.portfolio-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+	min-width: 600px;
+}
+
+.portfolio-table-column-header {
+	padding: 12px 8px;
+	text-align: left;
+	font-weight: 600;
+	min-width: 90px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: relative;
+}
+
+.portfolio-table-row {
+	background-color: var(--background-row, #ffffff);
+	border-bottom: 1px solid var(--border-color, #e0e0e0);
+	transition: background-color 0.2s ease;
+}
+
+.portfolio-table-row:hover {
+	background-color: var(--background-row-hover, #f8f8f8);
+}
+
+.portfolio-table-cell {
+	padding: 6px 8px;
+	vertical-align: top;
+	word-break: break-word;
+	max-width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.portfolio-table-cell:last-child {
+	border-right: none;
+}
+
+.portfolio-table-cell--string {
+	font-size: 12px;
+}
+
+.portfolio-table-cell--key-tags {
+	font-size: 10px;
+	line-height: 1;
+}
+
+.portfolio-table-cell--fail {
+	background-color: #E4717A59;
+}
+
+.portfolio-table-cell--pass {
+	background-color: #a9e47159;
+}
+
+.portfolio-table-cell--key-name {
+	font-size: 16px;
+	min-width: 220px;
+}
+.portfolio-table-cell--key-tags {
+	min-width: 220px;
+}
+
+.portfolio-table-cell--key-announceText {
+	min-width: 400px;
+}
+.portfolio-table-cell--key-credits {
+	font-size: 10px;
+	min-width: 270px;
+}
+.portfolio-table-cell--key-task {
+	min-width: 200px;
+}
+.portfolio-table-cell--show {
+	background-color: #80e40f8e;
+}
+.portfolio-table-cell--hide {
+	background-color: #c20010a2;
+}

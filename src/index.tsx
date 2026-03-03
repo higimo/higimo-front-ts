@@ -233,6 +233,8 @@ export function App() {
 
 								{/* Портфолио */}
 								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
+								<Route path={ROUTE_LINKS.projectTest} component={ProjectTest} />
+								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
 								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 
 								{/* Список списков */}

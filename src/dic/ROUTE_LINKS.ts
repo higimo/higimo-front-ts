@@ -4,6 +4,8 @@ export const generateLink = <T extends string>(link: string) => (params: Record<
 
 const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectIndex: '/project/',
+	projectTable: '/project/table',
+	projectTest: '/project/test',
 	projectDetail_CONST: '/project/:vendor/:project/',
 	projectDetail: generateLink<'vendor' | 'project'>('/project/:vendor/:project/'),
 })

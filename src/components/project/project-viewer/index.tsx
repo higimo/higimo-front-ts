@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'preact'
-import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
 
 import { useRoute } from 'preact-iso'
 import { useProjectViewer } from 'components/project/hooks/useProjectViewer'
@@ -8,7 +7,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { Loading } from 'components/ui/loading'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
-import { ProjectTag } from 'components/project/project-tag'
+import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
 import { TextContainer } from 'components/ui/text-container'
 import { WorkerInput } from 'components/form/project/worker-input'
 
@@ -56,15 +55,7 @@ export const ProjectViewer: FunctionComponent = () => {
 			</OnlyAdmin>
 			<PortfolioCreditsGallery credits={curProject.credits} />
 			{/* TODO TAGS применить мапинг категоризации тегов */}
-			{!!(curProject.tags || []).length && (
-				<TextContainer className="project-viewer__tags">
-					{(curProject.tags || []).map(tag => (
-						<ProjectTag filterName={filterType.FILTER_TAG}>
-							{tag.title}
-						</ProjectTag>
-					))}
-				</TextContainer>
-			)}
+			<PortfolioTagsGallery tags={curProject.tags || []} />
 		</div>
 	)
 }

@@ -29,6 +29,7 @@ export const API_ROUTE = {
 	projectWorker: '/api/v2/project/authors',
 	projectVendor: '/api/v2/project/vendor',
 	projectProject: '/api/v2/project/project',
+	projectProjectTable: '/api/v2/project/project/table',
 	projectTags: '/api/v2/project/tags',
 	projectSingle: generateLink<'vendorCode' | 'projectCode'>('/api/v2/project/:vendorCode/:projectCode'),
 	attachAuthor: '/api/v2/project/worker', // post
