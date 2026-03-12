@@ -1,0 +1,61 @@
+.laurel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+	margin: 20px;
+	padding: 10px 20px;
+}
+
+.laurel__leaf {
+
+}
+
+.laurel__leaf--left {
+}
+
+.laurel__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+.laurel__title {
+	font-size: 24px;
+	font-weight: 700;
+	color: #000;
+	text-transform: none;
+	margin: 0;
+}
+
+.factoids {
+	display: flex;
+	gap: 40px;
+	margin: 0;
+	padding: 0;
+}
+
+.factoid {
+	text-align: center;
+}
+
+.factoid__number {
+	font-size: 40px;
+	font-weight: 700;
+	color: #000;
+	line-height: 1.2;
+}
+
+.factoid__caption {
+	font-size: 14px;
+	color: #000;
+	text-transform: none;
+}
+
+.examples {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}

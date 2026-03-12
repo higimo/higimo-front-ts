@@ -93,8 +93,9 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { ProjectTest } from 'components/project/project-test'
+import { ProjectTypography } from 'components/project/project-test'
 import { ResumeTechProductPage } from 'pages/resume/resume-tech-product'
+import { PortfolioSandbox } from 'components/project/portfolio-sandbox'
 
 // TODO: проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
 
@@ -239,7 +240,8 @@ export function App() {
 
 								{/* Портфолио */}
 								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
-								<Route path={ROUTE_LINKS.projectTest} component={ProjectTest} />
+								<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />
+								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
 								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
 								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 

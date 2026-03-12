@@ -937,6 +937,44 @@ export const ProjectTypographicTest = () => {
 
 
 
+
+			<TypographicHeader>ТГ чаты</TypographicHeader>
+			{/* TODO: убрать tg-chat__messages */}
+			<div className="tg-chat">
+				<div className="tg-chat__messages">
+					<div className="tg-message tg-message--left">
+						Привет! Я администратор. Выберите опцию из меню ниже 👇
+						<div className="tg-message__time">14:30</div>
+					</div>
+					<div className="tg-chat__keyboard tg-chat__keyboard--inline">
+						<div className="keyboard-row">
+							<div className="keyboard-btn">Мои заказы</div>
+							<div className="keyboard-btn">Избранное</div>
+						</div>
+					</div>
+
+					<div className="tg-message tg-message--right">
+						Здравствуйте!
+						<div className="tg-message__time">14:31</div>
+					</div>
+
+					<div className="tg-message tg-message--system">
+						Администратор обновил клавиатуру
+					</div>
+				</div>
+
+				<div className="tg-chat__input">
+					<div className="tg-chat__keyboard">
+						<div className="keyboard-row">
+							<div className="keyboard-btn">Мои заказы</div>
+							<div className="keyboard-btn">Избранное</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
 		</Fragment>
 	)
 }

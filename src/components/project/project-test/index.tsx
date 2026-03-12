@@ -57,7 +57,7 @@ const tags: PortfolioTag[] = [
 	{ id: 1, title: 'длинный тег в несколько слов', },
 ]
 
-export const ProjectTest: FunctionComponent = () => {
+export const ProjectTypography: FunctionComponent = () => {
 	usePageTitle('Тестовая страница')
 
 	return (
