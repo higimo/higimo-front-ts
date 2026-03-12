@@ -6,6 +6,8 @@ import sendRequest from 'utils/send-request'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/api-route'
 
+import { signal } from '@preact/signals';
+
 export const AUTH_STATUS_DIC = {
 	INIT:    'INIT',
 	LOADING: 'LOADING',
@@ -13,42 +15,18 @@ export const AUTH_STATUS_DIC = {
 	ERROR:   'ERROR',
 } as const
 
-type AuthStatus = typeof AUTH_STATUS_DIC[keyof typeof AUTH_STATUS_DIC]
-
 interface AuthState {
-	status: AuthStatus
+	status: typeof AUTH_STATUS_DIC[keyof typeof AUTH_STATUS_DIC]
 	isAuth: boolean
 }
 
-type AuthAction =
-	| { type: 'INIT' }
-	| { type: 'LOADING' }
-	| { type: 'LOADED'; isAuth: boolean }
-	| { type: 'ERROR';  isAuth: boolean }
-
-/**
- * Замыкание, чтобы кешировать запрос
- */
-let cachedAuthState: AuthState = {
+const authSignal = signal<AuthState>({
 	status: AUTH_STATUS_DIC.INIT,
 	isAuth: false,
-}
+});
 
-const authReducer = (state: AuthState, action: AuthAction): AuthState => {
-	switch (action.type) {
-		case AUTH_STATUS_DIC.INIT:
-			return { ...state, status: 'INIT' }
-		case AUTH_STATUS_DIC.LOADING:
-			return { ...state, status: 'LOADING' }
-		case AUTH_STATUS_DIC.LOADED:
-			return { ...state, status: 'LOADED', isAuth: action.isAuth }
-		case AUTH_STATUS_DIC.ERROR:
-			return { ...state, status: 'LOADED', isAuth: action.isAuth }
-		default:
-			const exhaustiveCheck: never = action
-      		throw new Error(`Unhandled action type: ${exhaustiveCheck}`)
-	}
-}
+// Флаг для предотвращения множественных запросов
+let requestInProgress = false;
 
 interface UseAuthReturn {
 	isAuth: boolean
@@ -58,33 +36,32 @@ interface UseAuthReturn {
 }
 export const useAuth = (): UseAuthReturn => {
 	const { route, path } = useLocation()
+
 	const redirectToLogin = useCallback(() => {
 		route(`${ROUTE_LINKS.login}?backpath=${path}`, true)
 	}, [path])
 
-	const [state, dispatch] = useReducer(authReducer, cachedAuthState)
-
 	useEffect(() => {
-		if (state.status !== AUTH_STATUS_DIC.INIT) return
+		if (authSignal.value.status !== AUTH_STATUS_DIC.INIT || requestInProgress) return;
 
-		cachedAuthState.status = AUTH_STATUS_DIC.LOADING
-		dispatch({ type: AUTH_STATUS_DIC.LOADING })
+		requestInProgress = true;
+		authSignal.value = { ...authSignal.value, status: AUTH_STATUS_DIC.LOADING };
 
 		sendRequest(API_ROUTE.authMe)
 			.then(() => {
-				cachedAuthState = { isAuth: true, status: AUTH_STATUS_DIC.LOADED}
-				dispatch({ type: AUTH_STATUS_DIC.LOADED, isAuth: true })
+				requestInProgress = false;
+				authSignal.value = { status: AUTH_STATUS_DIC.LOADED, isAuth: true };
 			})
 			.catch(() => {
-				cachedAuthState = { isAuth: false, status: AUTH_STATUS_DIC.LOADED}
-				dispatch({ type: AUTH_STATUS_DIC.LOADED, isAuth: false })
-			})
-	}, [state, dispatch])
+				requestInProgress = false;
+				authSignal.value = { status: AUTH_STATUS_DIC.LOADED, isAuth: false };
+			});
+	}, []) // Должен выполняться однажды при монтировании
 
 	return {
-		isAuth: state.isAuth,
-		isAuthLoaded: state.status === AUTH_STATUS_DIC.LOADED,
+		get isAuth() { return authSignal.value.isAuth; },
+		get isAuthLoaded() { return authSignal.value.status === AUTH_STATUS_DIC.LOADED; },
 		redirectToLogin,
 		routeTo: route,
-	}
+	};
 }
