@@ -18,6 +18,7 @@ export const ResumePage: FunctionComponent = () => {
 				<h1>Моё резюме</h1>
 				<ul>
 					<li><a href={ROUTE_LINKS.resumeProduct}>Резюме продакт-менеджера</a></li>
+					<li><a href={ROUTE_LINKS.resumeTechProduct}>Резюме tech продакт-менеджера</a></li>
 					{/* <li><a href={ROUTE_LINKS.resumeProductLegacy}>Резюме продакт-менеджера</a></li> */}
 					<li><a href={ROUTE_LINKS.resumeHead}>Резюме хеда продукта</a></li>
 				</ul>

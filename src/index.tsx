@@ -94,6 +94,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 import { ProjectTest } from 'components/project/project-test'
+import { ResumeTechProductPage } from 'pages/resume/resume-tech-product'
 
 // TODO: проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
 
@@ -272,6 +273,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.resumeHead} component={ResumeHeadPage} />
 								<Route path={ROUTE_LINKS.resumeProductLegacy} component={ResumeProductPage} />
 								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProduct2Page} />
+								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
 								<Route path={ROUTE_LINKS.thingsIndex} component={ThingsIndexPage} />
 								<Route path={ROUTE_LINKS.thingsNotebook} component={ThingsNotebookPage} />

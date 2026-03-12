@@ -1,0 +1,70 @@
+.resume-tech-product-page {
+	font-family: Alegreya Sans, sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	margin: 32px 0;
+}
+
+.resume-tech-product-page .resume-avatar {
+	float: right;
+	max-width: 146px;
+	border-radius: 50%;
+}
+
+.resume-tech-product-page .text-container {
+	max-width: 21cm;
+	margin-bottom: 8px;
+}
+
+.resume-page strong {
+	background: none;
+	font-weight: 600;
+}
+
+.resume-tech-product-page p {
+	margin: 0;
+}
+
+.resume-tech-product-page h2 {
+	margin: 0;
+}
+
+.resume-tech-product-page p:not(:first-of-type) {
+	margin-top: 6px;
+}
+
+.resume-tech-product-page a {
+	color: #0154ac;
+	text-decoration: none;
+	border-bottom: 1px solid #0154ac59;
+}
+
+.resume-tech-product-page .contact {
+	display: flex;
+	gap: 16px;
+}
+
+.resume-tech-product-page .company__meta {
+	font-size: 22px;
+	line-height: 1;
+	display: flex;
+	gap: 12px;
+	margin-bottom: 6px;
+}
+
+.resume-tech-product-page .company__staff {
+	display: flex;
+	gap: 4px;
+}
+
+.resume-tech-product-page .company__timing {
+	font-size: 16px;
+	display: flex;
+	gap: 4px;
+	align-items: flex-end;
+}
+
+.resume-tech-product-page .expirience__element:not(:first-of-type) {
+	margin-top: 12px;
+}
+

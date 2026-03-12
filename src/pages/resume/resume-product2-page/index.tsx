@@ -124,6 +124,25 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 					<div class="expirience__element company">
 						<div className="company__meta">
 							<div className="company__staff">
+								<div class="company__profession">Lead frontend</div>
+								<div className="company__name"><a href="https://daily.afisha.ru">Афиша Дейли</a> (СБЕР)</div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">ноябрь 2020 — февраль 2022</div>
+								<div class="company__time"></div>
+							</div>
+						</div>
+						<p>
+							Встраиваемый виджет e-commerce для площадок Рамблер-контура. Заново написанный сайт Афиши Дейли на современном стеке, для оптимизации найма и поддержки СМИ 5М MAU. Организовывал процессы и разрабатывал, для ведения своей зоны ответственности.
+						</p>
+						<p>
+							<strong>Ключевые достижения</strong>: реализация дизайн-системы для ускорения T2M, реализация архитектуры и системы click-flow для аналитики пользовательского поведения, для оптимизации пользовательских путей и тренировки ML.
+						</p>
+					</div>
+
+					<div class="expirience__element company">
+						<div className="company__meta">
+							<div className="company__staff">
 								<div class="company__profession">Менеджер продукта</div>
 								<div class="company__name"><a href="https://artlebedev.ru">Студия Лебедева</a></div>
 							</div>
@@ -150,7 +169,7 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 							</div>
 						</div>
 						<p className="small-text">
-							<a href="https://daily.afisha.ru">Афиша Дейли</a> (дочка СБЕРа), <a href="https://artlebedev.ru">Студия Артемия Лебедева</a>, <a href="https://ispring.ru">iSpring</a>. На технологиях React, Битрикс, Laravel.
+							<a href="https://r-top.ru">R-top</a>, <a href="https://citronium.ru">Citronium</a> <a href="https://ispring.ru">iSpring</a>. На технологиях React, Битрикс, Laravel.
 						</p>
 					</div>
 				</div>
