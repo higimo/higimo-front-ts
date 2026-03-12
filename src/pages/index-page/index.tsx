@@ -5,6 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { AboutInvite } from 'components/intro/about-invite'
 import { BlogInvite } from 'components/intro/blog-invite'
 import { ContactList } from 'components/intro/contact-list'
+import { FunnyIntro } from 'components/intro/funny-invite'
 import { LastUpdates } from 'components/intro/last-updates'
 import { LogismSingle } from 'components/intro/logism-single'
 import { LookedThis } from 'components/intro/looked-this'
@@ -13,7 +14,6 @@ import { ProjectListShort } from 'components/intro/project-list-short'
 import { ShareKnowledge } from 'components/intro/share-knowledge'
 import { ToolsIntro } from 'components/intro/tools-intro'
 import { TravelInvite } from 'components/intro/travel-invite'
-import { FunnyIntro } from 'components/intro/funny-invite'
 
 export const IndexPage: FunctionComponent = () => {
 	usePageTitle('Менеджер продукта — higimo') // higimo — программист на Java Script
@@ -23,7 +23,6 @@ export const IndexPage: FunctionComponent = () => {
 		<LastUpdates />,
 		<ProjectListShort />,
 		<ContactList />,
-		// <OnlyAdmin><RomaSchool /></OnlyAdmin>,
 		<ShareKnowledge />,
 		<BlogInvite />,
 		<TravelInvite />,
@@ -33,6 +32,5 @@ export const IndexPage: FunctionComponent = () => {
 		<LookedThis />,
 		<LogismSingle />,
 		// <OnlyAdmin><DonatIntro /></OnlyAdmin>,
-		// <OnlyAdmin><NokiaInto /></OnlyAdmin>,
 	]
 }

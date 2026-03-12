@@ -13,7 +13,7 @@ export const DonatIntro: FunctionComponent = () => (
 		<PrecentationContainer>
 			<TextContainer>
 				<div className="donat-intro">
-					Если вам нравится то, чем я занимаюсь, лучшей благодарностью будет — <a href={ROUTE_LINKS.TODO}>перевести мне деньги</a>.
+					В благодарность, мне можно <a href={ROUTE_LINKS.TODO}>закинуть донат на кофе</a>
 				</div>
 			</TextContainer>
 		</PrecentationContainer>
