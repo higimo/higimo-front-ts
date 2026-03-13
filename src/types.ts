@@ -1,3 +1,4 @@
+// TODO: перенести в src/api-types
 export type HigimoServerResponse = any[]
 
 export type AccordType = {
