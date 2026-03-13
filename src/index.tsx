@@ -23,8 +23,6 @@ import { DemagogPage } from 'pages/test-page/tools/demagog-page'
 import { EmailerPage } from 'pages/test-page/tools/emailer-page'
 import { FaqListPage } from 'pages/test-page/tools/faq/faq-list-page'
 import { FaqSinglePage } from 'pages/test-page/tools/faq/faq-single-page'
-import { FeedbackIndexPage } from 'pages/test-page/tools/feedback/feedback-page'
-import { FeedbackSinglePage } from 'pages/test-page/tools/feedback/feedback-single-page'
 import { MagicBallPage } from 'pages/test-page/tools/magic-ball-page'
 import { ObuchenieListPage } from 'pages/test-page/tools/obuchenie/obuchenie-list-page'
 import { ObuchenieSinglePage } from 'pages/test-page/tools/obuchenie/obuchenie-single-page'
@@ -260,8 +258,6 @@ export function App() {
 								<Route path={ROUTE_LINKS.clock} component={ClockPage} />
 								<Route path={ROUTE_LINKS.faqIndex} component={FaqListPage} />
 								<Route path={ROUTE_LINKS.faqDetail_CONST} component={FaqSinglePage} />
-								<Route path={ROUTE_LINKS.feedbackIndex} component={FeedbackIndexPage} />
-								<Route path={ROUTE_LINKS.feedbackDetail_CONST} component={FeedbackSinglePage} />
 								<Route path={ROUTE_LINKS.learningIndex} component={ObuchenieListPage} />
 								<Route path={ROUTE_LINKS.learningDetail_CONST} component={ObuchenieSinglePage} />
 

@@ -11,11 +11,12 @@ type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS
 	| typeof ROUTE_LINKS['listListEdit'] | typeof ROUTE_LINKS['listListEdit_CONST']
 	| typeof ROUTE_LINKS['toolVkAlbumSingle'] | typeof ROUTE_LINKS['toolVkAlbumSingle_CONST']
 	| typeof ROUTE_LINKS['learningDetail'] | typeof ROUTE_LINKS['learningDetail_CONST']
-	| typeof ROUTE_LINKS['feedbackDetail'] | typeof ROUTE_LINKS['feedbackDetail_CONST']
 	| typeof ROUTE_LINKS['faqDetail'] | typeof ROUTE_LINKS['faqDetail_CONST']
 	| typeof ROUTE_LINKS['tourismNashe_CONST'] | typeof ROUTE_LINKS['petProjectEdit_CONST']
 	| typeof ROUTE_LINKS['cinemaScriptDetail'] | typeof ROUTE_LINKS['login'] | typeof ROUTE_LINKS['adminIndex']
 	| typeof ROUTE_LINKS['typo'] | typeof ROUTE_LINKS['TODO']
+	| typeof ROUTE_LINKS['projectTable'] | typeof ROUTE_LINKS['projectTest'] | typeof ROUTE_LINKS['projectSandbox']
+
 type RouteType = Exclude<typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS], ExcludeRouteType>
 
 export const globalRouter: Record<RouteType, string> = {
@@ -63,6 +64,7 @@ export const globalRouter: Record<RouteType, string> = {
 
 	[ROUTE_LINKS.resumeIndex]: 'ТУДУ',
 	[ROUTE_LINKS.resumeHead]: 'ТУДУ',
+	[ROUTE_LINKS.resumeTechProduct]: 'ТУДУ',
 	[ROUTE_LINKS.resumeProduct]: 'ТУДУ',
 	[ROUTE_LINKS.resumeProductLegacy]: 'ТУДУ',
 
@@ -74,7 +76,6 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.igLink]: 'ТУДУ',
 
 	[ROUTE_LINKS.learningIndex]: 'ТУДУ',
-	[ROUTE_LINKS.feedbackIndex]: 'ТУДУ',
 	[ROUTE_LINKS.logism]: 'ТУДУ',
 	[ROUTE_LINKS.demagog]: 'ТУДУ',
 	[ROUTE_LINKS.clock]: 'ТУДУ',

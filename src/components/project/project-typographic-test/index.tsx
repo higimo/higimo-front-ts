@@ -139,6 +139,7 @@ export const ProjectTypographicTest = () => {
 					Обычный текст <em>курсивный текст</em>.
 				</p>
 				<p>
+					{/* @ts-ignore */}
 					Обычный текст <strike>strike текст</strike>.
 				</p>
 			</div>

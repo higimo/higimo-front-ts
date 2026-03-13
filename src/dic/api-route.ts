@@ -16,8 +16,6 @@ export const API_ROUTE = {
 
 	faq: '/api/v2/faq',
 	faqSingle: generateLink<'idcode'>('/api/v2/faq/:idcode'),
-	feedback: '/api/v2/feedback',
-	feedbackBlock: generateLink<'idcode'>('/api/v2/feedback/:idcode'),
 	link: '/api/v2/links',
 	pron: '/api/v2/pron',
 

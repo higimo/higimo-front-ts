@@ -126,16 +126,9 @@ const ROUTE_SHARE_KNOWLEDGE_LINKS = Object.freeze({
 	learningDetail: generateLink<'idcode'>('/obuchenie/:idcode/'),
 })
 
-const ROUTE_FEEDBACK_LINKS = Object.freeze({
-	feedbackIndex: '/feedback/',
-	feedbackDetail_CONST: '/feedback/:idcode/',
-	feedbackDetail: generateLink<'idcode'>('/feedback/:idcode/'),
-})
-
 // Инфосервисы
 const ROUTE_INFO_SERVICE_LINKS = Object.freeze({
 	...ROUTE_SHARE_KNOWLEDGE_LINKS,
-	...ROUTE_FEEDBACK_LINKS,
 	logism: '/logism/',
 	demagog: '/demagog/',
 	clock: '/clock/',

@@ -44,11 +44,6 @@ export const aboutInviteList: AboutDataType[] = [
 		description: "Книг многовато, чтобы случайно не купить повтор — переписал их"
 	},
 	{
-		name: 'Багрепорты',
-		link: ROUTE_LINKS.feedbackIndex,
-		description: 'Багрепорты, чтобы показать безболезненность и необходимость обратной связи. С ошибками не стоит мириться — о них стоит говорить.'
-	},
-	{
 		name: "Оценка городов",
 		link: ROUTE_LINKS.tourismCityIndex,
 		description: "Города где был, оцениваю по собственной системе"
