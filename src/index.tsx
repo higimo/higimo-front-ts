@@ -1,8 +1,8 @@
 import { render } from 'preact'
 import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso'
 
-import { Header } from 'components/ui/header/Header'
 import { Footer } from 'components/ui/footer'
+import { Header } from 'components/ui/header/Header'
 
 import { GlobalProvider } from './context/global'
 import { VkContextProvider } from './context/vk'
@@ -13,9 +13,11 @@ import { PrivateRoute } from 'components/util/private-route/PrivateRoute'
 
 import { IndexPage } from 'pages/index-page'
 
+import { PortfolioSandbox } from 'components/project/portfolio-sandbox'
 import { ProjectIndexPage } from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
 import { ProjectTablePage } from 'pages/project/project-table-page'
+import { ProjectTypography } from 'components/project/project-test'
 
 import { ClockPage } from 'pages/test-page/tools/clock-page'
 import { ComojiPage } from 'pages/test-page/tools/comoji-page'
@@ -50,8 +52,8 @@ import { ListListFormPage } from 'pages/tool/list-list-form-page'
 import { ListListIndexPage } from 'pages/tool/list-list-index-page'
 
 import { NokiaAddPersonPage } from 'pages/nokia/nokia-add-person-page'
-import { NokiaMeetingFormPage } from 'pages/nokia/nokia-form-page'
 import { NokiaIndexPage } from 'pages/nokia/nokia-index-page'
+import { NokiaMeetingFormPage } from 'pages/nokia/nokia-form-page'
 import { NokiaPeopleDetailCardPage } from 'pages/nokia/nokia-people-detail-card-page'
 import { NokiaPeopleListPage } from 'pages/nokia/nokia-people-list-page'
 import { NokiaStatisticPage } from 'pages/nokia/nokia-statistic-page'
@@ -75,10 +77,11 @@ import { VkDownloadPage } from 'pages/vk/vk-download-page'
 import { VkIndexPage } from 'pages/vk/vk-index-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
-import { ResumePage } from 'pages/resume/resume-page'
-import ResumeProduct2Page from 'pages/resume/resume-product2-page'
-const ResumeProductPage = lazy(() => import('pages/resume/resume-product-page'))
 const ResumeHeadPage = lazy(() => import('pages/resume/resume-head-page'))
+const ResumeProductPage = lazy(() => import('pages/resume/resume-product-page'))
+import { ResumePage } from 'pages/resume/resume-page'
+import { ResumeTechProductPage } from 'pages/resume/resume-tech-product'
+import ResumeProduct2Page from 'pages/resume/resume-product2-page'
 
 import { AdminPage } from 'pages/auth/admin-page'
 import { LoginPage } from 'pages/auth/login-page'
@@ -91,9 +94,6 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { ProjectTypography } from 'components/project/project-test'
-import { ResumeTechProductPage } from 'pages/resume/resume-tech-product'
-import { PortfolioSandbox } from 'components/project/portfolio-sandbox'
 
 // TODO: проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
 
@@ -213,9 +213,6 @@ import { PortfolioSandbox } from 'components/project/portfolio-sandbox'
 
 // TODO: Получается всё отсюда надо перенести на страницу
 // TODO: Фильтровать точки здесь, а в дочерний с картой передавать точки, пусть рисует
-
-
-
 
 export function App() {
 	return (
