@@ -14,7 +14,7 @@ import { API_ROUTE } from 'dic/api-route'
 
 import '../logism/style.css'
 
-export const Logism: FunctionComponent = () => {
+export const LogismGallery: FunctionComponent = () => {
 	const [ logismList ] = useApi<LogismType[]>(API_ROUTE.logism)
 	const isLoading = useLoadingState([logismList.status])
 	const isListEmpty = useEmptyDataState(logismList.data)
