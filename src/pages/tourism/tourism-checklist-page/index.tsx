@@ -3,8 +3,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { TourismChecklist } from 'components/tourism/tourism-checklist'
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TourismChecklist } from 'components/tourism/tourism-checklist'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../tourism-style.css'

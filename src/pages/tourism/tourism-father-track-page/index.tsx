@@ -4,10 +4,10 @@ import { usePageTitle } from 'hook/use-page-title'
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
 
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
-import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 import { Coord } from 'components/tourism/tourism-maps-figure/data/father-track'
+import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
 import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/tourism-data/city-types'
 
@@ -274,7 +274,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 					<div class="car-teleport">7ч</div>
 					18:00—21:00 3ч Воронеж
 					<div class="car-teleport">7ч</div>
-					
+
 				</div>
 				<h2>21:00 Финиш в Москве</h2>
 				<div>

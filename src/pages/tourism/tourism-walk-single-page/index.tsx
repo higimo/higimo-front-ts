@@ -8,11 +8,11 @@ import { useRoute } from 'preact-iso'
 import useApi from 'hook/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { TextContainer } from 'components/ui/text-container'
-import { TourismWalkItem } from 'components/tourism/tourism-walk-item'
-import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
+import { TourismWalkItem } from 'components/tourism/tourism-walk-item'
 
 import { NotFoundPage } from 'pages/not-found-page'
 

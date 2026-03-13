@@ -2,10 +2,10 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { TextContainer } from 'components/ui/text-container'
-import { TourismMapsRegion } from 'components/tourism/tourism-maps-region'
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismMapsRegion } from 'components/tourism/tourism-maps-region'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 

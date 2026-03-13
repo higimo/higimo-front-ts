@@ -2,12 +2,12 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { TextContainer } from 'components/ui/text-container'
 // import { NasheAlbums } from 'components/data/concert/nashe-albums'
-import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { TextContainer } from 'components/ui/text-container'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../../tourism-style.css'
 import './style.css'

@@ -2,10 +2,10 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { TextContainer } from 'components/ui/text-container'
+import { Breadcrumps } from 'components/ui/breadcrumps'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { NasheLineupItem } from 'components/data/concert/nashe-lineup-item'
-import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../../tourism-style.css'
