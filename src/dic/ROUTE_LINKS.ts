@@ -98,7 +98,8 @@ const ROUTE_CINEMA_LINKS = Object.freeze({
 const ROUTE_RESUME_LINKS = Object.freeze({
 	resumeIndex: '/resume/',
 	resumeHead: '/resume/head/',
-	resumeProduct: '/resume/product/',
+	resumeProduct: '/resume/product-smart/',
+	resumeProductStupid: '/resume/product/',
 	resumeTechProduct: '/resume/tech-product/',
 	resumeProductLegacy: '/resume/product-old/',
 })

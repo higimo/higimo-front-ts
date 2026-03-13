@@ -19,7 +19,7 @@ export const MainIntro: FunctionComponent = () => (
 				Руководил продуктом <a href={EXTERNAL_LINKS.kidguru} class="nowrap"><CompanyLogo name="kidguru" /> Кидгу.ру</a>, <span class="nowrap">и <a href={EXTERNAL_LINKS.superjob}><CompanyLogo name="SJ" /> Суперджоба</a></span>. Был разработчиком <span class="nowrap">в <a href={EXTERNAL_LINKS.afishaDaily}><CompanyLogo name="Афиша Daily" /> Афише <em>Дейли</em></a></span>, <a href={EXTERNAL_LINKS.alsHigimo} class="nowrap"><CompanyLogo name="ALS" /> Студии Лебедева</a> <span class="nowrap">и <a href={EXTERNAL_LINKS.rTop}><CompanyLogo name="R-top" /> Эртопе</a></span>.
 			</p>
 			<p>
-				<a href={ROUTE_LINKS.resumeTechProduct}>Резюме</a>
+				<a href={ROUTE_LINKS.resumeProductStupid}>Резюме</a>
 			</p>
 			<p>
 				<PseudoLink href={ANCHOR_LINKS.travel}>Путешествую</PseudoLink>, веду лекции <span class="nowrap">и <PseudoLink href={ANCHOR_LINKS.blog}>тематические блоги</PseudoLink></span>. Создал <PseudoLink href={ANCHOR_LINKS.service}>горстку полезных сервисов</PseudoLink>. Участвую <span class="nowrap">в <a href={EXTERNAL_LINKS.intersection} class="nowrap"><CompanyLogo name="intersection" /> Пересечениях</a></span>.

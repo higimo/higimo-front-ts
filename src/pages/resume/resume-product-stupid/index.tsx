@@ -9,53 +9,14 @@ import avatar3 from './avatar3.jpg'
 import '../resume-style.css'
 import './style.css'
 
-// https://jsonresume.org/schema
-
-const skillSet = [
-	'data-driven',
-	// 'разработка нового продукта',
-		// 'анализ целевой аудитории',
-		// 'оценка потребностей клиентов',
-		'сегментация',
-		'JTBD',
-	// 'умение принимать решения',
-	// 'управление по целям',
-		'умение ставить измеримые цели и достигать их',
-		// 'SMART',
-		'RICE', // 'приоритизация бэклога',
-		// 'расстановка приоритетов',
-		'Agile',
-		// 'стратегическое планирование и менеджмент',
-	'анализ данных',
-		'SQL',
-		// 'A/B‑тесты',
-	// 'анализ бизнес показателей',
-		// 'UNIT‑экономика',
-		// 'AARRR‑метрики',
-		// 'HEART‑метрики',
-		'продуктовые метрики',
-		// 'маркетинговые метрики',
-	'UX',
-		'Figma',
-		'FigJam',
-		'Miro',
-		'Jira/Confluence',
-	// 'лидерство',
-		// 'умение общаться с разработчиками на одном языке',
-		// 'эмпатия',
-		// 'мотивация персонала',
-	// 'проведение презентаций',
-	// 'целеустремленность',
-]
-
-export const ResumeProduct2Page: FunctionComponent = () => {
-	usePageTitle('Дмитрий Уткин резюме на позицию Product manager')
+export const ResumeProductStupidPage: FunctionComponent = () => {
+	usePageTitle('Дмитрий Уткин, резюме Product manager')
 
 	return (
-		<div className="resume-product2-page resume-page">
+		<div className="resume-product-sss-page resume-page">
 			<TextContainer>
 				<img src={avatar3} className="resume-avatar" />
-				<h2>Дмитрий Уткин, резюме на позицию Product manager</h2>
+				<h2>Дмитрий Уткин, Product manager</h2>
 				<div className="contact">
 					<div className="contact__item small-text"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
 					<div className="contact__item small-text">TG: <a href="https://t.me/higimo">@higimo</a></div>
@@ -176,42 +137,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 			</TextContainer>
 
 			{/* Продакт кэмп подкаст */}
-
-			{/* <TextContainer> */}
-				{/* <div class="skill">
-					<div class="skill_header">
-						Навыки
-					</div>
-					<div class="skill_content">
-						{skillSet.join(', ')}
-					</div>
-				</div> */}
-				{/* <div class="about">
-					<div class="about__header">Обо мне</div>
-					<div class="about__description"> */}
-
-						{/* <p>
-							Разговариваю на одном языке с разработчиками, дизайнерами и бизнесом, благодаря 8 годам fullstack-разработки и работе в Студии Лебедева.
-						</p> */}
-					{/* </div>
-				</div> */}
-			{/* </TextContainer> */}
-
-			{/* <TextContainer>
-				<div class="school">
-					<div class="school__info">
-						<div class="school__status">Неоконченное высшее</div>
-						<div class="school__date">2011–2015 (4 курса)</div>
-					</div>
-					<div className="school__base">
-						<div class="school__name">Программная инженерия</div>
-						<div class="school__company">в Поволжском Государственном Технологическом Университете</div>
-					</div>
-				</div>
-			</TextContainer> */}
-
-			{/* <OtherResume /> */}
-			{/* <ContactList /> */}
 		</div>
 	)
 }

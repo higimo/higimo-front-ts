@@ -66,6 +66,7 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.resumeHead]: 'ТУДУ',
 	[ROUTE_LINKS.resumeTechProduct]: 'ТУДУ',
 	[ROUTE_LINKS.resumeProduct]: 'ТУДУ',
+	[ROUTE_LINKS.resumeProductStupid]: 'ТУДУ',
 	[ROUTE_LINKS.resumeProductLegacy]: 'ТУДУ',
 
 	[ROUTE_LINKS.thingsIndex]: 'ТУДУ',

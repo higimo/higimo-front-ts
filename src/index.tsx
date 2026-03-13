@@ -80,8 +80,9 @@ import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 const ResumeHeadPage = lazy(() => import('pages/resume/resume-head-page'))
 const ResumeProductPage = lazy(() => import('pages/resume/resume-product-page'))
 import { ResumePage } from 'pages/resume/resume-page'
+import { ResumeProduct2Page } from 'pages/resume/resume-product2-page'
+import { ResumeProductStupidPage } from 'pages/resume/resume-product-stupid'
 import { ResumeTechProductPage } from 'pages/resume/resume-tech-product'
-import ResumeProduct2Page from 'pages/resume/resume-product2-page'
 
 import { AdminPage } from 'pages/auth/admin-page'
 import { LoginPage } from 'pages/auth/login-page'
@@ -268,6 +269,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.resumeHead} component={ResumeHeadPage} />
 								<Route path={ROUTE_LINKS.resumeProductLegacy} component={ResumeProductPage} />
 								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProduct2Page} />
+								<Route path={ROUTE_LINKS.resumeProductStupid} component={ResumeProductStupidPage} />
 								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
 								<Route path={ROUTE_LINKS.thingsIndex} component={ThingsIndexPage} />
