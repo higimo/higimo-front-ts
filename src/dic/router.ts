@@ -26,11 +26,11 @@ export const globalRouter: Record<RouteType, string> = {
 
 	[ROUTE_LINKS.accordIndex]: 'ТУДУ',
 
-	[ROUTE_LINKS.nokiaIndex]: 'ТУДУ',
-	[ROUTE_LINKS.nokiaForm]: 'ТУДУ',
-	[ROUTE_LINKS.nokiaPeople]: 'ТУДУ',
-	[ROUTE_LINKS.nokiaPeopleForm]: 'ТУДУ',
-	[ROUTE_LINKS.nokiaStatistic]: 'ТУДУ',
+	[ROUTE_LINKS.nokiaIndex]: 'Нокиа',
+	[ROUTE_LINKS.nokiaForm]: 'Добавить встречу',
+	[ROUTE_LINKS.nokiaPeople]: 'Персоны',
+	[ROUTE_LINKS.nokiaPeopleForm]: 'Добавить персону',
+	[ROUTE_LINKS.nokiaStatistic]: 'Статистика',
 
 	[ROUTE_LINKS.tourismIndex]: 'Путешествую',
 	[ROUTE_LINKS.tourismNashe]: 'Нашествие',
@@ -44,8 +44,8 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.tourismVisited]: 'Посещённые',
 	[ROUTE_LINKS.tourismFatherTrack]: 'Путешествие с отцом',
 
-	[ROUTE_LINKS.listListIndex]: 'ТУДУ',
-	[ROUTE_LINKS.listListCreate]: 'ТУДУ',
+	[ROUTE_LINKS.listListIndex]: 'Спискота',
+	[ROUTE_LINKS.listListCreate]: 'Создать элемент',
 
 	[ROUTE_LINKS.toolVkIndex]: 'ТУДУ',
 	[ROUTE_LINKS.toolVkStaticAlbum]: 'ТУДУ',
@@ -81,10 +81,10 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.clock]: 'ТУДУ',
 	[ROUTE_LINKS.faqIndex]: 'ТУДУ',
 
-	[ROUTE_LINKS.pron]: 'ТУДУ',
-	[ROUTE_LINKS.youtube]: 'ТУДУ',
-	[ROUTE_LINKS.links]: 'ТУДУ',
-	[ROUTE_LINKS.libraryIndex]: 'ТУДУ',
+	[ROUTE_LINKS.pron]: 'прон',
+	[ROUTE_LINKS.youtube]: 'Избранное ютуба',
+	[ROUTE_LINKS.links]: 'Избранные ссылки',
+	[ROUTE_LINKS.libraryIndex]: 'Домашняя библиотека',
 	[ROUTE_LINKS.libraryAdmin]: 'ТУДУ',
-	[ROUTE_LINKS.nokiaPinarik]: 'ТУДУ',
+	[ROUTE_LINKS.nokiaPinarik]: 'Пинарик',
 }
