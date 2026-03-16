@@ -62,6 +62,8 @@ export const Footer: FunctionComponent = (props) => {
 				{toolListData.slice(0, SLICE_TOOL).map(renderLink(isAuth))}
 				{toolListData.slice(SLICE_TOOL).map(renderLink(isAuth))}
 			</div>
+			{/* TODO: Поставить в футер 🇷🇺 — эмодзи российского флага */}
+			{/* TODO: Сделано с гордостью в России */}
 			<div className="footer__copyright">Сделал Хиги́мо</div>
 		</footer>
 	)

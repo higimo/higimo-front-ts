@@ -1,6 +1,7 @@
 import { CheckboxWithLocalStorage } from 'components/form/checkbox-with-local-storage'
 import { TextContainer } from 'components/ui/text-container'
 
+// TODO: переписать на бекенд списка списков
 const organizeListData = [
 	'все зарядить',
 	'проверить снярягу',
@@ -63,9 +64,9 @@ export const TourismChecklist = () => (
 		<TextContainer>
 			<div className="disclaimer">
 				<p>
-					Даже если перезагрузить страницу, отмеченные 
-					пункты останутся — они запомнились внутри браузера. 
-					Данные никуда не передавались, так что поотмечав на телефоне, 
+					Даже если перезагрузить страницу, отмеченные
+					пункты останутся — они запомнились внутри браузера.
+					Данные никуда не передавались, так что поотмечав на телефоне,
 					продолжить на компьютере уже не выйдет.
 				</p>
 			</div>

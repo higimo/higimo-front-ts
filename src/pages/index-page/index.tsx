@@ -15,6 +15,7 @@ import { ShareKnowledge } from 'components/intro/share-knowledge'
 import { ToolsIntro } from 'components/intro/tools-intro'
 import { TravelInvite } from 'components/intro/travel-invite'
 
+// TODO: Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
 export const IndexPage: FunctionComponent = () => {
 	usePageTitle('Менеджер продукта — higimo') // higimo — программист на Java Script
 
