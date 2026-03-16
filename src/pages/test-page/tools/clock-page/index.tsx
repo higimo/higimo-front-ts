@@ -6,7 +6,8 @@ import { TextContainer } from 'components/ui/text-container'
 import { Clock } from 'components/data/clock'
 
 import { clockData } from './data'
-	
+
+// TODO: удалить это с сайта
 export const ClockPage: FunctionComponent = () => {
 	usePageTitle('Часы русского судного дня')
 
