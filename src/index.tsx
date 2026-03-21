@@ -20,7 +20,6 @@ import { ProjectSinglePage } from 'pages/project/project-single-page'
 import { ProjectTablePage } from 'pages/project/project-table-page'
 import { ProjectTypography } from 'components/project/project-test'
 
-import { ClockPage } from 'pages/test-page/tools/clock-page'
 import { ComojiPage } from 'pages/test-page/tools/comoji-page'
 import { DemagogPage } from 'pages/test-page/tools/demagog-page'
 import { EmailerPage } from 'pages/test-page/tools/emailer-page'
@@ -254,7 +253,6 @@ export function App() {
 								{/* Инфосервисы */}
 								<Route path={ROUTE_LINKS.logism} component={LogismPage} />
 								<Route path={ROUTE_LINKS.demagog} component={DemagogPage} />
-								<Route path={ROUTE_LINKS.clock} component={ClockPage} />
 								<Route path={ROUTE_LINKS.faqIndex} component={FaqListPage} />
 								<Route path={ROUTE_LINKS.faqDetail_CONST} component={FaqSinglePage} />
 								<Route path={ROUTE_LINKS.learningIndex} component={ObuchenieListPage} />

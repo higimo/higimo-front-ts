@@ -9,7 +9,7 @@ import { ToolsIntro } from 'components/intro/tools-intro'
 
 
 export const ServicePage: FunctionComponent = () => {
-	usePageTitle('Сервисы') // higimo — программист на Java Script
+	usePageTitle('Сервисы')
 
 	return [
 		<ShareKnowledge />,

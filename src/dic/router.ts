@@ -79,7 +79,6 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.learningIndex]: 'ТУДУ',
 	[ROUTE_LINKS.logism]: 'ТУДУ',
 	[ROUTE_LINKS.demagog]: 'ТУДУ',
-	[ROUTE_LINKS.clock]: 'ТУДУ',
 	[ROUTE_LINKS.faqIndex]: 'ТУДУ',
 
 	[ROUTE_LINKS.pron]: 'прон',
