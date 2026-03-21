@@ -132,7 +132,6 @@ const ROUTE_INFO_SERVICE_LINKS = Object.freeze({
 	...ROUTE_SHARE_KNOWLEDGE_LINKS,
 	logism: '/logism/',
 	demagog: '/demagog/',
-	clock: '/clock/',
 	faqIndex: '/faq/',
 	faqDetail_CONST: '/faq/:idcode/',
 	faqDetail: generateLink<'idcode'>('/faq/:idcode/'),
