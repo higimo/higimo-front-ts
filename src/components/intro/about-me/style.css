@@ -1,0 +1,15 @@
+.about-me {
+	font-size: 16px;
+	line-height: 1.6;
+	font-family: 'Alegreya Sans';
+}
+
+@media (min-width: 768px) {
+	.about-me {
+		font-size: 20px;
+	}
+}
+
+.about-me .text-container {
+	max-width: 40rem;
+}
