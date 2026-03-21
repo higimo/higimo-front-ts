@@ -27,6 +27,11 @@ const menu = [
 ] as const
 
 const secretMenu = [
+	// TODO: всё же сделать публичным
+	{
+		href: ROUTE_LINKS.listListIndex,
+		name: 'Спискота',
+	},
 	{
 		href: ROUTE_LINKS.nokiaIndex,
 		name: 'Нокиа',
