@@ -21,10 +21,11 @@ type RouteType = Exclude<typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS], ExcludeRo
 
 export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.index]: '🏠',
+	[ROUTE_LINKS.serviceIndex]: 'Сервисы',
 
-	[ROUTE_LINKS.projectIndex]: 'ТУДУ',
+	[ROUTE_LINKS.projectIndex]: 'Сделал',
 
-	[ROUTE_LINKS.accordIndex]: 'ТУДУ',
+	[ROUTE_LINKS.accordIndex]: 'Аккорды',
 
 	[ROUTE_LINKS.nokiaIndex]: 'Нокиа',
 	[ROUTE_LINKS.nokiaForm]: 'Добавить встречу',
@@ -47,20 +48,22 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.listListIndex]: 'Спискота',
 	[ROUTE_LINKS.listListCreate]: 'Создать элемент',
 
-	[ROUTE_LINKS.toolVkIndex]: 'ТУДУ',
-	[ROUTE_LINKS.toolVkStaticAlbum]: 'ТУДУ',
-	[ROUTE_LINKS.toolVkDownloadAlbum]: 'ТУДУ',
-	[ROUTE_LINKS.toolVkAlbums]: 'ТУДУ',
-	[ROUTE_LINKS.petProject]: 'ТУДУ',
-	[ROUTE_LINKS.petProjectCreate]: 'ТУДУ',
-	[ROUTE_LINKS.toolIndex]: 'ТУДУ',
-	[ROUTE_LINKS.toolComoji]: 'ТУДУ',
-	[ROUTE_LINKS.toolEmailer]: 'ТУДУ',
-	[ROUTE_LINKS.toolMagic]: 'ТУДУ',
+	[ROUTE_LINKS.toolVkIndex]: 'Фотографии ВК',
+	[ROUTE_LINKS.toolVkStaticAlbum]: 'Статические альбомы',
+	[ROUTE_LINKS.toolVkDownloadAlbum]: 'Скачать альбом',
+	[ROUTE_LINKS.toolVkAlbums]: 'Альбомы',
 
-	[ROUTE_LINKS.cinemaIndex]: 'ТУДУ',
-	[ROUTE_LINKS.cinemaScriptIndex]: 'ТУДУ',
-	[ROUTE_LINKS.cinemaScriptDetail_CONST]: 'ТУДУ',
+	[ROUTE_LINKS.petProject]: 'Пробби',
+	[ROUTE_LINKS.petProjectCreate]: 'Создать проект',
+
+	[ROUTE_LINKS.toolIndex]: 'Инструменты',
+	[ROUTE_LINKS.toolComoji]: 'Комоджи',
+	[ROUTE_LINKS.toolEmailer]: 'Эмайлер',
+	[ROUTE_LINKS.toolMagic]: 'Магический шар',
+
+	[ROUTE_LINKS.cinemaIndex]: 'Кинолог',
+	[ROUTE_LINKS.cinemaScriptIndex]: 'Фрагменты сценариев',
+	[ROUTE_LINKS.cinemaScriptDetail_CONST]: 'Фрагмент',
 
 	[ROUTE_LINKS.resumeIndex]: 'ТУДУ',
 	[ROUTE_LINKS.resumeHead]: 'ТУДУ',
