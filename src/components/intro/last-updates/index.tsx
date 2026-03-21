@@ -29,6 +29,7 @@ const imgMapping = {
 	'Раковарня 2.0': [tg, rak],
 } as const
 
+// TODO: пока скрытый компонент, надо бы выводить через него избранное, а всё подряд показывать только мне, нпрмр
 const TileElementCon = props => (
 	<TileElement
 		className="post-element"
