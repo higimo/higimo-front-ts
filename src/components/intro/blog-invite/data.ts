@@ -9,9 +9,9 @@ type BlogListType = {
 
 export const blogInviteData: BlogListType[] = [
 	{
-		name: 'Стена ВКонтакте',
-		link: EXTERNAL_LINKS.socialVk,
-		description: '21 000 заметок с мыслями и переживаниями. Самое интересное по тегам <a href="https://vk.com/wall16174219?q=%23дизайн">#дизайн</a> <a href="https://vk.com/wall16174219?q=%23идея">#идея</a> <a href="https://vk.com/wall16174219?q=%23путешествие">#путешествие</a> <a href="https://vk.com/wall16174219?q=%23хорошо">#хорошо</a>.'
+		name: 'Личный блог Хигимо',
+		link: EXTERNAL_LINKS.socialTg,
+		description: 'Делюсь опытом и держу в курсе новиной.'
 	},
 	{
 		name: 'Фотографии во ВКонтакте',
@@ -19,9 +19,10 @@ export const blogInviteData: BlogListType[] = [
 		description: 'Выкладываю альбомы из городов, мест и событий так, чтоб можно было увидеть это моими глазами. Все фотографии подписаны, чтоб ничего не упустить.'
 	},
 	{
-		name: 'Тележка Хигимо',
-		link: EXTERNAL_LINKS.socialTg,
-		description: 'Рассказываю кулстори, про города, дизайн, что классного происходит, исследую.'
+		isArhive: true,
+		name: 'Стена ВКонтакте',
+		link: EXTERNAL_LINKS.socialVk,
+		description: '21 000 заметок с мыслями и переживаниями. Самое интересное по тегам <a href="https://vk.com/wall16174219?q=%23дизайн">#дизайн</a> <a href="https://vk.com/wall16174219?q=%23идея">#идея</a> <a href="https://vk.com/wall16174219?q=%23путешествие">#путешествие</a> <a href="https://vk.com/wall16174219?q=%23хорошо">#хорошо</a>.'
 	},
 	{
 		isArhive: true,
