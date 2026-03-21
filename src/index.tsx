@@ -12,6 +12,7 @@ import { AccordSingle } from 'components/accord/accord-single'
 import { PrivateRoute } from 'components/util/private-route/PrivateRoute'
 
 import { IndexPage } from 'pages/index-page'
+import { ServicePage } from 'pages/service-page'
 
 import { PortfolioSandbox } from 'components/project/portfolio-sandbox'
 import { ProjectIndexPage } from 'pages/project/project-index-page'
@@ -224,6 +225,7 @@ export function App() {
 						<main>
 							<Router>
 								<Route path={ROUTE_LINKS.index} component={IndexPage} />
+								<Route path={ROUTE_LINKS.serviceIndex} component={ServicePage} />
 
 								<Route path="/textarea" component={TextareaPage} />
 

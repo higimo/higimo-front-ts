@@ -157,6 +157,7 @@ const ROUTE_SERVICE_ABOUT_ME_LINKS = Object.freeze({
 
 export const ROUTE_LINKS = {
 	index: '/',
+	serviceIndex: '/service',
 
 	...ROUTE_PROJECT_LINKS,
 	...ROUTE_ACCORD_LINKS,

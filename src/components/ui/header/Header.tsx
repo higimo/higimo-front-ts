@@ -13,8 +13,8 @@ const menu = [
 		name: 'Сделал',
 	},
 	{
-		href: ROUTE_LINKS.listListIndex,
-		name: 'Спискота',
+		href: ROUTE_LINKS.serviceIndex,
+		name: 'Сервисы',
 	},
 	{
 		href: ROUTE_LINKS.accordIndex,
