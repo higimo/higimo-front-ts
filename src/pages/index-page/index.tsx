@@ -14,6 +14,7 @@ import { ProjectListShort } from 'components/intro/project-list-short'
 import { ShareKnowledge } from 'components/intro/share-knowledge'
 import { ToolsIntro } from 'components/intro/tools-intro'
 import { TravelInvite } from 'components/intro/travel-invite'
+import { CharityIntro } from 'components/intro/carity-intro'
 // import { AboutMe } from 'components/intro/about-me'
 
 // TODO: Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
@@ -38,5 +39,6 @@ export const IndexPage: FunctionComponent = () => {
 		<LookedThis />,
 		<LogismSingle />,
 		// <OnlyAdmin><DonatIntro /></OnlyAdmin>,
+		<CharityIntro />,
 	]
 }
