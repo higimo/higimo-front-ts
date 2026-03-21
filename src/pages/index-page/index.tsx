@@ -25,7 +25,6 @@ export const IndexPage: FunctionComponent = () => {
 
 	return [
 		<MainIntro />,
-		<LastUpdates />,
 		// TODO: опубликовать, но пока не оч красиво выглядит
 		// <AboutMe />,
 		<ProjectListShort />,
