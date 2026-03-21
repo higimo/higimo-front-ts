@@ -9,6 +9,7 @@ import avatar3 from './avatar3.jpg'
 import '../resume-style.css'
 import './style.css'
 
+// TODO: синхронизировать с остальными резюме
 export const ResumeProductStupidPage: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин, резюме Product manager')
 

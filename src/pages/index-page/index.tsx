@@ -17,6 +17,8 @@ import { TravelInvite } from 'components/intro/travel-invite'
 
 // TODO: Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
 // TODO: Можно писать, что ищу проекты, просто посылать нахуй не интересное
+// TODO: Получается, завести избранные из телеги и показывать их на фасад
+
 export const IndexPage: FunctionComponent = () => {
 	usePageTitle('Менеджер продукта — higimo') // higimo — программист на Java Script
 

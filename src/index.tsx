@@ -98,13 +98,6 @@ import './style.css'
 
 // TODO: проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
 
-
-/* TODO: внедрять правильную ширину */
-// --factoid-gap: 32px;
-// --factoid-row: 4;
-// width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
-
-
 // TODO: уменьшить бандл, там d3 что-то косячно импортируется
 
 // https://habr.com/ru/articles/321106/
@@ -153,25 +146,6 @@ import './style.css'
 
 // TODO: Как настроить PWA на этом стеке?
 
-// ### В ролях
-// 1 Дима Уткин — руководитель продукта соискателей
-// 182 Артём Сорокин — лид бекенда соискателей
-// 185 Влад Алексеев — лид команды поиска
-// 186 Андрей Дербенев — глава бекенда
-// 187 Евгений Касьяненко — глава фронтенда
-// 188 Серафима Павлова — лид фронтенда соискателей
-// 189 Арсен Афаунов — фронтендер
-// 190 Алексей Захаров — президент
-// 191 Владимир — бекендер
-// 192 Елена Никифорова — овнер соискателей
-// 28 Наташа Эллин — руководитель продукта работодателей
-// 32 Станислав Мавлютов — фронтендер
-// 34 Иван Спиридонов — фронтендер
-// 36 Влад Солодов — дизайнер
-// 193 Ян Подвойский —
-// 194 Сергей Слепнёв —
-// 195 Евгений Кречко —
-
 // TODO link #2196f3
 // #3984d4 -- неплохой синий
 
@@ -214,6 +188,31 @@ import './style.css'
 
 // TODO: Получается всё отсюда надо перенести на страницу
 // TODO: Фильтровать точки здесь, а в дочерний с картой передавать точки, пусть рисует
+
+
+// TODO: Почистить хомяк от неиспользуемых компонентов
+
+
+
+
+// TODO: Хуки
+// 	https://usehooks.com/useDebounce/
+// 	https://usehooks.com/useOnScreen/
+// 	https://usehooks.com/usePrevious/
+// 	https://usehooks.com/useOnClickOutside/
+// 	https://usehooks.com/useAnimation/
+// 	https://usehooks.com/useWindowSize/
+// 	https://usehooks.com/useHover/
+// 	https://usehooks.com/useLocalStorage/
+// 	https://usehooks.com/useMedia/
+// 	https://usehooks.com/useLockBodyScroll/
+// 	https://usehooks.com/useSpring/
+// 	https://usehooks.com/useHistory/
+// 	https://usehooks.com/useScript/
+// 	https://usehooks.com/useKeyPress/
+// 	https://fireship.io/snippets/use-media-query-hook/
+
+
 
 export function App() {
 	return (

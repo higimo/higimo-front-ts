@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400);
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;600;700&family=Inter&display=swap');
 
 :root {
 	--text-block-width: 45rem;
@@ -21,6 +21,13 @@ body {
 		font-size: 13pt;
 	}
 }
+
+/*
+TODO: внедрять правильную ширину
+--factoid-gap: 32px;
+--factoid-row: 4;
+width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
+*/
 
 .container {
 	margin: 0 auto;
