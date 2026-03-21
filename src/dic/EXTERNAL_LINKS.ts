@@ -18,6 +18,7 @@ export const EXTERNAL_LINKS = {
 	techIntersection: "https://tech.intersection.team",
 	canalScreen: "https://t.me/screenshotil",
 	contactMail: "mailto:higimo@gmail.com",
+	contactTg: 'https://t.me/higimo',
 	github: "https://github.com/higimo",
 	serviceTimer: "https://higimo.github.io/timer/build/",
 	serviceDeploy: "https://deploy-calendar.ru/",

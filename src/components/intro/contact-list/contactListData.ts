@@ -13,7 +13,7 @@ export const contactListData = [
 	},
 	{
 		img: tg,
-		link: EXTERNAL_LINKS.socialTg,
+		link: EXTERNAL_LINKS.contactTg,
 		name: 'Телеграм',
 	},
 	{
