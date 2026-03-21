@@ -21,7 +21,7 @@ import './style.css'
 export const ProjectListShort: FunctionComponent = () => {
 	const [ projectIds ] = useApi<PortfolioIdsType[]>(API_ROUTE.projectIds) // TODO: заменить на meta.count
 	const [ highProjectList ] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProject, {
-		filter: { cover_size: 'high'},
+		// filter: { cover_size: 'high'},
 		limit: 6
 	})
 
