@@ -9,11 +9,8 @@ import { TourismMapsMoscowBar } from 'components/tourism/tourism-maps-moscow-bar
 
 import '../../tourism-style.css'
 
-// TODO: Золотые настойки: Графин, Васечка и Сионист
 // TODO: Ввести тег франшизы
-// TODO: Добавить рекомендуемые бары. Например, секретные
 // TODO: Ввести рейтинг звездочками
-// TODO: Средний чек
 // TODO: Что заказывать
 // TODO: Добавить алкашки, что открыли со Стёпой за 2024 год
 
@@ -31,3 +28,6 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 		</div>
 	)
 }
+
+// TODO: Добавить ссылки на Я.Карту
+// TODO: Биологию ватриковского и бар у яндекса со свиданиями

@@ -17,13 +17,6 @@ import '../yandex-map.css'
 // https://yandex.ru/dev/maps/archive/doc/jsapi/2-0/ru/ref/reference/GeoObject
 // https://yandex.ru/map-constructor/
 
-const MAP_MODE = {
-	INIT: 'INIT',
-	2024: '2024',
-	2021: '2021',
-	'2021vs2024': '2021vs2024',
-}
-
 const loadStateData = async (): Promise<{ barPovMoscow: BarPovType[] }> => {
 	const { barPovMoscow } = await import('../tourism-maps-figure/data/common')
 	return { barPovMoscow }
@@ -39,8 +32,8 @@ const barPovFilter = (filter) => (mapPoint: BarPovType) => {
 	return true
 }
 
-const updateMap = (map, yamaps, mode, stateData: { barPovMoscow: BarPovType[] }, filter) => {
-	if (!map || !yamaps || !stateData.barPovMoscow || mode === MAP_MODE.INIT) {
+const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, filter) => {
+	if (!map || !yamaps || !stateData.barPovMoscow) {
 		return null
 	}
 
@@ -65,25 +58,22 @@ const updateMap = (map, yamaps, mode, stateData: { barPovMoscow: BarPovType[] },
 
 export const TourismMapsMoscowBar = () => {
 	const refMap = createRef()
-	const [ mode, setMode ] = useState(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)
 	const [stateData, setStateData] = useState<{ barPovMoscow: BarPovType[] }>({ barPovMoscow: [] })
 	const { width, height } = useWindowSize()
+	// TODO: использовать хук фильтра тегов
 	const [ filter, setFilter ] = useState({
 		color: null,
 		tag: null,
 	})
 
 	const handleMapLoad = ymaps => {
-		if (mode === MAP_MODE.INIT) {
-			setMode(MAP_MODE[2024])
-		}
 		setYamaps(ymaps)
 	}
 
 	useEffect(() => {
-		updateMap(refMap.current, yamaps, mode, stateData, filter)
-	}, [refMap.current, yamaps, mode, stateData, filter])
+		updateMap(refMap.current, yamaps, stateData, filter)
+	}, [refMap.current, yamaps, stateData, filter])
 
 	useEffect(() => {
 		loadStateData().then(setStateData)
@@ -100,6 +90,7 @@ export const TourismMapsMoscowBar = () => {
 	return (
 		<Fragment>
 			<TextContainer>
+				{/* TODO: компонент показа галереи тегов */}
 				<div>
 					Отношение: <Tag active={filter.color === null} onClick={handleColorTagClick(null)}>Сбросить</Tag>{' '}
 					{Object.keys(BAR_COLOR_MAPPING).map(colorName => (
@@ -120,7 +111,6 @@ export const TourismMapsMoscowBar = () => {
 			<div className="yandex-map">
 				<YMaps query={{ lang: 'ru_RU' }}>
 					<Map
-						// @ts-ignore
 						instanceRef={refMap}
 						onLoad={handleMapLoad}
 						width={Math.min(width * .85, 1200)}
@@ -141,6 +131,7 @@ export const TourismMapsMoscowBar = () => {
 					</Map>
 				</YMaps>
 			</div>
+			{/* TODO: по клику на карточку бы фильтровать только его на карте */}
 			{stateData.barPovMoscow && (
 				<div className="bar-pov__gallery">
 					{stateData.barPovMoscow.filter(barPovFilter(filter)).map((mapPoint: BarPovType) => (
