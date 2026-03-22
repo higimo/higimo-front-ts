@@ -12,7 +12,7 @@ import '../../tourism-style.css'
 // TODO: Ввести тег франшизы
 // TODO: Ввести рейтинг звездочками
 // TODO: Что заказывать
-// TODO: Добавить алкашки, что открыли со Стёпой за 2024 год
+// TODO: Биологию ватриковского и бар у яндекса со свиданиями
 
 export const TourismMoscowBarPage: FunctionComponent = () => {
 	usePageTitle('Московские бары')
@@ -28,6 +28,3 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 		</div>
 	)
 }
-
-// TODO: Добавить ссылки на Я.Карту
-// TODO: Биологию ватриковского и бар у яндекса со свиданиями
