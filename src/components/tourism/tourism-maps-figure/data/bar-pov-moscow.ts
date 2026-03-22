@@ -134,7 +134,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Хорошо',
 		coord: [55.780208, 37.593417],
 		link: 'https://yandex.ru/maps/-/CPRzJ-OC',
-		adress: 'Лесная ул., 20, стр. 3корнер 47, этаж 1',
+		adress: 'Лесная ул., 20, стр. 3корнер 47, ',
 		description: 'Беспрецедентный крафт',
 		tags: ['орешки', 'тусовка', 'бургер', 'еда', 'крафт', 'отличный крафт', 'музыка', 'пиво', 'сидр', 'франшиза'],
 	},
@@ -145,7 +145,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Хорошо',
 		coord: [55.772988, 37.663212],
 		link: 'https://yandex.ru/maps/-/CPRzNNIF',
-		adress: 'Новорязанская ул., 23, стр. 1этаж 1',
+		adress: 'Новорязанская ул., 23, стр. 1',
 		description: 'Беспрецедентный крафт',
 		tags: ['орешки', 'тусовка', 'бургер', 'еда', 'крафт', 'отличный крафт', 'музыка', 'пиво', 'сидр', 'франшиза'],
 	},
@@ -166,7 +166,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.767355, 37.607424],
 		link: 'https://yandex.ru/maps/-/CPRzNDPO',
-		adress: 'Большой Путинковский пер., 5 этаж 3',
+		adress: 'Большой Путинковский пер., 5 ',
 		tags: ['вино', 'еда', 'интерьер', 'коктейли', 'ресторан'],
 	},
 	{
@@ -197,7 +197,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.75877399132454, 37.64742226822237],
 		link: 'https://yandex.ru/maps/-/CPRzRVny',
-		adress: 'ул. Покровка, 20/1с1этаж 1',
+		adress: 'ул. Покровка, 20/1с1',
 		description: 'Ебовейшая настойка на вишне. Отлично для свидания',
 		tags: ['вино', 'настойки', 'тусовка'],
 	},
@@ -218,7 +218,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.759270, 37.632395],
 		link: 'https://yandex.ru/maps/-/CPRbmO8A',
-		adress: 'Большой Златоустинский пер., 3/5с1этаж -1',
+		adress: 'Большой Златоустинский пер., 3/5с1',
 		tags: ['бургер', 'еда', 'интерьер', 'тусовка', 'сидр', 'пиво', 'настойки', 'франшиза'],
 	},
 	{
@@ -248,7 +248,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Не посещал',
 		coord: [55.760521, 37.614738],
 		link: 'https://yandex.ru/maps/-/CPRbmNpt',
-		adress: 'Камергерский пер., 5/7этаж -1',
+		adress: 'Камергерский пер., 5/7',
 		tags: ['еда', 'франшиза'],
 	},
 	{
@@ -268,7 +268,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.754910, 37.637323],
 		link: 'https://yandex.ru/maps/-/CPRbm463',
-		adress: 'Большой Спасоглинищевский пер., 9/1с10этаж 1',
+		adress: 'Большой Спасоглинищевский пер., 9/1с10',
 		tags: ['золотые настойки', 'настойки', 'тусовка'],
 	},
 	{
@@ -441,7 +441,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Хорошо',
 		coord: [55.758815, 37.645514],
 		link: 'https://yandex.ru/maps/-/CPR6VNjK',
-		adress: 'Покровский бул., 2/14этаж 1',
+		adress: 'Покровский бул., 2/14',
 		tags: ['коктейли', 'настойки', 'тусовка', 'пиво', 'сидр', 'музыка', 'интерьер'],
 	},
 	{
@@ -603,7 +603,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Обычно',
 		coord: [55.735422, 37.625457],
 		link: 'https://yandex.ru/maps/-/CPRZJH9V',
-		adress: 'ул. Малая Ордынка, 24этаж 1',
+		adress: 'ул. Малая Ордынка, 24',
 		tags: ['еда', 'интерьер', 'ресторан', 'франшиза'],
 	},
 	{
@@ -613,7 +613,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Обычно',
 		coord: [55.708005, 37.622196],
 		link: 'https://yandex.ru/maps/-/CPRZRQ8C',
-		adress: 'Большая Тульская ул., 13этаж 3',
+		adress: 'Большая Тульская ул., 13',
 		tags: ['еда', 'интерьер', 'ресторан', 'франшиза'],
 	},
 	{
@@ -733,7 +733,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Не посещал',
 		coord: [55.757411, 37.613089],
 		link: 'https://yandex.ru/maps/-/CPRbaEO7',
-		adress: 'Тверская ул., 3отель The Carlton, этаж 12',
+		adress: 'Тверская ул., 3отель The Carlton, ',
 		tags: ['еда', 'интерьер', 'ресторан'],
 	},
 	{
@@ -773,7 +773,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Не посещал',
 		coord: [55.762163, 37.613463],
 		link: 'https://yandex.ru/maps/-/CPRbaBkc',
-		adress: 'ул. Большая Дмитровка, 13этаж 3',
+		adress: 'ул. Большая Дмитровка, 13',
 		tags: ['еда', 'интерьер', 'ресторан'],
 	},
 	{
@@ -793,7 +793,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Не посещал',
 		coord: [55.754050, 37.636895],
 		link: 'https://yandex.ru/maps/-/CPRbm407',
-		adress: 'ул. Солянка, 2/6этаж цокольный',
+		adress: 'ул. Солянка, 2/6',
 		tags: [],
 	},
 	{
@@ -873,7 +873,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Обычно',
 		coord: [55.748691, 37.588500],
 		link: 'https://yandex.ru/maps/-/CPRbY-47',
-		adress: 'Спасопесковский пер., 2/36этаж 1',
+		adress: 'Спасопесковский пер., 2/36',
 		tags: ['еда', 'коктейли', 'пиво'],
 	},
 	{
@@ -913,7 +913,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Не посещал',
 		coord: [55.764885, 37.608463],
 		link: 'https://yandex.ru/maps/-/CPRbaU-I',
-		adress: 'Страстной бул., 4, стр. 3этаж -1',
+		adress: 'Страстной бул., 4, стр. 3',
 		tags: [],
 	},
 ]
