@@ -12,11 +12,6 @@ import { BAR_COLOR_MAPPING, barColor, barIcon, BarPovType, barTagsCategory } fro
 
 import '../yandex-map.css'
 
-// https://yandex.ru/dev/jsapi-v2-1/doc/ru/v2-1/ref/reference/option.presetStorage
-// https://yandex.ru/dev/maps/jsbox/2.1/polygon/
-// https://yandex.ru/dev/maps/archive/doc/jsapi/2-0/ru/ref/reference/GeoObject
-// https://yandex.ru/map-constructor/
-
 const loadStateData = async (): Promise<{ barPovMoscow: BarPovType[] }> => {
 	const { barPovMoscow } = await import('../tourism-maps-figure/data/common')
 	return { barPovMoscow }

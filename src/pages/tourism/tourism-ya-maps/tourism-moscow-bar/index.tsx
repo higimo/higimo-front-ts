@@ -9,8 +9,6 @@ import { TourismMapsMoscowBar } from 'components/tourism/tourism-maps-moscow-bar
 
 import '../../tourism-style.css'
 
-// TODO: Ввести рейтинг звездочками
-
 export const TourismMoscowBarPage: FunctionComponent = () => {
 	usePageTitle('Московские бары')
 

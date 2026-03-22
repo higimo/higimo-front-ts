@@ -56,13 +56,14 @@ export const barIcon = (barIconName: BarIconDictType): BarIconColorType => BAR_I
 export type BarPovType = {
 	title: string
 	type: 'bar-pub' | 'bar' | 'restoran' | 'gastro-pub' | 'cafe'
-	adress?: string
-	description?: string
 	link: string,
 	coord: [number, number]
-	tags: BarPovTagType[]
 	icon: BarIconDictType
 	color: BarMoodDictType
+	rating?: string
+	adress?: string
+	description?: string
+	tags: BarPovTagType[]
 }
 
 export const barPovMoscow: BarPovType[] = [
@@ -73,6 +74,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.756385, 37.635254],
 		link: 'https://yandex.ru/maps/-/CPRzF-06',
+		rating: '★★★★☆',
 		adress: 'Малый Гнездниковский пер., 9, стр. 2',
 		description: 'Посидеть под митол во впечатляющем месте',
 		tags: ['пиво', 'крафт', 'коктейли', 'еда', 'интерьер', 'франшиза'],
@@ -84,6 +86,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.775646, 37.677753],
 		link: 'https://yandex.ru/maps/-/CPRzJB7H',
+		rating: '★★★★★',
 		adress: 'Бауманская ул., 15',
 		tags: ['вино', 'еда', 'коктейли', 'крафт', 'музыка', 'пиво', 'сидр', 'интерьер', 'франшиза'],
 	},
@@ -94,6 +97,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.758561, 37.645409],
 		link: 'https://yandex.ru/maps/-/CPRzJJMv',
+		rating: '★★★★★',
 		adress: 'ул. Покровка, 14/2с3',
 		description: 'Пиздатейший интерьер, редко есть места, на любой вкус по одному: вишнёвое, пшеничка, лагер, стаут',
 		tags: ['еда', 'крафт', 'музыка', 'пиво', 'интерьер', 'франшиза'],
@@ -105,6 +109,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.776449, 37.680401],
 		link: 'https://yandex.ru/maps/-/CPRzJRiA',
+		rating: '★★★★★',
 		adress: 'Спартаковская площадь, 16/15с2',
 		description: 'Красивый интерьер с Тенями Хиросимы, подают сакэ',
 		tags: ['еда', 'крафт', 'музыка', 'пиво', 'интерьер', 'франшиза'],
@@ -116,6 +121,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.757881, 37.639171],
 		link: 'https://yandex.ru/maps/-/CPRzJC77',
+		rating: '★★★★☆',
 		adress: 'ул. Покровка, 2/1с1',
 		description: 'Еврейский паб с едой, приятным интерьером и смачной тусовкой. Великолепная и обязательная настойка — Некоровка',
 		tags: ['еда', 'интерьер', 'коктейли', 'крафт', 'музыка', 'настойки', 'пиво', 'сидр', 'тусовка', 'золотые настойки'],
@@ -126,6 +132,7 @@ export const barPovMoscow: BarPovType[] = [
 		type: 'bar',
 		color: 'Любимый',
 		coord: [55.764516, 37.568285],
+		rating: '★★★★★',
 		link: 'https://yandex.ru/maps/-/CPRzJS09',
 		adress: 'Столярный пер., 3, корп. 13',
 		description: 'Беспрецедентный крафт',
@@ -160,6 +167,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.765389, 37.611286],
 		link: 'https://yandex.ru/maps/-/CPRzN86M',
+		rating: '★★★★★',
 		adress: 'ул. Большая Дмитровка, 32',
 		description: 'Типа секретный бар с умопомрачительными коктейлями и подачей, тесновато',
 		tags: ['интерьер', 'коктейли', 'музыка', 'тусовка'],
@@ -171,6 +179,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.767355, 37.607424],
 		link: 'https://yandex.ru/maps/-/CPRzNDPO',
+		rating: '★★★★★',
 		adress: 'Большой Путинковский пер., 5 ',
 		description: 'Красивое место в Путинках на крыше',
 		tags: ['вино', 'еда', 'интерьер', 'коктейли', 'ресторан'],
@@ -182,6 +191,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.770989, 37.622369],
 		link: 'https://yandex.ru/maps/-/CPRzNL~O',
+		rating: '★★★★★',
 		adress: 'Цветной бул., 24, корп. 1',
 		description: 'Шикарнейший душевный бар, обязательные коктейли: Шофёр и Жулёбино, и легендарная настойка — Ириска',
 		tags: ['бургер', 'рёбрышки', 'еда', 'коктейли', 'крафт', 'музыка', 'настойки', 'пиво', 'сидр', 'тусовка', 'золотые настойки', 'вино'],
@@ -193,6 +203,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.754466, 37.637835],
 		link: 'https://yandex.ru/maps/-/CPRzRYKG',
+		rating: '★★★★★',
 		adress: 'ул. Солянка, 1/2с1',
 		description: 'В подвале ещё 3 бара',
 		tags: ['бургер', 'еда', 'интерьер', 'коктейли', 'крафт', 'настойки', 'пиво', 'ресторан', 'сидр'],
@@ -204,6 +215,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.75877399132454, 37.64742226822237],
 		link: 'https://yandex.ru/maps/-/CPRzRVny',
+		rating: '★★★★★',
 		adress: 'ул. Покровка, 20/1с1',
 		description: 'Ебовейшая настойка на вишне. Отлично для свидания',
 		tags: ['вино', 'настойки', 'тусовка'],
@@ -215,6 +227,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.762526, 37.637411],
 		link: 'https://yandex.ru/maps/-/CPRzVCP2',
+		rating: '★★★☆☆',
 		adress: 'Кривоколенный пер., 14, стр. 1',
 		description: 'При бархопинге отличное место, зайти и выпить очень разнообразные и годные настойки. Всегда столпотворение, играет музыка, наверно, тусоваться внутри прикольно',
 		tags: ['настойки', 'тусовка', 'коктейли', 'музыка', 'тусовка', 'франшиза'],
@@ -226,6 +239,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.759270, 37.632395],
 		link: 'https://yandex.ru/maps/-/CPRbmO8A',
+		rating: '★★★★☆',
 		adress: 'Большой Златоустинский пер., 3/5с1',
 		description: 'Внутри настолки, но мы же приходим сюда выпить в замысловатом сай-фай интерьере',
 		tags: ['бургер', 'еда', 'интерьер', 'тусовка', 'сидр', 'пиво', 'настойки', 'франшиза'],
@@ -237,6 +251,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.747272, 37.654915],
 		link: 'https://yandex.ru/maps/-/CPRbmBnr',
+		rating: '★★★☆☆',
 		adress: 'ул. Земляной Вал, 58',
 		description: 'Милое местечко, где каждый зал с уникальным интерьером от средиземья, до средневековья, от мха до жёлтых стен',
 		tags: ['еда', 'интерьер', 'коктейли', 'настойки', 'тусовка'],
@@ -248,6 +263,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.747345, 37.655067],
 		link: 'https://yandex.ru/maps/-/CPRbmBYn',
+		rating: '★★★★★',
 		adress: 'ул. Земляной Вал, 58',
 		description: 'Здесь может ВНЕЗАПНО сыграть на гитаре дядя Беркут, или под мелодию Довакина кто-то опрокинет рог с литром пива — отличное местечко и сеты настоек хороши',
 		tags: ['еда', 'интерьер', 'коктейли', 'настойки', 'тусовка', 'франшиза'],
@@ -269,6 +285,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.742968, 37.628198],
 		link: 'https://yandex.ru/maps/-/CPRbm4lw',
+		rating: '★★★★★',
 		adress: 'Пятницкая ул., 14, стр. 2',
 		description: 'Прекрасное место с горилкой и салом, и вкусным борщем',
 		tags: ['еда', 'интерьер', 'музыка', 'настойки', 'пиво', 'ресторан', 'тусовка', 'франшиза'],
@@ -280,6 +297,7 @@ export const barPovMoscow: BarPovType[] = [
 		color: 'Любимый',
 		coord: [55.754910, 37.637323],
 		link: 'https://yandex.ru/maps/-/CPRbm463',
+		rating: '★★★★☆',
 		adress: 'Большой Спасоглинищевский пер., 9/1с10',
 		description: 'Годные настойки с красивой подачей',
 		tags: ['золотые настойки', 'настойки', 'тусовка'],
