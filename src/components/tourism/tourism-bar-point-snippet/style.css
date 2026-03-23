@@ -1,31 +1,33 @@
 .bar-pov__gallery {
-	--factoid-row: 1;
-	--factoid-gap: 32px;
+	--gallery-row: 1;
+	--gallery-gap: 8px;
 
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: center;
-	gap: 16px;
+	gap: var(--gallery-gap);
 	margin-top: 32px;
-}
+	font-size: 18px;
 
+	--tag-padding: 0px 4px;
+}
 
 @media (min-width: 520px) {
 	.bar-pov__gallery {
-		--factoid-row: 2;
+		--gallery-row: 2;
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
 	.bar-pov__gallery {
-		--factoid-row: 3;
+		--gallery-row: 3;
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
 	.bar-pov__gallery {
-		--factoid-row: 4;
+		--gallery-row: 4;
 	}
 }
 
@@ -33,27 +35,39 @@
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
 	padding: 16px;
-	background: #ffffff0a;
+	width: calc((100% - ((var(--gallery-row) - 1) * var(--gallery-gap))) / var(--gallery-row));
+	background: rgb(255 255 255 / 2%);
 	color: rgba(255, 255, 255, .65);
-	border-radius: 4px;
-	border: 2px dashed rgba(255, 255, 255, .15);
+	border: 2px dashed rgba(255, 255, 255, .25);
+	border-radius: 8px;
 }
 
 .bar-pov__snippet--visited {
 	background-color: rgb(37, 61, 46, .7);
     color: #fff;
     border-style: solid;
-    border-color: rgba(255, 255, 255, .3);
+    border-color: rgba(255, 255, 255, .2);
 }
 
 .bar-pov__title {
-	font-size: 150%;
-	font-weight: 600;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 1.2;
 }
 
 .bar-pov__meta {
 	display: flex;
-	gap: 16px;
+	flex-direction: column;
+	gap: 0px;
+	font-size: 16px;
+}
+
+.bar-pov__description {
+	font-size: 16px;
+	margin-top: auto;
+	margin: auto -16px -16px -16px;
+	padding: 8px 16px;
+	background: rgb(255 255 255 / 25%);
+	border-radius: 0 0 6px 6px;
 }

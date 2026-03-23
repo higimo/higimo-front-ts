@@ -1,21 +1,25 @@
 .tag {
-	color: #0072ff;
+	color: var(--tag-color, #0072ff);
 	border-radius: 5px;
-	background: #e5f1ff;
+	background:  var(--tag-bgcolor, #e5f1ff);
 	text-decoration: none;
 	border: none;
 	display: inline-block;
-	padding: 3px 11px;
+	padding: var(--tag-padding, 3px 11px);
 	margin-bottom: 6px;
 	margin-right: 6px;
 	font-size: calc(1rem / 1.14285714);
 	cursor: pointer;
 }
 
-.tag:hover {
-	background: #cbe3fe;
+.tag--untouch {
+	cursor: default;
+}
+
+.tag:not(.tag--untouch):hover {
+	background: var(--tag-bgcolor--hover, #cbe3fe);
 }
 
 .tag--active {
-	background: #a8d2ff;
+	background: var(--tag-bgcolor--active, #a8d2ff);
 }

@@ -11,7 +11,12 @@ type TagPropsType = JSX.ObjectHTMLAttributes & {
 
 export const Tag: FunctionComponent<TagPropsType> = ({children, active = false, className, ...props}) => (
 	<span
-		className={cs('tag', { 'tag--active': active }, className)}
+		className={cs(
+			'tag',
+			{ 'tag--active': active },
+			{ 'tag--untouch': !props.onClick },
+			className
+		)}
 		{...props}
 	>
 		{children}

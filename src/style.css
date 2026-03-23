@@ -3,6 +3,12 @@
 
 :root {
 	--text-block-width: 45rem;
+
+	--tag-color: #0072ff;
+	--tag-bgcolor: #e5f1ff;
+	--tag-bgcolor--hover: #cbe3fe;
+	--tag-bgcolor--active: #a8d2ff;
+	--tag-padding: 3px 11px;
 }
 
 body * {

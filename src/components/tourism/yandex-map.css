@@ -2,3 +2,10 @@
 	display: flex;
 	justify-content: center;
 }
+
+.tourism-maps-moscow-bar {
+	--tag-color: #e9f7ee;
+	--tag-bgcolor: #6d7e73;
+	--tag-bgcolor--hover: #79a888;
+	--tag-bgcolor--active: #47805b;
+}

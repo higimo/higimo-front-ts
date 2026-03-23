@@ -55,7 +55,10 @@ export const TourismMapsMoscowBar = () => {
 	}, [])
 
 	return (
-		<Fragment>
+		<div className="tourism-maps-moscow-bar">
+			<YandexMap
+				items={filteredData}
+			/>
 			<TagGroupedGallery
 				groups={tagGroups}
 				selectedTags={selectedTags}
@@ -65,9 +68,6 @@ export const TourismMapsMoscowBar = () => {
 				isAllSelected={isAllSelected}
 				isNoneSelected={isNoneSelected}
 			/>
-			<YandexMap
-				items={filteredData}
-			/>
 			{filteredData && (
 				<div className="bar-pov__gallery">
 					{filteredData.map((mapPoint: BarPovType) => (
@@ -75,6 +75,6 @@ export const TourismMapsMoscowBar = () => {
 					))}
 				</div>
 			)}
-		</Fragment>
+		</div>
 	)
 }

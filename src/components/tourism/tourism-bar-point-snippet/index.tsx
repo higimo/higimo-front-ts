@@ -19,12 +19,14 @@ export const TourismBarPointSnippet: FunctionComponent<BarPovType> = (mapPoint) 
 		)}
 	>
 		<div className="bar-pov__title">{mapPoint.title}</div>
+		<div className="bar-pov__adress">{mapPoint.adress}</div>
 		<div className="bar-pov__meta">
 			<div className="bar-pov__icon">Категория: {mapPoint.icon}</div>
 			<div className="bar-pov__color">Качество: {mapPoint.color}</div>
 		</div>
-		<div className="bar-pov__adress">{mapPoint.adress}</div>
-		<div className="bar-pov__description">{mapPoint.description}</div>
 		<div className="bar-pov__tags">{mapPoint.tags.map(item => (<Tag>{item}</Tag>))}</div>
+		{!!mapPoint?.description?.length && (
+			<div className="bar-pov__description">{mapPoint.description}</div>
+		)}
 	</div>
 )
