@@ -1,4 +1,4 @@
-import { createRef, Fragment } from 'preact'
+import { createRef, Fragment, FunctionComponent } from 'preact'
 
 import { useEffect, useMemo, useState } from 'preact/hooks'
 import { useWindowSize } from 'hook/use-window-size'
@@ -13,6 +13,9 @@ import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-sni
 import { BAR_COLOR_MAPPING, barColor, barIcon, BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 
 import '../yandex-map.css'
+import { TagGroupedGallery } from '../TagGroupedGallery'
+import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
+import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
 
 // TODO: Надо это уже в хэлпер унести, чтоб мне с этим не париться
 // TODO: А мне бы убрать, чтоб это не объект объектов был
@@ -21,30 +24,18 @@ const loadStateData = async (): Promise<{ barPovMoscow: BarPovType[] }> => {
 	return { barPovMoscow }
 }
 
-const barPovFilter = (selectedColor, selectedTags) => (mapPoint: BarPovType) => {
-	if (!selectedColor.includes(mapPoint.color)) {
-		return false
-	}
-	// TODO: надо вынести в отдельную утилиту включение одного массива в другой
-	const mapPointSets = new Set(mapPoint.tags)
-	if (!selectedTags.some(item => mapPointSets.has(item))) {
-		return false
-	}
-	return true
-}
-
 // TODO: типизировать функцию
 // TODO: map — это текущая карта, может сразу геообжект передавать?
 // TODO: yamaps — библиотека яндекса
-const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, selectedColor, selectedTags) => {
-	if (!map || !yamaps || !stateData.barPovMoscow) {
+const updateMap = (map, yamaps, filteredData) => {
+	if (!map || !yamaps) {
+		console.log('skip', !map, !yamaps, !filteredData.lengt)
 		return null
 	}
 
 	map.geoObjects.removeAll()
 
-	stateData.barPovMoscow
-		.filter(barPovFilter(selectedColor, selectedTags))
+	filteredData
 		.forEach(mapPoint => {
 			map.geoObjects.add(new yamaps.Placemark(
 				mapPoint.coord,
@@ -54,67 +45,68 @@ const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, selec
 				{
 					preset: barIcon(mapPoint.icon),
 					iconColor: barColor(mapPoint.color),
-					iconSize: [15, 15],
+					iconSize: [40, 40],
 				}
 			))
 		})
 }
 
 export const TourismMapsMoscowBar = () => {
-	const refMap = createRef()
-	const [ yamaps, setYamaps ] = useState(null)
+	const refMap = createRef() // TODO: Унести в компонент карты
+	const [ yamaps, setYamaps ] = useState(null) // TODO: Унести в компонент карты
 	const [ stateData, setStateData ] = useState<{ barPovMoscow: BarPovType[] }>({ barPovMoscow: [] })
-	const { width, height } = useWindowSize()
-	const [ selectedColor, handleColorClick ] = useTags<string>([])
-	const [ selectedTags, handleTagsClick ] = useTags<string>([])
 
-	const handleMapLoad = ymaps => setYamaps(ymaps)
+	const { width, height } = useWindowSize() // TODO: Унести в компонент карты
 
-	const allColors = useMemo(() => Object.keys(BAR_COLOR_MAPPING), [])
-	const allTags = useMemo(() => Object.keys(barTagsCategory)
-		.reduce((acc, item) => acc.concat(Object.keys(barTagsCategory[item])), [])
-	, [])
+	const handleMapLoad = ymaps => setYamaps(ymaps) // TODO: Унести в компонент карты
 
+	const tagGroups = useMemo(() => {
+		return Object.keys(barTagsCategory).reduce((acc, categoryName) => {
+			return {
+				...acc,
+				[categoryName]: [
+					TAG_GROUP_ALL_DISABLE,
+					TAG_GROUP_ALL_ENABLE,
+					...Object.keys(barTagsCategory[categoryName])
+				]
+			}
+		}, {})
+	}, [])
 
+	const {
+		selectedTags,
+		toggleTag,
+		selectAll,
+		deselectAll,
+		isAllSelected,
+		isNoneSelected,
+	} = useGroupTags(tagGroups);
 
-	useEffect(() => {
-		updateMap(refMap.current, yamaps, stateData, selectedColor, selectedTags)
-	}, [refMap.current, yamaps, stateData, selectedColor, selectedTags])
+	const filteredData = useMemo(
+		() => filterTagAndGroupsStrategy(stateData.barPovMoscow, selectedTags),
+		[stateData.barPovMoscow, selectedTags]
+	);
 
 	useEffect(() => {
 		loadStateData().then(setStateData)
 	}, [])
 
 	useEffect(() => {
-		handleColorClick(allColors)()
-		handleTagsClick(allTags)()
-	}, [])
+		updateMap(refMap.current, yamaps, filteredData)
+	}, [refMap.current, yamaps, filteredData])
 
 	return (
 		<Fragment>
-			<TextContainer>
-				{/* TODO: компонент показа галереи тегов */}
-				<div>
-					Отношение:{' '}
-					<Tag active={!selectedColor.length} onClick={handleColorClick([])}>Сбросить</Tag>{' '}
-					<Tag active={selectedColor.length === allColors.length} onClick={handleColorClick(allColors)}>Выбрать всё</Tag>{' '}
-					{Object.keys(BAR_COLOR_MAPPING).map(colorName => (
-						<Tag active={selectedColor.includes(colorName)} onClick={handleColorClick([colorName])}>{colorName}</Tag>
-					))}
-					<hr />
-					Теги:{' '}
-					<Tag active={!selectedTags.length} onClick={handleTagsClick([])}>Сбросить</Tag>{' '}
-					<Tag active={selectedTags.length === allTags.length} onClick={handleTagsClick(allTags)}>Выбрать всё</Tag>{' '}
-					{Object.keys(barTagsCategory).map(item => (
-						<div>
-							{item}{' '}
-							{Object.keys(barTagsCategory[item]).map(subitem => (
-								<Tag active={selectedTags.includes(subitem)} onClick={handleTagsClick([subitem])}>{subitem}</Tag>
-							))}
-						</div>
-					))}
-				</div>
-			</TextContainer>
+			<TagGroupedGallery
+				groups={tagGroups}
+				selectedTags={selectedTags}
+				toggleTag={toggleTag}
+				selectAll={selectAll}
+				deselectAll={deselectAll}
+				isAllSelected={isAllSelected}
+				isNoneSelected={isNoneSelected}
+			/>
+			{/* TODO: вынести в отдельный компонент, чтобы инкапсулировать width, height */}
 			<div className="yandex-map">
 				<YMaps query={{ lang: 'ru_RU' }}>
 					<Map
@@ -138,10 +130,10 @@ export const TourismMapsMoscowBar = () => {
 					</Map>
 				</YMaps>
 			</div>
-			{stateData.barPovMoscow && (
+			{filteredData && (
 				<div className="bar-pov__gallery">
-					{stateData.barPovMoscow.filter(barPovFilter(selectedColor, selectedTags)).map((mapPoint: BarPovType) => (
-						<TourismBarPointSnippet {...mapPoint} />
+					{filteredData.map((mapPoint: BarPovType) => (
+						<TourismBarPointSnippet key={mapPoint.title} {...mapPoint} />
 					))}
 				</div>
 			)}

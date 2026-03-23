@@ -38,6 +38,7 @@ const ROUTE_NOKIA_LINKS = Object.freeze({
 
 const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismIndex: '/tourism/',
+	tourismMaps: '//tourism/maps/', // TODO: надо название хлебной крошки, надо саму страницу
 	tourismNashe: '/tourism/nashe/',
 	tourismNashe_CONST: '/tourism/nashe/:year/',
 	tourismNashe2017: '/tourism/nashe/2017/',

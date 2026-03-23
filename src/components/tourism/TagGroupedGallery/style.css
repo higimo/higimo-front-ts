@@ -1,0 +1,21 @@
+.tag-tree {
+	font-family: Alegreya Sans, sans-serif;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+    font-size: 16px;
+}
+
+.tag-tree__category {
+	display: flex;
+	flex-direction: row;
+    gap: 8px;
+}
+
+.tag-tree__name {
+	padding-right: 16px;
+    display: inline-block;
+}
+
+.tag-tree__tags {
+}
