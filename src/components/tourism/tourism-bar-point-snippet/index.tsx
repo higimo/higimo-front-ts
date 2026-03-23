@@ -7,7 +7,6 @@ import { Tag } from 'components/ui/tag'
 
 import './style.css'
 
-// TODO: показывать описание попизже
 // TODO: по клику на карточку бы фильтровать только его на карте
 export const TourismBarPointSnippet: FunctionComponent<BarPovType> = (mapPoint) => (
 	<div
