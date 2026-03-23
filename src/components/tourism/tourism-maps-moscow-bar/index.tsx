@@ -1,7 +1,8 @@
 import { createRef, Fragment } from 'preact'
 
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useMemo, useState } from 'preact/hooks'
 import { useWindowSize } from 'hook/use-window-size'
+import { useTags } from 'hook/use-tags'
 
 import { YMaps, Map } from 'react-yandex-maps'
 import { TextContainer } from 'components/ui/text-container'
@@ -17,17 +18,22 @@ const loadStateData = async (): Promise<{ barPovMoscow: BarPovType[] }> => {
 	return { barPovMoscow }
 }
 
-const barPovFilter = (filter) => (mapPoint: BarPovType) => {
-	if (!!filter.color && BAR_COLOR_MAPPING[filter.color] !== mapPoint.color) {
+const barPovFilter = (selectedColor, selectedTags) => (mapPoint: BarPovType) => {
+	if (!selectedColor.includes(mapPoint.color)) {
 		return false
 	}
-	if (!!filter.tag && !mapPoint.tags.includes(filter.tag)) {
+	// TODO: надо вынести в отдельную утилиту включение одного массива в другой
+	const mapPointSets = new Set(mapPoint.tags)
+	if (!selectedTags.some(item => mapPointSets.has(item))) {
 		return false
 	}
 	return true
 }
 
-const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, filter) => {
+// TODO: типизировать функцию
+// TODO: map — это текущая карта, может сразу геообжект передавать?
+// TODO: yamaps — библиотека яндекса
+const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, selectedColor, selectedTags) => {
 	if (!map || !yamaps || !stateData.barPovMoscow) {
 		return null
 	}
@@ -35,7 +41,7 @@ const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, filte
 	map.geoObjects.removeAll()
 
 	stateData.barPovMoscow
-		.filter(barPovFilter(filter))
+		.filter(barPovFilter(selectedColor, selectedTags))
 		.forEach(mapPoint => {
 			map.geoObjects.add(new yamaps.Placemark(
 				mapPoint.coord,
@@ -54,50 +60,53 @@ const updateMap = (map, yamaps, stateData: { barPovMoscow: BarPovType[] }, filte
 export const TourismMapsMoscowBar = () => {
 	const refMap = createRef()
 	const [ yamaps, setYamaps ] = useState(null)
-	const [stateData, setStateData] = useState<{ barPovMoscow: BarPovType[] }>({ barPovMoscow: [] })
+	const [ stateData, setStateData ] = useState<{ barPovMoscow: BarPovType[] }>({ barPovMoscow: [] })
 	const { width, height } = useWindowSize()
-	// TODO: использовать хук фильтра тегов
-	const [ filter, setFilter ] = useState({
-		color: null,
-		tag: null,
-	})
+	const [ selectedColor, handleColorClick ] = useTags<string>([])
+	const [ selectedTags, handleTagsClick ] = useTags<string>([])
 
-	const handleMapLoad = ymaps => {
-		setYamaps(ymaps)
-	}
+	const handleMapLoad = ymaps => setYamaps(ymaps)
+
+	const allColors = useMemo(() => Object.keys(BAR_COLOR_MAPPING), [])
+	const allTags = useMemo(() => Object.keys(barTagsCategory)
+		.reduce((acc, item) => acc.concat(Object.keys(barTagsCategory[item])), [])
+	, [])
+
+
 
 	useEffect(() => {
-		updateMap(refMap.current, yamaps, stateData, filter)
-	}, [refMap.current, yamaps, stateData, filter])
+		updateMap(refMap.current, yamaps, stateData, selectedColor, selectedTags)
+	}, [refMap.current, yamaps, stateData, selectedColor, selectedTags])
 
 	useEffect(() => {
 		loadStateData().then(setStateData)
 	}, [])
 
-	const handleColorTagClick = (colorName) => () => {
-		setFilter(prev => ({ ...prev, color: colorName }))
-	}
-
-	const handleCategoryTagClick = (tagCategoryName) => () => {
-		setFilter(prev => ({ ...prev, tag: tagCategoryName }))
-	}
+	useEffect(() => {
+		handleColorClick(allColors)()
+		handleTagsClick(allTags)()
+	}, [])
 
 	return (
 		<Fragment>
 			<TextContainer>
 				{/* TODO: компонент показа галереи тегов */}
 				<div>
-					Отношение: <Tag active={filter.color === null} onClick={handleColorTagClick(null)}>Сбросить</Tag>{' '}
+					Отношение:{' '}
+					<Tag active={!selectedColor.length} onClick={handleColorClick([])}>Сбросить</Tag>{' '}
+					<Tag active={selectedColor.length === allColors.length} onClick={handleColorClick(allColors)}>Выбрать всё</Tag>{' '}
 					{Object.keys(BAR_COLOR_MAPPING).map(colorName => (
-						<Tag active={filter.color === colorName} onClick={handleColorTagClick(colorName)}>{colorName}</Tag>
+						<Tag active={selectedColor.includes(colorName)} onClick={handleColorClick([colorName])}>{colorName}</Tag>
 					))}
 					<hr />
-					Теги: <Tag active={filter.tag === null} onClick={handleCategoryTagClick(null)}>Сбросить</Tag>{' '}
+					Теги:{' '}
+					<Tag active={!selectedTags.length} onClick={handleTagsClick([])}>Сбросить</Tag>{' '}
+					<Tag active={selectedTags.length === allTags.length} onClick={handleTagsClick(allTags)}>Выбрать всё</Tag>{' '}
 					{Object.keys(barTagsCategory).map(item => (
 						<div>
 							{item}{' '}
 							{Object.keys(barTagsCategory[item]).map(subitem => (
-								<Tag active={filter.tag === subitem} onClick={handleCategoryTagClick(subitem)}>{subitem}</Tag>
+								<Tag active={selectedTags.includes(subitem)} onClick={handleTagsClick([subitem])}>{subitem}</Tag>
 							))}
 						</div>
 					))}
@@ -126,10 +135,9 @@ export const TourismMapsMoscowBar = () => {
 					</Map>
 				</YMaps>
 			</div>
-			{/* TODO: по клику на карточку бы фильтровать только его на карте */}
 			{stateData.barPovMoscow && (
 				<div className="bar-pov__gallery">
-					{stateData.barPovMoscow.filter(barPovFilter(filter)).map((mapPoint: BarPovType) => (
+					{stateData.barPovMoscow.filter(barPovFilter(selectedColor, selectedTags)).map((mapPoint: BarPovType) => (
 						<TourismBarPointSnippet {...mapPoint} />
 					))}
 				</div>
