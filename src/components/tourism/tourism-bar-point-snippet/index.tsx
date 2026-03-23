@@ -8,8 +8,6 @@ import { Tag } from 'components/ui/tag'
 import './style.css'
 
 // TODO: показывать описание попизже
-// TODO: Теги не должны ховериться здесь
-// Стилизовать теги color: #e9f7ee background: #809c8a;
 // TODO: по клику на карточку бы фильтровать только его на карте
 export const TourismBarPointSnippet: FunctionComponent<BarPovType> = (mapPoint) => (
 	<div
