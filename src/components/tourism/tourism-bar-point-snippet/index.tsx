@@ -1,12 +1,23 @@
 import { FunctionComponent } from 'preact'
 import { BarPovType } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 
+import cs from 'classnames'
+
 import { Tag } from 'components/ui/tag'
 
 import './style.css'
 
+// TODO: как на http://localhost:5173/tourism/visited/ показывать непосещённое
+// TODO: показывать описание попизже
+// Стилизовать теги     color: #e9f7ee background: #809c8a;
+// TODO: по клику на карточку бы фильтровать только его на карте
 export const TourismBarPointSnippet: FunctionComponent<BarPovType> = (mapPoint) => (
-	<div className="bar-pov__snippet">
+	<div
+		className={cs(
+			'bar-pov__snippet',
+			{ 'bar-pov__snippet--visited': mapPoint.color !== 'Не посещал' }
+		)}
+	>
 		<div className="bar-pov__title">{mapPoint.title}</div>
 		<div className="bar-pov__meta">
 			<div className="bar-pov__icon">Категория: {mapPoint.icon}</div>
