@@ -9,10 +9,13 @@ import { TextContainer } from 'components/ui/text-container'
 import { Tag } from 'components/ui/tag'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 
+// TODO: пиздец, подключаю ленивую подгрузку, а вместе с типами всё равно гружу остальное
 import { BAR_COLOR_MAPPING, barColor, barIcon, BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 
 import '../yandex-map.css'
 
+// TODO: Надо это уже в хэлпер унести, чтоб мне с этим не париться
+// TODO: А мне бы убрать, чтоб это не объект объектов был
 const loadStateData = async (): Promise<{ barPovMoscow: BarPovType[] }> => {
 	const { barPovMoscow } = await import('../tourism-maps-figure/data/common')
 	return { barPovMoscow }
