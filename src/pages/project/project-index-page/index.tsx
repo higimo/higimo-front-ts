@@ -5,10 +5,10 @@ import { useProject } from 'hook/use-project'
 
 import { Loading } from 'components/ui/loading'
 import { ProjectList } from 'components/project/project-list'
-import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
+import { ProjectTagCategory } from 'components/project/project-tag-category'
 
 // TODO: Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
 // TODO: Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
@@ -35,7 +35,7 @@ export const ProjectIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Сделал</h1>
 			</TextContainer>
-			<ProjectTagGroupGallery tags={tagList} />
+			<ProjectTagCategory groupedTags={tagList} />
 			<ProjectList projectsList={projectList} />
 		</div>
 	)

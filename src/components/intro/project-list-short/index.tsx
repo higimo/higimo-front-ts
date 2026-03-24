@@ -14,7 +14,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/api-route'
-import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
+import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 
 import './style.css'
 
@@ -45,13 +45,13 @@ export const ProjectListShort: FunctionComponent = () => {
 				<h2 className="project-list__header">Сделал</h2>
 			</TextContainer>
 			<TextContainer className="project-list__filter">
-				<ProjectTag filterName={filterType.FILTER_TAG}>грандиозный</ProjectTag>
-				<ProjectTag filterName={filterType.FILTER_TAG}>SuperJob</ProjectTag>
-				<ProjectTag filterName={filterType.FILTER_TAG}>Рамблер</ProjectTag>
-				<ProjectTag filterName={filterType.FILTER_TAG}>Студия Лебедева</ProjectTag>
-				<ProjectTag filterName={filterType.FILTER_TAG}>Эртоп</ProjectTag>
-				<ProjectTag filterName={filterType.FILTER_TAG}>Пересечения</ProjectTag>
-				<ProjectTag filterName={filterType.FILTER_TAG}>хомяк</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>грандиозный</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>SuperJob</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Рамблер</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Студия Лебедева</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Эртоп</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Пересечения</ProjectTag>
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>хомяк</ProjectTag>
 			</TextContainer>
 			<ProjectList projectsList={projectsList} />
 			<ProjectMore count={projectIds.data.length} />

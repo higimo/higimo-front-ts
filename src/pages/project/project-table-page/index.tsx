@@ -5,7 +5,7 @@ import { useTableProject } from 'hook/use-table-project'
 
 import { Loading } from 'components/ui/loading'
 import { PortfolioProjectTable } from 'components/project/portfolio-project-table'
-import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
+// import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'

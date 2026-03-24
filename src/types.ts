@@ -196,6 +196,14 @@ export type PortfolioTag = {
 	id: number
 	title: string
 }
+export type PortfolioGroupTagType = {
+	id: number
+	title: string
+}
+export type PortfolioGroupedTagType = {
+	group: PortfolioGroupTagType
+	tags: PortfolioTag[]
+}
 export type PortfolioWorkerType = {
 	id: number,
 	full_name: string

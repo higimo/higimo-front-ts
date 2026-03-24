@@ -1,6 +1,6 @@
 import { PortfolioTag, PortfolioProjectType } from 'types'
 
-import { filterType } from 'components/project/project-tag-group-gallery/filter-type'
+import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 
 import { useEmptyDataState } from './use-empty-data-state'
 import { useLoadingState } from './use-loading-state'
@@ -63,7 +63,7 @@ export const useTableProject: UseProjectType = () => {
 	const { query } = useRoute()
 
 	const [projects] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProjectTable)
-	const [tagList] = useApi<PortfolioTag[]>(API_ROUTE.projectTags)
+	const [tagList] = useApi<PortfolioTag[]>(API_ROUTE.projectGroupedTags)
 
 	const isLoading = useLoadingState([projects.status, tagList.status])
 	const isProjectListEmpty = useEmptyDataState(projects.data)
@@ -154,9 +154,9 @@ export const useTableProject: UseProjectType = () => {
 
 	// TODO: useTag применить
 	let projectList = projects.data
-	if (query[filterType.FILTER_TAG]) {
+	if (query[PROJECT_FILTER_DIC.FILTER_TAG]) {
 		projectList = projects.data.filter(projectItem => {
-			return projectItem.tags.find(tag => tag.title === query[filterType.FILTER_TAG])
+			return projectItem.tags.find(tag => tag.title === query[PROJECT_FILTER_DIC.FILTER_TAG])
 		})
 	}
 
