@@ -34,6 +34,7 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.nokiaStatistic]: 'Статистика',
 
 	[ROUTE_LINKS.tourismIndex]: 'Путешествую',
+	[ROUTE_LINKS.tourismMaps]: 'Интерактивные карты',
 	[ROUTE_LINKS.tourismNashe]: 'Нашествие',
 	[ROUTE_LINKS.tourismNashe2017]: 'Нашествие 2017',
 	[ROUTE_LINKS.tourismNashe2018]: 'Нашествие 2018',

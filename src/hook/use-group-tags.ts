@@ -55,7 +55,7 @@ export const useGroupTags = (tagGroups: Record<string, string[]>, initialSelecte
 			} else {
 				groupSet.add(tag)
 			}
-			return { ...prev, [group]: groupSet }
+			return ({ ...prev, [group]: groupSet } as Record<string, Set<string>>)
 		})
 	}, [])
 
