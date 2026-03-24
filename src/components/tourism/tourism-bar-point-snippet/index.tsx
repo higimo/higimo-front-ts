@@ -1,13 +1,12 @@
 import { FunctionComponent } from 'preact'
-import { BarPovType } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 
 import cs from 'classnames'
 
+import { BarPovType } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 import { Tag } from 'components/ui/tag'
 
 import './style.css'
 
-// TODO: по клику на карточку бы фильтровать только его на карте
 export const TourismBarPointSnippet: FunctionComponent<BarPovType> = (mapPoint) => (
 	<div
 		className={cs(

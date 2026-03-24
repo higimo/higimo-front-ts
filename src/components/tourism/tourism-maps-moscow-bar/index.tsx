@@ -1,40 +1,40 @@
-import { Fragment } from 'preact'
-
-import { useEffect, useMemo, useState } from 'preact/hooks'
-
-import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-
-// TODO: пиздец, подключаю ленивую подгрузку, а вместе с типами всё равно гружу остальное
 import { BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
-
-import '../yandex-map.css'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 import { TagGroupedGallery } from '../TagGroupedGallery'
-import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
-import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
+import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { YandexMap } from '../YandexMap'
 
-// TODO: Надо это уже в хэлпер унести, чтоб мне с этим не париться
-// TODO: А мне бы убрать, чтоб это не объект объектов был
-const loadStateData = async (): Promise<{ barPovMoscow: BarPovType[] }> => {
-	const { barPovMoscow } = await import('../tourism-maps-figure/data/common')
-	return { barPovMoscow }
-}
+import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import { useMemo } from 'preact/hooks'
+import useApi from 'hook/use-api'
+
+import { API_ROUTE } from 'dic/api-route'
+import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
+
+import '../yandex-map.css'
 
 export const TourismMapsMoscowBar = () => {
-	const [ stateData, setStateData ] = useState<{ barPovMoscow: BarPovType[] }>({ barPovMoscow: [] })
+	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
 
-	const tagGroups = useMemo(() => {
-		return Object.keys(barTagsCategory).reduce((acc, categoryName) => {
-			return {
+	const isLoading = useLoadingState([barPovMoscow.status])
+	const isListEmpty = useEmptyDataState(barPovMoscow.data)
+
+	const tagGroups = useMemo(
+		() => Object.entries(barTagsCategory)
+			.reduce((acc, [categoryName, tags]) => ({
 				...acc,
 				[categoryName]: [
 					TAG_GROUP_ALL_DISABLE,
 					TAG_GROUP_ALL_ENABLE,
-					...Object.keys(barTagsCategory[categoryName])
+					...barTagsCategory[categoryName]
 				]
-			}
-		}, {})
-	}, [])
+			}),
+			{}),
+		[]
+	)
 
 	const {
 		selectedTags,
@@ -46,13 +46,18 @@ export const TourismMapsMoscowBar = () => {
 	} = useGroupTags(tagGroups);
 
 	const filteredData = useMemo(
-		() => filterTagAndGroupsStrategy(stateData.barPovMoscow, selectedTags),
-		[stateData.barPovMoscow, selectedTags]
+		// TODO: есть же DX с (хук есть) useYearFilter(AND_GROUP_STRATEGY)
+		() => filterTagAndGroupsStrategy(barPovMoscow.data, selectedTags),
+		[barPovMoscow.data, selectedTags]
 	);
 
-	useEffect(() => {
-		loadStateData().then(setStateData)
-	}, [])
+	if (isLoading) {
+		return <Loading />
+	}
+
+	if (isListEmpty) {
+		return <NotFoundData />
+	}
 
 	return (
 		<div className="tourism-maps-moscow-bar">

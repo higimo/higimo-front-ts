@@ -41,6 +41,7 @@ export const API_ROUTE = {
 	probbi: '/api/v2/probbi',
 	probbiSingle: generateLink<'projectId'>('/api/v2/probbi/:projectId'),
 	yamap: '/api/v2/map/yamaps',
+	moscowBars: '/api/v2/map/moscow-bar',
 	lister: '/api/v2/lister/item',
 	listerItemSingle: generateLink<'id'>('/api/v2/lister/item/:id'),
 
