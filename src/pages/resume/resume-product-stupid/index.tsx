@@ -4,8 +4,6 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import avatar3 from './avatar3.jpg'
-
 import '../resume-style.css'
 import './style.css'
 

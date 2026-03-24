@@ -76,7 +76,7 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 					<div className="expirience__element company">
 						<div className="company__meta">
 							<div className="company__staff">
-								<div className="company__profession">Сооснователь</div>
+								<div className="company__profession">Founding Product Manager / Tech Lead</div>
 								<div className="company__name"><a href="https://kidgu.ru">kidgu.ru</a></div>
 							</div>
 							<div className="company__timing">
