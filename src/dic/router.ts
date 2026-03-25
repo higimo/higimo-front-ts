@@ -67,12 +67,12 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.cinemaScriptIndex]: 'Фрагменты сценариев',
 	[ROUTE_LINKS.cinemaScriptDetail_CONST]: 'Фрагмент',
 
-	[ROUTE_LINKS.resumeIndex]: 'ТУДУ',
+	[ROUTE_LINKS.resumeIndex]: 'Мои резюме',
+	[ROUTE_LINKS.resumeHowToWork]: 'Как работаю',
 	[ROUTE_LINKS.resumeHead]: 'ТУДУ',
 	[ROUTE_LINKS.resumeTechProduct]: 'ТУДУ',
 	[ROUTE_LINKS.resumeProduct]: 'ТУДУ',
 	[ROUTE_LINKS.resumeProductStupid]: 'ТУДУ',
-	[ROUTE_LINKS.resumeProductLegacy]: 'ТУДУ',
 
 	[ROUTE_LINKS.thingsIndex]: 'ТУДУ',
 	[ROUTE_LINKS.thingsNotebook]: 'ТУДУ',

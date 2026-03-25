@@ -151,12 +151,14 @@ export function App() {
 								<Route path={ROUTE_LINKS.links} component={LinksPage} />
 
 								{/* Инфостраницы о себе */}
-								<Route path={ROUTE_LINKS.resumeIndex} component={ResumePage} />
-								<Route path={ROUTE_LINKS.resumeHead} component={ResumeHeadPage} />
-								<Route path={ROUTE_LINKS.resumeProductLegacy} component={ResumeProductPage} />
+								<Route path={ROUTE_LINKS.resumeIndex} component={ResumeIndexPage} />
+								{/* <Route path={ROUTE_LINKS.resumeHead} component={HowToWorkPage} /> */}
+								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
 								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProduct2Page} />
 								<Route path={ROUTE_LINKS.resumeProductStupid} component={ResumeProductStupidPage} />
 								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
+
+								{/* Инфостраницы о себе */}
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
 								<Route path={ROUTE_LINKS.thingsIndex} component={ThingsIndexPage} />
 								<Route path={ROUTE_LINKS.thingsNotebook} component={ThingsNotebookPage} />

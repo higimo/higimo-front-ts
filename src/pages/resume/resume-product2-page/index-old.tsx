@@ -4,7 +4,7 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import avatar2 from './avatar2.jpeg'
+import avatar2 from 'assets/avatar3.jpg'
 
 import '../resume-style.css'
 import './style.css'
@@ -64,7 +64,7 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 				</div>
 			</TextContainer>
 			<TextContainer>
-				5 
+				5
 				сразу после контактов добавляй саммари (опыт, домены, сегменты рынка, сильные стороны, что ищешь)
 			</TextContainer>
 			{/* <TextContainer>

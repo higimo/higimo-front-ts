@@ -4,49 +4,10 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import avatar3 from './avatar3.jpg'
+import avatar3 from 'assets/avatar3.jpg'
 
 import '../resume-style.css'
 import './style.css'
-
-// https://jsonresume.org/schema
-
-const skillSet = [
-	'data-driven',
-	// 'разработка нового продукта',
-		// 'анализ целевой аудитории',
-		// 'оценка потребностей клиентов',
-		'сегментация',
-		'JTBD',
-	// 'умение принимать решения',
-	// 'управление по целям',
-		'умение ставить измеримые цели и достигать их',
-		// 'SMART',
-		'RICE', // 'приоритизация бэклога',
-		// 'расстановка приоритетов',
-		'Agile',
-		// 'стратегическое планирование и менеджмент',
-	'анализ данных',
-		'SQL',
-		// 'A/B‑тесты',
-	// 'анализ бизнес показателей',
-		// 'UNIT‑экономика',
-		// 'AARRR‑метрики',
-		// 'HEART‑метрики',
-		'продуктовые метрики',
-		// 'маркетинговые метрики',
-	'UX',
-		'Figma',
-		'FigJam',
-		'Miro',
-		'Jira/Confluence',
-	// 'лидерство',
-		// 'умение общаться с разработчиками на одном языке',
-		// 'эмпатия',
-		// 'мотивация персонала',
-	// 'проведение презентаций',
-	// 'целеустремленность',
-]
 
 export const ResumeProduct2Page: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин резюме на позицию Product manager')
@@ -174,44 +135,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 					</div>
 				</div>
 			</TextContainer>
-
-			{/* Продакт кэмп подкаст */}
-
-			{/* <TextContainer> */}
-				{/* <div class="skill">
-					<div class="skill_header">
-						Навыки
-					</div>
-					<div class="skill_content">
-						{skillSet.join(', ')}
-					</div>
-				</div> */}
-				{/* <div class="about">
-					<div class="about__header">Обо мне</div>
-					<div class="about__description"> */}
-
-						{/* <p>
-							Разговариваю на одном языке с разработчиками, дизайнерами и бизнесом, благодаря 8 годам fullstack-разработки и работе в Студии Лебедева.
-						</p> */}
-					{/* </div>
-				</div> */}
-			{/* </TextContainer> */}
-
-			{/* <TextContainer>
-				<div class="school">
-					<div class="school__info">
-						<div class="school__status">Неоконченное высшее</div>
-						<div class="school__date">2011–2015 (4 курса)</div>
-					</div>
-					<div className="school__base">
-						<div class="school__name">Программная инженерия</div>
-						<div class="school__company">в Поволжском Государственном Технологическом Университете</div>
-					</div>
-				</div>
-			</TextContainer> */}
-
-			{/* <OtherResume /> */}
-			{/* <ContactList /> */}
 		</div>
 	)
 }
