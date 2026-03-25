@@ -6,7 +6,6 @@ import { PrecentationContainer } from 'components/ui/precentation-container/Prec
 import { TextContainer } from 'components/ui/text-container'
 import { ContactList } from 'components/intro/contact-list'
 import { CollapseSection } from 'components/ui/collapse-section'
-import { OtherResume } from 'components/other-resume'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
@@ -392,7 +391,6 @@ export const HowToWorkPage: FunctionComponent = () => {
 					</p>
 				</TextContainer>
 			</PrecentationContainer>
-			<OtherResume />
 			<ContactList />
 		</div>
 	)

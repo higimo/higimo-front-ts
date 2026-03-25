@@ -307,9 +307,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 					</div>
 				</div>
 			</TextContainer>
-
-			{/* <OtherResume /> */}
-			{/* <ContactList /> */}
 		</div>
 	)
 }
