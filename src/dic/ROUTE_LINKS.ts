@@ -97,12 +97,12 @@ const ROUTE_CINEMA_LINKS = Object.freeze({
 })
 
 const ROUTE_RESUME_LINKS = Object.freeze({
-	resumeIndex: '/resume/',
-	resumeHead: '/resume/product-lead/',
-	resumeHowToWork: '/resume/how-to-work/',
-	resumeProduct: '/resume/product-smart/',
-	resumeProductStupid: '/resume/product/',
-	resumeTechProduct: '/resume/tech-product/',
+	resumeIndex:         '/resume/',
+	resumeProduct:       '/resume/product/',
+	resumeLead:          '/resume/product-lead/',
+	resumeTechProduct:   '/resume/tech-product/',
+	resumeHowToWork:     '/resume/how-to-work/',
+	resumeProductSmart:  '/resume/product-smart/', // Стилистика перестала быть хорошей
 })
 
 const ROUTE_THINGS_LINKS = Object.freeze({

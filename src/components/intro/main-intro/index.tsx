@@ -16,7 +16,7 @@ export const MainIntro: FunctionComponent = () => (
 		<TextContainer>
 			<p class="logo">ХИГИ́МО</p>
 			<p>
-				<a href={ROUTE_LINKS.resumeProductStupid}>Резюме</a>
+				<a href={ROUTE_LINKS.resumeProduct}>Резюме</a>
 			</p>
 			{/* TODO: поставить ссылки на своё портфолио */}
 			<p>

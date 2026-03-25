@@ -18,21 +18,20 @@ export const ResumeIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Мои резюме</h1>
 				<ul>
-					<li><a href={ROUTE_LINKS.resumeProductStupid}>Резюме продакт-менеджера</a></li>
+					<li><a href={ROUTE_LINKS.resumeProduct}>Резюме продакт-менеджера</a></li>
 					<li><a href={ROUTE_LINKS.resumeTechProduct}>Резюме tech продакт-менеджера</a></li>
+					<li><a href={ROUTE_LINKS.resumeLead}>Резюме product lead</a></li>
 				</ul>
 				<p>
 					<a href={ROUTE_LINKS.resumeHowToWork}>Как подхожу к работе</a>
 				</p>
 			</TextContainer>
 			<OnlyAdmin>
+				<hr />
 				<TextContainer>
-					<p>
-						Скрытые резюме
-					</p>
+					<h2>Скрытые резюме</h2>
 					<ul>
-						<li><a href={ROUTE_LINKS.resumeHead}>head</a></li>
-						<li><a href={ROUTE_LINKS.resumeProduct}>smart</a></li>
+						<li><a href={ROUTE_LINKS.resumeProductSmart}>smart</a></li>
 					</ul>
 				</TextContainer>
 			</OnlyAdmin>

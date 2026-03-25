@@ -154,8 +154,8 @@ export function App() {
 								<Route path={ROUTE_LINKS.resumeIndex} component={ResumeIndexPage} />
 								{/* <Route path={ROUTE_LINKS.resumeHead} component={HowToWorkPage} /> */}
 								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
-								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProduct2Page} />
-								<Route path={ROUTE_LINKS.resumeProductStupid} component={ResumeProductStupidPage} />
+								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProduct2Page} />
+								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductStupidPage} />
 								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
 
 								{/* Инфостраницы о себе */}
