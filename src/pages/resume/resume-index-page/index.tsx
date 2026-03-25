@@ -20,7 +20,7 @@ export const ResumeIndexPage: FunctionComponent = () => {
 				<ul>
 					<li><a href={ROUTE_LINKS.resumeProduct}>Резюме продакт-менеджера</a></li>
 					<li><a href={ROUTE_LINKS.resumeTechProduct}>Резюме tech продакт-менеджера</a></li>
-					<li><a href={ROUTE_LINKS.resumeLead}>Резюме product lead</a></li>
+					<li><a href={ROUTE_LINKS.resumeLead}>Резюме Product Lead</a></li>
 				</ul>
 				<p>
 					<a href={ROUTE_LINKS.resumeHowToWork}>Как подхожу к работе</a>

@@ -86,7 +86,7 @@ import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 import { HowToWorkPage }           from 'pages/resume/how-to-work-page'
 import { ResumeIndexPage }         from 'pages/resume/resume-index-page'
 import { ResumeProduct2Page }      from 'pages/resume/resume-product2-page'
-import { ResumeProductStupidPage } from 'pages/resume/resume-product-stupid'
+import { ResumeProductPage } from 'pages/resume/resume-product-page'
 import { ResumeTechProductPage }   from 'pages/resume/resume-tech-product'
 
 import { AdminPage }     from 'pages/auth/admin-page'
@@ -152,11 +152,11 @@ export function App() {
 
 								{/* Инфостраницы о себе */}
 								<Route path={ROUTE_LINKS.resumeIndex} component={ResumeIndexPage} />
-								{/* <Route path={ROUTE_LINKS.resumeHead} component={HowToWorkPage} /> */}
+								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductPage} />
+								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
+								<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductPage} />
 								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
 								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProduct2Page} />
-								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductStupidPage} />
-								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
 
 								{/* Инфостраницы о себе */}
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
