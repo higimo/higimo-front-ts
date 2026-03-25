@@ -83,11 +83,12 @@ import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
 // TODO: все резюме сунуть в отложенную загрузку
 // const HowToWorkPage           = lazy(() => import('pages/resume/how-to-work-page'))
-import { HowToWorkPage }           from 'pages/resume/how-to-work-page'
-import { ResumeIndexPage }         from 'pages/resume/resume-index-page'
-import { ResumeProduct2Page }      from 'pages/resume/resume-product2-page'
-import { ResumeProductPage } from 'pages/resume/resume-product-page'
-import { ResumeTechProductPage }   from 'pages/resume/resume-tech-product'
+import { ResumeIndexPage }        from 'pages/resume/resume-index-page'
+import { ResumeProductPage }      from 'pages/resume/resume-product-page'
+import { ResumeTechProductPage }  from 'pages/resume/resume-tech-product'
+import { ResumeProductLeadPage }  from 'pages/resume/resume-product-lead-page'
+import { HowToWorkPage }          from 'pages/resume/how-to-work-page'
+import { ResumeProductSmartPage } from 'pages/resume/resume-product-smart-page'
 
 import { AdminPage }     from 'pages/auth/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
@@ -150,13 +151,13 @@ export function App() {
 								<Route path={ROUTE_LINKS.youtube} component={YoutubePage} />
 								<Route path={ROUTE_LINKS.links} component={LinksPage} />
 
-								{/* Инфостраницы о себе */}
+								{/* Резюме */}
 								<Route path={ROUTE_LINKS.resumeIndex} component={ResumeIndexPage} />
 								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductPage} />
 								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
-								<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductPage} />
+								<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductLeadPage} />
 								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
-								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProduct2Page} />
+								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProductSmartPage} />
 
 								{/* Инфостраницы о себе */}
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />

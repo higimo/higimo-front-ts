@@ -1,0 +1,113 @@
+.resume-product-sss-page {
+	font-family: Alegreya Sans, sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	margin: 32px 0;
+}
+
+.resume-product-sss-page .resume-avatar {
+	float: right;
+	max-width: 146px;
+	border-radius: 50%;
+}
+
+.resume-product-sss-page .text-container {
+	max-width: 21cm;
+	margin-bottom: 8px;
+}
+
+.resume-product-sss-page h2 {
+	font-size: 22px;
+	line-height: .9;
+	margin: 0 0 8px 0;
+}
+
+.resume-page strong {
+	background: none;
+	font-weight: 500;
+}
+
+.resume-product-sss-page p {
+	margin: 0;
+}
+
+.resume-product-sss-page p + ul {
+    margin-top: 0;
+}
+
+.resume-product-sss-page p:not(:first-of-type) {
+	margin-top: 4px;
+}
+
+.resume-product-sss-page a {
+	color: #0154ac;
+	text-decoration: none;
+	border-bottom: 1px solid #0154ac59;
+}
+
+.resume-product-sss-page .contact {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+@media (min-width: 620px) {
+	.resume-product-sss-page .contact {
+		flex-direction: row;
+		gap: 16px;
+	}
+}
+
+.resume-product-sss-page .expirience__element.company {
+	border-top: 2px solid #e1e1e1;
+    padding-top: 10px;
+}
+
+.resume-product-sss-page .company__meta {
+	font-size: 22px;
+	line-height: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 4px;
+}
+
+.resume-product-sss-page .company__staff {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.resume-product-sss-page .company__name {
+	font-size: 18px;
+}
+
+.resume-product-sss-page .company__timing {
+	font-size: 16px;
+	display: flex;
+	gap: 4px;
+	align-items: flex-end;
+}
+
+.resume-product-sss-page .expirience__element:not(:first-of-type) {
+	margin-top: 12px;
+}
+
+.resume-product-sss-page .skill {
+	display: flex;
+	gap: 16px;
+	font-size: 14px;
+}
+.resume-product-sss-page .school {
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+}
+.resume-product-sss-page .school__info {
+	display: flex;
+	gap: 4px;
+}
+.resume-product-sss-page .school__base {
+	display: flex;
+	gap: 4px;
+}
+

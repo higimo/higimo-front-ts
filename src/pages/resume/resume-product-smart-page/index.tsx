@@ -9,7 +9,7 @@ import avatar3 from 'assets/avatar3.jpg'
 import '../resume-style.css'
 import './style.css'
 
-export const ResumeProduct2Page: FunctionComponent = () => {
+export const ResumeProductSmartPage: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин резюме на позицию Product manager')
 
 	return (
