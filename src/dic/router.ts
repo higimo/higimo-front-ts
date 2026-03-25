@@ -19,6 +19,7 @@ type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS
 
 type RouteType = Exclude<typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS], ExcludeRouteType>
 
+// TODO: rename BREADCRUMS_DIC
 export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.index]: '🏠',
 	[ROUTE_LINKS.serviceIndex]: 'Сервисы',
