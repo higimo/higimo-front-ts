@@ -138,3 +138,5 @@ export const ResumeProductSmartPage: FunctionComponent = () => {
 		</div>
 	)
 }
+
+export default ResumeProductSmartPage

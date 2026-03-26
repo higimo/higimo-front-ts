@@ -371,3 +371,5 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 		</div>
 	)
 }
+
+export default TourismFatherTrackPage

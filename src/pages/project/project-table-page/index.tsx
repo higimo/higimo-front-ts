@@ -40,3 +40,5 @@ export const ProjectTablePage: FunctionComponent = () => {
 		</div>
 	)
 }
+
+export default ProjectTablePage

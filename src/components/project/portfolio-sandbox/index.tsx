@@ -303,3 +303,5 @@ export const PortfolioSandbox: FunctionComponent = () => {
 		</div>
 	)
 }
+
+export default PortfolioSandbox

@@ -14,14 +14,11 @@ import { PrivateRoute }  from 'components/util/private-route/PrivateRoute'
 import { IndexPage }   from 'pages/index-page'
 import { ServicePage } from 'pages/service-page'
 
-// TODO: lazy
-import { PortfolioSandbox }  from 'components/project/portfolio-sandbox'
 import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
-// TODO: lazy
-import { ProjectTablePage }  from 'pages/project/project-table-page'
-// TODO: lazy
-import { ProjectTypography } from 'components/project/project-test'
+const PortfolioSandbox  = lazy(() => import('components/project/portfolio-sandbox'))
+const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
+const ProjectTypography = lazy(() => import('components/project/project-test'))
 
 import { ComojiPage }          from 'pages/test-page/tools/comoji-page'
 import { DemagogPage }         from 'pages/test-page/tools/demagog-page'
@@ -66,14 +63,13 @@ import { NasheIndexPage }              from 'pages/tourism/nashe/nashe-page'
 import { NasheSinglePage }             from 'pages/tourism/nashe/nashe-single-page'
 import { TourismChecklistPage }        from 'pages/tourism/tourism-checklist-page'
 import { TourismCityStarPage }         from 'pages/tourism/tourism-city-star-page'
-// TODO: lazy
-import { TourismFatherTrackPage }      from 'pages/tourism/tourism-father-track-page'
 import { TourismIndexPage }            from 'pages/tourism/tourism-index'
 import { TourismMoscowBarPage }        from 'pages/tourism/tourism-ya-maps/tourism-moscow-bar'
 import { TourismMoscowWalkaroundPage } from 'pages/tourism/tourism-ya-maps/tourism-moscow-walkaround-page'
 import { TourismVisitedPage }          from 'pages/tourism/tourism-visited-page'
 import { TourismWalkSinglePage }       from 'pages/tourism/tourism-walk-single-page'
 import { TourismYaMapsRegionPage }     from 'pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page'
+const TourismFatherTrackPage           = lazy(() => import('pages/tourism/tourism-father-track-page'))
 
 import { VkAlbumEditPage }   from 'pages/vk/vk-album-edit-page'
 import { VkAlbumListPage }   from 'pages/vk/vk-album-list-page'
@@ -82,13 +78,12 @@ import { VkIndexPage }       from 'pages/vk/vk-index-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
 // TODO: все резюме сунуть в отложенную загрузку
-// const HowToWorkPage           = lazy(() => import('pages/resume/how-to-work-page'))
-import { ResumeIndexPage }        from 'pages/resume/resume-index-page'
-import { ResumeProductPage }      from 'pages/resume/resume-product-page'
-import { ResumeTechProductPage }  from 'pages/resume/resume-tech-product'
-import { ResumeProductLeadPage }  from 'pages/resume/resume-product-lead-page'
-import { HowToWorkPage }          from 'pages/resume/how-to-work-page'
-import { ResumeProductSmartPage } from 'pages/resume/resume-product-smart-page'
+import { ResumeIndexPage }    from 'pages/resume/resume-index-page'
+const ResumeProductPage       = lazy(() => import('pages/resume/resume-product-page'))
+const ResumeTechProductPage   = lazy(() => import('pages/resume/resume-tech-product'))
+const ResumeProductLeadPage   = lazy(() => import('pages/resume/resume-product-lead-page'))
+const HowToWorkPage           = lazy(() => import('pages/resume/how-to-work-page'))
+const ResumeProductSmartPage  = lazy(() => import('pages/resume/resume-product-smart-page'))
 
 import { AdminPage }     from 'pages/auth/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
@@ -123,10 +118,13 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 								{/* Портфолио */}
+								{/* Секретные разработки не для продакшена */}
+								{process.env.NODE_ENV === 'development' && [
+									<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />,
+									<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />,
+									<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
+								]}
 								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
-								<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />
-								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
-								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
 								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 
 								{/* Список списков */}

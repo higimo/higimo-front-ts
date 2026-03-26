@@ -78,3 +78,5 @@ export const ProjectTypography: FunctionComponent = () => {
 		</div>
 	)
 }
+
+export default ProjectTypography

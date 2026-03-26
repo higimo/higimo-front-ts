@@ -147,15 +147,13 @@ export const ResumeProductPage: FunctionComponent = () => {
 							Работал над развитием медиа-платформы <strong>(5M MAU)</strong> на пересечении продукта и разработки.
 						</p>
 						<p>
-							<p>
-								<strong className="local-header">Ключевые результаты:</strong>
-							</p>
-							<ul>
-								<li>переписал ключевые разделы продукта, повысив скорость разработки</li>
-								<li>внедрил систему анализа пользовательского поведения</li>
-								<li>курировал <strong>дизайн-систему продукта</strong></li>
-							</ul>
+							<strong className="local-header">Ключевые результаты:</strong>
 						</p>
+						<ul>
+							<li>переписал ключевые разделы продукта, повысив скорость разработки</li>
+							<li>внедрил систему анализа пользовательского поведения</li>
+							<li>курировал <strong>дизайн-систему продукта</strong></li>
+						</ul>
 					</div>
 
 					<div class="expirience__element company">
@@ -237,3 +235,5 @@ export const ResumeProductPage: FunctionComponent = () => {
 		</div>
 	)
 }
+
+export default ResumeProductPage
