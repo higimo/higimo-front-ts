@@ -96,6 +96,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { PaymentPage } from 'pages/payment-page'
 
 export function App() {
 	return (
@@ -217,6 +218,9 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
 								<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
 								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
+
+
+								<Route path={"/payment/"} component={PaymentPage} />
 
 								<Route default component={NotFoundPage} />
 							</Router>
