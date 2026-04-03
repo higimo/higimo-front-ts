@@ -1,0 +1,43 @@
+.product-banner__container {
+	padding: 32px;
+	background-color: #ccc;
+	background: #e6d6902e;
+}
+
+.product-banner__banner {
+    max-width: 550px;
+    margin: auto;
+	display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #fefdfa;
+    box-shadow: 0 8px 16px -12px rgb(144 70 9 / 41%);
+    border: 1px solid #ccc;
+    color: #000;
+	line-height: 1;
+}
+
+.product-banner__image {
+	display: block;
+}
+.product-banner__image img {
+	width: 88px;
+	height: 88px;
+}
+
+.product-banner__info {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.product-banner__name {
+	font-size: 24px;
+}
+
+.product-banner__description {
+	font-size: 18px;
+	line-height: 1.3;
+}

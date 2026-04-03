@@ -10,6 +10,7 @@ import { MainIntro } from 'components/intro/main-intro'
 import { ProjectListShort } from 'components/intro/project-list-short'
 import { TravelInvite } from 'components/intro/travel-invite'
 import { CharityIntro } from 'components/intro/carity-intro'
+import { CoffeeProductBanner } from 'components/merchant/product-banner'
 // import { DonatIntro } from 'components/intro/donat-intro'
 // import { AboutMe } from 'components/intro/about-me'
 
@@ -23,6 +24,7 @@ export const IndexPage: FunctionComponent = () => {
 
 	return [
 		<MainIntro />,
+		<CoffeeProductBanner />,
 		// TODO: опубликовать, но пока не оч красиво выглядит
 		// <AboutMe />,
 		<ProjectListShort />,
