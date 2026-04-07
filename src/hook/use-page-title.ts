@@ -1,6 +1,8 @@
 import { useEffect } from 'preact/hooks'
 
-const POSTFIX = 'Хигимо'
+export const SITE_POSTFIX = 'Хигимо'
+
+// TODO: вот бы он пробовал взять заголовок из src\dic\router.ts
 
 /**
  * Хук для управления заголовком страницы
@@ -8,13 +10,13 @@ const POSTFIX = 'Хигимо'
 export const usePageTitle = (title: string | string[], fallback?: string) => {
 	useEffect(() => {
 		if (Array.isArray(title)) {
-			document.title = [...title, POSTFIX].join(' | ')
+			document.title = [...title, SITE_POSTFIX].join(' | ')
 		} else if (title) {
-			document.title = title + ' | ' + POSTFIX
+			document.title = title + ' | ' + SITE_POSTFIX
 		} else if (fallback) {
-			document.title = fallback + ' | ' + POSTFIX
+			document.title = fallback + ' | ' + SITE_POSTFIX
 		} else {
-			document.title = POSTFIX
+			document.title = SITE_POSTFIX
 		}
 	}, [title, fallback])
 }

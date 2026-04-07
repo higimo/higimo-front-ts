@@ -1,0 +1,14 @@
+.feature {
+	max-width: max-content;
+}
+
+.feature__item {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	column-gap: 16px;
+}
+
+.feature__title {
+	opacity: .6;
+	text-align: right;
+}

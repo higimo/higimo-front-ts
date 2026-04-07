@@ -56,6 +56,9 @@ export const API_ROUTE = {
 	nokiaTags: '/api/v2/nokia/tag',
 	nokiaTagGroup: '/api/v2/nokia/tag/groups/list',
 	nokiaStatistic: '/api/v2/nokia/meeting/statistic',
+
+	merchantProducts: '/api/v2/products',
+	merchantSingleProduct: generateLink<'productId'>('/api/v2/products/:productId'),
 } as const
 
 export type ApiRouteType = Exclude<

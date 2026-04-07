@@ -1,0 +1,54 @@
+/**
+ * Извлекает все возможные значения из объекта
+ * @example
+ * const obj = { a: 1, b: 2, c: 3 } as const
+ * type Values = ValueOf<typeof obj> // 1 | 2 | 3
+ */
+export type ValueOf<T> = T[keyof T]
+
+/**
+ * Извлекает все возможные ключи из объекта (аналог keyof, но для читаемости)
+ * @example
+ * const obj = { a: 1, b: 2, c: 3 }
+ * type Keys = KeyOf<typeof obj> // 'a' | 'b' | 'c'
+ */
+export type KeyOf<T> = keyof T
+
+/**
+ * Извлекает значения только определённого типа
+ * @example
+ * const mixed = { a: 1, b: 'string', c: true } as const
+ * type StringValues = ValueOfType<typeof mixed, string> // 'string'
+ */
+export type ValueOfType<T, Type> = Extract<ValueOf<T>, Type>
+
+/**
+ * Извлекает ключи, значения которых соответствуют определённому типу
+ * @example
+ * const mixed = { a: 1, b: 'string', c: true }
+ * type StringKeys = KeysOfType<typeof mixed, string> // 'b'
+ */
+export type KeysOfType<T, Type> = {
+    [K in keyof T]: T[K] extends Type ? K : never
+}[keyof T]
+
+/**
+ * Делает все значения объекта доступными как литералы
+ * @example
+ * const colors = { RED: 'red', GREEN: 'green', BLUE: 'blue' } as const
+ * type ColorValues = LiteralValueOf<typeof colors> // 'red' | 'green' | 'blue'
+ */
+export type LiteralValueOf<T> = T[keyof T]
+
+/**
+ * Безопасное получение значения из объекта с дефолтом
+ * @example
+ * const value = getValueOrDefault(obj, 'key', 'default')
+ */
+export function getValueOrDefault<T extends Record<string, any>, K extends keyof T>(
+    obj: T,
+    key: K,
+    defaultValue: T[K]
+): T[K] {
+    return obj[key] ?? defaultValue
+}

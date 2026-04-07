@@ -24,6 +24,10 @@ const menu = [
 		href: ROUTE_LINKS.tourismIndex,
 		name: 'Путешествую',
 	},
+	{
+		href: ROUTE_LINKS.merchantIndex,
+		name: 'Магазин',
+	},
 ] as const
 
 const secretMenu = [

@@ -161,6 +161,16 @@ const ROUTE_SERVICE_ABOUT_ME_LINKS = Object.freeze({
 	...ROUTE_LIBRARY_LINKS,
 })
 
+// Магазин
+const ROUTE_MERCHANT_LINKS = Object.freeze({
+	merchantIndex: '/merchant/',
+	merchantCheckout:'/checkout/',
+	merchantPaymentPolicy:'/merchant/payment-policy/',
+	merchantPersonalPolicy:'/merchant/personal-policy/',
+	merchantPaymentOferta:'/merchant/payment-oferta/',
+	merchantDonationOferta:'/merchant/donation-oferta/',
+})
+
 export const ROUTE_LINKS = {
 	index:        '/',
 	serviceIndex: '/service',
@@ -174,6 +184,7 @@ export const ROUTE_LINKS = {
 	...ROUTE_TOOL_LINKS,
 	...ROUTE_INFO_SERVICE_LINKS,
 	...ROUTE_FUNNY_LINKS,
+	...ROUTE_MERCHANT_LINKS,
 
 	adminIndex: '/admin/',
 	login:      '/login/',

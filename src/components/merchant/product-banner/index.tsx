@@ -1,32 +1,39 @@
-import { FunctionComponent } from "preact"
+import { FunctionComponent } from 'preact'
+import cs from 'classnames'
 
-import { PRDOUCT } from './data'
+import { MerchantProductType } from '../types'
 
 import './style.css'
 
 type ProductBannerPropsType = {
-	productKey: keyof typeof PRDOUCT
+	product: MerchantProductType
+	withBackground?: boolean
 }
 
-export const ProductBanner: FunctionComponent<ProductBannerPropsType> = ({ productKey }) => {
+export const ProductBanner: FunctionComponent<ProductBannerPropsType> = ({
+	product,
+	withBackground = true
+}) => {
 	return (
 		<div className="product-banner">
-			<div className="product-banner__container">
+			<div className={cs(
+				{ 'product-banner__container': withBackground },
+			)}>
 				<a
 					className="product-banner__banner"
-					href={`/checkout/?id=${PRDOUCT[productKey].id}`}
+					href={`/checkout/?id=${product.id}`}
 				>
-					<div className="product-banner__image">
+					{/* <div className="product-banner__image">
 						<img
-							src={PRDOUCT[productKey].image}
+							src={product.image}
 						/>
-					</div>
+					</div> */}
 					<div className="product-banner__info">
 						<div className="product-banner__name">
-							{PRDOUCT[productKey].name}
+							{product.title}
 						</div>
 						<div className="product-banner__description">
-							{PRDOUCT[productKey].description}
+							{product.anons}
 						</div>
 					</div>
 				</a>
@@ -34,9 +41,3 @@ export const ProductBanner: FunctionComponent<ProductBannerPropsType> = ({ produ
 		</div>
 	)
 }
-
-export const CoffeeProductBanner = () => (
-	<ProductBanner
-		productKey="COFFEE"
-	/>
-)

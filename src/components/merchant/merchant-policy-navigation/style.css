@@ -1,0 +1,17 @@
+.merchant-policy-navigation {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.merchant-policy-navigation a {
+	cursor: pointer;
+	border: none;
+}
+
+.merchant-policy-navigation .tag {
+	cursor: pointer;
+}
+.merchant-policy-navigation .tag:hover {
+	background: #bee4f8;
+}

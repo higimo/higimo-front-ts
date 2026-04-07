@@ -92,4 +92,16 @@ export const globalRouter: Record<RouteType, string> = {
 	[ROUTE_LINKS.libraryIndex]: 'Домашняя библиотека',
 	[ROUTE_LINKS.libraryAdmin]: 'ТУДУ',
 	[ROUTE_LINKS.nokiaPinarik]: 'Пинарик',
+
+	[ROUTE_LINKS.merchantIndex]: 'Магазин',
+	[ROUTE_LINKS.merchantCheckout]: 'Страница оплаты',
+	[ROUTE_LINKS.merchantPaymentPolicy]: 'Порядок оплаты',
+	[ROUTE_LINKS.merchantPersonalPolicy]: 'Политика обработки ПД',
+	[ROUTE_LINKS.merchantPaymentOferta]: 'Офорта',
+	[ROUTE_LINKS.merchantDonationOferta]: 'Донатная оферта',
+
+}
+
+export const isRouteType = (key: string): key is RouteType => {
+    return key in globalRouter
 }

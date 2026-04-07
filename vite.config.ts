@@ -1,5 +1,5 @@
 import path from 'path'
-import { defineConfig } from 'vite';
+import { defineConfig, HttpProxy } from 'vite';
 import preact from '@preact/preset-vite';
 import { analyzer } from 'vite-bundle-analyzer'
 
@@ -14,12 +14,12 @@ export default defineConfig(
 
 		const proxy = {
 			'/api': {
-				// target: 'https://higimo.ru/api',
-				target: 'http://127.0.0.1:8000/api',
+				target: 'https://higimo.ru/api',
+				// target: 'http://127.0.0.1:8000/api',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ''),
-				configure: (proxy) => {
-					proxy.on('proxyRes', (proxyRes) => {
+				rewrite: (path: string) => path.replace(/^\/api/, ''),
+				configure: (proxy: HttpProxy.Server) => {
+					proxy.on('proxyRes', (proxyRes: any) => {
 						proxyRes.headers.connection = 'keep-alive';
 						proxyRes.headers['cache-control'] = 'no-cache';
 					});
@@ -28,9 +28,9 @@ export default defineConfig(
 			'/assets': {
 				target: 'https://higimo.ru/assets',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/assets/, ''),
-				configure: (proxy) => {
-					proxy.on('proxyRes', (proxyRes) => {
+				rewrite: (path: string) => path.replace(/^\/assets/, ''),
+				configure: (proxy: HttpProxy.Server) => {
+					proxy.on('proxyRes', (proxyRes: any) => {
 						proxyRes.headers.connection = 'keep-alive';
 						proxyRes.headers['cache-control'] = 'no-cache';
 					});
@@ -39,9 +39,9 @@ export default defineConfig(
 			'/img': {
 				target: 'https://higimo.ru/img',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/img/, ''),
-				configure: (proxy) => {
-					proxy.on('proxyRes', (proxyRes) => {
+				rewrite: (path: string) => path.replace(/^\/img/, ''),
+				configure: (proxy: HttpProxy.Server) => {
+					proxy.on('proxyRes', (proxyRes: any) => {
 						proxyRes.headers.connection = 'keep-alive';
 						proxyRes.headers['cache-control'] = 'no-cache';
 					});
@@ -50,9 +50,9 @@ export default defineConfig(
 			'/json': {
 				target: 'https://higimo.ru/json',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/json/, ''),
-				configure: (proxy) => {
-					proxy.on('proxyRes', (proxyRes) => {
+				rewrite: (path: string) => path.replace(/^\/json/, ''),
+				configure: (proxy: HttpProxy.Server) => {
+					proxy.on('proxyRes', (proxyRes: any) => {
 						proxyRes.headers.connection = 'keep-alive';
 						proxyRes.headers['cache-control'] = 'no-cache';
 					});
@@ -124,14 +124,14 @@ export default defineConfig(
 			resolve: {
 				alias: {
 					'components': path.resolve(__dirname, './src/components'),
-					'assets': path.resolve(__dirname, './src/assets'),
-					'api-types': path.resolve(__dirname, './src/api-types'),
-					'context': path.resolve(__dirname, './src/context'),
-					'hook': path.resolve(__dirname, './src/hook'),
-					'dic': path.resolve(__dirname, './src/dic'),
-					'pages': path.resolve(__dirname, './src/pages'),
-					'utils': path.resolve(__dirname, './src/utils'),
-					'vendor': path.resolve(__dirname, './src/vendor'),
+					'assets':     path.resolve(__dirname, './src/assets'),
+					'api-types':  path.resolve(__dirname, './src/api-types'),
+					'context':    path.resolve(__dirname, './src/context'),
+					'hook':       path.resolve(__dirname, './src/hook'),
+					'dic':        path.resolve(__dirname, './src/dic'),
+					'pages':      path.resolve(__dirname, './src/pages'),
+					'utils':      path.resolve(__dirname, './src/utils'),
+					'vendor':     path.resolve(__dirname, './src/vendor'),
 				}
 			},
 		}

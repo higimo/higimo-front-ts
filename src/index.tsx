@@ -96,7 +96,12 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { PaymentPage } from 'pages/payment-page'
+import { PaymentPage } from 'pages/merchant/payment-page'
+import { MerchantPage } from 'pages/merchant/merchant-page'
+import { PaymentPolicyPage } from 'pages/merchant/payment-policy-page'
+import { PersonalPolicyPage } from 'pages/merchant/personal-policy-page'
+import { PaymentOfertaPage } from 'pages/merchant/payment-oferta-page'
+import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
 
 export function App() {
 	return (
@@ -110,6 +115,14 @@ export function App() {
 								<Route path={ROUTE_LINKS.index} component={IndexPage} />
 								<Route path={ROUTE_LINKS.serviceIndex} component={ServicePage} />
 
+								{/* Магазин */}
+								<Route path={ROUTE_LINKS.merchantIndex} component={MerchantPage} />
+								<Route path={ROUTE_LINKS.merchantCheckout} component={PaymentPage} />
+								<Route path={ROUTE_LINKS.merchantPaymentPolicy} component={PaymentPolicyPage} />
+								<Route path={ROUTE_LINKS.merchantPersonalPolicy} component={PersonalPolicyPage} />
+								<Route path={ROUTE_LINKS.merchantPaymentOferta} component={PaymentOfertaPage} />
+								<Route path={ROUTE_LINKS.merchantDonationOferta} component={DonationOfertaPage} />
+
 								<Route path="/textarea" component={TextareaPage} />
 
 								{/* admin */}
@@ -118,13 +131,13 @@ export function App() {
 
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
-								{/* Портфолио */}
 								{/* Секретные разработки не для продакшена */}
-								{process.env.NODE_ENV === 'development' && [
-									<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />,
-									<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />,
-									<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
-								]}
+								{/* TODO: скрыть эти компоненты из продакшена */}
+								<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />
+								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
+								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
+
+								{/* Портфолио */}
 								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
 								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 
@@ -220,7 +233,6 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
 
 
-								<Route path={"/payment/"} component={PaymentPage} />
 
 								<Route default component={NotFoundPage} />
 							</Router>
