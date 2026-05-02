@@ -36,7 +36,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 }) => {
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 
-	// TODO: вот бы не загружать, если там DEFAULT_ID
+	// TODO: [MEDIUM] вот бы не загружать, если там DEFAULT_ID
 	const [singleMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
 	const isLoadingSingleMeeting = useLoadingState([singleMeeting.status])
 	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)
@@ -45,7 +45,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 	const isLoadingPersons = useLoadingState([persons.status])
 	const isEmptyPersons = useEmptyDataState(persons.data)
 
-	// TODO: получать самых популярных за последние пол года
+	// TODO: [MEIDUM] получать самых популярных за последние пол года
 	const [topPersons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
 	const isLoadingTopPersons = useLoadingState([topPersons.status])
 	const isEmptyTopPersons = useEmptyDataState(topPersons.data)

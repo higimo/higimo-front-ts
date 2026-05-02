@@ -105,7 +105,7 @@ interface Memorial extends PovTitle, PovCoord, PovDescription, PovVisited, Russi
 	population?: never
 	bad: boolean
 }
-  
+
 export type PovType = Country
 	| SubjectFederation
 	| AdmOrkugMoscow
@@ -1956,7 +1956,7 @@ export const russiaCity: PovType[] = [
 		visited: true,
 		color: '#b3b3b3',
 	},
-	
+
 	{
 		title: 'Алтайский край',
 		type: 'край',
@@ -2698,10 +2698,10 @@ export const russiaCity: PovType[] = [
 		visited: true,
 		color: '#b3b3b3',
 	},
-	
+
 	// Города федерального значения
 	{
-		title: 'Москва', // TODO: Дубль же
+		title: 'Москва', // TODO: [LIGHT] Дубль же
 		type: 'город федерального значения',
 		country: 'Россия',
 		centerCity: 'Москва',
@@ -2714,7 +2714,7 @@ export const russiaCity: PovType[] = [
 		color: '#b3b3b3',
 	},
 	{
-		title: 'Санкт-Петербург', // TODO: Дубль же
+		title: 'Санкт-Петербург', // TODO: [LIGHT] Дубль же
 		type: 'город федерального значения',
 		country: 'Россия',
 		centerCity: 'Санкт-Петербург',
@@ -2727,7 +2727,7 @@ export const russiaCity: PovType[] = [
 		color: '#b3b3b3',
 	},
 	{
-		title: 'Севастополь', // TODO: Дубль же
+		title: 'Севастополь', // TODO: [LIGHT] Дубль же
 		type: 'город федерального значения',
 		country: 'Россия',
 		centerCity: 'Севастополь',
@@ -2739,7 +2739,7 @@ export const russiaCity: PovType[] = [
 		visited: true,
 		color: '#b3b3b3',
 	},
-	
+
 	// Автономные области
 	{
 		title: 'Еврейская АО',
@@ -2754,7 +2754,7 @@ export const russiaCity: PovType[] = [
 		visited: false,
 		color: '#1e98ff',
 	},
-	
+
 	// Автономные округа
 	{
 		title: 'Ненецкий АО',
@@ -2809,7 +2809,7 @@ export const russiaCity: PovType[] = [
 		color: '#1e98ff',
 	},
 
-	
+
 	// Страны
 	{
 		title: 'Абхазия',
@@ -3002,7 +3002,7 @@ export const russiaCity: PovType[] = [
 		type: 'город',
 		country: 'Россия',
 		region: 'Московская область',
-		okrug: 'Ленинский городской округ', 
+		okrug: 'Ленинский городской округ',
 		coord: [55.557, 37.708],
 		population: 109,
 		visited: false,
@@ -3130,7 +3130,7 @@ export const russiaCity: PovType[] = [
 		nearMoscow: true,
 		color: '#1e98ff',
 	},
-	
+
 	// Вымершие города
 	{
 		title: 'Херсонес Таврический',
@@ -4660,11 +4660,11 @@ export const russiaCity: PovType[] = [
 		title: 'Москва',
 		type: 'столица',
 		country: 'Россия',
-		region: 'Москва', // TODO: убрать бы
+		region: 'Москва', // TODO: [LIGHT] убрать бы
 		coord: [55.741, 37.584],
 		population: 13274,
 		visited: true,
-		nearMoscow: true, // убрать бы
+		nearMoscow: true, // TODO: [LIGHT] убрать бы
 		color: '#b3b3b3',
 	},
 	{
@@ -4924,7 +4924,7 @@ export const russiaCity: PovType[] = [
 		title: 'Петербург',
 		type: 'город',
 		country: 'Россия',
-		region: 'Петербург', // TODO: убрать бы
+		region: 'Петербург', // TODO: [LIGHT] убрать бы
 		coord: [59.928, 30.319],
 		population: 5653,
 		visited: true,
@@ -5035,7 +5035,7 @@ export const russiaCity: PovType[] = [
 		title: 'Севастополь',
 		type: 'город',
 		country: 'Россия',
-		region: 'Севастополь', // TODO: убрать бы
+		region: 'Севастополь', // TODO: [LIGHT] убрать бы
 		coord: [44.6, 33.533],
 		population: 561,
 		visited: true,
@@ -6922,7 +6922,7 @@ export const russiaCity: PovType[] = [
 		type: 'деревня',
 		country: 'Россия',
 		region: 'Республика Северная Осетия',
-		okrug: 'Правобережный район', 
+		okrug: 'Правобережный район',
 		coord: [43.265, 44.446],
 		population: 1.5,
 		visited: true,

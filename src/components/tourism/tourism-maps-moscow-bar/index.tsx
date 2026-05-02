@@ -46,7 +46,7 @@ export const TourismMapsMoscowBar = () => {
 	} = useGroupTags(tagGroups);
 
 	const filteredData = useMemo(
-		// TODO: есть же DX с (хук есть) useYearFilter(AND_GROUP_STRATEGY)
+		// TODO: [MEDIUM] есть же DX с (хук есть) useYearFilter(AND_GROUP_STRATEGY)
 		() => filterTagAndGroupsStrategy(barPovMoscow.data, selectedTags),
 		[barPovMoscow.data, selectedTags]
 	);

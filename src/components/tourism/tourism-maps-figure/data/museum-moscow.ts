@@ -1,5 +1,5 @@
 // Список музеев Москвы для посещения
-// TODO: Показать на сайте
+// TODO: [MEDIUM] Показать на сайте
 type MoscowMuseumType = {
 	name: string
 	adress: string

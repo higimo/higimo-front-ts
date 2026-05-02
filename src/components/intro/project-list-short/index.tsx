@@ -19,7 +19,7 @@ import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
-	const [ projectIds ] = useApi<PortfolioIdsType[]>(API_ROUTE.projectIds) // TODO: заменить на meta.count
+	const [ projectIds ] = useApi<PortfolioIdsType[]>(API_ROUTE.projectIds) // TODO: [LIGHT] заменить на meta.count
 	const [ highProjectList ] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProject, {
 		// filter: { cover_size: 'high'},
 		limit: 6

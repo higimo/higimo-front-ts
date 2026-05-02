@@ -26,7 +26,7 @@ type FormValues = {
 	anons: string
 }
 
-// TODO добавить комбобокс
+// TODO: [MEDIUM] добавить комбобокс
 export const LibraryAdmin: FunctionalComponent = () => {
 	const [ status, setStatus ] = useState()
 	const { register, handleSubmit, reset } = useForm<FormValues>()

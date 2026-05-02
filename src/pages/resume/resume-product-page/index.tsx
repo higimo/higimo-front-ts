@@ -7,9 +7,9 @@ import { TextContainer } from 'components/ui/text-container'
 import '../resume-style.css'
 import './style.css'
 
-// TODO: добавить хлебные крошки
+// TODO: [LIGHT] добавить хлебные крошки
 
-// TODO: синхронизировать с остальными резюме
+// TODO: [LINGHT] синхронизировать с остальными резюме
 export const ResumeProductPage: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин, резюме Senior Product Manager')
 

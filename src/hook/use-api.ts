@@ -49,9 +49,9 @@ const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> =
 // type ApiUrlType = typeof API_ROUTE[keyof typeof API_ROUTE]
 type ApiUrlType = ApiRouteType
 
-// TODO: Добавить ещё POST, DELETE
-// TODO: Добавить вывод сразу useLoadingState
-// TODO: что если пользоваться ServiceApi, в дополнение к простым строчкам?
+// TODO: [LIGHT] Добавить ещё POST, DELETE
+// TODO: [LIGHT] Добавить вывод сразу useLoadingState
+// TODO: [LIGHT] что если пользоваться ServiceApi, в дополнение к простым строчкам?
 const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T>, initialState as ApiState<T>)
 

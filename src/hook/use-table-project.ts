@@ -90,7 +90,7 @@ export const useTableProject: UseProjectType = () => {
 			const factoidGalleryRaw = extractWithDOMParser(cardTableRaw.resultHtml, '.factoid-gallery')
 			const resultTextRaw = extractWithDOMParser(factoidGalleryRaw.resultHtml, '.container-panel--30, .container-panel--50, h2, img, video, .horizontal-item__note, .container-panel--70, script, .sector-sum--half, .sector-sum')
 
-			// TODO: КЦЗНН странно сверстан
+			// TODO: [MEDIUM] КЦЗНН странно сверстан
 
 			console.log(resultTextRaw.resultHtml)
 
@@ -152,7 +152,7 @@ export const useTableProject: UseProjectType = () => {
 		})
 	}, [projects])
 
-	// TODO: useTag применить
+	// TODO: [MEDIUM] useTag применить
 	let projectList = projects.data
 	if (query[PROJECT_FILTER_DIC.FILTER_TAG]) {
 		projectList = projects.data.filter(projectItem => {

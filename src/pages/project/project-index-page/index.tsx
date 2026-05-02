@@ -10,9 +10,9 @@ import { TextContainer } from 'components/ui/text-container'
 import { NotFoundPage } from 'pages/not-found-page'
 import { ProjectTagCategory } from 'components/project/project-tag-category'
 
-// TODO: Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
-// TODO: Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
-// TODO: показать график когда публиковался на горизонтальном таймлайне, просто названиями
+// TODO: [MEDIUM] Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
+// TODO: [MEDIUM] Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
+// TODO: [MEDIUM] показать график когда публиковался на горизонтальном таймлайне, просто названиями
 export const ProjectIndexPage: FunctionComponent = () => {
 	const {
 		isLoading,

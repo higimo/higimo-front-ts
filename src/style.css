@@ -29,7 +29,7 @@ body {
 }
 
 /*
-TODO: внедрять правильную ширину
+TODO: [MEDIUM] внедрять правильную ширину
 --factoid-gap: 32px;
 --factoid-row: 4;
 width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
@@ -50,7 +50,7 @@ width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--fac
 	}
 }
 
-/* TODO: #0d44a0 ховер #c00 визитед #0d44a0 */
+/* TODO: [MEDIUM] #0d44a0 ховер #c00 визитед #0d44a0 */
 a {
 	color: #3984d4;
 	text-decoration: none;

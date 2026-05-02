@@ -1,4 +1,4 @@
-// TODO: перенести в src/api-types
+// TODO: [LIGHT] перенести в src/api-types
 export type HigimoServerResponse = any[]
 
 export type AccordType = {
@@ -117,7 +117,7 @@ export type NokiaMeetingApiType = {
 	/** 'meeting' 'tg' 'offline' */
 	type: string
 	/** unixtime / 1000 */
-	date: number // TODO: заменить на бэке на date
+	date: number // TODO: [LIGHT] заменить на бэке на date
 	/** "2024-01-15T10:00:00Z" */
 	date_start: string
 	/** "2024-01-15T10:00:00Z" */
@@ -132,11 +132,11 @@ export type NokiaNoteType = {
     text: string
     person_id: number
 }
-// TODO: надо исправить см. NokiaMeetingApiType
+// TODO: [MEDIUM] надо исправить см. NokiaMeetingApiType
 export type NokiaMeetingWithPersonType = NokiaMeetingApiType & {
     person: NokiaPersonApiType[]
 }
-// TODO: надо исправить
+// TODO: [MEDIUM] надо исправить
 export type NokiaPersonFullType = {
 	id: number
 	name: string
@@ -223,7 +223,7 @@ export type PortfolioVendorType = {
 	title: string
 	description?: string
 }
-// TODO: бекенд Вот бы добавить следующий и предыдущий кейс
+// TODO: [MEDIUM] бекенд Вот бы добавить следующий и предыдущий кейс
 
 export type PortfolioProjectApiType = {
 	id: number
@@ -237,7 +237,7 @@ export type PortfolioProjectApiType = {
 	isLink: boolean
 	link?: string
 }
-// TODO: отделить тип для сингл страницы от остальных
+// TODO: [MEDIUM] отделить тип для сингл страницы от остальных
 export type PortfolioProjectType = PortfolioProjectApiType & {
 	tags: PortfolioTag[]
 	credits?: PortfolioCreditsType[]

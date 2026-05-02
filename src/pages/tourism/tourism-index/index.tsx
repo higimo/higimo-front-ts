@@ -19,7 +19,7 @@ import listImg from './img/list.svg'
 import passportImg from './img/passport.svg'
 import russiaImg from './img/russia.svg'
 
-// TODO: Добавить общий словарь роутов страниц и сделать галереи-карточек, как на главной хотя бы
+// TODO: [LIGHT] Добавить общий словарь роутов страниц и сделать галереи-карточек, как на главной хотя бы
 // https://www.tema.ru/travel/
 
 const data = [

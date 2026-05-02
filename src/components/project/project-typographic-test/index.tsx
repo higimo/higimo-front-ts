@@ -940,7 +940,7 @@ export const ProjectTypographicTest = () => {
 
 
 			<TypographicHeader>ТГ чаты</TypographicHeader>
-			{/* TODO: убрать tg-chat__messages */}
+			{/* TODO: [LIGHT] убрать tg-chat__messages */}
 			<div className="tg-chat">
 				<div className="tg-chat__messages">
 					<div className="tg-message tg-message--left">

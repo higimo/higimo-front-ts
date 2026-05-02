@@ -18,7 +18,7 @@ type MentionsInputPropsType = {
 	suggestList: MentionSuggest[]
 	onMention: (mentionList: MentionSuggest[]) => void
 }
-// TODO: добавить в нокиа
+// TODO: [MEDIUM] добавить в нокиа
 export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) => {
 	const [ inputValue, setInputValue ] = useState<string>('')
 	const [ showSuggestion, setShowSuggestion ] = useState<boolean>(false)

@@ -5,7 +5,7 @@ import { useWindowSize } from 'hook/use-window-size'
 
 import { YMaps, Map, Clusterer, Placemark, FullscreenControl, Polyline } from 'react-yandex-maps'
 
-// TODO: посещение рек РФ
+// TODO: [MEDIUM] посещение рек РФ
 
 type TourismMapGeoPropsType = {
 	items?: PovType[]
@@ -68,7 +68,7 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 											].filter(Boolean).join(', '),
 											point.description,
 										].filter(Boolean).join('<br />'),
-										// TODO: показывает «Население: undefined K»
+										// TODO: [LIGHT] показывает «Население: undefined K»
 										balloonContentFooter: [
 											'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
 											point.population ? `Население: ${point.population} К` : false,

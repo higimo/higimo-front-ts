@@ -56,11 +56,11 @@ export const PaymentPage: FunctionComponent = () => {
 		return <NotFoundData />
 	}
 
-	// TODO: Должна работать форма
-	// TODO: Должен работать сенд данных
-	// TODO: Кнопку покупки отделить в отдельный компонент
-	// TODO: Форму отделить в отдельный компонент
-	// TODO: CSS вынести в компоненты
+	// TODO: [MEDIUM] Должна работать форма
+	// TODO: [LIGHT] Должен работать сенд данных
+	// TODO: [LIGHT] Кнопку покупки отделить в отдельный компонент
+	// TODO: [LIGHT] Форму отделить в отдельный компонент
+	// TODO: [LIGHT] CSS вынести в компоненты
 
 	return (
 		<div className="payment-page">

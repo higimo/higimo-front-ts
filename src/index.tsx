@@ -77,7 +77,7 @@ import { VkDownloadPage }    from 'pages/vk/vk-download-page'
 import { VkIndexPage }       from 'pages/vk/vk-index-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
-// TODO: все резюме сунуть в отложенную загрузку
+// TODO: [MEDIUM] все резюме сунуть в отложенную загрузку
 import { ResumeIndexPage }    from 'pages/resume/resume-index-page'
 const ResumeProductPage       = lazy(() => import('pages/resume/resume-product-page'))
 const ResumeTechProductPage   = lazy(() => import('pages/resume/resume-tech-product'))
@@ -132,7 +132,7 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 								{/* Секретные разработки не для продакшена */}
-								{/* TODO: скрыть эти компоненты из продакшена */}
+								{/* TODO: [MEDIUM] скрыть эти компоненты из продакшена */}
 								<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />
 								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
 								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
@@ -187,7 +187,7 @@ export function App() {
 
 								{/* <Route path="/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} /> */}
 								<PrivateRoute path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
-								{/* TODO починить его, полностью не работает теперь */}
+								{/* TODO [HARD] починить его, полностью не работает теперь */}
 								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
 								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
 								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />
@@ -204,18 +204,18 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
-								{/* TODO: нет отправки на бэк */}
+								{/* TODO: [LIGHT] нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
-								{/* TODO: /tool/vk не работает */}
-								{/* TODO В провайдер и единый роут? */}
-								{/* TODO Не скачивает данные, обман! */}
+								{/* TODO: [HART] /tool/vk не работает */}
+								{/* TODO: [HARD] В провайдер и единый роут? */}
 								<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
 								<Route path={ROUTE_LINKS.toolVkStaticAlbum} component={VkStaticAlbumPage} />
 								<Route path={ROUTE_LINKS.toolVkAlbums} component={VkAlbumListPage} />
 								<Route path={ROUTE_LINKS.toolVkAlbumSingle_CONST} component={VkAlbumEditPage} />
-								{/* TODO Не работает от слова совсем */}
+								{/* TODO: [HARD] Не скачивает данные, обман! */}
+								{/* TODO: [HARD] Не работает от слова совсем */}
 								<Route path={ROUTE_LINKS.toolVkDownloadAlbum} component={VkDownloadPage} />
 
 

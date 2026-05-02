@@ -5,7 +5,7 @@ import { ProjectElement } from 'components/project/project-element'
 
 import './style.css'
 
-// TODO На широких экранах 5 в ряд делать? Одновременно в коде и css надо
+// TODO: [MEDIUM] На широких экранах 5 в ряд делать? Одновременно в коде и css надо
 const convertCoverSizeToWidth = (coverSize: PortfolioProjectType['cover_size']): number => {
 	if (coverSize === 'high') {
 		return 4
@@ -16,7 +16,7 @@ const convertCoverSizeToWidth = (coverSize: PortfolioProjectType['cover_size']):
 	if (coverSize === 'normal') {
 		return 1
 	}
-	// TODO small 1 — их показывать невысокой, но длинной строкой шириной 4
+	// TODO: [MEDIUM] small 1 — их показывать невысокой, но длинной строкой шириной 4
 	return 1
 }
 

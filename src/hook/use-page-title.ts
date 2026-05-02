@@ -2,7 +2,7 @@ import { useEffect } from 'preact/hooks'
 
 export const SITE_POSTFIX = 'Хигимо'
 
-// TODO: вот бы он пробовал взять заголовок из src\dic\router.ts
+// TODO: [LIGHT] вот бы он пробовал взять заголовок из src\dic\router.ts
 
 /**
  * Хук для управления заголовком страницы

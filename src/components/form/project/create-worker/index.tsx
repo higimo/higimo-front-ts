@@ -11,7 +11,7 @@ type CreateWorkerPropsType = {
 	onSubmit: (roles: PortfolioWorkerType) => Promise<boolean>
 }
 
-// TODO: сейчас не сообщает, если какое-то поле забуду
+// TODO: [MEIDUM] сейчас не сообщает, если какое-то поле забуду
 export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
 	const {
 		register,
@@ -35,7 +35,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 		if (res) {
 			reset()
 		} else {
-			// TODO: Показать тост или Message?
+			// TODO: [MEDIUM] Показать тост или Message?
 			setError('company', { type: 'custom', message: 'При отправке произошла ошибка' })
 		}
 	}

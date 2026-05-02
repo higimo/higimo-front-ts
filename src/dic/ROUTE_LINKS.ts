@@ -1,4 +1,4 @@
-// TODO: надо документировать, сложно читается
+// TODO: [MEDIUM] надо документировать, сложно читается
 export const generateLink = <T extends string>(link: string) => (params: Record<T, string>) => Object.keys(params)
 	.reduce((carryLink, key) => carryLink.replace(`:${key}`, params[key]), link) as `/api/v2/${string}`
 
@@ -37,7 +37,7 @@ const ROUTE_NOKIA_LINKS = Object.freeze({
 
 const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismIndex:                '/tourism/',
-	tourismMaps:                 '/tourism/maps/', // TODO: надо название хлебной крошки, надо саму страницу
+	tourismMaps:                 '/tourism/maps/', // TODO: [LIGHT] надо название хлебной крошки, надо саму страницу
 	tourismNashe:                '/tourism/nashe/',
 	tourismNashe_CONST:          '/tourism/nashe/:year/',
 	tourismNashe2017:            '/tourism/nashe/2017/',

@@ -26,7 +26,7 @@ const renderLink = (isAuth: boolean) => (toolElement) => {
 	)
 }
 
-// TODO: В футер поставить ссылки на социалки и мыло
+// TODO: [LIGHT] В футер поставить ссылки на социалки и мыло
 export const Footer: FunctionComponent = (props) => {
 	const { isNotFound } = useGlobalContext()
 	if (isNotFound) {
@@ -63,9 +63,9 @@ export const Footer: FunctionComponent = (props) => {
 				{toolListData.slice(0, SLICE_TOOL).map(renderLink(isAuth))}
 				{toolListData.slice(SLICE_TOOL).map(renderLink(isAuth))}
 			</div>
-			{/* TODO: Поставить в футер 🇷🇺 — эмодзи российского флага */}
-			{/* TODO: Сделано с гордостью в России */}
-			{/* TODO: Поставить знак «Сделано в России» */}
+			{/* TODO: [LIGHT] Поставить в футер 🇷🇺 — эмодзи российского флага */}
+			{/* TODO: [LIGHT] Сделано с гордостью в России */}
+			{/* TODO: [LIGHT] Поставить знак «Сделано в России» */}
 			<div className="footer__copyright">Сделал Хиги́мо</div>
 		</footer>
 	)

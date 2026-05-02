@@ -2,7 +2,7 @@ import { useWindowSize } from "hook/use-window-size"
 import { YMaps, Map, FullscreenControl, Placemark } from "react-yandex-maps"
 import { barColor, barIcon } from "../tourism-maps-figure/data/bar-pov-moscow"
 
-// TODO: недо дубль TourismMapGeo, надо объединить
+// TODO: [MEDIUM] недо дубль TourismMapGeo, надо объединить
 export const YandexMap = ({ items }) => {
 	const { width, height } = useWindowSize()
 

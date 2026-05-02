@@ -13,7 +13,7 @@ interface PersonMeetingFieldsProps {
 	handleTextAssign: (trigger: string, slug: string) => string
 }
 
-// TODO Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
+// TODO: [MEDIUM] Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
 export const NokiaMeetingFields: FunctionComponent<PersonMeetingFieldsProps> = ({
 	formMethods: { register, control },
 	peoplesSuggest,

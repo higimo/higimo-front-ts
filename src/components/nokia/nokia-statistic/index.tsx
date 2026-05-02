@@ -20,7 +20,7 @@ import { prepareData } from 'components/nokia/nokia-statistic/prepareData'
 
 import '../nokia-style.css'
 
-// TODO https://www.npmjs.com/package/@observablehq/plot
+// TODO: [MEDIUM] https://www.npmjs.com/package/@observablehq/plot
 
 export const NokiaStatistic: FunctionComponent = () => {
 	const viz = useRef<HTMLDivElement>(null)
@@ -29,7 +29,7 @@ export const NokiaStatistic: FunctionComponent = () => {
 	const isLoadingMeetingStatistic = useLoadingState([meetingStatistic.status])
 	const isEmptyMeetingStatistic = useEmptyDataState(meetingStatistic.data)
 
-	// TODO: удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
+	// TODO: [MEDIUM] удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
 	const [ selectedYearTag, handleYearTagClick ] = useTags<number>([])
 	const [ selectedTypeTag, handleTypeTagClick ] = useTags<string>([])
 

@@ -8,9 +8,9 @@ import '../resume-style.css'
 import './style.css'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 
-// TODO: добавить хлебные крошки
+// TODO: [LIGHT] добавить хлебные крошки
 
-// TODO: синхронизировать с остальными резюме
+// TODO: [LIGHT] синхронизировать с остальными резюме
 export const ResumeProductLeadPage: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин, резюме Product Lead')
 

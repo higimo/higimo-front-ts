@@ -18,7 +18,7 @@ export const MainIntro: FunctionComponent = () => (
 			<p>
 				<a href={ROUTE_LINKS.resumeProduct}>Резюме</a>
 			</p>
-			{/* TODO: поставить ссылки на своё портфолио */}
+			{/* TODO: [LIGHT] поставить ссылки на своё портфолио */}
 			<p>
 				Руководил продуктами <span class="nowrap">в <a href={EXTERNAL_LINKS.kidguru}><CompanyLogo name="kidguru" /> Кидгу.ру</a></span>, где запустил маркетплейс с нуля, <span class="nowrap">и в <a href={EXTERNAL_LINKS.superjob}><CompanyLogo name="SJ" /> Суперджобе</a></span>, отвечал за соискательскую часть и ML‑ранжирование для многомиллионной аудитории. Раньше 10 лет занимался разработкой <span class="nowrap">в <a href={EXTERNAL_LINKS.afishaDaily}><CompanyLogo name="Афиша Daily" /> Афише <em>Дейли</em></a></span>, <a href={EXTERNAL_LINKS.alsHigimo} class="nowrap"><CompanyLogo name="ALS" /> Студии Лебедева</a> <span class="nowrap">и <a href={EXTERNAL_LINKS.rTop}><CompanyLogo name="R-top" /> Эртопе</a></span>.
 			</p>

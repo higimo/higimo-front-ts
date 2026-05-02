@@ -5,7 +5,7 @@ import { FunctionComponent } from "preact"
 
 import './style.css'
 
-// TODO: очень похоже на ProjectTagGroupGallery
+// TODO: [MEDIUM] очень похоже на ProjectTagGroupGallery
 type TagGroupedGalleryProps = {
 	groups: Record<string, string[]> // {Главные: [ALS, Rtop], размер: [большой, малый]}
 	selectedTags: Record<string, Set<string>>

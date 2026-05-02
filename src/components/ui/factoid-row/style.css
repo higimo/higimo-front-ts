@@ -15,7 +15,7 @@
 .factoid {
 	display: flex;
 	flex-direction: column;
-	/* TODO: правильная ширина, наконец-то! */
+	/* TODO: [LIGHT] правильная ширина, наконец-то! */
 	width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
 	min-width: 140px;
 }

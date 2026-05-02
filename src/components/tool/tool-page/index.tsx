@@ -1,7 +1,7 @@
 import { Component } from 'preact'
 import httpBuildQuery  from 'http-build-query'
 
-// TODO: а как этим пользоваться, лол?
+// TODO: [MEDIUM] а как этим пользоваться, лол?
 export class ToolPage extends Component {
 	state = {
 		login: '',

@@ -18,7 +18,7 @@ export const MERCHANT_PRODUCT_STATUS_DIC = {
 } as const
 
 interface MerchantProductState {
-	status: ValueOf<typeof MERCHANT_PRODUCT_STATUS_DIC> // TODO: применить по остальному проекту
+	status: ValueOf<typeof MERCHANT_PRODUCT_STATUS_DIC> // TODO: [MEDIUM] применить по остальному проекту
 	products: MerchantProductType[]
 }
 

@@ -354,7 +354,7 @@ export const cities: PovType[] = [
 		color: '#1e98ff'
 	},
 	{
-		// TODO: это не город
+		// TODO: [LIGHT] это не город
 		type: 'город',
 		coord: [44.1728, 42.6812],
 		title: 'Суворовские термальные ванны',

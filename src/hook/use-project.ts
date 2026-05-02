@@ -27,7 +27,7 @@ export const useProject: UseProjectType = () => {
 	const isProjectListEmpty = useEmptyDataState(projectListRaw.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
-	// TODO: useTag применить
+	// TODO: [MEDIUM] useTag применить
 	let projectList = projectListRaw.data
 	if (query[PROJECT_FILTER_DIC.FILTER_TAG]) {
 		projectList = projectListRaw.data.filter(projectItem => {

@@ -21,7 +21,7 @@ type NokiaTagsGalleryPropsType = {
 	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = ({ filter, updateFilter }) => {
-	// TODO: как проверять, что есть теги без группы?
+	// TODO: [MEDIUM] как проверять, что есть теги без группы?
 	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
 	const [tags] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
 	const [tagGroups] = useApi<NokiaTagGroupType[]>(API_ROUTE.nokiaTagGroup)

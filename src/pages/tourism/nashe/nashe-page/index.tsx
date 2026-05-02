@@ -24,7 +24,7 @@ export const NasheIndexPage: FunctionComponent = () => {
 					Я дважды был на Нашествии. В 2017 и 2018 годах.
 				</TextContainer>
 			</PrecentationContainer>
-			{/* TODO: вывести фотоотчёты */}
+			{/* TODO: [MEDIUM] вывести фотоотчёты */}
 			{/* <PrecentationContainer>
 				<TextContainer>
 					<h2>Фотоотчёты во ВКонтакте</h2>
