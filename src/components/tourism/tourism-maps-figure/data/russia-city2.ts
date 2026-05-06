@@ -2708,7 +2708,7 @@ export const russiaCity: PovType[] = [
 
 	// Города федерального значения
 	{
-		title: 'Москва', // TODO: [LIGHT] Дубль же
+		title: 'Москва',
 		type: 'город федерального значения',
 		country: 'Россия',
 		centerCity: 'Москва',
@@ -2721,7 +2721,7 @@ export const russiaCity: PovType[] = [
 		color: '#b3b3b3',
 	},
 	{
-		title: 'Санкт-Петербург', // TODO: [LIGHT] Дубль же
+		title: 'Санкт-Петербург',
 		type: 'город федерального значения',
 		country: 'Россия',
 		centerCity: 'Санкт-Петербург',
@@ -2734,7 +2734,7 @@ export const russiaCity: PovType[] = [
 		color: '#b3b3b3',
 	},
 	{
-		title: 'Севастополь', // TODO: [LIGHT] Дубль же
+		title: 'Севастополь',
 		type: 'город федерального значения',
 		country: 'Россия',
 		centerCity: 'Севастополь',
@@ -4664,17 +4664,6 @@ export const russiaCity: PovType[] = [
 		color: '#1e98ff',
 	},
 	{
-		title: 'Москва',
-		type: 'столица',
-		country: 'Россия',
-		region: 'Москва', // TODO: [LIGHT] убрать бы
-		coord: [55.741, 37.584],
-		population: 13274,
-		visited: true,
-		nearMoscow: true, // TODO: [LIGHT] убрать бы
-		color: '#b3b3b3',
-	},
-	{
 		title: 'Мурманск',
 		type: 'город',
 		country: 'Россия',
@@ -4928,17 +4917,6 @@ export const russiaCity: PovType[] = [
 		color: '#b3b3b3',
 	},
 	{
-		title: 'Петербург',
-		type: 'город',
-		country: 'Россия',
-		region: 'Петербург', // TODO: [LIGHT] убрать бы
-		coord: [59.928, 30.319],
-		population: 5653,
-		visited: true,
-		nearMoscow: false,
-		color: '#b3b3b3',
-	},
-	{
 		title: 'Петрозаводск',
 		type: 'город',
 		country: 'Россия',
@@ -5037,17 +5015,6 @@ export const russiaCity: PovType[] = [
 		visited: false,
 		nearMoscow: false,
 		color: '#1e98ff',
-	},
-	{
-		title: 'Севастополь',
-		type: 'город',
-		country: 'Россия',
-		region: 'Севастополь', // TODO: [LIGHT] убрать бы
-		coord: [44.6, 33.533],
-		population: 561,
-		visited: true,
-		nearMoscow: false,
-		color: '#b3b3b3',
 	},
 	{
 		title: 'Семёнов',
