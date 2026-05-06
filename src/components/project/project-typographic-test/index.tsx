@@ -1,13 +1,14 @@
 import { TextContainer } from 'components/ui/text-container'
+import { FunctionComponent } from 'preact'
 import { Fragment } from 'preact/jsx-runtime'
 
-const TypographicHeader = (props) => (
+const TypographicHeader: FunctionComponent = (props) => (
 	<TextContainer style="margin-top: 256px;">
 		<h2>{props.children}</h2>
 	</TextContainer>
 )
 
-export const ProjectTypographicTest = () => {
+export const ProjectTypographicTest: FunctionComponent = () => {
 	return (
 		<Fragment>
 
@@ -940,28 +941,25 @@ export const ProjectTypographicTest = () => {
 
 
 			<TypographicHeader>ТГ чаты</TypographicHeader>
-			{/* TODO: [LIGHT] убрать tg-chat__messages */}
 			<div className="tg-chat">
-				<div className="tg-chat__messages">
-					<div className="tg-message tg-message--left">
-						Привет! Я администратор. Выберите опцию из меню ниже 👇
-						<div className="tg-message__time">14:30</div>
+				<div className="tg-message tg-message--left">
+					Привет! Я администратор. Выберите опцию из меню ниже 👇
+					<div className="tg-message__time">14:30</div>
+				</div>
+				<div className="tg-chat__keyboard tg-chat__keyboard--inline">
+					<div className="keyboard-row">
+						<div className="keyboard-btn">Мои заказы</div>
+						<div className="keyboard-btn">Избранное</div>
 					</div>
-					<div className="tg-chat__keyboard tg-chat__keyboard--inline">
-						<div className="keyboard-row">
-							<div className="keyboard-btn">Мои заказы</div>
-							<div className="keyboard-btn">Избранное</div>
-						</div>
-					</div>
+				</div>
 
-					<div className="tg-message tg-message--right">
-						Здравствуйте!
-						<div className="tg-message__time">14:31</div>
-					</div>
+				<div className="tg-message tg-message--right">
+					Здравствуйте!
+					<div className="tg-message__time">14:31</div>
+				</div>
 
-					<div className="tg-message tg-message--system">
-						Администратор обновил клавиатуру
-					</div>
+				<div className="tg-message tg-message--system">
+					Администратор обновил клавиатуру
 				</div>
 
 				<div className="tg-chat__input">

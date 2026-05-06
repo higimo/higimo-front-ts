@@ -736,9 +736,9 @@
 }
 
 
-/**
- TG окно чата
-***/
+/*************************
+		TG окно чата
+/*************************/
 .tg-chat {
 	margin: 0 auto;
 	width: 100%;
@@ -752,6 +752,10 @@
 	flex-direction: column;
 	gap: 6px;
 	color: #fff;
+}
+
+.tg-chat__input {
+	margin-top: auto;
 }
 
 .tg-message {
