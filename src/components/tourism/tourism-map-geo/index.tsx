@@ -51,7 +51,7 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 								'clusterer.addon.hint',
 							]}
 						>
-							{items.map((point) => (
+							{!!items && items.map((point) => (
 								<Placemark
 									modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
 									geometry={point.coord}
@@ -68,7 +68,6 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 											].filter(Boolean).join(', '),
 											'description' in point && point.description,
 										].filter(Boolean).join('<br />'),
-										// TODO: [LIGHT] показывает «Население: undefined K»
 										balloonContentFooter: [
 											'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
 											'population' in point ? `Население: ${point.population} К` : false,
