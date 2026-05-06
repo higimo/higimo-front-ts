@@ -18,8 +18,7 @@ export const usePageTitle = (title: string | string[], fallback?: string) => {
 		const route = normaliseUrl(path)
 
 		if (Array.isArray(title)) {
-			// TODO: [LIGHT] use concat array
-			document.title = [...title, SITE_POSTFIX].join(' | ')
+			document.title = title.join(' ') + ' | ' + SITE_POSTFIX
 		} else if (title) {
 			document.title = title + ' | ' + SITE_POSTFIX
 		} else if (fallback) {
