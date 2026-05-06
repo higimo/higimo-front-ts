@@ -3,12 +3,10 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
+import { Breadcrumps } from 'components/ui/breadcrumps'
 
 import '../resume-style.css'
 import './style.css'
-import { Breadcrumps } from 'components/ui/breadcrumps'
-
-// TODO: [LIGHT] добавить хлебные крошки
 
 // TODO: [LIGHT] синхронизировать с остальными резюме
 export const ResumeProductLeadPage: FunctionComponent = () => {

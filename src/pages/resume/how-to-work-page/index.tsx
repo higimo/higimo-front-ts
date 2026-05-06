@@ -6,6 +6,7 @@ import { PrecentationContainer } from 'components/ui/precentation-container/Prec
 import { TextContainer } from 'components/ui/text-container'
 import { ContactList } from 'components/intro/contact-list'
 import { CollapseSection } from 'components/ui/collapse-section'
+import { Breadcrumps } from 'components/ui/breadcrumps'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
@@ -16,6 +17,7 @@ export const HowToWorkPage: FunctionComponent = () => {
 
 	return (
 		<div className="resume-head-page resume-page">
+			<Breadcrumps />
 			<PrecentationContainer className="resume-hero">
 				<TextContainer>
 					<h1>Как работаю</h1>

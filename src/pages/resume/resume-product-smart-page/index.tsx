@@ -3,6 +3,7 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
+import { Breadcrumps } from 'components/ui/breadcrumps'
 
 import avatar3 from 'assets/avatar3.jpg'
 
@@ -14,6 +15,7 @@ export const ResumeProductSmartPage: FunctionComponent = () => {
 
 	return (
 		<div className="resume-product2-page resume-page">
+			<Breadcrumps />
 			<TextContainer>
 				<img src={avatar3} className="resume-avatar" />
 				<h2>Дмитрий Уткин, резюме на позицию Product manager</h2>

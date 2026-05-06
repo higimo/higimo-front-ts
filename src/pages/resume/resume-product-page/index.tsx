@@ -3,11 +3,10 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
+import { Breadcrumps } from 'components/ui/breadcrumps'
 
 import '../resume-style.css'
 import './style.css'
-
-// TODO: [LIGHT] добавить хлебные крошки
 
 // TODO: [LINGHT] синхронизировать с остальными резюме
 export const ResumeProductPage: FunctionComponent = () => {
@@ -15,6 +14,7 @@ export const ResumeProductPage: FunctionComponent = () => {
 
 	return (
 		<div className="resume-product-sss-page resume-page">
+			<Breadcrumps />
 			<TextContainer>
 				<h2>Дмитрий Уткин, резюме Senior Product Manager</h2>
 				<div className="contact">
