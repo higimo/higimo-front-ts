@@ -54,7 +54,7 @@ export const ProjectViewer: FunctionComponent = () => {
 				</div>
 			</OnlyAdmin>
 			<PortfolioCreditsGallery credits={curProject.credits} />
-			{/* TODO: [LIGHT] TAGS применить мапинг категоризации тегов */}
+			{/* TODO: [MEDIUM] TAGS применить мапинг категоризации тегов */}
 			{/* TODO: [HARD] Сделать интерфейс фигули, которая прописывает теги */}
 			<PortfolioTagsGallery tags={curProject.tags || []} />
 		</div>

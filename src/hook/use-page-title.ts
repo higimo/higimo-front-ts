@@ -8,8 +8,10 @@ export const SITE_POSTFIX = 'Хигимо'
  * Хук для управления заголовком страницы
  */
 export const usePageTitle = (title: string | string[], fallback?: string) => {
+	// TODO: [LIGHT] часто оставляет прежний или ещё что-то не делает, что показывается не правильный вариант
 	useEffect(() => {
 		if (Array.isArray(title)) {
+			// TODO: [LIGHT] use concat array
 			document.title = [...title, SITE_POSTFIX].join(' | ')
 		} else if (title) {
 			document.title = title + ' | ' + SITE_POSTFIX

@@ -10,7 +10,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-// TODO: [LIGHT] Тегирование
+// TODO: [MEDIUM] Тегирование
 // Мы потихоньку ведём классификационную работу над советами. Помимо формальных характеристик («диаграмма», «таблица», «сайт», «предмет») советы помечаются идеями, которые в них излагаются. Таким образом, каждый совет получит ссылки на похожие на него советы.
 export const ProjectTablePage: FunctionComponent = () => {
 	const {

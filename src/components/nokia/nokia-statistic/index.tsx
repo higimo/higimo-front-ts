@@ -36,6 +36,7 @@ export const NokiaStatistic: FunctionComponent = () => {
 	const statistic = meetingStatistic.data || []
 
 	const yearDataset = useMemo(() => {
+		// TODO: [LIGHT] use concat array
 		const dataset = [...new Set(statistic.map(item => new Date(item.date * 1000).getFullYear()))]
 			.filter(i => i != 1970)
 			.sort((a, b) => a - b)
@@ -43,6 +44,7 @@ export const NokiaStatistic: FunctionComponent = () => {
 		return dataset
 	}, [statistic])
 	const typeDataset = useMemo(() => {
+		// TODO: [LIGHT] use concat array
 		const dataset = [...new Set(statistic.map(item => item.type))]
 		handleTypeTagClick(dataset)()
 		return dataset

@@ -7,23 +7,23 @@ type QueueHook<T> = {
 	queue: T[]
 	/**
 	 * Добавление элемента в очередь
-	 * @param item 
-	 * @returns 
+	 * @param item
+	 * @returns
 	 */
 	push: (item: T) => void
 	/**
 	 * Извлечь из очереди
-	 * @returns 
+	 * @returns
 	 */
 	pull: () => T | undefined
 	/**
 	 * просмотр первого элемента без извлечения
-	 * @returns 
+	 * @returns
 	 */
 	view: () => T | undefined
 	/**
 	 * очистка очереди
-	 * @returns 
+	 * @returns
 	 */
 	clear: () => void
 	/**
@@ -34,13 +34,14 @@ type QueueHook<T> = {
 
 /**
  * FIFO логика - строго соблюдается принцип "первым пришел - первым ушел"
- * @param initialQueue 
- * @returns 
+ * @param initialQueue
+ * @returns
  */
 export function useQueue<T>(initialQueue: T[] = []): QueueHook<T> {
 	const [queue, setQueue] = useState<T[]>(initialQueue)
 
 	const push = useCallback((item: T) => {
+		// TODO: [LIGHT] use concat array
 		setQueue(prevQueue => [...prevQueue, item])
 	}, [])
 

@@ -22,10 +22,12 @@ type WorkersTreeProps = {
 
 export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWorkerSelect }) => {
 	const workerTree = useMemo(() => {
+		// TODO: [LIGHT] use concat array
 		const workerCompanies = [...new Set(workers.map(i => i.company))]
 
 		return workerCompanies.map(workerCompany => {
 			const companyWorkers = workers.filter(i => i.company === workerCompany)
+			// TODO: [LIGHT] use concat array
 			const workerRoles = [...new Set(companyWorkers.map(i => i.role))]
 
 			return {

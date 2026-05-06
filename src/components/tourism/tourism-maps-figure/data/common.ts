@@ -1,4 +1,4 @@
-// TODO: [LIGHT] вынести в БД
+// TODO: [MEDIUM] вынести в БД
 import { moscowPovPoints } from './moscow-pov'
 import { russiaCity } from './russia-city2'
 import { stateYear2021 } from './walk-moscow-2021'

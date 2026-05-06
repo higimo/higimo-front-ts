@@ -58,6 +58,7 @@ export const filterMapping =  {
 
 export const median = (arr: number[]): number => {
 	const mid = Math.floor(arr.length / 2)
+	// TODO: [LIGHT] use concat array
 	const nums = [...arr].sort((a, b) => a - b)
 	return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2
 }
