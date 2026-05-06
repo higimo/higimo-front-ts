@@ -1,6 +1,4 @@
-// Точка интереса дороги россии самые красивые
-// TODO: [LIGHT] Зарядье
-// TODO: [LIGHT] Добавить Байкал
+// TODO: [HIGH] Точка интереса дороги россии самые красивые
 type CountryTitle = 'Россия' | 'Абхазия' | 'Эстония'
 
 interface PovTitle {
@@ -6972,6 +6970,26 @@ export const russiaCity: PovType[] = [
 		visited: true,
 		nearMoscow: true,
 		color: '#b3b3b3',
+	},
+	{
+		title: 'парк Зарядье',
+		type: 'парк',
+		country: 'Россия',
+		region: 'Москва',
+		nearMoscow: true,
+		population: 0,
+		coord: [1, 1],
+		color: '#b3b3b3',
+		visited: true,
+	},
+	{
+		title: 'озеро Байкал',
+		type: 'местечко',
+		coord: [1, 2],
+		country: 'Россия',
+		color: '#1e98ff',
+		nearMoscow: false,
+		visited: false,
 	},
 ]
 
