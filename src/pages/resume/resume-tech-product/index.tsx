@@ -11,13 +11,12 @@ import '../resume-style.css'
 import './style.css'
 
 export const ResumeTechProductPage: FunctionComponent = () => {
-	usePageTitle('Дмитрий Уткин резюме Tech product manager')
+	usePageTitle('Дмитрий Уткин, Tech product manager')
 
 	return (
 		<div className="resume-tech-product-page resume-page">
 			<Breadcrumps />
 			<TextContainer>
-				<img src={avatar3} className="resume-avatar" />
 				<h2>Дмитрий Уткин, Tech product manager</h2>
 				<div className="contact">
 					<div className="contact__item"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
@@ -25,6 +24,9 @@ export const ResumeTechProductPage: FunctionComponent = () => {
 					<div className="contact__item"><a href="mailto:higimo@gmail.com">higimo@gmail.com</a></div>
 					<div className="contact__item"><a href="https://higimo.ru">higimo.ru</a></div>
 				</div>
+				<p>
+					Москва • офис • гибрид • удалённо
+				</p>
 			</TextContainer>
 			<TextContainer>
 				<p>

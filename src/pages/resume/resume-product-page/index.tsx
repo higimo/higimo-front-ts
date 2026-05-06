@@ -8,20 +8,19 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import '../resume-style.css'
 import './style.css'
 
-// TODO: [LIGHT] синхронизировать с остальными резюме
 export const ResumeProductPage: FunctionComponent = () => {
-	usePageTitle('Дмитрий Уткин, резюме Senior Product Manager')
+	usePageTitle('Дмитрий Уткин, Senior Product Manager')
 
 	return (
 		<div className="resume-product-sss-page resume-page">
 			<Breadcrumps />
 			<TextContainer>
-				<h2>Дмитрий Уткин, резюме Senior Product Manager</h2>
+				<h2>Дмитрий Уткин, Senior Product Manager</h2>
 				<div className="contact">
-					<div className="contact__item small-text"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
-					<div className="contact__item small-text">TG: <a href="https://t.me/higimo">@higimo</a></div>
-					<div className="contact__item small-text"><a href="mailto:higimo@gmail.com">higimo@gmail.com</a></div>
-					<div className="contact__item small-text"><a href="https://higimo.ru">higimo.ru</a></div>
+					<div className="contact__item"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
+					<div className="contact__item">TG: <a href="https://t.me/higimo">@higimo</a></div>
+					<div className="contact__item"><a href="mailto:higimo@gmail.com">higimo@gmail.com</a></div>
+					<div className="contact__item"><a href="https://higimo.ru">higimo.ru</a></div>
 				</div>
 				<p>
 					Москва • офис • гибрид • удалённо

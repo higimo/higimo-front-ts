@@ -8,15 +8,14 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import '../resume-style.css'
 import './style.css'
 
-// TODO: [LIGHT] синхронизировать с остальными резюме
 export const ResumeProductLeadPage: FunctionComponent = () => {
-	usePageTitle('Дмитрий Уткин, резюме Product Lead')
+	usePageTitle('Дмитрий Уткин, Product Lead')
 
 	return (
 		<div className="resume-product-sss-page resume-page">
 			<Breadcrumps />
 			<TextContainer>
-				<h2>Дмитрий Уткин, резюме Product Lead</h2>
+				<h2>Дмитрий Уткин, Product Lead</h2>
 				<div className="contact">
 					<div className="contact__item small-text"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
 					<div className="contact__item small-text">TG: <a href="https://t.me/higimo">@higimo</a></div>

@@ -45,37 +45,23 @@ const skillSet = [
 ]
 
 export const ResumeProduct2Page: FunctionComponent = () => {
-	usePageTitle('В активном поиске')
+	usePageTitle('Дмитрий Уткин, Product owner/manager')
 
 	return (
 		<div className="resume-product2-page resume-page">
 			<Breadcrumps />
 			<TextContainer>
-				<img src={avatar2} className="resume-avatar" />
-				<h2>Резюме на позицию Product owner/manager</h2>
-				<p>Дмитрий Уткин, менеджер продукта</p>
-				{/* <p className="mini-text">мужчина, 31 год (26 июля 1993)</p>
-				<p className="mini-text">Гражданство РФ, на полный день</p> */}
-			</TextContainer>
-			<TextContainer>
+				<h2>Дмитрий Уткин, Product owner/manager</h2>
 				<div className="contact">
 					<div className="contact__item"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
 					<div className="contact__item">TG: <a href="https://t.me/higimo">@higimo</a></div>
 					<div className="contact__item"><a href="mailto:higimo@gmail.com">higimo@gmail.com</a></div>
 					<div className="contact__item"><a href="https://higimo.ru">higimo.ru</a></div>
 				</div>
+				<p>
+					Москва • офис • гибрид • удалённо
+				</p>
 			</TextContainer>
-			<TextContainer>
-				5
-				сразу после контактов добавляй саммари (опыт, домены, сегменты рынка, сильные стороны, что ищешь)
-			</TextContainer>
-			{/* <TextContainer>
-				<div className="experience-summary">
-					<div className="experience-summary__item">Стаж в IT — 10 лет 9 мес.</div>
-					<div className="experience-summary__item">Менеджером 5 лет 3 мес.</div>
-					<div className="experience-summary__item">Разработчиком: 6 лет 6 мес. (+1 год 8 мес. лидом)</div>
-				</div>
-			</TextContainer> */}
 			<TextContainer>
 				<div className="expirience">
 					<div className="expirience__element company">
@@ -90,7 +76,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 							</div>
 						</div>
 						<div className="company__description">
-							{/* Мау конверсии, кол. откликов, полнота и точность поиска, сообщений в чатах */}
 							<p>
 								Продукт сервис поиска работы (как HH). Ускорил списание балансных средств на 18% (год к году)
 							</p>
@@ -106,7 +91,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 						</div>
 					</div>
 
-					{/* Параллельная работа */}
 					<div class="expirience__element company">
 						<div className="company__meta">
 							<div className="company__staff">
@@ -124,7 +108,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 							</p>
 						</div>
 					</div>
-
 
 					<div class="staff__element company">
 						<div className="company__meta">
@@ -144,7 +127,6 @@ export const ResumeProduct2Page: FunctionComponent = () => {
 						</div>
 					</div>
 
-					{/* Параллельная работа */}
 					<div class="staff__element company">
 						<div className="company__meta">
 							<div className="company__staff">

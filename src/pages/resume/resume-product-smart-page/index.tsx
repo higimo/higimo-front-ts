@@ -11,20 +11,22 @@ import '../resume-style.css'
 import './style.css'
 
 export const ResumeProductSmartPage: FunctionComponent = () => {
-	usePageTitle('Дмитрий Уткин резюме на позицию Product manager')
+	usePageTitle('Дмитрий Уткин, Product manager')
 
 	return (
 		<div className="resume-product2-page resume-page">
 			<Breadcrumps />
 			<TextContainer>
-				<img src={avatar3} className="resume-avatar" />
-				<h2>Дмитрий Уткин, резюме на позицию Product manager</h2>
+				<h2>Дмитрий Уткин, Product manager</h2>
 				<div className="contact">
-					<div className="contact__item small-text"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
-					<div className="contact__item small-text">TG: <a href="https://t.me/higimo">@higimo</a></div>
-					<div className="contact__item small-text"><a href="mailto:higimo@gmail.com">higimo@gmail.com</a></div>
-					<div className="contact__item small-text"><a href="https://higimo.ru">higimo.ru</a></div>
+					<div className="contact__item"><a href="tel:+79661579085">+7 (966) 157-90-85</a></div>
+					<div className="contact__item">TG: <a href="https://t.me/higimo">@higimo</a></div>
+					<div className="contact__item"><a href="mailto:higimo@gmail.com">higimo@gmail.com</a></div>
+					<div className="contact__item"><a href="https://higimo.ru">higimo.ru</a></div>
 				</div>
+				<p>
+					Москва • офис • гибрид • удалённо
+				</p>
 			</TextContainer>
 			<TextContainer>
 				<p className="small-text">
