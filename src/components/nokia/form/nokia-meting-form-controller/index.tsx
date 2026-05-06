@@ -45,7 +45,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 	const isLoadingPersons = useLoadingState([persons.status])
 	const isEmptyPersons = useEmptyDataState(persons.data)
 
-	// TODO: [MEIDUM] получать самых популярных за последние пол года
+	// TODO: [MEDIUM] получать самых популярных за последние пол года
 	const [topPersons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
 	const isLoadingTopPersons = useLoadingState([topPersons.status])
 	const isEmptyTopPersons = useEmptyDataState(topPersons.data)

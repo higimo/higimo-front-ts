@@ -1,4 +1,4 @@
-// TODO: [LIGHT] унести на бекенд
+// TODO: [MEDIUM] унести на бекенд
 export const vkAlumListData = [
 	{
 		"link": "/tool/vk/albums/259432438",

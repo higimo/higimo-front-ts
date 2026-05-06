@@ -34,7 +34,7 @@ export const ProjectTablePage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Таблица сделанного</h1>
 			</TextContainer>
-			{/* TODO: [LIGHT] галерея тегов пока не работает */}
+			{/* TODO: [MEDIUM] галерея тегов пока не работает */}
 			{/* <ProjectTagGroupGallery tags={tagList} /> */}
 			<PortfolioProjectTable tableProjects={tableProjects} />
 		</div>

@@ -187,7 +187,7 @@ export function App() {
 
 								{/* <Route path="/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} /> */}
 								<PrivateRoute path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
-								{/* TODO [HARD] починить его, полностью не работает теперь */}
+								{/* TODO: [HARD] починить его, полностью не работает теперь */}
 								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
 								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
 								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />
@@ -208,7 +208,7 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
-								{/* TODO: [HART] /tool/vk не работает */}
+								{/* TODO: [HARD] /tool/vk не работает */}
 								{/* TODO: [HARD] В провайдер и единый роут? */}
 								<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
 								<Route path={ROUTE_LINKS.toolVkStaticAlbum} component={VkStaticAlbumPage} />

@@ -18,7 +18,7 @@ import sendRequest from 'utils/send-request'
 
 import './style.css'
 
-// TODO: [LIGHT] Анонсы. Портфолио таблицей как на хомяке Далера
+// TODO: [MEDIUM] Анонсы. Портфолио таблицей как на хомяке Далера
 // TODO: [MEDIUM] Анонсы. Показать людей, с которыми работал
 // TODO: [MEDIUM] Анонсы. Взаимосвязи людей на графе
 
