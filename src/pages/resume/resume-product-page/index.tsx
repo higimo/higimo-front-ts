@@ -8,7 +8,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import '../resume-style.css'
 import './style.css'
 
-// TODO: [LINGHT] синхронизировать с остальными резюме
+// TODO: [LIGHT] синхронизировать с остальными резюме
 export const ResumeProductPage: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин, резюме Senior Product Manager')
 

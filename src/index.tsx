@@ -204,7 +204,7 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
-								{/* TODO: [LIGHT] нет отправки на бэк */}
+								{/* TODO: [MEDIUM] нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
