@@ -37,13 +37,13 @@ const ROUTE_NOKIA_LINKS = Object.freeze({
 
 const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismIndex:                '/tourism/',
-	tourismMaps:                 '/tourism/maps/', // TODO: [LIGHT] надо название хлебной крошки, надо саму страницу
 	tourismNashe:                '/tourism/nashe/',
 	tourismNashe_CONST:          '/tourism/nashe/:year/',
 	tourismNashe2017:            '/tourism/nashe/2017/',
 	tourismNashe2018:            '/tourism/nashe/2018/',
 	tourismWalkDetail_CONST:     '/tourism/walk/:idcode/',
 	tourismChecklist:            '/tourism/checklist/',
+	tourismMaps:                 '/tourism/maps/',
 	tourismMapsRegion:           '/tourism/maps/region/',
 	tourismMapsMoscowWalkaround: '/tourism/maps/moscow-walkaround/',
 	tourismMapsMoscowBar:        '/tourism/maps/moscow-bar/',

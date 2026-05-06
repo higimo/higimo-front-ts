@@ -69,6 +69,7 @@ import { TourismMoscowWalkaroundPage } from 'pages/tourism/tourism-ya-maps/touri
 import { TourismVisitedPage }          from 'pages/tourism/tourism-visited-page'
 import { TourismWalkSinglePage }       from 'pages/tourism/tourism-walk-single-page'
 import { TourismYaMapsRegionPage }     from 'pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page'
+import { TourismMapsPage }             from 'pages/tourism/tourism-maps-page'
 const TourismFatherTrackPage           = lazy(() => import('pages/tourism/tourism-father-track-page'))
 
 import { VkAlbumEditPage }   from 'pages/vk/vk-album-edit-page'
@@ -224,6 +225,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismChecklist} component={TourismChecklistPage} />
 								<Route path={ROUTE_LINKS.tourismCityIndex} component={TourismCityStarPage} />
 								<Route path={ROUTE_LINKS.tourismFatherTrack} component={TourismFatherTrackPage} />
+								<Route path={ROUTE_LINKS.tourismMaps} component={TourismMapsPage} />
 								<Route path={ROUTE_LINKS.tourismMapsMoscowBar} component={TourismMoscowBarPage} />
 								<Route path={ROUTE_LINKS.tourismMapsMoscowWalkaround} component={TourismMoscowWalkaroundPage} />
 								<Route path={ROUTE_LINKS.tourismMapsRegion} component={TourismYaMapsRegionPage} />
