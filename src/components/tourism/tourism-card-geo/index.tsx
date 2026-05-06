@@ -33,10 +33,12 @@ export const TourismCardGeo: FunctionComponent<TourismCardGeoPropsType> = ({ ite
 							'country' in povItem ? povItem.country : 'Россия',
 						].filter(Boolean).join(', ')}
 					</div>
-					<div className="tourism-card-geo__description">
-						{povItem.description}
-					</div>
-					{!!povItem.population && (
+					{'description' in povItem && (
+						<div className="tourism-card-geo__description">
+							{povItem.description}
+						</div>
+					)}
+					{'population' in povItem && (
 						<div className="tourism-card-geo__population">
 							Население: {povItem.population} К
 						</div>

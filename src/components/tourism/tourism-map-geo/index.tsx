@@ -66,12 +66,12 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 												'region' in point && point.region,
 												'country' in point ? point.country : 'Россия',
 											].filter(Boolean).join(', '),
-											point.description,
+											'description' in point && point.description,
 										].filter(Boolean).join('<br />'),
 										// TODO: [LIGHT] показывает «Население: undefined K»
 										balloonContentFooter: [
 											'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
-											point.population ? `Население: ${point.population} К` : false,
+											'population' in point ? `Население: ${point.population} К` : false,
 											point.coord.join(', '),
 										].filter(Boolean).join(' | '),
 									}}

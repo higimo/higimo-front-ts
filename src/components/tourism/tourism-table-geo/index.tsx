@@ -48,12 +48,16 @@ export const TourismTableGeo: FunctionComponent<TourismTableGeoPropsType> = ({ i
 						<div className="table-geo-row__country">
 							{'country' in povItem ? povItem.country : 'Россия'}
 						</div>
-						<div className="table-geo-row__description">
-							{povItem.description}
-						</div>
-						<div className="table-geo-row__population">
-							{povItem.population}
-						</div>
+						{'description' in povItem && (
+							<div className="table-geo-row__description">
+								{povItem.description}
+							</div>
+						)}
+						{'population' in povItem && (
+							<div className="table-geo-row__population">
+								{povItem.population}
+							</div>
+						)}
 						<div className="table-geo-row__type">
 							{povItem.type}
 						</div>
