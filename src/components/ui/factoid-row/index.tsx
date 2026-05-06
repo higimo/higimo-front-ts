@@ -9,7 +9,7 @@ type FactoidRowType = {
 	factoids: FactoidType[]
 }
 export const FactoidRow: FunctionComponent<FactoidRowType> = ({ countInRow, factoids }) => (
-	<div className="factoid-row" style={{ '--factoid-row': countInRow }}>
+	<div className="factoid-row" style={{ '--grid-count': countInRow }}>
 		{factoids.map(factoidProps => <Factoid {...factoidProps} />)}
 	</div>
 )

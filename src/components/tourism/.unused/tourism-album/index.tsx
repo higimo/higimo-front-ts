@@ -1,6 +1,9 @@
+import { FunctionComponent } from 'preact'
 import { albumListData } from './data'
 
-export const TourismAlbum = () => (
+import './style.css'
+
+export const TourismAlbum: FunctionComponent = () => (
 	<div className="album-list">
 		{albumListData.map(item => (
 			<a href={item.link} className="album-list__item album">

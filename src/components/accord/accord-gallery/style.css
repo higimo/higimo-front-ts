@@ -13,20 +13,3 @@
 .accord__link:hover {
 	border-bottom: 1px solid #000;
 }
-
-.profile {
-	padding: 20px 20px;
-	min-height: 100%;
-	width: 100%;
-}
-
-@media (max-width: 800px) {
-	.profile {
-		padding: 20px 0;
-	}
-
-	.profile pre {
-		font-size: 11pt;
-		line-height: 1.1;
-	}
-}

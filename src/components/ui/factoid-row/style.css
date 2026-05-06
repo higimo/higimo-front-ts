@@ -1,22 +1,19 @@
-:root {
-	--factoid-gap: 32px;
-	--factoid-row: 4;
-}
-
 .factoid-row {
+	--grid-count: 4;
+	--grid-gap: 32px;
+
 	padding: 16px;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	gap: var(--factoid-gap);
+	gap: var(--grid-gap);
 }
 
 .factoid {
 	display: flex;
 	flex-direction: column;
-	/* TODO: [LIGHT] правильная ширина, наконец-то! */
-	width: calc((100% - ((var(--factoid-row) - 1) * var(--factoid-gap))) / var(--factoid-row));
+	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
 	min-width: 140px;
 }
 .factoid__digit {

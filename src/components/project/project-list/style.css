@@ -9,14 +9,13 @@
 	margin: 0 auto;
 	padding-left: var(--project-gap);
 	padding-right: var(--project-gap);
-	max-width: calc(var(--project-size) * 2 + var(--project-gap) * 4); /* Заебало, пусть так пока */
+	max-width: calc(var(--project-size) * 2 + var(--project-gap) * 4);
 }
 
 @media (min-width: 768px) {
 	.project__list {
 		font-size: 24px;
-		padding-left: 32px;
-		padding-right: 32px;
+		--project-gap: 32px;
 	}
 }
 

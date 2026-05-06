@@ -24,6 +24,6 @@
 		"@testing-library/jest-dom"
 		]
 	},
-	"include": ["node_modules/vite/client.d.ts", "src/**/*"],
+	"include": ["node_modules/vite/client.d.ts", "src/**/*", "src/components/tourism/.unused"],
 	"exclude": ["dist"]
 }

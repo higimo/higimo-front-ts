@@ -1,5 +1,7 @@
 import { useState } from 'preact/hooks'
 
+import './style.css'
+
 var phrases = [
 	'Бес&shy;спорно',
 	'Пред&shy;решено',
@@ -32,13 +34,13 @@ export const MagicBall = () => {
 	}
 	return (
 		<div className="magic-ball">
-			<div className="shadow"></div>
-			<div className="epos" onMouseEnter={handerMouseenter}>
-				<div className="eball">
-					<div className="illuminator">
+			<div className="magic-ball__shadow" />
+			<div className="magic-ball__epos" onMouseEnter={handerMouseenter}>
+				<div className="magic-ball__eball">
+					<div className="magic-ball__illuminator">
 						<div>
-							<div className="triangle"></div>
-							  <div className="textbox" dangerouslySetInnerHTML={{__html: phrase}} />
+							<div className="magic-ball__triangle"></div>
+							  <div className="magic-ball__textbox" dangerouslySetInnerHTML={{__html: phrase}} />
 						</div>
 					</div>
 				</div>

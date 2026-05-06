@@ -47,6 +47,7 @@
 }
 
 .city-stars-gallery--card .city-stars__item {
+	/* TODO: внедрить --grid-width */
 	width: calc((100% / 2) - 8px);
 	min-height: 320px;
 	border-radius: 4px;

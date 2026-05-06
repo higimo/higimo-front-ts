@@ -84,7 +84,7 @@ export const PaymentPage: FunctionComponent = () => {
 				<ul>
 					<li><a href={"/merchant/payment-policy/"}>Порядок оплаты</a></li>
 					<li><a href={"/merchant/personal-policy/"}>Политика обработки ПД</a></li>
-					<li><a href={"/merchant/payment-oferta/"}>Офорта</a></li>
+					<li><a href={"/merchant/payment-oferta/"}>Оферта</a></li>
 					<li><a href={"/merchant/donation-oferta/"}>Донатная оферта</a></li>
 				</ul>
 			</TextContainer>

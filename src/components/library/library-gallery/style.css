@@ -1,3 +1,4 @@
+/* TODO: внедрить --grid-width */
 .library-gallery {
 	display: flex;
 	flex-direction: row;

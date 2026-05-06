@@ -1,6 +1,8 @@
 import { CheckboxWithLocalStorage } from 'components/form/checkbox-with-local-storage'
 import { TextContainer } from 'components/ui/text-container'
 
+import './style.css'
+
 // TODO: [HARD] переписать на бекенд списка списков
 const organizeListData = [
 	'все зарядить',
