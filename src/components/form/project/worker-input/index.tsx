@@ -36,8 +36,7 @@ export const WorkerInput = ({ projectId }) => {
 	const isLoading = useLoadingState([workers.status])
 	const isListEmpty = useEmptyDataState(workers.data)
 
-	// TODO: [LIGHT] use concat array
-	const handleClickChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => [...prev, worker])
+	const handleClickChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.concat([worker]))
 	const handleRemoveChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
 
 	if (isLoading) {

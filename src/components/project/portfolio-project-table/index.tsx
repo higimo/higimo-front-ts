@@ -29,8 +29,7 @@ export const getProjectKeys = <T extends object>(
 
 	const sortedOther = other.sort()
 
-	// TODO: [LIGHT] use concat array
-	return [...sortedPriority, ...sortedOther]
+	return sortedPriority.concat(sortedOther)
 }
 
 export const formatValue = (value: any): string => {

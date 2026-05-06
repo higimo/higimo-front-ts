@@ -81,8 +81,7 @@ export const useMeetingForm = ({
 			setIsSubmitted(true)
 		} catch (error) {
 			console.error('[NOKIA] submit error:', error)
-			// TODO: [LIGHT] use concat array
-			setStatus(prev => [...prev, { error }])
+			setStatus(prev => prev.concat([{ error }]))
 		} finally {
 			setIsSubmitting(false)
 		}
@@ -101,8 +100,7 @@ export const useMeetingForm = ({
 
 		const isAlreadyAdded = currentPersons.some(i => i.id === person.id)
 		if (!isAlreadyAdded) {
-			// TODO: [LIGHT] use concat array
-			formMethods.setValue('persons', [...currentPersons, person])
+			formMethods.setValue('persons', currentPersons.concat([person]))
 		}
 	}, [formMethods])
 

@@ -41,8 +41,7 @@ export function useQueue<T>(initialQueue: T[] = []): QueueHook<T> {
 	const [queue, setQueue] = useState<T[]>(initialQueue)
 
 	const push = useCallback((item: T) => {
-		// TODO: [LIGHT] use concat array
-		setQueue(prevQueue => [...prevQueue, item])
+		setQueue(prevQueue => prevQueue.concat([item]))
 	}, [])
 
 	const pull = useCallback(() => {

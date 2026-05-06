@@ -7,8 +7,7 @@ export const useScenesData = <T extends { scene: number; time: number }>(
 	data: T[]
 ): { mainScene: T[]; secondScene: T[] } =>
 	useMemo(() => {
-		// TODO: [LIGHT] use concat array
-		const sorted = [...data].sort((a, b) => a.time - b.time)
+		const sorted = data.concat().sort((a, b) => a.time - b.time)
 
 		const mainScene = sorted.filter(item => item.scene === 1)
 		const secondScene = sorted.filter(item => item.scene !== 1)

@@ -40,8 +40,7 @@ export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearT
 		...resultDataset[key]
 	}));
 
-	// TODO: [LIGHT] use concat array
-	const sortedDataset = [...dataset].sort((a, b) => a.date.getTime() - b.date.getTime());
+	const sortedDataset = dataset.concat().sort((a, b) => a.date.getTime() - b.date.getTime())
 	const category = Object.keys(meetingTypeDic).sort((a, b) => a.localeCompare(b));
 
 	return [

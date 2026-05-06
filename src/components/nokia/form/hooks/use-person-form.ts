@@ -33,12 +33,10 @@ export const usePersonForm = ({
 		setIsSubmitting(true)
 		try {
 			const result = await personApi.createOrUpdate(data)
-			// TODO: [LIGHT] use concat array
-			setStatus(prev => [...prev, result])
+			setStatus(prev => prev.concat([result]))
 			setIsSubmitted(true)
 		} catch (error) {
-			// TODO: [LIGHT] use concat array
-			setStatus(prev => [...prev, { error }])
+			setStatus(prev => prev.concat([{ error }]))
 		} finally {
 			setIsSubmitting(false)
 		}

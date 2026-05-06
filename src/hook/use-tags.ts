@@ -54,8 +54,7 @@ export const useTags: UseTagsType = <T,>(initialValue: T[]): [T[], (newTagsList:
 		const year = newTagsList[0]
 		let newTagsSet = selectedTags.includes(year)
 			? selectedTags.filter(y => y !== year)
-			// TODO: [LIGHT] use concat array
-			: [...selectedTags, year]
+			: selectedTags.concat([year])
 			setSelectedTags(newTagsSet)
 	}, [setSelectedTags, selectedTags])
 
