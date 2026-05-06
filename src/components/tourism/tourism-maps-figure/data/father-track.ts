@@ -354,13 +354,10 @@ export const cities: PovType[] = [
 		color: '#1e98ff'
 	},
 	{
-		// TODO: [LIGHT] это не город
-		type: 'город',
+		type: 'местечко',
 		coord: [44.1728, 42.6812],
 		title: 'Суворовские термальные ванны',
-		population: 0,
 		country: 'Россия',
-		region: '',
 		nearMoscow: false,
 		visited: false,
 		color: '#1e98ff'

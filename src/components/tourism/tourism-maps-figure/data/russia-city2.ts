@@ -106,6 +106,12 @@ interface Memorial extends PovTitle, PovCoord, PovDescription, PovVisited, Russi
 	bad: boolean
 }
 
+interface Placefield extends PovTitle, PovCoord, PovColor, PovVisited {
+	type: 'местечко'
+	country: CountryTitle
+	nearMoscow: boolean
+}
+
 export type PovType = Country
 	| SubjectFederation
 	| AdmOrkugMoscow
@@ -118,6 +124,7 @@ export type PovType = Country
 	| Landmark
 	| Church
 	| Memorial
+	| Placefield
 
 export const russiaCity: PovType[] = [
 
