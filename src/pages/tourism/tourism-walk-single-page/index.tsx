@@ -27,7 +27,7 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 	const isListEmpty = useEmptyDataState(yamapList.data)
 
 	const element = yamapList.data.find(item => item.code === idcode)
-	usePageTitle(element.name || 'Карта прогулки')
+	usePageTitle(element?.name || 'Карта прогулки')
 
 	if (isLoading) {
 		return <Loading />
@@ -43,9 +43,9 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 				<Breadcrumps />
 			</TextContainer>
 			<TextContainer>
-				<h1>{element.name}</h1>
+				<h1>{element?.name}</h1>
 			</TextContainer>
-			<TourismWalkItem map={element.map} />
+			<TourismWalkItem map={element?.map || ''} />
 			<TextContainer>
 				<h2>Другие карты</h2>
 				<TourismWalkGallery />
