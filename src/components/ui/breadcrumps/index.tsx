@@ -4,7 +4,7 @@ import { useRoute } from 'preact-iso'
 
 import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
-import { globalRouter, isRouteType } from 'dic/router'
+import { BREADCRUMS_DIC, isRouteType } from 'dic/router'
 import { SITE_POSTFIX } from 'hook/use-page-title'
 
 import './style.css'
@@ -30,7 +30,7 @@ export const Breadcrumps: FunctionComponent = () => {
 		<div className="breadcrumbs">
 			{breadcrumbs.map((breadcrumb, index) => {
 				const isLastChild = index === breadcrumbsLength
-				const routeName = isRouteType(breadcrumb) ? globalRouter[breadcrumb] : undefined
+				const routeName = isRouteType(breadcrumb) ? BREADCRUMS_DIC[breadcrumb] : undefined
 				const newLocal = isLastChild ? getTitle() : routeName
 				return (
 					<div className="breadcrumbs__item">
