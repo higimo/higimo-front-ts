@@ -1,4 +1,4 @@
-import { AccordModeType, AccordType } from 'types'
+import { AccordModeType, AccordType } from 'api-types/accord.types'
 
 import useApi from 'hook/use-api'
 

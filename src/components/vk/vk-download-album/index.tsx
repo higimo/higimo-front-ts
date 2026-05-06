@@ -1,5 +1,5 @@
 import { FunctionComponent, Fragment } from 'preact'
-import { VKAlbumType } from 'types'
+import { VKAlbumType } from 'api-types/vk.types'
 
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 import { useMessage } from 'components/ui/message-container/useMessage'

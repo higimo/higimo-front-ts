@@ -1,4 +1,4 @@
-import { NokiaPersonFullType } from 'types'
+import { NokiaPersonFullType } from 'api-types/nokia.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

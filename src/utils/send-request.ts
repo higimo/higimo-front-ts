@@ -2,6 +2,12 @@ import { getAuthPair } from 'utils/get-auth-pair'
 
 import httpBuildQuery from 'http-build-query'
 
+declare global {
+  interface ErrorConstructor {
+    captureStackTrace(targetObject: object, constructorOpt?: Function): void;
+  }
+}
+
 export class ApiError extends Error {
 	public status: number
 	public url?: string

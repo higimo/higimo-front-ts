@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaPersonApiType } from 'types'
+import { NokiaPersonApiType } from 'api-types/nokia.types'
 
 import { useCallback, useMemo, useState } from 'preact/compat'
 import useApi from 'hook/use-api'

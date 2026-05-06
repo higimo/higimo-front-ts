@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { DemagogType } from 'types'
+import { DemagogType } from 'api-types/demagog.types'
 
 import { TextContainer } from 'components/ui/text-container'
 

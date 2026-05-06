@@ -2,9 +2,10 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, within } from '@testing-library/preact'; // <-- Импорт для Preact
 import userEvent from '@testing-library/user-event';
 import { TourismMapGeo } from './index';
-import type { PovType } from './data/russia-city2'
 import { useWindowSize } from 'hook/use-window-size'
+import { PovType } from '../tourism-maps-figure/data/russia-city2';
 
+// @ts-nocheck
 
 // Мокаем зависимости
 vi.mock('hook/use-window-size', () => ({
@@ -41,21 +42,30 @@ describe('TourismMapGeo', () => {
 	const mockPoints: PovType[] = [
 		{
 			title: 'Москва',
-			coord: [55.75, 37.62],
-			type: 'city',
+			type: 'город федерального значения',
+			country: 'Россия',
+			centerCity: 'Москва',
+			inside: '146 внутригородских муниципальных образований (125 муниципальных округов, 2 городских округа, 19 поселений)',
+			coord: [55.755, 37.617],
+			area: 2561,
+			population: 13150,
+			okato: 45,
 			visited: true,
-			population: 12500,
-			okrug: 'Центральный',
-			region: 'Московская область'
+			color: '#b3b3b3',
 		},
 		{
 			title: 'Санкт-Петербург',
-			coord: [59.93, 30.31],
-			type: 'city',
-			visited: false,
-			population: 5400,
-			region: 'Ленинградская область'
-		}
+			type: 'город федерального значения',
+			country: 'Россия',
+			centerCity: 'Санкт-Петербург',
+			inside: '111 внутригородских муниципальных образований (81 муниципальный округ, 9 городов и 21 посёлок)',
+			coord: [59.938, 30.314],
+			area: 1403,
+			population: 5598,
+			okato: 40,
+			visited: true,
+			color: '#b3b3b3',
+		},
 	]
 
 	const mockLines: number[][] = [

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { DemagogType } from 'types'
+import { DemagogType } from 'api-types/demagog.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

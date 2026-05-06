@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaMeetingGallery } from 'components/nokia/nokia-meeting-gallery'
 
-import '../../../components/nokia/nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 // Добавить фильтрацию по типам встреч
 export const NokiaIndexPage: FunctionComponent = () => {

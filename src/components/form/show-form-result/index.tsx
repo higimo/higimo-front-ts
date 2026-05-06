@@ -1,5 +1,5 @@
 import { ComponentChildren, JSX } from 'preact'
-import { HigimoServerResponse } from 'types'
+import { HigimoServerResponse } from 'api-types/server-response.types'
 
 import { Message } from 'components/ui/message'
 

@@ -1,4 +1,4 @@
-import { PetProjectType } from 'types'
+import { PetProjectType } from 'api-types/petproject.types'
 
 import { useMemo } from 'preact/hooks'
 import useApi from 'hook/use-api'

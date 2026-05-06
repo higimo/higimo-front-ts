@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact';
-import { PortfolioCreditsType } from 'types';
+import { PortfolioCreditsType } from 'api-types/portfolio.types';
 
 import { PortfolioWorker } from 'components/project/portfolio-worker';
 

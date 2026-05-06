@@ -1,11 +1,14 @@
-import { NokiaPersonTag } from "components/nokia/nokia-person-tag";
-import { CollapseSection } from "components/ui/collapse-section";
-import { ROUTE_LINKS } from "dic/ROUTE_LINKS";
-import { FunctionComponent } from "preact";
-import { Fragment } from "preact/jsx-runtime";
-import { UseFormReturn } from "react-hook-form";
-import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType } from "types";
-import { MeetingFormValues } from "../hooks/use-meeting-form";
+import { FunctionComponent } from 'preact'
+import { NokiaPersonApiType, NokiaPersonType } from 'api-types/nokia.types'
+import { UseFormReturn } from 'react-hook-form'
+import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
+
+import { Fragment } from 'preact/jsx-runtime'
+
+import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
+import { CollapseSection } from 'components/ui/collapse-section'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 interface NokiaMeetingPersonFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>

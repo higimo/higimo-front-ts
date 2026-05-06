@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType, NokiaRichMeetingType } from 'types'
+import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType, NokiaRichMeetingType } from 'api-types/nokia.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -86,7 +86,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 		<NokiaMeetingFormContainer
 			meetingApi={meetingApi}
 			initialData={initialMeetData}
-			initialPersons={initialPersonData}
+			initialPersons={initialPersonData || []}
 			isEditMode={isEditMode}
 			peoplesSuggest={peoplesSuggest}
 			topPersons={topPersons.data}

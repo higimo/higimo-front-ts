@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaTagType } from 'types'
+import { NokiaTagType } from 'api-types/nokia.types'
 
 import { usePageTitle } from 'hook/use-page-title'
 import { useState } from 'preact/hooks'

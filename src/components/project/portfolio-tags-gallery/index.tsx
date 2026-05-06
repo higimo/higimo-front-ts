@@ -1,8 +1,9 @@
-import { TextContainer } from "components/ui/text-container"
-import { FunctionComponent } from "preact"
-import { PortfolioTag } from "types"
-import { ProjectTag } from "../project-tag"
-import { PROJECT_FILTER_DIC } from "../project-tag-category/dic"
+import { FunctionComponent } from 'preact'
+import { PortfolioTag } from 'api-types/portfolio.types'
+
+import { TextContainer } from 'components/ui/text-container'
+import { ProjectTag } from 'components/project/project-tag'
+import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 
 type PortfolioCreditsGalleryProps = {
 	tags: PortfolioTag[],

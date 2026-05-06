@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPersonFormController } from 'components/nokia/form/nokia-person-form-controller'
 
-import '../../../components/nokia/nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 export const NokiaAddPersonPage: FunctionComponent = () => {
 	usePageTitle('Редактирование и создание человека // Нокиа')

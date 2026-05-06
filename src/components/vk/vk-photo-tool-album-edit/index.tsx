@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { VkPhotoType } from 'types'
+import { VkPhotoType } from 'api-types/vk.types'
 
 import { useCallback, useContext, useEffect, useLayoutEffect, useState } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
@@ -34,7 +34,7 @@ export const VkPhotoToolAlbumEdit: FunctionComponent = () => {
 			fetchPhotos(session.user.id, albumId)
 		}
 	}, [isVkLogin, session, albumId])
-	
+
 	return (
 		<div className="album-sort-page">
 			<TextContainer>

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ListListType } from 'types'
+import { ListListType } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/use-auth'
 

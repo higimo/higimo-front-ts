@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { NokiaTagGroupType, NokiaTagType } from 'types'
+import { NokiaTagGroupType, NokiaTagType } from 'api-types/nokia.types'
 
 import { useCallback } from 'preact/hooks'
 import { useEmptyDataState } from 'hook/use-empty-data-state'

@@ -1,4 +1,4 @@
-import { LinksType } from 'types'
+import { LinksType } from 'api-types/links.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

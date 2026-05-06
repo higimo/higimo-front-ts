@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType } from 'types'
+import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useCallback, useEffect } from 'preact/hooks'
 import { useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'

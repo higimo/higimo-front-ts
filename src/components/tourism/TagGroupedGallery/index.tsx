@@ -1,7 +1,7 @@
-import { Tag } from "components/ui/tag"
-import { TextContainer } from "components/ui/text-container"
-import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE } from "hook/use-group-tags"
-import { FunctionComponent } from "preact"
+import { Tag } from 'components/ui/tag'
+import { TextContainer } from 'components/ui/text-container'
+import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE } from 'hook/use-group-tags'
+import { FunctionComponent } from 'preact'
 
 import './style.css'
 

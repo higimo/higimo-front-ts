@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaPersonType, NokiaTagType } from 'types'
+import { NokiaPersonType, NokiaTagType } from 'api-types/nokia.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

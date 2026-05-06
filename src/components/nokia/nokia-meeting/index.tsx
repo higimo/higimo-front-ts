@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingWithPersonType } from 'types'
+import { NokiaMeetingWithPersonType } from 'api-types/nokia.types'
 
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 

@@ -1,4 +1,4 @@
-import { ListerItem, ListListType } from 'types'
+import { ListerItem, ListListType } from 'api-types/listlist.types'
 
 export const convertFlatListToIerah = (list: ListerItem[]): ListListType[] => {
 	const hashMap = {}

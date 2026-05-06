@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaNoteType } from 'types'
+import { NokiaNoteType } from 'api-types/nokia.types'
 
 type NokiaNotePropsType = {
 	note: NokiaNoteType

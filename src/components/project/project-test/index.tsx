@@ -10,7 +10,7 @@ import { getHumanDate } from 'components/project/utils/getHumanDate'
 import '../project-viewer/style.css'
 import { PortfolioCreditsGallery } from '../portfolio-credits-gallery'
 import { PortfolioTagsGallery } from '../portfolio-tags-gallery'
-import { PortfolioCreditsType, PortfolioTag } from 'types'
+import { PortfolioCreditsType, PortfolioTag } from 'api-types/portfolio.types'
 
 
 

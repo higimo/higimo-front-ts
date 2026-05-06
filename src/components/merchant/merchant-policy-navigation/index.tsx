@@ -1,8 +1,8 @@
-import { MaybeLink } from "components/ui/maybe-link/maybe-link"
-import { Tag } from "components/ui/tag"
-import { TextContainer } from "components/ui/text-container"
-import { ROUTE_LINKS } from "dic/ROUTE_LINKS"
-import { useLocation } from "preact-iso"
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+import { Tag } from 'components/ui/tag'
+import { TextContainer } from 'components/ui/text-container'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { useLocation } from 'preact-iso'
 
 import './style.css'
 

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { TableGameType } from 'types'
+import { TableGameType } from 'api-types/table-game.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

@@ -1,4 +1,4 @@
-import { PinarikType } from 'types'
+import { PinarikType } from 'api-types/pinarik.types'
 import { Fragment } from 'preact/jsx-runtime'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'

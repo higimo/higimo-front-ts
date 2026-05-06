@@ -1,4 +1,4 @@
-import { PortfolioWorkerType } from 'types'
+import { PortfolioWorkerType } from 'api-types/portfolio.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

@@ -1,4 +1,4 @@
-import { PinarikType } from 'types'
+import { PinarikType } from 'api-types/pinarik.types'
 
 import cs from 'classnames'
 

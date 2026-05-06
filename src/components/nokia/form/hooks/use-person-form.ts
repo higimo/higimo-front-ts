@@ -1,4 +1,4 @@
-import { NokiaPersonApiType } from 'types'
+import { NokiaPersonApiType } from 'api-types/nokia.types'
 
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'

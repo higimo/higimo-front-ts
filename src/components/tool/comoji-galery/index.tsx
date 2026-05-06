@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ComojiType } from 'types'
+import { ComojiType } from 'api-types/comoji.types'
 
 import useApi from 'hook/use-api'
 import { useLoadingState } from 'hook/use-loading-state'

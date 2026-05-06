@@ -1,4 +1,4 @@
-import { PortfolioProjectType, PortfolioGroupedTagType } from 'types'
+import { PortfolioProjectType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
 
 import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 

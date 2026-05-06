@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact';
-import { PortfolioGroupedTagType } from 'types';
+import { PortfolioGroupedTagType } from 'api-types/portfolio.types';
 
 import { ProjectTag } from 'components/project/project-tag';
 import { TextContainer } from 'components/ui/text-container'

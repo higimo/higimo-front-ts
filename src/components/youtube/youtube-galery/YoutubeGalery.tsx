@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { YoutubeType } from 'types'
+import { YoutubeType } from 'api-types/youtube.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

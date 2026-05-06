@@ -1,4 +1,4 @@
-import { LectionType } from 'types'
+import { LectionType } from 'api-types/lection.types'
 
 import markdownit from 'markdown-it'
 

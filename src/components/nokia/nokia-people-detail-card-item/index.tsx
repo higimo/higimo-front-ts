@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaPersonFullType } from 'types'
+import { NokiaPersonFullType } from 'api-types/nokia.types'
 
 import { CollapseSection } from 'components/ui/collapse-section'
 import { NokiaMeeting } from 'components/nokia/nokia-meeting'

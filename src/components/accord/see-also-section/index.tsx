@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { AccordType } from 'types'
+import { AccordType } from 'api-types/accord.types'
 
 import { AccordElement } from 'components/accord/accord-element'
 

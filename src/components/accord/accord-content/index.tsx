@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { AccordType } from 'types'
+import { AccordType } from 'api-types/accord.types'
 
 import { usePageTitle } from 'hook/use-page-title'
 

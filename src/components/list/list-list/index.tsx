@@ -1,4 +1,4 @@
-import { ListerItem } from 'types'
+import { ListerItem } from 'api-types/listlist.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

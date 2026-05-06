@@ -1,4 +1,4 @@
-import { PortfolioProjectType } from 'types'
+import { PortfolioProjectType } from 'api-types/portfolio.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

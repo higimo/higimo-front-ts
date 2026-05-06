@@ -1,6 +1,6 @@
 import { Fragment, FunctionComponent } from 'preact'
 import { UseFormReturn } from 'react-hook-form'
-import { NokiaPersonApiType } from 'types'
+import { NokiaPersonApiType } from 'api-types/nokia.types'
 
 import '../../nokia-style.css'
 

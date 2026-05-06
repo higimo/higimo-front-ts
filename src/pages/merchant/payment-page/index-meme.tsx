@@ -1,10 +1,10 @@
-import { InitOptions } from 'types';
+import { InitOptions } from 'api-types/tinkoff';
 
 import { UseFormGetValues } from 'react-hook-form';
 import sendRequest from 'utils/send-request';
 
 import { MerchantProductType } from 'components/merchant/types';
-import { FormValues } from '../../../components/merchant/merchant-payment-form/types';
+import { FormValues } from 'components/merchant/merchant-payment-form/types';
 import { loadJs } from './loadJs';
 
 type GetInfoType = () => {

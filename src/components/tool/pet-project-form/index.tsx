@@ -1,4 +1,4 @@
-import { PetProjectType } from 'types'
+import { PetProjectType } from 'api-types/petproject.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useForm } from 'react-hook-form'

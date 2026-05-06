@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaPersonApiType } from 'types'
+import { NokiaPersonApiType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
 import { usePersonForm } from 'components/nokia/form/hooks/use-person-form'

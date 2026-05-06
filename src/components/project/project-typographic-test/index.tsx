@@ -1,5 +1,5 @@
-import { TextContainer } from "components/ui/text-container"
-import { Fragment } from "preact/jsx-runtime"
+import { TextContainer } from 'components/ui/text-container'
+import { Fragment } from 'preact/jsx-runtime'
 
 const TypographicHeader = (props) => (
 	<TextContainer style="margin-top: 256px;">

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { FaqType } from 'types'
+import { FaqType } from 'api-types/faq.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

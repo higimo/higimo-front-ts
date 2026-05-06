@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ComojiType } from 'types'
+import { ComojiType } from 'api-types/comoji.types'
 
 import getRandomColor from 'utils/get-random-color'
 import { copyToClipboard } from 'utils/copy-to-clipboard'

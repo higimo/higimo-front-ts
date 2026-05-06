@@ -1,4 +1,4 @@
-import { PortfolioWorkerType } from 'types'
+import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { FunctionComponent } from 'preact'
 
 import { FieldError, useForm } from 'react-hook-form'

@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { NokiaMeetingStatisticType } from 'types'
+import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

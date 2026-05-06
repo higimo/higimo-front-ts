@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { AccordType } from 'types'
+import { AccordType } from 'api-types/accord.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

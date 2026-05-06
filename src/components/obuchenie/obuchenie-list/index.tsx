@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LectionType } from 'types'
+import { LectionType } from 'api-types/lection.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'

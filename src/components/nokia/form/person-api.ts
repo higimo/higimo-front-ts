@@ -1,5 +1,5 @@
 import { API_ROUTE } from 'dic/api-route'
-import { NokiaPersonApiType, NokiaRichMeetingType } from 'types'
+import { NokiaPersonApiType, NokiaRichMeetingType } from 'api-types/nokia.types'
 
 import sendRequest from 'utils/send-request'
 

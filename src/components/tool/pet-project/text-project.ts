@@ -1,4 +1,4 @@
-import { PetProjectType } from 'types'
+import { PetProjectType } from 'api-types/petproject.types'
 
 export const textProjects: PetProjectType[] = [
 	{

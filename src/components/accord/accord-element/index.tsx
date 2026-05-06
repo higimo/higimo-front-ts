@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { AccordModeType } from 'types'
+import { AccordModeType } from 'api-types/accord.types'
 
 import { Tag } from 'components/ui/tag'
 import { filterMapping } from 'components/accord/utils'
@@ -26,14 +26,14 @@ type AccordElementPropsType = Pick<AccordModeType, 'id' | 'name' | 'isMostView' 
 	showBaidge?: boolean
 }
 
-export const AccordElement: FunctionComponent<AccordElementPropsType> = ({ 
-	id, 
-	name, 
-	isMostView, 
-	isNew, 
-	view, 
-	showAlf = true, 
-	showBaidge = true 
+export const AccordElement: FunctionComponent<AccordElementPropsType> = ({
+	id,
+	name,
+	isMostView,
+	isNew,
+	view,
+	showAlf = true,
+	showBaidge = true
 }) => (
 	<span>
 		{showAlf && name[0] !== alf && <div className="alf">{alf = name[0]}</div>}
@@ -43,7 +43,7 @@ export const AccordElement: FunctionComponent<AccordElementPropsType> = ({
 			{showBaidge && [
 				isMostView && <Tag>популярно ({view})</Tag>,
 				isNew && <Tag>нью</Tag>,
-				...Object.entries(filterMapping).map(([key, fn]) => 
+				...Object.entries(filterMapping).map(([key, fn]) =>
 					fn({ id }) && TAG_LABELS[key] && <Tag>{TAG_LABELS[key]}</Tag>
 				)
 			].filter(Boolean).flatMap(i => [i, ' '])}

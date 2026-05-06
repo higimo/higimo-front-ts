@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { VKAlbumType } from 'types'
+import { VKAlbumType } from 'api-types/vk.types'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 

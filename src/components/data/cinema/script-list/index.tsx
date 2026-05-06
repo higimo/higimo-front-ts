@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { CinemaType } from 'types'
+import { CinemaType } from 'api-types/cinema.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
