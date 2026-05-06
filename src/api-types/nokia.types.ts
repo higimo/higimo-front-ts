@@ -20,7 +20,7 @@ export type NokiaMeetingApiType = {
 	/** 'meeting' 'tg' 'offline' */
 	type: string;
 	/** unixtime / 1000 */
-	date: number; // TODO: [LIGHT] заменить на бэке на date
+	date: number; // TODO: [BACKEND] заменить на бэке на date
 
 	/** "2024-01-15T10:00:00Z" */
 	date_start: string;
