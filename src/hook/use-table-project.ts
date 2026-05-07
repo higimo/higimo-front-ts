@@ -1,4 +1,4 @@
-import { PortfolioTag, PortfolioProjectFullType } from 'api-types/portfolio.types'
+import { PortfolioTag, PortfolioProjectTableType } from 'api-types/portfolio.types'
 
 import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 
@@ -10,14 +10,15 @@ import useApi from './use-api'
 import { API_ROUTE } from 'dic/api-route'
 import { useMemo } from 'preact/hooks'
 
-export type PortfolioProjectTableType = {
-	id: PortfolioProjectFullType['id']
-    vendor: PortfolioProjectFullType['vendor']['code']
-    name: PortfolioProjectFullType['name']
-    code: PortfolioProjectFullType['code']
-    date: PortfolioProjectFullType['date']
-    image: PortfolioProjectFullType['image']
-    cover_size: PortfolioProjectFullType['cover_size']
+// TODO: подумай над неймингом, потому что есть PortfolioProjectTableType в API
+export type PortfolioProjectTableSmartType = {
+	id: PortfolioProjectTableType['id']
+    vendor: PortfolioProjectTableType['vendor']['code']
+    name: PortfolioProjectTableType['name']
+    code: PortfolioProjectTableType['code']
+    date: PortfolioProjectTableType['date']
+    image: PortfolioProjectTableType['image']
+    cover_size: PortfolioProjectTableType['cover_size']
 	tags: string[]
 	[k: string]: any
 // 	PortfolioProjectType = PortfolioProjectApiType & {
@@ -30,7 +31,7 @@ export type PortfolioProjectTableType = {
 // }
 }
 
-const extractWithDOMParser = (htmlString, selector) => {
+const extractWithDOMParser = (htmlString: string, selector: string) => {
 	const parser = new DOMParser()
 	const doc = parser.parseFromString(htmlString, 'text/html')
 
@@ -52,7 +53,7 @@ const extractWithDOMParser = (htmlString, selector) => {
 type UseProjectType = () => {
     isLoading: boolean
     isEmpty: boolean
-	tableProjects: PortfolioProjectTableType[],
+	tableProjects: PortfolioProjectTableSmartType[],
     tagList: PortfolioTag[]
 }
 
@@ -62,14 +63,14 @@ type UseProjectType = () => {
 export const useTableProject: UseProjectType = () => {
 	const { query } = useRoute()
 
-	const [projects] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProjectTable)
+	const [projects] = useApi<PortfolioProjectTableType[]>(API_ROUTE.projectProjectTable)
 	const [tagList] = useApi<PortfolioTag[]>(API_ROUTE.projectGroupedTags)
 
 	const isLoading = useLoadingState([projects.status, tagList.status])
 	const isProjectListEmpty = useEmptyDataState(projects.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
-	const tableProjects: PortfolioProjectTableType[] = useMemo(() => {
+	const tableProjects: PortfolioProjectTableSmartType[] = useMemo(() => {
 		return projects.data.map(project => {
 			const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
 			const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'

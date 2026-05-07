@@ -55,13 +55,17 @@ export type PortfolioProjectSimpleType = {
 	isLink: boolean
 	link?: string
 }
-// TODO: [MEDIUM] лучше выделить ProjectDetail и ProjectFull, сейчас тип используется избыточно
 export type PortfolioProjectFullType = PortfolioProjectSimpleType & {
 	tags: PortfolioTag[]
-	credits?: PortfolioCreditsType[]
 	description?: string
-	text?: string
+}
+export type PortfolioProjectDetailType = PortfolioProjectSimpleType & {
+	tags: PortfolioTag[]
+	credits: PortfolioCreditsType[]
+	description?: string
+	text: string
 	// TODO: [BACKEND] бекенд Вот бы добавить следующий и предыдущий кейс
 	// next: PortfolioProjectApiType
 	// prev: PortfolioProjectApiType
 }
+export type PortfolioProjectTableType = PortfolioProjectDetailType
