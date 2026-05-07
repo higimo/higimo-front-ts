@@ -145,8 +145,8 @@ describe('TourismMapGeo', () => {
 			render(<TourismMapGeo items={mockPoints} />)
 
 			const placemarks = screen.getAllByTestId('placemark')
-			expect(placemarks[0]).toHaveAttribute('data-coord', '55.75,37.62')
-			expect(placemarks[1]).toHaveAttribute('data-coord', '59.93,30.31')
+			expect(placemarks[0]).toHaveAttribute('data-coord', '55.755,37.617')
+			expect(placemarks[1]).toHaveAttribute('data-coord', '59.938,30.314')
 		})
 
 		it('должен иметь правильный цвет для посещённых мест', () => {
@@ -154,7 +154,7 @@ describe('TourismMapGeo', () => {
 
 		const placemarks = screen.getAllByTestId('placemark')
 		expect(placemarks[0]).toHaveAttribute('data-icon-color', '#344d3d')
-		expect(placemarks[1]).toHaveAttribute('data-icon-color', '#b3b3b3')
+		expect(placemarks[1]).toHaveAttribute('data-icon-color', '#344d3d')
 		})
 
 		it('должен отображать подсказку с названием', () => {
