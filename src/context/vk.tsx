@@ -13,11 +13,11 @@ declare global {
 
 interface IVkContext {
 	isVkLogin: boolean
-	session: VkSessionType
+	session: VkSessionType|null
 	fetchLogin: () => void
 }
 
-const DEFAULT_SESSION: VkSessionType = null
+const DEFAULT_SESSION: VkSessionType|null = null
 const DEFAULT_VK_STATE = {
 	isVkLogin: false,
 	session: DEFAULT_SESSION,
@@ -79,7 +79,7 @@ export const VkContextProvider = (props) => {
 	const [ isVkLogin, setIsVkLogin ] = useState<boolean>(false)
 	const [ session, setSession ] = useState<VkSessionType>(DEFAULT_SESSION)
 	const { isLoaded, error } = useVKInit()
-	
+
 	const handleAuth = useCallback(({ status, session }) => {
 		setIsVkLogin(status === 'connected')
 		setSession(session)
