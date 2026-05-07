@@ -1,6 +1,4 @@
-// TODO: [MEDIUM] надо документировать, сложно читается
-export const generateLink = <T extends string>(link: string) => (params: Record<T, string>) => Object.keys(params)
-	.reduce((carryLink, key) => carryLink.replace(`:${key}`, params[key]), link) as `/api/v2/${string}`
+import { generateLink } from './generateLink'
 
 const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectIndex:        '/project/',
@@ -9,14 +7,14 @@ const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectSandbox:      '/project/sandbox',
 	projectDetail_CONST: '/project/:vendor/:project/',
 
-	projectDetail: generateLink<'vendor' | 'project'>('/project/:vendor/:project/'),
+	projectDetail: generateLink('/project/:vendor/:project/'),
 })
 
 const ROUTE_ACCORD_LINKS = Object.freeze({
 	accordIndex:        '/accord/',
 	accordDetail_CONST: '/accord/:idcode/',
 
-	accordDetail: generateLink<'idcode'>('/accord/:idcode/'),
+	accordDetail: generateLink('/accord/:idcode/'),
 })
 
 const ROUTE_NOKIA_LINKS = Object.freeze({
@@ -30,9 +28,9 @@ const ROUTE_NOKIA_LINKS = Object.freeze({
 	nokiaStatistic:          '/nokia/statistic/',
 	nokiaPinarik:            '/nokia/pinarik/',
 
-	nokiaFormEdit:     generateLink<'meetingId'>('/nokia/meeting/:meetingId/'),
-	nokiaPeopleDetail: generateLink<'personId'>('/nokia/people/:personId/'),
-	nokiaPeopleEdit:   generateLink<'personId'>('/nokia/people/:personId/edit/'),
+	nokiaFormEdit:     generateLink('/nokia/meeting/:meetingId/'),
+	nokiaPeopleDetail: generateLink('/nokia/people/:personId/'),
+	nokiaPeopleEdit:   generateLink('/nokia/people/:personId/edit/'),
 })
 
 const ROUTE_TOURISM_LINKS = Object.freeze({
@@ -51,7 +49,7 @@ const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismVisited:              '/tourism/visited/',
 	tourismFatherTrack:          '/tourism/father-track/',
 
-	tourismWalkDetail: generateLink<'idcode'>('/tourism/walk/:idcode/'),
+	tourismWalkDetail: generateLink('/tourism/walk/:idcode/'),
 })
 
 const ROUTE_LIST_LIST_LINKS = Object.freeze({
@@ -60,8 +58,8 @@ const ROUTE_LIST_LIST_LINKS = Object.freeze({
 	listListCreate:       '/list-list/create/',
 	listListEdit_CONST:   '/list-list/edit/:idcode/',
 
-	listListDetail: generateLink<'idcode'>('/list-list/:idcode/'),
-	listListEdit:   generateLink<'idcode'>('/list-list/edit/:idcode/'),
+	listListDetail: generateLink('/list-list/:idcode/'),
+	listListEdit:   generateLink('/list-list/edit/:idcode/'),
 })
 
 const ROUTE_VK_LINKS = Object.freeze({
@@ -71,7 +69,7 @@ const ROUTE_VK_LINKS = Object.freeze({
 	toolVkAlbums:            '/tool/vk/albums/',
 	toolVkAlbumSingle_CONST: '/tool/vk/albums/:albumId/',
 
-	toolVkAlbumSingle: generateLink<'albumId'>('/tool/vk/albums/:albumId/'),
+	toolVkAlbumSingle: generateLink('/tool/vk/albums/:albumId/'),
 })
 
 const ROUTE_PETPROJECT_LINKS = Object.freeze({
@@ -96,7 +94,7 @@ const ROUTE_CINEMA_LINKS = Object.freeze({
 	cinemaScriptIndex:        '/cinema/script/',
 	cinemaScriptDetail_CONST: '/cinema/script/:idcode/',
 
-	cinemaScriptDetail: generateLink<'idcode'>('/cinema/script/:idcode/'),
+	cinemaScriptDetail: generateLink('/cinema/script/:idcode/'),
 })
 
 const ROUTE_RESUME_LINKS = Object.freeze({
@@ -129,7 +127,7 @@ const ROUTE_SHARE_KNOWLEDGE_LINKS = Object.freeze({
 	learningIndex:        '/obuchenie/',
 	learningDetail_CONST: '/obuchenie/:idcode/',
 
-	learningDetail: generateLink<'idcode'>('/obuchenie/:idcode/'),
+	learningDetail: generateLink('/obuchenie/:idcode/'),
 })
 
 // Инфосервисы
@@ -141,7 +139,7 @@ const ROUTE_INFO_SERVICE_LINKS = Object.freeze({
 	faqIndex:        '/faq/',
 	faqDetail_CONST: '/faq/:idcode/',
 
-	faqDetail: generateLink<'idcode'>('/faq/:idcode/'),
+	faqDetail: generateLink('/faq/:idcode/'),
 })
 
 // Сервисы-развлекухи
