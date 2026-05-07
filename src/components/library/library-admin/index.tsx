@@ -1,4 +1,4 @@
-import { FunctionalComponent } from 'preact'
+import { FunctionComponent } from 'preact'
 
 import { useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
@@ -10,12 +10,7 @@ import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
-const onSubmit = ({ setStatus }) => values => {
-	const { login, pass } = getAuthPair()
-	const requestOptions: SendRequestOptions = { method: 'POST', auth: { login, pass }, values }
-	sendRequest(API_ROUTE.lib, requestOptions)
-		.then(res => setStatus(res))
-}
+type BackendRetrunStatus = string | null
 
 type FormValues = {
 	author: string
@@ -26,9 +21,19 @@ type FormValues = {
 	anons: string
 }
 
+type OnSubmitPropsType = {
+	setStatus: (status: BackendRetrunStatus) => void
+}
+const onSubmit = ({ setStatus }: OnSubmitPropsType) => (values: FormValues) => {
+	const { login, pass } = getAuthPair()
+	const requestOptions: SendRequestOptions = { method: 'POST', auth: { login, pass }, values }
+	sendRequest(API_ROUTE.lib, requestOptions)
+		.then((res: string) => setStatus(res))
+}
+
 // TODO: [MEDIUM] добавить комбобокс
-export const LibraryAdmin: FunctionalComponent = () => {
-	const [ status, setStatus ] = useState()
+export const LibraryAdmin: FunctionComponent = () => {
+	const [ status, setStatus ] = useState<BackendRetrunStatus>()
 	const { register, handleSubmit, reset } = useForm<FormValues>()
 
 	const handleReset = () => {

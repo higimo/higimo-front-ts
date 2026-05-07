@@ -1,4 +1,4 @@
-import { FunctionalComponent } from 'preact'
+import { FunctionComponent } from 'preact'
 
 import { TextContainer } from 'components/ui/text-container'
 
@@ -7,7 +7,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import './style.css'
 import { OnlyAdmin } from 'components/util/only-admin'
 
-export const LibraryHeader: FunctionalComponent = () => {
+export const LibraryHeader: FunctionComponent = () => {
 	return (
 		<OnlyAdmin>
 			<div className="library-header">
