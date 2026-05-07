@@ -1,55 +1,52 @@
+import { Brand, ISOString, UnixTime } from "utils.type";
+
+type NokiaTagId     = Brand<number, 'TagId'>
+type NokiaPersonId  = Brand<number, 'PersonId'>
+type NokiaMeetingId = Brand<number, 'MeetingId'>
+type NokiaNoteId    = Brand<number, 'NoteId'>
+
 export type NokiaTagGroupType = string;
 
 export type NokiaTagType = {
-	id: number;
-	name: string;
-	group: NokiaTagGroupType;
+	id: NokiaTagId
+	name: string
+	group: NokiaTagGroupType
 };
-export type NokiaPersonApiType = {
-	id: number;
-	name: string;
-	alias: string;
-	nick: string;
-	description: string;
+export type NokiaPersonSimpleType = {
+	id: NokiaPersonId
+	name: string
+	alias: string
+	nick: string
+	description: string
 };
-export type NokiaPersonType = NokiaPersonApiType & {
-	tags: NokiaTagType[];
-};
-export type NokiaMeetingApiType = {
-	id: number;
+export type NokiaMeetingSimpleType = {
+	id: NokiaMeetingId;
 	/** 'meeting' 'tg' 'offline' */
 	type: string;
 	/** unixtime / 1000 */
-	date: number; // TODO: [BACKEND] заменить на бэке на date
-
-	/** "2024-01-15T10:00:00Z" */
-	date_start: string;
-	/** "2024-01-15T10:00:00Z" */
-	date_end: string;
+	date: UnixTime; // TODO: [BACKEND] заменить на бэке на date
+	date_start: ISOString;
+	date_end: ISOString;
 	description: string;
 };
-export type NokiaRichMeetingType = NokiaMeetingApiType & {
+export type NokiaRichMeetingType = NokiaMeetingSimpleType & {
 	person: NokiaPersonType[];
 };
 export type NokiaNoteType = {
-	id: number;
+	id: NokiaNoteId;
 	text: string;
-	person_id: number;
+	person_id: NokiaPersonId;
 };
-// TODO: [MEDIUM] надо исправить см. NokiaMeetingApiType
-export type NokiaMeetingWithPersonType = NokiaMeetingApiType & {
-	person: NokiaPersonApiType[];
+export type NokiaMeetingFullType = NokiaMeetingSimpleType & {
+	person: NokiaPersonSimpleType[];
 };
-// TODO: [MEDIUM] надо исправить
-export type NokiaPersonFullType = {
-	id: number;
-	name: string;
-	alias: string;
-	nick: string;
-	description: string;
+export type NokiaPersonType = NokiaPersonSimpleType & {
+	tags: NokiaTagType[];
+};
+export type NokiaPersonFullType = NokiaPersonSimpleType & {
 	tags: NokiaTagType[];
 	notes: NokiaNoteType[];
-	meetings: NokiaMeetingWithPersonType[];
+	meetings: NokiaMeetingFullType[];
 };
 export type NokiaMeetingStatisticType = {
 	id: number;

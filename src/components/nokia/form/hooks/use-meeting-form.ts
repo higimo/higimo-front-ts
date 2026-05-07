@@ -1,18 +1,18 @@
-import { NokiaMeetingApiType, NokiaPersonApiType } from 'api-types/nokia.types'
+import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
 import { MeetingApiService } from 'components/nokia/form/person-api'
 
-export type MeetingFormValues = NokiaMeetingApiType & {
-	persons: NokiaPersonApiType[]
+export type MeetingFormValues = NokiaMeetingSimpleType & {
+	persons: NokiaPersonSimpleType[]
 }
 
 export interface UseMeetingFormProps {
 	meetingApi: MeetingApiService
 	isEditMode: boolean
-	persons: NokiaPersonApiType[]
+	persons: NokiaPersonSimpleType[]
 }
 
 export interface UseMeetingFormReturn {
@@ -22,8 +22,8 @@ export interface UseMeetingFormReturn {
 	isSubmitted: boolean
 	onSubmit: (data: MeetingFormValues) => Promise<void>
 	resetForm: () => void
-	handleAddPerson: (person: NokiaPersonApiType) => void
-	handleRemovePerson: (person: NokiaPersonApiType) => void
+	handleAddPerson: (person: NokiaPersonSimpleType) => void
+	handleRemovePerson: (person: NokiaPersonSimpleType) => void
 	handleTextAssign: (trigger: string, slug: string) => string
 }
 
@@ -95,7 +95,7 @@ export const useMeetingForm = ({
 		setIsSubmitted(false)
 	}, [formMethods, isEditMode])
 
-	const handleAddPerson = useCallback((person: NokiaPersonApiType) => {
+	const handleAddPerson = useCallback((person: NokiaPersonSimpleType) => {
 		const currentPersons = formMethods.getValues('persons') || []
 
 		const isAlreadyAdded = currentPersons.some(i => i.id === person.id)
@@ -104,7 +104,7 @@ export const useMeetingForm = ({
 		}
 	}, [formMethods])
 
-	const handleRemovePerson = useCallback((person: NokiaPersonApiType) => {
+	const handleRemovePerson = useCallback((person: NokiaPersonSimpleType) => {
 		const currentPersons = formMethods.getValues('persons') || []
 		const updatedPersons = currentPersons.filter(i => i.id !== person.id)
 		formMethods.setValue('persons', updatedPersons)

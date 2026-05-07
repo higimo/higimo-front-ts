@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaPersonApiType, NokiaPersonType } from 'api-types/nokia.types'
+import { NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 import { UseFormReturn } from 'react-hook-form'
 import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
 
@@ -14,8 +14,8 @@ interface NokiaMeetingPersonFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>
 	topPersons: NokiaPersonType[]
 	persons: NokiaPersonType[]
-	handleAddPerson: (person: NokiaPersonApiType) => void
-	handleRemovePerson: (person: NokiaPersonApiType) => void
+	handleAddPerson: (person: NokiaPersonSimpleType) => void
+	handleRemovePerson: (person: NokiaPersonSimpleType) => void
 }
 
 export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonFieldsProps> = ({

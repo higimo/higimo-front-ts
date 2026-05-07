@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType, NokiaRichMeetingType } from 'api-types/nokia.types'
+import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType, NokiaRichMeetingType } from 'api-types/nokia.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -18,7 +18,7 @@ import { API_ROUTE } from 'dic/api-route'
 import '../../nokia-style.css'
 import './style.css'
 
-const getUserSuggestions = (persons: NokiaPersonApiType[]): string[] => persons.map(person => {
+const getUserSuggestions = (persons: NokiaPersonSimpleType[]): string[] => persons.map(person => {
 	return [
 		person.name,
 		person.nick,
@@ -60,7 +60,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 	const isEditMode = meetingId !== DEFAULT_MEETING_ID
 
 	const currentMeeting = singleMeeting.data
-	const initialMeetData: NokiaMeetingApiType | undefined = !isEmptySingleMeeting && isEditMode ? {
+	const initialMeetData: NokiaMeetingSimpleType | undefined = !isEmptySingleMeeting && isEditMode ? {
 		id:          currentMeeting.id,
 		type:        currentMeeting.type,
 		date:        currentMeeting.date,
@@ -69,7 +69,7 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 		description: currentMeeting.description,
 	} : undefined
 
-	const initialPersonData: NokiaPersonApiType[] | undefined = (
+	const initialPersonData: NokiaPersonSimpleType[] | undefined = (
 		!isEmptySingleMeeting && isEditMode ? currentMeeting.person.map(cur => ({
 			id: cur.id,
 			name: cur.name,

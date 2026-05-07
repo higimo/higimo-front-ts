@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingWithPersonType } from 'api-types/nokia.types'
+import { NokiaMeetingFullType } from 'api-types/nokia.types'
 
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
@@ -8,7 +8,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import '../nokia-style.css'
 
 type NokiaMetingPropsType = {
-	meeting: NokiaMeetingWithPersonType
+	meeting: NokiaMeetingFullType
 }
 export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting }) => {
 	return (

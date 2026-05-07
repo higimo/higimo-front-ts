@@ -1,5 +1,5 @@
 import { API_ROUTE } from 'dic/api-route'
-import { NokiaPersonApiType, NokiaRichMeetingType } from 'api-types/nokia.types'
+import { NokiaPersonSimpleType, NokiaRichMeetingType } from 'api-types/nokia.types'
 
 import sendRequest from 'utils/send-request'
 
@@ -42,7 +42,7 @@ const omit = (obj, ...keys) => {
 export interface PersonApi {
 	// getAll(): Promise<NokiaPersonApiType[]>
 	// getById(id: string): Promise<NokiaPersonApiType>
-	createOrUpdate(person: Partial<NokiaPersonApiType>): Promise<any>
+	createOrUpdate(person: Partial<NokiaPersonSimpleType>): Promise<any>
 }
 
 export class PersonApiService implements PersonApi {
@@ -56,7 +56,7 @@ export class PersonApiService implements PersonApi {
 	// 	return response.data
 	// }
 
-	async createOrUpdate(person: Partial<NokiaPersonApiType>): Promise<any> {
+	async createOrUpdate(person: Partial<NokiaPersonSimpleType>): Promise<any> {
 		const method = person.id ? 'PUT' : 'POST'
 		const endpoint = person.id
 			? API_ROUTE.nokiaPersonSingle({ id: person.id.toString() })
@@ -74,7 +74,7 @@ export interface MeetingApi {
 	// getAll(): Promise<NokiaRichMeetingType[]>
 	// getById(id: string): Promise<NokiaRichMeetingType>
 	createOrUpdate(meeting: Partial<NokiaRichMeetingType>): Promise<any>
-	syncPerson(meetingId: number, persons: NokiaPersonApiType[]): Promise<any>
+	syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any>
 }
 
 export class MeetingApiService implements MeetingApi {
@@ -91,7 +91,7 @@ export class MeetingApiService implements MeetingApi {
 		})
 	}
 
-	async syncPerson(meetingId: number, persons: NokiaPersonApiType[]): Promise<any> {
+	async syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any> {
 		console.log('MeetingApiService.createOrUpdate', persons)
 		return sendRequest(
 			API_ROUTE.nokiaSyncPersonForMeeting({ meetingId: meetingId.toString() }),

@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
-import { NokiaPersonApiType } from 'api-types/nokia.types'
+import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import './style.css'
 
 interface PersonTagProps {
-	person: NokiaPersonApiType
+	person: NokiaPersonSimpleType
 	onClick?: () => void
 	onRemove?: () => void
 	className?: string

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingApiType, NokiaPersonApiType, NokiaPersonType } from 'api-types/nokia.types'
+import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useCallback, useEffect } from 'preact/hooks'
 import { useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'
@@ -13,8 +13,8 @@ import '../../nokia-style.css'
 
 interface NokiaMeetingFormContainerProps {
 	meetingApi: MeetingApiService
-	initialData: NokiaMeetingApiType | undefined
-	initialPersons: NokiaPersonApiType[]
+	initialData: NokiaMeetingSimpleType | undefined
+	initialPersons: NokiaPersonSimpleType[]
 	isEditMode: boolean
 	peoplesSuggest: string[]
 	topPersons: NokiaPersonType[]
@@ -46,7 +46,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 
 	useEffect(() => {
 		if (initialData) {
-			Object.entries(initialData).forEach(([key, value]: [keyof NokiaMeetingApiType, any]) => {
+			Object.entries(initialData).forEach(([key, value]: [keyof NokiaMeetingSimpleType, any]) => {
 				if (key === 'date') {
 					// @ts-ignore
 					setValue(key, new Date(value * 1000).toISOString().substring(0, 10))
@@ -89,7 +89,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 				</button>
 
 				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult<NokiaMeetingApiType> status={status} reset={() => reset(/*{date: date}*/)} />
+					<ShowFormResult<NokiaMeetingSimpleType> status={status} reset={() => reset(/*{date: date}*/)} />
 				)}
 			</div>
 		</form>

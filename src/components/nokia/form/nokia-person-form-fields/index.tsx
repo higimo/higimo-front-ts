@@ -1,11 +1,11 @@
 import { Fragment, FunctionComponent } from 'preact'
 import { UseFormReturn } from 'react-hook-form'
-import { NokiaPersonApiType } from 'api-types/nokia.types'
+import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import '../../nokia-style.css'
 
 interface NokiaPersonFormFieldsProps {
-	formMethods: UseFormReturn<NokiaPersonApiType>
+	formMethods: UseFormReturn<NokiaPersonSimpleType>
 }
 
 export const NokiaPersonFormFields: FunctionComponent<NokiaPersonFormFieldsProps> = ({

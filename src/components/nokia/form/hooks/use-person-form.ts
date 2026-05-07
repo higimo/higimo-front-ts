@@ -1,4 +1,4 @@
-import { NokiaPersonApiType } from 'api-types/nokia.types'
+import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
@@ -11,11 +11,11 @@ export interface UsePersonFormProps {
 }
 
 export interface UsePersonFormReturn {
-	formMethods: ReturnType<typeof useForm<NokiaPersonApiType>>
+	formMethods: ReturnType<typeof useForm<NokiaPersonSimpleType>>
 	status: any[]
 	isSubmitting: boolean
 	isSubmitted: boolean
-	onSubmit: (data: NokiaPersonApiType) => Promise<void>
+	onSubmit: (data: NokiaPersonSimpleType) => Promise<void>
 	resetForm: () => void
 }
 
@@ -23,13 +23,13 @@ export const usePersonForm = ({
 	personApi,
 	isEditMode,
 }: UsePersonFormProps): UsePersonFormReturn => {
-	const formMethods = useForm<NokiaPersonApiType>({})
+	const formMethods = useForm<NokiaPersonSimpleType>({})
 
 	const [status, setStatus] = useState<any[]>([])
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [isSubmitted, setIsSubmitted] = useState(false)
 
-	const onSubmit = useCallback(async (data: NokiaPersonApiType) => {
+	const onSubmit = useCallback(async (data: NokiaPersonSimpleType) => {
 		setIsSubmitting(true)
 		try {
 			const result = await personApi.createOrUpdate(data)
