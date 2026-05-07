@@ -1,7 +1,7 @@
 /**
  * Тип элемента данных, который содержит теги.
  */
-interface DataItemWithTags {
+export interface DataItemWithTags {
 	tags: string[];
 	[key: string]: unknown;
 }
@@ -9,4 +9,4 @@ interface DataItemWithTags {
 /**
  * Тип для выбранных тегов по группам.
  */
-type SelectedTags = Record<string, Set<string>>;
+export type SelectedTags = Record<string, Set<string>>;

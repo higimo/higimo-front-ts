@@ -1,3 +1,5 @@
+import { DataItemWithTags, SelectedTags } from "./types";
+
 /**
  * Стратегия "OR между группами, OR внутри группы".
  *
@@ -28,7 +30,7 @@ export const filterTagOrGroupsStrategy = <T extends DataItemWithTags>(
 	return data.filter(item => {
 		for (const [, selectedSet] of Object.entries(selectedTags)) {
 			if (selectedSet.size === 0) continue;
-			const hasMatch = item.tags.some(tag => selectedSet.has(tag));
+			const hasMatch = (item.tags || []).some(tag => selectedSet.has(tag));
 			if (hasMatch) return true;
 		}
 		return false;
