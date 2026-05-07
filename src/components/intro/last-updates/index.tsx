@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { UpdateNewsType } from './types'
+import { KeyOf, ValueOf } from 'utils.type'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -29,17 +30,22 @@ const imgMapping = {
 	'Раковарня 2.0': [tg, rak],
 } as const
 
-const TileElementCon = props => (
+const getImage = (source: UpdateNewsType['source']): ValueOf<typeof imgMapping>|null => {
+	return source in imgMapping ? imgMapping[(source as KeyOf<typeof imgMapping>)] : null
+}
+
+type TileElementConPropsType = UpdateNewsType
 // TODO: [FEATURE] Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
 // Получается, завести избранные из телеги и показывать их на фасад
 // TODO: [FEATURE] пока скрытый компонент, надо бы выводить через него избранное, а всё подряд показывать только мне, нпрмр
+const TileElementCon: FunctionComponent<TileElementConPropsType> = props => (
 	<TileElement
 		className="post-element"
 		href={props.link}
 		name={(
 			<div className="post-element__meta">
 				<span className="post-element__favicons">
-					{(imgMapping[props.source] || []).map(src => (
+					{(getImage(props.source) || []).map(src => (
 						<img className="post-element__favicon-image" src={src} />
 					))}
 				</span>
