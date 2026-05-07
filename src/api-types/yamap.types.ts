@@ -1,6 +1,10 @@
+import { Brand, Code } from "utils.type"
+
+type YaMapId = Brand<number, 'YaMapId'>
+
 export type YaMapType = {
-	id: string;
-	name: string;
-	code: string;
-	map: string;
-};
+	id: YaMapId
+	name: string
+	code: Code
+	map: string
+}

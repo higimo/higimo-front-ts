@@ -1,4 +1,4 @@
-import { PortfolioProjectType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
+import { PortfolioProjectFullType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
 
 import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 
@@ -12,7 +12,7 @@ import { API_ROUTE } from 'dic/api-route'
 type UseProjectType = () => {
     isLoading: boolean
     isEmpty: boolean
-    projectList: PortfolioProjectType[]
+    projectList: PortfolioProjectFullType[]
     tagList: PortfolioGroupedTagType[]
 }
 /**
@@ -21,7 +21,7 @@ type UseProjectType = () => {
 export const useProject: UseProjectType = () => {
 	const { query } = useRoute()
 
-	const [projectListRaw] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProject)
+	const [projectListRaw] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject)
 	const [tagList] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
 	const isLoading = useLoadingState([projectListRaw.status, tagList.status])
 	const isProjectListEmpty = useEmptyDataState(projectListRaw.data)

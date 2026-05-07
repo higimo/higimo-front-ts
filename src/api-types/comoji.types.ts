@@ -1,4 +1,8 @@
+import { Brand } from 'utils.type'
+
+type ComojiId = Brand<number, 'ComojiId'>
+
 export type ComojiType = {
-	id: number;
+	id: ComojiId;
 	comoji: string;
 };

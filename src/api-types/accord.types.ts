@@ -1,12 +1,16 @@
+import { Brand, Code } from 'utils.type'
+
+type AccordId = Brand<number, 'AccordId'>
+
 export type AccordType = {
-	id: number
+	id: AccordId
 	name: string
-	code: string
+	code: Code
 	text: string
 	view: number
 }
 
-export type AccordModeType = AccordType & {
+export type AccordWithTagType = AccordType & {
 	isNew: boolean
 	isMostView: boolean
 }

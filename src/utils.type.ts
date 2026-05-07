@@ -61,13 +61,12 @@ export function getValueOrDefault<T extends Record<string, any>, K extends keyof
 		Brand
 ********************************/
 
-// Брендирование через пересечение с уникальным маркером
-export type Brand<T, B extends string> = T & { readonly __brand: B };
+export type Brand<T, B extends string> = T & { readonly __brand: B }
 
-export const brand = <T, B extends string>(value: T, brand: B): Brand<T, B> => value as Brand<T, B>
+export const brand2 = <T, B extends string>(value: T, brand: B): Brand<T, B> => value as Brand<T, B>
 
 export const isBranded = <T, B extends string>(value: unknown, brand: B): value is Brand<T, B> => {
-  return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand
+	return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand
 }
 
 export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as T
@@ -77,26 +76,50 @@ export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as 
 		Расширение примитивов
 ********************************/
 
+/**
+ * 2024-01-15T10:00:00Z
+ */
 export type ISOString = Brand<string, 'ISOString'>;
 
 export const toISOString = (date: Date): ISOString => date.toISOString() as ISOString
 
 export const fromISOString = (str: string): Date | null => {
 	if (isISOString(str)) {
-		return new Date(str);
+		return new Date(str)
 	}
-	return null;
+	return null
 }
 
 export const isISOString = (str: string): str is ISOString => {
-	return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z$/.test(str);
+	return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z$/.test(str)
 }
 
 // Гвард для использования в рантайме
 export const assertISOString = (str: string): asserts str is ISOString => {
 	if (!isISOString(str)) {
-		throw new Error(`Invalid ISO string: ${str}`);
+		throw new Error(`Invalid ISO string: ${str}`)
 	}
 }
 
-export type UnixTime = Brand<number, 'UnixTime'>;
+/**
+ * Число в формате эпохи nix
+ *
+ * Например, 1778155911069
+ */
+export type UnixTime = Brand<number, 'UnixTime'>
+
+
+/**
+ * Только дата в формате `2024-01-15`
+ */
+export type DateOnlyString = Brand<string, 'DateOnlyString'>;
+
+export const createDateOnly = (date: Date): DateOnlyString => date.toISOString().split('T')[0] as DateOnlyString
+
+export const isValidDateOnly = (str: string): str is DateOnlyString => /^\d{4}-\d{2}-\d{2}$/.test(str)
+
+
+/**
+ * Символьный код элемента. Он же `slug`
+ */
+export type Code = string

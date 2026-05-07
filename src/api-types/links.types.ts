@@ -1,5 +1,9 @@
+import { Brand } from 'utils.type'
+
+type LinkId = Brand<number, 'LinkId'>
+
 export type LinksType = {
-	id: number;
-	url: string;
-	description: string;
-};
+	id: LinkId
+	url: string
+	description: string
+}

@@ -1,41 +1,47 @@
-export type ListPropertyType = {
-	id: number;
-	item_id: number;
-	property_id: number;
-	value: string;
-	property: {
-		id: number;
-		item_id: number;
-		name: string;
-		type: string;
-	};
-};
+import { Brand } from 'utils.type'
 
-export type ListerItem = {
-	id: number;
-	parent_id: number;
-	title: string;
-	code: string;
-	created_at: number;
-	children?: ListerItem[];
-	parent?: ListerItem;
-	values?: ListPropertyType[];
-};
+type ListItemId = Brand<number, 'ListItemId'>
+type ListPropertyId = Brand<number, 'ListPropertyId'>
+type ListValueId = Brand<number, 'ListValueId'>
 
 export type ListerProperty = {
-	id: number;
-	name: string;
-	type: string;
-	item: number;
-};
+	id: ListValueId
+	name: string
+	type: string
+	item: number
+}
 
 export type ListerValue = {
-	id: number;
-	value: string;
-	property: number;
-	item: number;
-};
+	id: number
+	value: string
+	property: number
+	item: number
+}
+
+export type ListPropertyType = {
+	id: ListPropertyId
+	item_id: number
+	property_id: ListPropertyId
+	value: string
+	property: {
+		id: ListItemId
+		item_id: number
+		name: string
+		type: string
+	}
+}
+
+export type ListerItem = {
+	id: ListItemId
+	parent_id: ListItemId
+	title: string
+	code: string
+	created_at: number
+	children?: ListerItem[]
+	parent?: ListerItem
+	values?: ListPropertyType[]
+}
 
 export type ListListType = ListerItem & {
-	child?: ListerItem[];
-};
+	child?: ListerItem[]
+}

@@ -1,56 +1,67 @@
+import { Brand, Code, DateOnlyString } from "utils.type"
+
+type PortfolioId              = Brand<number, 'PortfolioId'>
+export type PortfolioTagId    = Brand<number, 'PortfolioTagId'>
+type PortfolioTagGroupId      = Brand<number, 'PortfolioTagGroupId'>
+export type PortfolioWorkerId = Brand<number, 'PortfolioWorkerId'>
+type PortfolioVendorId        = Brand<number, 'PortfolioVendorId'>
+
+// TODO: [BACKEND] после передачи количества в count, можно будет избавиться от типа
 export type PortfolioIdsType = {
-	id: number;
-	vendor: number;
-	code: string;
-};
+	id: PortfolioId
+	vendor: number
+	code: Code
+}
 export type PortfolioTag = {
-	id: number;
-	title: string;
-};
+	id: PortfolioTagId
+	title: string
+}
 export type PortfolioGroupTagType = {
-	id: number;
-	title: string;
-};
+	id: PortfolioTagGroupId
+	title: string
+}
 export type PortfolioGroupedTagType = {
-	group: PortfolioGroupTagType;
-	tags: PortfolioTag[];
-};
+	group: PortfolioGroupTagType
+	tags: PortfolioTag[]
+}
 export type PortfolioWorkerType = {
-	id: number;
-	full_name: string;
-	login: string;
-	company: string;
-	image: null;
-	role: string;
-	link?: string;
-};
+	id: PortfolioWorkerId
+	full_name: string
+	login: string
+	company: string
+	image: null
+	role: string
+	link?: string
+}
 export type PortfolioCreditsType = {
-	role: string;
-	worker: PortfolioWorkerType;
-};
+	role: string
+	worker: PortfolioWorkerType
+}
 export type PortfolioVendorType = {
-	id: number;
-	code: string;
-	title: string;
-	description?: string;
-};
-// TODO: [MEDIUM] бекенд Вот бы добавить следующий и предыдущий кейс
-export type PortfolioProjectApiType = {
-	id: number;
-	vendor_id: number;
-	vendor: PortfolioVendorType;
-	name: string;
-	code: string;
-	date: string; // yyy-mm-dd
-	image: 'png' | 'jpg';
-	cover_size: 'high' | 'big' | 'normal' | 'small';
-	isLink: boolean;
-	link?: string;
-};
-// TODO: [MEDIUM] отделить тип для сингл страницы от остальных
-export type PortfolioProjectType = PortfolioProjectApiType & {
-	tags: PortfolioTag[];
-	credits?: PortfolioCreditsType[];
-	description?: string;
-	text?: string;
-};
+	id: PortfolioVendorId
+	code: Code
+	title: string
+	description?: string
+}
+export type PortfolioProjectSimpleType = {
+	id: number
+	vendor_id: number
+	vendor: PortfolioVendorType
+	name: string
+	code: string
+	date: DateOnlyString
+	image: 'png' | 'jpg'
+	cover_size: 'high' | 'big' | 'normal' | 'small'
+	isLink: boolean
+	link?: string
+}
+// TODO: [MEDIUM] лучше выделить ProjectDetail и ProjectFull, сейчас тип используется избыточно
+export type PortfolioProjectFullType = PortfolioProjectSimpleType & {
+	tags: PortfolioTag[]
+	credits?: PortfolioCreditsType[]
+	description?: string
+	text?: string
+	// TODO: [BACKEND] бекенд Вот бы добавить следующий и предыдущий кейс
+	// next: PortfolioProjectApiType
+	// prev: PortfolioProjectApiType
+}

@@ -1,4 +1,4 @@
-import { PortfolioTag, PortfolioProjectType } from 'api-types/portfolio.types'
+import { PortfolioTag, PortfolioProjectFullType } from 'api-types/portfolio.types'
 
 import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
 
@@ -11,13 +11,13 @@ import { API_ROUTE } from 'dic/api-route'
 import { useMemo } from 'preact/hooks'
 
 export type PortfolioProjectTableType = {
-	id: PortfolioProjectType['id']
-    vendor: PortfolioProjectType['vendor']['code']
-    name: PortfolioProjectType['name']
-    code: PortfolioProjectType['code']
-    date: PortfolioProjectType['date']
-    image: PortfolioProjectType['image']
-    cover_size: PortfolioProjectType['cover_size']
+	id: PortfolioProjectFullType['id']
+    vendor: PortfolioProjectFullType['vendor']['code']
+    name: PortfolioProjectFullType['name']
+    code: PortfolioProjectFullType['code']
+    date: PortfolioProjectFullType['date']
+    image: PortfolioProjectFullType['image']
+    cover_size: PortfolioProjectFullType['cover_size']
 	tags: string[]
 	[k: string]: any
 // 	PortfolioProjectType = PortfolioProjectApiType & {
@@ -62,7 +62,7 @@ type UseProjectType = () => {
 export const useTableProject: UseProjectType = () => {
 	const { query } = useRoute()
 
-	const [projects] = useApi<PortfolioProjectType[]>(API_ROUTE.projectProjectTable)
+	const [projects] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProjectTable)
 	const [tagList] = useApi<PortfolioTag[]>(API_ROUTE.projectGroupedTags)
 
 	const isLoading = useLoadingState([projects.status, tagList.status])

@@ -1,6 +1,10 @@
+import { Brand, Code } from 'utils.type'
+
+type FaqId = Brand<number, 'FaqId'>
+
 export type FaqType = {
-	id: number;
-	name: string;
-	code: string;
-	text: string;
-};
+	id: FaqId
+	name: string
+	code: Code
+	text: string
+}

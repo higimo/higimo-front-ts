@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { AccordModeType } from 'api-types/accord.types'
+import { AccordWithTagType } from 'api-types/accord.types'
 
 import { Tag } from 'components/ui/tag'
 import { filterMapping } from 'components/accord/utils'
@@ -21,7 +21,7 @@ const TAG_LABELS: Record<string, string> = {
 	bard: 'барды',
 }
 
-type AccordElementPropsType = Pick<AccordModeType, 'id' | 'name' | 'isMostView' | 'isNew' | 'view'> & {
+type AccordElementPropsType = Pick<AccordWithTagType, 'id' | 'name' | 'isMostView' | 'isNew' | 'view'> & {
 	showAlf?: boolean
 	showBaidge?: boolean
 }

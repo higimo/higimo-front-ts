@@ -1,5 +1,9 @@
+import { Brand } from 'utils.type'
+
+type DemagogId = Brand<number, 'DemagogId'>
+
 export type DemagogType = {
-	id: number;
-	name: string;
-	description: string;
-};
+	id: DemagogId
+	name: string
+	description: string
+}

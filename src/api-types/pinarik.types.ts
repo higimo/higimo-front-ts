@@ -1,6 +1,10 @@
+import { Brand, DateOnlyString } from "utils.type"
+
+type PinarikId = Brand<number, 'PinarikId'>
+
 export type PinarikType = {
-	id: number;
-	date: string; // 2020-05-14
-	score: number;
-	description: string;
-};
+	id: PinarikId
+	date: DateOnlyString
+	score: number
+	description: string
+}

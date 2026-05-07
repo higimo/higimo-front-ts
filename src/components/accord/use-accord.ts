@@ -1,4 +1,4 @@
-import { AccordModeType, AccordType } from 'api-types/accord.types'
+import { AccordWithTagType, AccordType } from 'api-types/accord.types'
 
 import useApi from 'hook/use-api'
 
@@ -8,7 +8,7 @@ import { API_ROUTE } from 'dic/api-route'
 
 const NEWS_ACCORD_LENGTH = 30
 
-export const useAccord = (filter: string = ''): AccordModeType[] => {
+export const useAccord = (filter: string = ''): AccordWithTagType[] => {
 	const [ accordUnsortList ] = useApi<AccordType[]>(API_ROUTE.accord)
 
 	const length = accordUnsortList.data.length
@@ -17,7 +17,7 @@ export const useAccord = (filter: string = ''): AccordModeType[] => {
 	const isNew = (id: AccordType['id']) => id > length - NEWS_ACCORD_LENGTH
 	const isMostView = (count: AccordType['view']) => count > minimumViewed
 
-	let newList: AccordModeType[] = accordUnsortList.data.map(item => ({
+	let newList: AccordWithTagType[] = accordUnsortList.data.map(item => ({
 		...item,
 		isNew: isNew(item.id),
 		isMostView: isMostView(item.view),

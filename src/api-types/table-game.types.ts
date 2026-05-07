@@ -1,5 +1,9 @@
+import { Brand } from "utils.type"
+
+type TableGameId = Brand<number, 'TableGameId'>
+
 export type TableGameType = {
-	id: number;
-	name: string;
-	text: string;
-};
+	id: TableGameId
+	name: string
+	text: string
+}

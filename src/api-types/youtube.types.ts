@@ -1,4 +1,6 @@
+import { Code } from "utils.type";
+
 export type YoutubeType = {
-	code: string;
+	code: Code;
 	name: string;
 };

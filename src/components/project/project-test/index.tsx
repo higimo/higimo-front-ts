@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'preact'
+import { PortfolioCreditsType, PortfolioTag, PortfolioTagId, PortfolioWorkerId } from 'api-types/portfolio.types'
 
 import { usePageTitle } from 'hook/use-page-title'
 
@@ -6,15 +7,12 @@ import { TextContainer } from 'components/ui/text-container'
 import { ProjectTypographicTest } from '../project-typographic-test'
 
 import { getHumanDate } from 'components/project/utils/getHumanDate'
+import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
+import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
 
 import '../project-viewer/style.css'
-import { PortfolioCreditsGallery } from '../portfolio-credits-gallery'
-import { PortfolioTagsGallery } from '../portfolio-tags-gallery'
-import { PortfolioCreditsType, PortfolioTag } from 'api-types/portfolio.types'
 
-
-
-
+const portfolioWorkerId: PortfolioWorkerId = 1 as PortfolioWorkerId
 
 const credits: PortfolioCreditsType[] = [
 	{ role: 'худрук',                  name: 'Артемий Лебедев', },
@@ -37,24 +35,26 @@ const credits: PortfolioCreditsType[] = [
 ].map(i => ({
 	role: i.role,
 	worker: {
-		id: 1, full_name: i.name, company: '', image: null, login: 'login', role: 'few', link: '/',
+		id: portfolioWorkerId, full_name: i.name, company: '', image: null, login: 'login', role: 'few', link: '/',
 	},
 }))
 
+const portfolioTagId: PortfolioTagId = 1 as PortfolioTagId
+
 const tags: PortfolioTag[] = [
-	{ id: 1, title: 'ALS', },
-	{ id: 1, title: 'Студия', },
-	{ id: 1, title: 'большой', },
-	{ id: 1, title: 'нормальный', },
-	{ id: 1, title: 'сильный', },
-	{ id: 1, title: 'продакт', },
-	{ id: 1, title: 'аналитик', },
-	{ id: 1, title: 'разработчик', },
-	{ id: 1, title: 'грандиозный', },
-	{ id: 1, title: 'бекенд', },
-	{ id: 1, title: 'продукты', },
-	{ id: 1, title: 'Битрикс', },
-	{ id: 1, title: 'длинный тег в несколько слов', },
+	{ id: portfolioTagId, title: 'ALS', },
+	{ id: portfolioTagId, title: 'Студия', },
+	{ id: portfolioTagId, title: 'большой', },
+	{ id: portfolioTagId, title: 'нормальный', },
+	{ id: portfolioTagId, title: 'сильный', },
+	{ id: portfolioTagId, title: 'продакт', },
+	{ id: portfolioTagId, title: 'аналитик', },
+	{ id: portfolioTagId, title: 'разработчик', },
+	{ id: portfolioTagId, title: 'грандиозный', },
+	{ id: portfolioTagId, title: 'бекенд', },
+	{ id: portfolioTagId, title: 'продукты', },
+	{ id: portfolioTagId, title: 'Битрикс', },
+	{ id: portfolioTagId, title: 'длинный тег в несколько слов', },
 ]
 
 export const ProjectTypography: FunctionComponent = () => {

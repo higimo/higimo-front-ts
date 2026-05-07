@@ -1,6 +1,10 @@
+import { Brand, Code } from 'utils.type'
+
+type CinemaId = Brand<number, 'CinemaId'>
+
 export type CinemaType = {
-	id: number;
-	title: string;
-	code: string;
-	text: string;
+	id: CinemaId
+	title: string
+	code: Code
+	text: string
 };

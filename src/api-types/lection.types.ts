@@ -1,6 +1,10 @@
+import { Brand, Code } from 'utils.type'
+
+type LectionId = Brand<number, 'LectionId'>
+
 export type LectionType = {
-	id: number;
-	name: string;
-	code: string;
-	text: string;
+	id: LectionId
+	name: string
+	code: Code
+	text: string
 };
