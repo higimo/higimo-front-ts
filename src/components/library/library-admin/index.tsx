@@ -31,7 +31,6 @@ const onSubmit = ({ setStatus }: OnSubmitPropsType) => (values: FormValues) => {
 		.then((res: string) => setStatus(res))
 }
 
-// TODO: [MEDIUM] добавить комбобокс
 export const LibraryAdmin: FunctionComponent = () => {
 	const [ status, setStatus ] = useState<BackendRetrunStatus>()
 	const { register, handleSubmit, reset } = useForm<FormValues>()
