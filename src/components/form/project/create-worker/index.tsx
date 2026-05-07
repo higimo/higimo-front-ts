@@ -11,7 +11,7 @@ type CreateWorkerPropsType = {
 	onSubmit: (roles: PortfolioWorkerType) => Promise<boolean>
 }
 
-// TODO: [MEDIUM] сейчас не сообщает, если какое-то поле забуду
+// TODO: [HARD] сейчас не сообщает, если какое-то поле забуду
 export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
 	const {
 		register,

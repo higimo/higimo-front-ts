@@ -16,7 +16,7 @@ const convertCoverSizeToWidth = (coverSize: PortfolioProjectFullType['cover_size
 	if (coverSize === 'normal') {
 		return 1
 	}
-	// TODO: [MEDIUM] small 1 — их показывать невысокой, но длинной строкой шириной 4
+	// TODO: [BACKEND] small 1 — их показывать невысокой, но длинной строкой шириной 4
 	return 1
 }
 

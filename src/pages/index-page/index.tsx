@@ -14,10 +14,7 @@ import { ProductServerBanner } from 'components/merchant/product-server-banner'
 // import { DonatIntro } from 'components/intro/donat-intro'
 // import { AboutMe } from 'components/intro/about-me'
 
-
-// TODO: [MEDIUM] Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
-// TODO: [MEDIUM] Можно писать, что ищу проекты, просто посылать нахуй не интересное
-// TODO: [MEDIUM] Получается, завести избранные из телеги и показывать их на фасад
+// TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
 export const IndexPage: FunctionComponent = () => {
 	usePageTitle('Менеджер продукта — higimo') // higimo — программист на Java Script
@@ -25,7 +22,7 @@ export const IndexPage: FunctionComponent = () => {
 	return [
 		<MainIntro />,
 		<ProductServerBanner productKey="COFFEE" />,
-		// TODO: [MEDIUM] опубликовать, но пока не оч красиво выглядит
+		// TODO: [FEATURE] опубликовать, но пока не оч красиво выглядит
 		// <AboutMe />,
 		<ProjectListShort />,
 		<ContactList />,

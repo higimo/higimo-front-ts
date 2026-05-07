@@ -16,7 +16,7 @@ const CITY_PREVIEW_DIC = {
 
 type CityPreviewDicType = typeof CITY_PREVIEW_DIC[keyof typeof CITY_PREVIEW_DIC]
 
-// TODO: [MEDIUM] BACKEND сделать ссылки на города
+// TODO: [BACKEND] сделать ссылки на города
 export const CityStars: FunctionComponent = () => {
 	useEffect(() => {
 		fetch('/json/city.json')

@@ -91,7 +91,7 @@ export const useTableProject: UseProjectType = () => {
 			const factoidGalleryRaw = extractWithDOMParser(cardTableRaw.resultHtml, '.factoid-gallery')
 			const resultTextRaw = extractWithDOMParser(factoidGalleryRaw.resultHtml, '.container-panel--30, .container-panel--50, h2, img, video, .horizontal-item__note, .container-panel--70, script, .sector-sum--half, .sector-sum')
 
-			// TODO: [MEDIUM] КЦЗНН странно сверстан
+			// TODO: [BACKEND] КЦЗНН странно сверстан
 
 			console.log(resultTextRaw.resultHtml)
 

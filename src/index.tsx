@@ -78,7 +78,7 @@ import { VkDownloadPage }    from 'pages/vk/vk-download-page'
 import { VkIndexPage }       from 'pages/vk/vk-index-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
-// TODO: [MEDIUM] все резюме сунуть в отложенную загрузку
+// TODO: [HARD] все резюме сунуть в отложенную загрузку
 import { ResumeIndexPage }    from 'pages/resume/resume-index-page'
 const ResumeProductPage       = lazy(() => import('pages/resume/resume-product-page'))
 const ResumeTechProductPage   = lazy(() => import('pages/resume/resume-tech-product'))

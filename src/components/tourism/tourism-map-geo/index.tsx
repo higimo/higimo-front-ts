@@ -5,7 +5,7 @@ import { useWindowSize } from 'hook/use-window-size'
 
 import { YMaps, Map, Clusterer, Placemark, FullscreenControl, Polyline } from 'react-yandex-maps'
 
-// TODO: [MEDIUM] посещение рек РФ
+// TODO: [FEATURE] посещение рек РФ
 
 type TourismMapGeoPropsType = {
 	items?: PovType[]

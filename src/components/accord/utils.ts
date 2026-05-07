@@ -1,4 +1,4 @@
-// TODO: [MEDIUM] Перенести теги на бекенд
+// TODO: [BACKEND] Перенести теги на бекенд
 export const filterKey = {
 	new: 'new',
 	pop: 'pop',

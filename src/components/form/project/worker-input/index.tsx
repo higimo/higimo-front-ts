@@ -18,9 +18,9 @@ import sendRequest from 'utils/send-request'
 
 import './style.css'
 
-// TODO: [MEDIUM] Анонсы. Портфолио таблицей как на хомяке Далера
-// TODO: [MEDIUM] Анонсы. Показать людей, с которыми работал
-// TODO: [MEDIUM] Анонсы. Взаимосвязи людей на графе
+// TODO: [FEATURE] Анонсы. Портфолио таблицей как на хомяке Далера
+// TODO: [FEATURE] Анонсы. Показать людей, с которыми работал
+// TODO: [FEATURE] Анонсы. Взаимосвязи людей на графе
 
 const onSubmit = values => {
 	console.log('onSubmit', values)
