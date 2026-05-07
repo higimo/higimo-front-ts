@@ -36,7 +36,6 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 }) => {
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 
-	// TODO: [MEDIUM] вот бы не загружать, если там DEFAULT_ID
 	const [singleMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
 	const isLoadingSingleMeeting = useLoadingState([singleMeeting.status])
 	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)

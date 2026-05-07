@@ -45,6 +45,8 @@ const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> =
 	}
 }
 
+const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === '-1'
+
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })
 // type ApiUrlType = typeof API_ROUTE[keyof typeof API_ROUTE]
 type ApiUrlType = ApiRouteType
@@ -58,8 +60,12 @@ const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiStat
 	const fetchData = async () => {
 		try {
 			dispatch({ type: API_STATUS.LOADING })
-			const data: T = await sendRequest(url as string, { values })
-			dispatch({ type: API_STATUS.LOADED, payload: data })
+			if (isDefaultSkipUrl(url)) {
+				dispatch({ type: API_STATUS.LOADED, payload: ({} as T) })
+			} else {
+				const data: T = await sendRequest(url as string, { values })
+				dispatch({ type: API_STATUS.LOADED, payload: data })
+			}
 		} catch (error) {
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })
 		}

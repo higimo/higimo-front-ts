@@ -1,9 +1,10 @@
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import { useCallback, useState } from 'preact/hooks'
+import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
 import { MeetingApiService } from 'components/nokia/form/person-api'
+import { useRoute } from 'preact-iso'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -32,6 +33,7 @@ export const useMeetingForm = ({
 	isEditMode,
 	persons,
 }: UseMeetingFormProps): UseMeetingFormReturn => {
+	const { path } = useRoute()
 	const formMethods = useForm<MeetingFormValues>()
 
 	const [status, setStatus] = useState<any[]>([])
@@ -127,6 +129,8 @@ export const useMeetingForm = ({
 
 		return trigger // Если не нашли, возвращаем как есть
 	}, [handleAddPerson, persons])
+
+	useEffect(resetForm, [path, resetForm])
 
 	return {
 		formMethods,

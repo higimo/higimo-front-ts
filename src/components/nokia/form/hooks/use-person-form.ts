@@ -1,9 +1,10 @@
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import { useCallback, useState } from 'preact/hooks'
+import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
 import { PersonApi } from 'components/nokia/form/person-api'
+import { useRoute } from 'preact-iso'
 
 export interface UsePersonFormProps {
 	personApi: PersonApi
@@ -23,6 +24,7 @@ export const usePersonForm = ({
 	personApi,
 	isEditMode,
 }: UsePersonFormProps): UsePersonFormReturn => {
+	const { path } = useRoute()
 	const formMethods = useForm<NokiaPersonSimpleType>({})
 
 	const [status, setStatus] = useState<any[]>([])
@@ -49,6 +51,8 @@ export const usePersonForm = ({
 		setStatus([])
 		setIsSubmitted(false)
 	}, [formMethods, isEditMode])
+
+	useEffect(resetForm, [path, resetForm])
 
 	return {
 		formMethods,
