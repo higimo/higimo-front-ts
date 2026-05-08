@@ -40,6 +40,7 @@ export const Footer: FunctionComponent = (props) => {
 				<div className="footer__header"><a href={ROUTE_LINKS.projectIndex}>Сделал</a></div>
 				<div className="footer__header">Связаться</div>
 				{contactListData.map(renderLink(isAuth))}
+				{/* TODO: [LIGHT] добавить флоу из глаз */}
 				<div className="footer__header">Блоги</div>
 				{blogInviteData.map(renderLink(isAuth))}
 			</div>
