@@ -4,22 +4,12 @@ import { useRoute } from 'preact-iso'
 
 import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
+import { convertPathToUrl } from './convertPathToUrl'
+import { getTitle } from './getTitle'
+
 import { BREADCRUMS_DIC, isRouteType } from 'dic/router'
-import { SITE_POSTFIX } from 'hook/use-page-title'
 
 import './style.css'
-
-const convertPathToUrl = (path: string): string[] => {
-	const parts = path.split('/').filter(Boolean)
-	return parts.reduce(
-		(acc, part) => acc.concat(`${acc[acc.length - 1]}/${part}/`.replace('//', '/')),
-		['/']
-	)
-}
-
-const getTitle: () => string = () => {
-	return document.title.replace(`| ${SITE_POSTFIX}`, '')
-}
 
 export const Breadcrumps: FunctionComponent = () => {
 	const { path } = useRoute()
