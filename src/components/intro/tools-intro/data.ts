@@ -4,7 +4,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 export type ToolDataType = {
 	name: string
 	isAdmin?: boolean,
-	link?: typeof EXTERNAL_LINKS[keyof typeof EXTERNAL_LINKS] | typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS]
+	link: typeof EXTERNAL_LINKS[keyof typeof EXTERNAL_LINKS] | typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS]
 	description: string
 }
 
@@ -60,15 +60,15 @@ export const unfinishedToolList: ToolDataType[] = [
 ] as const
 
 export const crashedToolList: ToolDataType[] = [
-	{
-		name: '✉ Эмайлер',
-		link: ROUTE_LINKS.toolEmailer,
-		description: 'Пошлёт на почту страницу интернета, чтобы прочитать в статью в удобном месте, даже без интернета'
-	},
-	{
-		name: 'RSS-читалка на почту',
-		description: 'Подписываешься здесь — получаешь на почту'
-	}
+	// {
+	// 	name: '✉ Эмайлер',
+	// 	link: ROUTE_LINKS.toolEmailer,
+	// 	description: 'Пошлёт на почту страницу интернета, чтобы прочитать в статью в удобном месте, даже без интернета'
+	// },
+	// {
+	// 	name: 'RSS-читалка на почту',
+	// 	description: 'Подписываешься здесь — получаешь на почту'
+	// }
 ] as const
 
 export const botToolList: ToolDataType[] = [

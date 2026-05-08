@@ -3,7 +3,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export type KnowlageType = {
 	isArchive?: boolean
-	link?: string
+	link: string
 	imgId: 'screen' | 'rak' | 'tech' | 'school' | 'obuchenie' | 'intersection'
 	name: string
 	description: string
