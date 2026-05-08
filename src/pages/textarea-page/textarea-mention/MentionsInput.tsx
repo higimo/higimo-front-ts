@@ -11,6 +11,7 @@ import { getWrittenMention } from './utils/getWrittenMention'
 import { getMentionList } from './utils/getMentionList'
 import { isMention } from './utils/isMention'
 import { getShiftSuggest } from './utils/getShiftSuggest'
+import { normalizeMentionList } from './utils/normalizeMentionList'
 
 import './style.css'
 
@@ -27,6 +28,8 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	const refTextarea = useRef<HTMLTextAreaElement>(null)
 
 	const handleMentionSelect = useCallback((targetMention: MentionSuggest) => {
+		if (!refTextarea.current) return null
+
 		setShowSuggestion(false)
 
 		const mention = getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
@@ -41,15 +44,12 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	}, [setShowSuggestion, setInputValue, refTextarea])
 
 	const handleMentionValidation = useCallback(() => {
-		const list = getMentionList(refTextarea.current.value)
-		const mentionList = list.map(item => {
-			const cleanName = item.replace(/[}{]/g, '').replace('_', ' ')
-			for (const mentionItem of filtredSuggestList) {
-				if (mentionItem.display === cleanName) {
-					return mentionItem
-				}
-			}
-		})
+		if (!refTextarea.current) return null
+
+		const mentionList = normalizeMentionList(
+			getMentionList(refTextarea.current.value),
+			filtredSuggestList
+		)
 		props.onMention(mentionList)
 	}, [props.onMention, refTextarea, filtredSuggestList])
 
@@ -89,7 +89,7 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 			setFiltredSuggestList(props.suggestList)
 		}
 		const regex = new RegExp(filter.text.split('').join('.*'), 'i')
-		const newList = props.suggestList.filter(item => { return regex.test(item.display) })
+		const newList = props.suggestList.filter(item => regex.test(item.display))
 		setFiltredSuggestList(
 			newList
 		)
@@ -97,6 +97,8 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	}, [])
 
 	const handleChange = useCallback(() => {
+		if (!refTextarea.current) return null
+
 		if (isMention(refTextarea.current.value, refTextarea.current.selectionStart)) {
 			setShowSuggestion(true)
 			filterSuggestion(
