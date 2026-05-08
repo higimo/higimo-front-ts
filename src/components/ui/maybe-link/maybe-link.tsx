@@ -7,7 +7,12 @@ type MaybeLinkPropsType = {
 	href?: string
 	isHref?: boolean
 }
-export const MaybeLink: FunctionComponent<MaybeLinkPropsType> = ({ href, isHref = true, className, children }) => {
+export const MaybeLink: FunctionComponent<MaybeLinkPropsType> = ({
+	href,
+	isHref = true,
+	className,
+	children
+}) => {
 	return h(
 		(!!href && !!isHref ? 'a' : 'span'),
 		{
