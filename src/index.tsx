@@ -103,6 +103,7 @@ import { PaymentPolicyPage } from 'pages/merchant/payment-policy-page'
 import { PersonalPolicyPage } from 'pages/merchant/personal-policy-page'
 import { PaymentOfertaPage } from 'pages/merchant/payment-oferta-page'
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
+import { ToastContainer } from 'toast'
 
 export function App() {
 	return (
@@ -240,6 +241,7 @@ export function App() {
 								<Route default component={NotFoundPage} />
 							</Router>
 						</main>
+						<ToastContainer />
 						<Footer />
 						</VkContextProvider>
 					</GlobalProvider>

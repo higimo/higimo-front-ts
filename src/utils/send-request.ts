@@ -71,11 +71,28 @@ const sendRequest = <T = any>(
 				resolve(json)
 			}
 			if (this.readyState == 4 && this.status !== 200) {
-				const error = new ApiError(this.statusText, this.status, url)
+				let errorData;
+				let errorMessage = this.statusText;
+
+				try {
+					const parsedResponse = JSON.parse(this.responseText);
+					errorData = parsedResponse;
+
+					if (parsedResponse.message) {
+						errorMessage = parsedResponse.message;
+					} else if (parsedResponse.errors) {
+						const errorMessages = Object.values(parsedResponse.errors).flat();
+						errorMessage = errorMessages.join(', ');
+					}
+				} catch (e) {
+					errorData = this.responseText;
+				}
+
+				const error = new ApiError(errorMessage, this.status, url, errorData);
 				console.error(error, {
 					status: this.status,
-					response: this.responseText,
 					url,
+					errorData
 				})
 				reject(error)
 			}
