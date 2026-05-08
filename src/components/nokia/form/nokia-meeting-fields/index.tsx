@@ -4,7 +4,7 @@ import { UseFormReturn } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
 import TextInput from 'react-autocomplete-input'
 
-import '../../nokia-style.css'
+import 'components/nokia/nokia-style.css'
 import { MeetingFormValues } from '../hooks/use-meeting-form'
 
 interface PersonMeetingFieldsProps {

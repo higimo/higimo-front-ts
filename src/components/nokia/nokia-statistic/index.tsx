@@ -18,7 +18,7 @@ import { HEIGHT, updateChart, WIDTH } from 'components/nokia/nokia-statistic/upd
 
 import { prepareData } from 'components/nokia/nokia-statistic/prepareData'
 
-import '../nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 // TODO: [MEDIUM] https://www.npmjs.com/package/@observablehq/plot
 

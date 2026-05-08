@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaStatistic } from 'components/nokia/nokia-statistic'
 
-import '../../../components/nokia/nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 export const NokiaStatisticPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')

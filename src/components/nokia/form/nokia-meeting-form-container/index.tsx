@@ -9,7 +9,7 @@ import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import '../../nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 interface NokiaMeetingFormContainerProps {
 	meetingApi: MeetingApiService

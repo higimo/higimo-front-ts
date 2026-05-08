@@ -2,7 +2,7 @@ import { Fragment, FunctionComponent } from 'preact'
 import { UseFormReturn } from 'react-hook-form'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import '../../nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 interface NokiaPersonFormFieldsProps {
 	formMethods: UseFormReturn<NokiaPersonSimpleType>

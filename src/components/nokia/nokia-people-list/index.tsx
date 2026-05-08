@@ -12,7 +12,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/api-route'
 
-import '../nokia-style.css'
+import 'components/nokia/nokia-style.css'
 
 const filterPersons = (person, filter) => person.tags.find(tag => tag.id === filter)
 
