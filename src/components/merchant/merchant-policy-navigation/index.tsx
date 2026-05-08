@@ -1,17 +1,12 @@
+import { useLocation } from 'preact-iso'
+
 import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { useLocation } from 'preact-iso'
+
+import { LINKS } from './LINKS'
 
 import './style.css'
-
-const LINKS = [
-	{ href: ROUTE_LINKS.merchantPaymentPolicy, title: 'Порядок оплаты' },
-	{ href: ROUTE_LINKS.merchantPersonalPolicy, title: 'Политика обработки ПД' },
-	{ href: ROUTE_LINKS.merchantPaymentOferta, title: 'Офорта' },
-	{ href: ROUTE_LINKS.merchantDonationOferta, title: 'Донатная оферта' },
-]
 
 export const MerchantPolicyNavigation = () => {
 	const { url } = useLocation()
