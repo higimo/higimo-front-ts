@@ -2,7 +2,7 @@ import cs from 'classnames'
 
 import { useRoute } from 'preact-iso'
 
-import { compareRoute } from 'utils/compare-route'
+import { compareRoute } from 'utils/url-route/compare-route'
 
 import { HorizontalMenu, HorizontalElement } from 'components/ui/horizontal-menu'
 

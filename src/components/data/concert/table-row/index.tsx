@@ -1,4 +1,4 @@
-import { formatTime } from 'utils/format-time'
+import { formatTime } from 'utils/formatter/format-time'
 
 interface TableRowProps {
     time: number

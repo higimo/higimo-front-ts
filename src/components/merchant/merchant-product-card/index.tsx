@@ -1,6 +1,6 @@
 import { MerchantProductType } from 'components/merchant/types'
 import { FunctionComponent } from 'preact'
-import { formatPrice } from 'utils/format-price'
+import { formatPrice } from 'utils/formatter/format-price'
 
 import './style.css'
 

@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import { useRoute } from 'preact-iso'
 
-import { compareRoute } from 'utils/compare-route'
+import { compareRoute } from 'utils/url-route/compare-route'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
