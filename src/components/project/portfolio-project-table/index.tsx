@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import type { PortfolioProjectTableSmartType } from 'hook/use-table-project'
+import type { PortfolioProjectTableFullType } from 'hook/use-table-project'
 
 import cs from 'classnames'
 
@@ -76,7 +76,7 @@ export const getValueType = (value: any): string => {
 }
 
 type PortfolioProjectTablePropsType = {
-	tableProjects: PortfolioProjectTableSmartType[]
+	tableProjects: PortfolioProjectTableFullType[]
 }
 
 export const PortfolioProjectTable: FunctionComponent<PortfolioProjectTablePropsType> = ({ tableProjects }) => {

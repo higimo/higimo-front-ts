@@ -10,8 +10,7 @@ import useApi from './use-api'
 import { API_ROUTE } from 'dic/api-route'
 import { useMemo } from 'preact/hooks'
 
-// TODO: [LIGHT] подумай над неймингом, потому что есть PortfolioProjectTableType в API
-export type PortfolioProjectTableSmartType = {
+export type PortfolioProjectTableFullType = {
 	id: PortfolioProjectTableType['id']
     vendor: PortfolioProjectTableType['vendor']['code']
     name: PortfolioProjectTableType['name']
@@ -53,7 +52,7 @@ const extractWithDOMParser = (htmlString: string, selector: string) => {
 type UseProjectType = () => {
     isLoading: boolean
     isEmpty: boolean
-	tableProjects: PortfolioProjectTableSmartType[],
+	tableProjects: PortfolioProjectTableFullType[],
     tagList: PortfolioTag[]
 }
 
@@ -70,7 +69,7 @@ export const useTableProject: UseProjectType = () => {
 	const isProjectListEmpty = useEmptyDataState(projects.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
-	const tableProjects: PortfolioProjectTableSmartType[] = useMemo(() => {
+	const tableProjects: PortfolioProjectTableFullType[] = useMemo(() => {
 		return projects.data.map(project => {
 			const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
 			const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'
