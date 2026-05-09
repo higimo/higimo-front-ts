@@ -14,15 +14,16 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'components': path.resolve(__dirname, './src/components'),
-			'assets': path.resolve(__dirname, './src/assets'),
-			'api-types': path.resolve(__dirname, './src/api-types'),
-			'context': path.resolve(__dirname, './src/context'),
-			'hook': path.resolve(__dirname, './src/hook'),
-			'dic': path.resolve(__dirname, './src/dic'),
-			'pages': path.resolve(__dirname, './src/pages'),
-			'utils': path.resolve(__dirname, './src/utils'),
-			'vendor': path.resolve(__dirname, './src/vendor'),
-			'fixtures': path.resolve(__dirname, './src/fixtures'),
+			'assets':     path.resolve(__dirname, './src/assets'),
+			'api-types':  path.resolve(__dirname, './src/api-types'),
+			'context':    path.resolve(__dirname, './src/context'),
+			'hook':       path.resolve(__dirname, './src/hook'),
+			'dic':        path.resolve(__dirname, './src/dic'),
+			'pages':      path.resolve(__dirname, './src/pages'),
+			'utils':      path.resolve(__dirname, './src/utils'),
+			'vendor':     path.resolve(__dirname, './src/vendor'),
+			'fixtures':   path.resolve(__dirname, './src/fixtures'),
+			'toast':      path.resolve(__dirname, './src/toast'),
 		}
 	},
 });

@@ -28,9 +28,18 @@
 }
 
 .city-stars-gallery--card {
+	--grid-count: 2;
+	--grid-gap: 16px;
+
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: var(--grid-gap);
+}
+@media (min-width: 768px) {
+	.city-stars-gallery--card {
+		--grid-count: 4;
+		--grid-gap: 32px;
+	}
 }
 
 .city-stars__item {
@@ -47,18 +56,11 @@
 }
 
 .city-stars-gallery--card .city-stars__item {
-	/* TODO: [LIGHT] внедрить --grid-width */
-	width: calc((100% / 2) - 8px);
+	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
 	min-height: 320px;
 	border-radius: 4px;
 	margin: 0;
 	padding: 8px;
-}
-
-@media (min-width: 768px) {
-	.city-stars-gallery--card .city-stars__item {
-		width: calc((100% / 5) - 8px);
-	}
 }
 
 .city-stars__title {

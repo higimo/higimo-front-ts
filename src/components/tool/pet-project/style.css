@@ -1,19 +1,36 @@
 .pet-project-gallery {
+	--grid-count: 1;
+	--grid-gap: 8px;
+	--grid-width: ;
+
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: flex-start;
+	gap: var(--grid-gap);
+	padding: var(--grid-gap);
+}
+
+@media (min-width: 768px) {
+	.pet-project-gallery {
+		--grid-count: 2;
+	}
+}
+
+@media (min-width: 1380px) {
+	.pet-project-gallery {
+		--grid-count: 4;
+	}
 }
 
 .pet-project__item {
-	--count: 1;
 	padding: 16px;
 	color: #fff;
-	/* TODO: [LIGHT] внедрить --grid-width */
-	width: calc(100% / var(--count));
+	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
 	box-shadow:
 		inset 0 0 0px 1px #b0b0b026
 	;
+	border-radius: 8px;
 }
 
 .pet-project__item {
@@ -23,18 +40,6 @@
 .pet-project__item a {
 	color: var(--color);
 	border-bottom: .1px solid var(--color);
-}
-
-@media (min-width: 768px) {
-	.pet-project__item {
-		--count: 2;
-	}
-}
-
-@media (min-width: 1380px) {
-	.pet-project__item {
-		--count: 4;
-	}
 }
 
 .pet-project__title {
