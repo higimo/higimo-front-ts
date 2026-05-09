@@ -26,7 +26,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 		status,
 		isSubmitting,
 		isSubmitted,
-		onSubmit,
+		handlePersonSubmit,
 		resetForm,
 	} = usePersonForm({ personApi, isEditMode })
 
@@ -40,10 +40,8 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 		}
 	}, [initialData, setValue])
 
-	const handleFormSubmit = handleSubmit(onSubmit)
-
 	return (
-		<form className="container nokia-form" onSubmit={handleFormSubmit}>
+		<form className="container nokia-form" onSubmit={handleSubmit(handlePersonSubmit)}>
 			<NokiaPersonFormFields formMethods={formMethods} />
 
 			<div className="form__button">

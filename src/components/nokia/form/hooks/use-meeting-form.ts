@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 
 import { MeetingApiService } from 'components/nokia/form/person-api'
 import { useRoute } from 'preact-iso'
+import { toast } from 'toast'
+import { ApiError } from 'utils/send-request'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -21,7 +23,7 @@ export interface UseMeetingFormReturn {
 	status: any[]
 	isSubmitting: boolean
 	isSubmitted: boolean
-	onSubmit: (data: MeetingFormValues) => Promise<void>
+	handleMeetingSubmit: (data: MeetingFormValues) => Promise<void>
 	resetForm: () => void
 	handleAddPerson: (person: NokiaPersonSimpleType) => void
 	handleRemovePerson: (person: NokiaPersonSimpleType) => void
@@ -40,7 +42,7 @@ export const useMeetingForm = ({
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [isSubmitted, setIsSubmitted] = useState(false)
 
-	const onSubmit = useCallback(async (data: MeetingFormValues) => {
+	const handleMeetingSubmit = useCallback(async (data: MeetingFormValues) => {
 		setIsSubmitting(true)
 
 		try {
@@ -82,8 +84,9 @@ export const useMeetingForm = ({
 
 			setIsSubmitted(true)
 		} catch (error) {
-			console.error('[NOKIA] submit error:', error)
-			setStatus(prev => prev.concat([{ error }]))
+			const apiError = error as ApiError
+			toast.show(apiError.message)
+			setStatus(prev => prev.concat([{ apiError }]))
 		} finally {
 			setIsSubmitting(false)
 		}
@@ -137,7 +140,7 @@ export const useMeetingForm = ({
 		status,
 		isSubmitting,
 		isSubmitted,
-		onSubmit,
+		handleMeetingSubmit,
 		resetForm,
 		handleAddPerson,
 		handleRemovePerson,

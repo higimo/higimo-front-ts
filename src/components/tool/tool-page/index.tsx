@@ -56,6 +56,7 @@ export class ToolPage extends Component {
 				xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 			}
 
+			// @ts-ignore
 			xhttp.send(httpBuildQuery(options))
 		}
 	}

@@ -1,49 +1,54 @@
 import { FunctionComponent } from 'preact'
+import { HigimoServerResponse } from 'api-types/server-response.types'
+import { LibraryType } from 'api-types/library.types.'
 
-import { useState } from 'preact/hooks'
+import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
-import sendRequest, { SendRequestOptions } from 'utils/send-request'
+import sendRequest, { ApiError, SendRequestOptions } from 'utils/send-request'
 import { getAuthPair } from 'utils/get-auth-pair'
+import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
-type BackendRetrunStatus = string | null
-
 type FormValues = {
-	author: string
-	name: string
-	addon: string
-	isbn: string
-	img: string
-	anons: string
+	author: LibraryType['author']
+	name: LibraryType['name']
+	addon: LibraryType['addon']
+	isbn: LibraryType['isbn']
+	img: LibraryType['img']
+	anons: LibraryType['anons']
 }
 
-type OnSubmitPropsType = {
-	setStatus: (status: BackendRetrunStatus) => void
-}
-const onSubmit = ({ setStatus }: OnSubmitPropsType) => (values: FormValues) => {
+type HandleLibSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
+	(values: FormValues) => Promise<void>
+const handleLibSubmit: HandleLibSubmitType = setStatus => async values => {
 	const { login, pass } = getAuthPair()
-	const requestOptions: SendRequestOptions = { method: 'POST', auth: { login, pass }, values }
-	sendRequest(API_ROUTE.lib, requestOptions)
-		.then((res: string) => setStatus(res))
+	try {
+		const requestOptions: SendRequestOptions = { method: 'POST', auth: { login, pass }, values }
+		const serverResult = await sendRequest(API_ROUTE.lib, requestOptions)
+		setStatus(serverResult)
+	} catch (error) {
+		const apiError = error as ApiError
+		toast.error(apiError.message || 'Не получилось добавить пинарик')
+	}
 }
 
 export const LibraryAdmin: FunctionComponent = () => {
-	const [ status, setStatus ] = useState<BackendRetrunStatus>()
+	const [ status, setStatus ] = useState<HigimoServerResponse>()
 	const { register, handleSubmit, reset } = useForm<FormValues>()
 
-	const handleReset = () => {
+	const handleReset = useCallback(() => {
 		reset()
 		setStatus(null)
-	}
+	}, [reset, setStatus])
 
 	return (
 		<form
 			className="library-admin"
-			onSubmit={handleSubmit(onSubmit({ setStatus }))}
+			onSubmit={handleSubmit(handleLibSubmit(setStatus))}
 			autocomplete="off"
 		>
 			<div className="library-admin__row">

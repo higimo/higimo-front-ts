@@ -5,6 +5,7 @@ export type PortfolioTagId    = Brand<number, 'PortfolioTagId'>
 type PortfolioTagGroupId      = Brand<number, 'PortfolioTagGroupId'>
 export type PortfolioWorkerId = Brand<number, 'PortfolioWorkerId'>
 type PortfolioVendorId        = Brand<number, 'PortfolioVendorId'>
+export type PortfolioProjectId = Brand<number, 'PortfolioProjectId'>
 
 // TODO: [BACKEND] после передачи количества в count, можно будет избавиться от типа
 export type PortfolioIdsType = {
@@ -44,7 +45,7 @@ export type PortfolioVendorType = {
 	description?: string
 }
 export type PortfolioProjectSimpleType = {
-	id: number
+	id: PortfolioProjectId
 	vendor_id: number
 	vendor: PortfolioVendorType
 	name: string

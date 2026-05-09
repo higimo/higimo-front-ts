@@ -5,6 +5,6 @@ type PinarikId = Brand<number, 'PinarikId'>
 export type PinarikType = {
 	id: PinarikId
 	date: DateOnlyString
-	score: number
+	score: -1 | 0 | 1
 	description: string
 }

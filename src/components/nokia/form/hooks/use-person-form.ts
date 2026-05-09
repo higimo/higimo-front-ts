@@ -1,10 +1,12 @@
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
+import { PersonApi } from 'components/nokia/form/person-api'
+import { ApiError } from 'utils/send-request'
 
 import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
-
-import { PersonApi } from 'components/nokia/form/person-api'
 import { useRoute } from 'preact-iso'
+
+import { toast } from 'toast'
 
 export interface UsePersonFormProps {
 	personApi: PersonApi
@@ -16,7 +18,7 @@ export interface UsePersonFormReturn {
 	status: any[]
 	isSubmitting: boolean
 	isSubmitted: boolean
-	onSubmit: (data: NokiaPersonSimpleType) => Promise<void>
+	handlePersonSubmit: (data: NokiaPersonSimpleType) => Promise<void>
 	resetForm: () => void
 }
 
@@ -31,13 +33,15 @@ export const usePersonForm = ({
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [isSubmitted, setIsSubmitted] = useState(false)
 
-	const onSubmit = useCallback(async (data: NokiaPersonSimpleType) => {
+	const handlePersonSubmit = useCallback(async (data: NokiaPersonSimpleType) => {
 		setIsSubmitting(true)
 		try {
 			const result = await personApi.createOrUpdate(data)
 			setStatus(prev => prev.concat([result]))
 			setIsSubmitted(true)
 		} catch (error) {
+			const apiError = error as ApiError
+			toast.show(apiError.message)
 			setStatus(prev => prev.concat([{ error }]))
 		} finally {
 			setIsSubmitting(false)
@@ -59,7 +63,7 @@ export const usePersonForm = ({
 		status,
 		isSubmitting,
 		isSubmitted,
-		onSubmit,
+		handlePersonSubmit,
 		resetForm,
 	}
 }

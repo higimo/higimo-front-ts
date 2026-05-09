@@ -1,4 +1,4 @@
-import { PortfolioWorkerType } from 'api-types/portfolio.types'
+import { PortfolioProjectId, PortfolioWorkerType } from 'api-types/portfolio.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
@@ -14,23 +14,21 @@ import { WorkersTree } from 'components/form/project/workers-tree'
 
 import { API_ROUTE } from 'dic/api-route'
 
-import sendRequest from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/send-request'
 
 import './style.css'
+import { FunctionComponent } from 'preact'
+import { toast } from 'toast'
 
 // TODO: [FEATURE] Анонсы. Портфолио таблицей как на хомяке Далера
 // TODO: [FEATURE] Анонсы. Показать людей, с которыми работал
 // TODO: [FEATURE] Анонсы. Взаимосвязи людей на графе
 
-const onSubmit = values => {
-	console.log('onSubmit', values)
-	// sendRequest(API_ROUTE.attachAuthor + (!!values.id ? `/${values.id}` : ''), {
-	// 	method: 'POST',
-	// 	values,
-	// }).then(data => console.log(data))
+type WorkerInputPropsType = {
+	projectId: PortfolioProjectId
 }
 
-export const WorkerInput = ({ projectId }) => {
+export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId }) => {
 	const [ workers, fetchWorkers ] = useApi<PortfolioWorkerType[]>(API_ROUTE.projectWorker)
 	const [ chooseWorker, setChooseWorker ] = useState<PortfolioWorkerType[]>([])
 	const isLoading = useLoadingState([workers.status])
@@ -42,7 +40,6 @@ export const WorkerInput = ({ projectId }) => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
@@ -58,35 +55,49 @@ export const WorkerInput = ({ projectId }) => {
 					workers={chooseWorker}
 					onRemoveWorker={handleRemoveChose}
 					onSubmit={async (data) => {
-						let results = Object.entries(data).map(async ([workerId, role]) => {
-							return await sendRequest(API_ROUTE.attachAuthor_BAD_WAY, {
-								method: 'POST',
-								values: {
-									project: projectId,
-									worker: workerId,
-									role: role,
-								}
+						try {
+							const sendings = Object.entries(data).map(async ([workerId, role]) => {
+								return await sendRequest(API_ROUTE.attachAuthor_BAD_WAY, {
+									method: 'POST',
+									values: {
+										project: projectId,
+										worker: workerId,
+										role: role,
+									}
+								})
 							})
-						})
-						const few = await Promise.all(results)
-						const res = few.reduce((acc, singleRes) => acc && singleRes > 0, true)
-						if (res) {
-							setChooseWorker([])
+							const promisesAll = await Promise.all(sendings)
+							const results = promisesAll.reduce((acc, singleRes) => acc && singleRes > 0, true)
+							if (results) {
+								toast.error('Неверный формат ответа сервера')
+								setChooseWorker([])
+							}
+							return results
+						} catch (error) {
+							const apiError = error as ApiError
+							toast.error(apiError.message || 'Не получилось прикрепить автора ')
+							return false
 						}
-						return res
 					}}
 				/>
 				<CreateWorker
 					onSubmit={async (data) => {
-						const res = await sendRequest(API_ROUTE.attachAuthor, {
-							method: 'POST',
-							values: data
-						})
-						if (res > 0) {
-							fetchWorkers()
-							return true
+						try {
+							const result = await sendRequest(API_ROUTE.attachAuthor, {
+								method: 'POST',
+								values: data
+							})
+							if (result > 0) {
+								fetchWorkers()
+								return true
+							}
+							toast.error('Неверный формат ответа сервера')
+							return false
+						} catch (error) {
+							const apiError = error as ApiError
+							toast.error(apiError.message || 'Ошибка при создании пользователя')
+							return false
 						}
-						return false
 					}}
 				/>
 			</CollapseSection>

@@ -1,5 +1,10 @@
+import { Brand } from "utils.type";
+
+type PetProjectId = Brand<number, 'PetProjectId'>
+
 export type PetProjectType = {
-	name: string;
-	description: string;
-	priority: number;
+	id: PetProjectId
+	name: string
+	description: string
+	priority: number
 };

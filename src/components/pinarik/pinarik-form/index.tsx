@@ -1,4 +1,6 @@
 import { FunctionComponent } from 'preact'
+import { PinarikType } from 'api-types/pinarik.types'
+import { HigimoServerResponse } from 'api-types/server-response.types'
 
 import cs from 'classnames'
 
@@ -9,7 +11,8 @@ import { useAuth } from 'hook/use-auth'
 import { useFormStatus } from 'hook/use-form-status'
 
 import { getAuthPair } from 'utils/get-auth-pair'
-import sendRequest from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/send-request'
+import { toast } from 'toast'
 
 import { FormButton } from 'components/form/form-button'
 import { ShowFormResult } from 'components/form/show-form-result'
@@ -18,31 +21,41 @@ import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
-const onSubmit = addStatus => values => {
-	const { login, pass } = getAuthPair()
-
-	sendRequest(API_ROUTE.pinarik, {
-		method: 'POST',
-		values,
-		auth: { login, pass },
-	}).then(addStatus)
+type FormValues = {
+	date: PinarikType['date']
+	score: PinarikType['score']
+	description: PinarikType['description']
 }
 
-type FormValues = {
-	date: string
-	score: string
-	description: string
+type HandlePinarikSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
+	(values: FormValues) => Promise<void>
+const handlePinarikSubmit: HandlePinarikSubmitType = addStatus => async values => {
+	// TODO: [MEDIUM] кажется, больше не нужен getAuthPair, кука же сама пристаёт к запросу
+	const { login, pass } = getAuthPair()
+
+	try {
+		const serverPostResult = await sendRequest(API_ROUTE.pinarik, {
+			method: 'POST',
+			values,
+			auth: { login, pass },
+		})
+
+		addStatus(serverPostResult)
+	} catch (error) {
+		const apiError = error as ApiError
+		toast.error(apiError.message || 'Не получилось добавить пинарик')
+	}
 }
 
 type PinarikFormPropsType = {
 	forceUpdate: Dispatch<StateUpdater<boolean>>
 }
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
-	const { isAuth } = useAuth()
+	const { isAuth, redirectToLogin } = useAuth()
 	const formMethods = useForm<FormValues>({
 		defaultValues: {
 			date: (new Date()).toISOString().substr(0, 10),
-			score: '',
+			score: 0,
 			description: '',
 		},
 	})
@@ -50,26 +63,27 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 	const { register, handleSubmit, setValue, watch, formState, reset } = formMethods
 	const [ status, addStatus ] = useFormStatus()
 
-	const setScore = value => () => setValue('score', value)
+	const setScore = (value: PinarikType['score']) => () => setValue('score', value)
 	const score = watch('score')
 
 	if (!isAuth) {
+		redirectToLogin()
 		return null
 	}
 
 	return (
 		<FormProvider {...formMethods}>
-			<form className="container pinarik-form" onSubmit={handleSubmit(onSubmit(addStatus))}>
-				<label>Дата</label>
+			<form className="container pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit(addStatus))}>
+				<label htmlFor="date">Дата</label>
 				<input {...register('date')} name="date" type="date" />
-				<label>Оценка</label>
+				<label htmlFor="fewfwe">Оценка</label>
 				<div className="score">
-					<div className={cs('score__item', { active: score === '-1' })} onClick={setScore('-1')} />
-					<div className={cs('score__item', { active: score === '0' })} onClick={setScore('0')} />
-					<div className={cs('score__item', { active: score === '1' })} onClick={setScore('1')} />
+					<div className={cs('score__item', { active: score === -1 })} onClick={setScore(-1)} />
+					<div className={cs('score__item', { active: score === 0 })} onClick={setScore(0)} />
+					<div className={cs('score__item', { active: score === 1 })} onClick={setScore(1)} />
 					<input {...register('score')} name="score" type="hidden" />
 				</div>
-				<label>Описание</label>
+				<label htmlFor="description">Описание</label>
 				<textarea {...register('description')} name="description" />
 				<div className="form__button">
 					<FormButton>Записать</FormButton>

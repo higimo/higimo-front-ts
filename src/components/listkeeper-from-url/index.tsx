@@ -2,6 +2,8 @@ import { Component, h } from 'preact'
 
 import sendRequest from 'utils/send-request'
 
+// TODO: [MEDIUM] не рендерит ничего
+// TODO: [MEDIUM] сделать функциональным компонентом
 export class ListkeeperFromUrl extends Component {
 	state = {
 		list: [],
@@ -35,6 +37,9 @@ export class ListkeeperFromUrl extends Component {
 					})
 			})
 		}
+		// TODO: [MIDLE] поставить тост
+		// const apiError = error as ApiError
+		// toast.error(apiError.message || 'Ошибка при входе в систему')
 	}
 
 	render() {

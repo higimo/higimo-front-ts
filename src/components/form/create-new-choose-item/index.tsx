@@ -15,6 +15,7 @@ const defaultInputs = (register: UseFormRegister<FieldValues>) => (
 	/>
 )
 
+// TODO: [MIDLE] нигде не используется
 type CreateNewChooseItemPropsType = {
 	onSubmit: any
 	getInputs: any
@@ -25,6 +26,7 @@ export const CreateNewChooseItem: FunctionComponent<CreateNewChooseItemPropsType
 }) => {
 	const { register, reset, handleSubmit } = useForm()
 
+	// @ts-ignore не могу пофиксить values, пока нигде не используется, нет типа
 	const handleOnSubmit = useCallback((values) => {
 		onSubmit(values)
 		reset()

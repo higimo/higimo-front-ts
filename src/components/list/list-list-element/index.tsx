@@ -3,17 +3,24 @@ import { ListListType } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/use-auth'
 
-import sendRequest from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/send-request'
+import { toast } from 'toast'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
-const handleRemove = id => () => {
-	sendRequest(API_ROUTE.listerItemSingle({ id }), {
-		method: 'DELETE',
-	}).then(console.log)
+const handleRemove = (id: ListListType['id']) => async () => {
+	try {
+		await sendRequest(API_ROUTE.listerItemSingle({ id: id.toString() }), {
+			method: 'DELETE',
+		})
+		toast.show('Элемент удалён')
+	} catch (error) {
+		const apiError = error as ApiError
+		toast.error(apiError.message || 'Ошибка при входе в систему')
+	}
 }
 
 export const ListListElement: FunctionComponent<{ listItem: ListListType }> = ({ listItem }) => {

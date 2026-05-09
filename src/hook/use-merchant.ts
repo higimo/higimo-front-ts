@@ -35,6 +35,9 @@ interface UseAuthReturn {
 	isProductLoaded: boolean
 	isProductEmpty: boolean
 }
+/**
+ * Хук, который однажды загружает данные о товарах магазина и предоставляет их для использования всюду
+ */
 export const useMerchant = (): UseAuthReturn => {
 	useEffect(() => {
 		if (merchantProductSignal.value.status !== MERCHANT_PRODUCT_STATUS_DIC.INIT || requestInProgress) return;

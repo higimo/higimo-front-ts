@@ -1,16 +1,29 @@
 import { FunctionComponent, h } from 'preact'
+import { HigimoServerResponse } from 'api-types/server-response.types'
+import { ListerItem } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
-import { useState, useEffect } from 'preact/hooks'
+import { useState, useEffect, useCallback } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
 
-import './style.css'
-import sendRequest from 'utils/send-request'
 import { ShowFormResult } from 'components/form/show-form-result'
+
+import sendRequest, { ApiError } from 'utils/send-request'
+import { toast } from 'toast'
+
 import { API_ROUTE } from 'dic/api-route'
 
-const ListListScheme = ['id', 'title', 'created_at', 'parent', 'code'] as const
+import './style.css'
+
+const ListListScheme = ['id', 'title', 'parent', 'code'] as const
 type ListListSchemeType = typeof ListListScheme[number]
+
+type FormValues = {
+	id: ListerItem['id']
+	parent: ListerItem['parent']
+	title: ListerItem['title']
+	code: ListerItem['code']
+}
 
 type FormScheme<T extends string> = {
 	code: T,
@@ -18,6 +31,8 @@ type FormScheme<T extends string> = {
 	input: 'textarea' | 'input',
 	title: string,
 }
+// TODO: [HARD] хорошая практика делать фабрику формы
+// TODO: [HARD] но с типами беда — если есть лишний, которого нет — не подсветит
 const scheme: FormScheme<ListListSchemeType>[] = [
 	{
 		code: 'id',
@@ -30,12 +45,6 @@ const scheme: FormScheme<ListListSchemeType>[] = [
 		type: 'string',
 		title: 'Название',
 		input: 'textarea',
-	},
-	{
-		code: 'created_at',
-		type: 'date',
-		title: 'дата создания',
-		input: 'input',
 	},
 	{
 		code: 'parent',
@@ -51,28 +60,55 @@ const scheme: FormScheme<ListListSchemeType>[] = [
 	},
 ]
 
-const onSubmit = addStatus => values => {
-	values.title.split('\n').filter(i => i).forEach(title => {
-		sendRequest(API_ROUTE.lister + (!!values.id ? `/${values.id}` : ''), {
-			method: 'POST',
-			values: {
-				...values,
-				title,
-			}
-		}).then(addStatus)
-	})
-}
+type HandleListListSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
+	(values: FormValues) => Promise<void>
+const handleListListSubmit: HandleListListSubmitType = addStatus => async values => {
+	const titles: string[] = values.title.split('\n').filter((title: string) => title.trim())
 
-type FormValues = {
-	[key in typeof ListListScheme[number]]: string
+	if (titles.length === 0) {
+		toast.warning('Нет заголовков для добавления')
+		return
+	}
+
+	toast.show(`Добавление ${titles.length} элементов...`)
+
+	try {
+		const promises = titles.map(title =>
+			sendRequest(API_ROUTE.lister + (values.id ? `/${values.id}` : ''), {
+				method: 'POST',
+				values: {
+					...values,
+					title: title.trim(),
+				},
+			})
+		)
+
+		const results = await Promise.allSettled(promises)
+
+		// Подсчитываем успешные и неудачные запросы
+		const successful = results.filter(result => result.status === 'fulfilled').length
+		const failed = results.filter(result => result.status === 'rejected').length
+
+		toast.success(`Добавлено ${successful}; не удалось ${failed}`)
+
+		results.forEach(result => result.status === 'fulfilled' && addStatus(result.value))
+	} catch (error) {
+		const apiError = error as ApiError
+		toast.error(apiError.message || 'Не получилось добавить элементы')
+	}
 }
 
 export const ListListForm: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
-	const [ values, setValues ] = useState({})
-	const [ status, setStatus ] = useState([])
+	// @ts-ignore TODO: [MIDLE] пока игнорируем ошибку, но надо получать данные с бэка и заполнять
+	// см. ниже useEffect, он вроде делает
+	const [ values, setValues ] = useState<ListerItem>({})
+	const [ status, setStatus ] = useState<HigimoServerResponse[]>([])
 
-	const addStatus = val => setStatus(pState => [ ...pState, val ])
+	const addStatus = useCallback(
+		(val: HigimoServerResponse) => setStatus(pState => pState.concat(val)),
+		[setStatus]
+	)
 
 	useEffect(() => {
 		sendRequest(API_ROUTE.listerItemSingle({ id: idcode }))
@@ -85,7 +121,7 @@ export const ListListForm: FunctionComponent = () => {
 
 	return (
 		<div className="form-container">
-			<form className="container" onSubmit={handleSubmit(onSubmit(addStatus))}>
+			<form className="container" onSubmit={handleSubmit(handleListListSubmit(addStatus))}>
 				{scheme.map(schemeElement => [
 					<label>{schemeElement.title}</label>,
 					h(

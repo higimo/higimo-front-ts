@@ -35,7 +35,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		status,
 		isSubmitting,
 		isSubmitted,
-		onSubmit,
+		handleMeetingSubmit,
 		resetForm,
 		handleAddPerson,
 		handleRemovePerson,
@@ -60,10 +60,8 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		}
 	}, [initialData, initialPersons, setValue])
 
-	const handleFormSubmit = handleSubmit(onSubmit)
-
 	return (
-		<form className="container nokia-form">
+		<form className="container nokia-form" onSubmit={handleSubmit(handleMeetingSubmit)}>
 			<NokiaMeetingFields
 				formMethods={formMethods}
 				peoplesSuggest={peoplesSuggest}
@@ -81,15 +79,18 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 			<div className="form__button">
 				<button
 					type="button"
-					onClick={handleFormSubmit}
 					className="default-form__submit"
 					disabled={isSubmitting || isSubmitted}
 				>
+					{/* TODO: [LIGHT] добавить паттерн во все формы */}
 					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 				</button>
 
 				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult<NokiaMeetingSimpleType> status={status} reset={() => reset(/*{date: date}*/)} />
+					<ShowFormResult<NokiaMeetingSimpleType>
+						status={status}
+						reset={() => reset(/*{date: date}*/)}
+					/>
 				)}
 			</div>
 		</form>

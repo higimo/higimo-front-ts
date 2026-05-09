@@ -10,6 +10,7 @@ type UseProjectViewerType = (vendorCode: string, projectCode: string) => [Portfo
 
 /**
  * Вернёт дательную информацию по кейсу
+ *
  * @param vendorCode код вендора
  * @param projectCode код проекта
  * @returns

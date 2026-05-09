@@ -1,4 +1,5 @@
 import { PetProjectType } from 'api-types/petproject.types'
+import { HigimoServerResponse } from 'api-types/server-response.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useForm } from 'react-hook-form'
@@ -12,46 +13,47 @@ import { Message } from 'components/ui/message'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import sendRequest from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/send-request'
+import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/api-route'
 
 import './style.css'
 
-const onSubmit = setStatus => async values => {
-	const res = await sendRequest(
-		API_ROUTE.probbiSingle({ projectId: values.id }),
-		{
-			method: 'POST',
-			values,
-		}
-	)
-	setStatus(res)
+type FormValues = {
+	id: PetProjectType['id']
+	name: PetProjectType['name']
+	description: PetProjectType['description']
 }
 
-// Поставить ссылку на создание и редактирование
+type HandlePerprojectSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
+	(values: FormValues) => Promise<void>
+const handlePerprojectSubmit: HandlePerprojectSubmitType = setStatus => async values => {
+	try {
+		const serverResult = await sendRequest(
+			API_ROUTE.probbiSingle({ projectId: values.id.toString() }),
+			{
+				method: 'POST',
+				values,
+			}
+		)
+		setStatus(serverResult)
+	} catch (error) {
+		const apiError = error as ApiError
+		toast.show(apiError.message)
+	}
+}
+
+// TODO: [MIDLE] Поставить ссылку на создание и редактирование
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
-
-type FormValues = {
-	id: number
-	name: string
-	description: string
-}
 
 export const PetProjectForm = () => {
 	const { params: { projectId = '-1'} } = useRoute()
 	const[ probbiSingle ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
 	const isLoading = useLoadingState([probbiSingle.status])
 	const isListEmpty = useEmptyDataState(probbiSingle.data)
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
 
 	let defaultValues: Partial<PetProjectType> = {}
 	const { register, handleSubmit, formState, setValue, reset } = useForm<FormValues>({
@@ -60,30 +62,39 @@ export const PetProjectForm = () => {
 	const [ status, setStatus ] = useState(null)
 
 	useEffect(() => {
-		if (probbiSingle.data[0]) {
-			setValue('id', probbiSingle.data[0].id || null)
-			setValue('name', probbiSingle.data[0].name || null)
-			setValue('description', probbiSingle.data[0].description || null)
+		// TODO: [MEDIUM] проверить, что тут всегда будут данные
+		// if (!isListEmpty) {
+		if (probbiSingle.data) {
+			setValue('id', probbiSingle.data.id)
+			setValue('name', probbiSingle.data.name)
+			setValue('description', probbiSingle.data.description)
 		}
-	}, [projectId, probbiSingle.data[0]])
+	}, [projectId, probbiSingle.data])
+
+	if (isLoading) {
+		return <Loading />
+	}
+	if (isListEmpty) {
+		return <NotFoundData />
+	}
 
 	return (
 		<div className="pet-project">
-			<form className="container" onSubmit={handleSubmit(onSubmit(setStatus))}>
+			<form className="container" onSubmit={handleSubmit(handlePerprojectSubmit(setStatus))}>
 				<div>
-					<label>id</label>
+					<label htmlFor="id">id</label>
 				</div>
 				<div>
 					<input {...register('id')} readOnly name="id" />
 				</div>
 				<div>
-					<label>name</label>
+					<label htmlFor="name">name</label>
 				</div>
 				<div>
 					<input {...register('name')} name="name" />
 				</div>
 				<div>
-					<label>description</label>
+					<label htmlFor="description">description</label>
 				</div>
 				<div>
 					<textarea {...register('description')} name="description" />
