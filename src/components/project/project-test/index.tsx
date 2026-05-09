@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PortfolioCreditsType, PortfolioTag, PortfolioTagId, PortfolioWorkerId } from 'api-types/portfolio.types'
+import { PortfolioCreditsType, PortfolioTag, PortfolioWorkerId } from 'api-types/portfolio.types'
 
 import { usePageTitle } from 'hook/use-page-title'
 
@@ -14,48 +14,46 @@ import '../project-viewer/style.css'
 
 const portfolioWorkerId: PortfolioWorkerId = 1 as PortfolioWorkerId
 
-const credits: PortfolioCreditsType[] = [
-	{ role: 'худрук',                  name: 'Артемий Лебедев', },
-	{ role: 'арт-директор и дизайнер', name: 'Павел Герасимчук', },
-	{ role: 'тайный советник',         name: 'Эркен Кагаров', },
-	{ role: 'дизайнер',                name: 'Светлана Ярошевич', },
-	{ role: 'технический дизайнер',    name: 'Анна Савельева', },
-	{ role: 'технический дизайнер',    name: 'Мария Павлова', },
-	{ role: 'технический дизайнер',    name: 'Зоригто Сансараймаев', },
-	{ role: 'менеджер',                name: 'Анастасия Шумакова', },
-	{ role: 'менеджер',                name: 'Ангелина Загорская', },
-	{ role: 'менеджер',                name: 'Егор Преженцев', },
-	{ role: 'переводчик',              name: 'Татьяна Козлова', },
-	{ role: 'редактор',                name: 'Александр Носиков', },
-	{ role: 'бэкендер',                name: 'Дмитрий Уткин', },
-	{ role: 'фронтендер',              name: 'Олег Постоев', },
-	{ role: 'бета-тестер',             name: 'Дмитрий Муратов', },
-	{ role: 'фотограф',                name: 'Станислав Щербаков', },
-	{ role: 'фотограф',                name: 'Игорь Фаткин', },
-].map(i => ({
-	role: i.role,
-	worker: {
-		id: portfolioWorkerId, full_name: i.name, company: '', image: null, login: 'login', role: 'few', link: '/',
-	},
-}))
+// TODO: унести в фикстуры
+const credits: PortfolioCreditsType[] = `\
+	Артемий Лебедев      | худрук
+	Павел Герасимчук     | арт-директор и дизайнер
+	Эркен Кагаров        | тайный советник
+	Светлана Ярошевич    | дизайнер
+	Анна Савельева       | технический дизайнер
+	Мария Павлова        | технический дизайнер
+	Зоригто Сансараймаев | технический дизайнер
+	Анастасия Шумакова   | менеджер
+	Ангелина Загорская   | менеджер
+	Егор Преженцев       | менеджер
+	Татьяна Козлова      | переводчик
+	Александр Носиков    | редактор
+	Дмитрий Уткин        | бэкендер
+	Олег Постоев         | фронтендер
+	Дмитрий Муратов      | бета-тестер
+	Станислав Щербаков   | фотограф
+	Игорь Фаткин         | фотограф
+`
+	.split('\n')
+	.map(line => {
+		const [name, role] = line.split('|').map(item => item.replace(/\t/g, '').trim())
+		return {
+			role: role,
+			worker: {
+				id: portfolioWorkerId, full_name: name, company: '', image: null, login: 'login', role: 'few', link: '/',
+			},
+		}
+	})
 
-const portfolioTagId: PortfolioTagId = 1 as PortfolioTagId
+const portfolioTagId = 1 as PortfolioTag['id']
 
-const tags: PortfolioTag[] = [
-	{ id: portfolioTagId, title: 'ALS', },
-	{ id: portfolioTagId, title: 'Студия', },
-	{ id: portfolioTagId, title: 'большой', },
-	{ id: portfolioTagId, title: 'нормальный', },
-	{ id: portfolioTagId, title: 'сильный', },
-	{ id: portfolioTagId, title: 'продакт', },
-	{ id: portfolioTagId, title: 'аналитик', },
-	{ id: portfolioTagId, title: 'разработчик', },
-	{ id: portfolioTagId, title: 'грандиозный', },
-	{ id: portfolioTagId, title: 'бекенд', },
-	{ id: portfolioTagId, title: 'продукты', },
-	{ id: portfolioTagId, title: 'Битрикс', },
-	{ id: portfolioTagId, title: 'длинный тег в несколько слов', },
-]
+// TODO: унести в фикстуры
+const tags: PortfolioTag[] =
+	'ALS|Студия|большой|нормальный|сильный|продакт|аналитик|разработчик|грандиозный|бекенд|продукты|Битрикс|длинный тег в несколько слов'
+	.split('|')
+	.map(tagName => ({
+		id: portfolioTagId, title: tagName
+	}))
 
 export const ProjectTypography: FunctionComponent = () => {
 	usePageTitle('Тестовая страница')

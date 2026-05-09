@@ -1,7 +1,7 @@
 import { Brand, Code, DateOnlyString } from "utils.type"
 
 type PortfolioId              = Brand<number, 'PortfolioId'>
-export type PortfolioTagId    = Brand<number, 'PortfolioTagId'>
+type PortfolioTagId           = Brand<number, 'PortfolioTagId'>
 type PortfolioTagGroupId      = Brand<number, 'PortfolioTagGroupId'>
 export type PortfolioWorkerId = Brand<number, 'PortfolioWorkerId'>
 type PortfolioVendorId        = Brand<number, 'PortfolioVendorId'>
