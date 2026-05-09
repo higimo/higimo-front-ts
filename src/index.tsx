@@ -126,8 +126,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.merchantPaymentOferta} component={PaymentOfertaPage} />
 								<Route path={ROUTE_LINKS.merchantDonationOferta} component={DonationOfertaPage} />
 
-								{/* TODO: [LIGHT] вынести в словарь роутов */}
-								<Route path="/textarea" component={TextareaPage} />
+								<Route path={ROUTE_LINKS.textarea} component={TextareaPage} />
 
 								{/* admin */}
 								<Route path={ROUTE_LINKS.login} component={LoginPage} />

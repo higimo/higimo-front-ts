@@ -82,11 +82,10 @@ export const PaymentPage: FunctionComponent = () => {
 			<TextContainer>
 				<h2>Дальше быстрым речитативом кому ты платишь</h2>
 				<ul>
-					{/* TODO: [LIGHT] вынести в словарь роутов */}
-					<li><a href={"/merchant/payment-policy/"}>Порядок оплаты</a></li>
-					<li><a href={"/merchant/personal-policy/"}>Политика обработки ПД</a></li>
-					<li><a href={"/merchant/payment-oferta/"}>Оферта</a></li>
-					<li><a href={"/merchant/donation-oferta/"}>Донатная оферта</a></li>
+					<li><a href={ROUTE_LINKS.merchantPaymentPolicy}>Порядок оплаты</a></li>
+					<li><a href={ROUTE_LINKS.merchantPersonalPolicy}>Политика обработки ПД</a></li>
+					<li><a href={ROUTE_LINKS.merchantPaymentOferta}>Оферта</a></li>
+					<li><a href={ROUTE_LINKS.merchantDonationOferta}>Донатная оферта</a></li>
 				</ul>
 			</TextContainer>
 
