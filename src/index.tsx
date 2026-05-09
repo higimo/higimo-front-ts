@@ -3,6 +3,7 @@ import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso
 
 import { Footer } from 'components/ui/footer'
 import { Header } from 'components/ui/header/Header'
+import { ToastContainer } from 'toast'
 
 import { GlobalProvider }    from './context/global'
 import { VkContextProvider } from './context/vk'
@@ -92,18 +93,18 @@ import { TestPage }      from 'pages/test-page'
 import { TextareaPage }  from 'pages/textarea-page'
 import { ToolIndexPage } from 'pages/test-page/tools/tool-page'
 
+import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
+import { MerchantPage } from 'pages/merchant/merchant-page'
+import { PaymentOfertaPage } from 'pages/merchant/payment-oferta-page'
+import { PaymentPage } from 'pages/merchant/payment-page'
+import { PaymentPolicyPage } from 'pages/merchant/payment-policy-page'
+import { PersonalPolicyPage } from 'pages/merchant/personal-policy-page'
+
 import { NotFoundPage } from 'pages/not-found-page'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { PaymentPage } from 'pages/merchant/payment-page'
-import { MerchantPage } from 'pages/merchant/merchant-page'
-import { PaymentPolicyPage } from 'pages/merchant/payment-policy-page'
-import { PersonalPolicyPage } from 'pages/merchant/personal-policy-page'
-import { PaymentOfertaPage } from 'pages/merchant/payment-oferta-page'
-import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
-import { ToastContainer } from 'toast'
 
 export function App() {
 	return (
