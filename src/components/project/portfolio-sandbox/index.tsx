@@ -6,7 +6,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { getHumanDate } from 'components/project/utils/getHumanDate'
 
-import '../project-viewer/style.css'
+import 'components/project/project-viewer/style.css'
 import './style.css'
 
 export const PortfolioSandbox: FunctionComponent = () => {

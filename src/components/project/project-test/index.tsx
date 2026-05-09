@@ -10,7 +10,7 @@ import { getHumanDate } from 'components/project/utils/getHumanDate'
 import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
 import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
 
-import '../project-viewer/style.css'
+import 'components/project/project-viewer/style.css'
 
 const portfolioWorkerId: PortfolioWorkerId = 1 as PortfolioWorkerId
 
