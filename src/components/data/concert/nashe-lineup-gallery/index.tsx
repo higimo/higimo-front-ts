@@ -2,13 +2,14 @@ import { FunctionComponent } from 'preact'
 
 import { useRoute } from 'preact-iso'
 
+import { TextContainer } from 'components/ui/text-container'
+import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+
 import { compareRoute } from 'utils/url-route/compare-route'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { TextContainer } from 'components/ui/text-container'
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
 
 const links = [
 	{

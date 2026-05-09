@@ -8,24 +8,9 @@ import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { data } from './data'
 
 import '../tourism-style.css'
-
-const data = [
-	{
-		href: ROUTE_LINKS.tourismMapsMoscowWalkaround,
-		title: 'Проект обхожу Москву',
-	},
-	{
-		href: ROUTE_LINKS.tourismMapsMoscowBar,
-		title: 'Московские бары',
-	},
-	{
-		href: ROUTE_LINKS.tourismMapsRegion,
-		title: 'Посещённые регионы России',
-	},
-] as const
 
 export const TourismMapsPage: FunctionComponent = () => {
 	usePageTitle('Карты путешествий')

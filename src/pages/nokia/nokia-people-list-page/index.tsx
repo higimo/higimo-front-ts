@@ -13,6 +13,7 @@ import 'components/nokia/nokia-style.css'
 export const NokiaPeopleListPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
 
+	// TODO: [LIGHT] fix type
 	const [filter, setFilter] = useState<NokiaTagType['id']>(null)
 	const updateFilter = (tag: NokiaTagType['id']) => setFilter(filter === tag ? null : tag)
 

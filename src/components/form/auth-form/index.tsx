@@ -1,9 +1,6 @@
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
-import { useLocation } from 'preact-iso'
-import { useAuth } from 'hook/use-auth'
-import { useEffect } from 'preact/hooks'
 
 import sendRequest, { ApiError, SendRequestOptions } from 'utils/send-request'
 
@@ -45,19 +42,6 @@ const handleLogin = async (data: FormValues) => {
 
 export const AuthForm: FunctionComponent = () => {
 	const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValues>({})
-	const { route } = useLocation()
-	const { isAuth } = useAuth()
-
-	useEffect(() => {
-		if (isAuth) {
-			const backpath = (new URLSearchParams(location.search)).get('backpath')
-			route((backpath || ROUTE_LINKS.adminIndex), true)
-		}
-	}, [isAuth, route])
-
-	if (isAuth) {
-		return <div>Уже авторизован</div>
-	}
 
 	return (
 		<form className="container" onSubmit={handleSubmit(handleLogin)}>

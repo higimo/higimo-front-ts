@@ -1,10 +1,32 @@
-import { usePageTitle } from 'hook/use-page-title'
-
 import { FunctionComponent } from 'preact'
+
+import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
+import { usePageTitle } from 'hook/use-page-title'
+import useApi from 'hook/use-api'
+
+import { Loading } from 'components/ui/loading'
 import { LogismGallery } from 'components/logism/logism'
+import { LogismType } from 'components/logism/types'
+import { NotFoundData } from 'components/ui/not-found-data'
+
+import { API_ROUTE } from 'dic/api-route'
 
 export const LogismPage: FunctionComponent = () => {
 	usePageTitle('Логизмы')
 
-	return <LogismGallery />
+	const [ logismList ] = useApi<LogismType[]>(API_ROUTE.logism)
+	const isLoading = useLoadingState([logismList.status])
+	const isListEmpty = useEmptyDataState(logismList.data)
+
+	if (isLoading) {
+		return <Loading />
+	}
+
+	if (isListEmpty) {
+		return <NotFoundData />
+	}
+
+
+	return <LogismGallery logisms={logismList.data} />
 }

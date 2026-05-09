@@ -1,44 +1,25 @@
 import { FunctionComponent } from 'preact'
 import { LectionType } from 'api-types/lection.types'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
-import useApi from 'hook/use-api'
-
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
-
-import { API_ROUTE } from 'dic/api-route'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-export const ObuchenieList: FunctionComponent = () => {
-	const [ lectionList ] = useApi<LectionType[]>(API_ROUTE.lection)
-	const isLoading = useLoadingState([lectionList.status])
-	const isListEmpty = useEmptyDataState(lectionList.data)
-
-	if (isLoading) {
-		return <Loading />
-	}
-
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
-
-	return (
-		<div className="obuchenie-list">
-			{lectionList.data.map(({ id, name, code }) => (
-				<a
-					key={id}
-					href={ROUTE_LINKS.learningDetail({ idcode: code })}
-					className="obuchenie-list__element"
-				>
-					<div className="obuchenie-list__name">
-						{name}
-					</div>
-				</a>
-			))}
-		</div>
-	)
+type ObuchenieListPropsType = {
+	lections: LectionType[]
 }
+export const ObuchenieList: FunctionComponent<ObuchenieListPropsType> = ({ lections }) => (
+	<div className="obuchenie-list">
+		{lections.map(({ id, name, code }) => (
+			<a
+				key={id}
+				href={ROUTE_LINKS.learningDetail({ idcode: code })}
+				className="obuchenie-list__element"
+			>
+				<div className="obuchenie-list__name">
+					{name}
+				</div>
+			</a>
+		))}
+	</div>
+)

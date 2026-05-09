@@ -32,6 +32,7 @@ export const TourismMapsRegion = () => {
 	const mapRef = createRef()
 	const { width, height } = useWindowSize()
 
+	// TODO: [LIGHT] fix type
 	const handleMapLoad = ymaps => {
 		(async () => {
 			const borders = await ymaps.borders.load('RU', {
@@ -42,6 +43,7 @@ export const TourismMapsRegion = () => {
 			const collection = new ymaps.GeoObjectCollection(null)
 			mapRef.current.geoObjects.add(collection)
 
+			// TODO: [LIGHT] fix type
 			borders.features.forEach(feature => {
 				collection.add(new ymaps.GeoObject(feature, {
 					fillColor: getDistrictColor(feature.properties.iso3166),

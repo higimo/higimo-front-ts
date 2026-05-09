@@ -36,6 +36,7 @@ export const TourismMapsMoscowBar = () => {
 		[]
 	)
 
+	// TODO: [MEDIUM] теги интересно сделал
 	const {
 		selectedTags,
 		toggleTag,

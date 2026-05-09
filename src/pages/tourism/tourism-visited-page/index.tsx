@@ -93,6 +93,7 @@ const typeFilters = {
 	[TYPE_MAP.ZATO]: ['ЗАТО'],
 }
 
+// TODO: [LIGHT] fix type
 const handleFilterMapPoint = (filter) => (item: PovType) => {
 	// Посещённость
 	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false
@@ -176,6 +177,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 		return null
 	}
 
+	// TODO: [LIGHT] fix type
 	const totalStatistic = stateData.russiaCity.slice(0)
 
 	const total = stateData.russiaCity.filter(handleFilterMapPoint(filter)).sort(handleSort(sort))

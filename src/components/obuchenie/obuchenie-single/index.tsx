@@ -1,53 +1,29 @@
+import { FunctionComponent } from 'preact'
 import { LectionType } from 'api-types/lection.types'
 
 import markdownit from 'markdown-it'
 
-import useApi from 'hook/use-api'
-import { useRoute } from 'preact-iso'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { usePageTitle } from 'hook/use-page-title'
-
 import { TextContainer } from 'components/ui/text-container'
-import { Loading } from 'components/ui/loading'
 
-import { NotFoundPage } from 'pages/not-found-page'
+var md = new markdownit({
+	html: true,
+	linkify: true,
+	typographer: true
+})
 
-import { API_ROUTE } from 'dic/api-route'
-
-export const ObuchenieSingle = () => {
-	const { params: { idcode } } = useRoute()
-	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode }))
-	const isLoading = useLoadingState([lectionDetail.status])
-	const isListEmpty = useEmptyDataState(lectionDetail.data)
-
-	const currentLection = lectionDetail.data
-	usePageTitle(currentLection.name)
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundPage />
-	}
-
-	var md = new markdownit({
-		html: true,
-		linkify: true,
-		typographer: true
-	})
-
-	return (
-		<div className="test">
-			<TextContainer>
-				<h1>{currentLection.name}</h1>
-			</TextContainer>
-			<TextContainer>
-				<div
-					className="container"
-					dangerouslySetInnerHTML={{__html: md.render(currentLection.text || '')}}
-				/>
-			</TextContainer>
-		</div>
-	)
+type ObuchenieSinglePropsType = {
+	lection: LectionType
 }
+export const ObuchenieSingle: FunctionComponent<ObuchenieSinglePropsType> = ({ lection }) => (
+	<div className="test">
+		<TextContainer>
+			<h1>{lection.name}</h1>
+		</TextContainer>
+		<TextContainer>
+			<div
+				className="container"
+				dangerouslySetInnerHTML={{__html: md.render(lection.text || '')}}
+			/>
+		</TextContainer>
+	</div>
+)
