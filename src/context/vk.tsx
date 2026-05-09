@@ -3,7 +3,7 @@ import { VkSessionType } from 'pages/vk/types'
 import { useCallback, useState } from 'preact/hooks'
 import { useEffect } from 'preact/hooks'
 
-import { createContext } from 'preact'
+import { createContext, FunctionComponent } from 'preact'
 
 declare global {
 	interface Window {
@@ -26,8 +26,13 @@ const DEFAULT_VK_STATE = {
 
 export const VkContext = createContext<IVkContext>(DEFAULT_VK_STATE)
 
+type VkStateType = {
+	isLoaded: boolean,
+	error: null | Error,
+}
+
 export const useVKInit = () => {
-	const [state, setState] = useState({
+	const [state, setState] = useState<VkStateType>({
 		isLoaded: false,
 		error: null,
 	})
@@ -76,12 +81,17 @@ export const useVKInit = () => {
 	return state
 }
 
-export const VkContextProvider = (props) => {
+type HandleAuthPropsType = {
+	status: 'connected' | string
+	session: VkSessionType|null
+}
+
+export const VkContextProvider: FunctionComponent = (props) => {
 	const [ isVkLogin, setIsVkLogin ] = useState<boolean>(false)
-	const [ session, setSession ] = useState<VkSessionType>(DEFAULT_SESSION)
+	const [ session, setSession ] = useState<VkSessionType|null>(DEFAULT_SESSION)
 	const { isLoaded, error } = useVKInit()
 
-	const handleAuth = useCallback(({ status, session }) => {
+	const handleAuth = useCallback(({ status, session }: HandleAuthPropsType) => {
 		setIsVkLogin(status === 'connected')
 		setSession(session)
 	}, [])
