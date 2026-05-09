@@ -23,3 +23,7 @@
 	max-width: 512px;
 	width: 100%;
 }
+
+.share-knowledge__element--archive {
+	opacity: .5;
+}
