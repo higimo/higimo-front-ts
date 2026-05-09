@@ -24,6 +24,7 @@ import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/tourism
 
 import 'pages/tourism/tourism-style.css'
 import './style.css'
+import { ValueOf } from 'utils.type'
 
 const VISUALIZATOR_MAP = {
 	MAP: 'MAP',
@@ -93,8 +94,7 @@ const typeFilters = {
 	[TYPE_MAP.ZATO]: ['ЗАТО'],
 }
 
-// TODO: [LIGHT] fix type
-const handleFilterMapPoint = (filter) => (item: PovType) => {
+const handleFilterMapPoint = (filter: FilterStateType) => (item: PovType) => {
 	// Посещённость
 	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false
 	if (filter.visited === VISITED_MAP.WANTED && 'visited' in item && item.visited) return false
@@ -110,7 +110,7 @@ const handleFilterMapPoint = (filter) => (item: PovType) => {
 	return true
 }
 
-const handleSort = (sort) => (a: PovType, b: PovType) => {
+const handleSort = (sort: ValueOf<typeof SORT_MAP>) => (a: PovType, b: PovType) => {
 	if (SORT_MAP.INIT === sort) {
 		return 0
 	}
@@ -158,26 +158,34 @@ const FILTER_TAGS = [
 	{ type: TYPE_MAP.ZATO, label: 'ЗАТО' }
 ]
 
-// Следующим этапом подгружу оставшиеся списки для посещений: крепости, памятники, музеи, POI Москвы, станции метро Москвы. И введу метку «хочу». Потому что ЗАТО я хочу посетить только один — Центр подготовки космонавтов, но хорошо бы собрать и остальные. Когда дособеру — можно будет и на БД переносить.
+// TODO: [FEATURE] Следующим этапом подгружу оставшиеся списки для посещений:
+// крепости, памятники, музеи, POI Москвы, станции метро Москвы. И введу метку «хочу».
+// Потому что ЗАТО я хочу посетить только один — Центр подготовки космонавтов, но хорошо бы собрать и остальные.
+// Когда дособеру — можно будет и на БД переносить.
 
+// TODO: [FEATURE] Наконец, надо задизайнить процесс, как писать «отчёты» о городах.
+// Может быть, я начну с парочки в markdown, чтобы сформулировать стиль и форму.
 
-// Наконец, надо задизайнить процесс, как писать «отчёты» о городах. Может быть, я начну с парочки в markdown, чтобы сформулировать стиль и форму.
-
-
+type FilterStateType = {
+	visited: ValueOf<typeof VISITED_MAP>,
+	type: ValueOf<typeof TYPE_MAP>,
+}
 export const TourismVisitedPage: FunctionComponent = () => {
 	const stateData = useLazyLoadData<{ russiaCity: PovType[] }>(import('components/tourism/tourism-maps-figure/data/common'))
 	const [visualizator, setVisualizator] = useState(VISUALIZATOR_MAP.CARD)
-	const [filter, setFilter] = useState({
+	const [filter, setFilter] = useState<FilterStateType>({
 		visited: VISITED_MAP.INIT,
 		type: TYPE_MAP.TOTAL,
 	})
 	const [sort, setSort] = useState(SORT_MAP.INIT)
 
+	if (!stateData) {
+		return null
+	}
 	if ((stateData?.russiaCity?.length || 0) === 0) {
 		return null
 	}
 
-	// TODO: [LIGHT] fix type
 	const totalStatistic = stateData.russiaCity.slice(0)
 
 	const total = stateData.russiaCity.filter(handleFilterMapPoint(filter)).sort(handleSort(sort))

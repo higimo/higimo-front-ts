@@ -14,10 +14,11 @@ import { API_ROUTE } from 'dic/api-route'
 
 import 'components/nokia/nokia-style.css'
 
-const filterPersons = (person, filter) => person.tags.find(tag => tag.id === filter)
+const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | null) =>
+	person.tags.find(tag => tag.id === filter)
 
 type NokiaPeopleListPropsType = {
-	filter: NokiaTagType['id']
+	filter: NokiaTagType['id'] | null
 	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = (props) => {

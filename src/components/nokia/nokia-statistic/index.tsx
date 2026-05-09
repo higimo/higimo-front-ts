@@ -52,6 +52,7 @@ export const NokiaStatistic: FunctionComponent = () => {
 
 	useEffect(() => {
 		updateChart({
+			// @ts-ignore
 			viz,
 			data: prepareData(statistic, selectedYearTag, selectedTypeTag),
 		})()

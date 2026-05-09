@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact'
 import { VKAlbumType } from 'api-types/vk.types'
+import { FunctionComponent } from 'preact'
 
 import { VkAlbumElement } from 'components/vk/vk-album-element'
 

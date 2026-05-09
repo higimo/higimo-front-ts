@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LogismType } from 'components/logism/types'
+import { LogismType } from 'api-types/logism.types'
 
 import cs from 'classnames'
 

@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact'
 import { VkPhotoType } from 'api-types/vk.types'
+import { FunctionComponent } from 'preact'
 
 const getPhotosUrl = (sizes: VkPhotoType['sizes']): string => {
 	const finded = sizes.find(item => item.type === 'r' || item.type === 'x')

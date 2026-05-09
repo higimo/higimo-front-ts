@@ -17,7 +17,7 @@ import { API_ROUTE } from 'dic/api-route'
 import './style.css'
 
 type NokiaTagsGalleryPropsType = {
-	filter: NokiaTagType['id']
+	filter: NokiaTagType['id'] | null
 	updateFilter: (tag: NokiaTagType["id"]) => void
 }
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = ({ filter, updateFilter }) => {

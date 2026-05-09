@@ -23,6 +23,7 @@ export const useAccord = (filter: string = ''): AccordWithTagType[] => {
 		isMostView: isMostView(item.view),
 	}))
 
+	// @ts-ignore
 	newList = newList.filter(filterMapping[filter])
 		.sort((a, b) => a.name.localeCompare(b.name))
 

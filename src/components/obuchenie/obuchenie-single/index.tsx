@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact'
 import { LectionType } from 'api-types/lection.types'
+import { FunctionComponent } from 'preact'
 
 import markdownit from 'markdown-it'
 

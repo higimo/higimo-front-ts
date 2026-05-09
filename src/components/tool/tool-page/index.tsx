@@ -14,6 +14,7 @@ export class ToolPage extends Component {
 		uri: 'feedback/page',
 	}
 
+	// @ts-ignore
 	handlerSubmit = (event) => {
 		let { options, uri } = this.state,
 			self = this
@@ -61,6 +62,7 @@ export class ToolPage extends Component {
 		}
 	}
 
+	// @ts-ignore
 	handlerChange = ({ target: { name, value } }) => {
 		this.setState({ [name]: value })
 	}

@@ -2,7 +2,7 @@ import { createRef } from 'preact'
 
 import { useWindowSize } from 'hook/use-window-size'
 
-import { YMaps, Map } from 'react-yandex-maps'
+import { YMaps, Map, YMapsApi } from 'react-yandex-maps'
 
 import '../yandex-map.css'
 
@@ -21,7 +21,7 @@ const districtVacant = [
 	'RU-STA', 'RU-CHU', 'RU-YEV',
 ]
 
-const getDistrictColor = (iso) => {
+const getDistrictColor = (iso: any) => {
 	return (
 		districtVisited.includes(iso) ? '#ff4aff' :
 			(districtVacant.includes(iso) ? '#5a7bc3' : '#b7b7b7')
@@ -32,8 +32,7 @@ export const TourismMapsRegion = () => {
 	const mapRef = createRef()
 	const { width, height } = useWindowSize()
 
-	// TODO: [LIGHT] fix type
-	const handleMapLoad = ymaps => {
+	const handleMapLoad = (ymaps: YMapsApi) => {
 		(async () => {
 			const borders = await ymaps.borders.load('RU', {
 				lang: 'ru',
@@ -43,8 +42,7 @@ export const TourismMapsRegion = () => {
 			const collection = new ymaps.GeoObjectCollection(null)
 			mapRef.current.geoObjects.add(collection)
 
-			// TODO: [LIGHT] fix type
-			borders.features.forEach(feature => {
+			borders.features.forEach((feature: any) => {
 				collection.add(new ymaps.GeoObject(feature, {
 					fillColor: getDistrictColor(feature.properties.iso3166),
 					strokeColor: getDistrictColor(feature.properties.iso3166),

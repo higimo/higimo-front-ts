@@ -1,30 +1,11 @@
 import { MutableRef } from 'preact/hooks'
 
 import { PrepareDataResult, loadD3Modules } from 'components/nokia/nokia-statistic/ResultDatasetItem'
+import { COLORS } from './COLORS'
 
 export const MARGIN = { top: 40, right: 50, bottom: 150, left: 70 }
 export const WIDTH = 1300
 export const HEIGHT = 500
-
-export const COLORS = [
-	'#939EAA',
-	'#232B35',
-	'#0C81D7',
-	'#007D34',
-	'#E59488',
-	'#CB88F2',
-	'#F5DEB3',
-	'#915AD9',
-	'#EDC962',
-	'#FAF0E6',
-	'#47935A',
-	'#A98307',
-	'#C5CCAD',
-	'#DC615C',
-	'#89AC76',
-	'#E79C59',
-	'#AA5300',
-]
 
 type updateChatPropsType = {
 	viz: MutableRef<HTMLDivElement>;
@@ -47,6 +28,7 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 		const category = data[0];
 
 		var dataset = d3.stack()
+			// @ts-ignore
 			.keys(category)(origDataset)
 			.map(
 				(column) => {
@@ -89,17 +71,20 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 		var groups = svg
 			.selectAll('g').data(dataset).enter()
 			.append('g')
+			// @ts-ignore
 			.style('fill', d => color(d[0].key));
 
 		groups.selectAll('rect')
 			.data(d => d)
 			.join('rect')
 			.attr('transform', `translate(0, ${MARGIN.top})`)
+			// @ts-ignore
 			.attr('x', d => x(d.x))
 			.attr('width', x.bandwidth())
 			.attr('y', d => y(d.y))
 			.attr('height', d => y(d.y0) - y(d.y))
-			.on('mouseover', (event, d) => {
+			.on('mouseover', (event: any, d: any) => {
+				// @ts-ignore
 				d3.select(this).style('opacity', 0.8);
 
 				tooltip.transition()

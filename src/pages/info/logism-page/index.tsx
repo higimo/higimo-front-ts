@@ -7,7 +7,7 @@ import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { LogismGallery } from 'components/logism/logism'
-import { LogismType } from 'components/logism/types'
+import { LogismType } from 'api-types/logism.types'
 import { NotFoundData } from 'components/ui/not-found-data'
 
 import { API_ROUTE } from 'dic/api-route'

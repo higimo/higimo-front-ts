@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LogismType } from 'components/logism/types'
+import { LogismType } from 'api-types/logism.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
