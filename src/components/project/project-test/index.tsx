@@ -71,8 +71,11 @@ export const ProjectTypography: FunctionComponent = () => {
 			</div>
 
 			<PortfolioCreditsGallery credits={credits} />
+			<PortfolioCreditsGallery credits={credits.slice(0, 2)} />
+			<PortfolioCreditsGallery credits={credits.slice(0, 1)} />
 
 			<PortfolioTagsGallery tags={tags} />
+			<PortfolioTagsGallery tags={tags.slice(-5)} />
 		</div>
 	)
 }
