@@ -22,6 +22,7 @@ export default defineConfig({
 			'pages': path.resolve(__dirname, './src/pages'),
 			'utils': path.resolve(__dirname, './src/utils'),
 			'vendor': path.resolve(__dirname, './src/vendor'),
+			'fixtures': path.resolve(__dirname, './src/fixtures'),
 		}
 	},
 });
