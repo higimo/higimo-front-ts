@@ -46,6 +46,7 @@ export const PinarikCalendar = () => {
 					<div className="pinarik-year">
 						<h2>{year}</h2>
 						<div className="pinarik-calendar">
+							{/* // TODO: [LIGHT] fix type */}
 							{treeYear[year].map(day => (
 								<PinarikElement {...day} onClick={() => setPreviewId(day.id)} />
 							))}

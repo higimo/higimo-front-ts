@@ -21,7 +21,7 @@
 }
 
 .portfolio-person {
-	/* TODO: внедрить --grid-width */
+	/* TODO: [LIGHT] внедрить --grid-width */
 	max-width: calc((100% - ((var(--credits-row) - 1) * var(--credits-gap))) / var(--credits-row));
 	width: 100%;
 	font-size: 16px;

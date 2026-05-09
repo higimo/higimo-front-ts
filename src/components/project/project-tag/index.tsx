@@ -22,6 +22,7 @@ type ProjectTagPropsType = {
 export const ProjectTag: FunctionComponent<ProjectTagPropsType> = props => {
 	const { query, route } = useLocation()
 
+	// TODO: [LIGHT] fix type
 	const handleRemove = useCallback((event) => {
 		if (query[props.filterName] == props.children) {
 			event.preventDefault()

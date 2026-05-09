@@ -7,7 +7,7 @@
 	border: 0;
 	display: flex;
 	flex-direction: column;
-	/* TODO: внедрить --grid-width */
+	/* TODO: [LIGHT] внедрить --grid-width */
 	width: calc(25% - 30px);
 	max-width: 290px;
 	margin-right: 15px;

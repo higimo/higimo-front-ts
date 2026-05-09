@@ -14,7 +14,7 @@ import 'components/project/project-viewer/style.css'
 
 const portfolioWorkerId: PortfolioWorkerId = 1 as PortfolioWorkerId
 
-// TODO: унести в фикстуры
+// TODO: [LIGHT] унести в фикстуры
 const credits: PortfolioCreditsType[] = `\
 	Артемий Лебедев      | худрук
 	Павел Герасимчук     | арт-директор и дизайнер
@@ -47,7 +47,7 @@ const credits: PortfolioCreditsType[] = `\
 
 const portfolioTagId = 1 as PortfolioTag['id']
 
-// TODO: унести в фикстуры
+// TODO: [LIGHT] унести в фикстуры
 const tags: PortfolioTag[] =
 	'ALS|Студия|большой|нормальный|сильный|продакт|аналитик|разработчик|грандиозный|бекенд|продукты|Битрикс|длинный тег в несколько слов'
 	.split('|')

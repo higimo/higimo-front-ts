@@ -56,6 +56,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 				id: id || Date.now().toString(),
 				message,
 			}
+			// TODO: [LIGHT] array concat
 			setToasts((prev) => [newToast, ...prev])
 		}
 
@@ -87,6 +88,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 			message,
 		}
 
+		// TODO: [LIGHT] array concat
 		setToasts((prev) => [newToast, ...prev])
 	}
 

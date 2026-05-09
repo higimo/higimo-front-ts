@@ -32,6 +32,7 @@ const compact = (obj) => {
 /**
  * Исключает ключи из объекта
  */
+// TODO: [LIGHT] fix type
 const omit = (obj, ...keys) => {
 	const keysToRemove = new Set(keys)
 	return Object.fromEntries(

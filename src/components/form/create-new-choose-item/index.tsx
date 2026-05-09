@@ -15,7 +15,7 @@ const defaultInputs = (register: UseFormRegister<FieldValues>) => (
 	/>
 )
 
-// TODO: [MIDLE] нигде не используется
+// TODO: [MEDIUM] нигде не используется
 type CreateNewChooseItemPropsType = {
 	onSubmit: any
 	getInputs: any

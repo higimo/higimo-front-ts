@@ -44,7 +44,7 @@ const handlePerprojectSubmit: HandlePerprojectSubmitType = setStatus => async va
 	}
 }
 
-// TODO: [MIDLE] Поставить ссылку на создание и редактирование
+// TODO: [MEDIUM] Поставить ссылку на создание и редактирование
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав

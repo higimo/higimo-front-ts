@@ -10,7 +10,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 6px;
-	/* TODO: внедрить --grid-width */
+	/* TODO: [LIGHT] внедрить --grid-width */
 	width: calc(25% - 8px);
 	text-align: center;
 	background-color: #fff;

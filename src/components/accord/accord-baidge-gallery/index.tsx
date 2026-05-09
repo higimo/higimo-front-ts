@@ -19,7 +19,7 @@ const FILTER_OPTIONS = [
 ]
 
 type AccordTagGalleryPropsType = {
-	handleFilter: (string) => () => void
+	handleFilter: (tagName: string) => () => void
 	filter: string
 }
 export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({ handleFilter, filter }) => {

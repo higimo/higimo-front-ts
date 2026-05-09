@@ -38,7 +38,7 @@ const handleChooseWorkerSubmit: HandleChooseWorkerSubmitType = (onSubmit, reset,
 	}
 }
 
-// TODO: вынести в отдельный общий компонент
+// TODO: [LIGHT] вынести в отдельный общий компонент
 const ShowError = ({ error }: { error: FieldError | null }) => {
 	if (!error) {
 		return null

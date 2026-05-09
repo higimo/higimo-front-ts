@@ -23,6 +23,7 @@ type AccordSinglePropsType = {
 	idcode: string
 }
 
+// TODO: [FEATURE] добавить страницу добавления и редактирования аккордов
 export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode }) => {
 	const [accords] = useApi<AccordType[]>(API_ROUTE.accord)
 	const [songSingle] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode }))

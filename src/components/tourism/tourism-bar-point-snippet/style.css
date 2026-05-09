@@ -36,7 +36,7 @@
 	flex-direction: column;
 	gap: 8px;
 	padding: 16px;
-	/* TODO: внедрить --grid-width */
+	/* TODO: [LIGHT] внедрить --grid-width */
 	width: calc((100% - ((var(--gallery-row) - 1) * var(--gallery-gap))) / var(--gallery-row));
 	background: rgb(255 255 255 / 2%);
 	color: rgba(255, 255, 255, .65);

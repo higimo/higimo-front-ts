@@ -29,6 +29,7 @@ export const TourismMapsMoscowBar = () => {
 				[categoryName]: [
 					TAG_GROUP_ALL_DISABLE,
 					TAG_GROUP_ALL_ENABLE,
+					// TODO: [LIGHT] array concat
 					...barTagsCategory[categoryName]
 				]
 			}),

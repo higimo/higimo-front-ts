@@ -38,6 +38,7 @@ export const VkDownloadAlbum: FunctionComponent = () => {
 		if (isVkLogin) {
 			try {
 				const photos = await VkApi.getPhotos(downloadId, albumId)
+				// TODO: [LIGHT] fix type
 				setPhotos(preState => [
 					...preState,
 					{

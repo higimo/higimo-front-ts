@@ -10,7 +10,7 @@ import useApi from './use-api'
 import { API_ROUTE } from 'dic/api-route'
 import { useMemo } from 'preact/hooks'
 
-// TODO: подумай над неймингом, потому что есть PortfolioProjectTableType в API
+// TODO: [LIGHT] подумай над неймингом, потому что есть PortfolioProjectTableType в API
 export type PortfolioProjectTableSmartType = {
 	id: PortfolioProjectTableType['id']
     vendor: PortfolioProjectTableType['vendor']['code']

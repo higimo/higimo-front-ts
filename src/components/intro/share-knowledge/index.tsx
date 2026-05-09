@@ -31,7 +31,7 @@ const TileElementCon: FunctionComponent<KnowlageType> = ({ isArchive, link, imgI
 	<TileElement
 		className={cs(
 			'share-knowledge__element',
-			// TODO: переименовать в archive?
+			// TODO: [LIGHT] переименовать в archive?
 			{ 'share-knowledge__element--inactive': isArchive }
 		)}
 		isInactive={isArchive}

@@ -14,6 +14,7 @@ export class ListkeeperFromUrl extends Component {
 		this.getData(this.props)
 	}
 
+	// TODO: [HARD] fix type
 	componentWillReceiveProps(nextProps) {
 		this.getData(nextProps)
 	}
@@ -37,7 +38,7 @@ export class ListkeeperFromUrl extends Component {
 					})
 			})
 		}
-		// TODO: [MIDLE] поставить тост
+		// TODO: [MEDIUM] поставить тост
 		// const apiError = error as ApiError
 		// toast.error(apiError.message || 'Ошибка при входе в систему')
 	}

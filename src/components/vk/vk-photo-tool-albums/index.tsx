@@ -21,6 +21,7 @@ export const VkPhotoAlbumList: FunctionComponent = () => {
 		fetchLogin()
 	}, [fetchLogin])
 
+	// TODO: [LIGHT] fix type
 	const fetchAlbums = useCallback(async (ownerId) => {
 		try {
 			const albums = await VkApi.getAlbums(ownerId, ownerId)
@@ -31,6 +32,7 @@ export const VkPhotoAlbumList: FunctionComponent = () => {
 	}, [showMessage])
 
 	useEffect(() => {
+		// TODO: [LIGHT] fix type
 		if (isVkLogin && session.user.id) {
 			fetchAlbums(session.user.id)
 		}

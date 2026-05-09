@@ -13,13 +13,12 @@ export const AccordGallery: FunctionComponent = () => {
 	const [filter, setFilter] = useState('')
 	const list = useAccord(filter)
 
-	const handleFilter = name => () => setFilter(name)
+	// TODO: [MEDIUM] использовать useTag
+	const handleFilter = (tagName: string) => () => setFilter(tagName)
 
 	return (
 		<TextContainer className="accord">
-			<div>
-				<h1>Аккорды</h1>
-			</div>
+			<h1>Аккорды</h1>
 			<AccordTagGallery handleFilter={handleFilter} filter={filter} />
 			<div>
 				{list.map(item => (

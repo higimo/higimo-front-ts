@@ -1,3 +1,4 @@
+// TODO: [LIGHT] fix type
 export const urlFormatter = config => element => {
 	return {
 		...element,
