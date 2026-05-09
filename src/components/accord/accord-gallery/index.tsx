@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useState } from 'preact/hooks'
+import { useCallback, useState } from 'preact/hooks'
 import { useAccord } from 'components/accord/use-accord'
 
 import { TextContainer } from 'components/ui/text-container'
@@ -14,7 +14,7 @@ export const AccordGallery: FunctionComponent = () => {
 	const list = useAccord(filter)
 
 	// TODO: [MEDIUM] использовать useTag
-	const handleFilter = (tagName: string) => () => setFilter(tagName)
+	const handleFilter = useCallback((tagName: string) => () => setFilter(tagName), [setFilter])
 
 	return (
 		<TextContainer className="accord">
@@ -22,13 +22,7 @@ export const AccordGallery: FunctionComponent = () => {
 			<AccordTagGallery handleFilter={handleFilter} filter={filter} />
 			<div>
 				{list.map(item => (
-					<AccordElement
-						id={item.id}
-						name={item.name}
-						isMostView={item.isMostView}
-						isNew={item.isNew}
-						view={item.view}
-					/>
+					<AccordElement key={item.id} {...item} />
 				))}
 			</div>
 		</TextContainer>

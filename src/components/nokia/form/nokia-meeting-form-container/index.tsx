@@ -82,7 +82,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 					className="default-form__submit"
 					disabled={isSubmitting || isSubmitted}
 				>
-					{/* TODO: [LIGHT] добавить паттерн во все формы */}
+					{/* TODO: [MEDIUM] добавить паттерн во все формы */}
 					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 				</button>
 

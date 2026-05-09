@@ -1,27 +1,13 @@
 import { FunctionComponent } from 'preact'
-import { AccordWithTagType } from 'api-types/accord.types'
+import { AccordRealTagType } from 'api-types/accord.types'
 
 import { Tag } from 'components/ui/tag'
-import { filterMapping } from 'components/accord/utils'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 let alf = ''
 
-const TAG_LABELS: Record<string, string> = {
-	liric: 'лирика',
-	scream: 'поорать',
-	korol: 'Король и шут',
-	funny: 'смешное',
-	rap: 'речитатив',
-	old: 'Старинное',
-	ussr: 'СССР',
-	lacky: 'зайдёт',
-	newschool: 'ньюскул',
-	bard: 'барды',
-}
-
-type AccordElementPropsType = Pick<AccordWithTagType, 'id' | 'name' | 'isMostView' | 'isNew' | 'view'> & {
+type AccordElementPropsType = AccordRealTagType & {
 	showAlf?: boolean
 	showBaidge?: boolean
 }
@@ -29,9 +15,7 @@ type AccordElementPropsType = Pick<AccordWithTagType, 'id' | 'name' | 'isMostVie
 export const AccordElement: FunctionComponent<AccordElementPropsType> = ({
 	id,
 	name,
-	isMostView,
-	isNew,
-	view,
+	tags,
 	showAlf = true,
 	showBaidge = true
 }) => (
@@ -39,14 +23,12 @@ export const AccordElement: FunctionComponent<AccordElementPropsType> = ({
 		{showAlf && name[0] !== alf && <div className="alf">{alf = name[0]}</div>}
 		<div>
 			<a className="accord__link" href={ROUTE_LINKS.accordDetail({ idcode: id.toString() })}>{name}</a>
-			{' '}
 			{showBaidge && [
-				isMostView && <Tag>популярно ({view})</Tag>,
-				isNew && <Tag>нью</Tag>,
-				...Object.entries(filterMapping).map(([key, fn]) =>
-					fn({ id }) && TAG_LABELS[key] && <Tag>{TAG_LABELS[key]}</Tag>
-				)
-			].filter(Boolean).flatMap(i => [i, ' '])}
+				' ',
+				tags.map(tag => (
+					<Tag>{tag}</Tag>
+				))
+			]}
 		</div>
 	</span>
 )

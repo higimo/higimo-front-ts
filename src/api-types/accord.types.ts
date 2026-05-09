@@ -14,3 +14,7 @@ export type AccordWithTagType = AccordType & {
 	isNew: boolean
 	isMostView: boolean
 }
+
+export type AccordRealTagType = AccordType & {
+	tags: string[]
+}

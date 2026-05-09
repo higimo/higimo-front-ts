@@ -21,6 +21,7 @@ type RouteType = Exclude<typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS], ExcludeRo
 
 export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.index]: '🏠',
+	[ROUTE_LINKS.textarea]: 'textarea tool',
 	[ROUTE_LINKS.serviceIndex]: 'Сервисы',
 
 	[ROUTE_LINKS.projectIndex]: 'Сделал',
