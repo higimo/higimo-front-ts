@@ -1,16 +1,17 @@
 import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { FunctionComponent } from 'preact'
+import { ApiError } from 'utils/send-request'
 
-import { FieldError, useForm, UseFormReset } from 'react-hook-form'
+import { useForm, UseFormReset } from 'react-hook-form'
 import { Dispatch, StateUpdater, useState } from 'preact/hooks'
 
 import { Message } from 'components/ui/message'
 import { Tag } from 'components/ui/tag'
+import { ShowError } from 'components/ui/show-error'
+
+import { toast } from 'toast'
 
 import './style.css'
-import { HigimoServerResponse } from 'api-types/server-response.types'
-import { ApiError } from 'utils/send-request'
-import { toast } from 'toast'
 
 type FormValues = {
 	roles: Record<string, string> // { [workerId]: role }
@@ -36,16 +37,6 @@ const handleChooseWorkerSubmit: HandleChooseWorkerSubmitType = (onSubmit, reset,
 		const apiError = error as ApiError
 		toast.show(apiError.message)
 	}
-}
-
-// TODO: [LIGHT] вынести в отдельный общий компонент
-const ShowError = ({ error }: { error: FieldError | null }) => {
-	if (!error) {
-		return null
-	}
-	return (
-		<span className="error-message">{error.message}</span>
-	)
 }
 
 type ChooseWorkersFormPropsType = {
