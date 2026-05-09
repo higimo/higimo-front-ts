@@ -1,5 +1,5 @@
-import { FunctionComponent, Fragment } from 'preact'
-import { VKAlbumType } from 'api-types/vk.types'
+import { FunctionComponent, Fragment, JSX } from 'preact'
+import { VKAlbumType, VkPhotoType } from 'api-types/vk.types'
 
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 import { useMessage } from 'components/ui/message-container/useMessage'
@@ -9,36 +9,40 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { printVkError } from 'utils/print-vk-error'
 
-import { VkApi } from 'utils/VkApi'
+import { VkApi, VkResponceError } from 'utils/VkApi'
 
 import { VkContext } from 'context/vk'
 
 import './style.css'
 
-export const ALBUM_MAX_COUNT = 3
+type ChangeEvent = JSX.TargetedEvent<HTMLInputElement, InputEvent>
+
+	export const ALBUM_MAX_COUNT = 3
 export const QUEUE_TIMER = 1500
 
-type QueueType = {
+type VkQueueType = {
 	type: 'album'
 	id: VKAlbumType['id']
 	title: VKAlbumType['title']
 }
 
+type VkPhotosContentType = {
+	title: VKAlbumType['title']
+	photos: VkPhotoType['orig_photo']['url'][]
+}
+
 export const VkDownloadAlbum: FunctionComponent = () => {
 	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
-	const { size, push, pull, view } = useQueue<QueueType>()
-	const [photos, setPhotos] = useState([])
+	const { size, push, pull, view } = useQueue<VkQueueType>()
+	const [photos, setPhotos] = useState<VkPhotosContentType[]>([])
 	const { showMessage, MessageContainer } = useMessage()
 
-	useLayoutEffect(() => {
-		fetchLogin()
-	}, [fetchLogin])
+	useLayoutEffect(fetchLogin, [fetchLogin])
 
 	const getPhotos = useCallback(async (downloadId: string, albumId: VKAlbumType['id'], title: string) => {
 		if (isVkLogin) {
 			try {
 				const photos = await VkApi.getPhotos(downloadId, albumId)
-				// TODO: [LIGHT] fix type
 				setPhotos(preState => [
 					...preState,
 					{
@@ -46,14 +50,15 @@ export const VkDownloadAlbum: FunctionComponent = () => {
 						photos: photos.map(item => item.orig_photo.url),
 					},
 				])
-			} catch (vkError) {
+			} catch (error) {
+				const vkError = error as VkResponceError
 				showMessage(printVkError(vkError))
 			}
 		}
 	}, [isVkLogin, setPhotos, showMessage])
 
 	const getAlbums = useCallback(async (downloadId: string) => {
-		if (isVkLogin) {
+		if (isVkLogin && session) {
 			try {
 				const albums = await VkApi.getAlbums(session.user.id, downloadId)
 
@@ -65,23 +70,24 @@ export const VkDownloadAlbum: FunctionComponent = () => {
 						title: album.title,
 					})
 				})
-			} catch (vkError) {
+			} catch (error) {
+				const vkError = error as VkResponceError
 				showMessage(printVkError(vkError))
 			}
 		}
 	}, [isVkLogin, session, push, showMessage])
 
-	const [downloadId, setDownloadId] = useState(null)
-	const handleChangeDownloadId = useCallback((value) => {
+	const [downloadId, setDownloadId] = useState<string>('')
+	const handleChangeDownloadId = useCallback((value: string) => {
 		setDownloadId(value)
 		setPhotos([])
 	}, [setDownloadId, setPhotos])
-	const handleGroupId = useCallback(event => handleChangeDownloadId('-' + event.target.value), [handleChangeDownloadId])
-	const handleUserId = useCallback(event => handleChangeDownloadId(event.target.value), [handleChangeDownloadId])
-	const handleSelf = useCallback(() => handleChangeDownloadId(session.user.id), [handleChangeDownloadId, session])
+	const handleGroupId = useCallback((event: ChangeEvent) => event.target && handleChangeDownloadId('-' + event.currentTarget.value), [handleChangeDownloadId])
+	const handleUserId = useCallback((event: ChangeEvent) => handleChangeDownloadId(event.currentTarget.value), [handleChangeDownloadId])
+	const handleSelf = useCallback(() => session && handleChangeDownloadId(session.user.id), [handleChangeDownloadId, session])
 
 	useEffect(() => {
-		if (isVkLogin && downloadId) {
+		if (isVkLogin && downloadId.length > 0) {
 			getAlbums(downloadId)
 		}
 	}, [isVkLogin, downloadId])
@@ -89,7 +95,7 @@ export const VkDownloadAlbum: FunctionComponent = () => {
 	useEffect(() => {
 		if (size) {
 			const headQueue = view()
-			if (headQueue.type === 'album') {
+			if (headQueue && headQueue.type === 'album') {
 				showMessage(`Осталось скачать ${size} альбома`)
 				getPhotos(downloadId, headQueue.id, headQueue.title)
 			}

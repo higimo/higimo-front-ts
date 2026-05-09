@@ -9,7 +9,7 @@ import { VkContext } from 'context/vk'
 import { VkAlbumElement } from 'components/vk/vk-album-element'
 import { TextContainer } from 'components/ui/text-container'
 
-import { VkApi } from 'utils/VkApi'
+import { VkApi, VkResponceError } from 'utils/VkApi'
 import { printVkError } from 'utils/print-vk-error'
 
 export const VkPhotoAlbumList: FunctionComponent = () => {
@@ -21,19 +21,18 @@ export const VkPhotoAlbumList: FunctionComponent = () => {
 		fetchLogin()
 	}, [fetchLogin])
 
-	// TODO: [LIGHT] fix type
-	const fetchAlbums = useCallback(async (ownerId) => {
+	const fetchAlbums = useCallback(async (ownerId: string) => {
 		try {
 			const albums = await VkApi.getAlbums(ownerId, ownerId)
 			setAlbums(albums)
-		} catch (vkError) {
+		} catch (error) {
+			const vkError = error as VkResponceError
 			showMessage(printVkError(vkError))
 		}
 	}, [showMessage])
 
 	useEffect(() => {
-		// TODO: [LIGHT] fix type
-		if (isVkLogin && session.user.id) {
+		if (isVkLogin && session && session.user.id) {
 			fetchAlbums(session.user.id)
 		}
 	}, [isVkLogin, session])
