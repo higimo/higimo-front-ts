@@ -30,6 +30,7 @@ type FormScheme<T extends string> = {
 	type: string,
 	input: 'textarea' | 'input',
 	title: string,
+	description?: string
 }
 // TODO: [HARD] хорошая практика делать фабрику формы
 // TODO: [HARD] но с типами беда — если есть лишний, которого нет — не подсветит
@@ -37,7 +38,7 @@ const scheme: FormScheme<ListListSchemeType>[] = [
 	{
 		code: 'id',
 		type: 'number',
-		title: 'Ид',
+		title: 'ид',
 		input: 'input',
 	},
 	{
@@ -45,11 +46,12 @@ const scheme: FormScheme<ListListSchemeType>[] = [
 		type: 'string',
 		title: 'Название',
 		input: 'textarea',
+		description: 'Указав имена с переносом строки, из каждой строки будет создан отдельный айтем'
 	},
 	{
 		code: 'parent',
 		type: 'number',
-		title: 'ид родителья',
+		title: 'ид родителя',
 		input: 'input',
 	},
 	{
@@ -123,7 +125,7 @@ export const ListListForm: FunctionComponent = () => {
 		<div className="form-container">
 			<form className="container" onSubmit={handleSubmit(handleListListSubmit(addStatus))}>
 				{scheme.map(schemeElement => [
-					<label>{schemeElement.title}</label>,
+					<label htmlFor={schemeElement.code}>{schemeElement.title}</label>,
 					h(
 						schemeElement.input,
 						{
@@ -132,6 +134,11 @@ export const ListListForm: FunctionComponent = () => {
 							defaultValue: values[schemeElement.code] || '',
 							className: schemeElement.input,
 						}
+					),
+					!!schemeElement.description && (
+						<div className="form__description">
+							{schemeElement.description}
+						</div>
 					)
 				])}
 				<div className="form__button">
