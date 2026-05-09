@@ -20,8 +20,7 @@ const gradients = petProjectGradient
 	.concat(petProjectGradient.slice(0), petProjectGradient.slice(0))
 	.sort(() => 0.5 - Math.random())
 
-// TODO: [LIGHT] fix type
-const getDescription = (str) => (str || '').replace(/(https:\/\/[\S]+)/g, '<a href="$1">Ссылка</a>').substring(0, 320)
+const getDescription = (str: string) => (str || '').replace(/(https:\/\/[\S]+)/g, '<a href="$1">Ссылка</a>').substring(0, 320)
 
 export const PetProject = () => {
 	const [ unsortProjectList ] = useApi<PetProjectType[]>(API_ROUTE.probbi)
@@ -37,11 +36,9 @@ export const PetProject = () => {
 	}
 
 	const projects = useMemo(() => {
-		// TODO: [LIGHT] array concat
-		return [
-			...unsortProjectList.data,
-			...textProjects,
-		].sort((a, b) => a.priority - b.priority)
+		return unsortProjectList.data
+			.concat(textProjects)
+			.sort((a, b) => a.priority - b.priority)
 	}, [unsortProjectList.data])
 
 	return (

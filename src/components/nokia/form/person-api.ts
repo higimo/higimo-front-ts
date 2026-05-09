@@ -6,8 +6,15 @@ import sendRequest from 'utils/send-request'
 /**
  * Удаляет все пустые значения из объекта
  * Пустыми считаются: null, undefined, '', [], {}
+ *
+ * @param obj - Исходный объект
+ * @returns Новый объект без пустых значений
+ *
+ * @example
+ * compact({ a: 1, b: null, c: '', d: [], e: {} })
+ * // Результат: { a: 1 }
  */
-const compact = (obj) => {
+const compact = <T extends Record<string, any>>(obj: T): Partial<T> => {
 	return Object.fromEntries(
 		Object.entries(obj).filter(([_, value]) => {
 			// Проверяем на null и undefined
@@ -26,18 +33,34 @@ const compact = (obj) => {
 
 			return true
 		})
-	)
+	) as Partial<T>
 }
 
 /**
  * Исключает ключи из объекта
+ *
+ * @param obj - Исходный объект
+ * @param keys - Ключи для исключения
+ * @returns Новый объект без указанных ключей
+ *
+ * @example
+ * const user = { id: 1, name: 'John', password: '123', email: 'john@example.com' }
+ * const safeUser = omit(user, 'password')
+ * // Результат: { id: 1, name: 'John', email: 'john@example.com' }
+ *
+ * @example
+ * const data = { a: 1, b: 2, c: 3, d: 4 }
+ * const result = omit(data, 'b', 'd')
+ * // Результат: { a: 1, c: 3 }
  */
-// TODO: [LIGHT] fix type
-const omit = (obj, ...keys) => {
+const omit = <T extends Record<string, any>, K extends keyof T>(
+	obj: T,
+	...keys: K[]
+): Omit<T, K> => {
 	const keysToRemove = new Set(keys)
 	return Object.fromEntries(
-		Object.entries(obj).filter(([key]) => !keysToRemove.has(key))
-	)
+		Object.entries(obj).filter(([key]) => !keysToRemove.has(key as K))
+	) as Omit<T, K>
 }
 
 export interface PersonApi {

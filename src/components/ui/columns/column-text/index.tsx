@@ -1,4 +1,5 @@
+import { FunctionComponent } from 'preact'
+
 import './style.css'
 
-// TODO: [LIGHT] fix type
-export const ColumnText = props => (<div {...props} className="column-text" />)
+export const ColumnText: FunctionComponent = props => (<div {...props} className="column-text" />)

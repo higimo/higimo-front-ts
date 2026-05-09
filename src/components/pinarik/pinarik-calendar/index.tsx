@@ -1,4 +1,4 @@
-import { PinarikType } from 'api-types/pinarik.types'
+import { PinarikTreeYearType, PinarikType } from 'api-types/pinarik.types'
 import { Fragment } from 'preact/jsx-runtime'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
@@ -27,7 +27,7 @@ export const PinarikCalendar = () => {
 		return <NotFoundData />
 	}
 
-	let treeYear = {}
+	let treeYear: PinarikTreeYearType = {}
 	for (const item of pinarikList.data) {
 		const year = item.date.substring(0, 4)
 		if (!treeYear[year]) {
@@ -46,7 +46,6 @@ export const PinarikCalendar = () => {
 					<div className="pinarik-year">
 						<h2>{year}</h2>
 						<div className="pinarik-calendar">
-							{/* // TODO: [LIGHT] fix type */}
 							{treeYear[year].map(day => (
 								<PinarikElement {...day} onClick={() => setPreviewId(day.id)} />
 							))}

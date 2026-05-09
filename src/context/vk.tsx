@@ -51,7 +51,6 @@ export const useVKInit = () => {
 				})
 				setState(prev => ({ ...prev, isLoaded: true }))
 			} catch (err) {
-				// TODO: [LIGHT] fix type
 				setState(prev => ({
 					...prev,
 					error: err instanceof Error ? err : new Error('VK init failed')

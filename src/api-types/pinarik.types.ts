@@ -8,3 +8,7 @@ export type PinarikType = {
 	score: -1 | 0 | 1
 	description: string
 }
+
+export type PinarikTreeYearType = {
+	[year: string]: PinarikType[]
+}

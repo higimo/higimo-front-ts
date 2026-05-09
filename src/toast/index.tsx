@@ -56,8 +56,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 				id: id || Date.now().toString(),
 				message,
 			}
-			// TODO: [LIGHT] array concat
-			setToasts((prev) => [newToast, ...prev])
+			setToasts((prev) => [newToast].concat(prev))
 		}
 
 		// Слушаем событие удаления тоста
@@ -88,8 +87,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 			message,
 		}
 
-		// TODO: [LIGHT] array concat
-		setToasts((prev) => [newToast, ...prev])
+		setToasts((prev) => [newToast].concat(prev))
 	}
 
 	const removeToast = (id: string) => {
