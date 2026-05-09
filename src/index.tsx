@@ -146,8 +146,8 @@ export function App() {
 								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 
 								{/* Список списков */}
-								<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />
 								<Route path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />
+								<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />
 
 								{/* Аккорды */}
