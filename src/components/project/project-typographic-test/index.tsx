@@ -1,13 +1,7 @@
 import { TextContainer } from 'components/ui/text-container'
 import { FunctionComponent } from 'preact'
 import { Fragment } from 'preact/jsx-runtime'
-
-// TODO: [LIGHT] вынести в отдельный UI компонент
-const TypographicHeader: FunctionComponent = (props) => (
-	<TextContainer style="margin-top: 256px;">
-		<h2>{props.children}</h2>
-	</TextContainer>
-)
+import { TypographicHeader } from 'components/ui/typographic-header'
 
 export const ProjectTypographicTest: FunctionComponent = () => {
 	return (
