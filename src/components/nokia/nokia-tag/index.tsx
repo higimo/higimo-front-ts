@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaTagType } from 'api-types/nokia.types';
+import { NokiaTagType } from 'api-types/nokia.types'
 
 import cs from 'classnames'
 

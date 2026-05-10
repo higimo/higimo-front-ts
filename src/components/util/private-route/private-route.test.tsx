@@ -1,7 +1,7 @@
 // PrivateRoute.test.tsx
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import render from 'preact-render-to-string';
-import { PrivateRoute } from '.';
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import render from 'preact-render-to-string'
+import { PrivateRoute } from '.'
 
 // Мокаем зависимости
 vi.mock('hook/use-auth', () => ({
@@ -17,8 +17,8 @@ vi.mock('components/ui/loading', () => ({
 }));
 
 // Импортируем мокированный модуль для управления возвращаемыми значениями
-import * as useAuthModule from 'hook/use-auth';
-import { Fragment } from 'preact/jsx-runtime';
+import * as useAuthModule from 'hook/use-auth'
+import { Fragment } from 'preact/jsx-runtime'
 
 const MockComponent = () => <div>Secret Dashboard</div>;
 

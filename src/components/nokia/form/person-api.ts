@@ -1,7 +1,7 @@
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { NokiaPersonSimpleType, NokiaRichMeetingType } from 'api-types/nokia.types'
 
-import sendRequest from 'utils/send-request'
+import sendRequest from 'utils/api/send-request'
 
 /**
  * Удаляет все пустые значения из объекта

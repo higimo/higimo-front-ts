@@ -1,4 +1,4 @@
-import { Brand } from "utils.type"
+import { Brand } from 'utils.type'
 
 type LogismId = Brand<number, 'LogismId'>
 

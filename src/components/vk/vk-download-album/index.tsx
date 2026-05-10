@@ -7,9 +7,9 @@ import { useMessage } from 'hook/use-message'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import { printVkError } from 'utils/print-vk-error'
+import { printVkError } from 'vendor/print-vk-error'
 
-import { VkApi, VkResponceError } from 'utils/VkApi'
+import { VkApi, VkResponceError } from 'vendor/vk-api'
 
 import { VkContext } from 'context/vk'
 

@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'preact/hooks'
 
-import sendRequest from 'utils/send-request'
+import sendRequest from 'utils/api/send-request'
 import { ApiRouteType } from 'dic/API_ROUTE'
 
 export const API_STATUS = {

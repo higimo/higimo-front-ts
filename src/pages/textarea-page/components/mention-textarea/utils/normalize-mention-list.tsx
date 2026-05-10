@@ -1,4 +1,4 @@
-import { MentionSuggest } from 'pages/textarea-page/components/mention-textarea/types';
+import { MentionSuggest } from 'pages/textarea-page/components/mention-textarea/types'
 
 export const normalizeMentionList = (list: string[], filtredSuggestList: MentionSuggest[]): MentionSuggest[] => {
 	let result: MentionSuggest[] = [];

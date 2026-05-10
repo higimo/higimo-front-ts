@@ -1,4 +1,4 @@
-import { Brand, ISOString, UnixTime } from "utils.type";
+import { Brand, ISOString, UnixTime } from 'utils.type'
 
 type NokiaTagId     = Brand<number, 'TagId'>
 type NokiaPersonId  = Brand<number, 'PersonId'>

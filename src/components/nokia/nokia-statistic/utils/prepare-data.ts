@@ -1,4 +1,4 @@
-import { NokiaMeetingStatisticType } from 'api-types/nokia.types';
+import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 
 import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 

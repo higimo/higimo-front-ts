@@ -1,12 +1,12 @@
 import { useEffect, useCallback, useReducer } from 'preact/hooks'
 import { useLocation } from 'preact-iso'
 
-import sendRequest from 'utils/send-request'
+import sendRequest from 'utils/api/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import { signal } from '@preact/signals';
+import { signal } from '@preact/signals'
 
 export const AUTH_STATUS_DIC = {
 	INIT:    'INIT',

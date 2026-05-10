@@ -10,8 +10,8 @@ import { Dispatch, StateUpdater }  from 'preact/hooks'
 import { useAuth } from 'hook/use-auth'
 import { useFormStatus } from 'hook/use-form-status'
 
-import { getAuthPair } from 'utils/get-auth-pair'
-import sendRequest, { ApiError } from 'utils/send-request'
+import { getAuthPair } from 'utils/api/get-auth-pair'
+import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { FormButton } from 'components/form/form-button'

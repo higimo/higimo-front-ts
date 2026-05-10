@@ -1,4 +1,4 @@
-import { VkResponceError } from 'utils/VkApi'
+import { VkResponceError } from 'vendor/vk-api'
 
 export const printVkError = (response: VkResponceError) => {
 	return '' +

@@ -1,4 +1,4 @@
-import { FieldError } from 'react-hook-form';
+import { FieldError } from 'react-hook-form'
 
 export const ShowError = ({ error }: { error: FieldError | null; }) => {
 	if (!error) {

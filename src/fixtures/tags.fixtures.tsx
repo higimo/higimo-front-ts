@@ -1,4 +1,4 @@
-import { PortfolioTag } from 'api-types/portfolio.types';
+import { PortfolioTag } from 'api-types/portfolio.types'
 
 const portfolioTagId = 1 as PortfolioTag['id']
 

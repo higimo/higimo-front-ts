@@ -1,4 +1,4 @@
-import { Brand, UnixTime, YearNumber } from "utils.type"
+import { Brand, UnixTime, YearNumber } from 'utils.type'
 
 type NasheId = Brand<number, 'NasheId'>
 

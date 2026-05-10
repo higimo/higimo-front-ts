@@ -1,6 +1,5 @@
 import { VKAlbumType, VkPhotoType } from 'api-types/vk.types'
 
-
 export type VkResponceError = {
 	error: {
 		error_code: number

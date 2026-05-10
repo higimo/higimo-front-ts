@@ -1,4 +1,4 @@
-import { PortfolioProjectFullType } from 'api-types/portfolio.types';
+import { PortfolioProjectFullType } from 'api-types/portfolio.types'
 
 // TODO: [MEDIUM] На широких экранах 5 в ряд делать? Одновременно в коде и css надо
 const convertCoverSizeToWidth = (coverSize: PortfolioProjectFullType['cover_size']): number => {

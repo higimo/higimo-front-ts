@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { VKAlbumType } from 'api-types/vk.types'
-import { VkApi, VkResponceError } from 'utils/VkApi'
+import { VkApi, VkResponceError } from 'vendor/vk-api'
 
 import { usePageTitle } from 'hook/use-page-title'
 import { useMessage } from 'hook/use-message'
@@ -9,7 +9,7 @@ import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'p
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'
 import { TextContainer } from 'components/ui/text-container/index.js'
 
-import { printVkError } from 'utils/print-vk-error'
+import { printVkError } from 'vendor/print-vk-error'
 
 import { VkContext } from 'context/vk'
 

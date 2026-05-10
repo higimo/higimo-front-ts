@@ -1,4 +1,4 @@
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS';
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 // TODO: [MEDIUM] Добавить общий словарь роутов страниц и сделать галереи-карточек, как на главной хотя бы
 // https://www.tema.ru/travel/

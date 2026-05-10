@@ -4,7 +4,7 @@ import { FunctionComponent } from 'preact'
 import { TableRow } from 'components/data/concert/table-row'
 import { TextContainer } from 'components/ui/text-container'
 
-import { getDateFromTimestamp } from 'utils/get-date-from-timestamp'
+import { getDateFromTimestamp } from 'utils/formatter/get-date-from-timestamp'
 
 let currentDay: number = -1
 

@@ -1,4 +1,4 @@
-import { getAuthPair } from 'utils/get-auth-pair'
+import { getAuthPair } from 'utils/api/get-auth-pair'
 
 import httpBuildQuery from 'http-build-query'
 
@@ -104,6 +104,7 @@ const sendRequest = <T = any>(
 			true
 		)
 
+		// TODO: [MEDIUM] кажется, больше не нужен getAuthPair, кука же сама пристаёт к запросу
 		const { login, pass } = auth || getAuthPair()
 		if (login && pass) {
 			xhttp.setRequestHeader('Authorization', `Basic ${btoa(`${login}:${pass}`)}`)

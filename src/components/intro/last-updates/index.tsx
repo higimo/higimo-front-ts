@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { UpdateNewsType } from './types'
+import { UpdateNewsType } from '../../../api-types/last-update.types'
 import { KeyOf, ValueOf } from 'utils.type'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
@@ -11,7 +11,7 @@ import { NotFoundData } from 'components/ui/not-found-data'
 import { TileElement } from 'components/ui/tile-element'
 import { TilesGallery } from 'components/ui/tiles-gallery'
 
-import { getDate } from 'utils/get-date'
+import { getDate } from 'utils/formatter/get-date'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

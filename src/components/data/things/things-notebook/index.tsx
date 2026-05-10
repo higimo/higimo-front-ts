@@ -1,4 +1,4 @@
-import { NOTEBOOK_SPECS } from "./data"
+import { NOTEBOOK_SPECS } from './data'
 
 export const ThingsNotebook = () => (
 	<div className="content">

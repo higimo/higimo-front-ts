@@ -1,6 +1,6 @@
 import path from 'path'
-import { defineConfig, HttpProxy } from 'vite';
-import preact from '@preact/preset-vite';
+import { defineConfig, HttpProxy } from 'vite'
+import preact from '@preact/preset-vite'
 import { analyzer } from 'vite-bundle-analyzer'
 
 import { createHtmlPlugin } from 'vite-plugin-html'

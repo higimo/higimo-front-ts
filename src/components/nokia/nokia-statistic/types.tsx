@@ -1,4 +1,4 @@
-import { NokiaMeetingStatisticType } from 'api-types/nokia.types';
+import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 
 type ResultDatasetItem = {
 	date: Date

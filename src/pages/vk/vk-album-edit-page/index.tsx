@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { VkPhotoType } from 'api-types/vk.types'
-import { VkApi, VkResponceError } from 'utils/VkApi'
+import { VkApi, VkResponceError } from 'vendor/vk-api'
 
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 import { useMessage } from 'hook/use-message'
@@ -10,7 +10,7 @@ import { useRoute } from 'preact-iso'
 import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
 import { TextContainer } from 'components/ui/text-container'
 
-import { printVkError } from 'utils/print-vk-error'
+import { printVkError } from 'vendor/print-vk-error'
 
 import { VkContext } from 'context/vk'
 

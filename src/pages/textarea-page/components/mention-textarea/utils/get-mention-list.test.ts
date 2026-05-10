@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vitest'
 import { getMentionList } from './get-mention-list'
 
 describe('getMentionList', () => {

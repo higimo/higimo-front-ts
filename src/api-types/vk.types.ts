@@ -1,4 +1,4 @@
-import { UnixTime } from "utils.type";
+import { UnixTime } from 'utils.type'
 
 export type VKAlbumSizesType = {
 	type: 'x' | 's';

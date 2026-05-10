@@ -8,7 +8,7 @@ import { useRoute } from 'preact-iso'
 
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import sendRequest, { ApiError } from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'

@@ -1,4 +1,4 @@
-import { DataItemWithTags, SelectedTags } from "./types";
+import { DataItemWithTags, SelectedTags } from './types'
 
 /**
  * Стратегия "OR между группами, OR внутри группы".

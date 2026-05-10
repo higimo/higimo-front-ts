@@ -1,4 +1,4 @@
-import { MessageContainer } from "components/ui/message-container"
+import { MessageContainer } from 'components/ui/message-container'
 
 /**
  * Возвращает контейнер и добавлялку месседжей

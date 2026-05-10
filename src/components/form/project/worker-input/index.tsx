@@ -14,7 +14,7 @@ import { WorkersTree } from 'components/form/project/workers-tree'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import sendRequest, { ApiError } from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/api/send-request'
 
 import './style.css'
 import { FunctionComponent } from 'preact'

@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, within } from '@testing-library/preact'; // <-- Импорт для Preact
-import { TourismMapGeo } from './index';
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { render, screen, within } from '@testing-library/preact' // <-- Импорт для Preact
+import { TourismMapGeo } from './index'
 import { useWindowSize } from 'hook/use-window-size'
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2';
+import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
 
 // @ts-nocheck
 

@@ -1,4 +1,4 @@
-import { PortfolioCreditsType, PortfolioWorkerId } from 'api-types/portfolio.types';
+import { PortfolioCreditsType, PortfolioWorkerId } from 'api-types/portfolio.types'
 
 const portfolioWorkerId = 1 as PortfolioWorkerId
 

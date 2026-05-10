@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { MeetingApiService } from 'components/nokia/form/person-api'
 import { useRoute } from 'preact-iso'
 import { toast } from 'toast'
-import { ApiError } from 'utils/send-request'
+import { ApiError } from 'utils/api/send-request'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]

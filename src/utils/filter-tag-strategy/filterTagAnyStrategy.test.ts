@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { filterTagAnyStrategy } from './filterTagAnyStrategy';
-import { DataItemWithTags, SelectedTags } from './types';
+import { describe, it, expect } from 'vitest'
+import { filterTagAnyStrategy } from './filterTagAnyStrategy'
+import { DataItemWithTags, SelectedTags } from './types'
 
 describe('[Стратегия фильтрации] filterTagAnyStrategy', () => {
 	const mockData: DataItemWithTags[] = [

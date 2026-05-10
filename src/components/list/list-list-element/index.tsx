@@ -3,7 +3,7 @@ import { ListListType } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/use-auth'
 
-import sendRequest, { ApiError } from 'utils/send-request'
+import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'

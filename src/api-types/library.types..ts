@@ -1,4 +1,4 @@
-import { Brand, DateOnlyString } from "utils.type"
+import { Brand, DateOnlyString } from 'utils.type'
 
 type LibraryId = Brand<number, 'LibraryId'>
 

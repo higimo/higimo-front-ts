@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
 
-import sendRequest, { ApiError, SendRequestOptions } from 'utils/send-request'
+import sendRequest, { ApiError, SendRequestOptions } from 'utils/api/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
