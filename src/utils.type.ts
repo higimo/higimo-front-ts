@@ -110,6 +110,12 @@ export type UnixTime = Brand<number, 'UnixTime'>
 
 
 /**
+ * Число года
+ */
+export type YearNumber = Brand<number, 'YearNumber'>
+
+
+/**
  * Только дата в формате `2024-01-15`
  */
 export type DateOnlyString = Brand<string, 'DateOnlyString'>;

@@ -6,12 +6,12 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { getDateFromTimestamp } from 'utils/get-date-from-timestamp'
 
+let currentDay: number = -1
+
 interface ScheduleTableProps {
 	data: NasheType[]
 	title: string
 }
-
-let currentDay: number = -1
 
 /**
  * Компонент для отображения таблицы с расписанием

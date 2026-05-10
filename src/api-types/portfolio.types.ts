@@ -49,7 +49,7 @@ export type PortfolioProjectSimpleType = {
 	vendor_id: number
 	vendor: PortfolioVendorType
 	name: string
-	code: string
+	code: Code
 	date: DateOnlyString
 	image: 'png' | 'jpg'
 	cover_size: 'high' | 'big' | 'normal' | 'small'

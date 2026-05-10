@@ -1,4 +1,8 @@
+import { Brand } from "utils.type"
+
+type LogismId = Brand<number, 'LogismId'>
+
 export type LogismType = {
-	id: number
+	id: LogismId
 	text: string
 }

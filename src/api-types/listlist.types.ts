@@ -1,8 +1,8 @@
-import { Brand } from 'utils.type'
+import { Brand, Code } from 'utils.type'
 
-type ListItemId = Brand<number, 'ListItemId'>
+type ListItemId     = Brand<number, 'ListItemId'>
 type ListPropertyId = Brand<number, 'ListPropertyId'>
-type ListValueId = Brand<number, 'ListValueId'>
+type ListValueId    = Brand<number, 'ListValueId'>
 
 export type ListerProperty = {
 	id: ListValueId
@@ -35,7 +35,7 @@ export type ListerItem = {
 	id: ListItemId
 	parent_id: ListItemId
 	title: string
-	code: string
+	code: Code
 	created_at: number
 	children?: ListerItem[]
 	parent?: ListerItem

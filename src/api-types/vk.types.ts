@@ -1,3 +1,5 @@
+import { UnixTime } from "utils.type";
+
 export type VKAlbumSizesType = {
 	type: 'x' | 's';
 	src: string;
@@ -30,7 +32,7 @@ export type VkPhotoSizesType = {
 
 export type VkPhotoType = {
 	album_id: number;
-	date: number; // timestamp
+	date: UnixTime; // timestamp
 	id: number;
 	owner_id: number; // user_id
 	sizes: VkPhotoSizesType[];
