@@ -1,8 +1,5 @@
-// Надо купить транспондер
-
+import { Coord } from 'utils.type'
 import { PovType } from './russia-city2'
-
-export type Coord = [number, number]
 
 export const mainTrack: Coord[] = [
 	[55.970577011177575, 43.0736896972643],

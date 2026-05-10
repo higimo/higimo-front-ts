@@ -1,5 +1,5 @@
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
-import { Fragment, FunctionComponent } from 'preact'
+import { Fragment } from 'preact'
+import { BasePointType, Coord } from 'utils.type'
 
 import { useWindowSize } from 'hook/use-window-size'
 
@@ -7,11 +7,23 @@ import { Clusterer, FullscreenControl, Map, Placemark, Polyline, YMaps } from 'r
 
 // TODO: [FEATURE] посещение рек РФ
 
-type TourismMapGeoPropsType = {
-	items?: PovType[]
-	lines?: number[][]
+const DEFAULT_ZOOM = 8
+const DEFAULT_CENTER = [55.73, 37.75] as Coord// Москва
+
+type TourismMapGeoPropsType<T extends BasePointType, L extends Coord> = {
+	items?: T[]
+	lines?: L[]
+	zoom?: number
+	center?: Coord,
+	cluster?: boolean
 }
-export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items, lines }) => {
+export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
+	items,
+	lines,
+	zoom = DEFAULT_ZOOM,
+	center = DEFAULT_CENTER,
+	cluster = true
+}: TourismMapGeoPropsType<T, L>) => {
 	const { width, height } = useWindowSize()
 
 	return (
@@ -22,8 +34,8 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 						width={Math.min(width * .85, 1200)}
 						height={Math.min(height * .6, 750)}
 						defaultState={{
-							zoom: 8,
-							center: [55.73, 37.75],
+							zoom,
+							center,
 						}}
 					>
 						<FullscreenControl />
@@ -37,7 +49,7 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 						/>}
 						<Clusterer
 							options={{
-								groupByCoordinates: false,
+								groupByCoordinates: !cluster,
 								gridSize: 40,
 								clusterDisableClickZoom: true,
 								clusterHideIconOnBalloonOpen: false,
@@ -46,10 +58,10 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 								clusterIconColor: '#344d3d', // Иконка кластера #b3b3b3
 								hasBalloon: true,
 							}}
-							modules={[
+							modules={cluster ? [
 								'clusterer.addon.balloon',
 								'clusterer.addon.hint',
-							]}
+							] : []}
 						>
 							{!!items && items.map((point) => (
 								<Placemark
@@ -60,7 +72,7 @@ export const TourismMapGeo: FunctionComponent<TourismMapGeoPropsType> = ({ items
 										iconCaption: point.title,
 										balloonContentHeader: point.title,
 										balloonContentBody: [
-											point.type,
+											'type' in point && point.type,
 											[
 												'okrug' in point && point.okrug,
 												'region' in point && point.region,

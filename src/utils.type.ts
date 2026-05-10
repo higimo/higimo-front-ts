@@ -129,3 +129,19 @@ export const isValidDateOnly = (str: string): str is DateOnlyString => /^\d{4}-\
  * Символьный код элемента. Он же `slug`
  */
 export type Code = string
+
+
+/**
+ * Координаты
+ */
+export type Coord = [number, number]
+
+/**
+ * Базовая точка на карте
+ * TODO: [HARD]: внедрить во все типы с точками
+ */
+export type BasePointType = {
+	title: string
+	coord: Coord
+}
+

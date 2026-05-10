@@ -1,10 +1,9 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, within } from '@testing-library/preact' // <-- Импорт для Preact
-import { TourismMapGeo } from './index'
-import { useWindowSize } from 'hook/use-window-size'
+import { render, screen } from '@testing-library/preact'; // <-- Импорт для Preact
 import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
-
-// @ts-nocheck
+import { useWindowSize } from 'hook/use-window-size'
+import { Coord } from 'utils.type'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { TourismMapGeo } from './index'
 
 // Мокаем зависимости
 vi.mock('hook/use-window-size', () => ({
@@ -67,7 +66,7 @@ describe('TourismMapGeo', () => {
 		},
 	]
 
-	const mockLines: number[][] = [
+	const mockLines: Coord[] = [
 		[55.75, 37.62],
 		[59.93, 30.31]
 	]

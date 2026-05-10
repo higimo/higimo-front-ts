@@ -1,13 +1,14 @@
+import { FunctionComponent } from 'preact'
+import { Coord } from 'utils.type'
+
 import { useLazyLoadData } from 'hook/use-lazy-load-data'
 import { usePageTitle } from 'hook/use-page-title'
 
-import { FunctionComponent } from 'preact'
-import { TextContainer } from 'components/ui/text-container'
-
-import { Coord } from 'components/tourism/tourism-maps-figure/data/father-track'
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
+import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container'
 
 import 'pages/tourism/tourism-style.css'
 import './style.css'
@@ -24,7 +25,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 	usePageTitle('Путешествие с отцом')
 
 	if (!stateData) {
-		return null
+		return <Loading />
 	}
 
 	return (
@@ -126,7 +127,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 					Курск
 				</div>
 			</TextContainer>
-			<TourismMapGeo
+			<TourismMapGeo<PovType, Coord>
 				lines={lines}
 				items={cities}
 			/>

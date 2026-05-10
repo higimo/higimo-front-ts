@@ -1,7 +1,8 @@
+import { Coord } from 'utils.type'
+
 import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
-import { YandexMap } from 'components/tourism/yandex-map'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
@@ -10,9 +11,11 @@ import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useMemo } from 'preact/hooks'
+import { TourismMapGeo } from '../tourism-map-geo'
+
+import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
 
 import 'components/tourism/yandex-map.css'
 
@@ -62,8 +65,11 @@ export const TourismMapsMoscowBar = () => {
 
 	return (
 		<div className="tourism-maps-moscow-bar">
-			<YandexMap
+			<TourismMapGeo<BarPovType, Coord>
 				items={filteredData}
+				zoom={12}
+				center={[55.758772, 37.617933]}
+				cluster={false}
 			/>
 			<TagGroupedGallery
 				groups={tagGroups}
