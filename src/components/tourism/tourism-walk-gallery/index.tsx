@@ -10,8 +10,10 @@ import { NotFoundData } from 'components/ui/not-found-data'
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import '../../../pages/tourism/tourism-style.css'
+import 'pages/tourism/tourism-style.css'
 import './style.css'
+import { TileElement } from 'components/ui/tile-element'
+import { TextContainer } from 'components/ui/text-container'
 
 export const TourismWalkGallery = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
@@ -26,18 +28,35 @@ export const TourismWalkGallery = () => {
 		return <NotFoundData />
 	}
 
+	const halfList = Math.ceil(yamapList.data.length / 2)
+
 	return (
 		<div className="tourism-walk-gallery">
-			<h3>Конструктор карт</h3>
-			<ul className="tourism-walk-gallery__list">
-				{yamapList.data.map(item => (
-					<li className="tourism-walk-gallery__item">
-						<a href={ROUTE_LINKS.tourismWalkDetail({ idcode: item.code })}>
-							{item.name}
-						</a>
-					</li>
-				))}
-			</ul>
+			<TextContainer>
+				<h3>Конструктор карт</h3>
+			</TextContainer>
+			<div className="tourism-walk-gallery__list">
+				<div className="tourism-walk-gallery__column">
+					{yamapList.data.slice(0, halfList).map(item => (
+						<TileElement
+							className="tourism-walk-gallery__item"
+							href={ROUTE_LINKS.tourismWalkDetail({ idcode: item.code })}
+							name={item.name}
+							description=""
+						/>
+					))}
+				</div>
+				<div className="tourism-walk-gallery__column">
+					{yamapList.data.slice(halfList).map(item => (
+						<TileElement
+							className="tourism-walk-gallery__item"
+							href={ROUTE_LINKS.tourismWalkDetail({ idcode: item.code })}
+							name={item.name}
+							description=""
+						/>
+					))}
+				</div>
+			</div>
 		</div>
 	)
 }

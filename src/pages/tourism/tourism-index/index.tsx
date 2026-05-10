@@ -2,13 +2,14 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStarsIntro } from 'components/tourism/city-stars-intro'
-import { PrecentationContainer } from 'components/ui/precentation-container'
-import { TextContainer } from 'components/ui/text-container'
+import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismNashestviePreview } from 'components/tourism/tourism-nashestvie-preview'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
+import { Breadcrumps } from 'components/ui/breadcrumps'
+import { PrecentationContainer } from 'components/ui/precentation-container'
+import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
@@ -19,8 +20,8 @@ import listImg from './img/list.svg'
 import passportImg from './img/passport.svg'
 import russiaImg from './img/russia.svg'
 
-import { data } from './data'
 
+// TODO: [HARD] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
 	usePageTitle('Туризм')
 
@@ -59,16 +60,9 @@ export const TourismIndexPage: FunctionComponent = () => {
 			<PrecentationContainer className="tourism-walk-anons">
 				<TextContainer>
 					<h2><img className="tourism-visited-anons__icon--mini" src={listImg} /> Другие списки</h2>
-					<h3>Эксперименты в Я.Картах</h3>
-					<ul className="tourism-walk-gallery__list">
-						{data.map(item => (
-							<li className="tourism-walk-gallery__item">
-								<a href={item.href}>{item.title}</a>
-							</li>
-						))}
-					</ul>
-					<TourismWalkGallery />
 				</TextContainer>
+				<TourismExperimentMaps />
+				<TourismWalkGallery />
 			</PrecentationContainer>
 
 			<PrecentationContainer>

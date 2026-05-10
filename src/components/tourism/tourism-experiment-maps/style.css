@@ -1,0 +1,58 @@
+.tourism-walk-gallery__list {
+	--tile-gap: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: var(--tile-gap);
+	max-width: 960px;
+	justify-content: center;
+    margin: auto;
+	padding: var(--tile-gap);
+}
+@media (min-width: 768px) {
+	.tourism-walk-gallery__list {
+		--tile-gap: 24px;
+		flex-direction: row;
+	}
+}
+
+.tourism-walk-gallery__column {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	width: 100%;
+	gap: var(--tile-gap);
+}
+
+.tourism-identy-page a.tourism-walk-gallery__item {
+	--color: #c9d9cf;
+    --border-default: #fff5;
+    --border-hover: #fff;
+
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    background: #304437;
+    padding: var(--tile-gap);
+    box-shadow: 0 4px 5px rgba(15, 208, 85, .06),
+		0 4px 15px rgba(15, 208, 85, .07),
+		0 4px 35px rgba(15, 208, 85, .08);
+    max-width: 512px;
+    width: 100%;
+	border: none;
+}
+@media (min-width: 768px) {
+	.tourism-identy-page a.tourism-walk-gallery__item {
+		font-size: 24px;
+	}
+}
+.tourism-identy-page a.tourism-walk-gallery__item:hover {
+	border: none;
+}
+
+.tourism-walk-gallery__list .tile-element {
+	margin-bottom: 0;
+}
+
+.tourism-walk-gallery__list .tile-element__name {
+	line-height: 1.4;
+}
