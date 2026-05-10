@@ -1,9 +1,9 @@
-import { Fragment, FunctionComponent } from 'preact'
 import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+import { Fragment, FunctionComponent } from 'preact'
 
 import { useWindowSize } from 'hook/use-window-size'
 
-import { YMaps, Map, Clusterer, Placemark, FullscreenControl, Polyline } from 'react-yandex-maps'
+import { Clusterer, FullscreenControl, Map, Placemark, Polyline, YMaps } from 'react-yandex-maps'
 
 // TODO: [FEATURE] посещение рек РФ
 
