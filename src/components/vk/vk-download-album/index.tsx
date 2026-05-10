@@ -31,6 +31,8 @@ type VkPhotosContentType = {
 	photos: VkPhotoType['orig_photo']['url'][]
 }
 
+// TODO: [HARD] Не скачивает данные, обман!
+// TODO: [HARD] Не работает от слова совсем
 export const VkDownloadAlbum: FunctionComponent = () => {
 	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
 	const { size, push, pull, view } = useQueue<VkQueueType>()

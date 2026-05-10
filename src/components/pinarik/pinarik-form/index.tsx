@@ -30,6 +30,7 @@ type HandlePinarikSubmitType = (addStatus: (val: HigimoServerResponse) => void) 
 	(values: FormValues) => Promise<void>
 const handlePinarikSubmit: HandlePinarikSubmitType = addStatus => async values => {
 	try {
+		// TODO: [BACKEND] бэк не принимает такие запросы
 		const serverPostResult = await sendRequest(API_ROUTE.pinarik, {
 			method: 'POST',
 			values,

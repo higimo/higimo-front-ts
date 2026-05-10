@@ -34,6 +34,7 @@ import { PronPage }            from 'pages/test-page/tools/pron-page'
 import { LibAdminPage } from 'pages/test-page/tools/lib/lib-admin-page'
 import { LibIndexPage } from 'pages/test-page/tools/lib/lib-index-page'
 
+import { ToolIndexPage }      from 'pages/test-page/tools/tool-page'
 import { CinemaIndexPage }    from 'pages/info/cinema-index-page'
 import { CinemaScriptPage }   from 'pages/info/cinema-script-page'
 import { CinemaSinglePage }   from 'pages/info/cinema-single-page'
@@ -91,7 +92,7 @@ import { AdminPage }     from 'pages/auth/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
 import { TestPage }      from 'pages/test-page'
 import { TextareaPage }  from 'pages/textarea-page'
-import { ToolIndexPage } from 'pages/test-page/tools/tool-page'
+import { ToolPage }      from 'components/tool/tool-page'
 
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
 import { MerchantPage } from 'pages/merchant/merchant-page'
@@ -105,7 +106,6 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { ToolPage } from 'components/tool/tool-page'
 
 export function App() {
 	return (
@@ -132,8 +132,7 @@ export function App() {
 								{/* admin */}
 								<Route path={ROUTE_LINKS.login} component={LoginPage} />
 								<PrivateRoute path={ROUTE_LINKS.adminIndex} component={AdminPage} />
-								<Route path="/admin/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} />
-
+								<PrivateRoute path="/admin/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} />
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 								{/* Секретные разработки не для продакшена */}
@@ -188,8 +187,7 @@ export function App() {
 								{/* Сервисы о себе */}
 								<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
-
-								<PrivateRoute path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
+								<Route path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
 								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
 								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
 								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />
@@ -198,6 +196,7 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
 
 
+								{/* Nokia / Sweebe */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeople} component={NokiaPeopleListPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaMeetingFormPage} />
@@ -206,18 +205,14 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
 								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
-								{/* TODO: [MEDIUM] нет отправки на бэк */}
 								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
-								{/* TODO: [HARD] /tool/vk не работает */}
-								{/* TODO: [HARD] В провайдер и единый роут? */}
+								{/* VK тулы */}
 								<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
 								<Route path={ROUTE_LINKS.toolVkStaticAlbum} component={VkStaticAlbumPage} />
 								<Route path={ROUTE_LINKS.toolVkAlbums} component={VkAlbumListPage} />
 								<Route path={ROUTE_LINKS.toolVkAlbumSingle_CONST} component={VkAlbumEditPage} />
-								{/* TODO: [HARD] Не скачивает данные, обман! */}
-								{/* TODO: [HARD] Не работает от слова совсем */}
 								<Route path={ROUTE_LINKS.toolVkDownloadAlbum} component={VkDownloadPage} />
 
 
@@ -234,8 +229,6 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
 								<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
 								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
-
-
 
 								<Route default component={NotFoundPage} />
 							</Router>
