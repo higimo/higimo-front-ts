@@ -1,4 +1,6 @@
-import { generateLink } from '../utils/url-route/generateLink'
+import { KeyOf } from 'utils.type'
+
+import { generateLink } from 'utils/url-route/generateLink'
 
 const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectIndex:        '/project/',
@@ -191,4 +193,4 @@ export const ROUTE_LINKS = {
 	TODO:       '#',
 } as const
 
-export type RouteLinksType = keyof typeof ROUTE_LINKS
+export type RouteLinksType = KeyOf<typeof ROUTE_LINKS>

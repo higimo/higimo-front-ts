@@ -1,11 +1,12 @@
 import { FunctionComponent } from 'preact'
+import { KeyOf } from 'utils.type'
 
-import sj from './img/sj.png'
-import daily from './img/daily.svg'
 import als from './img/als.png'
-import rtop from './img/rtop.svg'
+import daily from './img/daily.svg'
 import intersection from './img/intersection.svg'
 import kidguru from './img/kidgu.ru.svg'
+import rtop from './img/rtop.svg'
+import sj from './img/sj.png'
 
 import './style.css'
 
@@ -18,7 +19,7 @@ const logoMap = {
 	kidguru: kidguru,
 } as const
 
-type NameCompanyType = keyof typeof logoMap
+type NameCompanyType = KeyOf<typeof logoMap>
 
 type CompanyLogoType = {
 	name: NameCompanyType

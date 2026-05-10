@@ -1,6 +1,9 @@
+import { KeyOf } from 'utils.type'
+
 import { useEffect, useReducer } from 'preact/hooks'
 
 import sendRequest from 'utils/api/send-request'
+
 import { ApiRouteType } from 'dic/API_ROUTE'
 
 export const API_STATUS = {
@@ -10,8 +13,7 @@ export const API_STATUS = {
 	ERROR:   'ERROR',
 } as const
 
-export type ApiStatusNameType = keyof typeof API_STATUS
-export type ApiStatusValueType = typeof API_STATUS[keyof typeof API_STATUS]
+export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
 type ApiState<T> = {
 	status: ApiStatusNameType
@@ -48,7 +50,8 @@ export const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiSta
 const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === '-1'
 
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })
-// type ApiUrlType = typeof API_ROUTE[keyof typeof API_ROUTE]
+// мб, перестало работать
+// type ApiUrlType = ValueOf<typeof API_ROUTE>
 type ApiUrlType = ApiRouteType
 
 // TODO: [HIGH] Добавить ещё POST, DELETE

@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'preact'
+import { ValueOf } from 'utils.type'
 
 import cs from 'classnames'
 
@@ -10,7 +11,7 @@ export const BAIDGE_COLOR = {
 	gray: 'gray',
 	blue: 'blue',
 } as const
-type ColorBadgeType = (typeof BAIDGE_COLOR)[keyof typeof BAIDGE_COLOR]
+type ColorBadgeType = ValueOf<typeof BAIDGE_COLOR>
 
 const preventDefault = null
 

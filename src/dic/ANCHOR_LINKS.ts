@@ -1,3 +1,5 @@
+import { KeyOf } from 'utils.type'
+
 export const ANCHOR_LINKS = {
 	travel: 'travel',
 	service: 'service',
@@ -7,4 +9,4 @@ export const ANCHOR_LINKS = {
 	done: 'done',
 } as const
 
-export type AnchorLinksType = keyof typeof ANCHOR_LINKS
+export type AnchorLinksType = KeyOf<typeof ANCHOR_LINKS>

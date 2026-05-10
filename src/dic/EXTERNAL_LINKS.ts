@@ -1,3 +1,5 @@
+import { KeyOf } from 'utils.type'
+
 export const EXTERNAL_LINKS = {
 	wikiIso3166: 'https://ru.wikipedia.org/wiki/ISO_3166-2:RU',
 
@@ -48,4 +50,4 @@ export const EXTERNAL_LINKS = {
 	aboutLivelib: 'https://www.livelib.ru/reader/higimo',
 } as const
 
-export type ExternalLinksType = keyof typeof EXTERNAL_LINKS
+export type ExternalLinksType = KeyOf<typeof EXTERNAL_LINKS>

@@ -1,3 +1,5 @@
+import { ValueOf } from 'utils.type'
+
 import { generateLink } from 'utils/url-route/generateLink'
 
 export const API_ROUTE = {
@@ -62,7 +64,7 @@ export const API_ROUTE = {
 } as const
 
 export type ApiRouteType = Exclude<
-	typeof API_ROUTE[keyof typeof API_ROUTE],
+	ValueOf<typeof API_ROUTE>,
 	typeof API_ROUTE['accordSingle'] | typeof API_ROUTE['cinemaSingle']
 > | ReturnType<typeof API_ROUTE['accordSingle']>
 | ReturnType<typeof API_ROUTE['cinemaSingle']>

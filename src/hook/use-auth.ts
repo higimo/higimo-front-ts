@@ -1,10 +1,12 @@
-import { useEffect, useCallback, useReducer } from 'preact/hooks'
+import { ValueOf } from 'utils.type'
+
 import { useLocation } from 'preact-iso'
+import { useCallback, useEffect } from 'preact/hooks'
 
 import sendRequest from 'utils/api/send-request'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import { signal } from '@preact/signals'
 
@@ -16,7 +18,7 @@ export const AUTH_STATUS_DIC = {
 } as const
 
 interface AuthState {
-	status: typeof AUTH_STATUS_DIC[keyof typeof AUTH_STATUS_DIC]
+	status: ValueOf<typeof AUTH_STATUS_DIC>
 	isAuth: boolean
 }
 

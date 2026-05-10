@@ -1,3 +1,5 @@
+import { ValueOf } from 'utils.type'
+
 import { ROUTE_LINKS } from './ROUTE_LINKS'
 
 type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS['projectDetail_CONST']
@@ -17,7 +19,7 @@ type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS
 	| typeof ROUTE_LINKS['typo'] | typeof ROUTE_LINKS['TODO']
 	| typeof ROUTE_LINKS['projectTable'] | typeof ROUTE_LINKS['projectTest'] | typeof ROUTE_LINKS['projectSandbox']
 
-type RouteType = Exclude<typeof ROUTE_LINKS[keyof typeof ROUTE_LINKS], ExcludeRouteType>
+type RouteType = Exclude<ValueOf<typeof ROUTE_LINKS>, ExcludeRouteType>
 
 export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.index]: '🏠',

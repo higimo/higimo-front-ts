@@ -1,14 +1,12 @@
-import { useEffect, useCallback, useReducer } from 'preact/hooks'
-import { useLocation } from 'preact-iso'
+import { useEffect } from 'preact/hooks'
 
 import sendRequest from 'utils/api/send-request'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import { signal } from '@preact/signals'
-import { KeyOf, ValueOf } from 'utils.type'
 import { MerchantProductType } from 'components/merchant/types'
+import { ValueOf } from 'utils.type'
 
 export const MERCHANT_PRODUCT_STATUS_DIC = {
 	INIT:    'INIT',
@@ -18,7 +16,7 @@ export const MERCHANT_PRODUCT_STATUS_DIC = {
 } as const
 
 interface MerchantProductState {
-	status: ValueOf<typeof MERCHANT_PRODUCT_STATUS_DIC> // TODO: [MEDIUM] применить по остальному проекту
+	status: ValueOf<typeof MERCHANT_PRODUCT_STATUS_DIC>
 	products: MerchantProductType[]
 }
 
