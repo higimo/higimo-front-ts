@@ -5,7 +5,7 @@ import * as useAuthModule from 'hook/use-auth'
 import { useLocation } from 'preact-iso'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-vi.mock('utils/send-request', () => ({
+vi.mock('utils/api/send-request', () => ({
 	default: vi.fn()
 }));
 

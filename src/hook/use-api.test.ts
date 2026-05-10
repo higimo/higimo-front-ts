@@ -4,7 +4,7 @@ import sendRequest from 'utils/api/send-request'
 import useApi, { API_STATUS, apiReducer } from 'hook/use-api'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-vi.mock('utils/send-request', () => ({
+vi.mock('utils/api/send-request', () => ({
 	default: vi.fn()
 }))
 
@@ -34,7 +34,6 @@ describe('useApi', () => {
 
 	describe('сетевые запросы', () => {
 		it('не отправляет реальный HTTP-запрос', async () => {
-			// Шпионим за глобальным fetch и XMLHttpRequest
 			// @ts-ignore
 			const fetchSpy = vi.spyOn(global, 'fetch')
 			// @ts-ignore
