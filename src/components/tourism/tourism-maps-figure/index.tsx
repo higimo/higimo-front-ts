@@ -8,7 +8,7 @@ import { YMaps, Map } from 'react-yandex-maps'
 import { TextContainer } from 'components/ui/text-container'
 import { Tag } from 'components/ui/tag'
 
-import '../yandex-map.css'
+import 'components/tourism/yandex-map.css'
 
 const MAP_MODE = {
 	INIT: 'INIT',

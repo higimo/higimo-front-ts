@@ -173,10 +173,12 @@ type FilterStateType = {
 export const TourismVisitedPage: FunctionComponent = () => {
 	const stateData = useLazyLoadData<{ russiaCity: PovType[] }>(import('components/tourism/tourism-maps-figure/data/common'))
 	const [visualizator, setVisualizator] = useState(VISUALIZATOR_MAP.CARD)
+	// TODO: useTags
 	const [filter, setFilter] = useState<FilterStateType>({
 		visited: VISITED_MAP.INIT,
 		type: TYPE_MAP.TOTAL,
 	})
+	// TODO: useSort
 	const [sort, setSort] = useState(SORT_MAP.INIT)
 
 	if (!stateData) {

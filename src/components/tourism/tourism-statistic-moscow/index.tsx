@@ -1,8 +1,14 @@
+import { Fragment } from 'preact/jsx-runtime'
+import { FunctionComponent } from 'preact'
+import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+
 import { FactoidRow } from 'components/ui/factoid-row'
 import { TextContainer } from 'components/ui/text-container'
-import { Fragment } from 'preact/jsx-runtime'
 
-export const TourismStatisticMoscow = ({ total }) => {
+type TourismStatisticMoscowPropsType = {
+	total: PovType[]
+}
+export const TourismStatisticMoscow: FunctionComponent<TourismStatisticMoscowPropsType> = ({ total }) => {
 	const russianPov = total.filter(item => item.country === 'Россия')
 	const moscowAdmOkrug = russianPov.filter(item => item.type === 'административный округ Москвы')
 	const moscowTowns = russianPov.filter(item => item.type === 'поселение Москвы')

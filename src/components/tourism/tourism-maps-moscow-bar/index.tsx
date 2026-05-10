@@ -1,20 +1,20 @@
+import { TagGroupedGallery } from 'components/tourism/TagGroupedGallery'
+import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
+import { YandexMap } from 'components/tourism/YandexMap'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { TagGroupedGallery } from '../TagGroupedGallery'
-import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-import { YandexMap } from '../YandexMap'
 
-import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
+import useApi from 'hook/use-api'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useMemo } from 'preact/hooks'
-import useApi from 'hook/use-api'
 
 import { API_ROUTE } from 'dic/api-route'
 import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
 
-import '../yandex-map.css'
+import 'components/tourism/yandex-map.css'
 
 export const TourismMapsMoscowBar = () => {
 	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
