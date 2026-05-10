@@ -31,6 +31,7 @@ export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode 
 	const isListEmpty = useEmptyDataState(accords.data)
 	const isSongEmpty = useEmptyDataState(songSingle.data)
 	// TODO: [BACKEND] пусть бекенд присылает эти данные
+
 	const seeAlsoList = useRandomElements(accords.data, ALSO_ELEMENTS)
 
 	if (isLoading) {

@@ -7,7 +7,6 @@ import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE } from 'hook/use-group-tags
 
 import './style.css'
 
-// TODO: [MEDIUM] очень похоже на ProjectTagGroupGallery
 type TagGroupedGalleryProps = {
 	groups: Record<string, string[]> // {Главные: [ALS, Rtop], размер: [большой, малый]}
 	selectedTags: Record<string, Set<string>>

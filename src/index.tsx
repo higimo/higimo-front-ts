@@ -135,7 +135,6 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 								{/* Секретные разработки не для продакшена */}
-								{/* TODO: [MEDIUM] скрыть эти компоненты из продакшена */}
 								<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />
 								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
 								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
