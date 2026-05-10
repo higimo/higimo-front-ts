@@ -10,7 +10,6 @@ import { Dispatch, StateUpdater }  from 'preact/hooks'
 import { useAuth } from 'hook/use-auth'
 import { useFormStatus } from 'hook/use-form-status'
 
-import { getAuthPair } from 'utils/api/get-auth-pair'
 import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
@@ -30,14 +29,10 @@ type FormValues = {
 type HandlePinarikSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
 	(values: FormValues) => Promise<void>
 const handlePinarikSubmit: HandlePinarikSubmitType = addStatus => async values => {
-	// TODO: [MEDIUM] кажется, больше не нужен getAuthPair, кука же сама пристаёт к запросу
-	const { login, pass } = getAuthPair()
-
 	try {
 		const serverPostResult = await sendRequest(API_ROUTE.pinarik, {
 			method: 'POST',
 			values,
-			auth: { login, pass },
 		})
 
 		addStatus(serverPostResult)

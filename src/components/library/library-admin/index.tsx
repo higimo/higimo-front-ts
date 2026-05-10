@@ -5,8 +5,7 @@ import { LibraryType } from 'api-types/library.types.'
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
-import sendRequest, { ApiError, SendRequestOptions } from 'utils/api/send-request'
-import { getAuthPair } from 'utils/api/get-auth-pair'
+import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
@@ -25,11 +24,8 @@ type FormValues = {
 type HandleLibSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
 	(values: FormValues) => Promise<void>
 const handleLibSubmit: HandleLibSubmitType = setStatus => async values => {
-	// TODO: [MEDIUM] кажется, больше не нужен getAuthPair, кука же сама пристаёт к запросу
-	const { login, pass } = getAuthPair()
 	try {
-		const requestOptions: SendRequestOptions = { method: 'POST', auth: { login, pass }, values }
-		const serverResult = await sendRequest(API_ROUTE.lib, requestOptions)
+		const serverResult = await sendRequest(API_ROUTE.lib, { method: 'POST', values })
 		setStatus(serverResult)
 	} catch (error) {
 		const apiError = error as ApiError

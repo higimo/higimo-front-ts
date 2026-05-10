@@ -1,5 +1,3 @@
-import { getAuthPair } from 'utils/api/get-auth-pair'
-
 import httpBuildQuery from 'http-build-query'
 
 declare global {
@@ -41,10 +39,6 @@ export class ApiError extends Error {
 
 export interface SendRequestOptions {
 	method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-	auth?: {
-		login: string
-		pass: string
-	} | null
 	values?: Record<string, any>
 }
 
@@ -52,7 +46,6 @@ const sendRequest = <T = any>(
 	url: string,
 	{
 		method = 'GET',
-		auth = null,
 		values = {}
 	}: SendRequestOptions = {}
 ): Promise<T> => new Promise((resolve, reject) => {
@@ -103,12 +96,6 @@ const sendRequest = <T = any>(
 			(method === 'GET' ? url + (Object.keys(values).length ? '?' + httpBuildQuery(values) : '') : url),
 			true
 		)
-
-		// TODO: [MEDIUM] кажется, больше не нужен getAuthPair, кука же сама пристаёт к запросу
-		const { login, pass } = auth || getAuthPair()
-		if (login && pass) {
-			xhttp.setRequestHeader('Authorization', `Basic ${btoa(`${login}:${pass}`)}`)
-		}
 
 		xhttp.setRequestHeader('Accept', 'application/json')
 		xhttp.setRequestHeader('Content-Type', method === 'GET' ? 'application/json' : 'application/x-www-form-urlencoded')
