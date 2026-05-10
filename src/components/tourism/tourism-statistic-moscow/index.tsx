@@ -9,7 +9,7 @@ type TourismStatisticMoscowPropsType = {
 	total: PovType[]
 }
 export const TourismStatisticMoscow: FunctionComponent<TourismStatisticMoscowPropsType> = ({ total }) => {
-	const russianPov = total.filter(item => item.country === 'Россия')
+	const russianPov = total.filter(item => 'country' in item && item.country === 'Россия')
 	const moscowAdmOkrug = russianPov.filter(item => item.type === 'административный округ Москвы')
 	const moscowTowns = russianPov.filter(item => item.type === 'поселение Москвы')
 	const moscowDistrict = russianPov.filter(item => item.type === 'район Москвы')

@@ -1,14 +1,13 @@
-import { AccordType, AccordRealTagType } from 'api-types/accord.types'
+import { AccordRealTagType, AccordType } from 'api-types/accord.types'
 
 import useApi from 'hook/use-api'
 import { useMemo } from 'preact/hooks'
 
 import { median } from 'utils/math/median'
 
-import { FILTER_TAG_MAPPING } from 'components/accord/utils'
-import { API_ROUTE } from 'dic/api-route'
 import { TOTAL_TAGS } from 'components/accord/tags'
-import { liric, scream, korol, funny, rap, old, ussr, lacky, newschool, bard } from 'components/accord/tags-mapping-ids'
+import { bard, funny, korol, lacky, liric, newschool, old, rap, scream, ussr } from 'components/accord/tags-mapping-ids'
+import { API_ROUTE } from 'dic/api-route'
 
 const NEWS_ACCORD_LENGTH = 30
 

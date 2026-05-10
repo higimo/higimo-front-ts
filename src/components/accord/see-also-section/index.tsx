@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { AccordType } from 'api-types/accord.types'
+import { AccordRealTagType, AccordType } from 'api-types/accord.types'
 
 import { AccordElement } from 'components/accord/accord-element'
 
@@ -11,9 +11,7 @@ export const SeeAlsoSection: FunctionComponent<{ items: AccordType[] }> = ({ ite
         {items.map(item => (
             <AccordElement
                 key={item.id}
-                {...item}
-                isMostView={false}
-                isNew={false}
+                {...item as AccordRealTagType}
                 showAlf={false}
                 showBaidge={false}
             />
