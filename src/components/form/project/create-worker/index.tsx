@@ -1,9 +1,12 @@
-import { FunctionComponent } from 'preact'
 import { PortfolioWorkerType } from 'api-types/portfolio.types'
+import { FunctionComponent } from 'preact'
+import { ApiError } from 'utils/api/send-request'
 
 import { FieldError, useForm } from 'react-hook-form'
 
 import { CollapseSection } from 'components/ui/collapse-section'
+
+import { toast } from 'toast'
 
 import './style.css'
 
@@ -18,7 +21,6 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 		handleSubmit,
 		formState: { errors },
 		reset,
-		setError,
 	} = useForm<PortfolioWorkerType>()
 
 	const ShowError = ({ filerError }: { filerError?: FieldError }) => {
@@ -31,12 +33,17 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 	}
 
 	const handleFormSubmit = async (data: PortfolioWorkerType) => {
-		const res = await onSubmit(data)
-		if (res) {
-			reset()
-		} else {
-			// TODO: [MEDIUM] Показать тост или Message?
-			setError('company', { type: 'custom', message: 'При отправке произошла ошибка' })
+		try {
+			const res = await onSubmit(data)
+			if (res) {
+				toast.show('Сохранено')
+				reset()
+			} else {
+				toast.error('При отправке произошла ошибка')
+			}
+		} catch (error) {
+			const apiError = error as ApiError
+			toast.error(apiError.message)
 		}
 	}
 
