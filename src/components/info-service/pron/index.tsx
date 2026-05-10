@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PronType } from './PronType'
+import { PronType } from 'api-types/pron.types'
 
 import './style.css'
 

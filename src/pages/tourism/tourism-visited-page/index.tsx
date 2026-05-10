@@ -103,6 +103,7 @@ const handleFilterMapPoint = (filter: FilterStateType) => (item: PovType) => {
 	if (filter.type === TYPE_MAP.RUSSIA && 'country' in item && item.country !== 'Россия') return false
 	if (filter.type === TYPE_MAP.WORLD && 'country' in item && item.country === 'Россия') return false
 
+	// @ts-ignore
 	if (typeFilters[filter.type] && !typeFilters[filter.type].includes(item.type)) {
 		return false
 	}

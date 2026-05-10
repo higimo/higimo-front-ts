@@ -11,7 +11,7 @@ import { TableGame } from 'components/data/table-game'
 import { TableGameType } from 'api-types/table-game.types'
 import { TextContainer } from 'components/ui/text-container'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const GamePage: FunctionComponent = () => {
 	usePageTitle('Настольные игры')

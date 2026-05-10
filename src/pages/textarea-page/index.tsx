@@ -1,17 +1,17 @@
-import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
+import { FunctionComponent } from 'preact'
 
-import { useCallback, useMemo, useState } from 'preact/compat'
 import useApi from 'hook/use-api'
+import { useCallback, useMemo, useState } from 'preact/compat'
 
-import { NotFoundData } from 'components/ui/not-found-data'
-import { MentionSuggest } from './textarea-mention/types'
-import { MentionsInput } from './textarea-mention/MentionsInput'
 import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { MentionsInput } from 'pages/textarea-page/components/mention-textarea/mention-input'
+import { MentionSuggest } from 'pages/textarea-page/components/mention-textarea/types'
 
-import { API_ROUTE } from 'dic/api-route'
-import { useLoadingState } from 'hook/use-loading-state'
+import { API_ROUTE } from 'dic/API_ROUTE'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useLoadingState } from 'hook/use-loading-state'
 
 export const TextareaPage: FunctionComponent = () => {
 	const [ personList ] = useApi<NokiaPersonSimpleType[]>(API_ROUTE.nokiaPerson)

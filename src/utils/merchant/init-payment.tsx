@@ -5,7 +5,7 @@ import sendRequest from 'utils/send-request';
 
 import { MerchantProductType } from 'components/merchant/types';
 import { FormValues } from 'components/merchant/merchant-payment-form/types';
-import { loadJs } from './loadJs';
+import { loadJs } from 'utils/merchant/loadJs';
 
 type GetInfoType = () => {
 	currentProduct: MerchantProductType
@@ -63,9 +63,7 @@ export async function initPayment(getInfo: GetInfoType) {
 		},
 	};
 
-	const integration = await PaymentIntegration.init(initConfig);
-
-	console.log('Интеграция готова:', integration);
+	await PaymentIntegration.init(initConfig);
 }
 
 

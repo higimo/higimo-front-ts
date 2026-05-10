@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import { useAuth } from 'hook/use-auth'
 
-import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 

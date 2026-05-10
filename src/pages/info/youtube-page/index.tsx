@@ -8,9 +8,9 @@ import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { YoutubeGalery } from 'components/youtube/youtube-galery/YoutubeGalery'
+import { YoutubeGalery } from 'components/youtube/youtube-galery'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const YoutubePage: FunctionComponent = () => {
 	usePageTitle('Избранные видосы')

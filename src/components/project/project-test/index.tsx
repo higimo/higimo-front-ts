@@ -7,7 +7,7 @@ import { ProjectTypographicTest } from 'components/project/project-typographic-t
 import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
 import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
 
-import { getHumanDate } from 'components/project/utils/getHumanDate'
+import { getHumanDate } from 'components/project/utils/get-human-date'
 
 import { credits } from 'fixtures/credits.fixtures'
 import { tags } from 'fixtures/tags.fixtures'

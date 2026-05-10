@@ -8,12 +8,12 @@ import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { TileElement } from 'components/ui/tile-element/tile-element'
-import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery'
 
 import { getDate } from 'utils/get-date'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import higimo from './img/higimo.png'
 import rak	from './img/rak.png'

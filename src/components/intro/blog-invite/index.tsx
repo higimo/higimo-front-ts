@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element'
 
 // TODO: [LAST] мб, такие датасеты унести в отдельную папку?
 import { blogInviteData } from 'components/intro/blog-invite/data'

@@ -16,7 +16,7 @@ import { ShowFormResult } from 'components/form/show-form-result'
 import sendRequest, { ApiError } from 'utils/send-request'
 import { toast } from 'toast'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

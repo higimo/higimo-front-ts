@@ -1,7 +1,7 @@
-import { TagGroupedGallery } from 'components/tourism/TagGroupedGallery'
+import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
-import { YandexMap } from 'components/tourism/YandexMap'
+import { YandexMap } from 'components/tourism/yandex-map'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
@@ -11,7 +11,7 @@ import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/
 import { useLoadingState } from 'hook/use-loading-state'
 import { useMemo } from 'preact/hooks'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
 
 import 'components/tourism/yandex-map.css'

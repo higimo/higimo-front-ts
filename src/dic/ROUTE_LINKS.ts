@@ -1,4 +1,4 @@
-import { generateLink } from './generateLink'
+import { generateLink } from '../utils/url-route/generateLink'
 
 const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectIndex:        '/project/',

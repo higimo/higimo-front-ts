@@ -4,33 +4,6 @@ import { useEffect, useState } from 'preact/hooks'
 
 import { Message } from 'components/ui/message'
 
-// type ToastPropsType = MessageContent & {
-//   removeToast: (id: string) => void
-// }
-
-// const Toast: React.FC<ToastPropsType> = ({ id, message, removeToast }) => {
-// 	useEffect(() => {
-// 		const timer = setTimeout(() => {
-// 			removeToast(id)
-// 		}, 8000)
-
-// 		return () => clearTimeout(timer)
-// 	}, [id, removeToast])
-
-// 	return (
-// 		<div className="toast">
-// 			<div className="toast-content">{message}</div>
-// 			<button 
-// 				className="toast-close-button"
-// 				onClick={() => removeToast(id)}
-// 				aria-label="Закрыть уведомление"
-// 			>
-// 				&times
-// 			</button>
-// 		</div>
-// 	)
-// }
-
 type MessageContent = {
 	id: string
 	message: string
@@ -41,7 +14,7 @@ type MessageContainerPropsType = {
 	 */
 	autoCloseDelay?: number
 }
-  
+
 export const MessageContainer: FunctionComponent<MessageContainerPropsType> = ({ autoCloseDelay = 40 }) => {
 	const [messages, setMessages] = useState<MessageContent[]>([])
 
@@ -59,11 +32,11 @@ export const MessageContainer: FunctionComponent<MessageContainerPropsType> = ({
 			removeMessage(newMessage.id)
 		}, autoCloseDelay * 1000)
 	}
-	
+
 	useEffect(() => {
 		const eventListener = (e: Event) => handleAddMessage(e as CustomEvent)
 		window.addEventListener('add-message', eventListener)
-	
+
 		return () => window.removeEventListener('add-message', eventListener)
 	}, [])
 

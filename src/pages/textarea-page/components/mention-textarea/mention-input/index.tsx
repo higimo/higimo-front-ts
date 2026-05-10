@@ -2,18 +2,18 @@ import { FunctionComponent, JSX } from 'preact'
 
 import { useCallback, useRef, useState } from 'preact/hooks'
 
-import { MentionList } from './MentionList'
-import { MentionSuggest, MetionSelector } from './types'
+import { MentionList } from 'pages/textarea-page/components/mention-textarea/mention-list'
+import { MentionSuggest, MetionSelector } from 'pages/textarea-page/components/mention-textarea/types'
 
-import { KEY } from './KEY'
+import { KEY } from 'pages/textarea-page/components/mention-textarea/KEY'
 
-import { getWrittenMention } from './utils/getWrittenMention'
-import { getMentionList } from './utils/getMentionList'
-import { isMention } from './utils/isMention'
-import { getShiftSuggest } from './utils/getShiftSuggest'
-import { normalizeMentionList } from './utils/normalizeMentionList'
+import { getMentionList } from 'pages/textarea-page/components/mention-textarea/utils/get-mention-list'
+import { getShiftSuggest } from 'pages/textarea-page/components/mention-textarea/utils/get-shift-suggest'
+import { getWrittenMention } from 'pages/textarea-page/components/mention-textarea/utils/get-written-mention'
+import { isMention } from 'pages/textarea-page/components/mention-textarea/utils/is-mention'
+import { normalizeMentionList } from 'pages/textarea-page/components/mention-textarea/utils/normalize-mention-list'
 
-import './style.css'
+import 'pages/textarea-page/components/mention-textarea/style.css'
 
 type MentionsInputPropsType = {
 	suggestList: MentionSuggest[]

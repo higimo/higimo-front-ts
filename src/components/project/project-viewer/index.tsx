@@ -7,8 +7,8 @@ import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
 import { TextContainer } from 'components/ui/text-container'
 import { WorkerInput } from 'components/form/project/worker-input'
 
-import { getHumanDate } from 'components/project/utils/getHumanDate'
-import { getProjectText } from 'components/project/utils/getProjectText'
+import { getHumanDate } from 'components/project/utils/get-human-date'
+import { getProjectText } from 'components/project/utils/get-project-text'
 
 import './style.css'
 

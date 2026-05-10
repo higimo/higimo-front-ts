@@ -17,7 +17,7 @@ import { toast } from 'toast'
 import { FormButton } from 'components/form/form-button'
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

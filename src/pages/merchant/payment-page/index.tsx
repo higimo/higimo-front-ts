@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { initPayment } from './index-meme'
+import { initPayment } from '../../../utils/merchant/init-payment'
 import { FormValues } from 'components/merchant/merchant-payment-form/types'
 
 import { useMerchant } from 'hook/use-merchant'

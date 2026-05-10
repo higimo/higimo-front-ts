@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getMentionList } from './getMentionList'
+import { getMentionList } from './get-mention-list'
 
 describe('getMentionList', () => {
 	describe('валидные символы в упоминаниях', () => {

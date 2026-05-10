@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { useRoute } from 'preact-iso'
 
 import { TextContainer } from 'components/ui/text-container'
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+import { MaybeLink } from 'components/ui/maybe-link'
 
 import { compareRoute } from 'utils/url-route/compare-route'
 

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PronType } from 'components/info-service/pron/PronType'
+import { PronType } from 'api-types/pron.types'
 
 import { usePageTitle } from 'hook/use-page-title'
 import useApi from 'hook/use-api'
@@ -10,7 +10,7 @@ import { PronIndex } from 'components/info-service/pron'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const PronPage: FunctionComponent = props => {
 	usePageTitle('pron')

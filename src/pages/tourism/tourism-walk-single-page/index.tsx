@@ -16,7 +16,7 @@ import { TourismWalkItem } from 'components/tourism/tourism-walk-item'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../tourism-style.css'
 

@@ -10,7 +10,7 @@ import { PersonCard } from 'components/nokia/person-card'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import 'components/nokia/nokia-style.css'
 

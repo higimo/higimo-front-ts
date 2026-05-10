@@ -10,7 +10,7 @@ import { Loading } from 'components/ui/loading'
 import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'
 import { PersonApiService } from 'components/nokia/form/person-api'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 const DEFAULT_PERSON_ID = '-1'
 

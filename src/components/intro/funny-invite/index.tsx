@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element'
 
 import { FunnyDataType, funnyList } from './data'
 

@@ -7,7 +7,7 @@ import sendRequest, { ApiError } from 'utils/send-request'
 import { toast } from 'toast'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

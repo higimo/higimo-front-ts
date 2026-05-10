@@ -1,5 +1,3 @@
-
-
 export const OGRN = '1027700067328'
 export const INN = '352802309580'
 export const NAME = 'Дмитрий Дмитриевич Уткин'

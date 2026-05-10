@@ -2,8 +2,8 @@ import { FunctionComponent, Fragment, JSX } from 'preact'
 import { VKAlbumType, VkPhotoType } from 'api-types/vk.types'
 
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
-import { useMessage } from 'components/ui/message-container/useMessage'
 import { useQueue } from 'hook/use-queue'
+import { useMessage } from 'hook/use-message'
 
 import { TextContainer } from 'components/ui/text-container'
 

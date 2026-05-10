@@ -1,4 +1,4 @@
-import { BREADCRUMS_DIC, isRouteType } from 'dic/router'
+import { BREADCRUMS_DIC, isRouteType } from 'dic/BREADCRUMS_DIC'
 import { useRoute } from 'preact-iso'
 import { useEffect } from 'preact/hooks'
 

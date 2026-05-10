@@ -3,7 +3,7 @@ import { VkPhotoType } from 'api-types/vk.types'
 import { VkApi, VkResponceError } from 'utils/VkApi'
 
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
-import { useMessage } from 'components/ui/message-container/useMessage'
+import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/use-page-title'
 import { useRoute } from 'preact-iso'
 

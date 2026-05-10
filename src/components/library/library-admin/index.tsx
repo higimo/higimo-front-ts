@@ -9,7 +9,7 @@ import sendRequest, { ApiError, SendRequestOptions } from 'utils/send-request'
 import { getAuthPair } from 'utils/get-auth-pair'
 import { toast } from 'toast'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

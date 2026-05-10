@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { PseudoLink } from 'components/ui/pseudo-link'
 import { TextContainer } from 'components/ui/text-container'
 import { CompanyLogo } from 'components/intro/company-logo'

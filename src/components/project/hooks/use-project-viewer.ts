@@ -4,7 +4,7 @@ import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
 import useApi from 'hook/use-api'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 type UseProjectViewerType = (vendorCode: string, projectCode: string) => [PortfolioProjectDetailType, boolean, boolean]
 

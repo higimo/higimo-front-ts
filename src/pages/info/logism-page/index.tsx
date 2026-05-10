@@ -10,7 +10,7 @@ import { LogismGallery } from 'components/logism/logism'
 import { LogismType } from 'api-types/logism.types'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const LogismPage: FunctionComponent = () => {
 	usePageTitle('Логизмы')

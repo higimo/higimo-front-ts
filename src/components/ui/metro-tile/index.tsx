@@ -4,6 +4,7 @@ import cs from 'classnames'
 
 import './style.css'
 
+// TODO: добавить на типографскую страницу
 type MetroTilePropsType = {
 	className?: string
 	href?: string

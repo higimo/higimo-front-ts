@@ -1,6 +1,6 @@
 import { NokiaMeetingStatisticType } from 'api-types/nokia.types';
 
-import { PrepareDataResult } from 'components/nokia/nokia-statistic/ResultDatasetItem'
+import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
 export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
 	let meetingTypeDic: { [key: NokiaMeetingStatisticType['type']]: number; } = {};
@@ -48,3 +48,5 @@ export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearT
 		sortedDataset,
 	];
 };
+
+

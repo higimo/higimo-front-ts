@@ -1,4 +1,4 @@
-import { generateLink } from "./generateLink"
+import { generateLink } from "../utils/url-route/generateLink"
 
 export const API_ROUTE = {
 	login: '/api/v2/auth/login',

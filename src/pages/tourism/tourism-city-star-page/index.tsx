@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStars } from 'components/tourism/city-stars'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismCityStarForm } from 'components/tourism-city-star'
+import { TourismCityStarForm } from 'components/tourism/tourism-city-star'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../tourism-style.css'

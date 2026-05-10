@@ -1,10 +1,9 @@
+import { NasheType } from 'api-types/nashe.types'
 import { FunctionComponent } from 'preact'
-import { NasheType } from 'components/data/concert/types'
 
-import { useState } from 'preact/hooks'
-
-import { TextContainer } from 'components/ui/text-container'
 import { TableRow } from 'components/data/concert/table-row'
+import { TextContainer } from 'components/ui/text-container'
+
 import { getDateFromTimestamp } from 'utils/get-date-from-timestamp'
 
 interface ScheduleTableProps {

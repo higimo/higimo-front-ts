@@ -4,7 +4,7 @@ import { useLocation } from 'preact-iso'
 import sendRequest from 'utils/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import { signal } from '@preact/signals';
 import { KeyOf, ValueOf } from 'utils.type'

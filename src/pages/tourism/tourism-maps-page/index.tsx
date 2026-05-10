@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'

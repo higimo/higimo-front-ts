@@ -13,10 +13,10 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route'
-import { HEIGHT, updateChart, WIDTH } from 'components/nokia/nokia-statistic/updateChart'
+import { API_ROUTE } from 'dic/API_ROUTE'
+import { HEIGHT, updateChart, WIDTH } from 'components/nokia/nokia-statistic/utils/update-chart'
 
-import { prepareData } from 'components/nokia/nokia-statistic/prepareData'
+import { prepareData } from 'components/nokia/nokia-statistic/utils/prepare-data'
 
 import 'components/nokia/nokia-style.css'
 

@@ -4,7 +4,7 @@ import { PortfolioGroupedTagType } from 'api-types/portfolio.types';
 import { ProjectTag } from 'components/project/project-tag';
 import { TextContainer } from 'components/ui/text-container'
 
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic';
+import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types';
 
 import './style.css'
 

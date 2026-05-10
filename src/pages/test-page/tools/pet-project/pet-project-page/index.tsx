@@ -13,7 +13,7 @@ import { PetProject } from 'components/tool/pet-project'
 import { TextContainer } from 'components/ui/text-container'
 
 import { textProjects } from 'components/tool/pet-project/text-project'
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../../pet-project.css'
 

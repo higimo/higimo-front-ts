@@ -12,7 +12,7 @@ import { Loading } from 'components/ui/loading'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const FaqSinglePage: FunctionComponent = props => {
 	const { params: { idcode = ''} } = useRoute()

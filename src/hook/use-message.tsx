@@ -1,8 +1,8 @@
-import { MessageContainer } from '.'
+import { MessageContainer } from "components/ui/message-container"
 
 /**
  * Возвращает контейнер и добавлялку месседжей
- * @returns 
+ * @returns
  */
 export const useMessage = () => {
 	const showMessage = (message: string) => {

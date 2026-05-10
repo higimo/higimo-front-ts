@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import sendRequest, { ApiError, SendRequestOptions } from 'utils/send-request'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 import { toast } from 'toast'
 
 import './style.css'

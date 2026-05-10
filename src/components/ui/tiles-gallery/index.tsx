@@ -2,7 +2,7 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'

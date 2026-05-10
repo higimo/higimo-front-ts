@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 import { ContactList } from 'components/intro/contact-list'
 import { CollapseSection } from 'components/ui/collapse-section'

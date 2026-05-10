@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { TilesGallery } from 'components/ui/tiles-gallery/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element/tile-element'
+import { TilesGallery } from 'components/ui/tiles-gallery'
+import { TileElement } from 'components/ui/tile-element'
 
 import screen	from './img/screen.png'
 import rak	   from './img/rak.png'

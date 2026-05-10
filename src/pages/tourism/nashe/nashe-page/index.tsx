@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 // import { NasheAlbums } from 'components/data/concert/nashe-albums'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 

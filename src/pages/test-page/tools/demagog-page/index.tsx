@@ -11,7 +11,7 @@ import { DemagogGalery } from 'components/info-service/demagog/demagog-galery'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

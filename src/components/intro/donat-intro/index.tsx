@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { OnlyAdmin } from 'components/util/only-admin'
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'

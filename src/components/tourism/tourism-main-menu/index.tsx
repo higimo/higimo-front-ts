@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import { HorizontalElement, HorizontalMenu } from 'components/ui/horizontal-menu'
 
-import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/tourismMenuLinks'
+import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/data'
 
 import './style.css'
 

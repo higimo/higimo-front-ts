@@ -4,7 +4,7 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import { getHumanDate } from 'components/project/utils/getHumanDate'
+import { getHumanDate } from 'components/project/utils/get-human-date'
 
 import 'components/project/project-viewer/style.css'
 import './style.css'

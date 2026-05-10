@@ -7,13 +7,13 @@ import { useYearFilter } from 'hook/use-year-filter'
 import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
-import { NasheType } from 'components/data/concert/types'
+import { NasheType } from 'api-types/nashe.types'
 import { ScheduleTable } from 'components/data/concert/schedule-table'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

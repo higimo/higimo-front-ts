@@ -3,6 +3,7 @@ import { renderHook, act, waitFor } from '@testing-library/preact';
 import sendRequest from 'utils/send-request';
 import * as useAuthModule from 'hook/use-auth';
 import { useLocation } from 'preact-iso';
+import { API_ROUTE } from 'dic/API_ROUTE';
 
 vi.mock('utils/send-request', () => ({
 	default: vi.fn()
@@ -51,7 +52,7 @@ describe('useAuth', () => {
 			expect(sendRequest).toHaveBeenCalledTimes(1);
 		});
 
-		expect(sendRequest).toHaveBeenCalledWith('/api/auth/me');
+		expect(sendRequest).toHaveBeenCalledWith(API_ROUTE.authMe);
 	});
 
 	it('при успешном запросе авторизует', async () => {

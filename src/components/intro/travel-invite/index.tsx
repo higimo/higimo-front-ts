@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
@@ -8,7 +8,7 @@ import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 
 import './style.css'
-import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/tourismMenuLinks'
+import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/data'
 
 export const TravelInvite: FunctionComponent = () => {
 	return (

@@ -2,12 +2,12 @@ import { FunctionComponent } from 'preact'
 
 import { useRoute } from 'preact-iso'
 
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+import { MaybeLink } from 'components/ui/maybe-link'
 
-import { convertPathToUrl } from './convertPathToUrl'
-import { getTitle } from './getTitle'
+import { convertPathToUrl } from '../../../utils/convert-path-to-url'
+import { getPageTitle } from '../../../utils/get-page-title'
 
-import { BREADCRUMS_DIC, isRouteType } from 'dic/router'
+import { BREADCRUMS_DIC, isRouteType } from 'dic/BREADCRUMS_DIC'
 
 import './style.css'
 
@@ -21,7 +21,7 @@ export const Breadcrumps: FunctionComponent = () => {
 			{breadcrumbs.map((breadcrumb, index) => {
 				const isLastChild = index === breadcrumbsLength
 				const routeName = isRouteType(breadcrumb) ? BREADCRUMS_DIC[breadcrumb] : undefined
-				const newLocal = isLastChild ? getTitle() : routeName
+				const newLocal = isLastChild ? getPageTitle() : routeName
 				return (
 					<div className="breadcrumbs__item">
 						<MaybeLink href={breadcrumb} isHref={!isLastChild}>{newLocal}</MaybeLink>

@@ -5,7 +5,7 @@ import { Controller } from 'react-hook-form'
 import TextInput from 'react-autocomplete-input'
 
 import 'components/nokia/nokia-style.css'
-import { MeetingFormValues } from '../hooks/use-meeting-form'
+import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
 
 interface PersonMeetingFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>
@@ -13,7 +13,7 @@ interface PersonMeetingFieldsProps {
 	handleTextAssign: (trigger: string, slug: string) => string
 }
 
-// TODO: [MEDIUM] Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
+// TODO: [HARD] Кажись, использовать https://github.com/yury-dymov/react-autocomplete-input/tree/master хуёвая идея, надо его переписать на свой компонент!
 export const NokiaMeetingFields: FunctionComponent<PersonMeetingFieldsProps> = ({
 	formMethods: { register, control },
 	peoplesSuggest,

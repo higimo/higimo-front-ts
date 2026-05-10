@@ -12,7 +12,7 @@ import { NokiaTag } from 'components/nokia/nokia-tag'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 

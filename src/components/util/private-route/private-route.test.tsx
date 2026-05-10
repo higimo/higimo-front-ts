@@ -1,7 +1,7 @@
 // PrivateRoute.test.tsx
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import render from 'preact-render-to-string';
-import { PrivateRoute } from './PrivateRoute';
+import { PrivateRoute } from '.';
 
 // Мокаем зависимости
 vi.mock('hook/use-auth', () => ({

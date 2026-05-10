@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import cs from 'classnames'
 
 import { PortfolioProjectFullType } from 'api-types/portfolio.types'
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+import { MaybeLink } from 'components/ui/maybe-link'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 

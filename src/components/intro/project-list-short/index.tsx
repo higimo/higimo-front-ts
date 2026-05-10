@@ -8,13 +8,13 @@ import useApi from 'hook/use-api'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { ProjectList } from 'components/project/project-list'
-import { ProjectMore } from 'components/project/project-more/ProjectMore'
+import { ProjectMore } from 'components/project/project-more'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-import { API_ROUTE } from 'dic/api-route'
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
+import { API_ROUTE } from 'dic/API_ROUTE'
+import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types'
 
 import './style.css'
 

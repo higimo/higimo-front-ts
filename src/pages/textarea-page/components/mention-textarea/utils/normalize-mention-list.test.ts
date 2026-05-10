@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { normalizeMentionList } from './normalizeMentionList'
-import { MentionSuggest } from '../types'
+import { normalizeMentionList } from './normalize-mention-list'
+import { MentionSuggest } from 'pages/textarea-page/components/mention-textarea/types'
 
 describe('normalizeMentionList', () => {
 	describe('очистка формата упоминаний', () => {

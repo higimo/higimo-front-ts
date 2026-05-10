@@ -2,7 +2,7 @@ import { render } from 'preact'
 import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso'
 
 import { Footer } from 'components/ui/footer'
-import { Header } from 'components/ui/header/Header'
+import { Header } from 'components/ui/header'
 import { ToastContainer } from 'toast'
 
 import { GlobalProvider }    from './context/global'
@@ -10,7 +10,7 @@ import { VkContextProvider } from './context/vk'
 
 import { AccordGallery } from 'components/accord/accord-gallery'
 import { AccordSingle }  from 'components/accord/accord-single'
-import { PrivateRoute }  from 'components/util/private-route/PrivateRoute'
+import { PrivateRoute }  from 'components/util/private-route'
 
 import { IndexPage }   from 'pages/index-page'
 import { ServicePage } from 'pages/service-page'

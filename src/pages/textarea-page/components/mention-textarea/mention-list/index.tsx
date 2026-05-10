@@ -1,7 +1,10 @@
 import cs from 'classnames'
+
 import { FunctionComponent, createRef } from 'preact'
+
 import { useCallback, useEffect } from 'preact/hooks'
-import { MentionSuggest } from './types'
+
+import { MentionSuggest } from 'pages/textarea-page/components/mention-textarea/types'
 
 type MentionListPropsType = {
 	onSelect: (value: MentionSuggest) => void
@@ -10,7 +13,8 @@ type MentionListPropsType = {
 }
 export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 	const listRef = createRef()
-	const handleClick = useCallback((value) => () => props.onSelect(value), [props.onSelect])
+	const handleClick = useCallback((value: MentionSuggest) => () => props.onSelect(value), [props.onSelect])
+
 	useEffect(() => {
 		const container = listRef.current
 		if (!container || props.selectedSuggest === -1) return
@@ -43,18 +47,18 @@ export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 			})
 		}
 	}, [props.selectedSuggest])
+
 	return (
 		<div className="suggestion-list" ref={listRef}>
 			{props.suggestList.map((item, index) => (
 				<div
-					onClick={() => {
-						console.log('click')
-						handleClick(item)()
-					}}
+					onClick={handleClick(item)}
 					className={cs('suggestion-list__item', {
 						'suggestion-list__item--active': index === props.selectedSuggest
 					})}
-				>{item.display} 39021</div>
+				>
+					{item.display} {item.id}
+				</div>
 			))}
 		</div>
 	)

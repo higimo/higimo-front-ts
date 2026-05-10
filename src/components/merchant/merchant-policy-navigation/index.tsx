@@ -1,6 +1,6 @@
 import { useLocation } from 'preact-iso'
 
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link'
+import { MaybeLink } from 'components/ui/maybe-link'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 

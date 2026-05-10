@@ -3,7 +3,7 @@ import { VKAlbumType } from 'api-types/vk.types'
 import { VkApi, VkResponceError } from 'utils/VkApi'
 
 import { usePageTitle } from 'hook/use-page-title'
-import { useMessage } from 'components/ui/message-container/useMessage'
+import { useMessage } from 'hook/use-message'
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'

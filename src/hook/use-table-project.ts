@@ -1,13 +1,13 @@
 import { PortfolioTag, PortfolioProjectTableType } from 'api-types/portfolio.types'
 
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/dic'
+import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types'
 
 import { useEmptyDataState } from './use-empty-data-state'
 import { useLoadingState } from './use-loading-state'
 import { useRoute } from 'preact-iso'
 import useApi from './use-api'
 
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 import { useMemo } from 'preact/hooks'
 
 export type PortfolioProjectTableFullType = {

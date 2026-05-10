@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact';
 import { PortfolioCreditsType } from 'api-types/portfolio.types';
 
-import { MaybeLink } from 'components/ui/maybe-link/maybe-link';
+import { MaybeLink } from 'components/ui/maybe-link';
 
 type PortfolioWorkerPropsType = {
 	author: PortfolioCreditsType;

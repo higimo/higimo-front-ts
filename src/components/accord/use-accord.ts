@@ -7,7 +7,7 @@ import { median } from 'utils/math/median'
 
 import { TOTAL_TAGS } from 'components/accord/tags'
 import { bard, funny, korol, lacky, liric, newschool, old, rap, scream, ussr } from 'components/accord/tags-mapping-ids'
-import { API_ROUTE } from 'dic/api-route'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 const NEWS_ACCORD_LENGTH = 30
 

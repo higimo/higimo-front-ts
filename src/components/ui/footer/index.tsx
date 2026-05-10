@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { useAuth } from 'hook/use-auth'
 import { useGlobalContext } from 'context/global'
 
-import { contactListData } from 'components/intro/contact-list/contactListData'
+import { contactListData } from 'components/intro/contact-list/data'
 import { blogInviteData } from 'components/intro/blog-invite/data'
 import { shareKnowledgeData } from 'components/intro/share-knowledge/data'
 import { aboutInviteList } from 'components/intro/about-invite/data'
