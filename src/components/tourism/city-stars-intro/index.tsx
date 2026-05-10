@@ -1,22 +1,21 @@
-import { useEffect, useState } from 'preact/hooks'
+import { CityStarsType } from 'api-types/city-stars.types'
 
-import { TextContainer } from 'components/ui/text-container'
+import { useJsonApi } from 'hook/use-json-api'
+
 import { CityStarElement } from 'components/tourism/city-star-element'
+import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import townImg from './img/town.svg'
 
 export const CityStarsIntro = () => {
-	const [cityList, setCitys] = useState([])
+	const cityList = useJsonApi<CityStarsType[]>('/json/city.json')
 
-	useEffect(() => {
-		fetch('/json/city.json')
-			.then(r => r.json())
-			.then(data => {
-				setCitys(data)
-			})
-	}, [])
+	if (!cityList) {
+		return <Loading />
+	}
 
 	const filtredCityList = cityList.filter(city => city.star.length === 5)
 

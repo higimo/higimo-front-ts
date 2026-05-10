@@ -1,32 +1,31 @@
 import { FunctionComponent } from 'preact'
+import { ValueOf } from 'utils.type'
+import { CityStarsType } from 'api-types/city-stars.types'
 
 import cs from 'classnames'
 
-import { useEffect, useState } from 'preact/hooks'
+import { useState } from 'preact/hooks'
+import { useJsonApi } from 'hook/use-json-api'
 
-import { TextContainer } from 'components/ui/text-container'
 import { CityStarElement } from 'components/tourism/city-star-element'
+import { Loading } from 'components/ui/loading'
+import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
 const CITY_PREVIEW_DIC = {
 	LIST: 'LIST',
 	CARD: 'CARD',
-}
-
-type CityPreviewDicType = typeof CITY_PREVIEW_DIC[keyof typeof CITY_PREVIEW_DIC]
+} as const
 
 // TODO: [BACKEND] сделать ссылки на города
 export const CityStars: FunctionComponent = () => {
-	useEffect(() => {
-		fetch('/json/city.json')
-			.then(r => r.json())
-			.then(data => {
-				setCitys(data)
-			})
-	}, [])
-	const [citys, setCitys] = useState([])
-	const [mode, setMode] = useState<CityPreviewDicType>(CITY_PREVIEW_DIC.LIST)
+	const cityList = useJsonApi<CityStarsType[]>('/json/city.json')
+	const [mode, setMode] = useState<ValueOf<typeof CITY_PREVIEW_DIC>>(CITY_PREVIEW_DIC.LIST)
+
+	if (!cityList) {
+		return <Loading />
+	}
 
 	return (
 		<div className="city-stars">
@@ -54,7 +53,7 @@ export const CityStars: FunctionComponent = () => {
 							}
 						)}
 				>
-					{citys.map(city => (
+					{cityList.map(city => (
 						<CityStarElement title={city.title} star={city.star} />
 					))}
 				</div>
