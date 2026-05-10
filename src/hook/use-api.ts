@@ -30,7 +30,7 @@ const initialState = {
 	data: [],
 }
 
-const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
+export const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
 	switch (action.type) {
 		case API_STATUS.INIT:
 			return { ...state, status: 'INIT' }
