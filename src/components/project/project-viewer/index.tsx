@@ -35,8 +35,8 @@ export const ProjectViewer: FunctionComponent<ProjectViewerPropsType> = ({ proje
 			</div>
 		</OnlyAdmin>
 		<PortfolioCreditsGallery credits={project.credits} />
-		{/* TODO: [MEDIUM] TAGS применить мапинг категоризации тегов */}
-		{/* TODO: [HARD] Сделать интерфейс фигули, которая прописывает теги */}
+		{/* TODO: [USE_TAGS] useTags применить мапинг категоризации тегов */}
+		{/* TODO: [HARD] useTags Сделать интерфейс фигули, которая прописывает теги */}
 		<PortfolioTagsGallery tags={project.tags || []} />
 	</div>
 )

@@ -13,7 +13,7 @@ export const AccordGallery: FunctionComponent = () => {
 	const [filter, setFilter] = useState('')
 	const list = useAccord(filter)
 
-	// TODO: [MEDIUM] использовать useTag
+	// TODO: [USE_TAGS] использовать useTag
 	const handleFilter = useCallback((tagName: string) => () => setFilter(tagName), [setFilter])
 
 	return (

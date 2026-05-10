@@ -36,7 +36,7 @@ export const TourismMapsMoscowBar = () => {
 		[]
 	)
 
-	// TODO: [MEDIUM] теги интересно сделал
+	// TODO: [USE_TAGS] useTags теги интересно сделал
 	const {
 		selectedTags,
 		toggleTag,
@@ -47,7 +47,7 @@ export const TourismMapsMoscowBar = () => {
 	} = useGroupTags(tagGroups);
 
 	const filteredData = useMemo(
-		// TODO: [MEDIUM] есть же DX с (хук есть) useYearFilter(AND_GROUP_STRATEGY)
+		// TODO: [USE_TAGS] useTags есть же DX с (хук есть) useYearFilter(AND_GROUP_STRATEGY)
 		() => filterTagAndGroupsStrategy(barPovMoscow.data, selectedTags),
 		[barPovMoscow.data, selectedTags]
 	);

@@ -10,8 +10,11 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-// TODO: [MEDIUM] Тегирование
-// Мы потихоньку ведём классификационную работу над советами. Помимо формальных характеристик («диаграмма», «таблица», «сайт», «предмет») советы помечаются идеями, которые в них излагаются. Таким образом, каждый совет получит ссылки на похожие на него советы.
+// TODO: [USE_TAGS] useTags
+// Мы потихоньку ведём классификационную работу над советами.
+// Помимо формальных характеристик («диаграмма», «таблица», «сайт», «предмет»)
+// советы помечаются идеями, которые в них излагаются. Таким образом, каждый совет
+// получит ссылки на похожие на него советы.
 export const ProjectTablePage: FunctionComponent = () => {
 	const {
 		isLoading,
@@ -34,7 +37,7 @@ export const ProjectTablePage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Таблица сделанного</h1>
 			</TextContainer>
-			{/* TODO: [MEDIUM] галерея тегов пока не работает */}
+			{/* TODO: [USE_TAGS] useTags галерея тегов пока не работает */}
 			{/* <ProjectTagGroupGallery tags={tagList} /> */}
 			<PortfolioProjectTable tableProjects={tableProjects} />
 		</div>

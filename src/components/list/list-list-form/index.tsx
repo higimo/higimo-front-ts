@@ -102,7 +102,7 @@ const handleListListSubmit: HandleListListSubmitType = addStatus => async values
 
 export const ListListForm: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
-	// @ts-ignore TODO: [MEDIUM] пока игнорируем ошибку, но надо получать данные с бэка и заполнять
+	// @ts-ignore TODO: [BACKEND] пока игнорируем ошибку, но надо получать данные с бэка и заполнять
 	// см. ниже useEffect, он вроде делает
 	const [ values, setValues ] = useState<ListerItem>({})
 	const [ status, setStatus ] = useState<HigimoServerResponse[]>([])

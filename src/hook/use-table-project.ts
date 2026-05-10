@@ -152,7 +152,7 @@ export const useTableProject: UseProjectType = () => {
 		})
 	}, [projects])
 
-	// TODO: [MEDIUM] useTag применить
+	// TODO: [USE_TAGS] useTag применить
 	let projectList = projects.data
 	if (query[PROJECT_FILTER_DIC.FILTER_TAG]) {
 		projectList = projects.data.filter(projectItem => {
