@@ -1,107 +1,44 @@
-import { Component } from 'preact'
-import httpBuildQuery  from 'http-build-query'
+// TODO: [BACKEND] а как этим пользоваться, лол?
 
-// TODO: [MEDIUM] а как этим пользоваться, лол?
-export class ToolPage extends Component {
-	state = {
-		login: '',
-		password: '',
-		method: 'POST',
-		json: '',
-		php: '',
-		methodList: [],
-		options: '{\nlang: "ru"\n}',
-		uri: 'feedback/page',
-	}
+import { FunctionComponent } from 'preact'
 
-	// @ts-ignore
-	handlerSubmit = (event) => {
-		let { options, uri } = this.state,
-			self = this
+import { useCallback } from 'preact/hooks'
+import { useApiRequest } from './components/admin-tool/hook/useApiRequest'
+import { useToolForm } from './components/admin-tool/hook/useToolForm'
+
+import { AdminToolContent } from 'components/tool/tool-page/components/admin-tool/admin-tool-content'
+import { Sidebar } from 'components/tool/tool-page/components/admin-tool/sidebar'
+
+import { parseJsonWithFallback } from 'components/tool/tool-page/components/admin-tool/utils/parseJsonWithFallback'
+
+import './style.css'
+
+export const ToolPage: FunctionComponent = () => {
+	// TODO: useApi и неавторизованных выкидывать
+	const { formData, response, updateField, setResponse } = useToolForm()
+	const { sendRequest } = useApiRequest()
+
+	const handleSubmit = useCallback(async () => {
+		const { method, uri, options: optionsStr } = formData
+
+		const parsedOptions = parseJsonWithFallback(optionsStr)
 
 		try {
-			options = JSON.parse(options)
-		} catch (e) {
-			try {
-				options = JSON.parse(`${options.replace(/^(\s*?)(\S*?):/gm, '$1"$2":')}`)
-			} catch (e) {
-				console.error(e)
-			}
+			const result = await sendRequest(method, uri, parsedOptions)
+			setResponse(result)
+		} catch (error) {
+			setResponse(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
 		}
+	}, [formData, sendRequest, setResponse])
 
-		if (typeof window !== 'undefined') {
-			var xhttp = new XMLHttpRequest()
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					let json = '',
-						php = '',
-						debug = ''
-					try {
-						let jsonObj = JSON.parse(this.responseText)
-
-						json = JSON.stringify(jsonObj.data, null, '\t')
-					} catch (e) {
-						json = this.responseText
-					}
-					self.setState({json})
-				}
-			}
-
-			xhttp.open(this.state.method, `/api/v2/${uri}`, true)
-
-			xhttp.setRequestHeader('Authorization', `Basic ${btoa(`${this.state.login}:${this.state.password}`)}`)
-			if (this.state.method === 'GET') {
-				xhttp.setRequestHeader('Accept', 'application/json')
-				xhttp.setRequestHeader('Content-Type', 'application/json')
-			} else {
-				xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-			}
-
-			// @ts-ignore
-			xhttp.send(httpBuildQuery(options))
-		}
-	}
-
-	// @ts-ignore
-	handlerChange = ({ target: { name, value } }) => {
-		this.setState({ [name]: value })
-	}
-
-	render() {
-		return (
-			<div className="tool-page">
-				<div className="tool-page__sidebar">
-					<div>
-						login:
-						{/* @ts-ignore */}
-						<input value={this.state.login} name="login" onInput={this.handlerChange} />
-					</div>
-					<div>
-						password:
-						{/* @ts-ignore */}
-						<input value={this.state.password} type="password" name="password" onInput={this.handlerChange} />
-					</div>
-					<div>
-						method:
-						{/* @ts-ignore */}
-						<input value={this.state.method} name="method" onInput={this.handlerChange} />
-					</div>
-					<div>
-						uri:
-						{/* @ts-ignore */}
-						<textarea value={this.state.uri} name="uri" onInput={this.handlerChange} />
-					</div>
-					<div>
-						options:
-						{/* @ts-ignore */}
-						<textarea value={this.state.options} name="options" onInput={this.handlerChange} />
-					</div>
-					<button onClick={this.handlerSubmit}>Отправить</button>
-				</div>
-				<div className="tool-page__content">
-					<pre dangerouslySetInnerHTML={{__html: this.state.json}} />
-				</div>
-			</div>
-		)
-	}
+	return (
+		<div className="tool-page">
+			<Sidebar
+				formData={formData}
+				onFieldChange={updateField}
+				onSubmit={handleSubmit}
+			/>
+			<AdminToolContent response={response} />
+		</div>
+	)
 }

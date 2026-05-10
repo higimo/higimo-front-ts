@@ -105,6 +105,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { ToolPage } from 'components/tool/tool-page'
 
 export function App() {
 	return (
@@ -131,6 +132,7 @@ export function App() {
 								{/* admin */}
 								<Route path={ROUTE_LINKS.login} component={LoginPage} />
 								<PrivateRoute path={ROUTE_LINKS.adminIndex} component={AdminPage} />
+								<Route path="/admin/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} />
 
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
@@ -187,9 +189,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
 
-								{/* <Route path="/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} /> */}
 								<PrivateRoute path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
-								{/* TODO: [HARD] починить его, полностью не работает теперь */}
 								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
 								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
 								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />

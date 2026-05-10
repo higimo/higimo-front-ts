@@ -1,0 +1,33 @@
+.tool-page {
+	display: flex;
+	min-height: 100vh;
+}
+
+.tool-page__sidebar {
+	width: 45%;
+	box-shadow: 32px 0px 32px -16px rgba(0, 0, 0, .15),
+		8px 0px 8px -16px rgba(0, 0, 0, .45);
+	padding: 16px;
+}
+
+.tool-page__content {
+	width: 65%;
+	background-color: #f2f2f2a3;
+}
+
+
+.tool-page__sidebar input,
+.tool-page__sidebar textarea,
+.tool-page__sidebar button {
+	padding: 8px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+	margin-left: 8px;
+}
+.tool-page__sidebar textarea {
+	min-height: 150px;
+}
+.tool-page__sidebar textarea[name="uri"] {
+	min-height: 40px;
+}
