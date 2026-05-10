@@ -1,12 +1,13 @@
+import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/tourism-maps-figure/data/types'
 import { createRef, Fragment } from 'preact'
-import { HigimoMapPoint, YaMapPolygon } from './data/types'
+import { ValueOf } from 'utils.type'
 
-import { useEffect, useState } from 'preact/hooks'
 import { useWindowSize } from 'hook/use-window-size'
+import { useEffect, useState } from 'preact/hooks'
 
-import { YMaps, Map } from 'react-yandex-maps'
-import { TextContainer } from 'components/ui/text-container'
 import { Tag } from 'components/ui/tag'
+import { TextContainer } from 'components/ui/text-container'
+import { Map, YMaps } from 'react-yandex-maps'
 
 import 'components/tourism/yandex-map.css'
 
@@ -23,8 +24,9 @@ const loadStateData = async (): Promise<MoscowWalkaroundStateDataType> => {
 	return { stateYear2021, stateYear2024, moscowPovPoints }
 }
 
-const updateMap = (map, yamaps, mode, stateData) => {
-	if (!map || !yamaps || !stateData.stateYear2021 || !stateData.stateYear2024 || mode === MAP_MODE.INIT) {
+type UpdateMapPropsType = (map: any, yamaps: any, mode: ValueOf<typeof MAP_MODE>, stateData: MoscowWalkaroundStateDataType|null) => null|undefined
+const updateMap: UpdateMapPropsType = (map, yamaps, mode, stateData) => {
+	if (!map || !yamaps || !stateData || !stateData.stateYear2021 || !stateData.stateYear2024 || mode === MAP_MODE.INIT) {
 		return null
 	}
 
@@ -99,12 +101,12 @@ type MoscowWalkaroundStateDataType = {
 
 export const TourismMoscowWalkaround = () => {
 	const refMap = createRef()
-	const [ mode, setMode ] = useState(MAP_MODE.INIT)
+	const [ mode, setMode ] = useState<ValueOf<typeof MAP_MODE>>(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)
-	const [stateData, setStateData] = useState<MoscowWalkaroundStateDataType>(null)
+	const [stateData, setStateData] = useState<MoscowWalkaroundStateDataType|null>(null)
 	const { width } = useWindowSize()
 
-	const handleMapLoad = ymaps => {
+	const handleMapLoad = (ymaps: any) => {
 		if (mode === MAP_MODE.INIT) {
 			setMode(MAP_MODE[2024])
 		}
