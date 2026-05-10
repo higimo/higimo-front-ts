@@ -1,7 +1,9 @@
+import { FunctionComponent } from 'preact'
+
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
+
 import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE } from 'hook/use-group-tags'
-import { FunctionComponent } from 'preact'
 
 import './style.css'
 
@@ -18,8 +20,6 @@ type TagGroupedGalleryProps = {
 /**
  * Кэшировать groups надо на уровне выше в useMemo
  * Теги должны быть строго в tags, даже если есть соседнее поле, дублирующее эту информацию
- * @param param0
- * @returns
  */
 export const TagGroupedGallery: FunctionComponent<TagGroupedGalleryProps> = ({
 	groups,
@@ -76,26 +76,4 @@ export const TagGroupedGallery: FunctionComponent<TagGroupedGalleryProps> = ({
 			})}
 		</TextContainer>
 	)
-	// return (
-	// 	<div>
-	// 		Отношение:{' '}
-	// 		<Tag active={!selectedColor.length} onClick={handleColorClick([])}>Сбросить</Tag>{' '}
-	// 		<Tag active={selectedColor.length === allColors.length} onClick={handleColorClick(allColors)}>Выбрать всё</Tag>{' '}
-	// 		{Object.keys(BAR_COLOR_MAPPING).map(colorName => (
-	// 			<Tag active={selectedColor.includes(colorName)} onClick={handleColorClick([colorName])}>{colorName}</Tag>
-	// 		))}
-	// 		<hr />
-	// 		Теги:{' '}
-	// 		<Tag active={!selectedTags.length} onClick={handleTagsClick([])}>Сбросить</Tag>{' '}
-	// 		<Tag active={selectedTags.length === allTags.length} onClick={handleTagsClick(allTags)}>Выбрать всё</Tag>{' '}
-	// 		{Object.keys(barTagsCategory).map(item => (
-	// 			<div>
-	// 				{item}{' '}
-	// 				{Object.keys(barTagsCategory[item]).map(subitem => (
-	// 					<Tag active={selectedTags.includes(subitem)} onClick={handleTagsClick([subitem])}>{subitem}</Tag>
-	// 				))}
-	// 			</div>
-	// 		))}
-	// 	</div>
-	// )
 }
