@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
-import { useProject } from 'hook/use-project'
+import { useProjectList } from 'hook/use-project'
 
 import { Loading } from 'components/ui/loading'
 import { ProjectList } from 'components/project/project-list'
@@ -19,7 +19,7 @@ export const ProjectIndexPage: FunctionComponent = () => {
 		isEmpty,
 		projectList,
 		tagList,
-	} = useProject()
+	} = useProjectList()
 
 	usePageTitle('Сделал')
 

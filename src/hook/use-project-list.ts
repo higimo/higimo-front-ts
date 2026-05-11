@@ -18,7 +18,7 @@ type UseProjectType = () => {
 /**
  * Вернёт список проектов
  */
-export const useProject: UseProjectType = () => {
+export const useProjectList: UseProjectType = () => {
 	const { query } = useRoute()
 
 	const [projectListRaw] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject)
