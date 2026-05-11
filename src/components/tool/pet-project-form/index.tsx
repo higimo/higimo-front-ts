@@ -40,30 +40,28 @@ const handlePetprojectSubmit: HandlePetprojectSubmitType = setStatus => async va
 		setStatus(serverResult)
 	} catch (error) {
 		const apiError = error as ApiError
-		toast.show(apiError.message)
+		toast.error(apiError.message)
 	}
 }
+
+const DEFAULT_ID = '-1'
 
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
 
 export const PetProjectForm = () => {
-	const { params: { projectId = '-1'} } = useRoute()
-	const[ probbiSingle ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
+	const { params: { projectId = DEFAULT_ID } } = useRoute()
+	// TODO: [HARD] заменить на EmptyObject
+	const[ probbiSingle ] = useApi<PetProjectType | {}>(API_ROUTE.probbiSingle({ projectId })) // TODO: [HARD] типизация такая на самом деле
 	const isLoading = useLoadingState([probbiSingle.status])
-	const isListEmpty = useEmptyDataState(probbiSingle.data)
+	const isEmpty = useEmptyDataState(probbiSingle.data)
 
-	let defaultValues: Partial<PetProjectType> = {}
-	const { register, handleSubmit, formState, setValue, reset } = useForm<FormValues>({
-		defaultValues
-	})
+	const { register, handleSubmit, formState, setValue, reset } = useForm<FormValues>()
 	const [ status, setStatus ] = useState(null)
 
 	useEffect(() => {
-		// TODO: [MEDIUM] проверить, что тут всегда будут данные
-		// if (!isListEmpty) {
-		if (probbiSingle.data) {
+		if (probbiSingle.data && 'id' in probbiSingle.data) {
 			setValue('id', probbiSingle.data.id)
 			setValue('name', probbiSingle.data.name)
 			setValue('description', probbiSingle.data.description)
@@ -73,7 +71,7 @@ export const PetProjectForm = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-	if (isListEmpty) {
+	if (isEmpty && projectId !== DEFAULT_ID) {
 		return <NotFoundData />
 	}
 
