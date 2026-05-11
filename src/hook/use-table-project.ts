@@ -1,4 +1,4 @@
-import { PortfolioTag, PortfolioProjectTableType } from 'api-types/portfolio.types'
+import { PortfolioTag, PortfolioProjectTableType, PortfolioProjectDetailType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
@@ -9,6 +9,7 @@ import useApi from './use-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { useMemo } from 'preact/hooks'
+import { TagName, useSmartTags } from './tags/use-smart-tags'
 
 export type PortfolioProjectTableFullType = {
 	id: PortfolioProjectTableType['id']
@@ -28,6 +29,88 @@ export type PortfolioProjectTableFullType = {
 // } & {
 //     isLink: false;
 // }
+}
+
+const sortableProjectByVendor = (a: PortfolioProjectTableFullType, b: PortfolioProjectTableFullType) => {
+	return a.vendor.localeCompare(b.vendor) || b.date.localeCompare(a.date)
+}
+
+const calculateProjectTableList = (project: PortfolioProjectDetailType) => {
+	const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
+	const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'
+	const checkExistTags = project.tags.length ? 'pass' : 'fail'
+	const checkCover = ['jpg', 'png'].includes(project.image) ? 'pass' : 'fail'
+
+
+	const taskRaw = extractWithDOMParser(project.text, '.task')
+	const announceTextRaw = extractWithDOMParser(taskRaw.resultHtml, '.announce__text, .container')
+	const picture = extractWithDOMParser(announceTextRaw.resultHtml, '.announce__picture')
+	const picNote = extractWithDOMParser(picture.resultHtml, '.announce__picture-note')
+	const realImgRaw = extractWithDOMParser(project.text, 'img')
+	const realVideoRaw = extractWithDOMParser(project.text, 'video')
+	const siteLinkRaw = extractWithDOMParser(picNote.resultHtml, '.site-link')
+	const unitOfSenseRaw = extractWithDOMParser(siteLinkRaw.resultHtml, '.unit-of-sense')
+	const metricRaw = extractWithDOMParser(unitOfSenseRaw.resultHtml, '.result-metric')
+	const cardTableRaw = extractWithDOMParser(metricRaw.resultHtml, '.announce__card-table, .announce__pic-table, .announce__info-table')
+	const factoidGalleryRaw = extractWithDOMParser(cardTableRaw.resultHtml, '.factoid-gallery')
+	// const resultTextRaw = extractWithDOMParser(factoidGalleryRaw.resultHtml, '.container-panel--30, .container-panel--50, h2, img, video, .horizontal-item__note, .container-panel--70, script, .sector-sum--half, .sector-sum')
+
+	// TODO: [BACKEND] КЦЗНН странно сверстан
+
+	// console.log(resultTextRaw.resultHtml)
+
+	const task = taskRaw.textContent
+	const announceTextHtml = announceTextRaw.innerHTML
+	const announceText = (announceTextRaw.textContent || []).join('').substring(0, 300)
+	const countParagraph = ((announceTextHtml.join('') || '').match(/<p>/g) || []).length
+
+	const countRealImg = realImgRaw.outerHTML.length
+	const countPicture = taskRaw.innerHTML.length
+	const countVideo = realVideoRaw.innerHTML.length
+	const countPictureNote = picNote.innerHTML.length
+	const countCardTable = cardTableRaw.innerHTML.length
+	const countFactoidGallery = factoidGalleryRaw.innerHTML.length
+
+	const checkTask = (task || []).join('').length > 4 ? 'pass' : 'fail'
+
+	const checkLinkRaw = siteLinkRaw.innerHTML.length ? 'pass' : 'no'
+	const checkUnitOfSenseRaw = unitOfSenseRaw.innerHTML.length ? 'pass' : 'fail'
+	const checkMetricRaw = metricRaw.innerHTML.length ? 'pass' : 'fail'
+
+
+	return {
+		id:           project.id,
+		vendor:       project.vendor.code,
+		name:         project.name,
+		code:         project.code,
+		date:         project.date,
+		image:        project.image,
+		cover_size:   project.cover_size,
+		tags:         project.tags.map(i => i.title),
+		credits:      project.credits.map(i => `${i.role} ${i.worker.full_name}`),
+		description:  project.description,
+		// @ts-ignore
+		isHide:       project.hide === 'true' ? 'HIDE' : 'SHOW',
+
+		task,
+		announceText,
+
+		countParagraph,
+		countRealImg,
+		countVideo,
+		countPicture,
+		countPictureNote,
+		countCardTable,
+		countFactoidGallery,
+
+		checkLinkRaw,
+		checkUnitOfSenseRaw,
+		checkMetricRaw,
+		checkLink,
+		checkExistTags,
+		checkCover,
+		checkTask,
+	}
 }
 
 const extractWithDOMParser = (htmlString: string, selector: string) => {
@@ -52,8 +135,10 @@ const extractWithDOMParser = (htmlString: string, selector: string) => {
 type UseProjectType = () => {
     isLoading: boolean
     isEmpty: boolean
-	tableProjects: PortfolioProjectTableFullType[],
-    tagList: PortfolioTag[]
+	tableProjects: PortfolioProjectTableFullType[]
+    tagList: PortfolioGroupedTagType[]
+	isSelected: (tagName: TagName) => boolean
+	toggleTag: (tagName: TagName) => () => void
 }
 
 /**
@@ -63,107 +148,43 @@ export const useTableProject: UseProjectType = () => {
 	const { query } = useRoute()
 
 	const [projects] = useApi<PortfolioProjectTableType[]>(API_ROUTE.projectProjectTable)
-	const [tagList] = useApi<PortfolioTag[]>(API_ROUTE.projectGroupedTags)
+	const [tagList] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
 
 	const isLoading = useLoadingState([projects.status, tagList.status])
 	const isProjectListEmpty = useEmptyDataState(projects.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
+	const {
+		selectedIds,
+		isSelected,
+		toggleTag,
+	} = useSmartTags({
+		categories: tagList.data,
+	})
+
 	const tableProjects: PortfolioProjectTableFullType[] = useMemo(() => {
-		return projects.data.map(project => {
-			const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
-			const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'
-			const checkExistTags = project.tags.length ? 'pass' : 'fail'
-			const checkCover = ['jpg', 'png'].includes(project.image) ? 'pass' : 'fail'
+		return projects.data
+			.filter(project => {
+				for (const selectedTag of Array.from(selectedIds)) {
+					for (const itemTag of project.tags) {
+						if (itemTag.title === selectedTag) {
+							return true
+						}
+					}
+				}
+				return false
+			})
+			.map(calculateProjectTableList)
+			.sort(sortableProjectByVendor)
+	}, [projects, selectedIds])
 
-
-			const taskRaw = extractWithDOMParser(project.text, '.task')
-			const announceTextRaw = extractWithDOMParser(taskRaw.resultHtml, '.announce__text, .container')
-			const picture = extractWithDOMParser(announceTextRaw.resultHtml, '.announce__picture')
-			const picNote = extractWithDOMParser(picture.resultHtml, '.announce__picture-note')
-			const realImgRaw = extractWithDOMParser(project.text, 'img')
-			const realVideoRaw = extractWithDOMParser(project.text, 'video')
-			const siteLinkRaw = extractWithDOMParser(picNote.resultHtml, '.site-link')
-			const unitOfSenseRaw = extractWithDOMParser(siteLinkRaw.resultHtml, '.unit-of-sense')
-			const metricRaw = extractWithDOMParser(unitOfSenseRaw.resultHtml, '.result-metric')
-			const cardTableRaw = extractWithDOMParser(metricRaw.resultHtml, '.announce__card-table, .announce__pic-table, .announce__info-table')
-			const factoidGalleryRaw = extractWithDOMParser(cardTableRaw.resultHtml, '.factoid-gallery')
-			const resultTextRaw = extractWithDOMParser(factoidGalleryRaw.resultHtml, '.container-panel--30, .container-panel--50, h2, img, video, .horizontal-item__note, .container-panel--70, script, .sector-sum--half, .sector-sum')
-
-			// TODO: [BACKEND] КЦЗНН странно сверстан
-
-			console.log(resultTextRaw.resultHtml)
-
-			const task = taskRaw.textContent
-			const announceTextHtml = announceTextRaw.innerHTML
-			const announceText = (announceTextRaw.textContent || []).join('').substring(0, 300)
-			const countParagraph = ((announceTextHtml.join('') || '').match(/<p>/g) || []).length
-
-			const countRealImg = realImgRaw.outerHTML.length
-			const countPicture = taskRaw.innerHTML.length
-			const countVideo = realVideoRaw.innerHTML.length
-			const countPictureNote = picNote.innerHTML.length
-			const countCardTable = cardTableRaw.innerHTML.length
-			const countFactoidGallery = factoidGalleryRaw.innerHTML.length
-
-			const checkTask = (task || []).join('').length > 4 ? 'pass' : 'fail'
-
-			const checkLinkRaw = siteLinkRaw.innerHTML.length ? 'pass' : 'no'
-			const checkUnitOfSenseRaw = unitOfSenseRaw.innerHTML.length ? 'pass' : 'fail'
-			const checkMetricRaw = metricRaw.innerHTML.length ? 'pass' : 'fail'
-
-
-			return {
-				id:           project.id,
-				vendor:       project.vendor.code,
-				name:         project.name,
-				code:         project.code,
-				date:         project.date,
-				image:        project.image,
-				cover_size:   project.cover_size,
-				tags:         project.tags.map(i => i.title),
-				credits:      project.credits.map(i => `${i.role} ${i.worker.full_name}`),
-				description:  project.description,
-				// @ts-ignore
-				isHide:       project.hide === 'true' ? 'HIDE' : 'SHOW',
-
-				task,
-				announceText,
-
-				countParagraph,
-				countRealImg,
-				countVideo,
-				countPicture,
-				countPictureNote,
-				countCardTable,
-				countFactoidGallery,
-
-				checkLinkRaw,
-				checkUnitOfSenseRaw,
-				checkMetricRaw,
-				checkLink,
-				checkExistTags,
-				checkCover,
-				checkTask,
-			}
-		})
-		.sort((a, b) => {
-			return a.vendor.localeCompare(b.vendor) || b.date.localeCompare(a.date)
-		})
-	}, [projects])
-
-	// TODO: [USE_TAGS] useTag применить
-	let projectList = projects.data
-	if (query[PROJECT_FILTER_DIC.FILTER_TAG]) {
-		projectList = projects.data.filter(projectItem => {
-			return projectItem.tags.find(tag => tag.title === query[PROJECT_FILTER_DIC.FILTER_TAG])
-		})
-	}
 
 	return {
 		isLoading: isLoading,
 		isEmpty: isProjectListEmpty || isTagListEmpty,
 		tableProjects,
 		tagList: tagList.data,
+		isSelected,
+		toggleTag,
 	}
 }

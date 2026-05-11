@@ -3,9 +3,9 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 import { useTableProject } from 'hook/use-table-project'
 
-import { Loading } from 'components/ui/loading'
 import { PortfolioProjectTable } from 'components/project/portfolio-project-table'
-// import { ProjectTagGroupGallery } from 'components/project/project-tag-group-gallery'
+import { ProjectTagCategory } from 'components/project/project-tag-category'
+import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
@@ -21,6 +21,8 @@ export const ProjectTablePage: FunctionComponent = () => {
 		isEmpty,
 		tableProjects,
 		tagList,
+		isSelected,
+		toggleTag,
 	} = useTableProject()
 
 	usePageTitle('Сделал')
@@ -37,8 +39,11 @@ export const ProjectTablePage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Таблица сделанного</h1>
 			</TextContainer>
-			{/* TODO: [USE_TAGS] useTags галерея тегов пока не работает */}
-			{/* <ProjectTagGroupGallery tags={tagList} /> */}
+			<ProjectTagCategory
+				groupedTags={tagList}
+				isSelected={isSelected}
+				toggleTag={toggleTag}
+			/>
 			<PortfolioProjectTable tableProjects={tableProjects} />
 		</div>
 	)

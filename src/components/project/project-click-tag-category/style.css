@@ -28,6 +28,6 @@
 	background: linear-gradient(0deg, rgba(14, 66, 111, .35) 3px, transparent 3px);
 }
 
-span.project-tag_element {
+.project-tag_element--active {
 	background: linear-gradient(0deg, rgba(14, 66, 111, .55) 3px, transparent 3px);
 }

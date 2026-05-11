@@ -1,5 +1,7 @@
-import { FunctionComponent } from 'preact'
+import cs from 'classnames'
+
 import { ProjectRoutingFilterNameType } from 'components/project/filter_dictionary'
+import { FunctionComponent } from 'preact'
 
 import httpBuildQuery from 'http-build-query'
 
@@ -8,9 +10,6 @@ import { useCallback } from 'preact/hooks'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-
-import './style.css'
-
 const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}): string => {
 	return `${ROUTE_LINKS.projectIndex}?${httpBuildQuery(params)}`
 }
@@ -18,32 +17,60 @@ const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}
 type ProjectTagPropsType = {
 	filterName: ProjectRoutingFilterNameType
 	children: string
+	isLink?: boolean
+	isSelected?: boolean
+	toggleTag?: () => void
 }
-export const ProjectTag: FunctionComponent<ProjectTagPropsType> = props => {
+export const ProjectTag: FunctionComponent<ProjectTagPropsType> = ({
+	filterName,
+	children,
+	isLink = true,
+	isSelected,
+	toggleTag,
+}) => {
 	const { query, route } = useLocation()
 
 	const handleRemove = useCallback(() => {
-		if (query[props.filterName] == props.children) {
-			delete query[props.filterName]
+		if (query[filterName] == children) {
+			delete query[filterName]
 			route(getProjectUrl(query))
 			return false
 		}
-	}, [props.filterName, props.children, query])
+	}, [filterName, children, query])
 
 	const href = getProjectUrl({
 		...query,
-		[props.filterName]: props.children as string
+		[filterName]: children as string
 	})
 
-	const isLink = query[props.filterName] != props.children
-	if (isLink) {
+	if (!isLink) {
 		return (
-			<a className="project-tag_element" href={href}>{props.children}</a>
+			<span
+				className={cs(
+					'project-tag_element',
+					{ 'project-tag_element--active': isSelected }
+				)}
+				onClick={toggleTag}
+			>
+				{children}
+			</span>
+		)
+	}
+
+	const isSelectedTag = query[filterName] != children
+	if (isSelectedTag) {
+		return (
+			<a className="project-tag_element" href={href}>{children}</a>
 		)
 	}
 
 	return (
-		<span className="project-tag_element" onClick={handleRemove}>{props.children}</span>
+		<span
+			className="project-tag_element project-tag_element--active"
+			onClick={handleRemove}
+		>
+			{children}
+		</span>
 	)
 
 }
