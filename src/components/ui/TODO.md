@@ -1,3 +1,3 @@
-TODO: Переименовать каждый index.tsx в Badge.tsx, и завести package.json
+TODO: [LIGHT] Переименовать каждый index.tsx в Badge.tsx, и завести package.json
 
 Так можно будет прописать что-то для стайлгайдиста, версию компонента, `"main": "Badge"` — в ошибках будет лучше пути показывать, а не бесконечный index-index-index
