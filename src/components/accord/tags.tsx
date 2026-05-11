@@ -1,3 +1,5 @@
+import { TagCategory } from "hook/tags/use-smart-tags"
+
 type AccordTags = {
 	[key: string]: string
 }
@@ -26,3 +28,14 @@ export const TOTAL_TAGS: AccordTags = {
 	...MAIN_TAGS,
 	...EXTEND_TAGS,
 }
+
+export const ACCORD_TAG_CATEGORY: TagCategory[] = [
+	{
+		id: 'main',
+		label: 'Основной',
+		tags: Object.values(TOTAL_TAGS).map((tagName, index) => ({
+			id: index,
+			label: tagName
+		}))
+	},
+]

@@ -1,8 +1,10 @@
+import { Tag } from "hook/tags/use-smart-tags";
+
 /**
  * Тип элемента данных, который содержит теги.
  */
 export interface DataItemWithTags {
-	tags: string[];
+	tags: Tag[];
 	[key: string]: unknown;
 }
 

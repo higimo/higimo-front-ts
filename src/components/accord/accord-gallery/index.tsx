@@ -1,27 +1,42 @@
 import { FunctionComponent } from 'preact'
 
-import { useCallback, useState } from 'preact/hooks'
 import { useAccord } from 'components/accord/use-accord'
+import { useFilterByTags } from 'hook/tags/use-filter-by-tags'
+import { useSmartTags } from 'hook/tags/use-smart-tags'
 
-import { TextContainer } from 'components/ui/text-container'
 import { AccordTagGallery } from 'components/accord/accord-baidge-gallery'
 import { AccordElement } from 'components/accord/accord-element'
+import { TextContainer } from 'components/ui/text-container'
+
+import { ACCORD_TAG_CATEGORY } from 'components/accord/tags'
 
 import './style.css'
 
 export const AccordGallery: FunctionComponent = () => {
-	const [filter, setFilter] = useState('')
-	const list = useAccord(filter)
+	const list = useAccord()
 
-	// TODO: [USE_TAGS] использовать useTag
-	const handleFilter = useCallback((tagName: string) => () => setFilter(tagName), [setFilter])
+	const {
+		selectedIds,
+		toggleTag,
+		isSelected,
+		deselectAllInCategory,
+	} = useSmartTags({
+		categories: ACCORD_TAG_CATEGORY,
+		mode: 'single',
+	})
+
+	const filtredList = useFilterByTags(list, selectedIds)
 
 	return (
 		<TextContainer className="accord">
 			<h1>Аккорды</h1>
-			<AccordTagGallery handleFilter={handleFilter} filter={filter} />
+			<AccordTagGallery
+				toggleTag={toggleTag}
+				isSelected={isSelected}
+				deselectAll={deselectAllInCategory('main')}
+			/>
 			<div>
-				{list.map(item => (
+				{filtredList.map(item => (
 					<AccordElement key={item.id} {...item} />
 				))}
 			</div>

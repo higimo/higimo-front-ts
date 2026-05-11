@@ -15,6 +15,11 @@ export type AccordWithTagType = AccordType & {
 	isMostView: boolean
 }
 
+type AccordTagType = {
+	id: number
+	label: string
+}
+
 export type AccordRealTagType = AccordType & {
-	tags: string[]
+	tags: AccordTagType[]
 }
