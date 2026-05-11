@@ -2,7 +2,8 @@ import { ValueOf } from 'utils.type'
 
 import { ROUTE_LINKS } from './ROUTE_LINKS'
 
-type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS['projectDetail_CONST']
+type ExcludeRouteType =
+	// Шаблонные URI
 	| typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS['projectDetail_CONST']
 	| typeof ROUTE_LINKS['accordDetail'] | typeof ROUTE_LINKS['accordDetail_CONST']
 	| typeof ROUTE_LINKS['nokiaFormEdit'] | typeof ROUTE_LINKS['nokiaFormEdit_CONST']
@@ -14,10 +15,15 @@ type ExcludeRouteType = typeof ROUTE_LINKS['projectDetail'] | typeof ROUTE_LINKS
 	| typeof ROUTE_LINKS['toolVkAlbumSingle'] | typeof ROUTE_LINKS['toolVkAlbumSingle_CONST']
 	| typeof ROUTE_LINKS['learningDetail'] | typeof ROUTE_LINKS['learningDetail_CONST']
 	| typeof ROUTE_LINKS['faqDetail'] | typeof ROUTE_LINKS['faqDetail_CONST']
-	| typeof ROUTE_LINKS['tourismNashe_CONST'] | typeof ROUTE_LINKS['petProjectEdit_CONST']
-	| typeof ROUTE_LINKS['cinemaScriptDetail'] | typeof ROUTE_LINKS['login'] | typeof ROUTE_LINKS['adminIndex']
+	| typeof ROUTE_LINKS['tourismNashe_CONST']
+	| typeof ROUTE_LINKS['petProjectEdit'] | typeof ROUTE_LINKS['petProjectEdit_CONST']
+	| typeof ROUTE_LINKS['cinemaScriptDetail'] | typeof ROUTE_LINKS['cinemaScriptDetail_CONST']
+	// Рабочие URI
+	| typeof ROUTE_LINKS['login'] | typeof ROUTE_LINKS['adminIndex']
 	| typeof ROUTE_LINKS['typo'] | typeof ROUTE_LINKS['TODO']
-	| typeof ROUTE_LINKS['projectTable'] | typeof ROUTE_LINKS['projectTest'] | typeof ROUTE_LINKS['projectSandbox']
+	| typeof ROUTE_LINKS['projectTable']
+	| typeof ROUTE_LINKS['projectTest']
+	| typeof ROUTE_LINKS['projectSandbox']
 
 type RouteType = Exclude<ValueOf<typeof ROUTE_LINKS>, ExcludeRouteType>
 
@@ -67,7 +73,6 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 
 	[ROUTE_LINKS.cinemaIndex]: 'Кинолог',
 	[ROUTE_LINKS.cinemaScriptIndex]: 'Фрагменты сценариев',
-	[ROUTE_LINKS.cinemaScriptDetail_CONST]: 'Фрагмент',
 
 	[ROUTE_LINKS.resumeIndex]: 'Мои резюме',
 	[ROUTE_LINKS.resumeHowToWork]: 'Как работаю',
@@ -101,7 +106,6 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.merchantPersonalPolicy]: 'Политика обработки ПД',
 	[ROUTE_LINKS.merchantPaymentOferta]: 'Офорта',
 	[ROUTE_LINKS.merchantDonationOferta]: 'Донатная оферта',
-
 }
 
 export const isRouteType = (key: string): key is RouteType => {
