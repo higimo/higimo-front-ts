@@ -17,8 +17,10 @@ import { ServicePage } from 'pages/service-page'
 
 import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
+// TODO: [LIGHT] добавить компонент пейджа
 const PortfolioSandbox  = lazy(() => import('components/project/portfolio-sandbox'))
 const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
+// TODO: [LIGHT] добавить компонент пейджа
 const ProjectTypography = lazy(() => import('components/project/project-test'))
 
 import { ComojiPage }          from 'pages/test-page/tools/comoji-page'
@@ -95,10 +97,10 @@ import { TextareaPage }  from 'pages/textarea-page'
 import { ToolPage }      from 'pages/tool-page'
 
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
-import { MerchantPage } from 'pages/merchant/merchant-page'
-import { PaymentOfertaPage } from 'pages/merchant/payment-oferta-page'
-import { PaymentPage } from 'pages/merchant/payment-page'
-import { PaymentPolicyPage } from 'pages/merchant/payment-policy-page'
+import { MerchantPage }       from 'pages/merchant/merchant-page'
+import { PaymentOfertaPage }  from 'pages/merchant/payment-oferta-page'
+import { PaymentPage }        from 'pages/merchant/payment-page'
+import { PaymentPolicyPage }  from 'pages/merchant/payment-policy-page'
 import { PersonalPolicyPage } from 'pages/merchant/personal-policy-page'
 
 import { NotFoundPage } from 'pages/not-found-page'
