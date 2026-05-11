@@ -14,14 +14,14 @@ import { ProjectClickTagCategory } from 'components/project/project-click-tag-ca
 // TODO: [FEATURE] Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
 // TODO: [FEATURE] показать график когда публиковался на горизонтальном таймлайне, просто названиями
 export const ProjectIndexPage: FunctionComponent = () => {
+	usePageTitle('Сделал')
+
 	const {
 		isLoading,
 		isEmpty,
 		projectList,
 		tagList,
 	} = useProjectList()
-
-	usePageTitle('Сделал')
 
 	if (isLoading) {
 		return <Loading />
