@@ -13,7 +13,7 @@ import { getWrittenMention } from 'components/mention-textarea/utils/get-written
 import { isMention } from 'components/mention-textarea/utils/is-mention'
 import { normalizeMentionList } from 'components/mention-textarea/utils/normalize-mention-list'
 
-import 'pages/textarea-page/components/mention-textarea/style.css'
+import 'components/mention-textarea/style.css'
 
 type MentionsInputPropsType = {
 	suggestList: MentionSuggest[]
