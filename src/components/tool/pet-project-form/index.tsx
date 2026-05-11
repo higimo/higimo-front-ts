@@ -102,7 +102,7 @@ export const PetProjectForm = () => {
 						className="default-form__submit"
 						disabled={formState.isSubmitted || formState.isSubmitting}
 					>
-						Сохранить
+						{formState.isSubmitting ? 'Сохранение…' : 'Сохранить'}
 					</button>
 				</div>
 				{(formState.isSubmitted || formState.isSubmitting) && (

@@ -52,7 +52,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitting },
 		reset,
 	} = useForm<FormValues>()
 	const [error, setError] = useState<null | string>(null)
@@ -96,8 +96,8 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 			)}
 
 			{workers.length > 0 && (
-				<button type="submit" className="submit-button">
-					Сохранить роли
+				<button type="submit" className="submit-button" disabled={isSubmitting}>
+					{isSubmitting ? 'Отправка…' : 'Сохранить роли'}
 				</button>
 			)}
 		</form>

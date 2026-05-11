@@ -35,7 +35,12 @@ const handleLibSubmit: HandleLibSubmitType = setStatus => async values => {
 
 export const LibraryAdmin: FunctionComponent = () => {
 	const [ status, setStatus ] = useState<HigimoServerResponse>()
-	const { register, handleSubmit, reset } = useForm<FormValues>()
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { isSubmitting },
+	} = useForm<FormValues>()
 
 	const handleReset = useCallback(() => {
 		reset()
@@ -88,7 +93,9 @@ export const LibraryAdmin: FunctionComponent = () => {
 				</div>
 			</div>
 			<div className="library-admin__row">
-				<button class="library-admin__button">Сохранить</button>
+				<button type="submit" class="library-admin__button" disabled={isSubmitting}>
+					{isSubmitting ? 'Добавление…' : 'Добавить'}
+				</button>
 				<p>Пока не сохраняет, надо пофиксить</p>
 			</div>
 			{!!status && (

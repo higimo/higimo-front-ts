@@ -48,7 +48,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		if (initialData) {
 			Object.entries(initialData).forEach(([key, value]: [keyof NokiaMeetingSimpleType, any]) => {
 				if (key === 'date') {
-					// @ts-ignore
+					// @ts-ignore TODO: [HARD] небось, тут дата приходит
 					setValue(key, new Date(value * 1000).toISOString().substring(0, 10))
 				} else {
 					setValue(key, value)
@@ -78,11 +78,10 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 
 			<div className="form__button">
 				<button
-					type="button"
+					type="submit"
 					className="default-form__submit"
 					disabled={isSubmitting || isSubmitted}
 				>
-					{/* TODO: [MEDIUM] добавить паттерн во все формы */}
 					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 				</button>
 

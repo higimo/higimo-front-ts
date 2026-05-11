@@ -117,7 +117,13 @@ export const ListListForm: FunctionComponent = () => {
 			.then(val => setValues(val[0]))
 	}, [idcode])
 
-	const { register, handleSubmit, formState, reset } = useForm<FormValues>({
+	const {
+		register,
+		handleSubmit,
+		formState,
+		reset,
+		formState: { isSubmitting },
+	} = useForm<FormValues>({
 		defaultValues: values,
 	})
 
@@ -142,7 +148,9 @@ export const ListListForm: FunctionComponent = () => {
 					)
 				])}
 				<div className="form__button">
-					<button type="submit" className="default-form__submit">Enter</button>
+					<button type="submit" className="default-form__submit" disabled={isSubmitting}>
+						{isSubmitting ? 'Сохранение…' : 'Сохранить'}
+					</button>
 					{(formState.isSubmitted || formState.isSubmitting) && (
 						<ShowFormResult<FormValues> status={status} reset={() => reset()} />
 					)}

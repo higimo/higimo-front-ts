@@ -10,18 +10,19 @@ import { toast } from 'toast'
 
 import './style.css'
 
+type FormValues = PortfolioWorkerType
+
 type CreateWorkerPropsType = {
 	onSubmit: (roles: PortfolioWorkerType) => Promise<boolean>
 }
-
 // TODO: [HARD] сейчас не сообщает, если какое-то поле забуду
 export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitting },
 		reset,
-	} = useForm<PortfolioWorkerType>()
+	} = useForm<FormValues>()
 
 	const ShowError = ({ filerError }: { filerError?: FieldError }) => {
 		if (!filerError) {
@@ -121,8 +122,9 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 					<button
 						type="submit"
 						className="submit-button"
+						disabled={isSubmitting}
 					>
-						Добавить человека
+						{isSubmitting ? 'Добавление…' : 'Добавить автора'}
 					</button>
 				</form>
 			</CollapseSection>

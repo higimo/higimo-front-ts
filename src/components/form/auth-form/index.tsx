@@ -61,7 +61,7 @@ export const AuthForm: FunctionComponent = () => {
 			/>
 			<div className="form__button">
 				<button type="submit" className="default-form__submit" disabled={isSubmitting}>
-					{isSubmitting ? 'Отправка...' : 'Войти'}
+					{isSubmitting ? 'Проникновение…' : 'Войти'}
 				</button>
 			</div>
 		</form>
