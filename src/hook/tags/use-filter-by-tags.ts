@@ -19,7 +19,7 @@ export const useFilterByTags = <T extends DataItemWithTags>(
 		return list.filter(item => {
 			for (const selectedTag of Array.from(selectedIds)) {
 				for (const itemTag of item.tags) {
-					if (itemTag.label === selectedTag) {
+					if (itemTag.title === selectedTag) {
 						return true
 					}
 				}

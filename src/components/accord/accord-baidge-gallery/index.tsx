@@ -6,20 +6,17 @@ import { TagName } from 'hook/tags/use-smart-tags'
 type AccordTagGalleryPropsType = {
 	toggleTag: (label: TagName) => () => void
 	isSelected: (label: TagName) => boolean
-	deselectAll: () => void
 }
-export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({ toggleTag, isSelected, deselectAll }) => (
+export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({ toggleTag, isSelected }) => (
 	<div className="accord__tags-gallery">
-		{ACCORD_TAG_CATEGORY[0].tags.map(({ label }, id) => (
+		{ACCORD_TAG_CATEGORY[0].tags.map(({ title }, id) => (
 			<Tag
 				key={id}
-				active={isSelected(label)}
-				onClick={toggleTag(label)}
+				active={isSelected(title)}
+				onClick={toggleTag(title)}
 			>
-				{label}
+				{title}
 			</Tag>
 		))}
-		{'    '}
-		<Tag onClick={deselectAll}>сбросить теги</Tag>
 	</div>
 )

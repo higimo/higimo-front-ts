@@ -17,7 +17,7 @@ export type AccordWithTagType = AccordType & {
 
 type AccordTagType = {
 	id: number
-	label: string
+	title: string
 }
 
 export type AccordRealTagType = AccordType & {

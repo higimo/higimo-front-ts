@@ -31,11 +31,13 @@ export const TOTAL_TAGS: AccordTags = {
 
 export const ACCORD_TAG_CATEGORY: TagCategory[] = [
 	{
-		id: 'main',
-		label: 'Основной',
+		group: {
+			id: 1,
+			title: 'Основной',
+		},
 		tags: Object.values(TOTAL_TAGS).map((tagName, index) => ({
 			id: index,
-			label: tagName
+			title: tagName
 		}))
 	},
 ]

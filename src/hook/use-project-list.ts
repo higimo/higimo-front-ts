@@ -8,6 +8,7 @@ import { useRoute } from 'preact-iso'
 import useApi from './use-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { useSmartTags } from './tags/use-smart-tags'
 
 type UseProjectType = () => {
     isLoading: boolean
@@ -21,24 +22,23 @@ type UseProjectType = () => {
 export const useProjectList: UseProjectType = () => {
 	const { query } = useRoute()
 
-	const [projectListRaw] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject)
+	const [projectList] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject)
 	const [tagList] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
-	const isLoading = useLoadingState([projectListRaw.status, tagList.status])
-	const isProjectListEmpty = useEmptyDataState(projectListRaw.data)
+	const isLoading = useLoadingState([projectList.status, tagList.status])
+	const isProjectListEmpty = useEmptyDataState(projectList.data)
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
-	// TODO: [USE_TAGS] useTag применить
-	let projectList = projectListRaw.data
+	let filterProjectList = projectList.data
 	if (query[PROJECT_FILTER_DIC.FILTER_TAG]) {
-		projectList = projectListRaw.data.filter(projectItem => {
-			return projectItem.tags.find(tag => tag.title === query[PROJECT_FILTER_DIC.FILTER_TAG])
+		filterProjectList = projectList.data.filter(projectItem => {
+			return projectItem.tags.some(tag => tag.title === query[PROJECT_FILTER_DIC.FILTER_TAG])
 		})
 	}
 
 	return {
 		isLoading: isLoading,
 		isEmpty: isProjectListEmpty || isTagListEmpty,
-		projectList,
+		projectList: filterProjectList,
 		tagList: tagList.data,
 	}
 }

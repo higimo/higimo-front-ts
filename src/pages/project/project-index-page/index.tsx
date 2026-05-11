@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
-import { useProjectList } from 'hook/use-project'
+import { useProjectList } from 'hook/use-project-list'
 
 import { Loading } from 'components/ui/loading'
 import { ProjectList } from 'components/project/project-list'

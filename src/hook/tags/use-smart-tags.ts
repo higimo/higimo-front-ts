@@ -2,15 +2,20 @@
 import { useState, useCallback, useMemo } from 'preact/hooks'
 
 export type TagName = string
+export type CatogoryName = string
 
 export type Tag = {
 	id: number
-	label: TagName
+	title: TagName
+}
+
+export type TagGroup = {
+	id: number
+	title: string
 }
 
 export type TagCategory = {
-	id: string
-	label: string
+	group: TagGroup
 	tags: Tag[]
 }
 
@@ -27,19 +32,19 @@ type UseSmartTagsReturn = {
 	totalCount: number
 
 	// Проверка
-	isSelected: (id: TagName) => boolean
-	isCategoryAllSelected: (categoryId: string) => boolean
-	getCategorySelectedCount: (categoryId: string) => { selected: number; total: number }
+	isSelected: (tagName: TagName) => boolean
+	isCategoryAllSelected: (categoryTitle: CatogoryName) => boolean
+	getCategorySelectedCount: (categoryTitle: CatogoryName) => { selected: number; total: number }
 
 	// Действия с отдельными тегами
-	toggleTag: (id: TagName) => () => void
-	select: (id: TagName) => void
-	deselect: (id: TagName) => void
+	toggleTag: (tagName: TagName) => () => void
+	select: (tagName: TagName) => void
+	deselect: (tagName: TagName) => void
 
 	// Действия с категориями
-	selectAllInCategory: (categoryId: string) => void
-	deselectAllInCategory: (categoryId: string) => () => void
-	toggleAllInCategory: (categoryId: string) => void
+	selectAllInCategory: (categoryTitle: CatogoryName) => void
+	deselectAllInCategory: (categoryTitle: CatogoryName) => () => void
+	toggleAllInCategory: (categoryTitle: CatogoryName) => void
 
 	// Глобальные действия
 	selectAll: () => void
@@ -47,20 +52,20 @@ type UseSmartTagsReturn = {
 	reset: () => void
 
 	// Вспомогательные
-	getTagsInCategory: (categoryId: string) => Tag[]
+	getTagsInCategory: (categoryTitle: CatogoryName) => Tag[]
 }
 
 const getAllTagIds = (categories: TagCategory[]): TagName[] => {
-	return categories.flatMap(cat => cat.tags.map(tag => tag.label))
+	return categories.flatMap(cat => cat.tags.map(tag => tag.title))
 }
 
-const getCategoryTagIds = (categories: TagCategory[], categoryId: string): TagName[] => {
-	const category = categories.find(cat => cat.id === categoryId)
-	return category?.tags.map(tag => tag.label) || []
+const getCategoryTagTitles = (categories: TagCategory[], categoryTitle: CatogoryName): TagName[] => {
+	const category = categories.find(cat => cat.group.title === categoryTitle)
+	return category?.tags.map(tag => tag.title) || []
 }
 
-const getCategoryTags = (categories: TagCategory[], categoryId: string): Tag[] => {
-	return categories.find(cat => cat.id === categoryId)?.tags || []
+const getCategoryTags = (categories: TagCategory[], categoryTitle: CatogoryName): Tag[] => {
+	return categories.find(cat => cat.group.title === categoryTitle)?.tags || []
 }
 
 export const useSmartTags = ({
@@ -68,128 +73,122 @@ export const useSmartTags = ({
 	mode = 'multiple',
 	initialSelected = [],
 }: UseSmartTagsProps): UseSmartTagsReturn => {
-	// Состояние
-	const [selectedIds, setSelectedIds] = useState<Set<TagName>>(() => new Set(initialSelected))
+	const [selectedTitles, setSelectedTitles] = useState<Set<TagName>>(() => new Set(initialSelected))
 
-	// Мемоизированные значения
-	const allTagIds = useMemo(() => getAllTagIds(categories), [categories])
-	const totalCount = useMemo(() => allTagIds.length, [allTagIds])
 
-	// Базовые операции
-	const select = useCallback((id: TagName) => {
-		setSelectedIds(prev => {
+	const allTagTitles = useMemo(() => getAllTagIds(categories), [categories])
+	const totalCount = useMemo(() => allTagTitles.length, [allTagTitles])
+
+
+	const select = useCallback((tagName: TagName) => {
+		setSelectedTitles(prev => {
 			if (mode === 'single') {
-				return new Set([id])
+				return new Set([tagName])
 			}
 			const next = new Set(prev)
-			next.add(id)
+			next.add(tagName)
 			return next
 		})
 	}, [mode])
 
-	const deselect = useCallback((id: TagName) => {
-		setSelectedIds(prev => {
+	const deselect = useCallback((tagName: TagName) => {
+		setSelectedTitles(prev => {
 			const next = new Set(prev)
-			next.delete(id)
+			next.delete(tagName)
 			return next
 		})
 	}, [])
 
-	const toggleTag = useCallback((id: TagName) => () => {
-		if (selectedIds.has(id)) {
-			deselect(id)
+	const toggleTag = useCallback((tagName: TagName) => () => {
+		if (selectedTitles.has(tagName)) {
+			deselect(tagName)
 		} else {
-			select(id)
+			select(tagName)
 		}
-	}, [selectedIds, select, deselect])
+	}, [selectedTitles, select, deselect])
 
-	const isSelected = useCallback((id: TagName) => {
-		return selectedIds.has(id)
-	}, [selectedIds])
+	const isSelected = useCallback((tagName: TagName) => {
+		return selectedTitles.has(tagName)
+	}, [selectedTitles])
 
-	// Действия с категориями
-	const selectAllInCategory = useCallback((categoryId: string) => {
-		const tagIds = getCategoryTagIds(categories, categoryId)
-		setSelectedIds(prev => new Set([...prev, ...tagIds]))
+
+	const selectAllInCategory = useCallback((categoryTitle: CatogoryName) => {
+		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
+		setSelectedTitles(prev => new Set([...prev, ...tagTitles]))
 	}, [categories])
 
-	const deselectAllInCategory = useCallback((categoryId: string) => () => {
-		const tagIds = getCategoryTagIds(categories, categoryId)
-		setSelectedIds(prev => {
+	const deselectAllInCategory = useCallback((categoryTitle: CatogoryName) => () => {
+		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
+		setSelectedTitles(prev => {
 			const next = new Set(prev)
-			tagIds.forEach(id => next.delete(id))
+			tagTitles.forEach(id => next.delete(id))
 			return next
 		})
 	}, [categories])
 
-	const toggleAllInCategory = useCallback((categoryId: string) => {
-		const isAllSelected = isCategoryAllSelected(categoryId)
+	const toggleAllInCategory = useCallback((categoryTitle: CatogoryName) => {
+		const isAllSelected = isCategoryAllSelected(categoryTitle)
 		if (isAllSelected) {
-			deselectAllInCategory(categoryId)
+			deselectAllInCategory(categoryTitle)
 		} else {
-			selectAllInCategory(categoryId)
+			selectAllInCategory(categoryTitle)
 		}
 	}, [categories, selectAllInCategory, deselectAllInCategory])
 
-	const isCategoryAllSelected = useCallback((categoryId: string) => {
-		const tagIds = getCategoryTagIds(categories, categoryId)
-		if (tagIds.length === 0) return false
-		return tagIds.every(id => selectedIds.has(id))
-	}, [categories, selectedIds])
+	const isCategoryAllSelected = useCallback((categoryTitle: CatogoryName) => {
+		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
+		if (tagTitles.length === 0) return false
+		return tagTitles.every(id => selectedTitles.has(id))
+	}, [categories, selectedTitles])
 
-	const getCategorySelectedCount = useCallback((categoryId: string) => {
-		const tagIds = getCategoryTagIds(categories, categoryId)
-		const selected = tagIds.filter(id => selectedIds.has(id)).length
-		return { selected, total: tagIds.length }
-	}, [categories, selectedIds])
+	const getCategorySelectedCount = useCallback((categoryTitle: CatogoryName) => {
+		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
+		const selected = tagTitles.filter(id => selectedTitles.has(id)).length
+		return { selected, total: tagTitles.length }
+	}, [categories, selectedTitles])
 
-	const getTagsInCategory = useCallback((categoryId: string) => {
-		return getCategoryTags(categories, categoryId)
+	const getTagsInCategory = useCallback((categoryTitle: CatogoryName) => {
+		return getCategoryTags(categories, categoryTitle)
 	}, [categories])
 
-	// Глобальные действия
+
 	const selectAll = useCallback(() => {
-		setSelectedIds(new Set(allTagIds))
-	}, [allTagIds])
+		setSelectedTitles(new Set(allTagTitles))
+	}, [allTagTitles])
 
 	const deselectAll = useCallback(() => {
-		setSelectedIds(new Set())
+		setSelectedTitles(new Set())
 	}, [])
 
 	const reset = useCallback(() => {
-		setSelectedIds(new Set(initialSelected))
+		setSelectedTitles(new Set(initialSelected))
 	}, [initialSelected])
 
-	// Вычисляемые значения
-	const selectedCount = useMemo(() => selectedIds.size, [selectedIds])
+
+	const selectedCount = useMemo(() => selectedTitles.size, [selectedTitles])
+
 
 	return {
-		// Состояние
-		selectedIds,
+		selectedIds: selectedTitles,
 		selectedCount,
 		totalCount,
 
-		// Проверка
 		isSelected,
 		isCategoryAllSelected,
 		getCategorySelectedCount,
 
-		// Действия с отдельными тегами
 		toggleTag,
 		select,
 		deselect,
 
-		// Действия с категориями
 		selectAllInCategory,
 		deselectAllInCategory,
 		toggleAllInCategory,
 
-		// Глобальные действия
 		selectAll,
 		deselectAll,
 		reset,
 
-		// Вспомогательные
 		getTagsInCategory,
 	}
 }

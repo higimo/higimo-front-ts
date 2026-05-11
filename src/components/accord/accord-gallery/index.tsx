@@ -19,7 +19,6 @@ export const AccordGallery: FunctionComponent = () => {
 		selectedIds,
 		toggleTag,
 		isSelected,
-		deselectAllInCategory,
 	} = useSmartTags({
 		categories: ACCORD_TAG_CATEGORY,
 		mode: 'single',
@@ -33,7 +32,6 @@ export const AccordGallery: FunctionComponent = () => {
 			<AccordTagGallery
 				toggleTag={toggleTag}
 				isSelected={isSelected}
-				deselectAll={deselectAllInCategory('main')}
 			/>
 			<div>
 				{filtredList.map(item => (
