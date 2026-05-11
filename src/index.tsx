@@ -92,7 +92,7 @@ import { AdminPage }     from 'pages/auth/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
 import { TestPage }      from 'pages/test-page'
 import { TextareaPage }  from 'pages/textarea-page'
-import { ToolPage }      from 'components/tool/tool-page'
+import { ToolPage }      from 'pages/tool-page'
 
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
 import { MerchantPage } from 'pages/merchant/merchant-page'

@@ -2,9 +2,9 @@ import httpBuildQuery from 'http-build-query'
 
 import { useCallback } from 'preact/hooks'
 
-import { formatResponse } from 'components/tool/tool-page/components/admin-tool/utils/formatResponse'
+import { formatResponse } from 'components/admin-tool/utils/formatResponse'
 
-import { HEADERS } from 'components/tool/tool-page/components/admin-tool/const'
+import { HEADERS } from 'components/admin-tool/const'
 
 export const useApiRequest = () => {
 	const sendRequest = useCallback((

@@ -2,6 +2,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+// TODO: [LIGHT] Исправить на карточки, как на главной Tile
+// TODO: [LIGHT] Вывести на страницу сервисов, как анонсы
 export const ToolIndex = () => (
 	<TextContainer>
 		<h2>Мои тулы, инвентари</h2>

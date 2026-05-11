@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
 
-import { FormField } from 'components/tool/tool-page/components/admin-tool/form-field'
+import { FormField } from 'components/admin-tool/form-field'
 
-import { DEFAULT_STATE } from 'components/tool/tool-page/components/admin-tool/hook/useToolForm'
+import { DEFAULT_STATE } from 'components/admin-tool/hook/useToolForm'
 
 export const Sidebar: FunctionComponent<{
 	formData: typeof DEFAULT_STATE

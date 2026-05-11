@@ -2,16 +2,16 @@ import { FunctionComponent, JSX } from 'preact'
 
 import { useCallback, useRef, useState } from 'preact/hooks'
 
-import { MentionList } from 'pages/textarea-page/components/mention-textarea/mention-list'
-import { MentionSuggest, MetionSelector } from 'pages/textarea-page/components/mention-textarea/types'
+import { MentionList } from 'components/mention-textarea/mention-list'
+import { MentionSuggest, MetionSelector } from 'components/mention-textarea/types'
 
-import { KEY } from 'pages/textarea-page/components/mention-textarea/KEY'
+import { KEY } from 'components/mention-textarea/KEY'
 
-import { getMentionList } from 'pages/textarea-page/components/mention-textarea/utils/get-mention-list'
-import { getShiftSuggest } from 'pages/textarea-page/components/mention-textarea/utils/get-shift-suggest'
-import { getWrittenMention } from 'pages/textarea-page/components/mention-textarea/utils/get-written-mention'
-import { isMention } from 'pages/textarea-page/components/mention-textarea/utils/is-mention'
-import { normalizeMentionList } from 'pages/textarea-page/components/mention-textarea/utils/normalize-mention-list'
+import { getMentionList } from 'components/mention-textarea/utils/get-mention-list'
+import { getShiftSuggest } from 'components/mention-textarea/utils/get-shift-suggest'
+import { getWrittenMention } from 'components/mention-textarea/utils/get-written-mention'
+import { isMention } from 'components/mention-textarea/utils/is-mention'
+import { normalizeMentionList } from 'components/mention-textarea/utils/normalize-mention-list'
 
 import 'pages/textarea-page/components/mention-textarea/style.css'
 

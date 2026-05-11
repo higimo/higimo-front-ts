@@ -4,7 +4,7 @@ import { FunctionComponent, createRef } from 'preact'
 
 import { useCallback, useEffect } from 'preact/hooks'
 
-import { MentionSuggest } from 'pages/textarea-page/components/mention-textarea/types'
+import { MentionSuggest } from 'components/mention-textarea/types'
 
 type MentionListPropsType = {
 	onSelect: (value: MentionSuggest) => void

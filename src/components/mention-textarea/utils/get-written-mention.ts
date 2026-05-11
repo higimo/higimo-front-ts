@@ -1,4 +1,4 @@
-import { MetionSelector } from 'pages/textarea-page/components/mention-textarea/types'
+import { MetionSelector } from 'components/mention-textarea/types'
 
 export const getWrittenMention = (value: string, caretPosition: number): MetionSelector => {
 	if (caretPosition < 1 || caretPosition > value.length) {
