@@ -3,7 +3,7 @@ import { PortfolioTag } from 'api-types/portfolio.types'
 
 import { TextContainer } from 'components/ui/text-container'
 import { ProjectTag } from 'components/project/project-tag'
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types'
+import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 type PortfolioCreditsGalleryProps = {
 	tags: PortfolioTag[],

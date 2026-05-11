@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ProjectRoutingFilterNameType } from 'components/project/project-tag-category/types'
+import { ProjectRoutingFilterNameType } from 'components/project/filter_dictionary'
 
 import httpBuildQuery from 'http-build-query'
 

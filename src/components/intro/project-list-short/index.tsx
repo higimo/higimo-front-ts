@@ -14,7 +14,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types'
+import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 import './style.css'
 

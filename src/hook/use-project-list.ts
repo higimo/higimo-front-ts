@@ -1,6 +1,6 @@
 import { PortfolioProjectFullType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
 
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types'
+import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 import { useEmptyDataState } from './use-empty-data-state'
 import { useLoadingState } from './use-loading-state'

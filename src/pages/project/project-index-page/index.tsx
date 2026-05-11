@@ -8,7 +8,7 @@ import { ProjectList } from 'components/project/project-list'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
-import { ProjectTagCategory } from 'components/project/project-tag-category'
+import { ProjectClickTagCategory } from 'components/project/project-click-tag-category'
 
 // TODO: [FEATURE] Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
 // TODO: [FEATURE] Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
@@ -35,7 +35,7 @@ export const ProjectIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Сделал</h1>
 			</TextContainer>
-			<ProjectTagCategory groupedTags={tagList} />
+			<ProjectClickTagCategory groupedTags={tagList} />
 			<ProjectList projectsList={projectList} />
 		</div>
 	)

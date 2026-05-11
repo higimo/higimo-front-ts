@@ -4,13 +4,13 @@ import { PortfolioGroupedTagType } from 'api-types/portfolio.types'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { PROJECT_FILTER_DIC } from 'components/project/project-tag-category/types'
+import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 import './style.css'
 
 const IGRORED_TAG_GROUPS = ['other', 'Локация', 'Продукт', 'Технология']
 
-export const ProjectTagCategory: FunctionComponent<{ groupedTags: PortfolioGroupedTagType[]; }> = ({ groupedTags }) => {
+export const ProjectClickTagCategory: FunctionComponent<{ groupedTags: PortfolioGroupedTagType[]; }> = ({ groupedTags }) => {
 	return (
 		<TextContainer className="project-tag">
 			{groupedTags.map(({ group, tags }) => {
