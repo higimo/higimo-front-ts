@@ -1,7 +1,9 @@
-import { FunctionComponent } from 'preact'
 import { PetProjectType } from 'api-types/petproject.types'
+import { FunctionComponent } from 'preact'
 
 import { petProjectGradient } from 'components/tool/pet-project/gradient-dic'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
@@ -17,7 +19,7 @@ type PetProject = {
 }
 export const PetProject: FunctionComponent<PetProject> = ({ petprojects }) => (
 	<div className="pet-project-gallery">
-		{petprojects.map(({ name, description = '' }, index) => (
+		{petprojects.map(({ id, name, description = '' }, index) => (
 			<div
 				className="pet-project__item"
 				style={{
@@ -30,6 +32,12 @@ export const PetProject: FunctionComponent<PetProject> = ({ petprojects }) => (
 					className="pet-project__description"
 					dangerouslySetInnerHTML={{ __html: getDescription(description)}}
 				/>
+				<a
+					href={ROUTE_LINKS.petProjectEdit({ projectId: id.toString()})}
+					className="pet-project__edit"
+				>
+					✐
+				</a>
 			</div>
 		))}
 	</div>

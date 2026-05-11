@@ -26,9 +26,9 @@ type FormValues = {
 	description: PetProjectType['description']
 }
 
-type HandlePerprojectSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
+type HandlePetprojectSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
 	(values: FormValues) => Promise<void>
-const handlePerprojectSubmit: HandlePerprojectSubmitType = setStatus => async values => {
+const handlePetprojectSubmit: HandlePetprojectSubmitType = setStatus => async values => {
 	try {
 		const serverResult = await sendRequest(
 			API_ROUTE.probbiSingle({ projectId: values.id.toString() }),
@@ -44,7 +44,6 @@ const handlePerprojectSubmit: HandlePerprojectSubmitType = setStatus => async va
 	}
 }
 
-// TODO: [MEDIUM] Поставить ссылку на создание и редактирование
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
@@ -80,7 +79,7 @@ export const PetProjectForm = () => {
 
 	return (
 		<div className="pet-project">
-			<form className="container" onSubmit={handleSubmit(handlePerprojectSubmit(setStatus))}>
+			<form className="container" onSubmit={handleSubmit(handlePetprojectSubmit(setStatus))}>
 				<div>
 					<label htmlFor="id">id</label>
 				</div>

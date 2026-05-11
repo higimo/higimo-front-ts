@@ -24,16 +24,13 @@
 }
 
 .pet-project__item {
+	position: relative;
 	padding: 16px;
-	color: #fff;
 	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
 	box-shadow:
 		inset 0 0 0px 1px #b0b0b026
 	;
 	border-radius: 8px;
-}
-
-.pet-project__item {
 	color: var(--color);
 }
 
@@ -56,4 +53,12 @@
 	max-width: 80%;
 	min-height: 150px;
 	overflow-wrap: break-word;
+}
+
+a.pet-project__edit {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	border: none;
+	line-height: 1;
 }

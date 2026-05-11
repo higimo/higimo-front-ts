@@ -78,6 +78,7 @@ const ROUTE_PETPROJECT_LINKS = Object.freeze({
 	petProject:           '/tool/pet-project/',
 	petProjectCreate:     '/tool/pet-project/create/',
 	petProjectEdit_CONST: '/tool/pet-project/:projectId/edit/',
+	petProjectEdit:       generateLink('/tool/pet-project/:projectId/edit/'),
 })
 
 const ROUTE_TOOL_LINKS = Object.freeze({
