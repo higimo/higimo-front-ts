@@ -3,7 +3,7 @@ import { PortfolioProjectDetailType } from 'api-types/portfolio.types'
 
 import { OnlyAdmin } from 'components/util/only-admin'
 import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
-import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
+import { PortfolioViewerTags } from 'components/project/portfolio-viewer-tags'
 import { TextContainer } from 'components/ui/text-container'
 import { WorkerInput } from 'components/form/project/worker-input'
 
@@ -37,6 +37,6 @@ export const ProjectViewer: FunctionComponent<ProjectViewerPropsType> = ({ proje
 		<PortfolioCreditsGallery credits={project.credits} />
 		{/* TODO: [USE_TAGS] useTags применить мапинг категоризации тегов */}
 		{/* TODO: [HARD] useTags Сделать интерфейс фигули, которая прописывает теги */}
-		<PortfolioTagsGallery tags={project.tags || []} />
+		<PortfolioViewerTags tags={project.tags || []} />
 	</div>
 )

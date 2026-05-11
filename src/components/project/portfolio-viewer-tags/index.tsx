@@ -9,7 +9,7 @@ type PortfolioCreditsGalleryProps = {
 	tags: PortfolioTag[],
 }
 
-export const PortfolioTagsGallery: FunctionComponent<PortfolioCreditsGalleryProps> = ({ tags }) => {
+export const PortfolioViewerTags: FunctionComponent<PortfolioCreditsGalleryProps> = ({ tags }) => {
 	if (!Array.isArray(tags) || !tags.length) {
 		return null
 	}

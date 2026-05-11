@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 import { TextContainer } from 'components/ui/text-container'
 import { ProjectTypographicTest } from 'components/project/project-typographic-test'
 import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
-import { PortfolioTagsGallery } from 'components/project/portfolio-tags-gallery'
+import { PortfolioViewerTags } from 'components/project/portfolio-viewer-tags'
 
 import { getHumanDate } from 'components/project/utils/get-human-date'
 
@@ -33,8 +33,8 @@ export const ProjectTypography: FunctionComponent = () => {
 			<PortfolioCreditsGallery credits={credits.slice(0, 2)} />
 			<PortfolioCreditsGallery credits={credits.slice(0, 1)} />
 
-			<PortfolioTagsGallery tags={tags} />
-			<PortfolioTagsGallery tags={tags.slice(-5)} />
+			<PortfolioViewerTags tags={tags} />
+			<PortfolioViewerTags tags={tags.slice(-5)} />
 		</div>
 	)
 }
