@@ -1,8 +1,10 @@
 import { MutableRef } from 'preact/hooks'
 
-import { COLORS } from '../DICTIONARY'
+import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
+
 import { loadD3Modules } from './load-d3-modules'
-import { PrepareDataResult } from '../types'
+
+import { COLORS } from 'components/nokia/nokia-statistic/DICTIONARY'
 
 export const MARGIN = { top: 40, right: 50, bottom: 150, left: 70 }
 export const WIDTH = 1300

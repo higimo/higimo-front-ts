@@ -7,7 +7,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapsMoscowBar } from 'components/tourism/tourism-maps-moscow-bar'
 
-import '../../tourism-style.css'
+import 'pages/tourism/tourism-style.css'
 
 export const TourismMoscowBarPage: FunctionComponent = () => {
 	usePageTitle('Московские бары')

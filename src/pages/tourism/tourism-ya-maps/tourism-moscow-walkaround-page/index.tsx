@@ -7,7 +7,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps-figure'
 
-import '../../tourism-style.css'
+import 'pages/tourism/tourism-style.css'
 
 export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 	usePageTitle('Обхожу Москву')

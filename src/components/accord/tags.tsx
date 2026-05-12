@@ -1,4 +1,4 @@
-import { TagCategory } from "hook/tags/use-smart-tags"
+import { TagCategory } from 'hook/tags/use-smart-tags'
 
 type AccordTags = {
 	[key: string]: string

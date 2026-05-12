@@ -20,7 +20,6 @@ import listImg from './img/list.svg'
 import passportImg from './img/passport.svg'
 import russiaImg from './img/russia.svg'
 
-
 // TODO: [HARD] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
 	usePageTitle('Туризм')

@@ -1,23 +1,24 @@
 import { Coord } from 'utils.type'
 
+import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/data/bar-pov-moscow'
 import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/data/bar-pov-moscow'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
+import { TagCategory, useSmartTags } from 'hook/tags/use-smart-tags'
 import useApi from 'hook/use-api'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useMemo } from 'preact/hooks'
-import { TourismMapGeo } from '../tourism-map-geo'
 
+import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
+
+import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStrategy'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import 'components/tourism/yandex-map.css'
-import { TagCategory, useSmartTags } from 'hook/tags/use-smart-tags'
-import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStrategy'
 
 // TODO: удалить useGroupTags, когда тут заработает
 export const TourismMapsMoscowBar = () => {

@@ -4,8 +4,8 @@ import { useRoute } from 'preact-iso'
 
 import { MaybeLink } from 'components/ui/maybe-link'
 
-import { convertPathToUrl } from '../../../utils/url-route/convert-path-to-url'
-import { getPageTitle } from '../../../utils/get-page-title'
+import { getPageTitle } from 'utils/get-page-title'
+import { convertPathToUrl } from 'utils/url-route/convert-path-to-url'
 
 import { BREADCRUMS_DIC, isRouteType } from 'dic/BREADCRUMS_DIC'
 

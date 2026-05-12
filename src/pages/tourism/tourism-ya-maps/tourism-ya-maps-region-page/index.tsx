@@ -9,7 +9,7 @@ import { TourismMapsRegion } from 'components/tourism/tourism-maps-region'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
-import '../../tourism-style.css'
+import 'pages/tourism/tourism-style.css'
 
 export const TourismYaMapsRegionPage: FunctionComponent = () => {
 	usePageTitle('Карта регионов России')

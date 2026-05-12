@@ -1,10 +1,10 @@
+import { UpdateNewsType } from 'api-types/last-update.types'
 import { FunctionComponent } from 'preact'
-import { UpdateNewsType } from '../../../api-types/last-update.types'
 import { KeyOf, ValueOf } from 'utils.type'
 
+import useApi from 'hook/use-api'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
-import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
@@ -16,10 +16,10 @@ import { getDate } from 'utils/formatter/get-date'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import higimo from './img/higimo.png'
-import rak	from './img/rak.png'
+import rak from './img/rak.png'
 import screen from './img/screen.png'
-import tech   from './img/tech.png'
-import tg	 from './img/tg.svg'
+import tech from './img/tech.png'
+import tg from './img/tg.svg'
 
 import './style.css'
 

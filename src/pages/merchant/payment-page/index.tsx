@@ -1,6 +1,5 @@
-import { FunctionComponent } from 'preact'
-import { initPayment } from '../../../utils/merchant/init-payment'
 import { FormValues } from 'components/merchant/merchant-payment-form/types'
+import { FunctionComponent } from 'preact'
 
 import { useMerchant } from 'hook/use-merchant'
 import { usePageTitle } from 'hook/use-page-title'
@@ -8,14 +7,16 @@ import { useLocation } from 'preact-iso'
 import { useLayoutEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
+import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
+import { MerchantPaymentForm } from 'components/merchant/merchant-payment-form'
 import { MerchantProductBenefits } from 'components/merchant/merchant-product-benefits'
 import { MerchantProductCard } from 'components/merchant/merchant-product-card'
 import { MerchantProductFeature } from 'components/merchant/merchant-product-features'
-import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
-import { MerchantPaymentForm } from 'components/merchant/merchant-payment-form'
+import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
-import { Loading } from 'components/ui/loading'
+
+import { initPayment } from 'utils/merchant/init-payment'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
