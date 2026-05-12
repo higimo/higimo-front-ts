@@ -6,7 +6,7 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+import { PovType } from 'components/tourism/data/russia-city2'
 import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -17,7 +17,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 	const stateData = useLazyLoadData<{
 		mainTrack: Coord[],
 		cities: PovType[],
-	}>(import('components/tourism/tourism-maps-figure/data/father-track'))
+	}>(import('components/tourism/data/father-track'))
 
 	const lines = stateData?.mainTrack
 	const cities = stateData?.cities

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/preact'; // <-- Импорт для Preact
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+import { PovType } from 'components/tourism/data/russia-city2'
 import { useWindowSize } from 'hook/use-window-size'
 import { Coord } from 'utils.type'
 import { beforeEach, describe, expect, it, vi } from 'vitest'

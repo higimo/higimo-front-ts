@@ -2,18 +2,16 @@ import { Coord } from 'utils.type'
 
 import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
+import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/data/bar-pov-moscow'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
 import useApi from 'hook/use-api'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { TAG_GROUP_ALL_DISABLE, TAG_GROUP_ALL_ENABLE, useGroupTags } from 'hook/use-group-tags'
 import { useLoadingState } from 'hook/use-loading-state'
 import { useMemo } from 'preact/hooks'
 import { TourismMapGeo } from '../tourism-map-geo'
 
-import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagAndGroupsStrategy'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

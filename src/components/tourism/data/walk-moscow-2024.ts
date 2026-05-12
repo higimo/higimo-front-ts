@@ -1,4 +1,4 @@
-import { YaMapPolygon } from 'components/tourism/tourism-maps-figure/data/types'
+import { YaMapPolygon } from 'components/tourism/data/types'
 
 export const moscow2024Polygon: YaMapPolygon = {
 	type: "Polygon",

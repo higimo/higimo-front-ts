@@ -2,7 +2,7 @@ import cs from 'classnames'
 
 import { FunctionComponent } from 'preact'
 
-import { BarPovRealTags } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
+import { BarPovRealTags } from 'components/tourism/data/bar-pov-moscow'
 import { Tag } from 'components/ui/tag'
 
 import './style.css'

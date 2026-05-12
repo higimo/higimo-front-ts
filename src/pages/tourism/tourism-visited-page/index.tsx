@@ -13,7 +13,7 @@ import { FunctionComponent } from 'preact'
 
 import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
-import { PovType } from 'components/tourism/tourism-maps-figure/data/russia-city2'
+import { PovType } from 'components/tourism/data/russia-city2'
 import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
 
 import { onlyPovTypes, subjectPederationTypes } from 'components/tourism/tourism-data/city-types'
@@ -168,7 +168,7 @@ type FilterStateType = {
 	type: ValueOf<typeof MAP_POINT_MAP>,
 }
 export const TourismVisitedPage: FunctionComponent = () => {
-	const stateData = useLazyLoadData<{ russiaCity: PovType[] }>(import('components/tourism/tourism-maps-figure/data/common'))
+	const stateData = useLazyLoadData<{ russiaCity: PovType[] }>(import('components/tourism/data/common'))
 
 
 

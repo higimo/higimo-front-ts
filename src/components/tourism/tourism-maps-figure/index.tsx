@@ -1,4 +1,4 @@
-import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/tourism-maps-figure/data/types'
+import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/data/types'
 import { createRef, Fragment } from 'preact'
 import { ValueOf } from 'utils.type'
 
@@ -20,7 +20,7 @@ const MAP_MODE = {
 }
 
 const loadStateData = async (): Promise<MoscowWalkaroundStateDataType> => {
-	const { stateYear2021, stateYear2024, moscowPovPoints } = await import('./data/common')
+	const { stateYear2021, stateYear2024, moscowPovPoints } = await import('../data/common')
 	return { stateYear2021, stateYear2024, moscowPovPoints }
 }
 
