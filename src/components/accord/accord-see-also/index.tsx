@@ -6,7 +6,7 @@ import { AccordElement } from 'components/accord/accord-element'
 /**
  * Компонент для See Also секции
  */
-export const SeeAlsoSection: FunctionComponent<{ items: AccordType[] }> = ({ items }) => (
+export const AccordSeeAlso: FunctionComponent<{ items: AccordType[] }> = ({ items }) => (
     <div className="see-also-list">
         {items.map(item => (
             <AccordElement

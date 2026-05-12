@@ -8,7 +8,7 @@ import useApi from 'hook/use-api'
 
 import { AccordContent } from 'components/accord/accord-content'
 import { Loading } from 'components/ui/loading'
-import { SeeAlsoSection } from 'components/accord/see-also-section'
+import { AccordSeeAlso } from 'components/accord/accord-see-also'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
@@ -47,7 +47,7 @@ export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode 
 			<div className="backlink">
 				<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
 			</div>
-			<SeeAlsoSection items={seeAlsoList} />
+			<AccordSeeAlso items={seeAlsoList} />
 		</div>
 	)
 }

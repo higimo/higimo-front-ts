@@ -5,7 +5,7 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import { TourismMainStatistic } from 'components/tourism-main-statistic/TourismMainStatistic'
+import { TourismMainStatistic } from 'components/tourism/tourism-main-statistic/TourismMainStatistic'
 import { TourismStatisticVisualizer } from 'components/tourism-statistic-visualizer/TourismStatisticVisualizer'
 import { PovType } from 'components/tourism/data/types'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
