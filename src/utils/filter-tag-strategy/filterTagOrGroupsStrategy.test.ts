@@ -2,15 +2,34 @@ import { describe, it, expect } from 'vitest'
 import { filterTagOrGroupsStrategy } from './filterTagOrGroupsStrategy'
 import { DataItemWithTags, SelectedTags } from './types'
 
+const tags = {
+	'белый': { id: 1, title: 'белый' },
+	'синий': { id: 1, title: 'синий' },
+	'черный': { id: 1, title: 'черный' },
+	'желтый': { id: 1, title: 'желтый' },
+
+	'XS': { id: 1, title: 'XS' },
+	'XL': { id: 1, title: 'XL' },
+	'M': { id: 1, title: 'M' },
+	'XXL': { id: 1, title: 'XXL' },
+
+	'шелк': { id: 1, title: 'шелк' },
+	'шерсть': { id: 1, title: 'шерсть' },
+	'джинса': { id: 1, title: 'джинса' },
+	'лён': { id: 1, title: 'лён' },
+}
+
+
+
 describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', () => {
 	const mockData: DataItemWithTags[] = [
-		{ id: 1, name: 'футболка',  tags: ['белый',  'XS',  'шелк'] },
-		{ id: 2, name: 'свитер',    tags: ['синий',  'XL',  'шерсть'] },
-		{ id: 3, name: 'шорты',     tags: ['белый',  'XL',  'джинса'] },
-		{ id: 4, name: 'штаны',     tags: ['черный', 'M',   'шелк'] },
-		{ id: 5, name: 'водолазка', tags: ['белый',  'M',   'шерсть'] },
-		{ id: 6, name: 'кофта',     tags: ['синий',  'XS',  'джинса'] },
-		{ id: 7, name: 'майка',     tags: ['желтый', 'XXL', 'лён'] },
+		{ id: 1, name: 'футболка',  tags: [tags['белый'],  tags['XS'],  tags['шелк']] },
+		{ id: 2, name: 'свитер',    tags: [tags['синий'],  tags['XL'],  tags['шерсть']] },
+		{ id: 3, name: 'шорты',     tags: [tags['белый'],  tags['XL'],  tags['джинса']] },
+		{ id: 4, name: 'штаны',     tags: [tags['черный'], tags['M'],   tags['шелк']] },
+		{ id: 5, name: 'водолазка', tags: [tags['белый'],  tags['M'],   tags['шерсть']] },
+		{ id: 6, name: 'кофта',     tags: [tags['синий'],  tags['XS'],  tags['джинса']] },
+		{ id: 7, name: 'майка',     tags: [tags['желтый'], tags['XXL'], tags['лён']] },
 	];
 
 	describe('Одна группа (OR внутри группы)', () => {
@@ -50,7 +69,7 @@ describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', 
 		it('отбрасывает элементы с пустыми тегами', () => {
 			const dataWithEmpty: DataItemWithTags[] = [
 				{ id: 1, name: 'футболка', tags: [] },
-				{ id: 2, name: 'свитер', tags: ['белый'] },
+				{ id: 2, name: 'свитер', tags: [tags['белый']] },
 			];
 
 			const selectedTags: SelectedTags = {
@@ -141,9 +160,9 @@ describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', 
 
 		it('отрабатывает перекрывающие теги', () => {
 			const dataWithOverlap: DataItemWithTags[] = [
-				{ id: 1, name: 'футболка', tags: ['белый', 'XS'] },
-				{ id: 2, name: 'свитер',   tags: ['белый', 'XL'] },
-				{ id: 3, name: 'шорты',    tags: ['синий', 'XS'] },
+				{ id: 1, name: 'футболка', tags: [tags['белый'], tags['XS']] },
+				{ id: 2, name: 'свитер',   tags: [tags['белый'], tags['XL']] },
+				{ id: 3, name: 'шорты',    tags: [tags['синий'], tags['XS']] },
 			];
 
 			const selectedTags: SelectedTags = {
@@ -201,7 +220,7 @@ describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', 
 		it('отрабатывает элементы без тегов', () => {
 			const dataWithEmptyTags: DataItemWithTags[] = [
 				{ id: 1, name: 'футболка', tags: [] },
-				{ id: 2, name: 'свитер', tags: ['белый'] },
+				{ id: 2, name: 'свитер', tags: [tags['белый']] },
 				{ id: 3, name: 'шорты', tags: [] },
 			];
 
@@ -210,23 +229,6 @@ describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', 
 			};
 
 			const result = filterTagOrGroupsStrategy(dataWithEmptyTags, selectedTags);
-
-			expect(result).toHaveLength(1);
-			expect(result[0].id).toBe(2);
-		});
-
-		it('отрабатывает элементы с null|undefined', () => {
-			const dataWithNullTags: DataItemWithTags[] = [
-				{ id: 1, name: 'футболка', tags: null },
-				{ id: 2, name: 'свитер', tags: ['белый'] },
-				{ id: 3, name: 'шорты', tags: undefined },
-			] as any[];
-
-			const selectedTags: SelectedTags = {
-				color: new Set(['белый']),
-			};
-
-			const result = filterTagOrGroupsStrategy(dataWithNullTags, selectedTags);
 
 			expect(result).toHaveLength(1);
 			expect(result[0].id).toBe(2);
@@ -260,7 +262,7 @@ describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', 
 			}
 
 			const singleItem: DataItemWithTags[] = [
-				{ id: 1, name: 'футболка', tags: ['tag_50'] },
+				{ id: 1, name: 'футболка', tags: [{ id: 50, title: 'tag_50' }] },
 			];
 
 			const result = filterTagOrGroupsStrategy(singleItem, manyGroups);

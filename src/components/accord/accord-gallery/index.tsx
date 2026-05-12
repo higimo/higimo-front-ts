@@ -16,6 +16,7 @@ export const AccordGallery: FunctionComponent = () => {
 	const list = useAccord()
 
 	const {
+		// TODO: [LIGHT] переименовать в selectedTagTitles
 		selectedIds,
 		toggleTag,
 		isSelected,

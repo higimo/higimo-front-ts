@@ -2,7 +2,7 @@
 import { useState, useCallback, useMemo } from 'preact/hooks'
 
 export type TagName = string
-export type CatogoryName = string
+export type CategoryName = string
 
 export type Tag = {
 	id: number
@@ -33,8 +33,8 @@ type UseSmartTagsReturn = {
 
 	// Проверка
 	isSelected: (tagName: TagName) => boolean
-	isCategoryAllSelected: (categoryTitle: CatogoryName) => boolean
-	getCategorySelectedCount: (categoryTitle: CatogoryName) => { selected: number; total: number }
+	isCategoryAllSelected: (categoryTitle: CategoryName) => boolean
+	getCategorySelectedCount: (categoryTitle: CategoryName) => { selected: number; total: number }
 
 	// Действия с отдельными тегами
 	toggleTag: (tagName: TagName) => () => void
@@ -42,9 +42,9 @@ type UseSmartTagsReturn = {
 	deselect: (tagName: TagName) => void
 
 	// Действия с категориями
-	selectAllInCategory: (categoryTitle: CatogoryName) => void
-	deselectAllInCategory: (categoryTitle: CatogoryName) => () => void
-	toggleAllInCategory: (categoryTitle: CatogoryName) => void
+	selectAllInCategory: (categoryTitle: CategoryName) => void
+	deselectAllInCategory: (categoryTitle: CategoryName) => void
+	toggleAllInCategory: (categoryTitle: CategoryName) => () => void
 
 	// Глобальные действия
 	selectAll: () => void
@@ -52,19 +52,19 @@ type UseSmartTagsReturn = {
 	reset: () => void
 
 	// Вспомогательные
-	getTagsInCategory: (categoryTitle: CatogoryName) => Tag[]
+	getTagsInCategory: (categoryTitle: CategoryName) => Tag[]
 }
 
 const getAllTagIds = (categories: TagCategory[]): TagName[] => {
 	return categories.flatMap(cat => cat.tags.map(tag => tag.title))
 }
 
-const getCategoryTagTitles = (categories: TagCategory[], categoryTitle: CatogoryName): TagName[] => {
+const getCategoryTagTitles = (categories: TagCategory[], categoryTitle: CategoryName): TagName[] => {
 	const category = categories.find(cat => cat.group.title === categoryTitle)
 	return category?.tags.map(tag => tag.title) || []
 }
 
-const getCategoryTags = (categories: TagCategory[], categoryTitle: CatogoryName): Tag[] => {
+const getCategoryTags = (categories: TagCategory[], categoryTitle: CategoryName): Tag[] => {
 	return categories.find(cat => cat.group.title === categoryTitle)?.tags || []
 }
 
@@ -112,42 +112,43 @@ export const useSmartTags = ({
 	}, [selectedTitles])
 
 
-	const selectAllInCategory = useCallback((categoryTitle: CatogoryName) => {
+
+	const isCategoryAllSelected = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
-		setSelectedTitles(prev => new Set([...prev, ...tagTitles]))
+		if (tagTitles.length === 0) return false
+		return tagTitles.every(id => selectedTitles.has(id))
+	}, [categories, selectedTitles])
+
+	const selectAllInCategory = useCallback((categoryTitle: CategoryName) => {
+		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
+		setSelectedTitles(prev => new Set(Array.from(prev).concat(tagTitles)))
 	}, [categories])
 
-	const deselectAllInCategory = useCallback((categoryTitle: CatogoryName) => () => {
+	const deselectAllInCategory = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
 		setSelectedTitles(prev => {
 			const next = new Set(prev)
-			tagTitles.forEach(id => next.delete(id))
+			tagTitles.forEach(tagName => next.delete(tagName))
 			return next
 		})
 	}, [categories])
 
-	const toggleAllInCategory = useCallback((categoryTitle: CatogoryName) => {
+	const toggleAllInCategory = useCallback((categoryTitle: CategoryName) => () => {
 		const isAllSelected = isCategoryAllSelected(categoryTitle)
 		if (isAllSelected) {
 			deselectAllInCategory(categoryTitle)
 		} else {
 			selectAllInCategory(categoryTitle)
 		}
-	}, [categories, selectAllInCategory, deselectAllInCategory])
+	}, [categories, isCategoryAllSelected, deselectAllInCategory, selectAllInCategory])
 
-	const isCategoryAllSelected = useCallback((categoryTitle: CatogoryName) => {
-		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
-		if (tagTitles.length === 0) return false
-		return tagTitles.every(id => selectedTitles.has(id))
-	}, [categories, selectedTitles])
-
-	const getCategorySelectedCount = useCallback((categoryTitle: CatogoryName) => {
+	const getCategorySelectedCount = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
 		const selected = tagTitles.filter(id => selectedTitles.has(id)).length
 		return { selected, total: tagTitles.length }
 	}, [categories, selectedTitles])
 
-	const getTagsInCategory = useCallback((categoryTitle: CatogoryName) => {
+	const getTagsInCategory = useCallback((categoryTitle: CategoryName) => {
 		return getCategoryTags(categories, categoryTitle)
 	}, [categories])
 

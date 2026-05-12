@@ -30,7 +30,7 @@ export const filterTagAnyStrategy = <T extends DataItemWithTags>(
 	}
 
 	return data.filter(item => {
-		const itemTagsSet = new Set(item.tags);
+		const itemTagsSet = new Set(item.tags.map(i => i.title));
 		return selectedFlat.some(tag => itemTagsSet.has(tag));
 	});
 };

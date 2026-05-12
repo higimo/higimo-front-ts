@@ -2,14 +2,29 @@ import { describe, it, expect } from 'vitest'
 import { filterTagAndGroupsStrategy } from './filterTagAndGroupsStrategy'
 import { DataItemWithTags, SelectedTags } from './types'
 
+const tags = {
+	'белый': { id: 1, title: 'белый' },
+	'синий': { id: 1, title: 'синий' },
+	'черный': { id: 1, title: 'черный' },
+
+	'XS': { id: 1, title: 'XS' },
+	'XL': { id: 1, title: 'XL' },
+	'M': { id: 1, title: 'M' },
+
+	'шелк': { id: 1, title: 'шелк' },
+	'шерсть': { id: 1, title: 'шерсть' },
+	'джинса': { id: 1, title: 'джинса' },
+}
+
+
 describe('[Стратегия фильтрации] filterTagAndGroupsStrategy', () => {
 	const mockData: DataItemWithTags[] = [
-		{ id: 1, name: 'футболка',  tags: ['белый',  'XS', 'шелк'] },
-		{ id: 2, name: 'свитер',    tags: ['синий',  'XL', 'шерсть'] },
-		{ id: 3, name: 'шорты',     tags: ['белый',  'XL', 'джинса'] },
-		{ id: 4, name: 'водолазка', tags: ['черный', 'M',  'шелк'] },
-		{ id: 5, name: 'кофта',     tags: ['белый',  'M',  'шерсть'] },
-		{ id: 6, name: 'штаны',     tags: ['синий',  'XS', 'джинса'] },
+		{ id: 1, name: 'футболка',  tags: [tags['белый'],  tags['XS'], tags['шелк']] },
+		{ id: 2, name: 'свитер',    tags: [tags['синий'],  tags['XL'], tags['шерсть']] },
+		{ id: 3, name: 'шорты',     tags: [tags['белый'],  tags['XL'], tags['джинса']] },
+		{ id: 4, name: 'водолазка', tags: [tags['черный'], tags['M'],  tags['шелк']] },
+		{ id: 5, name: 'кофта',     tags: [tags['белый'],  tags['M'],  tags['шерсть']] },
+		{ id: 6, name: 'штаны',     tags: [tags['синий'],  tags['XS'], tags['джинса']] },
 	];
 
 	describe('Одна группа (OR логика)', () => {
@@ -166,7 +181,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 
 		it('отрабатывает с дублирующимися тегами внутри датасета', () => {
 			const dataWithDuplicates: DataItemWithTags[] = [
-				{ id: 1, name: 'appple', tags: ['белый', 'белый', 'XS'] },
+				{ id: 1, name: 'appple', tags: [tags['белый'], tags['белый'], tags['XS']] },
 			];
 
 			const selectedTags: SelectedTags = {
@@ -183,7 +198,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 		it('отфильтровывает элементы без тегов', () => {
 			const dataWithEmptyTags: DataItemWithTags[] = [
 				{ id: 1, name: 'appple', tags: [] },
-				{ id: 2, name: 'gold', tags: ['белый'] },
+				{ id: 2, name: 'gold', tags: [tags['белый']] },
 			];
 
 			const selectedTags: SelectedTags = {
@@ -200,7 +215,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 			const dataWithNullTags = [
 				{ id: 1, name: 'appple', tags: null },
 				{ id: 1, name: 'appple', tags: undefined },
-				{ id: 2, name: 'gold', tags: ['белый'] },
+				{ id: 2, name: 'gold', tags: [tags['белый']] },
 			] as any[];
 
 			const selectedTags: SelectedTags = {
@@ -241,7 +256,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 			}
 
 			const singleItem: DataItemWithTags[] = [
-				{ id: 1, name: 'Item 1', tags: Array.from({ length: 300 }, (_, i) => `tag_${i}`) },
+				{ id: 1, name: 'Item 1', tags: Array.from({ length: 300 }, (_, i) => ({ id: i, title: `tag_${i}` })) },
 			];
 
 			const result = filterTagAndGroupsStrategy(singleItem, manyGroups);

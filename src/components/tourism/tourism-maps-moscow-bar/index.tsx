@@ -2,7 +2,7 @@ import { Coord } from 'utils.type'
 
 import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-import { BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
+import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/tourism-maps-figure/data/bar-pov-moscow'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
@@ -18,54 +18,76 @@ import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filterTagA
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import 'components/tourism/yandex-map.css'
+import { TagCategory, useSmartTags } from 'hook/tags/use-smart-tags'
+import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStrategy'
 
+// TODO: удалить useGroupTags, когда тут заработает
 export const TourismMapsMoscowBar = () => {
 	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
 
 	const isLoading = useLoadingState([barPovMoscow.status])
 	const isListEmpty = useEmptyDataState(barPovMoscow.data)
 
-	const tagGroups = useMemo(
-		() => Object.entries(barTagsCategory)
-			.reduce((acc, [categoryName, tags]) => ({
-				...acc,
-				[categoryName]: [
-					TAG_GROUP_ALL_DISABLE,
-					TAG_GROUP_ALL_ENABLE,
-					// @ts-ignore
-				].concat(barTagsCategory[categoryName])
-			}),
-			{}),
-		[]
+	const normalizedTagsBarPovMoscow = useMemo(
+		() => barPovMoscow.data.map((item: BarPovType): BarPovRealTags => ({
+			...item,
+			tags: item.tags.map((tagName, index) => ({
+				id: index,
+				title: tagName as string,
+			}))
+		})),
+		[barPovMoscow.data]
 	)
 
-	// TODO: [USE_TAGS] useTags теги интересно сделал
-	const {
-		selectedTags,
-		toggleTag,
-		selectAll,
-		deselectAll,
-		isAllSelected,
-		isNoneSelected,
-	} = useGroupTags(tagGroups);
+	const tagGroups: TagCategory[] = useMemo(
+		() => {
+			return Object.entries(barTagsCategory).map(([categoryName, tags], indexGroup) => ({
+				group: {
+					id: indexGroup,
+					title: categoryName,
+				},
+				tags: tags.map((tagName, indexTag) => ({
+					id: indexTag,
+					title: tagName,
+				}))
+			}))
+		},
+		[barTagsCategory]
+	)
 
+	const {
+		selectedIds,
+		toggleTag,
+		isSelected,
+		isCategoryAllSelected,
+		toggleAllInCategory,
+	} = useSmartTags({
+		categories: tagGroups,
+		mode: 'multiple',
+		initialSelected: ['Любимый']
+	})
+
+	// TODO: [USE_TAGS] есть же хук useYearFilter(AND_GROUP_STRATEGY)
 	const filteredData = useMemo(
-		// TODO: [USE_TAGS] useTags есть же DX с (хук есть) useYearFilter(AND_GROUP_STRATEGY)
-		() => filterTagAndGroupsStrategy(barPovMoscow.data, selectedTags),
-		[barPovMoscow.data, selectedTags]
+		() => {
+			console.log('INTO filteredData', normalizedTagsBarPovMoscow, selectedIds)
+			const res = filterTagAnyStrategy(normalizedTagsBarPovMoscow, { all: selectedIds })
+			console.log('HIGIMO', res)
+			return res
+		},
+		[normalizedTagsBarPovMoscow, selectedIds]
 	);
 
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
 
 	return (
 		<div className="tourism-maps-moscow-bar">
-			<TourismMapGeo<BarPovType, Coord>
+			<TourismMapGeo<BarPovRealTags, Coord>
 				items={filteredData}
 				zoom={12}
 				center={[55.758772, 37.617933]}
@@ -73,17 +95,15 @@ export const TourismMapsMoscowBar = () => {
 			/>
 			<TagGroupedGallery
 				groups={tagGroups}
-				selectedTags={selectedTags}
+				isSelected={isSelected}
 				toggleTag={toggleTag}
-				selectAll={selectAll}
-				deselectAll={deselectAll}
-				isAllSelected={isAllSelected}
-				isNoneSelected={isNoneSelected}
+				isCategoryAllSelected={isCategoryAllSelected}
+				toggleAllInCategory={toggleAllInCategory}
 			/>
 			{filteredData && (
 				<div className="bar-pov__gallery">
-					{filteredData.map((mapPoint: BarPovType) => (
-						<TourismBarPointSnippet key={mapPoint.title} {...mapPoint} />
+					{filteredData.map((mapPoint: BarPovRealTags) => (
+						<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
 					))}
 				</div>
 			)}
