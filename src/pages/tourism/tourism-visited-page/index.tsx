@@ -1,7 +1,7 @@
-import { ValueOf } from 'utils.type'
+import { KeyOf, ValueOf } from 'utils.type'
 
 import { useLazyLoadData } from 'hook/use-lazy-load-data'
-import { useState } from 'preact/hooks'
+import { useMemo, useState } from 'preact/hooks'
 
 import { usePageTitle } from 'hook/use-page-title'
 
@@ -16,92 +16,52 @@ import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 import { PovType } from 'components/tourism/data/russia-city2'
 import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
 
-import { onlyPovTypes, subjectPederationTypes } from 'components/tourism/tourism-data/city-types'
 
 import 'pages/tourism/tourism-style.css'
 import './style.css'
+import { VISITED_MAP, SORT_MAP, VISUALIZATOR_MAP } from './VISITED_MAP'
+import { MAP_POINT_MAP, typeFilters } from './MAP_POINT_MAP'
+import { TagCategory, useSmartTags } from 'hook/tags/use-smart-tags'
+import { useSwitcher } from './useSwitcher'
+import { FILTER_TAG_NAME_TO_KEY_MAP, FILTER_TAGS } from './FILTER_TAGS'
 
-// Переключение визуализации
-const VISUALIZATOR_MAP = {
-	MAP:   'MAP',
-	CARD:  'CARD',
-	TABLE: 'TABLE',
+type HandleFilterMapPointPropsType = {
+	selectedIds: Set<string>
+	isChooseVisitedMode: (val: string) => boolean
 }
+const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: HandleFilterMapPointPropsType) => (item: PovType) => {
+	if (selectedIds.has('Все')) {
+		return true
+	}
 
-const VISITED_MAP = {
-	INIT:    'INIT',
-	VISITED: 'VISITED',
-	WANTED:  'WANTED',
-}
-
-const MAP_POINT_MAP = {
-	TOTAL: 'TOTAL',
-	RUSSIA: 'RUSSIA',
-	WORLD: 'WORLD',
-	MOSCOW_ADM_ORKUG: 'MOSCOW_ADM_ORKUG',
-	MOSCOW_TOWN: 'MOSCOW_TOWN',
-	MOSCOW_DISTRICT: 'MOSCOW_DISTRICT',
-	METRO_MOSCOW: 'METRO_MOSCOW',
-	FEDERATION_SUBJECT: 'FEDERATION_SUBJECT',
-	FEDERATION_REPUBLIC: 'FEDERATION_REPUBLIC',
-	FEDERATION_KRAY: 'FEDERATION_KRAY',
-	FEDERATION_OBLAST: 'FEDERATION_OBLAST',
-	FEDERATION_MEGACITY: 'FEDERATION_MEGACITY',
-	FEDERATION_AVTONOM: 'FEDERATION_AVTONOM',
-	ONLY_POV: 'ONLY_POV',
-	DEAD_TOWN: 'DEAD_TOWN',
-	CASTLE: 'CASTLE',
-	CANYON: 'CANYON',
-	PARK: 'PARK',
-	MONASTERY: 'MONASTERY',
-	QUARRY: 'QUARRY',
-	CITY: 'CITY',
-	VILLAGE: 'VILLAGE',
-	ZATO: 'ZATO',
-}
-
-const SORT_MAP = {
-	INIT:     'INIT',
-	VISITED:  'VISITED',
-	WANTED:   'WANTED',
-	ALPHABET: 'ALPHABET',
-}
-
-const typeFilters = {
-	[MAP_POINT_MAP.MOSCOW_ADM_ORKUG]: ['административный округ Москвы', 'округ Москвы'],
-	[MAP_POINT_MAP.MOSCOW_TOWN]: ['поселение Москвы'],
-	[MAP_POINT_MAP.MOSCOW_DISTRICT]: ['район Москвы'],
-	[MAP_POINT_MAP.METRO_MOSCOW]: ['метро Москвы'],
-	[MAP_POINT_MAP.FEDERATION_SUBJECT]: subjectPederationTypes,
-	[MAP_POINT_MAP.FEDERATION_REPUBLIC]: ['республика'],
-	[MAP_POINT_MAP.FEDERATION_KRAY]: ['край'],
-	[MAP_POINT_MAP.FEDERATION_OBLAST]: ['область'],
-	[MAP_POINT_MAP.FEDERATION_MEGACITY]: ['город федерального значения'],
-	[MAP_POINT_MAP.FEDERATION_AVTONOM]: ['автономный область', 'автономный округ'],
-	[MAP_POINT_MAP.ONLY_POV]: onlyPovTypes,
-	[MAP_POINT_MAP.DEAD_TOWN]: ['вымерший город'],
-	[MAP_POINT_MAP.CASTLE]: ['крепость'],
-	[MAP_POINT_MAP.CANYON]: ['каньон'],
-	[MAP_POINT_MAP.PARK]: ['парк'],
-	[MAP_POINT_MAP.MONASTERY]: ['монастырь'],
-	[MAP_POINT_MAP.QUARRY]: ['каменоломни'],
-	[MAP_POINT_MAP.CITY]: ['город'],
-	[MAP_POINT_MAP.VILLAGE]: ['деревня'],
-	[MAP_POINT_MAP.ZATO]: ['ЗАТО'],
-}
-
-const handleFilterMapPoint = (filter: FilterStateType) => (item: PovType) => {
-	// Посещённость
-	if (filter.visited === VISITED_MAP.VISITED && 'visited' in item && !item.visited) return false
-	if (filter.visited === VISITED_MAP.WANTED && 'visited' in item && item.visited) return false
-
-	// Страна
-	if (filter.type === MAP_POINT_MAP.RUSSIA && 'country' in item && item.country !== 'Россия') return false
-	if (filter.type === MAP_POINT_MAP.WORLD && 'country' in item && item.country === 'Россия') return false
-
-	// @ts-ignore
-	if (typeFilters[filter.type] && !typeFilters[filter.type].includes(item.type)) {
+	if (isChooseVisitedMode(VISITED_MAP.VISITED) && 'visited' in item && !item.visited) {
 		return false
+	}
+	if (isChooseVisitedMode(VISITED_MAP.WANTED) && 'visited' in item && !item.visited) {
+		return false
+	}
+
+	if (selectedIds.has('Россия') || selectedIds.has('Иностранное')) {
+		if ('country' in item) {
+			if (selectedIds.has('Россия') && item.country !== 'Россия') {
+				return false
+			} else if (selectedIds.has('Иностранное') && item.country === 'Россия') {
+				return false
+			} else {
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+
+	for (const selectedTagTitle of selectedIds.values()) {
+		const key = selectedTagTitle as keyof typeof FILTER_TAG_NAME_TO_KEY_MAP
+		const mappingKey = FILTER_TAG_NAME_TO_KEY_MAP[key] as keyof typeof typeFilters
+		const realTagName = typeFilters[mappingKey] as readonly string[]
+		if (!realTagName.includes(item.type)) {
+			return false
+		}
 	}
 
 	return true
@@ -125,34 +85,17 @@ const handleSort = (sort: ValueOf<typeof SORT_MAP>) => (a: PovType, b: PovType) 
 	return 0
 }
 
-const FILTER_TAGS = [
-	{ type: MAP_POINT_MAP.TOTAL, label: 'Все' },
-
-	{ type: MAP_POINT_MAP.WORLD, label: 'Иностранное' },
-	{ type: MAP_POINT_MAP.RUSSIA, label: 'Россия' },
-
-	{ type: MAP_POINT_MAP.FEDERATION_SUBJECT, label: 'Субъекты федерации' },
-	{ type: MAP_POINT_MAP.FEDERATION_REPUBLIC, label: 'Республики' },
-	{ type: MAP_POINT_MAP.FEDERATION_KRAY, label: 'Края' },
-	{ type: MAP_POINT_MAP.FEDERATION_OBLAST, label: 'Области' },
-	{ type: MAP_POINT_MAP.FEDERATION_MEGACITY, label: 'Города федерального значения' },
-	{ type: MAP_POINT_MAP.FEDERATION_AVTONOM, label: 'Автономные области' },
-
-	{ type: MAP_POINT_MAP.MOSCOW_ADM_ORKUG, label: 'Округа Москвы' },
-	{ type: MAP_POINT_MAP.MOSCOW_TOWN, label: 'Поселения Москвы' },
-	{ type: MAP_POINT_MAP.MOSCOW_DISTRICT, label: 'Районы Москвы' },
-	{ type: MAP_POINT_MAP.METRO_MOSCOW, label: 'Станции метро Москвы' },
-
-	{ type: MAP_POINT_MAP.ONLY_POV, label: 'Точки интереса' },
-	{ type: MAP_POINT_MAP.DEAD_TOWN, label: 'Вымершие города' },
-	{ type: MAP_POINT_MAP.CASTLE, label: 'Крепости' },
-	{ type: MAP_POINT_MAP.CANYON, label: 'Каньоны' },
-	{ type: MAP_POINT_MAP.PARK, label: 'Парки' },
-	{ type: MAP_POINT_MAP.MONASTERY, label: 'Монастыри' },
-	{ type: MAP_POINT_MAP.QUARRY, label: 'Каменоломни' },
-	{ type: MAP_POINT_MAP.CITY, label: 'Города' },
-	{ type: MAP_POINT_MAP.VILLAGE, label: 'Деревни' },
-	{ type: MAP_POINT_MAP.ZATO, label: 'ЗАТО' }
+export const TOURISM_VISITED_TAG_CATEGORY: TagCategory[] = [
+	{
+		group: {
+			id: 1,
+			title: 'Основной',
+		},
+		tags: FILTER_TAGS.map(({ label }, index) => ({
+			id: index,
+			title: label
+		}))
+	},
 ]
 
 // TODO: [FEATURE] Следующим этапом подгружу оставшиеся списки для посещений:
@@ -168,33 +111,43 @@ type FilterStateType = {
 	type: ValueOf<typeof MAP_POINT_MAP>,
 }
 export const TourismVisitedPage: FunctionComponent = () => {
+	usePageTitle('Результаты путешествий')
+
+
+	// TODO: кажется, эта страница должна получать данные
+	// И передавать их в два компонента
+	// Один пусть считает статистику
+	// Второй будет фильтровать данные и тегами заниматься
 	const stateData = useLazyLoadData<{ russiaCity: PovType[] }>(import('components/tourism/data/common'))
 
 
+	const {
+		selectedIds,
+		toggleTag,
+		isSelected,
+	} = useSmartTags({
+		categories: TOURISM_VISITED_TAG_CATEGORY,
+		mode: 'single',
+		initialSelected: ['Все']
+	})
+
+	const [isChooseVisualizator, setVizualizator] = useSwitcher<ValueOf<typeof VISUALIZATOR_MAP>>(VISUALIZATOR_MAP.CARD)
+	const [isChooseSortMode, setSortMode] = useSwitcher<ValueOf<typeof SORT_MAP>>(SORT_MAP.INIT)
+	const [isChooseVisitedMode, setVisitedMode] = useSwitcher<ValueOf<typeof VISITED_MAP>>(VISITED_MAP.INIT)
+
+	// TODO: преобразовать stateData.russiaCity, чтобы сразу были теги внутри
 
 
 
 
 
-
-
-	const [visualizator, setVisualizator] = useState(VISUALIZATOR_MAP.CARD)
 	// TODO: [USE_TAGS] useTags
-	const [filter, setFilter] = useState<FilterStateType>({
+	const [filter] = useState<FilterStateType>({
 		visited: VISITED_MAP.INIT,
 		type: MAP_POINT_MAP.TOTAL,
 	})
 	// TODO: [USE_TAGS] useSort
 	const [sort, setSort] = useState(SORT_MAP.INIT)
-
-
-
-
-
-
-
-
-
 
 	if (!stateData) {
 		return null
@@ -202,122 +155,84 @@ export const TourismVisitedPage: FunctionComponent = () => {
 	if ((stateData?.russiaCity?.length || 0) === 0) {
 		return null
 	}
-
-	const totalStatistic = stateData.russiaCity.slice(0)
-
-	const total = stateData.russiaCity.filter(handleFilterMapPoint(filter)).sort(handleSort(sort))
-
-	usePageTitle('Результаты путешествий')
+	const totalStatistic = stateData.russiaCity
+	const filtredRussiaCity = useMemo(() =>
+		stateData.russiaCity
+			.filter(handleFilterMapPoint({
+				selectedIds,
+				isChooseVisitedMode,
+			}))
+			.sort(handleSort(sort))
+		, [stateData.russiaCity, selectedIds, sort]
+	)
 
 	return (
 		<div className="tourism-identy-page">
-			{/* <TourismMainMenu />
-			<Breadcrumps />
+			<div>
+				{/* <TourismMainMenu />
+				<Breadcrumps />
+				<TextContainer>
+					<h1>Результаты путешествий</h1>
+				</TextContainer> */}
+				{/* <TextContainer>
+					<p>
+						Я путешествую по спискам, где бы хотел побывать. Там города и отдельные места, например, Байкал и озеро Рица, парк Кудыкина гора. В России я бы хотел побывать во всех регионах и значимых городах. Ещё я хочу побывать во всех русских крепостях: кремли и замки вроде Изборска — они прекрасны.
+					</p>
+					<p>
+						Под статистикой можно ознакомиться, где я ещё не был и вписаться со мной в путешествие)
+					</p>
+				</TextContainer> */}
+				{/* <TourismStatisticWorld total={totalStatistic} />
+				<br /><br />
+				<TourismStatisticRussia total={totalStatistic} />
+				<br /><br />
+				<TourismStatisticMustPov total={totalStatistic} />
+				<br /><br />
+				<TourismStatisticMoscow total={totalStatistic} />
+				<br /><br />
+				<TextContainer>
+					<h2>Список для путешествий</h2>
+					<p>
+						Можно отобразить таблицей, карточками и посмотреть на карте. С белой подложкой то, где я уже был. Где не был — можно вписаться в путешествие)
+					</p>
+				</TextContainer> */}
+			</div>
 			<TextContainer>
-				<h1>Результаты путешествий</h1>
-			</TextContainer> */}
-			{/* <TextContainer>
-				<p>
-					Я путешествую по спискам, где бы хотел побывать. Там города и отдельные места, например, Байкал и озеро Рица, парк Кудыкина гора. В России я бы хотел побывать во всех регионах и значимых городах. Ещё я хочу побывать во всех русских крепостях: кремли и замки вроде Изборска — они прекрасны.
-				</p>
-				<p>
-					Под статистикой можно ознакомиться, где я ещё не был и вписаться со мной в путешествие)
-				</p>
-			</TextContainer> */}
-			{/* <TourismStatisticWorld total={totalStatistic} />
-			<br /><br />
-			<TourismStatisticRussia total={totalStatistic} />
-			<br /><br />
-			<TourismStatisticMustPov total={totalStatistic} />
-			<br /><br />
-			<TourismStatisticMoscow total={totalStatistic} />
-			<br /><br />
-			<TextContainer>
-				<h2>Список для путешествий</h2>
-				<p>
-					Можно отобразить таблицей, карточками и посмотреть на карте. С белой подложкой то, где я уже был. Где не был — можно вписаться в путешествие)
-				</p>
-			</TextContainer> */}
-			<TextContainer>
-				{FILTER_TAGS.map(({ type, label }) => (
-					<Tag
-						key={type}
-						active={filter.type === type}
-						onClick={() => setFilter(p => ({ ...p, type }))}
-					>
-						{label}
+				{TOURISM_VISITED_TAG_CATEGORY[0].tags.map((tag) => (
+					<Tag key={tag.id} active={isSelected(tag.title)} onClick={toggleTag(tag.title)}>
+						{tag.title}
 					</Tag>
 				))}
 			</TextContainer>
 			<FullWidthContainer className="tourism-visualizer-switcher">
 				<Switcher
 					options={[
-						{
-							title: 'Карточками',
-							active: visualizator === VISUALIZATOR_MAP.CARD,
-							onClick: () => setVisualizator(VISUALIZATOR_MAP.CARD)
-						},
-						{
-							title: 'Таблицей',
-							active: visualizator === VISUALIZATOR_MAP.TABLE,
-							onClick: () => setVisualizator(VISUALIZATOR_MAP.TABLE)
-						},
-						{
-							title: 'Картой',
-							active: visualizator === VISUALIZATOR_MAP.MAP,
-							onClick: () => setVisualizator(VISUALIZATOR_MAP.MAP)
-						},
+						{ title: 'Карточками', active: isChooseVisualizator(VISUALIZATOR_MAP.CARD),  onClick: setVizualizator(VISUALIZATOR_MAP.CARD) },
+						{ title: 'Таблицей',   active: isChooseVisualizator(VISUALIZATOR_MAP.TABLE), onClick: setVizualizator(VISUALIZATOR_MAP.TABLE) },
+						{ title: 'Картой',     active: isChooseVisualizator(VISUALIZATOR_MAP.MAP),   onClick: setVizualizator(VISUALIZATOR_MAP.MAP) },
 					]}
 				/>
 			</FullWidthContainer>
 			<FullWidthContainer className="tourism-sort-filter">
 				<Switcher
 					options={[
-						{
-							title: 'Без сортировки',
-							active: sort === SORT_MAP.INIT,
-							onClick: () => setSort(SORT_MAP.INIT)
-						},
-						{
-							title: 'Сначала посещённые',
-							active: sort === SORT_MAP.VISITED,
-							onClick: () => setSort(SORT_MAP.VISITED)
-						},
-						{
-							title: 'Сначала непосещённые',
-							active: sort === SORT_MAP.WANTED,
-							onClick: () => setSort(SORT_MAP.WANTED)
-						},
-						{
-							title: 'По алфавиту',
-							active: sort === SORT_MAP.ALPHABET,
-							onClick: () => setSort(SORT_MAP.ALPHABET)
-						},
+						{ title: 'Без сортировки',       active: isChooseSortMode(SORT_MAP.INIT),     onClick: setSortMode(SORT_MAP.INIT) },
+						{ title: 'Сначала посещённые',   active: isChooseSortMode(SORT_MAP.VISITED),  onClick: setSortMode(SORT_MAP.VISITED) },
+						{ title: 'Сначала непосещённые', active: isChooseSortMode(SORT_MAP.WANTED),   onClick: setSortMode(SORT_MAP.WANTED) },
+						{ title: 'По алфавиту',          active: isChooseSortMode(SORT_MAP.ALPHABET), onClick: setSortMode(SORT_MAP.ALPHABET) },
 					]}
 				/>
 				<Switcher
 					options={[
-						{
-							title: 'Все',
-							active: filter.visited === VISITED_MAP.INIT,
-							onClick: () => setFilter(p => ({...p, visited: VISITED_MAP.INIT }))
-						},
-						{
-							title: 'Только посещённые',
-							active: filter.visited === VISITED_MAP.VISITED,
-							onClick: () => setFilter(p => ({...p, visited: VISITED_MAP.VISITED }))
-						},
-						{
-							title: 'Только непосещённые',
-							active: filter.visited === VISITED_MAP.WANTED,
-							onClick: () => setFilter(p => ({...p, visited: VISITED_MAP.WANTED }))
-						},
+						{ title: 'Все',                 active: isChooseVisitedMode(VISITED_MAP.INIT),    onClick: setVisitedMode(VISITED_MAP.INIT), },
+						{ title: 'Только посещённые',   active: isChooseVisitedMode(VISITED_MAP.VISITED), onClick: setVisitedMode(VISITED_MAP.VISITED), },
+						{ title: 'Только непосещённые', active: isChooseVisitedMode(VISITED_MAP.WANTED),  onClick: setVisitedMode(VISITED_MAP.WANTED), },
 					]}
 				/>
 			</FullWidthContainer>
-			{visualizator === VISUALIZATOR_MAP.TABLE && <TourismTableGeo items={total} />}
-			{visualizator === VISUALIZATOR_MAP.MAP && <TourismMapGeo items={total} />}
-			{visualizator === VISUALIZATOR_MAP.CARD && <TourismCardGeo items={total} />}
+			{isChooseVisualizator(VISUALIZATOR_MAP.TABLE) && <TourismTableGeo items={filtredRussiaCity} />}
+			{isChooseVisualizator(VISUALIZATOR_MAP.MAP) && <TourismMapGeo items={filtredRussiaCity} />}
+			{isChooseVisualizator(VISUALIZATOR_MAP.CARD) && <TourismCardGeo items={filtredRussiaCity} />}
 		</div>
 	)
 }
