@@ -1,4 +1,4 @@
-import { PovType } from 'components/tourism/data/russia-city2';
+import { PovType } from 'components/tourism/data/types';
 import { TagCategory } from 'hook/tags/use-smart-tags';
 import { ValueOf } from 'utils.type';
 

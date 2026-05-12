@@ -5,7 +5,7 @@ import { useSmartTags } from 'hook/tags/use-smart-tags'
 import { useSwitcher } from 'hook/useSwitcher'
 import { useMemo } from 'preact/hooks'
 
-import { PovType } from 'components/tourism/data/russia-city2'
+import { PovType } from 'components/tourism/data/types'
 import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 import { TourismTableGeo } from 'components/tourism/tourism-table-geo'

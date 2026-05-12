@@ -1,4 +1,4 @@
-import { PovType } from 'components/tourism/data/russia-city2'
+import { PovType } from 'components/tourism/data/types'
 import { Fragment, FunctionComponent } from 'preact'
 
 import { TourismStatisticMoscow } from 'components/tourism/tourism-statistic-moscow'

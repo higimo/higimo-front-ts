@@ -1,21 +1,7 @@
-import { Country, SubjectFederation, AdmOrkugMoscow, TownMoscow, DistrictMoscow, Castle, Town, Teatre, Build, Landmark, Church, Memorial, Placefield } from "./types"
+import { PovType } from './types'
 
-export type PovType = Country
-	| SubjectFederation
-	| AdmOrkugMoscow
-	| TownMoscow
-	| DistrictMoscow
-	| Castle
-	| Town
-	| Teatre
-	| Build
-	| Landmark
-	| Church
-	| Memorial
-	| Placefield
-
+// TODO: мб, разбить на отдельные списки, а потом конкатенировать?
 export const russiaCity: PovType[] = [
-
 	{
 		title: 'Внуковское',
 		type: 'поселение Москвы',
@@ -6882,8 +6868,6 @@ export const russiaCity: PovType[] = [
 		visited: false,
 	},
 ]
-
-
 
 // Показывал так:
 /*

@@ -6,7 +6,7 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
-import { PovType } from 'components/tourism/data/russia-city2'
+import { PovType } from 'components/tourism/data/types'
 import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
 

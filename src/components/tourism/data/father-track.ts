@@ -1,5 +1,5 @@
 import { Coord } from 'utils.type'
-import { PovType } from './russia-city2'
+import { PovType } from './types'
 
 export const mainTrack: Coord[] = [
 	[55.970577011177575, 43.0736896972643],

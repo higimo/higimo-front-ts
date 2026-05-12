@@ -2,7 +2,7 @@ import cs from 'classnames'
 
 import { FunctionComponent } from 'preact'
 
-import { PovType } from 'components/tourism/data/russia-city2'
+import { PovType } from '../data/types'
 
 import './style.css'
 
