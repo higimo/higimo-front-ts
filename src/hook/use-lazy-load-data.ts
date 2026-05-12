@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'preact/hooks'
 
 export const useLazyLoadData = <T,>(modulePromise: Promise<any>) => {
-	const transformData = (data) => data
 	const [stateData, setStateData] = useState<T>()
 
 	useEffect(() => {

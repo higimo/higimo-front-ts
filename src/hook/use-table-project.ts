@@ -1,15 +1,13 @@
-import { PortfolioTag, PortfolioProjectTableType, PortfolioProjectDetailType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
+import { PortfolioGroupedTagType, PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
+import { TagName } from './tags/use-smart-tags'
 
-import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
-
+import { useMemo } from 'preact/hooks'
+import { useSmartTags } from './tags/use-smart-tags'
+import useApi from './use-api'
 import { useEmptyDataState } from './use-empty-data-state'
 import { useLoadingState } from './use-loading-state'
-import { useRoute } from 'preact-iso'
-import useApi from './use-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { useMemo } from 'preact/hooks'
-import { TagName, useSmartTags } from './tags/use-smart-tags'
 
 export type PortfolioProjectTableFullType = {
 	id: PortfolioProjectTableType['id']
@@ -145,8 +143,6 @@ type UseProjectType = () => {
  * Вернёт список проектов
  */
 export const useTableProject: UseProjectType = () => {
-	const { query } = useRoute()
-
 	const [projects] = useApi<PortfolioProjectTableType[]>(API_ROUTE.projectProjectTable)
 	const [tagList] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
 

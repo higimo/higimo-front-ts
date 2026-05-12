@@ -306,15 +306,6 @@ export interface PaymentError {
 	/** Детали ошибки */
 	details?: Record<string, unknown>;
 }
-interface VersionInfo {
-	currentVersion: string;
-	nextVersion: string;
-	aVersion: string;
-	bVersion: string;
-	cVersion: string;
-	bucketToUse: 'current' | 'next' | 'a' | 'b' | 'c';
-}
-
 
 export const isPaymentIntegrationLoaded = (
 	obj: unknown

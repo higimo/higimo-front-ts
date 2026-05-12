@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act, waitFor } from '@testing-library/preact'
 import sendRequest from 'utils/api/send-request'
-import * as useAuthModule from 'hook/use-auth'
 import { useLocation } from 'preact-iso'
 import { API_ROUTE } from 'dic/API_ROUTE'
 

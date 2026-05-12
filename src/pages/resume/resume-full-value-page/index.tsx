@@ -5,8 +5,6 @@ import { usePageTitle } from 'hook/use-page-title'
 import { TextContainer } from 'components/ui/text-container'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 
-import avatar2 from 'assets/avatar3.jpg'
-
 import '../resume-style.css'
 import './style.css'
 

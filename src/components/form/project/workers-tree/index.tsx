@@ -1,19 +1,11 @@
 import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { FunctionComponent } from 'preact'
+
 import { useMemo } from 'preact/hooks'
 
-import './style.css'
 import { Tag } from 'components/ui/tag'
 
-type WorkerRoleGroup = {
-	role: string
-	workers: PortfolioWorkerType[]
-}
-
-type WorkerCompanyGroup = {
-	company: string
-	roles: WorkerRoleGroup[]
-}
+import './style.css'
 
 type WorkersTreeProps = {
 	workers: PortfolioWorkerType[]

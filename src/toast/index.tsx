@@ -81,15 +81,6 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({
 		}
 	}, [])
 
-	const addToast = (message: string) => {
-		const newToast = {
-			id: Date.now().toString(),
-			message,
-		}
-
-		setToasts((prev) => [newToast].concat(prev))
-	}
-
 	const removeToast = (id: string) => {
 		setToasts((prev) => prev.filter((toast) => toast.id !== id))
 	}

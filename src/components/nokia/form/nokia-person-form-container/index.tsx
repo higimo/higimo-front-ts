@@ -27,7 +27,6 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 		isSubmitting,
 		isSubmitted,
 		handlePersonSubmit,
-		resetForm,
 	} = usePersonForm({ personApi, isEditMode })
 
 	const { handleSubmit, setValue, reset } = formMethods

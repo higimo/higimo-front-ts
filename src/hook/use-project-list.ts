@@ -1,14 +1,13 @@
-import { PortfolioProjectFullType, PortfolioGroupedTagType } from 'api-types/portfolio.types'
+import { PortfolioGroupedTagType, PortfolioProjectFullType } from 'api-types/portfolio.types'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
-import { useEmptyDataState } from './use-empty-data-state'
-import { useLoadingState } from './use-loading-state'
 import { useRoute } from 'preact-iso'
 import useApi from './use-api'
+import { useEmptyDataState } from './use-empty-data-state'
+import { useLoadingState } from './use-loading-state'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { useSmartTags } from './tags/use-smart-tags'
 
 type UseProjectType = () => {
     isLoading: boolean

@@ -36,7 +36,6 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		isSubmitting,
 		isSubmitted,
 		handleMeetingSubmit,
-		resetForm,
 		handleAddPerson,
 		handleRemovePerson,
 		handleTextAssign,
