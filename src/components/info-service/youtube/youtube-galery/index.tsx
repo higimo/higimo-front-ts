@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { YoutubeType } from 'api-types/youtube.types'
 
-import { YouTubeElement } from 'components/youtube/youtube-element'
+import { YouTubeElement } from 'components/info-service/youtube/youtube-element'
 
 type YoutubeGaleryPropsType = {
 	list: YoutubeType[]

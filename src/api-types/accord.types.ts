@@ -1,4 +1,4 @@
-import { Brand, Code } from 'utils.type'
+import { Brand, Code } from '../utils.type'
 
 type AccordId = Brand<number, 'AccordId'>
 

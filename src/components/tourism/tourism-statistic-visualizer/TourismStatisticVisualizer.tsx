@@ -14,7 +14,7 @@ import { Switcher } from 'components/ui/switcher'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { TOURISM_VISITED_TAG_CATEGORY, handleFilterMapPoint, handleSort } from 'components/tourism-statistic-visualizer/handleFilterMapPoint'
+import { TOURISM_VISITED_TAG_CATEGORY, handleFilterMapPoint, handleSort } from 'components/tourism/tourism-statistic-visualizer/handleFilterMapPoint'
 import { SORT_MAP, VISITED_MAP, VISUALIZATOR_MAP } from 'components/tourism/VISITED_MAP'
 
 type TourismStatisticVisualizerPropsType = {
