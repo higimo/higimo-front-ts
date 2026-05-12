@@ -46,19 +46,19 @@ export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: Handl
 	return true;
 };
 
-export const handleSort = (sort: ValueOf<typeof SORT_MAP>) => (a: PovType, b: PovType) => {
-	if (SORT_MAP.INIT === sort) {
+export const handleSort = (isChooseSortMode: (value: ValueOf<typeof SORT_MAP>) => boolean) => (a: PovType, b: PovType) => {
+	if (isChooseSortMode(SORT_MAP.INIT)) {
 		return 0;
 	}
-	if (SORT_MAP.VISITED === sort) {
+	if (isChooseSortMode(SORT_MAP.VISITED)) {
 		// @ts-ignore
 		return b.visited - a.visited;
 	}
-	if (SORT_MAP.WANTED === sort) {
+	if (isChooseSortMode(SORT_MAP.WANTED)) {
 		// @ts-ignore
 		return a.visited - b.visited;
 	}
-	if (SORT_MAP.ALPHABET === sort) {
+	if (isChooseSortMode(SORT_MAP.ALPHABET)) {
 		return a.title.localeCompare(b.title);
 	}
 	return 0;
