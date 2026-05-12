@@ -13,6 +13,7 @@ import 'components/nokia/nokia-style.css'
 export const NokiaPeopleListPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
 
+	// TODO: [USE_TAGS] useTags удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
 	const [filter, setFilter] = useState<NokiaTagType['id'] | null>(null)
 	const updateFilter = (tag: NokiaTagType['id']) => setFilter(filter === tag ? null : tag)
 

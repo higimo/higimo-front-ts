@@ -1,69 +1,52 @@
-import { Fragment, FunctionComponent } from 'preact'
 import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
+import { Fragment, FunctionComponent } from 'preact'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
-import { useRef, useEffect, useMemo } from 'preact/hooks'
 import { useTags } from 'hook/use-tags'
-import useApi from 'hook/use-api'
+import { useEffect, useMemo, useRef } from 'preact/hooks'
 
-import { Loading } from 'components/ui/loading'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { NotFoundPage } from 'pages/not-found-page'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
-import { HEIGHT, updateChart, WIDTH } from 'components/nokia/nokia-statistic/utils/update-chart'
-
 import { prepareData } from 'components/nokia/nokia-statistic/utils/prepare-data'
+import { updateChart } from 'components/nokia/nokia-statistic/utils/update-chart'
+
+import { HEIGHT, WIDTH } from 'components/nokia/nokia-statistic/utils/update-chart'
 
 import 'components/nokia/nokia-style.css'
 
 // TODO: [HARD] https://www.npmjs.com/package/@observablehq/plot
-
-export const NokiaStatistic: FunctionComponent = () => {
+type NokiaStatisticPropsType = {
+	meetingStatistic: NokiaMeetingStatisticType[]
+}
+export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ meetingStatistic }) => {
 	const viz = useRef<HTMLDivElement>(null)
 
-	const [meetingStatistic] = useApi<NokiaMeetingStatisticType[]>(API_ROUTE.nokiaStatistic)
-	const isLoadingMeetingStatistic = useLoadingState([meetingStatistic.status])
-	const isEmptyMeetingStatistic = useEmptyDataState(meetingStatistic.data)
-
-	// TODO: [USE_TAGS] useTags удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
+	// TODO: [USE_TAGS] useSmartTag как бы его внедрить?
 	const [ selectedYearTag, handleYearTagClick ] = useTags<number>([])
 	const [ selectedTypeTag, handleTypeTagClick ] = useTags<string>([])
 
-	const statistic = meetingStatistic.data || []
-
 	const yearDataset = useMemo(() => {
 		const dataset = Array.from(
-				new Set(statistic.map(item => new Date(item.date * 1000).getFullYear()))
+				new Set(meetingStatistic.map(item => new Date(item.date * 1000).getFullYear()))
 			)
 			.filter(i => i != 1970)
 			.sort((a, b) => a - b)
 			handleYearTagClick(dataset)()
 		return dataset
-	}, [statistic])
+	}, [meetingStatistic])
 	const typeDataset = useMemo(() => {
-		const dataset = Array.from(new Set(statistic.map(item => item.type)))
+		const dataset = Array.from(new Set(meetingStatistic.map(item => item.type)))
 		handleTypeTagClick(dataset)()
 		return dataset
-	}, [statistic])
+	}, [meetingStatistic])
 
 	useEffect(() => {
 		updateChart({
 			// @ts-ignore
 			viz,
-			data: prepareData(statistic, selectedYearTag, selectedTypeTag),
+			data: prepareData(meetingStatistic, selectedYearTag, selectedTypeTag),
 		})()
-	}, [statistic, selectedYearTag, selectedTypeTag])
-
-	if (isLoadingMeetingStatistic) {
-		return <Loading />
-	}
-	if (isEmptyMeetingStatistic) {
-		return <NotFoundPage />
-	}
+	}, [meetingStatistic, selectedYearTag, selectedTypeTag])
 
 	return (
 		<Fragment>
@@ -95,11 +78,11 @@ export const NokiaStatistic: FunctionComponent = () => {
 			</TextContainer>
 			<div
 				ref={viz}
+				className="nokia-graphic"
 				style={{
 					width: WIDTH,
 					height: HEIGHT,
 				}}
-				className="nokia-graphic"
 			/>
 		</Fragment>
 	)
