@@ -1,6 +1,6 @@
 // TODO: [BACKEND] вынести в БД
 import { moscowPovPoints } from './moscow-pov'
-import { russiaCity } from './russia-city2'
+import { russiaCity } from './russia-city/russia-city2'
 import { stateYear2021 } from './walk-moscow-2021'
 import { stateYear2024 } from './walk-moscow-2024'
 
