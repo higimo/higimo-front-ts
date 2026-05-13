@@ -7,10 +7,25 @@
 		"allowJs": true,
 		"checkJs": true,
 
+		// "strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
 
+		"incremental": true,
+		// "tsBuildInfoFile": "./node_modules/.tsbuildinfo",
+
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+
+		/* Дополнительно */
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
 
 		"outDir": "./dist",
 		"rootDir": "./src",
