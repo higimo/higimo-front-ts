@@ -10,7 +10,6 @@ import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-pe
 import { ShowFormResult } from 'components/form/show-form-result'
 
 import '../../nokia-style.css'
-import { KeyOf } from 'utils.type'
 
 interface NokiaMeetingFormContainerProps {
 	meetingApi: MeetingApiService

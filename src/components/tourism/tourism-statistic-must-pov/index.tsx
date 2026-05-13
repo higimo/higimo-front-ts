@@ -1,5 +1,5 @@
 import { Fragment } from 'preact/jsx-runtime'
-import { onlyPovTypes } from 'components/tourism/tourism-data/city-types'
+import { onlyPovTypes } from 'components/tourism/data/city-types'
 import { FactoidRow } from 'components/ui/factoid-row'
 import { TextContainer } from 'components/ui/text-container'
 

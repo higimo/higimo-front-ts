@@ -14,7 +14,8 @@ import { Switcher } from 'components/ui/switcher'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { TOURISM_VISITED_TAG_CATEGORY, handleFilterMapPoint, handleSort } from 'components/tourism/tourism-statistic-visualizer/handleFilterMapPoint'
+import { handleFilterMapPoint, handleSort } from 'components/tourism/tourism-statistic-visualizer/handleFilterMapPoint'
+import { TOURISM_VISITED_TAG_CATEGORY } from '../VISITED_MAP'
 import { SORT_MAP, VISITED_MAP, VISUALIZATOR_MAP } from 'components/tourism/VISITED_MAP'
 
 type TourismStatisticVisualizerPropsType = {
@@ -46,6 +47,7 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 	return (
 		<Fragment>
 			<TextContainer>
+				{/* @ts-ignore TODO: пофиксить, после рефакторинга сборки данных */}
 				{TOURISM_VISITED_TAG_CATEGORY[0].tags.map((tag) => (
 					<Tag key={tag.id} active={isSelected(tag.title)} onClick={toggleTag(tag.title)}>
 						{tag.title}
@@ -63,10 +65,10 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 			<FullWidthContainer className="tourism-sort-filter">
 				<Switcher
 					options={[
-						{ title: 'Без сортировки',    active: isChooseSortMode(SORT_MAP.INIT),      onClick: setSortMode(SORT_MAP.INIT) },
-						{ title: 'Сначала посещённые', active: isChooseSortMode(SORT_MAP.VISITED),  onClick: setSortMode(SORT_MAP.VISITED) },
-						{ title: 'Сначала непосещённые', active: isChooseSortMode(SORT_MAP.WANTED), onClick: setSortMode(SORT_MAP.WANTED) },
-						{ title: 'По алфавиту',    active: isChooseSortMode(SORT_MAP.ALPHABET),     onClick: setSortMode(SORT_MAP.ALPHABET) },
+						{ title: 'Без сортировки',       active: isChooseSortMode(SORT_MAP.INIT),     onClick: setSortMode(SORT_MAP.INIT) },
+						{ title: 'Сначала посещённые',   active: isChooseSortMode(SORT_MAP.VISITED),  onClick: setSortMode(SORT_MAP.VISITED) },
+						{ title: 'Сначала непосещённые', active: isChooseSortMode(SORT_MAP.WANTED),   onClick: setSortMode(SORT_MAP.WANTED) },
+						{ title: 'По алфавиту',          active: isChooseSortMode(SORT_MAP.ALPHABET), onClick: setSortMode(SORT_MAP.ALPHABET) },
 					]}
 				/>
 				<Switcher
@@ -78,8 +80,8 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 				/>
 			</FullWidthContainer>
 			{isChooseVisualizator(VISUALIZATOR_MAP.TABLE) && <TourismTableGeo items={filtredRussiaCity} />}
-			{isChooseVisualizator(VISUALIZATOR_MAP.MAP) && <TourismMapGeo items={filtredRussiaCity} />}
-			{isChooseVisualizator(VISUALIZATOR_MAP.CARD) && <TourismCardGeo items={filtredRussiaCity} />}
+			{isChooseVisualizator(VISUALIZATOR_MAP.MAP)   && <TourismMapGeo items={filtredRussiaCity} />}
+			{isChooseVisualizator(VISUALIZATOR_MAP.CARD)  && <TourismCardGeo items={filtredRussiaCity} />}
 		</Fragment>
 	)
 }
