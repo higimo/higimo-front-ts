@@ -12,7 +12,7 @@ import { NotFoundData } from 'components/ui/not-found-data'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-export const FaqListPage: FunctionComponent = props => {
+export const FaqListPage: FunctionComponent = () => {
 	usePageTitle('Статьи')
 
 	const [ faqList ] = useApi<FaqType[]>(API_ROUTE.faq)

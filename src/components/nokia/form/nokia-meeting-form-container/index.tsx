@@ -85,7 +85,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 				</button>
 
 				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult<NokiaMeetingSimpleType>
+					<ShowFormResult
 						status={status}
 						reset={() => reset(/*{date: date}*/)}
 					/>

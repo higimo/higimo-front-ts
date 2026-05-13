@@ -53,7 +53,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 				</button>
 
 				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult<NokiaPersonSimpleType>
+					<ShowFormResult
 						status={status}
 						reset={() => reset(/*{ date: date }*/)}
 					/>

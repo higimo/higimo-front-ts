@@ -40,7 +40,7 @@ export const useVKInit = () => {
 	useEffect(() => {
 		if (window.VK) {
 			setState(prev => ({ ...prev, isLoaded: true }))
-			return
+			return undefined
 		}
 
 		window.vkAsyncInit = () => {

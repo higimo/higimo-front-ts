@@ -12,7 +12,7 @@ import { NotFoundData } from 'components/ui/not-found-data'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-export const PronPage: FunctionComponent = props => {
+export const PronPage: FunctionComponent = () => {
 	usePageTitle('pron')
 	const [ pronList ] = useApi<PronType[]>(API_ROUTE.pron)
 	const isLoading = useLoadingState([pronList.status])

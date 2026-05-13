@@ -63,8 +63,6 @@ export function getValueOrDefault<T extends Record<string, any>, K extends keyof
 
 export type Brand<T, B extends string> = T & { readonly __brand: B }
 
-export const brand2 = <T, B extends string>(value: T, brand: B): Brand<T, B> => value as Brand<T, B>
-
 export const isBranded = <T, B extends string>(value: unknown, brand: B): value is Brand<T, B> => {
 	return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand
 }

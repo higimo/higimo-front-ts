@@ -30,7 +30,7 @@ export const ProjectTag: FunctionComponent<ProjectTagPropsType> = ({
 }) => {
 	const { query, route } = useLocation()
 
-	const handleRemove = useCallback(() => {
+	const handleRemove = useCallback((): void|boolean => {
 		if (query[filterName] == children) {
 			delete query[filterName]
 			route(getProjectUrl(query))

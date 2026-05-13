@@ -13,7 +13,7 @@ interface ToastProps {
 	autoCloseDelay?: number
 }
 
-const Toast: React.FC<ToastProps> = ({ id, message, removeToast, autoCloseDelay = 8000 }) => {
+const Toast: React.FC<ToastProps> = ({ id, message, removeToast }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			removeToast(id)
@@ -42,11 +42,7 @@ interface ToastContainerProps {
 	gap?: number
 }
 
-export const ToastContainer: React.FC<ToastContainerProps> = ({
-	autoCloseDelay = 8000,
-	maxWidth = 320,
-	gap = 8,
-}) => {
+export const ToastContainer: React.FC<ToastContainerProps> = () => {
 	const [toasts, setToasts] = useState<Array<{ id: string; message: string }>>([])
 
 	useEffect(() => {

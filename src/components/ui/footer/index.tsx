@@ -26,7 +26,7 @@ const renderLink = (isAuth: boolean) => (toolElement) => {
 	)
 }
 
-export const Footer: FunctionComponent = (props) => {
+export const Footer: FunctionComponent = () => {
 	const { isNotFound } = useGlobalContext()
 	if (isNotFound) {
 		return null

@@ -75,7 +75,7 @@ const Layout: FunctionComponent<LayoutPropsType> = ({ sidebar, content }) => {
 	)
 }
 
-export const TestPage: FunctionComponent = props => (
+export const TestPage: FunctionComponent = () => (
 	<div className="page">
 		<Layout
 			sidebar={(

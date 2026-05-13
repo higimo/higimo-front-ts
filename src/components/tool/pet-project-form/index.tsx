@@ -106,7 +106,7 @@ export const PetProjectForm = () => {
 					</button>
 				</div>
 				{(formState.isSubmitted || formState.isSubmitting) && (
-					<ShowFormResult<FormValues> status={status} reset={() => reset()}>
+					<ShowFormResult status={status} reset={reset}>
 						<Message
 							result
 							text={[

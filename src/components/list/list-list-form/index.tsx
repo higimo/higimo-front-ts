@@ -152,7 +152,7 @@ export const ListListForm: FunctionComponent = () => {
 						{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 					</button>
 					{(formState.isSubmitted || formState.isSubmitting) && (
-						<ShowFormResult<FormValues> status={status} reset={() => reset()} />
+						<ShowFormResult status={status} reset={reset} />
 					)}
 				</div>
 			</form>

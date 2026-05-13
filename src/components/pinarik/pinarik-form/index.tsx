@@ -84,7 +84,7 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 				<div className="form__button">
 					<FormButton>Записать</FormButton>
 					{(formState.isSubmitted || formState.isSubmitting) && (
-						<ShowFormResult<FormValues> status={status} reset={() => reset()} />
+						<ShowFormResult status={status} reset={() => reset()} />
 					)}
 				</div>
 			</form>

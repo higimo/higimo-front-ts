@@ -14,7 +14,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-export const FaqSinglePage: FunctionComponent = props => {
+export const FaqSinglePage: FunctionComponent = () => {
 	const { params: { idcode = ''} } = useRoute()
 	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
 	const isLoading = useLoadingState([faqDetail.status])
