@@ -12,7 +12,7 @@ import { updateChart } from 'components/nokia/nokia-statistic/utils/update-chart
 
 import { HEIGHT, WIDTH } from 'components/nokia/nokia-statistic/utils/update-chart'
 
-import 'components/nokia/nokia-style.css'
+import '../nokia-style.css'
 
 // TODO: [HARD] https://www.npmjs.com/package/@observablehq/plot
 type NokiaStatisticPropsType = {

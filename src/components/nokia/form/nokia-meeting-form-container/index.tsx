@@ -9,7 +9,8 @@ import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import 'components/nokia/nokia-style.css'
+import '../../nokia-style.css'
+import { KeyOf } from 'utils.type'
 
 interface NokiaMeetingFormContainerProps {
 	meetingApi: MeetingApiService
@@ -45,11 +46,12 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 
 	useEffect(() => {
 		if (initialData) {
-			Object.entries(initialData).forEach(([key, value]: [keyof NokiaMeetingSimpleType, any]) => {
+			Object.entries(initialData).forEach(([key, value]) => {
 				if (key === 'date') {
 					// @ts-ignore TODO: [HARD] небось, тут дата приходит
 					setValue(key, new Date(value * 1000).toISOString().substring(0, 10))
 				} else {
+					// @ts-ignore TODO: тут ключи оригинального типа и FormValue нужно синхронизировать
 					setValue(key, value)
 				}
 			})

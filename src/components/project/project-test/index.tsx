@@ -12,7 +12,7 @@ import { getHumanDate } from 'components/project/utils/get-human-date'
 import { credits } from 'fixtures/credits.fixtures'
 import { tags } from 'fixtures/tags.fixtures'
 
-import 'components/project/project-viewer/style.css'
+import '../project-viewer/style.css'
 
 export const ProjectTypography: FunctionComponent = () => {
 	usePageTitle('Тестовая страница')

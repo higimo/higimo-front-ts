@@ -16,7 +16,7 @@ import { textProjects } from 'components/tool/pet-project/text-project'
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import 'pages/test-page/tools/pet-project.css'
+import '../../pet-project.css'
 
 export const PetProjectPage: FunctionComponent = () => {
 	usePageTitle('Пробби')

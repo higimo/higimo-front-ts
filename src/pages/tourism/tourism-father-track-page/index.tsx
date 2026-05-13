@@ -10,7 +10,7 @@ import { PovType } from 'components/tourism/data/types'
 import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
 
-import 'pages/tourism/tourism-style.css'
+import '../tourism-style.css'
 import './style.css'
 
 export const TourismFatherTrackPage: FunctionComponent = () => {

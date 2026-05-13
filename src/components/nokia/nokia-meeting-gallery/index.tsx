@@ -3,7 +3,7 @@ import { NokiaRichMeetingType } from 'api-types/nokia.types'
 
 import { NokiaMeeting } from 'components/nokia/nokia-meeting'
 
-import 'components/nokia/nokia-style.css'
+import '../nokia-style.css'
 
 type NokiaMeetingGallery = {
 	meetings: NokiaRichMeetingType[]

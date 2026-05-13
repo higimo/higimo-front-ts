@@ -11,7 +11,8 @@ import { PovType } from 'components/tourism/data/types'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 
-import 'pages/tourism/tourism-style.css'
+import '../tourism-style.css'
+
 import './style.css'
 
 // TODO: [FEATURE] Следующим этапом подгружу оставшиеся списки для посещений:

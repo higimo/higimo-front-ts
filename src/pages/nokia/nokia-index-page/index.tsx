@@ -14,7 +14,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import 'components/nokia/nokia-style.css'
+import '../../../components/nokia/nokia-style.css'
 
 // Добавить фильтрацию по типам встреч
 export const NokiaIndexPage: FunctionComponent = () => {

@@ -5,7 +5,7 @@ import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import 'components/nokia/nokia-style.css'
+import '../nokia-style.css'
 
 type NokiaMetingPropsType = {
 	meeting: NokiaMeetingFullType

@@ -18,7 +18,7 @@ import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStra
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import 'components/tourism/yandex-map.css'
+import '../yandex-map.css'
 
 // TODO: удалить useGroupTags, когда тут заработает
 export const TourismMapsMoscowBar = () => {

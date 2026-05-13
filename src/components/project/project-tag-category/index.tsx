@@ -7,7 +7,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
-import 'components/project/project-click-tag-category/style.css'
+import '../project-click-tag-category/style.css'
 
 type ProjectTagCategoryPropsType = {
 	groupedTags: PortfolioGroupedTagType[]

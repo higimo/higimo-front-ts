@@ -9,7 +9,7 @@ import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 import { Map, YMaps } from 'react-yandex-maps'
 
-import 'components/tourism/yandex-map.css'
+import '../yandex-map.css'
 
 const MAP_MODE = {
 	INIT: 'INIT',

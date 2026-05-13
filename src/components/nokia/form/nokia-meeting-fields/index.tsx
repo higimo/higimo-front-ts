@@ -1,11 +1,11 @@
+import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
 import { Fragment, FunctionComponent } from 'preact'
 import { UseFormReturn } from 'react-hook-form'
 
-import { Controller } from 'react-hook-form'
 import TextInput from 'react-autocomplete-input'
+import { Controller } from 'react-hook-form'
 
-import 'components/nokia/nokia-style.css'
-import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
+import '../../nokia-style.css'
 
 interface PersonMeetingFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>

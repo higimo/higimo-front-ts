@@ -4,7 +4,7 @@ import { useWindowSize } from 'hook/use-window-size'
 
 import { YMaps, Map, YMapsApi } from 'react-yandex-maps'
 
-import 'components/tourism/yandex-map.css'
+import '../yandex-map.css'
 
 const districtVisited = [
 	'RU-VLA', 'RU-VGG', 'RU-KGD', 'RU-KIR', 'RU-LEN', 'RU-MOS', 'RU-NIZ', 'RU-NGR',

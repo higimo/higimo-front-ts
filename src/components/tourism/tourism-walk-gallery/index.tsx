@@ -1,19 +1,19 @@
 import { YaMapType } from 'api-types/yamap.types'
 
+import useApi from 'hook/use-api'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
-import useApi from 'hook/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { TextContainer } from 'components/ui/text-container'
+import { TileElement } from 'components/ui/tile-element'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import 'pages/tourism/tourism-style.css'
+import '../../../pages/tourism/tourism-style.css'
 import './style.css'
-import { TileElement } from 'components/ui/tile-element'
-import { TextContainer } from 'components/ui/text-container'
 
 export const TourismWalkGallery = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
