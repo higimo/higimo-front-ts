@@ -45,10 +45,8 @@ export const PaymentPage: FunctionComponent = () => {
 		initPayment(() => ({
 			currentProduct,
 			getValues
-		}))
-			.then()
-			.catch()
-	}, [])
+		})).then().catch()
+	}, [currentProduct])
 
 	if (!isProductLoaded) {
 		<Loading />
