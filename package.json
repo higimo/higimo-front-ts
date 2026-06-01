@@ -2,10 +2,11 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
+		"postinstall": "chmod +x scripts/setup-permissions.sh && bash scripts/setup-permissions.sh",
 		"dev": "vite",
 		"build": "vite build",
 		"deploy": "bash ./deploy/deploy.sh",
-		"preview": "vite preview",
+		"agent": "bash ./scripts/agent.sh",
 		"check-types": "tsc --noEmit",
 		"test": "vitest",
 		"test:watch": "vitest --watch",
