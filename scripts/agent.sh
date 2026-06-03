@@ -22,6 +22,7 @@ find . -type f \
     -not -path "./node_modules/*" \
     -not -path "./public/*" \
     -not -path "./deploy/*" \
+    -not -path "./src/components/tourism/data/*" \
     -not -path "./.git/*" \
     -not -name "AGENTS.md" \
     -not -name "package-lock.json" \
