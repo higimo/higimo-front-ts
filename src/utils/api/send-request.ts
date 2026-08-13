@@ -1,9 +1,9 @@
 import httpBuildQuery from 'http-build-query'
 
 declare global {
-  interface ErrorConstructor {
-    captureStackTrace(targetObject: object, constructorOpt?: Function): void;
-  }
+	interface ErrorConstructor {
+		captureStackTrace(targetObject: object, constructorOpt?: Function): void;
+	}
 }
 
 export class ApiError extends Error {
@@ -42,26 +42,35 @@ export interface SendRequestOptions {
 	values?: Record<string, any>
 }
 
+export interface ApiResponse<T = any> {
+	data: T;
+	meta?: any; // или более конкретный тип, если известен
+}
+
+const FREEZE_META = {} as const
+
 const sendRequest = <T = any>(
 	url: string,
 	{
 		method = 'GET',
 		values = {}
 	}: SendRequestOptions = {}
-): Promise<T> => new Promise((resolve, reject) => {
+): Promise<ApiResponse<T>> => new Promise((resolve, reject) => {
 	if (typeof window !== 'undefined') {
 		var xhttp = new XMLHttpRequest()
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				let json
+				let meta
 				try {
 					let jsonObj = JSON.parse(this.responseText)
 
 					json = jsonObj.data
-				} catch (e) {
+					meta = jsonObj.meta || FREEZE_META
+				} catch {
 					json = this.responseText
 				}
-				resolve(json)
+				resolve({ data: json, meta })
 			}
 			if (this.readyState == 4 && this.status !== 200) {
 				let errorData;

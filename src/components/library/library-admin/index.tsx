@@ -25,7 +25,7 @@ type HandleLibSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
 	(values: FormValues) => Promise<void>
 const handleLibSubmit: HandleLibSubmitType = setStatus => async values => {
 	try {
-		const serverResult = await sendRequest(API_ROUTE.lib, { method: 'POST', values })
+		const { data: serverResult } = await sendRequest(API_ROUTE.lib, { method: 'POST', values })
 		setStatus(serverResult)
 	} catch (error) {
 		const apiError = error as ApiError

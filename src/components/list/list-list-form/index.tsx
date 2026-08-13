@@ -114,7 +114,7 @@ export const ListListForm: FunctionComponent = () => {
 
 	useEffect(() => {
 		sendRequest(API_ROUTE.listerItemSingle({ id: idcode }))
-			.then(val => setValues(val[0]))
+			.then(val => setValues(val.data[0]))
 	}, [idcode])
 
 	const {

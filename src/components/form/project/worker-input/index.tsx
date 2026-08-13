@@ -67,7 +67,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 								})
 							})
 							const promisesAll = await Promise.all(sendings)
-							const results = promisesAll.reduce((acc, singleRes) => acc && singleRes > 0, true)
+							const results = promisesAll.reduce((acc, singleRes) => acc && singleRes.data > 0, true)
 							if (results) {
 								toast.error('Неверный формат ответа сервера')
 								setChooseWorker([])

@@ -23,7 +23,7 @@ const handleLogin = async (data: FormValues) => {
 	const backpath = searchParams.get('backpath') || ROUTE_LINKS.adminIndex
 
 	try {
-		const authData = await sendRequest(API_ROUTE.login, requestOptions)
+		const { data: authData } = await sendRequest(API_ROUTE.login, requestOptions)
 
 		const isValid = authData.access_token?.length &&
 			authData.token_type === 'bearer' &&

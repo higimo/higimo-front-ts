@@ -36,7 +36,7 @@ export async function initPayment(getInfo: GetInfoType) {
 					const { email, comment } = getValues()
 
 					try {
-						const data = await sendRequest(
+						const { data } = await sendRequest(
 							'/api/v2/checkout',
 							{
 								method: 'POST',

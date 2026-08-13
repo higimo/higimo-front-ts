@@ -2,7 +2,7 @@ import { KeyOf } from 'utils.type'
 
 import { useEffect, useReducer } from 'preact/hooks'
 
-import sendRequest from 'utils/api/send-request'
+import sendRequest, { ApiResponse } from 'utils/api/send-request'
 
 import { ApiRouteType } from 'dic/API_ROUTE'
 
@@ -18,18 +18,21 @@ export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 type ApiState<T> = {
 	status: ApiStatusNameType
 	data: T
+	meta?: Object
 	error?: Error
 }
 
 type ApiAction<T> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
-	| { type: 'LOADED'; payload: T }
+	| { type: 'LOADED'; payload: T; meta?: any }
 	| { type: 'ERROR';  payload: Error }
 
 const initialState = {
 	status: API_STATUS.INIT,
 	data: [],
+	meta: undefined,
+	error: undefined,
 }
 
 export const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
@@ -39,9 +42,9 @@ export const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiSta
 		case API_STATUS.LOADING:
 			return { ...state, status: 'LOADING' }
 		case API_STATUS.LOADED:
-			return { ...state, status: 'LOADED', data: action.payload }
+			return { ...state, status: 'LOADED', data: action.payload, meta: action.meta }
 		case API_STATUS.ERROR:
-			return { ...state, status: 'LOADED', error: action.payload }
+			return { ...state, status: 'LOADED', error: action.payload, }
 		default:
 			throw new Error('Unknown action type')
 	}
@@ -64,10 +67,12 @@ const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiStat
 		try {
 			dispatch({ type: API_STATUS.LOADING })
 			if (isDefaultSkipUrl(url)) {
-				dispatch({ type: API_STATUS.LOADED, payload: ({} as T) })
+				dispatch({ type: API_STATUS.LOADED, payload: ({} as T), meta: undefined })
 			} else {
-				const data: T = await sendRequest(url as string, { values })
-				dispatch({ type: API_STATUS.LOADED, payload: data })
+				// const data = await sendRequest(url as string, { values })
+				// console.log(data)
+				const { data, meta } = await sendRequest(url as string, { values })
+				dispatch({ type: API_STATUS.LOADED, payload: data, meta })
 			}
 		} catch (error) {
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })

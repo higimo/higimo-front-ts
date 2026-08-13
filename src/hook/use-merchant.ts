@@ -50,7 +50,7 @@ export const useMerchant = (): UseAuthReturn => {
 			.then((products) => {
 				merchantProductSignal.value = {
 					status: MERCHANT_PRODUCT_STATUS_DIC.LOADED,
-					products,
+					products: products.data,
 				};
 			})
 			.catch(() => {

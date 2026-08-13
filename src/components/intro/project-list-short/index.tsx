@@ -19,25 +19,23 @@ import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
-	const [ projectIds ] = useApi<PortfolioIdsType[]>(API_ROUTE.projectIds) // TODO: [BACKEND] заменить на meta.count
-	const [ highProjectList ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject, {
+	// TODO: надо как-то типизировать meta
+	const [ highlightProjects ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject, {
 		// filter: { cover_size: 'high'},
 		limit: 6
 	})
 
-	const isLoading = useLoadingState([highProjectList.status, projectIds.status])
-	const isHighProjectListEmpty = useEmptyDataState(highProjectList.data)
-	const isProjectIdsEmpty = useEmptyDataState(projectIds.data)
+	const isLoading = useLoadingState([highlightProjects.status])
+	const isEmpty = useEmptyDataState(highlightProjects.data)
 
 	if (isLoading) {
 		return <Loading />
 	}
-
-	if (isHighProjectListEmpty || isProjectIdsEmpty) {
+	if (isEmpty) {
 		return <NotFoundData />
 	}
 
-	const projectsList = highProjectList.data
+	const projectsList = highlightProjects.data
 
 	return (
 		<div className="project-list project-list--short" id={ANCHOR_LINKS.done}>
@@ -54,7 +52,9 @@ export const ProjectListShort: FunctionComponent = () => {
 				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>хомяк</ProjectTag>
 			</TextContainer>
 			<ProjectList projectsList={projectsList} />
-			<ProjectMore count={projectIds.data.length} />
+			{'meta' in highlightProjects && 'totalCount' in highlightProjects?.meta ? (
+				<ProjectMore count={highlightProjects.meta.totalCount as number} />
+			) : null}
 		</div>
 	)
 }
