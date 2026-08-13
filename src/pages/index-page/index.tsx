@@ -17,7 +17,7 @@ import { ProductServerBanner } from 'components/merchant/product-server-banner'
 // TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
 export const IndexPage: FunctionComponent = () => {
-	usePageTitle('Менеджер продукта — higimo') // higimo — программист на Java Script
+	usePageTitle('Разработчик и менеджер продукта — higimo')
 
 	return [
 		<MainIntro />,
