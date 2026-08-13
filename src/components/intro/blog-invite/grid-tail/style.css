@@ -1,0 +1,48 @@
+.grid-tile {
+	display: flex;
+	gap: 8px;
+	flex-direction: column;
+	color: #000;
+	border-bottom: none;
+	grid-column: span 6;
+	background: #ffffff;
+    border: 1px solid #c8c8c8;
+    border-radius: 24px;
+    padding: 24px;
+}
+@media (min-width: 768px) {
+	.grid-tile {
+		grid-column: span 3;
+	}
+}
+@media (min-width: 1280px) {
+	.grid-tile {
+		grid-column: span 2;
+	}
+}
+@media (min-width: 1520px) {
+	.grid-tile {
+		grid-column: span 1;
+	}
+}
+
+.grid-tile--archive {
+	opacity: .65;
+}
+
+.grid-tile:hover {
+	background: #ffffffa8;
+    border: 1px solid #8f8f8f;
+}
+
+.grid-tile__title {
+	font-size: 18px;
+}
+
+.grid-tile__title sup {
+	font-size: 65%;
+}
+
+.grid-tile__description {
+	font-size: 14px;
+}

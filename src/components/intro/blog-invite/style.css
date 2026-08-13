@@ -1,17 +1,11 @@
 .blog-invite {
 	background: #efefef;
-	color: #000;
+    color: #000;
 }
 
-.blog-invite__item {
-	margin-left: -4px;
-	margin-right: -4px;
-}
-
-.blog-invite__item--archive {
-	opacity: .7;
-}
-
-.blog-invite__name sup {
-	font-size: 65%;
+.blog-invite__gallery {
+	display: grid;
+    grid-template-columns: repeat(6, 1fr);
+	padding: 24px;
+    gap: 16px;
 }
