@@ -1,7 +1,7 @@
-import { Fragment } from 'preact/jsx-runtime'
 import { FunctionComponent } from 'preact'
-import { PovType } from '../data/types'
+import { PovType } from 'components/tourism/data/types'
 
+import { Fragment } from 'preact/jsx-runtime'
 import { FactoidRow } from 'components/ui/factoid-row'
 import { TextContainer } from 'components/ui/text-container'
 

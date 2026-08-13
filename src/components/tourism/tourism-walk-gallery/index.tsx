@@ -1,4 +1,6 @@
+import { FunctionComponent } from 'preact'
 import { YaMapType } from 'api-types/yamap.types'
+import { PovType } from 'components/tourism/data/types'
 
 import useApi from 'hook/use-api'
 import { useEmptyDataState } from 'hook/use-empty-data-state'
@@ -15,7 +17,10 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import '../../../pages/tourism/tourism-style.css'
 import './style.css'
 
-export const TourismWalkGallery = () => {
+type TourismWalkGalleryPropsType = {
+	total: PovType[]
+}
+export const TourismWalkGallery: FunctionComponent<TourismWalkGalleryPropsType> = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 	const isLoading = useLoadingState([yamapList.status])
 	const isListEmpty = useEmptyDataState(yamapList.data)

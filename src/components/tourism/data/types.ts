@@ -83,22 +83,27 @@ export interface Town extends PovTitle, PovDescription, PovColor, PovVisited, Gl
 	population: number
 }
 export interface Teatre extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
+	country: CountryTitle
 	type: 'театр'
 	population?: never
 }
 export interface Build extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
+	country: CountryTitle
 	type: 'здание'
 	population?: never
 }
 export interface Landmark extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
+	country: CountryTitle
 	type: 'достопримечательность'
 	population?: never
 }
 export interface Church extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
+	country: CountryTitle
 	type: 'церковь'
 	population?: never
 }
 export interface Memorial extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
+	country: CountryTitle
 	type: 'памятник'
 	population?: never
 	bad: boolean
