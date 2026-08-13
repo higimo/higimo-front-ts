@@ -16,7 +16,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import './style.css'
 
 export const LogismSingle: FunctionComponent = () => {
-	const [ logismDetail ] = useApi<LogismType>(API_ROUTE.logismSingle)
+	const [ logismDetail, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)
 	const isLoading = useLoadingState([logismDetail.status])
 	const isListEmpty = useEmptyDataState(logismDetail.data)
 
@@ -37,6 +37,12 @@ export const LogismSingle: FunctionComponent = () => {
 				/>
 			</TextContainer>
 			<TextContainer className="single-logism__navigation">
+				<span
+					className="single-logism__reload"
+					onClick={reload}
+				>
+					↺
+				</span>
 				<a href={ROUTE_LINKS.logism} className="single-logism__link">Другие логизмы →</a>
 			</TextContainer>
 		</PrecentationContainer>

@@ -37,4 +37,11 @@
 .single-logism__navigation {
 	display: flex;
 	justify-content: flex-end;
+	gap: 16px;
+}
+
+.single-logism__reload {
+	font-weight: 800;
+	font-size: 125%;
+	cursor: pointer;
 }
