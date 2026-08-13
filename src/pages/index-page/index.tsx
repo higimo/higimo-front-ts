@@ -9,7 +9,7 @@ import { LookedThis } from 'components/intro/looked-this'
 import { MainIntro } from 'components/intro/main-intro'
 import { ProjectListShort } from 'components/intro/project-list-short'
 import { TravelInvite } from 'components/intro/travel-invite'
-import { CharityIntro } from 'components/intro/carity-intro'
+// import { CharityIntro } from 'components/intro/carity-intro'
 import { ProductServerBanner } from 'components/merchant/product-server-banner'
 // import { DonatIntro } from 'components/intro/donat-intro'
 // import { AboutMe } from 'components/intro/about-me'
@@ -30,7 +30,7 @@ export const IndexPage: FunctionComponent = () => {
 		<LookedThis />,
 		<LogismSingle />,
 		<BlogInvite />,
-		<CharityIntro />,
+		// <CharityIntro />,
 		// <DonatIntro />,
 	]
 }
