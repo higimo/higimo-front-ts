@@ -4,6 +4,7 @@ import cs from 'classnames'
 
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+import { CategoryTitle } from 'components/intro/blog-invite/category-title'
 
 import './style.css'
 
@@ -24,7 +25,9 @@ type TilesGalleryProps = {
 export const TilesGallery: FunctionComponent<TilesGalleryProps> = ({ id, title, left, right, className }) => (
 	<PrecentationContainer className={cs('tiles-gallery', className)} id={id}>
 		<TextContainer>
-			{!!title && <h2 className={cs('tiles-gallery__title', `${className}__title`)}>{title}</h2>}
+			{!!title && (
+				<CategoryTitle className={cs('tiles-gallery__title', `${className}__title`)}>{title}</CategoryTitle>
+			)}
 		</TextContainer>
 		<TextContainer className="tiles-gallery__content">
 			<div
