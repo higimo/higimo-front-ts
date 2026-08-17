@@ -4,6 +4,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapsMoscowBar } from 'components/tourism/tourism-maps-moscow-bar'
 
@@ -15,10 +16,17 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
+
 			<TextContainer>
-				<h1>Московские бары</h1>
+				<Breadcrumps />
 			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader main>
+					Московские бары
+				</TourismHeader>
+			</TextContainer>
+
 			<TourismMapsMoscowBar />
 		</div>
 	)

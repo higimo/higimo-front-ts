@@ -24,3 +24,9 @@
 .tourism-city-star__star {
 	color: var(--color-accent);
 }
+
+.city-stars-gallery {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}

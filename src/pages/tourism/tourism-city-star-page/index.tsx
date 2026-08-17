@@ -6,6 +6,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStars } from 'components/tourism/city-stars'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismCityStarForm } from 'components/tourism/tourism-city-star'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../tourism-style.css'
@@ -16,9 +17,13 @@ export const TourismCityStarPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
 			<TextContainer>
-				<h1>Оценки городов</h1>
+				<Breadcrumps />
+			</TextContainer>
+			<TextContainer>
+				<TourismHeader main>
+					Оценки городов
+				</TourismHeader>
 			</TextContainer>
 			<TourismCityStarForm />
 			<CityStars />

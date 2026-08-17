@@ -14,6 +14,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import '../tourism-style.css'
 
 import './style.css'
+import { TourismHeader } from 'components/tourism/tourism-header'
 
 // TODO: [FEATURE] Следующим этапом подгружу оставшиеся списки для посещений:
 // крепости, памятники, музеи, POI Москвы, станции метро Москвы. И введу метку «хочу».
@@ -38,9 +39,11 @@ export const TourismVisitedPage: FunctionComponent = () => {
 		<div className="tourism-identy-page">
 			<div>
 				<TourismMainMenu />
-				<Breadcrumps />
 				<TextContainer>
-					<h1>Результаты путешествий</h1>
+					<Breadcrumps />
+				</TextContainer>
+				<TextContainer>
+					<TourismHeader main>Результаты путешествий</TourismHeader>
 				</TextContainer>
 				<TourismMainStatistic totalStatistic={stateData.russiaCity} />
 			</div>

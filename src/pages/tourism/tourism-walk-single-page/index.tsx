@@ -10,6 +10,7 @@ import useApi from 'hook/use-api'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Loading } from 'components/ui/loading'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 import { TourismWalkItem } from 'components/tourism/tourism-walk-item'
@@ -39,15 +40,23 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
+
 			<TextContainer>
 				<Breadcrumps />
 			</TextContainer>
+
 			<TextContainer>
-				<h1>{element?.name}</h1>
+				<TourismHeader main>
+					{element?.name}
+				</TourismHeader>
 			</TextContainer>
+
 			<TourismWalkItem map={element?.map || ''} />
+
 			<TextContainer>
-				<h2>Другие карты</h2>
+				<TourismHeader secondary>
+					Другие карты
+				</TourismHeader>
 				<TourismWalkGallery />
 			</TextContainer>
 		</div>

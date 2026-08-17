@@ -3,12 +3,11 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
-
-import { data } from './data'
 
 import '../tourism-style.css'
 
@@ -18,25 +17,26 @@ export const TourismMapsPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
 
 			<TextContainer>
-				<h1 className="tourism-header">Карты путешествий</h1>
+				<Breadcrumps />
 			</TextContainer>
 
-			<PrecentationContainer className="tourism-walk-anons">
-				<TextContainer>
-					<h3>Эксперименты в Я.Картах</h3>
-					<ul className="tourism-walk-gallery__list">
-						{data.map(item => (
-							<li className="tourism-walk-gallery__item">
-								<a href={item.href}>{item.title}</a>
-							</li>
-						))}
-					</ul>
-					<TourismWalkGallery />
-				</TextContainer>
-			</PrecentationContainer>
+			<TextContainer>
+				<TourismHeader main>
+					Карты путешествий
+				</TourismHeader>
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary>Эксперименты в Я.Картах</TourismHeader>
+				<TourismExperimentMaps />
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary>Конструктор карт</TourismHeader>
+				<TourismWalkGallery />
+			</TextContainer>
 		</div>
 	)
 }

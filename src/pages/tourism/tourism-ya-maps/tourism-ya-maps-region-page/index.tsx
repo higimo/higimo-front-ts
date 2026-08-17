@@ -4,12 +4,14 @@ import { usePageTitle } from 'hook/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapsRegion } from 'components/tourism/tourism-maps-region'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import '../../tourism-style.css'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 export const TourismYaMapsRegionPage: FunctionComponent = () => {
 	usePageTitle('Карта регионов России')
@@ -17,16 +19,29 @@ export const TourismYaMapsRegionPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
+
 			<TextContainer>
-				<h1>Карта регионов России</h1>
+				<Breadcrumps />
 			</TextContainer>
+
 			<TextContainer>
-				<a href={EXTERNAL_LINKS.wikiIso3166}>ISO 3166-2:RU</a>
+				<TourismHeader main>
+					Карта регионов России
+				</TourismHeader>
 			</TextContainer>
+
 			<TextContainer>
-				Синеньким то, куда хочется сгонять
+				<TourismSecondary>
+					<a href={EXTERNAL_LINKS.wikiIso3166}>ISO 3166-2:RU</a>
+				</TourismSecondary>
+				<TourismSecondary>
+					Синеньким то, куда хочется сгонять
+				</TourismSecondary>
 			</TextContainer>
+
+			<TextContainer>
+			</TextContainer>
+
 			<TourismMapsRegion />
 		</div>
 	)
