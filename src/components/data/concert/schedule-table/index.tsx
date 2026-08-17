@@ -2,7 +2,6 @@ import { NasheType } from 'api-types/nashe.types'
 import { FunctionComponent } from 'preact'
 
 import { TableRow } from 'components/data/concert/table-row'
-import { TextContainer } from 'components/ui/text-container'
 
 import { getDateFromTimestamp } from 'utils/formatter/get-date-from-timestamp'
 

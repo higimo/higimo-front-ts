@@ -2,7 +2,7 @@ import { KeyOf } from 'utils.type'
 
 import { useEffect, useReducer } from 'preact/hooks'
 
-import sendRequest, { ApiResponse } from 'utils/api/send-request'
+import sendRequest from 'utils/api/send-request'
 
 import { ApiRouteType } from 'dic/API_ROUTE'
 
