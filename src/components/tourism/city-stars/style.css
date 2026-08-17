@@ -22,5 +22,5 @@
 }
 
 .tourism-city-star__star {
-	color: #DEB887;
+	color: var(--color-accent);
 }

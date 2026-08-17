@@ -4,6 +4,7 @@ type CityType = {
 	title: string
 	star: string
 }
+
 export const CityStarElement: FunctionComponent<CityType> = (city) => {
 	return (
 		<div className="tourism-city-star__item">

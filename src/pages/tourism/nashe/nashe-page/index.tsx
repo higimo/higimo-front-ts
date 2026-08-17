@@ -2,12 +2,13 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-// import { NasheAlbums } from 'components/data/concert/nashe-albums'
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { NasheAlbums } from 'components/data/concert/nashe-albums'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
-import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 import '../../tourism-style.css'
 import './style.css'
@@ -18,30 +19,36 @@ export const NasheIndexPage: FunctionComponent = () => {
 	return (
 		<div className="nashe-index-page tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
-			<PrecentationContainer>
-				<TextContainer>
-					Я дважды был на Нашествии. В 2017 и 2018 годах.
-				</TextContainer>
-			</PrecentationContainer>
-			{/* TODO: [BACKEND] вывести фотоотчёты */}
-			{/* <PrecentationContainer>
-				<TextContainer>
-					<h2>Фотоотчёты во ВКонтакте</h2>
-				</TextContainer>
-				<NasheAlbums />
-			</PrecentationContainer> */}
-			<PrecentationContainer>
-				<TextContainer>
-					<h2>Лайнапы</h2>
-				</TextContainer>
-				<TextContainer>
-					<p>
-						С подсветами того, что я посетил.
-					</p>
-				</TextContainer>
+
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader main>
+					Нашествие
+				</TourismHeader>
+				<TourismSecondary>
+					Я дважды был на Нашествии. В 2017 и 2018 годах.
+				</TourismSecondary>
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary>
+					Лайнапы Нашествия
+				</TourismHeader>
+				<TourismSecondary>
+					С подсветами того, что посетил.
+				</TourismSecondary>
 				<NasheLineupGallery />
-			</PrecentationContainer>
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary>
+					Фотоотчёты Нашествия во ВКонтакте
+				</TourismHeader>
+				<NasheAlbums />
+			</TextContainer>
 		</div>
 	)
 }

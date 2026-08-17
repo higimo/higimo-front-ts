@@ -6,7 +6,7 @@
 }
 
 .tourism-identy-page .factoid-row {
-	color: #DEB887;
+	color: var(--color-accent);
 	--factoid-padding: 16px 0;
 	--grid-gap: 16px;
 }

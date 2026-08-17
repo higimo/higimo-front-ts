@@ -7,14 +7,19 @@
 	display: flex;
 	gap: 16px;
 	width: 320px;
-	border-bottom: 1px solid #DEB8879f;
 	font-feature-settings: 'lnum', 'tnum';
 }
-.tourism-custom-list__item:hover {
-	border-bottom-color: 1px solid #DEB887;
+span.tourism-custom-list__item {
+	border-bottom: 1px solid #ffffff0d;
+}
+a.tourism-custom-list__item {
+	border-bottom: 1px solid #DEB8879f;
+}
+a.tourism-custom-list__item:hover {
+	border-bottom-color: 1px solid var(--color-accent);
 
 }
 .tourism-custom-list__bullet {
-	color: #DEB887;
+	color: var(--color-accent);
 	font-weight: 800;
 }

@@ -14,7 +14,6 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../../../pages/tourism/tourism-style.css'
-import './style.css'
 
 export const TourismWalkGallery: FunctionComponent = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)

@@ -1,9 +1,10 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from 'components/ui/text-container'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
+{/* TODO: [BACKEND] вывести фотоотчёты */}
 export const NasheAlbums: FunctionComponent = () => (
-	<TextContainer>
+	<TourismSecondary>
 		Тут будут фотоотчёты
-	</TextContainer>
+	</TourismSecondary>
 )

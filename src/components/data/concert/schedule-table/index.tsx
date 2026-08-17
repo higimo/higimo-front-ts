@@ -9,33 +9,35 @@ import { getDateFromTimestamp } from 'utils/formatter/get-date-from-timestamp'
 let currentDay: number = -1
 
 interface ScheduleTableProps {
+	headers?: string[]
 	data: NasheType[]
-	title: string
 }
 
 /**
  * Компонент для отображения таблицы с расписанием
  */
-export const ScheduleTable: FunctionComponent<ScheduleTableProps> = ({ data, title }) => {
+export const ScheduleTable: FunctionComponent<ScheduleTableProps> = ({ data, headers }) => {
 	return (
-		<TextContainer>
-			<h2>{title}</h2>
-			<table className="line-up">
-				<tbody>
-					{data.map((item, index) => {
-						const day = getDateFromTimestamp(item.time)
-						return (
-							<TableRow
-								key={`${item.id}-${index}`}
-								time={item.time}
-								day={currentDay !== day ? currentDay = day : null}
-								name={item.name}
-								visit={item.visit}
-							/>
-						)
-					})}
-				</tbody>
-			</table>
-		</TextContainer>
+		<table className="line-up">
+			{headers ? (
+				<thead>
+					{headers.map(header => <th>{header}</th>)}
+				</thead>
+			) : null}
+			<tbody>
+				{data.map((item, index) => {
+					const day = getDateFromTimestamp(item.time)
+					return (
+						<TableRow
+							key={`${item.id}-${index}`}
+							time={item.time}
+							day={currentDay !== day ? currentDay = day : null}
+							name={item.name}
+							visit={item.visit}
+						/>
+					)
+				})}
+			</tbody>
+		</table>
 	)
 }

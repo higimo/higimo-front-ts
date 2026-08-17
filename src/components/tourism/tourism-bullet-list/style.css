@@ -15,5 +15,5 @@
 .tourism-bullet-list__item:before {
 	content: "—";
 	display: block;
-	color: #DEB887;
+	color: var(--color-accent);
 }

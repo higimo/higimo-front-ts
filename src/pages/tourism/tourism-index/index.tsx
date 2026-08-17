@@ -5,18 +5,15 @@ import { usePageTitle } from 'hook/use-page-title'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStarsIntro } from 'components/tourism/city-stars-intro'
 import { FactoidRow } from 'components/ui/factoid-row'
+import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismAdventure } from 'components/tourism/tourism-adventure'
-import { TourismCustomList } from 'components/tourism/tourism-custom-list/TourismCustomList'
-import { TourismCustomListItem } from 'components/tourism/tourism-custom-list/TourismCustomListItem'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismRow } from 'components/tourism/tourism-row'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
-
-import { links } from 'components/data/concert/nashe-lineup-gallery/data'
 
 import '../tourism-style.css'
 import './style.css'
@@ -123,15 +120,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 				<TourismSecondary>
 					Путешествия — не только города, но и фестивали радости.
 				</TourismSecondary>
-				<TourismCustomList>
-					{links.map(nasheLink =>
-						<TourismCustomListItem
-							href={nasheLink.href}
-							bullit={nasheLink.title}
-							value="Лайнап"
-						/>
-					)}
-				</TourismCustomList>
+				<NasheLineupGallery />
 			</TextContainer>
 		</div>
 	)

@@ -1,9 +1,15 @@
 import { FunctionComponent } from 'preact'
 
+import cs from 'classnames'
+
 import './style.css'
 
-export const TourismCustomList: FunctionComponent = ({ children }) => (
-	<div className="tourism-custom-list">
+type TourismCustomListPropsType = {
+	className?: string
+}
+
+export const TourismCustomList: FunctionComponent<TourismCustomListPropsType> = ({ children, className }) => (
+	<div className={cs('tourism-custom-list', className)}>
 		{children}
 	</div>
 )
