@@ -83,7 +83,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 				<CreateWorker
 					onSubmit={async (data) => {
 						try {
-							const result = await sendRequest(API_ROUTE.attachAuthor, {
+							const { data: result } = await sendRequest(API_ROUTE.attachAuthor, {
 								method: 'POST',
 								values: data
 							})

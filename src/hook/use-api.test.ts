@@ -8,6 +8,8 @@ vi.mock('utils/api/send-request', () => ({
 	default: vi.fn()
 }))
 
+const api = (obj) => ({ data: obj })
+
 describe('useApi', () => {
 	beforeEach(() => {
 		vi.clearAllMocks()
@@ -65,7 +67,7 @@ describe('useApi', () => {
 	describe('инициализация', () => {
 		it('при монтировании запрашивает данные', async () => {
 			const mockData = { id: 1, name: 'Test' }
-			vi.mocked(sendRequest).mockResolvedValue(mockData)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockData))
 
 			const { result } = renderHook(() => useApi(API_ROUTE.comoji))
 
@@ -88,7 +90,7 @@ describe('useApi', () => {
 		it('должен передавать значения в запрос', async () => {
 			const mockData = { id: 1 }
 			const values = { filter: 'low' }
-			vi.mocked(sendRequest).mockResolvedValue(mockData)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockData))
 
 			renderHook(() => useApi(API_ROUTE.comoji, values))
 
@@ -105,7 +107,7 @@ describe('useApi', () => {
 	describe('загрузка данных', () => {
 		it('отрабатывает ответ с массивом', async () => {
 			const mockData = [{ id: 1 }, { id: 2 }]
-			vi.mocked(sendRequest).mockResolvedValue(mockData)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockData))
 
 			const { result } = renderHook(() => useApi(API_ROUTE.comoji))
 
@@ -120,7 +122,7 @@ describe('useApi', () => {
 
 		it('отрабатывает ответ с объектом', async () => {
 			const mockData = { user: { id: 1, name: 'John' } }
-			vi.mocked(sendRequest).mockResolvedValue(mockData)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockData))
 
 			const { result } = renderHook(() => useApi(API_ROUTE.comoji))
 
@@ -196,8 +198,8 @@ describe('useApi', () => {
 			const mockData1 = { id: 1, name: 'First' }
 			const mockData2 = { id: 2, name: 'Second' }
 			vi.mocked(sendRequest)
-				.mockResolvedValueOnce(mockData1)
-				.mockResolvedValueOnce(mockData2)
+				.mockResolvedValueOnce(api(mockData1))
+				.mockResolvedValueOnce(api(mockData2))
 
 			const { result } = renderHook(() => useApi(API_ROUTE.comoji))
 
@@ -236,8 +238,8 @@ describe('useApi', () => {
 			const mockData1 = { id: 1 }
 			const mockData2 = { id: 2 }
 			vi.mocked(sendRequest)
-				.mockResolvedValueOnce(mockData1)
-				.mockResolvedValueOnce(mockData2)
+				.mockResolvedValueOnce(api(mockData1))
+				.mockResolvedValueOnce(api(mockData2))
 
 			const { result, rerender } = renderHook(
 				({ url }) => useApi(url),
@@ -264,8 +266,8 @@ describe('useApi', () => {
 			const mockData1 = { id: 1 }
 			const mockData2 = { id: 2 }
 			vi.mocked(sendRequest)
-				.mockResolvedValueOnce(mockData1)
-				.mockResolvedValueOnce(mockData2)
+				.mockResolvedValueOnce(api(mockData1))
+				.mockResolvedValueOnce(api(mockData2))
 
 			const { result, rerender } = renderHook(
 				({ values }) => useApi(API_ROUTE.comoji, values),
@@ -285,7 +287,7 @@ describe('useApi', () => {
 
 		it('не загружает повторно при неизменных зависимостях', async () => {
 			const mockData = { id: 1 }
-			vi.mocked(sendRequest).mockResolvedValue(mockData)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockData))
 
 			const { result, rerender } = renderHook(
 				({ url, values }) => useApi(url, values),
@@ -342,7 +344,7 @@ describe('useApi', () => {
 			}
 
 			const mockUser: User = { id: 1, name: 'John' }
-			vi.mocked(sendRequest).mockResolvedValue(mockUser)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockUser))
 
 			const { result } = renderHook(() => useApi<User>(API_ROUTE.comoji))
 
@@ -355,7 +357,7 @@ describe('useApi', () => {
 	describe('крайние случаи', () => {
 		it('обрабатывает undefined values к запросу', async () => {
 			const mockData = { id: 1 }
-			vi.mocked(sendRequest).mockResolvedValue(mockData)
+			vi.mocked(sendRequest).mockResolvedValue(api(mockData))
 
 			const { result } = renderHook(() => useApi(API_ROUTE.comoji, undefined as any))
 
@@ -368,8 +370,8 @@ describe('useApi', () => {
 			const mockData1 = { id: 1 }
 			const mockData2 = { id: 2 }
 			vi.mocked(sendRequest)
-				.mockResolvedValueOnce(mockData1)
-				.mockResolvedValueOnce(mockData2)
+				.mockResolvedValueOnce(api(mockData1))
+				.mockResolvedValueOnce(api(mockData2))
 
 			const { result: result1 } = renderHook(() => useApi(API_ROUTE.accord))
 			const { result: result2 } = renderHook(() => useApi(API_ROUTE.comoji))
