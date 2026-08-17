@@ -2,23 +2,24 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
 
-import { CityStarsIntro } from 'components/tourism/city-stars-intro'
-import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
-import { TourismNashestviePreview } from 'components/tourism/tourism-nashestvie-preview'
-import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { PrecentationContainer } from 'components/ui/precentation-container'
+import { CityStarsIntro } from 'components/tourism/city-stars-intro'
+import { FactoidRow } from 'components/ui/factoid-row'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismAdventure } from 'components/tourism/tourism-adventure'
+import { TourismCustomList } from 'components/tourism/tourism-custom-list/TourismCustomList'
+import { TourismCustomListItem } from 'components/tourism/tourism-custom-list/TourismCustomListItem'
+import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
+import { TourismHeader } from 'components/tourism/tourism-header'
+import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismRow } from 'components/tourism/tourism-row'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
+import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { links } from 'components/data/concert/nashe-lineup-gallery/data'
 
 import '../tourism-style.css'
 import './style.css'
-
-import listImg from './img/list.svg'
-import passportImg from './img/passport.svg'
-import russiaImg from './img/russia.svg'
 
 // TODO: [HARD] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
@@ -27,50 +28,111 @@ export const TourismIndexPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
 
 			<TextContainer>
-				<h1 className="tourism-header">Путешествия</h1>
+				<Breadcrumps />
 			</TextContainer>
 
-			<PrecentationContainer className="tourism-father">
-				<TextContainer>
-					<p>
-						<a
-							href={ROUTE_LINKS.tourismFatherTrack}
-							className="tourism-father__link"
-						>
-							Грядущее путешествие с отцом
-						</a>
-					</p>
-				</TextContainer>
-			</PrecentationContainer>
+			<TextContainer>
+				<TourismHeader main>
+					Мои приключения
+				</TourismHeader>
+				<TourismSecondary>
+					Планирование путешествий, статистика, отчёты с впечатлениями, памятки
+				</TourismSecondary>
+			</TextContainer>
 
-			<PrecentationContainer className="tourism-visited-anons">
-				<TextContainer>
-					<img className="tourism-visited-anons__icon" src={passportImg} />
-					<a href={ROUTE_LINKS.tourismVisited} className="tourism-visited-anons__link">Списки посещения и статистика</a>
-				</TextContainer>
-				<div className="tourism-visited-anons__image">
-					<img src={russiaImg} />
-				</div>
-			</PrecentationContainer>
+			<TextContainer>
+				<TourismHeader secondary>
+					Билеты в приключения
+				</TourismHeader>
+				<TourismRow>
+					<TourismAdventure />
+					<TourismAdventure />
+					<TourismAdventure />
+				</TourismRow>
+			</TextContainer>
 
-			<PrecentationContainer className="tourism-walk-anons">
-				<TextContainer>
-					<h2><img className="tourism-visited-anons__icon--mini" src={listImg} /> Другие списки</h2>
-				</TextContainer>
-				<TourismExperimentMaps />
-				<TourismWalkGallery />
-			</PrecentationContainer>
+			<TextContainer>
+				<TourismHeader secondary>
+					Списки посещения и статистика
+				</TourismHeader>
+				<FactoidRow
+					mini
+					countInRow={6}
+					factoids={[
+						{
+							digit: 262,
+							digitFrom: 'из 626',
+							description: 'посещённых мест',
+						},
+						{
+							digit: 258,
+							digitFrom: 'из 621',
+							description: 'посещено в РФ',
+						},
+						{
+							digit: 35,
+							digitFrom: 'из 88',
+							description: 'регионов РФ',
+						},
+						{
+							digit: 59,
+							digitFrom: 'из 131',
+							description: 'районов Москвы',
+						},
+						{
+							digit: 120,
+							digitFrom: 'из 435',
+							description: 'станций метро Москвы',
+						},
+						// {
+						// 	→
+						// 	Смотреть полностью
+						// ROUTE_LINKS.tourismVisited
+						// },
+					]}
+				/>
+			</TextContainer>
 
-			<PrecentationContainer>
+			<TextContainer>
+				<TourismHeader secondary>
+					Оценка городов
+				</TourismHeader>
 				<CityStarsIntro />
-			</PrecentationContainer>
+			</TextContainer>
 
-			<PrecentationContainer>
-				<TourismNashestviePreview />
-			</PrecentationContainer>
+			<TextContainer>
+				<TourismHeader secondary>
+					Эксперименты в Я.Картах
+				</TourismHeader>
+				<TourismExperimentMaps />
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary>
+					Конструктор карт
+				</TourismHeader>
+				<TourismWalkGallery />
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary={true}>
+					Нашествие
+				</TourismHeader>
+				<TourismSecondary>
+					Путешествия — не только города, но и фестивали радости.
+				</TourismSecondary>
+				<TourismCustomList>
+					{links.map(nasheLink =>
+						<TourismCustomListItem
+							href={nasheLink.href}
+							bullit={nasheLink.title}
+							value="Лайнап"
+						/>
+					)}
+				</TourismCustomList>
+			</TextContainer>
 		</div>
 	)
 }

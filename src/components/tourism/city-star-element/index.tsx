@@ -6,11 +6,11 @@ type CityType = {
 }
 export const CityStarElement: FunctionComponent<CityType> = (city) => {
 	return (
-		<div className="city-stars__item">
-			<div className="city-stars__title">
+		<div className="tourism-city-star__item">
+			<div className="tourism-city-star__title">
 				{city.title}
 			</div>
-			<div className="city-stars__star">
+			<div className="tourism-city-star__star">
 				{city.star}
 			</div>
 		</div>

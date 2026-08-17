@@ -2,7 +2,13 @@
 	--grid-count: 4;
 	--grid-gap: 32px;
 
-	padding: 16px;
+	--factoid-padding: 16px;
+	--factoid-width: 140px;
+	--factoid-font-size: 300%;
+	--factoid-dimension-font-size: 85%;
+	--factoid-description-font-size: 85%;
+
+	padding: var(--factoid-padding);
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -10,11 +16,27 @@
 	gap: var(--grid-gap);
 }
 
+.factoid-row--mini {
+	--factoid-width: 140px;
+	--factoid-font-size: 300%;
+	--factoid-dimension-font-size: 85%;
+	--factoid-description-font-size: 85%;
+}
+
+@media (min-width: 768px) {
+	.factoid-row:not(.factoid-row--mini) {
+		--factoid-width: 270px;
+		--factoid-font-size: 800%;
+		--factoid-dimension-font-size: 120%;
+		--factoid-description-font-size: 100%;
+	}
+}
+
 .factoid {
 	display: flex;
 	flex-direction: column;
 	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
-	min-width: 140px;
+	min-width: var(--factoid-width);
 }
 .factoid__digit {
 	display: flex;
@@ -23,30 +45,15 @@
 	margin-bottom: 2px;
 }
 .factoid__digit-counter {
-	font-size: 300%;
+	font-size: var(--factoid-font-size);
 	line-height: 0.75;
 	font-feature-settings: 'lnum', 'tnum';
 }
 .factoid__digit-dimension {
-	font-size: 85%;
+	font-size: var(--factoid-dimension-font-size);
+	opacity: .7;
 }
 .factoid__description {
-	font-size: 85%;
+	font-size: var(--factoid-description-font-size);
 	line-height: 1.1;
-}
-@media (min-width: 768px) {
-	.factoid {
-		min-width: 270px;
-	}
-	.factoid__digit-counter {
-		font-size: 800%;
-	}
-	.factoid__digit-dimension {
-		font-size: 120%;
-		opacity: .7;
-	}
-	.factoid__description {
-		font-size: 100%;
-		line-height: 1.1;
-	}
 }

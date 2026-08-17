@@ -1,0 +1,12 @@
+.tourism-row {
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	padding: 16px 0;
+}
+
+.tourism-identy-page .factoid-row {
+	color: #DEB887;
+	--factoid-padding: 16px 0;
+	--grid-gap: 16px;
+}

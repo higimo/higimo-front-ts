@@ -24,26 +24,3 @@
 .tourism-identy-page .pseudo-link:hover {
 	border-color: #fff;
 }
-
-.tourism-identy-page h1 {
-	margin: 0;
-	padding: 24px 0;
-}
-
-.tourism-identy-page h2 {
-	padding: 16px 0 0 0;
-}
-
-.tourism-identy-page h2.statistic-header {
-	color: burlywood;
-	font-size: 200%;
-}
-
-.tourism-identy-page h1 {
-	text-align: center;
-}
-
-.tourism-identy-page .precentation-container {
-	padding-top: 80px;
-	padding-bottom: 80px;
-}

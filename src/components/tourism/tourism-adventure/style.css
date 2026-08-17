@@ -1,0 +1,77 @@
+.tourism-adventure {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #DEB887;
+	border-width: 1px 1px 1px 4px;
+}
+
+.tourism-adventure__options {
+	padding: 12px 24px 8px 24px;
+	display: flex;
+	gap: 8px;
+}
+
+.tourism-adventure__option-item {
+	display: flex;
+	flex-direction: column;
+}
+
+.tourism-adventure-option__title {
+	color: #ffffff99;
+	font-size: 10px;
+}
+
+.tourism-adventure-option__value {
+	color: #ffffff;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.tourism-adventure__title {
+	font-size: 24px;
+	padding: 8px 24px;
+	font-weight: 700;
+	line-height: .9;
+	min-height: 60px;
+}
+
+.tourism-adventure__description {
+	font-size: 16px;
+	line-height: 1;
+	padding: 0 24px 16px 24px;
+	color: #ffffff99;
+}
+
+.tourism-adventure__tear-off-stub {
+	border-top: 1px dashed #DEB887;
+}
+
+.tear-off-stub {
+	display: flex;
+	flex-direction: column;
+	padding: 16px 24px;
+	font-size: 14px;
+	gap: 8px;
+}
+
+.tear-off-stub__meta {
+	font-weight: 800;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: space-between;
+	color: #DEB887;
+	opacity: .6;
+}
+
+.tear-off-stub__title {
+	font-weight: 800;
+	line-height: 1;
+	text-transform: uppercase;
+	color: #DEB887;
+}
+
+.tear-off-stub__advent {
+	color: #ffffff99;
+	line-height: 1;
+}

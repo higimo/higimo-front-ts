@@ -1,0 +1,20 @@
+.tourism-custom-list {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+}
+.tourism-custom-list__item {
+	display: flex;
+	gap: 16px;
+	width: 320px;
+	border-bottom: 1px solid #DEB8879f;
+	font-feature-settings: 'lnum', 'tnum';
+}
+.tourism-custom-list__item:hover {
+	border-bottom-color: 1px solid #DEB887;
+
+}
+.tourism-custom-list__bullet {
+	color: #DEB887;
+	font-weight: 800;
+}

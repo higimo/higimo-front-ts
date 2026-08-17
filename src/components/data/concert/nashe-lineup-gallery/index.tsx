@@ -7,20 +7,9 @@ import { MaybeLink } from 'components/ui/maybe-link'
 
 import { compareRoute } from 'utils/url-route/compare-route'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { links } from 'components/data/concert/nashe-lineup-gallery/data'
 
 import './style.css'
-
-const links = [
-	{
-		href: ROUTE_LINKS.tourismNashe2017,
-		title: '2017',
-	},
-	{
-		href: ROUTE_LINKS.tourismNashe2018,
-		title: '2018',
-	},
-] as const
 
 export const NasheLineupGallery: FunctionComponent = () => {
 	const { path } = useRoute()

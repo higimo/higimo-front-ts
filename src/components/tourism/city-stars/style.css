@@ -1,86 +1,26 @@
-.city-stars {
-	padding-top: 16px;
-	padding-bottom: 72px;
-}
-
-.city-stars-toggle {
-	padding: 8px 16px;
-	cursor: pointer;
-	border-radius: 2px;
-	border-width: 0 0 2px 0;
-	border-style: solid;
-	border-color: #eceef21f;
-	background-color: #ffffff71;
-}
-
-.city-stars-toggle:hover {
-	background-color: #ffffff6e;
-	border-color: #fff;
-}
-
-.city-stars-toggle--active {
-	cursor: default;
-	border-color: #ffffff88;
-}
-
-.city-stars-toggle--active:hover {
-	background-color: #ffffff6e;
-}
-
-.city-stars-gallery--card {
-	--grid-count: 2;
-	--grid-gap: 16px;
-
+.tourism-city-star {
 	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
-	gap: var(--grid-gap);
-}
-@media (min-width: 768px) {
-	.city-stars-gallery--card {
-		--grid-count: 4;
-		--grid-gap: 32px;
-	}
+	gap: 24px;
+	padding: 16px 0;
 }
 
-.city-stars__item {
-	border: 2px solid #fff;
-	border-radius: 24px;
-	padding: 16px;
-	margin-bottom: 16px;
+.tourism-city-star__item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 8px;
 }
 
-@media (min-width: 768px) {
-	.city-stars__item {
-		padding: 36px;
-	}
+.tourism-city-star__title {
+	border-bottom: 1px solid rgba(255, 255, 255, .35);
+}
+.tourism-city-star__title:hover {
+	cursor: pointer;
+	border-bottom-color: #fff;
 }
 
-.city-stars-gallery--card .city-stars__item {
-	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
-	min-height: 320px;
-	border-radius: 4px;
-	margin: 0;
-	padding: 8px;
-}
-
-.city-stars__title {
-	position: relative;
-	padding-right: 32px;
-	font-weight: 500;
-	flex: 1;
-	font-size: 18px;
-	line-height: 1.2;
-	font-weight: 700;
-}
-
-@media (min-width: 768px) {
-	.city-stars__title {
-		font-size: 28px;
-	}
-}
-
-.city-stars-gallery--card .city-stars__item .city-stars__title {
-	font-size: 18px;
-	font-weight: 400;
-	padding-right: 0;
+.tourism-city-star__star {
+	color: #DEB887;
 }

@@ -1,0 +1,19 @@
+.tourism-bullet-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 16px 0;
+}
+
+.tourism-bullet-list__item {
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+	width: fit-content;
+}
+
+.tourism-bullet-list__item:before {
+	content: "—";
+	display: block;
+	color: #DEB887;
+}
