@@ -8,6 +8,8 @@ import { TourismChecklist } from 'components/tourism/tourism-checklist'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 
 import '../tourism-style.css'
+import { TourismHeader } from 'components/tourism/tourism-header'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 export const TourismChecklistPage: FunctionComponent = () => {
 	usePageTitle('Чек-лист туриста')
@@ -15,10 +17,26 @@ export const TourismChecklistPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			<Breadcrumps />
+
 			<TextContainer>
-				<h1>Чек-лист туриста</h1>
+				<Breadcrumps />
 			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader main>
+					Чек-лист туриста
+				</TourismHeader>
+			</TextContainer>
+
+			<TextContainer>
+				<TourismSecondary>
+					Даже если перезагрузить страницу, отмеченные
+					пункты останутся — они запомнились внутри браузера.
+					Данные никуда не передавались, так что поотмечав на телефоне,
+					продолжить на компьютере уже не выйдет.
+				</TourismSecondary>
+			</TextContainer>
+
 			<TourismChecklist />
 		</div>
 	)

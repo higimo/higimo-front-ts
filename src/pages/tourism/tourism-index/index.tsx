@@ -41,7 +41,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 
 			<TextContainer>
 				<TourismHeader secondary>
-					Билеты в приключения
+					Билеты в приключения
 				</TourismHeader>
 				<TourismRow>
 					<TourismAdventure />

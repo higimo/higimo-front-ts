@@ -1,5 +1,8 @@
+import { Fragment } from 'preact/jsx-runtime'
 import { CheckboxWithLocalStorage } from 'components/form/checkbox-with-local-storage'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismHeader } from 'components/tourism/tourism-header'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 import './style.css'
 
@@ -17,37 +20,39 @@ const foodListData = [
 	'сыр плавленный',
 	'лаваш',
 	'печенье',
+	'ирп',
 ]
 
 const thingListData = [
-	'пенки',
-	'матрас',
-	'полотенце',
-	'туалетка',
-	'мыло, зубная щетка, паста',
-	'фонари',
-	'спальник',
-	'ватные салфетки',
-	'шорты',
-	'непромокаемая куртка',
-	'непромокаемые штаны',
-	'трекинговые ботинки',
-	'футболка',
-	'носки ×3',
-	'вода или пустые бутылки',
-	'ирп',
-	'нож',
-	'веревка не менее 5 метров',
-	'походная посуда',
-	'карта местности и движения по ней',
-	'солнцезащитный крем (ожоги)',
-	'средство от насекомых (клещи — опасно)',
-	'бандана (солнечный удар)',
 	'power bank',
 	'телефон',
 	'паспорт',
 	'проходные билеты',
 	'запасные деньги',
+	'футболка',
+	'носки ×3',
+	'мыло, зубная щетка, паста',
+	'карта местности и движения по ней',
+]
+
+const tourismThingListData = [
+	'пенки',
+	'полотенце',
+	'туалетка',
+	'фонарь',
+	'спальник',
+	'влажные салфетки',
+	'шорты',
+	'непромокаемая куртка',
+	'непромокаемые штаны',
+	'трекинговые ботинки',
+	'вода или пустые бутылки',
+	'нож',
+	'веревка от 5 метров',
+	'походная посуда',
+	'солнцезащитный крем (ожоги)',
+	'средство от насекомых (клещи — опасно)',
+	'бандана (солнечный удар)',
 ]
 
 const farmListData = [
@@ -62,20 +67,9 @@ const photoListData = [
 ]
 
 export const TourismChecklist = () => (
-	<div className="container">
+	<Fragment>
 		<TextContainer>
-			<div className="disclaimer">
-				<p>
-					Даже если перезагрузить страницу, отмеченные
-					пункты останутся — они запомнились внутри браузера.
-					Данные никуда не передавались, так что поотмечав на телефоне,
-					продолжить на компьютере уже не выйдет.
-				</p>
-			</div>
-		</TextContainer>
-
-		<TextContainer>
-			<div className="description">
+			<TourismSecondary main>
 				<span
 					className="pseudo-link"
 					onClick={() => {
@@ -85,52 +79,61 @@ export const TourismChecklist = () => (
 				>
 					Сбросить все
 				</span>
-			</div>
+			</TourismSecondary>
 		</TextContainer>
 
 		<TextContainer>
-			<h2>Организация</h2>
+			<TourismHeader secondary>Организация</TourismHeader>
+			<ul className="organisation-list">
+				{organizeListData.map(item => (
+					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+				))}
+			</ul>
 		</TextContainer>
-		<ul className="organisation-list">
-			{organizeListData.map(item => (
-				<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
-			))}
-		</ul>
 
 		<TextContainer>
-			<h2>Еда</h2>
+			<TourismHeader secondary>Еда</TourismHeader>
+			<ul className="organisation-list">
+				{foodListData.map(item => (
+					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+				))}
+			</ul>
 		</TextContainer>
-		<ul className="organisation-list">
-			{foodListData.map(item => (
-				<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
-			))}
-		</ul>
 
 		<TextContainer>
-			<h2>Вещи</h2>
+			<TourismHeader secondary>Фотоаппарат</TourismHeader>
+			<ul className="organisation-list">
+				{photoListData.map(item => (
+					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+				))}
+			</ul>
 		</TextContainer>
-		<ul className="organisation-list">
-			{thingListData.map(item => (
-				<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
-			))}
-		</ul>
 
 		<TextContainer>
-			<h2>Аптечка</h2>
+			<TourismHeader secondary>Обязательные вещи</TourismHeader>
+			<ul className="organisation-list">
+				{thingListData.map(item => (
+					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+				))}
+			</ul>
 		</TextContainer>
-		<ul className="organisation-list">
-			{farmListData.map(item => (
-				<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
-			))}
-		</ul>
 
 		<TextContainer>
-			<h2>Фото аппарат</h2>
+			<TourismHeader secondary>Походные вещи</TourismHeader>
+			<ul className="organisation-list">
+				{tourismThingListData.map(item => (
+					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+				))}
+			</ul>
 		</TextContainer>
-		<ul className="organisation-list">
-			{photoListData.map(item => (
-				<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
-			))}
-		</ul>
-	</div>
+
+		<TextContainer>
+			<TourismHeader secondary>Аптечка</TourismHeader>
+			<ul className="organisation-list">
+				{farmListData.map(item => (
+					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+				))}
+			</ul>
+		</TextContainer>
+	</Fragment>
 )
