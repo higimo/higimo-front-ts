@@ -17,15 +17,19 @@ export const TourismCityStarPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
+
 			<TextContainer>
 				<Breadcrumps />
 			</TextContainer>
+
 			<TextContainer>
 				<TourismHeader main>
 					Оценки городов
 				</TourismHeader>
 			</TextContainer>
+
 			<TourismCityStarForm />
+
 			<CityStars />
 		</div>
 	)

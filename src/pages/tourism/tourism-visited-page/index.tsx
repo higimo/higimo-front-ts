@@ -37,16 +37,18 @@ export const TourismVisitedPage: FunctionComponent = () => {
 
 	return (
 		<div className="tourism-identy-page">
-			<div>
-				<TourismMainMenu />
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
-				<TextContainer>
-					<TourismHeader main>Результаты путешествий</TourismHeader>
-				</TextContainer>
-				<TourismMainStatistic totalStatistic={stateData.russiaCity} />
-			</div>
+			<TourismMainMenu />
+
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader main>Результаты путешествий</TourismHeader>
+			</TextContainer>
+
+			<TourismMainStatistic totalStatistic={stateData.russiaCity} />
+
 			<TourismStatisticVisualizer pov={stateData.russiaCity} />
 		</div>
 	)
