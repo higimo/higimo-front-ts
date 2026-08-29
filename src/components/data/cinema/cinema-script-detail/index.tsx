@@ -6,13 +6,11 @@ import { TextContainer } from 'components/ui/text-container'
 type CinemaScriptDetailPropsType = {
 	cinemaScript: CinemaType
 }
-export const CinemaScriptDetail: FunctionComponent<CinemaScriptDetailPropsType> = ({ cinemaScript }) => {
-	return (
-		<TextContainer>
-			<h1>Из фильма «{cinemaScript.title}»</h1>
-			<div
-				dangerouslySetInnerHTML={{__html: cinemaScript.text}}
-			/>
-		</TextContainer>
-	)
-}
+export const CinemaScriptDetail: FunctionComponent<CinemaScriptDetailPropsType> = ({ cinemaScript }) => (
+	<TextContainer>
+		<h1>Из фильма «{cinemaScript.title}»</h1>
+		<div
+			dangerouslySetInnerHTML={{__html: cinemaScript.text}}
+		/>
+	</TextContainer>
+)

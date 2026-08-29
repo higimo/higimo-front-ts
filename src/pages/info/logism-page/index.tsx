@@ -22,11 +22,11 @@ export const LogismPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
 
-
-	return <LogismGallery logisms={logismList.data} />
+	return (
+		<LogismGallery logisms={logismList.data} />
+	)
 }

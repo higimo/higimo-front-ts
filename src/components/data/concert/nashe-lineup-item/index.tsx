@@ -3,10 +3,10 @@ import { FunctionComponent } from 'preact'
 import { NasheType } from 'api-types/nashe.types'
 import { ScheduleTable } from 'components/data/concert/schedule-table'
 import { TextContainer } from 'components/ui/text-container'
-
-import './style.css'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
+
+import './style.css'
 
 type NasheLineupItemPropsType = {
 	curYear: number

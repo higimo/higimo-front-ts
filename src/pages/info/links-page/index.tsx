@@ -1,16 +1,17 @@
 import { FunctionComponent } from 'preact'
-
-import { usePageTitle } from 'hook/use-page-title'
-
-import { TextContainer } from 'components/ui/text-container'
-import { LinksList } from 'components/info-service/links/links-list'
 import { LinksType } from 'api-types/links.types'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
-import { API_ROUTE } from 'dic/API_ROUTE'
-import useApi from 'hook/use-api'
+
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
+import { usePageTitle } from 'hook/use-page-title'
+import useApi from 'hook/use-api'
+
+import { LinksList } from 'components/info-service/links/links-list'
+import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
+import { TextContainer } from 'components/ui/text-container'
+
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const LinksPage: FunctionComponent = () => {
 	usePageTitle('Избранные ссылки')
@@ -22,7 +23,6 @@ export const LinksPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}

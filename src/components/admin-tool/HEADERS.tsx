@@ -6,4 +6,4 @@ export const HEADERS = {
 	DEFAULT: {
 		'Content-Type': 'application/x-www-form-urlencoded',
 	}
-} as const;
+} as const

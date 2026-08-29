@@ -1,4 +1,4 @@
 export type CityStarsType = {
-	title: string;
-	star: string; // ★★★
-};
+	title: string
+	star: string // ★★★
+}

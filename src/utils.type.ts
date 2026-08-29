@@ -77,7 +77,7 @@ export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as 
 /**
  * 2024-01-15T10:00:00Z
  */
-export type ISOString = Brand<string, 'ISOString'>;
+export type ISOString = Brand<string, 'ISOString'>
 
 export const toISOString = (date: Date): ISOString => date.toISOString() as ISOString
 
@@ -116,7 +116,7 @@ export type YearNumber = Brand<number, 'YearNumber'>
 /**
  * Только дата в формате `2024-01-15`
  */
-export type DateOnlyString = Brand<string, 'DateOnlyString'>;
+export type DateOnlyString = Brand<string, 'DateOnlyString'>
 
 export const createDateOnly = (date: Date): DateOnlyString => date.toISOString().split('T')[0] as DateOnlyString
 

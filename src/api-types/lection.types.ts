@@ -7,4 +7,4 @@ export type LectionType = {
 	name: string
 	code: Code
 	text: string
-};
+}

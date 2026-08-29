@@ -4,7 +4,7 @@ import { useCallback } from 'preact/hooks'
 
 import { formatResponse } from 'components/admin-tool/utils/formatResponse'
 
-import { HEADERS } from 'components/admin-tool/const'
+import { HEADERS } from 'components/admin-tool/HEADERS'
 
 export const useApiRequest = () => {
 	const sendRequest = useCallback((

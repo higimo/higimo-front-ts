@@ -7,4 +7,4 @@ export type CinemaType = {
 	title: string
 	code: Code
 	text: string
-};
+}

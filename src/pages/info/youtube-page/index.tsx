@@ -22,11 +22,11 @@ export const YoutubePage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
 
-
-	return <YoutubeGalery list={youtubeList.data} />
+	return (
+		<YoutubeGalery list={youtubeList.data} />
+	)
 }
