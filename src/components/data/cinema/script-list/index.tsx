@@ -12,6 +12,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const ScriptList: FunctionComponent = () => {
+	// TODO: унести в page
 	const [ cinema ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
 	const isLoading = useLoadingState([cinema.status])
 	const isListEmpty = useEmptyDataState(cinema.data)

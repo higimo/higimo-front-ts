@@ -2,6 +2,7 @@ import { createContext, FunctionComponent } from 'preact'
 
 import { useContext, useState } from 'preact/hooks'
 
+// TODO: [EASY] заменить за сигнал
 interface IGlobalContext {
 	isNotFound: boolean
 	toggleNotFound: (value: boolean) => void

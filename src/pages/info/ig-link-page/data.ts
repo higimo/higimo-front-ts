@@ -1,5 +1,6 @@
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
+// TODO: это надо вынести в JSON на бэк?
 type LinkType = {
 	href: string
 	title: string

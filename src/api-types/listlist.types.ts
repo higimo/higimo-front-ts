@@ -42,6 +42,7 @@ export type ListerItem = {
 	values?: ListPropertyType[]
 }
 
+// TODO: rename IerarhListType
 export type ListListType = ListerItem & {
 	child?: ListerItem[]
 }

@@ -20,14 +20,16 @@ export const GamePage: FunctionComponent = () => {
 	const isLoading = useLoadingState([games.status])
 	const isListEmpty = useEmptyDataState(games.data)
 
+	// TODO: [MEDIUM] вынести в компонент DataWrapper,
+	// который показывает потомка,
+	// или ошибки если условия выполнены.
+	// В него же можно внедрить usePageTitle
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
-
 
 	return (
 		<Fragment>
