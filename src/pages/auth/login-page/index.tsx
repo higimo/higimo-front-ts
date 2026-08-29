@@ -8,17 +8,17 @@ import { usePageTitle } from 'hook/use-page-title'
 import { TextContainer } from 'components/ui/text-container'
 import { AuthForm } from 'components/form/auth-form'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { getBackPath } from 'utils/get-back-path'
 
 export const LoginPage: FunctionComponent = () => {
 	usePageTitle('Вход')
+
 	const { route } = useLocation()
 	const { isAuth } = useAuth()
 
 	useEffect(() => {
 		if (isAuth) {
-			const backpath = (new URLSearchParams(location.search)).get('backpath')
-			route((backpath || ROUTE_LINKS.adminIndex), true)
+			route(getBackPath(), true)
 		}
 	}, [isAuth, route])
 

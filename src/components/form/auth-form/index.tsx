@@ -1,12 +1,14 @@
 import { FunctionComponent } from 'preact'
+import { ApiError } from 'utils/api/send-request'
 
 import { useForm } from 'react-hook-form'
 
-import sendRequest, { ApiError, SendRequestOptions } from 'utils/api/send-request'
-
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { getBackPath } from 'utils/get-back-path'
+import { isValidAuth } from 'utils/is-valid-auth'
 import { toast } from 'toast'
+import sendRequest from 'utils/api/send-request'
+
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
@@ -18,28 +20,24 @@ type FormValues = {
 const handleLogin = async (data: FormValues) => {
 	const { email, pass } = data
 
-	const requestOptions: SendRequestOptions = { method: 'POST', values: { email, pass } }
-	const searchParams = new URLSearchParams(location.search)
-	const backpath = searchParams.get('backpath') || ROUTE_LINKS.adminIndex
-
 	try {
-		const { data: authData } = await sendRequest(API_ROUTE.login, requestOptions)
+		const { data: authData } = await sendRequest(API_ROUTE.login, {
+			method: 'POST',
+			values: { email, pass }
+		})
 
-		const isValid = authData.access_token?.length &&
-			authData.token_type === 'bearer' &&
-			authData.user?.id > 0
-
-		if (!isValid) {
+		if (!isValidAuth(authData)) {
 			return toast.error('Неверный формат ответа сервера')
 		}
 
-		window.location.href = backpath
+		window.location.href = getBackPath()
 	} catch (error) {
 		const apiError = error as ApiError
 		toast.error(apiError.message || 'Ошибка при входе в систему')
 	}
 }
 
+// TODO: [HARD] пора сделать компоненты формы?
 export const AuthForm: FunctionComponent = () => {
 	const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValues>({})
 
