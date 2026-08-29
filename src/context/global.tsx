@@ -4,11 +4,12 @@ import { useContext, useState } from 'preact/hooks'
 
 interface IGlobalContext {
 	isNotFound: boolean
-	toggleNotFound?: (boolean) => void
+	toggleNotFound: (value: boolean) => void
 }
 
 const defaultState = {
 	isNotFound: false,
+	toggleNotFound: () => false
 }
 
 const Global = createContext<IGlobalContext>(defaultState)

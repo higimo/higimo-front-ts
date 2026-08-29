@@ -10,10 +10,11 @@ import './style.css'
 
 export const NotFoundPage: FunctionComponent = () => {
 	const { toggleNotFound } = useGlobalContext()
+
 	useEffect(() => {
 		toggleNotFound(true)
 		return () => toggleNotFound(false)
-	}, [])
+	}, [toggleNotFound])
 
 	usePageTitle('Ошибка 404: страница не найдена')
 
