@@ -5,6 +5,7 @@ import cs from 'classnames'
 import { TilesGallery } from 'components/ui/tiles-gallery'
 import { TileElement } from 'components/ui/tile-element'
 
+// TODO: to assets
 import screen	from './img/screen.png'
 import rak	   from './img/rak.png'
 import tech	  from './img/tech.png'

@@ -19,8 +19,10 @@ import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
 // TODO: [LIGHT] добавить компонент пейджа
 const PortfolioSandbox  = lazy(() => import('components/project/portfolio-sandbox'))
+// TODO: Отключить из продакшен-сборки
 const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
 // TODO: [LIGHT] добавить компонент пейджа
+// TODO: Отключить из продакшен-сборки
 const ProjectTypography = lazy(() => import('components/project/project-test'))
 
 import { ComojiPage }          from 'pages/test-page/tools/comoji-page'

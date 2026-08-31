@@ -5,6 +5,8 @@ type VkAlbumListDataType = {
 	image: string
 }
 
+// TODO: Копия в
+// src\components\tourism\.unused\tourism-album\data.ts
 export const vkAlumListData: VkAlbumListDataType[] = [
 	{
 		link: "/tool/vk/albums/259432438",

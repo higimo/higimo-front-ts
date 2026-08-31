@@ -5,15 +5,15 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-
+import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/data'
 
 import './style.css'
-import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/data'
 
 export const TravelInvite: FunctionComponent = () => {
 	return (
 		<PrecentationContainer className="travel-invite" id={ANCHOR_LINKS.travel}>
 			<TextContainer>
+				{/* TODO: tourism header */}
 				<h2 className="travel-invite__title">
 					<a href={ROUTE_LINKS.tourismIndex}>Путешествую</a><sup>150 населённых пунктов</sup>
 				</h2>

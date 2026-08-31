@@ -2,6 +2,7 @@ import { Fragment } from 'preact'
 
 import { ADRESS, BEGET_ADRESS, NAME, PHONE } from 'components/merchant/merchant-const'
 
+// TODO: вынести в JSON API
 export const PrivacyPersonal = () => {
 	return <Fragment>
 		<h2>Политика в отношении обработки персональных данных в ИП Уткин Д. Д.</h2>

@@ -1,6 +1,7 @@
 import { Coord } from 'utils.type'
 import { PovType } from './types'
 
+// TODO: вынести в JSON API
 export const mainTrack: Coord[] = [
 	[55.970577011177575, 43.0736896972643],
 	[55.60068766638706, 42.08354687499869],

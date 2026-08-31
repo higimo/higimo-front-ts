@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { KeyOf } from 'utils.type'
 
+// TODO: to assets
 import als from './img/als.png'
 import daily from './img/daily.svg'
 import intersection from './img/intersection.svg'

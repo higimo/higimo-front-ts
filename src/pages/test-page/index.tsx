@@ -75,6 +75,7 @@ const Layout: FunctionComponent<LayoutPropsType> = ({ sidebar, content }) => {
 	)
 }
 
+// TODO: Отключить из продакшен-сборки
 export const TestPage: FunctionComponent = () => (
 	<div className="page">
 		<Layout

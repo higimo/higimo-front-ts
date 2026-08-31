@@ -3,6 +3,7 @@ import { FunctionComponent } from 'preact'
 import { Fragment } from 'preact/jsx-runtime'
 import { TypographicHeader } from 'components/ui/typographic-header'
 
+// TODO: Отключить из продакшен-сборки
 export const ProjectTypographicTest: FunctionComponent = () => {
 	return (
 		<Fragment>

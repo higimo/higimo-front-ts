@@ -2,6 +2,7 @@ type GradientDicType = {
 	g: string
 	c: string
 }
+// TODO: вынести в JSON API
 export const petProjectGradient: GradientDicType[] = [
 	{ g: 'linear-gradient(25deg, #8f30f3 14.16%, #4446f8 82.3%)', c: '#fff' },
 	{ g: 'linear-gradient(25deg, #f330a5 14.16%, #fa2424 82.3%)', c: '#fff' },

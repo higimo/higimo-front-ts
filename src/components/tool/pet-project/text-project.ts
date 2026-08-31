@@ -1,5 +1,6 @@
 import { PetProjectType } from 'api-types/petproject.types'
 
+// TODO: вынести в JSON API
 export const textProjects: PetProjectType[] = [
 	{
 		id: 1 as PetProjectType['id'],

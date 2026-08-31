@@ -1,5 +1,6 @@
 import { Town } from 'components/tourism/data/types'
 
+// TODO: вынести в JSON API
 export const TOWN: Town[] = [
 	{
 		title: 'Люберцы',

@@ -106,7 +106,7 @@ const ROUTE_RESUME_LINKS = Object.freeze({
 	resumeLead:          '/resume/product-lead/',
 	resumeTechProduct:   '/resume/tech-product/',
 	resumeHowToWork:     '/resume/how-to-work/',
-	resumeProductSmart:  '/resume/product-smart/', // Стилистика перестала быть хорошей
+	resumeProductSmart:  '/resume/product-smart/', // TODO: Стилистика перестала быть хорошей
 })
 
 const ROUTE_THINGS_LINKS = Object.freeze({

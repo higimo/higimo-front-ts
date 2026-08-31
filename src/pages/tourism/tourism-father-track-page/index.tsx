@@ -35,6 +35,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Путешествие с отцом</h1>
 			</TextContainer>
+			{/* TODO: вынести в JSON API */}
 			<TextContainer className="car-list">
 				74 часа на дорогу
 				14 городов

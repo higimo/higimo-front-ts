@@ -1,3 +1,4 @@
+// TODO: вынести в JSON API
 export const albumListData = [
 	{
 		"link": "./album/259432438",

@@ -1,4 +1,4 @@
-// TODO: унести в бекенд
+// TODO: вынести в JSON API
 export const NOTEBOOK_SPECS = [
 	['Операционная система', 'Windows 10 домашняя x64'],
 	['Процессор', 'Intel Core i5 8250U 1.6 ГГц (max 3.4 ГГц) (4 ядра)'],
