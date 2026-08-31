@@ -83,12 +83,12 @@ import { VkIndexPage }       from 'pages/vk/vk-index-page'
 import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
 // TODO: [HARD] все резюме сунуть в отложенную загрузку
-import { ResumeIndexPage }    from 'pages/resume/resume-index-page'
-const ResumeProductPage       = lazy(() => import('pages/resume/resume-product-page'))
-const ResumeTechProductPage   = lazy(() => import('pages/resume/resume-tech-product'))
-const ResumeProductLeadPage   = lazy(() => import('pages/resume/resume-product-lead-page'))
-const HowToWorkPage           = lazy(() => import('pages/resume/how-to-work-page'))
-const ResumeProductSmartPage  = lazy(() => import('pages/resume/resume-product-smart-page'))
+import { ResumeIndexPage }         from 'pages/resume/resume-index-page'
+import { ResumeProductPage }       from 'pages/resume/resume-product-page'
+import { ResumeTechProductPage }   from 'pages/resume/resume-tech-product'
+import { ResumeProductLeadPage }   from 'pages/resume/resume-product-lead-page'
+import { HowToWorkPage }           from 'pages/resume/how-to-work-page'
+import { ResumeProductSmartPage }  from 'pages/resume/resume-product-smart-page'
 
 import { AdminPage }     from 'pages/auth/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'

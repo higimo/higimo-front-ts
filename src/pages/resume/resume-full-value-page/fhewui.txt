@@ -1,0 +1,97 @@
+
+
+					{/* <div class="staff__element company--table">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">frontend-разработчик</div>
+								<div class="company__name"><a href="https://daily.afisha.ru">Афиша Дейли</a></div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">дек. 2020..фев. 2022</div>
+								<div class="company__time">(1 год 3 мес.)</div>
+							</div>
+						</div>
+						<div class="company__description">
+							TypeScript: гаджет-сервис продажи на сайте; перезапуск Афиши Дейли
+						</div>
+					</div>
+
+					<div class="staff__element company--table">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">fullstack-разработчик</div>
+								<div class="company__name"><a href="https://artlebedev.ru">Студия Артемия Лебедева</a></div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">фев. 2017..ноябрь 2020</div>
+								<div class="company__time">(3 года 10 мес.)</div>
+							</div>
+						</div>
+						<div class="company__description">
+							Битрикс и Имприматур: порядка 40 проектов внутренних и публичных.
+						</div>
+					</div>
+
+					<div class="staff__element company--table">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">Lead fullstack-разработки</div>
+								<div class="company__name"><a href="https://r-top.ru">R-top</a></div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">июнь 2015..январь 2017</div>
+								<div class="company__time">(1 год 8 мес.)</div>
+							</div>
+						</div>
+						<div class="company__description">
+							Лидировал разработку. Fullstack на Битрикс: порядка 50 проектов. Внутренние инструменты, создание рассылок. <a href="https://www.youtube.com/watch?v=Uul75kheIMw&amp;list=PLKbZQbD1FjCEU52e56v_H-ThYrZ7NUMJN&amp;index=13">Выступал на Digital Оттепели 2016</a>
+						</div>
+					</div>
+
+					<div class="staff__element company--table">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">fullstack-разработчик</div>
+								<div class="company__name">Студия JET</div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">февраль..июль 2015</div>
+								<div class="company__time">(6 мес.)</div>
+							</div>
+						</div>
+						<div class="company__description">
+							Верстка, PHP — Drupal и Лендинги
+						</div>
+					</div>
+
+					<div class="staff__element company--table">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">frontend-разработчик</div>
+								<div class="company__name"><a href="https://citronium.ru/">Citronium</a></div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">июнь..август 2012</div>
+								<div class="company__time">(3 мес.)</div>
+							</div>
+						</div>
+						<div class="company__description">
+							Рефакторинг MVP в продукт Planstery (теперь StroyControl): canvas + svg для отображения чертежей
+						</div>
+					</div>
+
+					<div class="staff__element company--table">
+						<div className="company__meta">
+							<div className="company__staff">
+								<div class="company__profession">fullstack-разработчик</div>
+								<div class="company__name"><a href="https://ispring.ru">CPS Labs (теперь iSpring)</a></div>
+							</div>
+							<div class="company__timing">
+								<div class="company__period">январь..август 2012</div>
+								<div class="company__time">(8 мес.)</div>
+							</div>
+						</div>
+						<div class="company__description">
+							php, js, NodeJS
+						</div>
+					</div> */}

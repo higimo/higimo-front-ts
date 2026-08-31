@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'preact'
+import { FunctionComponent, h } from 'preact'
 
 type ListRendererPropsType = {
 	items: string[]
@@ -6,8 +6,12 @@ type ListRendererPropsType = {
 
 export const ListRenderer: FunctionComponent<ListRendererPropsType> = ({ items }) => (
 	<ul>
-		{items.map((item, idx) => (
-			<li key={idx}>{item}</li>
+		{items.map((item, idx) => h(
+			'li',
+			{
+				key: idx,
+				dangerouslySetInnerHTML: { __html: item },
+			}
 		))}
 	</ul>
 )

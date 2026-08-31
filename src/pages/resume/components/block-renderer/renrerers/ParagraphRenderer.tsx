@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { InlineBlock } from 'pages/resume/how-to-work-page/block-renderer/types'
+import { InlineBlock } from 'pages/resume/components/block-renderer/types'
 
-import { BlockRenderer } from 'pages/resume/how-to-work-page/block-renderer/BlockRenderer'
+import { BlockRenderer } from 'pages/resume/components/block-renderer/BlockRenderer'
 
 type ParagraphRendererPropsType = {
 	children: InlineBlock[]
