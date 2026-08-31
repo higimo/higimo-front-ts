@@ -46,11 +46,4 @@ export const shareKnowledgeData: KnowlageType[] = [
 		description: "В 2017 году, я написал курс переподготовки по программированию и рассказал его в ННГУ.",
 		link: ROUTE_LINKS.learningIndex,
 	},
-	// {
-	// 	imgId: "school",
-	// 	name: "Школа Ватриковского",
-	// 	description: "Рассказываем, как не надламываясь и не выгорая делать дела. О лекциях сообщаем в телеге",
-	// 	link: EXTERNAL_LINKS.vatrikovskySchool,
-	// 	isArchive: true,
-	// },
 ] as const
