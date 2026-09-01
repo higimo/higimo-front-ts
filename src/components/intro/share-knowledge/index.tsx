@@ -9,7 +9,6 @@ import { TileElement } from 'components/ui/tile-element'
 import screen	from './img/screen.png'
 import rak	   from './img/rak.png'
 import tech	  from './img/tech.png'
-import school	from './img/school.png'
 import obuchenie from './img/obuchenie.png'
 import intersection from './img/intersection.svg'
 
@@ -21,7 +20,6 @@ const imageMapping: Record<KnowlageType['imgId'], string> = {
 	screen,
 	rak,
 	tech,
-	school,
 	obuchenie,
 	intersection,
 }
