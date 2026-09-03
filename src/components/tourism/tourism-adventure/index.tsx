@@ -7,6 +7,11 @@ import './style.css'
 export const TourismAdventure: FunctionComponent = () => {
 	const adventure = ADVENTURES[0]
 
+	// TODO: добавить кликабельность
+	// adventure?.href
+
+	// ROUTE_LINKS.tourismFatherTrack
+
 	return (
 		<div className="tourism-adventure">
 			<div className="tourism-adventure__options">

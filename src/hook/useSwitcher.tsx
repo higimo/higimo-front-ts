@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'preact/hooks';
 
+// TODO: rename file use-switcher
+
 // сократит код, а сеттер удобнее передавать с одинарными скобками в параметр, не надо функцию городить
 /**
  * @example

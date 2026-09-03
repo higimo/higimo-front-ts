@@ -7,7 +7,6 @@ export type AboutDataType = {
 	description: string
 }
 
-// TODO: вынести в JSON API
 export const aboutInviteList: AboutDataType[] = [
 	{
 		name: "Мои вещи",

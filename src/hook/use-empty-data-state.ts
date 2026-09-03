@@ -1,5 +1,6 @@
 type EmptyValue = null | undefined | [] | Record<string, never>;
 
+// TODO: move to hook/fetch
 /**
  * Проверит, что в аргументе не пустой список элементов или непустой единственный элемент
  * TODO: [HARD] после интеграции этого в uaeApi переименовать в is

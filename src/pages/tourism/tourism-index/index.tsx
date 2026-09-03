@@ -83,6 +83,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 							digitFrom: 'из 435',
 							description: 'станций метро Москвы',
 						},
+						// TODO: добавить ссылку
 						// {
 						// 	→
 						// 	Смотреть полностью

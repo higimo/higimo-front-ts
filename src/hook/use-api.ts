@@ -6,6 +6,7 @@ import sendRequest from 'utils/api/send-request'
 
 import { ApiRouteType } from 'dic/API_ROUTE'
 
+// TODO: move to hook/fetch
 export const API_STATUS = {
 	INIT:    'INIT',
 	LOADING: 'LOADING',
@@ -69,8 +70,6 @@ const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiStat
 			if (isDefaultSkipUrl(url)) {
 				dispatch({ type: API_STATUS.LOADED, payload: ({} as T), meta: undefined })
 			} else {
-				// const data = await sendRequest(url as string, { values })
-				// console.log(data)
 				const { data, meta } = await sendRequest(url as string, { values })
 				dispatch({ type: API_STATUS.LOADED, payload: data, meta })
 			}

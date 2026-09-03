@@ -1,8 +1,11 @@
 import { BasePointType, Coord } from 'utils.type'
 
+// TODO: Добавить сюда все типы в директории и вынести файл выше
+
 // TODO: [HIGH] Добавить типа "Самые красивые дороги России"
 export type YaMapPolygon = {
 	type: 'Polygon'
+	// TODO: исправить на Coord
 	coordinates: number[][][]
 }
 
