@@ -17,6 +17,9 @@ import { SkillsRenderer } from 'pages/resume/components/block-renderer/renrerers
 import { AboutRenderer } from 'pages/resume/components/block-renderer/renrerers/AboutRenderer'
 import { EducationRenderer } from 'pages/resume/components/block-renderer/renrerers/EducationRenderer'
 import { InlineSpanRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineSpanRenderer'
+import { TripDayRenderer } from './renrerers/TripRenderer'
+import { TripSymmaryRenderer } from './renrerers/TripSymmaryRenderer'
+
 
 const renderers: Record<AnyBlock['type'], any> = {
 	slide: SlideRenderer,
@@ -35,10 +38,14 @@ const renderers: Record<AnyBlock['type'], any> = {
 	about: AboutRenderer,
 	education: EducationRenderer,
 	span: InlineSpanRenderer,
+
+	// trips
+	'trip-day': TripDayRenderer,
+	'trip-summary': TripSymmaryRenderer
 }
 
 type BlockRendererPropsType = {
-	block: any
+	block: AnyBlock
 }
 export const BlockRenderer: FunctionComponent<BlockRendererPropsType> = ({ block }) => {
 	// @ts-ignore

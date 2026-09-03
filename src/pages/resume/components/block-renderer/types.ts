@@ -1,4 +1,6 @@
-interface BaseBlock {
+import { FactoidType } from "components/ui/factoid"
+
+export interface BaseBlock {
 	type: string
 }
 
@@ -67,8 +69,6 @@ export interface TextContainerBlock extends BaseBlock {
 	children: ContentBlock[] // может содержать любые контентные блоки
 }
 
-// Контактная информация
-
 /**
  * *******************
  * Блоки резюме
@@ -123,8 +123,32 @@ export interface InlineSpanBlock extends BaseBlock {
 }
 
 
-// Блоки, которые могут быть на верхнем уровне страницы (в массиве blocks)
-export type TopLevelBlock = SlideBlock | ContactListBlock | TextContainerBlock
+
+/**
+ * *******************
+ * Блоки путешествий
+ * *******************
+ */
+export interface TripEvent {
+	type: 'roadmap' | 'teleport' | 'night'
+	left?: string
+	text: string
+	modifier?: 'maybe'
+}
+
+export interface TripDay {
+	type: 'trip-day'
+	title: string
+	events: TripEvent[]
+}
+export interface TripSymmary {
+	type: 'trip-summary'
+	counters: FactoidType[]
+}
+
+
+
+
 
 export type ContentBlock =
 	| HeadingBlock
@@ -143,8 +167,15 @@ export type InlineBlock =
 	| InlineStrongBlock
 	| InlineSpanBlock
 
+export type TripBlock = TripDay | TripSymmary
+
+// Блоки, которые могут быть на верхнем уровне страницы (в массиве blocks)
+export type TopLevelBlock = SlideBlock | ContactListBlock | TextContainerBlock | TripBlock
+
 export type AnyBlock = TopLevelBlock | ContentBlock | InlineBlock
 
 export interface PageJSONData {
 	blocks: TopLevelBlock[]
 }
+
+
