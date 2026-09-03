@@ -76,6 +76,7 @@ import { TourismVisitedPage }          from 'pages/tourism/tourism-visited-page'
 import { TourismWalkSinglePage }       from 'pages/tourism/tourism-walk-single-page'
 import { TourismYaMapsRegionPage }     from 'pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page'
 import { TourismMapsPage }             from 'pages/tourism/tourism-maps-page'
+import { TourismMoscowMuseumPage }     from 'pages/tourism/tourism-moscow-museum-page'
 const TourismFatherTrackPage           = lazy(() => import('pages/tourism/tourism-father-track-page'))
 
 import { VkAlbumEditPage }   from 'pages/vk/vk-album-edit-page'
@@ -232,6 +233,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.tourismNashe_CONST} component={NasheSinglePage} />
 								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
 								<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
+								<Route path={ROUTE_LINKS.tourismMoscowMuseum} component={TourismMoscowMuseumPage} />
 								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
 
 								<Route default component={NotFoundPage} />
