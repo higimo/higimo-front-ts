@@ -13,4 +13,8 @@ export const tourismExperimentMapsData = [
 		title: 'Посещённые регионы России',
 		href: ROUTE_LINKS.tourismMapsRegion,
 	},
+	{
+		title: 'Список музеев Москвы',
+		href: ROUTE_LINKS.tourismMoscowMuseum,
+	},
 ] as const;

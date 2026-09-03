@@ -1,0 +1,31 @@
+.museum-gallery {
+	--grid-count: 2;
+	--grid-gap: 16px;
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--grid-gap);
+}
+
+@media (min-width: 768px) {
+	.museum-gallery {
+		--grid-count: 3;
+	}
+}
+
+.museum-gallery__item {
+	max-width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
+	width: 100%;
+	border: 1px solid var(--color-accent);
+	border-width: 1px 1px 1px 4px;
+	padding: calc(var(--grid-gap) / 3) var(--grid-gap);
+}
+
+.museum-gallery__name {
+	margin: 0;
+}
+
+.museum-gallery__adress {
+	margin: 0;
+	font-size: 75%;
+}
