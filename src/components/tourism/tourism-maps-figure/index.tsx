@@ -1,15 +1,25 @@
-import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/data/types'
 import { createRef, Fragment } from 'preact'
+import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/data/types'
 import { ValueOf } from 'utils.type'
 
-import { useWindowSize } from 'hook/use-window-size'
 import { useEffect, useState } from 'preact/hooks'
+import { useJsonApi } from 'hook/use-json-api'
+import { useWindowSize } from 'hook/use-window-size'
 
+import { Loading } from 'components/ui/loading'
+import { Map, YMaps } from 'react-yandex-maps'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
-import { Map, YMaps } from 'react-yandex-maps'
 
 import '../yandex-map.css'
+
+type MoscowWalkaroundStateDataType = {
+	stateYear2021: YaMapPolygon[]
+	stateYear2024: YaMapPolygon[]
+	moscowPovPoints: HigimoMapPoint[]
+}
+
+type LoadingState = { isLoading: true, data: null } | { isLoading: false, data: MoscowWalkaroundStateDataType }
 
 const MAP_MODE = {
 	INIT: 'INIT',
@@ -17,17 +27,43 @@ const MAP_MODE = {
 	2021: '2021',
 	'2021vs2024': '2021vs2024',
 	'POV': 'POV',
-}
+} as const
 
-const loadStateData = async (): Promise<MoscowWalkaroundStateDataType> => {
-	const { stateYear2021, stateYear2024, moscowPovPoints } = await import('../data/common')
-	return { stateYear2021, stateYear2024, moscowPovPoints }
+const useLoadMoscowWolkaround = (): LoadingState => {
+	const [ state, setState ] = useState<LoadingState>({ isLoading: true, data: null })
+
+	const moscowPovPoints = useJsonApi<HigimoMapPoint[]>('/json/tourism/moscow-pov-points.json')
+	const stateYear2021 = useJsonApi<YaMapPolygon[]>('/json/tourism/walk-moscow-2021.json')
+	const stateYear2024 = useJsonApi<YaMapPolygon[]>('/json/tourism/walk-moscow-2024.json')
+
+	useEffect(() => {
+		const isLoading = moscowPovPoints === null || stateYear2021 === null || stateYear2024 === null
+		if (isLoading) {
+			if (!state.isLoading) {
+				setState({
+					isLoading: true,
+					data: null
+				})
+			}
+			return
+		}
+		setState({
+			isLoading: false,
+			data: {
+				moscowPovPoints,
+				stateYear2021,
+				stateYear2024,
+			}
+		})
+	}, [moscowPovPoints, stateYear2021, stateYear2024])
+
+	return state
 }
 
 type UpdateMapPropsType = (map: any, yamaps: any, mode: ValueOf<typeof MAP_MODE>, stateData: MoscowWalkaroundStateDataType|null) => null|undefined
 const updateMap: UpdateMapPropsType = (map, yamaps, mode, stateData) => {
 	if (!map || !yamaps || !stateData || !stateData.stateYear2021 || !stateData.stateYear2024 || mode === MAP_MODE.INIT) {
-		return null
+		return
 	}
 
 	map.geoObjects.removeAll()
@@ -93,18 +129,14 @@ const updateMap: UpdateMapPropsType = (map, yamaps, mode, stateData) => {
 	}
 }
 
-type MoscowWalkaroundStateDataType = {
-	stateYear2021: YaMapPolygon[]
-	stateYear2024: YaMapPolygon[]
-	moscowPovPoints: HigimoMapPoint[]
-}
-
 export const TourismMoscowWalkaround = () => {
 	const refMap = createRef()
+	// TODO: заменить на
+	// const [isMode, setMode] = useSwitcher<typeof MAP_MODE>(MAP_MODE.INIT)
 	const [ mode, setMode ] = useState<ValueOf<typeof MAP_MODE>>(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)
-	const [stateData, setStateData] = useState<MoscowWalkaroundStateDataType|null>(null)
 	const { width } = useWindowSize()
+	const { isLoading, data: stateData } = useLoadMoscowWolkaround()
 
 	const handleMapLoad = (ymaps: any) => {
 		if (mode === MAP_MODE.INIT) {
@@ -114,12 +146,15 @@ export const TourismMoscowWalkaround = () => {
 	}
 
 	useEffect(() => {
-		updateMap(refMap.current, yamaps, mode, stateData)
-	}, [refMap.current, yamaps, mode, stateData])
+		if (!isLoading) {
+			updateMap(refMap.current, yamaps, mode, stateData)
+		}
+	}, [refMap.current, yamaps, mode, stateData, isLoading])
 
-	useEffect(() => {
-		loadStateData().then(setStateData)
-	}, [])
+	if (isLoading) {
+		return <Loading />
+	}
+
 
 	return (
 		<Fragment>
