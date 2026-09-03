@@ -1,13 +1,47 @@
-.car-list {
-    font-family: monospace;
-    white-space: break-spaces;
+.trip-day {
+	--left-witdth: 200px;
+	--gap: 8px;
+
+	margin-bottom: 24px;
 }
 
-.car-teleport {
-    opacity: .65;
-    margin-left: 100px;
+.trip-day__events {
+    display: flex;
+    gap: var(--gap);
+    flex-direction: column;
 }
 
-.car-roadmap--maybe {
-    opacity: .65;
+.trip-day__event {
+    display: flex;
+    gap: var(--gap);
+	font-family: monospace;
+	white-space: break-spaces;
 }
+
+.trip-day__left {
+    margin: 0;
+    max-width: var(--left-witdth);
+    width: 100%;
+    text-align: right;
+    color: var(--color-accent);
+}
+
+.trip-day__text {
+	margin: 0 0 0 calc(var(--left-witdth) + var(--gap));
+}
+.trip-day__event .trip-day__left + .trip-day__text {
+	margin-left: 0;
+}
+
+
+.trip-day__text--roadmap {}
+.trip-day__text--night-stay {}
+
+.trip-day__text--teleport {
+	color: var(--color-accent);
+}
+
+.trip-day__text--maybe {
+	opacity: .65;
+}
+

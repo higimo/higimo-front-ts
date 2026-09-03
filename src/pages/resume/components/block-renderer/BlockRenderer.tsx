@@ -1,22 +1,25 @@
 import { FunctionComponent } from 'preact'
 import { AnyBlock } from 'pages/resume/components/block-renderer/types'
 
-import { ListRenderer } from 'pages/resume/components/block-renderer/renrerers/ListRenderer'
-import { CollapsibleRenderer } from 'pages/resume/components/block-renderer/renrerers/CollapsibleRenderer'
-import { ParagraphRenderer } from 'pages/resume/components/block-renderer/renrerers/ParagraphRenderer'
-import { SlideRenderer } from 'pages/resume/components/block-renderer/renrerers/SlideRenderer'
-import { InlineLinkRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineLinkRendererProps'
-import { InlineTextRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineTextRendererProps'
-import { ContactListRenderer } from 'pages/resume/components/block-renderer/renrerers/ContactListRenderer'
-import { HeadingRenderer } from 'pages/resume/components/block-renderer/renrerers/HeadingRendererProps'
-import { InlineStrongRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineStrongRenderer'
-import { TextContainerRenderer } from 'pages/resume/components/block-renderer/renrerers/TextContainerRenderer'
-import { ContactInfoRenderer } from 'pages/resume/components/block-renderer/renrerers/ContactInfoRenderer'
-import { ExperienceListRenderer } from 'pages/resume/components/block-renderer/renrerers/ExperienceListRenderer'
-import { SkillsRenderer } from 'pages/resume/components/block-renderer/renrerers/SkillsRenderer'
 import { AboutRenderer } from 'pages/resume/components/block-renderer/renrerers/AboutRenderer'
+import { CollapsibleRenderer } from 'pages/resume/components/block-renderer/renrerers/CollapsibleRenderer'
+import { ContactInfoRenderer } from 'pages/resume/components/block-renderer/renrerers/ContactInfoRenderer'
+import { ContactListRenderer } from 'pages/resume/components/block-renderer/renrerers/ContactListRenderer'
 import { EducationRenderer } from 'pages/resume/components/block-renderer/renrerers/EducationRenderer'
+import { ExperienceListRenderer } from 'pages/resume/components/block-renderer/renrerers/ExperienceListRenderer'
+import { HeadingRenderer } from 'pages/resume/components/block-renderer/renrerers/HeadingRendererProps'
+import { InlineLinkRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineLinkRendererProps'
 import { InlineSpanRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineSpanRenderer'
+import { InlineStrongRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineStrongRenderer'
+import { InlineTextRenderer } from 'pages/resume/components/block-renderer/renrerers/InlineTextRendererProps'
+import { ListRenderer } from 'pages/resume/components/block-renderer/renrerers/ListRenderer'
+import { ParagraphRenderer } from 'pages/resume/components/block-renderer/renrerers/ParagraphRenderer'
+import { SkillsRenderer } from 'pages/resume/components/block-renderer/renrerers/SkillsRenderer'
+import { SlideRenderer } from 'pages/resume/components/block-renderer/renrerers/SlideRenderer'
+import { TextContainerRenderer } from 'pages/resume/components/block-renderer/renrerers/TextContainerRenderer'
+import { TripDayRenderer } from 'pages/resume/components/block-renderer/renrerers/TripRenderer'
+import { TripSummaryRenderer } from 'pages/resume/components/block-renderer/renrerers/TripSummaryRenderer'
+
 
 const renderers: Record<AnyBlock['type'], any> = {
 	slide: SlideRenderer,
@@ -35,10 +38,14 @@ const renderers: Record<AnyBlock['type'], any> = {
 	about: AboutRenderer,
 	education: EducationRenderer,
 	span: InlineSpanRenderer,
+
+	// trips
+	'trip-day': TripDayRenderer,
+	'trip-summary': TripSummaryRenderer
 }
 
 type BlockRendererPropsType = {
-	block: any
+	block: AnyBlock
 }
 export const BlockRenderer: FunctionComponent<BlockRendererPropsType> = ({ block }) => {
 	// @ts-ignore

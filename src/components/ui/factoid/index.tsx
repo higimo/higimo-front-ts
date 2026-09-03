@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
 
 export type FactoidType = {
-	digit: number
-	digitFrom: string
+	digit: number | string
+	digitFrom?: string
 	description: string
 }
 export const Factoid: FunctionComponent<FactoidType> = ({ digit, digitFrom, description }) => {

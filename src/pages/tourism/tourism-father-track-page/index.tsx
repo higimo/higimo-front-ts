@@ -1,136 +1,110 @@
 import { FunctionComponent } from 'preact'
 import { Coord } from 'utils.type'
+import { PageJSONData } from 'pages/resume/components/block-renderer/types'
 
-import { useLazyLoadData } from 'hook/use-lazy-load-data'
+import { useEffect, useState } from 'preact/hooks'
+import { useJsonApi } from 'hook/use-json-api'
 import { usePageTitle } from 'hook/use-page-title'
 
+import { BlockRenderer } from 'pages/resume/components/block-renderer/BlockRenderer'
+import { Breadcrumps } from 'components/ui/breadcrumps'
+import { Loading } from 'components/ui/loading'
+import { PovType } from 'components/tourism/data/types'
+import { TextContainer } from 'components/ui/text-container'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
-import { PovType } from 'components/tourism/data/types'
-import { Loading } from 'components/ui/loading'
-import { TextContainer } from 'components/ui/text-container'
 
 import '../tourism-style.css'
 import './style.css'
 
+type FatherData = {
+	roadmap: PageJSONData
+	mainTrack: Coord[]
+	cities: PovType[]
+	rostovNaDonuPlace: PovType[]
+	rostovNaDonuPolygon: Coord[]
+}
+
+type LoaderFatherDataType = { isLoading: true, data: null } | { isLoading: false, data: FatherData }
+
+const useLoaderFatherData = () => {
+	const [result, setResult] = useState<LoaderFatherDataType>({
+		isLoading: true,
+		data: null,
+	})
+
+	const roadmap = useJsonApi<PageJSONData>('/json/tourism/father-trip-roadmap.json')
+
+	const mainTrack = useJsonApi<Coord[]>('/json/tourism/father-trip-main-track.json')
+	const cities = useJsonApi<PovType[]>('/json/tourism/father-trip-cities.json')
+	const rostovNaDonuPlace = useJsonApi<PovType[]>('/json/tourism/father-trip-rostov-na-donu-place.json')
+	const rostovNaDonuPolygon = useJsonApi<Coord[]>('/json/tourism/father-trip-rostov-na-donu-polygon.json')
+
+	useEffect(() => {
+		const isLoading = roadmap === null || mainTrack === null || cities === null
+			|| rostovNaDonuPolygon === null || rostovNaDonuPlace === null
+		if (isLoading) {
+			if (!result.isLoading) {
+				setResult({
+					isLoading: true,
+					data: null
+				})
+			}
+			return
+		}
+
+		setResult({
+			isLoading: false,
+			data: {
+				roadmap,
+				mainTrack,
+				cities,
+				rostovNaDonuPolygon,
+				rostovNaDonuPlace,
+			}
+		})
+	}, [roadmap, mainTrack, cities, rostovNaDonuPolygon, rostovNaDonuPlace])
+
+	return result
+}
+
 export const TourismFatherTrackPage: FunctionComponent = () => {
-	const stateData = useLazyLoadData<{
-		mainTrack: Coord[],
-		cities: PovType[],
-	}>(import('components/tourism/data/father-track'))
-
-	const lines = stateData?.mainTrack
-	const cities = stateData?.cities
-
 	usePageTitle('Путешествие с отцом')
 
-	if (!stateData) {
+	const { isLoading, data } = useLoaderFatherData()
+
+	if (isLoading) {
 		return <Loading />
 	}
+
+	const { roadmap, cities, mainTrack, rostovNaDonuPolygon, rostovNaDonuPlace } = data
+
+	const modCities = cities.concat(rostovNaDonuPlace)
+	const lines = ([] as Coord[])
+		.concat(mainTrack)
+		.concat(rostovNaDonuPolygon)
 
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
-			{/* <Breadcrumps /> */}
 			<TextContainer>
-				<h1>Путешествие с отцом</h1>
+				<Breadcrumps />
 			</TextContainer>
-			{/* TODO: вынести в JSON API */}
+			<TextContainer>
+				<TourismHeader main>Путешествие с отцом</TourismHeader>
+			</TextContainer>
 			<TextContainer className="car-list">
-				74 часа на дорогу
-				14 городов
+				{roadmap.blocks.map((child, idx) => (
+					<BlockRenderer key={idx} block={child} />
+				))}
+			</TextContainer>
+			<TextContainer className="car-list">
 
-				<h2>День 1</h2>
-				<div>
-					<div class="car-roadmap">10:00 Выезд из Нижнего Новгорода</div>
-					<div class="car-teleport">1ч 30м</div>
-					<div class="car-roadmap car-roadmap--maybe">11:30—14:30 3ч Выкса</div>
-					<div class="car-teleport">8ч 50м</div>
-					<div class="car-roadmap">18:50—23:00 5ч Саратов (21:50)</div>
-					<div class="night-stay">Ночёвка в Саратове</div>
-				</div>
-
-				<h2>День 2</h2>
-				<div>
-					<div class="car-roadmap">10:00 Выезд из Саратова</div>
-					<div class="car-teleport">6ч</div>
-					<div class="car-roadmap">16:00—21:00 5ч Волгоград</div>
-					<div class="night-stay">Ночёвка в Волгограде</div>
-				</div>
-
-				<h2>День 3</h2>
-				<div>
-					10:00 Выезд из Волгограда
-					<div class="car-teleport">5ч</div>
-					15:00—19:00 4ч Астрахань
-					<div class="night-stay">Ночёвка в Астрахани</div>
-				</div>
-
-				<h2>День 4</h2>
-				<div>
-					10:00 Выезд из Астрахани
-					<div class="car-teleport">4ч</div>
-					14:00—17:00 3ч Элиста
-					<div class="car-teleport">3ч</div>
-					20:00—23:00 3ч Ставрополь
-					<div class="night-stay">Ночёвка в Ставрополе</div>
-				</div>
-
-				<h2>День 5</h2>
-				<div>
-					10:00 Выезд из Ставрополя
-					<div class="car-teleport">3ч</div>
-					13:00—14:00 1ч Суворовские термальные ванны
-					<div class="car-teleport">6ч (через Джилы-Су)</div>
-					21:00—23:00 2ч Пятигорск / Черкесск / Невинномысск
-					<div class="night-stay">Ночёвка</div>
-				</div>
-
-				<h2>День 6 (ночь в горах)</h2>
-				<div>
-					10:00 Выезд
-					<div class="car-teleport">13ч</div>
-					23:00 5ч Красная Поляна
-					<div class="night-stay">Ночёвка в Красная Поляна</div>
-				</div>
-
-				<h2>День 7 (ночь на море)</h2>
-				<div>
-					10:00 Выезд из Красной поляны
-					<div class="car-teleport">8ч</div>
-					18:00—23:00 5ч Геленджик
-					<div class="car-teleport">2ч</div>
-					<div class="night-stay">Ночёвка в Геленджике</div>
-					<div class="car-roadmap car-roadmap--maybe">11:30—14:30 3ч Выкса (за 8ч до Краснодара)</div>
-				</div>
-
-				<h2>День 8 (ночь в Ростове)</h2>
-				<div>
-					10:00 Выезд из Геленджика
-					<div class="car-teleport">3ч</div>
-					13:00—18:00 5ч Краснодар
-					<div class="car-teleport">3ч</div>
-					21:00—23:00 2ч Ростов-на-Дону
-					<div class="night-stay">Ночёвка в Ростове-на-Дону</div>
-				</div>
-
-				<h2>День 9</h2>
-				<div>
-					10:00—11:00 1ч Ростов-на-Дону
-					<div class="car-teleport">7ч</div>
-					18:00—21:00 3ч Воронеж
-					<div class="car-teleport">7ч</div>
-
-				</div>
-				<h2>21:00 Финиш в Москве</h2>
-				<div>
-					Орёл
-					Курск
-				</div>
 			</TextContainer>
 			<TourismMapGeo<PovType, Coord>
 				lines={lines}
-				items={cities}
+				items={modCities}
 			/>
 		</div>
 	)
