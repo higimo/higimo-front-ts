@@ -1,15 +1,20 @@
-import { NOTEBOOK_SPECS } from './data'
+import { TextContainer } from 'components/ui/text-container'
+import { FunctionComponent } from 'preact'
 
-export const ThingsNotebook = () => (
-	<div className="content">
+type ThingsNotebookPropsType = {
+	data: [string, string][]
+}
+
+export const ThingsNotebook: FunctionComponent<ThingsNotebookPropsType> = ({ data }) => (
+	<TextContainer>
 		<h1>Ноутбук</h1>
 		<p>Ультрабук ASUS ZenBook S UX391UA-ET084T</p>
 		<table>
 			<tbody>
-				{NOTEBOOK_SPECS.map(([label, value], i) => (
+				{data.map(([label, value], i) => (
 					<tr key={i}><td>{label}</td><td>{value}</td></tr>
 				))}
 			</tbody>
 		</table>
-	</div>
+	</TextContainer>
 )
