@@ -49,6 +49,7 @@ const ROUTE_TOURISM_LINKS = Object.freeze({
 	tourismMapsMoscowBar:        '/tourism/maps/moscow-bar/',
 	tourismCityIndex:            '/tourism/city/',
 	tourismVisited:              '/tourism/visited/',
+	tourismMoscowMuseum:         '/tourism/moscow-museum/',
 	tourismFatherTrack:          '/tourism/father-track/',
 
 	tourismWalkDetail: generateLink('/tourism/walk/:idcode/'),
