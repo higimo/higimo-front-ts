@@ -3,6 +3,9 @@ import { FactoidType } from "components/ui/factoid"
 export interface BaseBlock {
 	type: string
 }
+// TODO: прибраться, чтоб верхние блоки были с другим неймингом, чем inline
+// Вкладываемым надо подумать, как нейминг назвать и оформлять
+// ListItem сейчас самый больной
 
 /**
  * *******************
@@ -23,10 +26,11 @@ interface ParagraphBlock extends BaseBlock {
 	/** массив текстовых узлов, ссылок, strong и т.д. */
 	children: InlineBlock[]
 }
-interface ListBlock extends BaseBlock {
+export interface ListBlock extends BaseBlock {
 	type: 'list'
-	/** каждый пункт - строка (без вложенности) */
-	items: string[]
+	/** `true` — `ol`, `false` — `ul` */
+	ordered: boolean
+	items: string[] | ListItem[]
 }
 interface CollapsibleBlock extends BaseBlock {
 	type: 'collapsible'
@@ -67,6 +71,11 @@ export interface InlineStrongBlock extends BaseBlock {
 export interface TextContainerBlock extends BaseBlock {
 	type: 'textContainer'
 	children: ContentBlock[] // может содержать любые контентные блоки
+}
+
+export interface ListItem {
+	text: string
+	children?: ListBlock[]
 }
 
 /**
