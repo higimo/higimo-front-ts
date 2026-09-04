@@ -20,6 +20,7 @@ import { initPayment } from 'utils/merchant/init-payment'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+import '../merchant-style.css'
 import './style.css'
 
 export const PaymentPage: FunctionComponent = () => {
@@ -70,8 +71,8 @@ export const PaymentPage: FunctionComponent = () => {
 			<TextContainer>
 				<MerchantProductFeature product={currentProduct} />
 			</TextContainer>
-			{/* Пошерить */}
-			{/* Купить другому */}
+			{/* TODO: [FEATURE] Пошерить */}
+			{/* TODO: [FEATURE] Купить другому */}
 			<TextContainer>
 				<a href={ROUTE_LINKS.merchantIndex}>← В магазин</a>
 				<br />

@@ -77,13 +77,12 @@ import { TourismWalkSinglePage }       from 'pages/tourism/tourism-walk-single-p
 import { TourismYaMapsRegionPage }     from 'pages/tourism/tourism-ya-maps/tourism-ya-maps-region-page'
 import { TourismMapsPage }             from 'pages/tourism/tourism-maps-page'
 import { TourismMoscowMuseumPage }     from 'pages/tourism/tourism-moscow-museum-page'
-const TourismFatherTrackPage           = lazy(() => import('pages/tourism/tourism-father-track-page'))
+import { TourismFatherTrackPage }      from 'pages/tourism/tourism-father-track-page'
 
 import { VkAlbumEditPage }   from 'pages/vk/vk-album-edit-page'
 import { VkAlbumListPage }   from 'pages/vk/vk-album-list-page'
 import { VkDownloadPage }    from 'pages/vk/vk-download-page'
 import { VkIndexPage }       from 'pages/vk/vk-index-page'
-import { VkStaticAlbumPage } from 'pages/vk/vk-static-album-page'
 
 // TODO: [HARD] все резюме сунуть в отложенную загрузку
 import { ResumeIndexPage }         from 'pages/resume/resume-index-page'
@@ -215,7 +214,6 @@ export function App() {
 
 								{/* VK тулы */}
 								<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
-								<Route path={ROUTE_LINKS.toolVkStaticAlbum} component={VkStaticAlbumPage} />
 								<Route path={ROUTE_LINKS.toolVkAlbums} component={VkAlbumListPage} />
 								<Route path={ROUTE_LINKS.toolVkAlbumSingle_CONST} component={VkAlbumEditPage} />
 								<Route path={ROUTE_LINKS.toolVkDownloadAlbum} component={VkDownloadPage} />
