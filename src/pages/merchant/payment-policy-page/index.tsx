@@ -1,23 +1,36 @@
 import { FunctionComponent } from 'preact'
+import { PageJSONData } from 'pages/resume/components/block-renderer/types'
 
+import { useJsonApi } from 'hook/use-json-api'
 import { usePageTitle } from 'hook/use-page-title'
 
-import { TextContainer } from 'components/ui/text-container'
+import { BlockRenderer } from 'pages/resume/components/block-renderer/BlockRenderer'
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { MerchantPayment } from 'components/merchant/merchant-payment'
-import { MerchantPaymentPolicy } from 'components/merchant/merchant-privacy-policy'
+import { Loading } from 'components/ui/loading'
 import { MerchantPolicyNavigation } from 'components/merchant/merchant-policy-navigation'
+import { TextContainer } from 'components/ui/text-container'
+
+import '../merchant-style.css'
 
 export const PaymentPolicyPage: FunctionComponent = () => {
 	usePageTitle('Порядок оплаты')
 
-	return (
-		<TextContainer>
-			<Breadcrumps />
-			<MerchantPolicyNavigation />
+	const data = useJsonApi<PageJSONData>('/json/merchant/payment-personal.json')
 
-			<MerchantPayment />
-			<MerchantPaymentPolicy />
-		</TextContainer>
+	if (data === null) {
+		return <Loading />
+	}
+
+	return (
+		<div className="merchant-text-page">
+			<TextContainer>
+				<Breadcrumps />
+				<MerchantPolicyNavigation />
+			</TextContainer>
+
+			{data.blocks.map((block, idx) => (
+				<BlockRenderer key={idx} block={block} />
+			))}
+		</div>
 	)
 }

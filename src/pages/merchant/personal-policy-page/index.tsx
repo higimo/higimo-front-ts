@@ -14,27 +14,34 @@ import { setRenderBlockVariables } from 'components/stores/render-block-variable
 
 import { ADRESS, BEGET_ADRESS, NAME, PHONE } from 'components/merchant/merchant-const'
 
+import '../merchant-style.css'
+
 export const PersonalPolicyPage: FunctionComponent = () => {
 	usePageTitle('Политика обработки ПД')
 
 	setRenderBlockVariables({
-		ADRESS, BEGET_ADRESS, NAME, PHONE
+		ADRESS,
+		BEGET_ADRESS,
+		NAME,
+		PHONE
 	})
 
-	const data = useJsonApi<PageJSONData>('/json/merchant/payment-personal.json')
+	const data = useJsonApi<PageJSONData>('/json/merchant/privacy-policy.json')
 
 	if (data === null) {
 		return <Loading />
 	}
 
 	return (
-		<TextContainer>
-			<Breadcrumps />
-			<MerchantPolicyNavigation />
+		<div className="merchant-text-page">
+			<TextContainer>
+				<Breadcrumps />
+				<MerchantPolicyNavigation />
+			</TextContainer>
 
 			{data.blocks.map((block, idx) => (
 				<BlockRenderer key={idx} block={block} />
 			))}
-		</TextContainer>
+		</div>
 	)
 }

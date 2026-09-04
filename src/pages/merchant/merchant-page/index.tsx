@@ -8,6 +8,8 @@ import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { ProductBanner } from 'components/merchant/product-banner'
 
+import '../merchant-style.css'
+
 export const MerchantPage: FunctionComponent = () => {
 	usePageTitle('Магазин')
 

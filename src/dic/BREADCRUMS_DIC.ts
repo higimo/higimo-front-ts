@@ -104,7 +104,7 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.merchantCheckout]: 'Страница оплаты',
 	[ROUTE_LINKS.merchantPaymentPolicy]: 'Порядок оплаты',
 	[ROUTE_LINKS.merchantPersonalPolicy]: 'Политика обработки ПД',
-	[ROUTE_LINKS.merchantPaymentOferta]: 'Офорта',
+	[ROUTE_LINKS.merchantPaymentOferta]: 'Оферта',
 	[ROUTE_LINKS.merchantDonationOferta]: 'Донатная оферта',
 }
 
