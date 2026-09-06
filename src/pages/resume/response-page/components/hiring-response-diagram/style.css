@@ -1,0 +1,13 @@
+.chart-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.chart-wrapper svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: transparent;
+	border-radius: 12px;
+}

@@ -1,0 +1,136 @@
+.hiring-cards {
+	/* TODO: добавить --grid-gap */
+	display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hiring-cards__item {
+	/* TODO: добавить --grid-gap */
+	max-width: 290px;
+
+	background: #f8faff;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    gap: 14px 20px;
+    border: 1px solid #e9effb;
+    transition: all 150ms ease;
+    flex-direction: column;
+}
+
+.hiring-cards__item:hover {
+	background: #f4f9ff;
+	border-color: #cddefa;
+}
+
+.hiring-cards__info {
+	display: flex;
+    gap: 16px;
+    align-items: center;
+	font-size: 14px;
+	color: #4c6a9e;
+}
+
+.hiring-cards__id {
+	font-weight: 600;
+	color: #1a439b;
+	background: #e4edfe;
+	padding: 2px 14px;
+	border-radius: 40px;
+	min-width: 44px;
+	text-align: center;
+}
+
+.hiring-cards__date {
+	white-space: nowrap;
+}
+
+.hiring-cards__content {
+	font-size: 15px;
+	color: #12245a;
+	font-weight: 450;
+	word-break: break-word;
+	max-height: 200px;
+    overflow: hidden;
+}
+
+.hiring-cards__actions {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.hiring-cards__actions button {
+	background: transparent;
+	border: none;
+	padding: 6px 14px;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 40px;
+	cursor: pointer;
+	transition: all 150ms ease;
+	color: #1f4a9e;
+	letter-spacing: 0.2px;
+}
+
+.hiring-cards__actions button:hover {
+	background: #e1ebfc;
+	transform: translateY(-1px);
+}
+
+.hiring-cards__actions button:active {
+	transform: translateY(0px);
+}
+
+.hiring-cards__actions .btn-edit {
+	color: #2b5ec9;
+}
+
+.hiring-cards__actions .btn-edit:hover {
+	background: #dae6fe;
+}
+
+.hiring-cards__actions .btn-delete {
+	color: #c73b3b;
+}
+
+.hiring-cards__actions .btn-delete:hover {
+	background: #fee9e9;
+	color: #a52222;
+}
+
+.empty-cards {
+	text-align: center;
+	padding: 32px 0 20px;
+	color: #7a8fb0;
+	font-size: 16px;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 700px) {
+	.card-container {
+		padding: 22px 18px 28px;
+		border-radius: 20px;
+	}
+	.card-item {
+		padding: 16px 18px;
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.hiring-cards__info {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+	.hiring-cards__actions {
+		justify-content: flex-start;
+		margin-top: 4px;
+	}
+	.hiring-cards__actions button {
+		padding: 5px 12px;
+		font-size: 13px;
+	}
+}
