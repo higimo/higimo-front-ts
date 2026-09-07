@@ -59,7 +59,7 @@ const sendRequest = <T = any>(
 	if (typeof window !== 'undefined') {
 		var xhttp = new XMLHttpRequest()
 		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
+			if (this.readyState == 4 && [200, 201].includes(this.status)) {
 				let json
 				let meta
 				try {
@@ -72,7 +72,7 @@ const sendRequest = <T = any>(
 				}
 				resolve({ data: json, meta })
 			}
-			if (this.readyState == 4 && this.status !== 200) {
+			if (this.readyState == 4 && (this.status !== 200 && this.status !== 201)) {
 				let errorData;
 				let errorMessage = this.statusText;
 
