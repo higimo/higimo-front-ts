@@ -1,4 +1,4 @@
-import { ListItem } from 'pages/resume/components/block-renderer/types'
+import { ListItem } from 'components/block-renderer/types'
 
 // TODO: вынести в отдельный файл функцию, положить в директорию /utils/type-guard/...
 // и тогда переоформить тесты

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { SkillsBlock } from 'pages/resume/components/block-renderer/types'
+import { SkillsBlock } from 'components/block-renderer/types'
 
 export const SkillsRenderer: FunctionComponent<SkillsBlock> = ({ title, items }) => (
 	<div className="skill">

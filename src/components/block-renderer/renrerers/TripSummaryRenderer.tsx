@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { TripSymmary } from 'pages/resume/components/block-renderer/types'
+import { TripSymmary } from 'components/block-renderer/types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
 

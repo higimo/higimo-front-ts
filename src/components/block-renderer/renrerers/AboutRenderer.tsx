@@ -1,7 +1,7 @@
+import { AboutBlock } from 'components/block-renderer/types'
 import { FunctionComponent } from 'preact'
-import { AboutBlock } from 'pages/resume/components/block-renderer/types'
 
-import { BlockRenderer } from 'pages/resume/components/block-renderer/BlockRenderer'
+import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
 
 export const AboutRenderer: FunctionComponent<AboutBlock> = ({ title, paragraphs }) => (
 	<div className="about">

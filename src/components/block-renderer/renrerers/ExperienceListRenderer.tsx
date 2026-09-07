@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { ExperienceListBlock } from 'pages/resume/components/block-renderer/types'
+import { ExperienceListBlock } from 'components/block-renderer/types'
 
-import { ExperienceItemRenderer } from 'pages/resume/components/block-renderer/renrerers/ExperienceItemRenderer'
+import { ExperienceItemRenderer } from 'components/block-renderer/renrerers/ExperienceItemRenderer'
 
 export const ExperienceListRenderer: FunctionComponent<ExperienceListBlock> = ({
 	items,

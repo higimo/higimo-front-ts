@@ -1,6 +1,6 @@
 import { FunctionComponent, h } from 'preact'
 import { ListBlock, ListItem } from '../types'
-import { isListItem } from 'pages/resume/components/block-renderer/type-guard.utils'
+import { isListItem } from 'components/block-renderer/type-guard.utils'
 import { useMemo } from 'preact/hooks'
 import { ListItemRenderer } from './ListItemRenderer'
 

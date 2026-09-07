@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { EducationBlock } from 'pages/resume/components/block-renderer/types'
+import { EducationBlock } from 'components/block-renderer/types'
 
 export const EducationRenderer: FunctionComponent<EducationBlock> = ({
 	status,

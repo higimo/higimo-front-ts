@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ContactInfoBlock } from 'pages/resume/components/block-renderer/types'
+import { ContactInfoBlock } from 'components/block-renderer/types'
 
 export const ContactInfoRenderer: FunctionComponent<ContactInfoBlock> = ({
 	phone,
