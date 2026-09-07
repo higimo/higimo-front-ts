@@ -84,13 +84,14 @@ import { VkAlbumListPage }   from 'pages/vk/vk-album-list-page'
 import { VkDownloadPage }    from 'pages/vk/vk-download-page'
 import { VkIndexPage }       from 'pages/vk/vk-index-page'
 
-// TODO: [HARD] все резюме сунуть в отложенную загрузку
 import { ResumeIndexPage }         from 'pages/resume/resume-index-page'
 import { ResumeProductPage }       from 'pages/resume/resume-product-page'
 import { ResumeTechProductPage }   from 'pages/resume/resume-tech-product'
 import { ResumeProductLeadPage }   from 'pages/resume/resume-product-lead-page'
 import { HowToWorkPage }           from 'pages/resume/how-to-work-page'
 import { ResumeProductSmartPage }  from 'pages/resume/resume-product-smart-page'
+
+import { HiringResponsePage } from 'pages/hiring-response/hiring-response-page'
 
 import { AdminPage }     from 'pages/auth/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
@@ -110,7 +111,6 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
-import { PesponsePage } from 'pages/resume/response-page'
 
 export function App() {
 	return (
@@ -178,7 +178,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductLeadPage} />
 								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
 								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProductSmartPage} />
-								<Route path={ROUTE_LINKS.response} component={PesponsePage} />
+								<Route path={ROUTE_LINKS.response} component={HiringResponsePage} />
 
 								{/* Инфостраницы о себе */}
 								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />

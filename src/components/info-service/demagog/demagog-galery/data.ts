@@ -1,3 +1,4 @@
+// TODO: Вынести в JSON API
 export const demagogData = [
 	{
 		"name": "Необоснованные утверждения",

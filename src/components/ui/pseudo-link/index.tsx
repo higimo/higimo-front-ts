@@ -1,19 +1,10 @@
-import { FunctionComponent, JSX } from 'preact'
-
 import { AnchorLinksType } from 'dic/ANCHOR_LINKS'
+import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
+import { smoothScroll } from 'utils/smooth-scroll'
 
 import './style.css'
-
-const smoothScroll = (href: AnchorLinksType) => (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
-	event.preventDefault()
-	const offsetTop = document.querySelector(`#${href}`)?.getBoundingClientRect().top + window.scrollY
-	window.scroll({
-		top: offsetTop,
-		behavior: 'smooth'
-	})
-}
 
 type PseudoLinkPropsType = {
 	className?: string

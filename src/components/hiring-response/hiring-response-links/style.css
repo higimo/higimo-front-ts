@@ -1,0 +1,9 @@
+.hiring-response-links {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.hiring-response-links__column {
+	width: 45%;
+}

@@ -91,7 +91,7 @@ const handleListListSubmit: HandleListListSubmitType = addStatus => async values
 		const successful = results.filter(result => result.status === 'fulfilled').length
 		const failed = results.filter(result => result.status === 'rejected').length
 
-		toast.success(`Добавлено ${successful}; не удалось ${failed}`)
+		toast.success(`Добавлено ${successful}. Не удалось ${failed}`)
 
 		results.forEach(result => result.status === 'fulfilled' && addStatus(result.value))
 	} catch (error) {

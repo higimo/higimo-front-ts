@@ -5,6 +5,8 @@ export const ANCHOR_LINKS = {
 	service: 'service',
 	blog: 'blog',
 
+	hiringResponseForm: 'hiringResponseForm',
+
 	// no use
 	done: 'done',
 } as const

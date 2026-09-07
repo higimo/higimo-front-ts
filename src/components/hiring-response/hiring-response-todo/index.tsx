@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'preact';
+import { FunctionComponent } from 'preact'
 
 export const HiringResponseTodo: FunctionComponent = () => (
 	<div>
@@ -6,4 +6,4 @@ export const HiringResponseTodo: FunctionComponent = () => (
 		<br />
 		- [ ] Ссылку на резюме на главную хомяка
 	</div>
-);
+)

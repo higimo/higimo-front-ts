@@ -24,8 +24,8 @@ import { ListerItem, ListListType } from 'api-types/listlist.types'
  * const flat = [
  *   { id: 1, parent: null, name: 'Root' },
  *   { id: 2, parent: true, parent_id: 1, name: 'Child' }
- * ];
- * convertFlatListToIerah(flat);
+ * ]
+ * convertFlatListToIerah(flat)
  * // Результат:
  * // [
  * //   { id: 1, parent: null, name: 'Root', child: [
