@@ -1,104 +1,59 @@
 import { describe, test, expect } from 'vitest'
 import { isValidAuth } from 'utils/is-valid-auth'
 
+const createAuth = (overrides: Partial<Parameters<typeof isValidAuth>[0]> = {}) => ({
+	access_token: 'some-token',
+	token_type: 'bearer',
+	user: { id: 1 },
+	...overrides,
+})
+
 describe('isValidAuth', () => {
 	describe('валидные данные', () => {
 		test('возвращает true при корректных данных', () => {
-			expect(isValidAuth({
-				access_token: 'some-token',
-				token_type: 'bearer',
-				user: { id: 1 },
-			})).toBe(true)
+			expect(isValidAuth(createAuth())).toBe(true)
 		})
 	})
 
 	describe('невалидные данные', () => {
-		test('возвращает false при отсутствии access_token', () => {
-			// TODO: [LIGHT] написать функцию-генератор объекта,
-			// чтобы туда передавать массив
-			// и проходиться по массиву проверяя
-			expect(isValidAuth({
-				token_type: 'bearer',
-				user: { id: 1 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: undefined,
-				token_type: 'bearer',
-				user: { id: 1 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: null as any,
-				token_type: 'bearer',
-				user: { id: 1 },
-			})).toBe(false)
+		describe('access_token', () => {
+			test.each([
+				['undefined', { access_token: undefined } ],
+				['null', { access_token: null } ],
+				['пустая строка', { access_token: '' } ],
+				['123 как число', { access_token: 123 as any } ],
+			])('возвращает false при %s', (_, overrides) => {
+				expect(isValidAuth(createAuth(overrides))).toBe(false)
+			})
 		})
 
-		test('возвращает false при пустом access_token', () => {
-			expect(isValidAuth({
-				access_token: '',
-				token_type: 'bearer',
-				user: { id: 1 },
-			})).toBe(false)
+		describe('token_type', () => {
+			test.each([
+				['Bearer с заглавной', { token_type: 'Bearer' } ],
+				['oauth', { token_type: 'oauth' } ],
+				['пустая строка', { token_type: '' } ],
+				['undefined', { token_type: undefined } ],
+				['null', { token_type: null } ],
+				['"   "', { token_type: '  ' } ],
+			])('возвращает false при %s', (_, overrides) => {
+				expect(isValidAuth(createAuth(overrides))).toBe(false)
+			})
 		})
 
-		test('возвращает false при неверном token_type', () => {
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'Bearer',
-				user: { id: 1 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'oauth',
-				user: { id: 1 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: '',
-				user: { id: 1 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: undefined,
-				user: { id: 1 },
-			})).toBe(false)
-		})
-
-		test('возвращает false при отсутствии или некорректном user.id', () => {
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'bearer',
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'bearer',
-				user: { id: 0 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'bearer',
-				user: { id: -5 },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'bearer',
-				user: { id: undefined as any },
-			})).toBe(false)
-
-			expect(isValidAuth({
-				access_token: 'abc',
-				token_type: 'bearer',
-				user: { id: null as any },
-			})).toBe(false)
-		})
+		describe('user.id', () => {
+			test.each([
+				['user отсутствует', { user: undefined }],
+				['user = null', { user: null }],
+				['id = 0', { user: { id: 0 } }],
+				['id = -5', { user: { id: -5 } }],
+				['id = пустая строка', { user: { id: '' } }],
+				['id = null', { user: { id: null } }],
+				['id = undefined', { user: { id: undefined } }],
+				['user = {} (нет id)', { user: {} }],
+			])('возвращает false при %s', (_, overrides) => {
+				expect(isValidAuth(createAuth(overrides))).toBe(false);
+			});
+		});
 
 		test('возвращает false при полностью пустом объекте', () => {
 			expect(isValidAuth({})).toBe(false)
