@@ -122,7 +122,7 @@ export const useMeetingForm = ({
 		if (match) {
 			const [_, name, personId] = match
 
-			const person = persons.find(i => i.id === parseInt(personId, 10))
+			const person = persons.find(i => i.id === parseInt(personId!, 10))
 
 			if (person) {
 				handleAddPerson(person)

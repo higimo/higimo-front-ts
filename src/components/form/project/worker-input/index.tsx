@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'preact'
 import { PortfolioProjectId, PortfolioWorkerType } from 'api-types/portfolio.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
@@ -15,14 +16,14 @@ import { WorkersTree } from 'components/form/project/workers-tree'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import sendRequest, { ApiError } from 'utils/api/send-request'
+import { toast } from 'toast'
 
 import './style.css'
-import { FunctionComponent } from 'preact'
-import { toast } from 'toast'
 
 // TODO: [FEATURE] Анонсы. Портфолио таблицей как на хомяке Далера
 // TODO: [FEATURE] Анонсы. Показать людей, с которыми работал
 // TODO: [FEATURE] Анонсы. Взаимосвязи людей на графе
+// TODO: [FEATURE] пора переписать все формы на сайте
 
 type WorkerInputPropsType = {
 	projectId: PortfolioProjectId

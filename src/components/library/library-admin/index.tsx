@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { HigimoServerResponse } from 'api-types/server-response.types'
-import { LibraryType } from 'api-types/library.types.'
+import { LibraryType } from 'api-types/library.types'
 
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'

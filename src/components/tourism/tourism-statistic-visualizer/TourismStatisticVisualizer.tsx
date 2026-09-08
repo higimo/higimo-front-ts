@@ -2,7 +2,7 @@ import { Fragment, FunctionComponent } from 'preact'
 import { ValueOf } from 'utils.type'
 
 import { useSmartTags } from 'hook/tags/use-smart-tags'
-import { useSwitcher } from 'hook/useSwitcher'
+import { useSwitcher } from 'hook/use-switcher'
 import { useMemo } from 'preact/hooks'
 
 import { PovType } from 'components/tourism/data/types'
