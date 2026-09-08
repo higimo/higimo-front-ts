@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
-import { useMerchant } from 'hook/use-merchant'
+import { useMerchant } from 'hook/data/use-merchant'
 
 import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'

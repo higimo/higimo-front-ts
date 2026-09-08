@@ -1,7 +1,7 @@
 import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 import { Fragment, FunctionComponent } from 'preact'
 
-import { useTags } from 'hook/use-tags'
+import { useTags } from 'hook/data/use-tags'
 import { useEffect, useMemo, useRef } from 'preact/hooks'
 
 import { Tag } from 'components/ui/tag'

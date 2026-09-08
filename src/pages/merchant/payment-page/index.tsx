@@ -1,7 +1,7 @@
 import { FormValues } from 'components/merchant/merchant-payment-form/types'
 import { FunctionComponent } from 'preact'
 
-import { useMerchant } from 'hook/use-merchant'
+import { useMerchant } from 'hook/data/use-merchant'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useLocation } from 'preact-iso'
 import { useLayoutEffect } from 'preact/hooks'

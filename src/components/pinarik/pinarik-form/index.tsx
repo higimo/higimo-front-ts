@@ -8,7 +8,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { Dispatch, StateUpdater }  from 'preact/hooks'
 
 import { useAuth } from 'hook/fetch/use-auth'
-import { useFormStatus } from 'hook/use-form-status'
+import { useFormStatus } from 'hook/utils/use-form-status'
 
 import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'

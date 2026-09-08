@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { KeyOf } from 'utils.type'
 
-import { useMerchant } from 'hook/use-merchant'
+import { useMerchant } from 'hook/data/use-merchant'
 
 import { ProductBanner } from 'components/merchant/product-banner'
 

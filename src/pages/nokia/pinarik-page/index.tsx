@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useForceUpdate } from 'hook/use-force-update'
+import { useForceUpdate } from 'hook/utils/use-force-update'
 
 import { PinarikForm } from 'components/pinarik/pinarik-form'
 import { PinarikCalendar } from 'components/pinarik/pinarik-calendar'
