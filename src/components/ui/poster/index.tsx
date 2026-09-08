@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 
 import './style.css'
 
-// TODO: добавить на страницу типографики
+// TODO: [LIGHT] добавить на страницу типографики
 type PosterPropsType = {
 	className?: string
 }

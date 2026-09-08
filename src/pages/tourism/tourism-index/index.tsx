@@ -21,7 +21,7 @@ import '../tourism-style.css'
 import './style.css'
 import { TourismAdventureEmpty } from 'components/tourism/tourism-adventure-empty'
 
-// TODO: [HARD] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
+// TODO: [FEATURE] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
 	usePageTitle('Туризм')
 
@@ -85,7 +85,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 							digitFrom: 'из 435',
 							description: 'станций метро Москвы',
 						},
-						// TODO: добавить ссылку
+						// TODO: [LIGHT] добавить ссылку
 						// {
 						// 	→
 						// 	Смотреть полностью

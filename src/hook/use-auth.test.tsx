@@ -4,7 +4,7 @@ import sendRequest from 'utils/api/send-request'
 import { useLocation } from 'preact-iso'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: move to hook/fetch
+// TODO: [LIGHT] move to hook/fetch
 vi.mock('utils/api/send-request', () => ({
 	default: vi.fn()
 }));

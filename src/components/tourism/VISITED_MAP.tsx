@@ -1,7 +1,7 @@
 import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/data/city-types'
 import { TagCategory } from 'hook/tags/use-smart-tags'
 
-// TODO: вынести в JSON API
+// TODO: [DATA] вынести в JSON API
 // Переключение визуализации статистики путешествий
 export const VISUALIZATOR_MAP = {
 	MAP:   'MAP',

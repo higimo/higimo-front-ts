@@ -1,4 +1,4 @@
-// TODO: Вынести в JSON API
+// TODO: [LIGHT] Вынести в JSON API
 export const demagogData = [
 	{
 		"name": "Необоснованные утверждения",

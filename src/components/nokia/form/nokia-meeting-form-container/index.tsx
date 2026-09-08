@@ -50,7 +50,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 					// @ts-ignore TODO: [HARD] небось, тут дата приходит
 					setValue(key, new Date(value * 1000).toISOString().substring(0, 10))
 				} else {
-					// @ts-ignore TODO: тут ключи оригинального типа и FormValue нужно синхронизировать
+					// @ts-ignore TODO: [LIGHT] тут ключи оригинального типа и FormValue нужно синхронизировать
 					setValue(key, value)
 				}
 			})

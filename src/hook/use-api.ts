@@ -6,7 +6,7 @@ import sendRequest from 'utils/api/send-request'
 
 import { ApiRouteType } from 'dic/API_ROUTE'
 
-// TODO: move to hook/fetch
+// TODO: [LIGHT] move to hook/fetch
 export const API_STATUS = {
 	INIT:    'INIT',
 	LOADING: 'LOADING',

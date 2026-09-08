@@ -33,7 +33,7 @@ const usePovList = (): PovListType => {
 		data: null,
 	})
 
-	// TODO: вынести в бекенд API из JSON
+	// TODO: [BACKEND] вынести в бекенд API из JSON
 	const admOrkugMoscow    = useJsonApi<AdmOrkugMoscow[]>('/json/tourism/admin-okrug-moscow.json')
 	const castle            = useJsonApi<Castle[]>('/json/tourism/castle.json')
 	const country           = useJsonApi<Country[]>('/json/tourism/country.json')

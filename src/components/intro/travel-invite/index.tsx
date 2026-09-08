@@ -13,7 +13,7 @@ export const TravelInvite: FunctionComponent = () => {
 	return (
 		<PrecentationContainer className="travel-invite" id={ANCHOR_LINKS.travel}>
 			<TextContainer>
-				{/* TODO: tourism header */}
+				{/* TODO: [LIGHT] tourism header */}
 				<h2 className="travel-invite__title">
 					<a href={ROUTE_LINKS.tourismIndex}>Путешествую</a><sup>150 населённых пунктов</sup>
 				</h2>

@@ -53,7 +53,7 @@ export const LibraryAdmin: FunctionComponent = () => {
 			onSubmit={handleSubmit(handleLibSubmit(setStatus))}
 			autocomplete="off"
 		>
-			{/* TODO: генерировать форму */}
+			{/* TODO: [MEDIUM] генерировать форму */}
 			<div className="library-admin__row">
 				<div className="library-admin__label">Автор</div>
 				<div className="library-admin__input">

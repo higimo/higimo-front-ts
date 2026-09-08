@@ -19,11 +19,11 @@ import './style.css'
 export const HiringResponsePage: FunctionComponent = () => {
 	usePageTitle('Мои отклики')
 
-	// TODO: путь в словарь
+	// TODO: [LIGHT] путь в словарь
 	const [ data, fetchUpdate ] = useApi<PasteApiType[]>('/api/v2/paste/', {
-		// TODO: добавить сортировку в обратном порядке
+		// TODO: [BACKEND] добавить сортировку в обратном порядке
 		filter: {
-			// TODO: реализовать на бекенде
+			// TODO: [BACKEND] реализовать на бекенде
 			key: 'send-resume*'
 		}
 	})
@@ -35,6 +35,7 @@ export const HiringResponsePage: FunctionComponent = () => {
 		return <NotFoundData />
 	}
 
+	// TODO: [LIGHT] Добавить OnlyAdmin
 	return (
 		<div className="hiring-response-page">
 			<TextContainer>

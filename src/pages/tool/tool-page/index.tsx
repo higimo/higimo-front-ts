@@ -14,7 +14,7 @@ import { parseJsonWithFallback } from 'components/admin-tool/utils/parseJsonWith
 import './style.css'
 
 export const ToolPage: FunctionComponent = () => {
-	// TODO: useApi и неавторизованных выкидывать
+	// TODO: [LIGHT] useApi и неавторизованных выкидывать
 	const { formData, response, updateField, setResponse } = useToolForm()
 	const { sendRequest } = useApiRequest()
 

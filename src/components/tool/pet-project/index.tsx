@@ -16,7 +16,7 @@ type PetProject = {
 }
 export const PetProject: FunctionComponent<PetProject> = ({ petprojects, gradients }) => {
 	const goodGradients = useMemo(() => {
-		// TODO: мб, нарандомить сразу?
+		// TODO: [LIGHT] мб, нарандомить сразу?
 		// petProjectGradient[Math.floor(Math.random() * gradient.length) | 1]
 		return gradients
 			.concat(gradients.slice(0), gradients.slice(0))

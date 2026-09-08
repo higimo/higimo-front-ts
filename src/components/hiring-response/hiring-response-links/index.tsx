@@ -26,7 +26,7 @@ const HIRING_LINKS = [
 ] as const
 
 type ResumeLinkType = {
-	// TODO: а чо не href: ValueOf<typeof ROUTE_LINKS>
+	// TODO: [LIGHT] а чо не href: ValueOf<typeof ROUTE_LINKS>
 	href: string
 	title: string
 	copy: string

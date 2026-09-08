@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks'
 
-// TODO: move to hook/fetch
+// TODO: [LIGHT] move to hook/fetch
 export const useLazyLoadData = <T,>(modulePromise: Promise<any>) => {
 	const [stateData, setStateData] = useState<T>()
 

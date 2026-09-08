@@ -8,7 +8,7 @@ type ListItemRendererPropsType = {
 	item: ListItem
 }
 
-// TODO: добавить replaceRenderBlockVariables в другие рендереры
+// TODO: [LIGHT] добавить replaceRenderBlockVariables в другие рендереры
 export const ListItemRenderer: FunctionComponent<ListItemRendererPropsType> = ({ item }) => (
 	<li>
 		<span

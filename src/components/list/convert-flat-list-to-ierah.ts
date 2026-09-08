@@ -1,6 +1,6 @@
 import { ListerItem, ListListType } from 'api-types/listlist.types'
 
-// TODO: а это точно используется?
+// TODO: [LIGHT] а это точно используется?
 /**
  * Преобразует плоский список элементов в иерархическую структуру с вложенностью.
  *

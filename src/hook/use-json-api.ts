@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'preact/hooks'
 
-// TODO: move to hook/fetch
-// TODO: перенести в hook/{loading}/useJson
-// TODO: добавить isLoading и прочая
+// TODO: [LIGHT] move to hook/fetch
+// TODO: [LIGHT] перенести в hook/{loading}/useJson
+// TODO: [LIGHT] добавить isLoading и прочая
 export const useJsonApi = <T,>(uri: string) => {
 	const [data, setData] = useState<T|null>(null)
 
@@ -22,7 +22,7 @@ export const useJsonApi = <T,>(uri: string) => {
 
 
 
-// TODO: переписать реализацию с isLoading error
+// TODO: [LIGHT] переписать реализацию с isLoading error
 // export const API_STATUS = {
 // 	INIT: 'INIT',
 // 	LOADING: 'LOADING',

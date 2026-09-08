@@ -20,7 +20,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../yandex-map.css'
 
-// TODO: удалить useGroupTags, когда тут заработает
+// TODO: [LIGHT] удалить useGroupTags, когда тут заработает
 export const TourismMapsMoscowBar = () => {
 	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
 

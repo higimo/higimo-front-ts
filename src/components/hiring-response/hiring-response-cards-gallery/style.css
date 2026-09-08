@@ -1,5 +1,5 @@
 .hiring-cards {
-	/* TODO: добавить --grid-gap */
+	/* TODO: [LIGHT] добавить --grid-gap */
 	display: flex;
     flex-direction: row;
     gap: 16px;
@@ -7,7 +7,7 @@
 }
 
 .hiring-cards__item {
-	/* TODO: добавить --grid-gap */
+	/* TODO: [LIGHT] добавить --grid-gap */
 	max-width: 290px;
 
 	background: #f8faff;

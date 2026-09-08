@@ -131,7 +131,7 @@ const updateMap: UpdateMapPropsType = (map, yamaps, mode, stateData) => {
 
 export const TourismMoscowWalkaround = () => {
 	const refMap = createRef()
-	// TODO: заменить на
+	// TODO: [LIGHT] заменить на
 	// const [isMode, setMode] = useSwitcher<typeof MAP_MODE>(MAP_MODE.INIT)
 	const [ mode, setMode ] = useState<ValueOf<typeof MAP_MODE>>(MAP_MODE.INIT)
 	const [ yamaps, setYamaps ] = useState(null)

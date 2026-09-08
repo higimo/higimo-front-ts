@@ -11,7 +11,7 @@ import { Loading } from 'components/ui/loading'
 import '../resume-style.css'
 import './style.css'
 
-// TODO: не используется
+// TODO: [LIGHT] не используется
 export const ResumeProductSmartPage: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин, Product manager')
 

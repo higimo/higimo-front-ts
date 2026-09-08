@@ -10,7 +10,7 @@ import { Loading } from 'components/ui/loading'
 export const ThingsNotebookPage: FunctionComponent = () => {
 	usePageTitle('Ноутбук')
 
-	// TODO: вынести в отдельный тип
+	// TODO: [LIGHT] вынести в отдельный тип, оно ещё где-то используется
 	const data = useJsonApi<[string, string][]>('/json/things/things-notebook.json')
 
 	if (data === null) {

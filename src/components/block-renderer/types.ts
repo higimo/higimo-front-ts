@@ -3,7 +3,7 @@ import { FactoidType } from "components/ui/factoid"
 export interface BaseBlock {
 	type: string
 }
-// TODO: прибраться, чтоб верхние блоки были с другим неймингом, чем inline
+// TODO: [LIGHT] прибраться, чтоб верхние блоки были с другим неймингом, чем inline
 // Вкладываемым надо подумать, как нейминг назвать и оформлять
 // ListItem сейчас самый больной
 
