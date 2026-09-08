@@ -1,5 +1,7 @@
-import { PasteApiType } from 'api-types/paste.types'
 import { FunctionComponent } from 'preact'
+import { PasteApiType } from 'api-types/paste.types'
+
+import { OnlyAdmin } from 'components/util/only-admin'
 
 import { formatDate } from 'utils/formatDate'
 
@@ -32,13 +34,15 @@ export const HiringResponseCard: FunctionComponent<HiringResponseCardPropsType> 
 			className="hiring-cards__content"
 			dangerouslySetInnerHTML={{ __html: content }}
 		/>
-		<div className="hiring-cards__actions">
-			<button className="btn-edit" onClick={onEdit}>
-				✎ Редактировать
-			</button>
-			<button className="btn-delete" onClick={onDelete}>
-				✕ Удалить
-			</button>
-		</div>
+		<OnlyAdmin>
+			<div className="hiring-cards__actions">
+				<button className="btn-edit" onClick={onEdit}>
+					✎ Редактировать
+				</button>
+				<button className="btn-delete" onClick={onDelete}>
+					✕ Удалить
+				</button>
+			</div>
+		</OnlyAdmin>
 	</div>
 )

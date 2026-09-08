@@ -15,6 +15,7 @@ import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
+import { OnlyAdmin } from 'components/util/only-admin'
 
 export const HiringResponsePage: FunctionComponent = () => {
 	usePageTitle('Мои отклики')
@@ -35,7 +36,6 @@ export const HiringResponsePage: FunctionComponent = () => {
 		return <NotFoundData />
 	}
 
-	// TODO: [LIGHT] Добавить OnlyAdmin
 	return (
 		<div className="hiring-response-page">
 			<TextContainer>
@@ -44,7 +44,9 @@ export const HiringResponsePage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<HiringResponseTodo />
+				<OnlyAdmin>
+					<HiringResponseTodo />
+				</OnlyAdmin>
 				<HiringResponseLinks />
 				<HiringResponseCounter data={data.data} />
 				<HiringResponseDiagram data={data.data} />

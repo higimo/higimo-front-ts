@@ -6,6 +6,7 @@ import { useHiringResponseCardForm } from './useHiringResponseCardForm'
 import { HiringResponseCard } from 'components/hiring-response/hiring-response-card'
 import { HiringResponseCardForm } from 'components/hiring-response/hiring-response-card-form'
 import { HiringResponseCardsEmpty } from 'components/hiring-response/hiring-response-cards-empty'
+import { OnlyAdmin } from 'components/util/only-admin'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
@@ -32,7 +33,6 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 		fetchUpdate,
 	})
 
-
 	return (
 		<div>
 			<div className="hiring-cards">
@@ -49,12 +49,14 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 				)}
 			</div>
 			<div id={ANCHOR_LINKS.hiringResponseForm}>
-				<HiringResponseCardForm
-					selectedCard={selectedCard}
-					onUpdate={handleUpdate}
-					onSubmitCard={handleSubmit}
-					onReset={handleReset}
-				/>
+				<OnlyAdmin>
+					<HiringResponseCardForm
+						selectedCard={selectedCard}
+						onUpdate={handleUpdate}
+						onSubmitCard={handleSubmit}
+						onReset={handleReset}
+					/>
+				</OnlyAdmin>
 			</div>
 		</div>
 	)
