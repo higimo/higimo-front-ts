@@ -12,11 +12,12 @@ import { HiringResponseLinks } from 'components/hiring-response/hiring-response-
 import { HiringResponseTodo } from 'components/hiring-response/hiring-response-todo'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container'
 
-import './style.css'
-import { OnlyAdmin } from 'components/util/only-admin'
 import { API_ROUTE } from 'dic/API_ROUTE'
+
+import './style.css'
 
 export const HiringResponsePage: FunctionComponent = () => {
 	usePageTitle('Мои отклики')
