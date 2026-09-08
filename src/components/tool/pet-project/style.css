@@ -1,7 +1,6 @@
 .pet-project-gallery {
 	--grid-count: 1;
 	--grid-gap: 8px;
-	--grid-width: ;
 
 	display: flex;
 	flex-wrap: wrap;

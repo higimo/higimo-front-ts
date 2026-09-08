@@ -20,7 +20,6 @@
 :root {
 	--grid-count: 4;
 	--grid-gap: 32px;
-	--grid-width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
 }
 
 body * {

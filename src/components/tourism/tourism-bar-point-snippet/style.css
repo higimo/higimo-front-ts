@@ -37,6 +37,13 @@
 	gap: 8px;
 	padding: 16px;
 	/* TODO: [LIGHT] внедрить --grid-width */
+	/*
+		@media (min-width: 576px | 720px | 1024px | 1380px | 1600px) {
+		--grid-count: 1;
+		--grid-gap: 16px;
+		width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
+		gap: var(--grid-gap);
+	*/
 	width: calc((100% - ((var(--gallery-row) - 1) * var(--gallery-gap))) / var(--gallery-row));
 	background: rgb(255 255 255 / 2%);
 	color: rgba(255, 255, 255, .65);

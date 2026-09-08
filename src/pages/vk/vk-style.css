@@ -1,4 +1,11 @@
 /* TODO: [LIGHT] внедрить --grid-width */
+/*
+	@media (min-width: 576px | 720px | 1024px | 1380px | 1600px) {
+	--grid-count: 1;
+	--grid-gap: 16px;
+	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
+	gap: var(--grid-gap);
+*/
 .vk-photo .album {
 }
 
