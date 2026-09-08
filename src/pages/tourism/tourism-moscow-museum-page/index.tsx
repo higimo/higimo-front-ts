@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useJsonApi } from 'hook/use-json-api'
+import { useJsonApi } from 'hook/fetch/use-json-api'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'

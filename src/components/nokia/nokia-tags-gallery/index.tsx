@@ -3,9 +3,9 @@ import { FunctionComponent } from 'preact'
 import { NokiaTagGroupType, NokiaTagType } from 'api-types/nokia.types'
 
 import { useCallback } from 'preact/hooks'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
-import useApi from 'hook/use-api'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
+import useApi from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaTag } from 'components/nokia/nokia-tag'

@@ -1,10 +1,10 @@
 import { PinarikTreeYearType, PinarikType } from 'api-types/pinarik.types'
 import { Fragment } from 'preact/jsx-runtime'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useState } from 'preact/hooks'
-import useApi from 'hook/use-api'
+import useApi from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'

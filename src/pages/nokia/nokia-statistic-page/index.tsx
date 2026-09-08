@@ -1,9 +1,9 @@
 import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 import { FunctionComponent } from 'preact'
 
-import useApi from 'hook/use-api'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/fetch/use-api'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { NokiaMenu } from 'components/nokia/nokia-menu'

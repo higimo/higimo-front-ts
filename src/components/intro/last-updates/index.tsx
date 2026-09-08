@@ -2,9 +2,9 @@ import { UpdateNewsType } from 'api-types/last-update.types'
 import { FunctionComponent } from 'preact'
 import { KeyOf, ValueOf } from 'utils.type'
 
-import useApi from 'hook/use-api'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/fetch/use-api'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'

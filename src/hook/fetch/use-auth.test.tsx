@@ -31,7 +31,7 @@ describe('useAuth', () => {
 			path: '/mock'
 		});
 
-		useAuthModule = await import('hook/use-auth');
+		useAuthModule = await import('hook/fetch/use-auth');
 	});
 
 	it('возвращает объект с ожидаемыми полями', () => {

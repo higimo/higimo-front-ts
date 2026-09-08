@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/fetch/use-auth'
 
 import { TilesGallery } from 'components/ui/tiles-gallery'
 import { TileElement } from 'components/ui/tile-element'

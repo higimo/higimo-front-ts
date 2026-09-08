@@ -2,9 +2,9 @@ import { FunctionComponent } from 'preact'
 import { PronType } from 'api-types/pron.types'
 
 import { usePageTitle } from 'hook/use-page-title'
-import useApi from 'hook/use-api'
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import useApi from 'hook/fetch/use-api'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 
 import { PronIndex } from 'components/info-service/pron'
 import { Loading } from 'components/ui/loading'

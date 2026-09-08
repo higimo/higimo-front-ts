@@ -3,9 +3,9 @@ import { PortfolioGroupedTagType, PortfolioProjectFullType } from 'api-types/por
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 import { useRoute } from 'preact-iso'
-import useApi from './use-api'
-import { useEmptyDataState } from './use-empty-data-state'
-import { useLoadingState } from './use-loading-state'
+import useApi from './fetch/use-api'
+import { useEmptyDataState } from './fetch/use-empty-data-state'
+import { useLoadingState } from './fetch/use-loading-state'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

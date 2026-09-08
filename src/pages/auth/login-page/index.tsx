@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/fetch/use-auth'
 import { useEffect } from 'preact/hooks'
 import { useLocation } from 'preact-iso'
 import { usePageTitle } from 'hook/use-page-title'

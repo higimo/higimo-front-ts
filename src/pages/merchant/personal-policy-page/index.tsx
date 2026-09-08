@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'preact'
 import type { PageJSONData } from 'components/block-renderer/types'
 
-import { useJsonApi } from 'hook/use-json-api'
+import { useJsonApi } from 'hook/fetch/use-json-api'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'

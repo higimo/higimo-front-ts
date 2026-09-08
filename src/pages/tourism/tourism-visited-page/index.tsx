@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 
 import { useEffect, useState } from 'preact/hooks'
 import { usePageTitle } from 'hook/use-page-title'
-import { useJsonApi } from 'hook/use-json-api'
+import { useJsonApi } from 'hook/fetch/use-json-api'
 
 import { TextContainer } from 'components/ui/text-container'
 

@@ -1,4 +1,4 @@
-import * as useAuthModule from 'hook/use-auth';
+import * as useAuthModule from 'hook/fetch/use-auth';
 import render from 'preact-render-to-string';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PrivateRoute } from '.';

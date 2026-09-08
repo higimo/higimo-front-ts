@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
 import { ComojiType } from 'api-types/comoji.types'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/use-page-title'
-import useApi from 'hook/use-api'
+import useApi from 'hook/fetch/use-api'
 
 import { ComojiGalery } from 'components/tool/comoji-galery'
 import { Loading } from 'components/ui/loading'

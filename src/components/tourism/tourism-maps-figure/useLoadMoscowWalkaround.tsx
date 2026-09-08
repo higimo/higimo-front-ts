@@ -1,4 +1,4 @@
-import { useJsonApi } from 'hook/use-json-api';
+import { useJsonApi } from 'hook/fetch/use-json-api';
 import { useState, useEffect } from 'preact/hooks';
 import { HigimoMapPoint, YaMapPolygon } from '../data/types';
 

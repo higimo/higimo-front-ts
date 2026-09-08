@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'preact'
 import { CinemaType } from 'api-types/cinema.types'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/use-page-title'
 import { useRoute } from 'preact-iso'
-import useApi from 'hook/use-api'
+import useApi from 'hook/fetch/use-api'
 
 import { CinemaScriptDetail } from 'components/data/cinema/cinema-script-detail'
 import { Loading } from 'components/ui/loading'

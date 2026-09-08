@@ -1,12 +1,12 @@
 import { PetProjectType } from 'api-types/petproject.types'
 import { HigimoServerResponse } from 'api-types/server-response.types'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useForm } from 'react-hook-form'
-import { useLoadingState } from 'hook/use-loading-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useRoute } from 'preact-iso'
 import { useState, useEffect } from 'preact/hooks'
-import useApi from 'hook/use-api'
+import useApi from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { Message } from 'components/ui/message'

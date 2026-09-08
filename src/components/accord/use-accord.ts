@@ -1,6 +1,6 @@
 import { AccordRealTagType, AccordType } from 'api-types/accord.types'
 
-import useApi from 'hook/use-api'
+import useApi from 'hook/fetch/use-api'
 import { useMemo } from 'preact/hooks'
 
 import { median } from 'utils/math/median'

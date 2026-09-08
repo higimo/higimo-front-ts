@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/use-page-title'
-import { useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/fetch/use-auth'
 
 import { TextContainer } from 'components/ui/text-container'
 

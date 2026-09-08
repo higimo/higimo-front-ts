@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { ThingsApiType } from 'api-types/json-api.types'
 
-import { useJsonApi } from 'hook/use-json-api'
+import { useJsonApi } from 'hook/fetch/use-json-api'
 import { usePageTitle } from 'hook/use-page-title'
 
 import { Loading } from 'components/ui/loading'

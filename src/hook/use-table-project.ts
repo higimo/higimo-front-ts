@@ -3,9 +3,9 @@ import { TagName } from './tags/use-smart-tags'
 
 import { useMemo } from 'preact/hooks'
 import { useSmartTags } from './tags/use-smart-tags'
-import useApi from './use-api'
-import { useEmptyDataState } from './use-empty-data-state'
-import { useLoadingState } from './use-loading-state'
+import useApi from './fetch/use-api'
+import { useEmptyDataState } from './fetch/use-empty-data-state'
+import { useLoadingState } from './fetch/use-loading-state'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

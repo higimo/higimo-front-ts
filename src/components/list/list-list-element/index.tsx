@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { ListListType } from 'api-types/listlist.types'
 
-import { useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/fetch/use-auth'
 
 import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'

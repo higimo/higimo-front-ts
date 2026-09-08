@@ -1,5 +1,5 @@
 import { Loading } from 'components/ui/loading'
-import { useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/fetch/use-auth'
 import { VNode } from 'preact'
 import { Route, RouteProps } from 'preact-iso'
 

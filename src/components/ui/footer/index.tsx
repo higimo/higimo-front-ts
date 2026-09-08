@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useAuth } from 'hook/use-auth'
+import { useAuth } from 'hook/fetch/use-auth'
 import { useGlobalContext } from 'context/global'
 
 import { contactListData } from 'components/intro/contact-list/data'

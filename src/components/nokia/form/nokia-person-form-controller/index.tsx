@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
-import { useEmptyDataState } from 'hook/use-empty-data-state'
-import { useLoadingState } from 'hook/use-loading-state'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useRoute } from 'preact-iso'
-import useApi from 'hook/use-api'
+import useApi from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'

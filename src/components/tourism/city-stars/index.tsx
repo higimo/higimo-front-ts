@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { CityStarsType } from 'api-types/city-stars.types'
 
-import { useJsonApi } from 'hook/use-json-api'
+import { useJsonApi } from 'hook/fetch/use-json-api'
 
 import { CityStarElement } from 'components/tourism/city-star-element'
 import { Loading } from 'components/ui/loading'
