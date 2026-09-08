@@ -20,6 +20,8 @@ import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
 	// TODO: надо как-то типизировать meta
+	// TODO: исправить обложки и размеры, сейчас грандиозные бывают normal
+	// TODO: присылать определённое количество, чтобы дырка не появлялась
 	const [ highlightProjects ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject, {
 		// filter: { cover_size: 'high'},
 		limit: 6
