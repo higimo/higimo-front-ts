@@ -3,6 +3,7 @@ import { AccordType } from 'api-types/accord.types'
 
 import { useEmptyDataState } from 'hook/use-empty-data-state'
 import { useLoadingState } from 'hook/use-loading-state'
+import { usePageTitle } from 'hook/use-page-title'
 import { useRandomElements } from 'hook/use-random-elements'
 import useApi from 'hook/use-api'
 
@@ -33,6 +34,8 @@ export const AccordSingle: FunctionComponent<AccordSinglePropsType> = ({ idcode 
 	// TODO: [BACKEND] пусть бекенд присылает эти данные
 
 	const seeAlsoList = useRandomElements(accords.data, ALSO_ELEMENTS)
+
+	usePageTitle(songSingle.data?.name, 'Песня')
 
 	if (isLoading) {
 		return <Loading />
