@@ -4,7 +4,6 @@ import { Fragment, FunctionComponent } from 'preact'
 import { copyToClipboard } from 'utils/copy-to-clipboard'
 
 import './style.css'
-import { ValueOf } from 'utils.type'
 
 const HIRING_LINKS = [
 	{
@@ -26,7 +25,6 @@ const HIRING_LINKS = [
 ] as const
 
 type ResumeLinkType = {
-	// TODO: [LIGHT] а чо не href: ValueOf<typeof ROUTE_LINKS>
 	href: string
 	title: string
 	copy: string
