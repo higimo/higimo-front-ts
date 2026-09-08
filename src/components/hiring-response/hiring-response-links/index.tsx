@@ -72,12 +72,12 @@ const HiringResponseResumeLink: FunctionComponent<HiringResponseResumeLinkPropsT
 	}
 	return (
 		<Fragment>
-			<a href={href}>{title}</a>
+			<a href={href} className="nowrap">{title}</a>
 			{pdf && (
-				<a href={pdf}>{' '}[PDF]</a>
+				<a href={pdf}>{' '}[PDF]</a>
 			)}
 			{copy && (
-				<span onClick={handleCopyClick}>{' '}(⧉)</span>
+				<span onClick={handleCopyClick}>{' '}(⧉)</span>
 			)}
 		</Fragment>
 	)
@@ -89,8 +89,8 @@ export const HiringResponseLinks: FunctionComponent = () => (
 			<h2>Искать работу</h2>
 			{HIRING_LINKS.map((item, index) => (
 				<Fragment>
-					{index > 0 && ' • '}
-					<a href={item.href}>{item.title}</a>
+					{index > 0 && ' • '}
+					<a href={item.href} className="nowrap">{item.title}</a>
 				</Fragment>
 			))}
 		</div>
@@ -98,7 +98,7 @@ export const HiringResponseLinks: FunctionComponent = () => (
 			<h2>Резюме</h2>
 			{RESUME_LINKS.map((item, index) => (
 				<Fragment>
-					{index > 0 && ' • '}
+					{index > 0 && ' • '}
 					<HiringResponseResumeLink {...item} />
 				</Fragment>
 			))}
