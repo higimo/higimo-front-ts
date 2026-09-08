@@ -1,23 +1,52 @@
 .hiring-cards {
-	/* TODO: [LIGHT] добавить --grid-gap */
+	--grid-count: 1;
+	--grid-gap: 16px;
+
 	display: flex;
-    flex-direction: row;
-    gap: 16px;
-    flex-wrap: wrap;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--grid-gap);
+}
+
+@media (min-width: 576px) {
+	.hiring-cards {
+		--grid-count: 2;
+	}
+}
+@media (min-width: 720px) {
+	.hiring-cards {
+		--grid-count: 3;
+	}
+}
+@media (min-width: 1024px) {
+	.hiring-cards {
+		--grid-count: 4;
+	}
+}
+@media (min-width: 1380px) {
+	.hiring-cards {
+		--grid-count: 5;
+	}
+}
+@media (min-width: 1600px) {
+	.hiring-cards {
+		--grid-count: 6;
+	}
 }
 
 .hiring-cards__item {
-	/* TODO: [LIGHT] добавить --grid-gap */
+	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
 	max-width: 290px;
 
 	background: #f8faff;
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    gap: 14px 20px;
-    border: 1px solid #e9effb;
-    transition: all 150ms ease;
-    flex-direction: column;
+	border-radius: 16px;
+	padding: 16px;
+	display: flex;
+	gap: 14px 20px;
+	border: 1px solid #e9effb;
+	transition: all 150ms ease;
+	flex-direction: column;
 }
 
 .hiring-cards__item:hover {
@@ -27,8 +56,8 @@
 
 .hiring-cards__info {
 	display: flex;
-    gap: 16px;
-    align-items: center;
+	gap: 16px;
+	align-items: center;
 	font-size: 14px;
 	color: #4c6a9e;
 }
@@ -53,7 +82,7 @@
 	font-weight: 450;
 	word-break: break-word;
 	max-height: 200px;
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .hiring-cards__actions {
