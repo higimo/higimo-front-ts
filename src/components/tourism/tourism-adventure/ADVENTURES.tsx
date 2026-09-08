@@ -36,4 +36,4 @@ export const ADVENTURES: AdventureType[] = [
 			},
 		],
 	},
-]
+] as const

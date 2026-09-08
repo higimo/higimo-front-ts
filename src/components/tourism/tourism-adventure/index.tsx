@@ -4,7 +4,7 @@ import { AdventureType } from './ADVENTURES'
 import './style.css'
 
 type TourismAdventurePropsType = {
-	adventure: AdventureType | null
+	adventure: AdventureType
 }
 export const TourismAdventure: FunctionComponent<TourismAdventurePropsType> = ({ adventure }) => {
 	return (

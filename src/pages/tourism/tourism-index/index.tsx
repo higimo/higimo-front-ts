@@ -47,7 +47,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 					Билеты в приключения
 				</TourismHeader>
 				<TourismRow>
-					<TourismAdventure adventure={ADVENTURES[0]} />
+					<TourismAdventure adventure={ADVENTURES[0]!} />
 					<TourismAdventureEmpty />
 				</TourismRow>
 			</TextContainer>
