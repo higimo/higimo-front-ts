@@ -5,7 +5,7 @@ import { generateLink } from 'utils/url-route/generateLink'
 const ROUTE_PROJECT_LINKS = Object.freeze({
 	projectIndex:        '/project/',
 	projectTable:        '/project/table',
-	projectTest:         '/project/test',
+	projectTypography:   '/project/typo',
 	projectSandbox:      '/project/sandbox',
 	projectDetail_CONST: '/project/:vendor/:project/',
 

@@ -20,7 +20,7 @@ import { ProjectSinglePage } from 'pages/project/project-single-page'
 // TODO: [MEDUIM] Отключить из продакшен-сборки
 const PortfolioSandbox  = lazy(() => import('pages/project/portfolio-sandbox'))
 const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
-const ProjectTypography = lazy(() => import('pages/project/project-test'))
+const ProjectTypographyPage = lazy(() => import('pages/project/project-typography'))
 
 import { ComojiPage }          from 'pages/test-page/tools/comoji-page'
 import { DemagogPage }         from 'pages/test-page/tools/demagog-page'
@@ -138,7 +138,7 @@ export function App() {
 								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 								{/* Секретные разработки не для продакшена */}
-								<Route path={ROUTE_LINKS.projectTest} component={ProjectTypography} />
+								<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />
 								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
 								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
 

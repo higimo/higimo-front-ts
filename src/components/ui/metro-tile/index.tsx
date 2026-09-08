@@ -4,7 +4,7 @@ import cs from 'classnames'
 
 import './style.css'
 
-// TODO: [LIGHT] добавить на типографскую страницу
+// TODO: [HIGH] добавить в UI-kit storybook
 type MetroTilePropsType = {
 	className?: string
 	href?: string
