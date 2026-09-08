@@ -11,9 +11,10 @@ import { HiringResponseDiagram } from 'components/hiring-response/hiring-respons
 import { HiringResponseLinks } from 'components/hiring-response/hiring-response-links'
 import { HiringResponseTodo } from 'components/hiring-response/hiring-response-todo'
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container'
+
+import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -34,7 +35,7 @@ export const HiringResponsePage: FunctionComponent = () => {
 		return <Loading />
 	}
 	if (data.status === 'ERROR') {
-		return <NotFoundData />
+		return <NotFoundPage />
 	}
 
 	return (
