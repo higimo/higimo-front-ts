@@ -11,22 +11,22 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 export type PortfolioProjectTableFullType = {
 	id: PortfolioProjectTableType['id']
-    vendor: PortfolioProjectTableType['vendor']['code']
-    name: PortfolioProjectTableType['name']
-    code: PortfolioProjectTableType['code']
-    date: PortfolioProjectTableType['date']
-    image: PortfolioProjectTableType['image']
-    cover_size: PortfolioProjectTableType['cover_size']
+	vendor: PortfolioProjectTableType['vendor']['code']
+	name: PortfolioProjectTableType['name']
+	code: PortfolioProjectTableType['code']
+	date: PortfolioProjectTableType['date']
+	image: PortfolioProjectTableType['image']
+	cover_size: PortfolioProjectTableType['cover_size']
 	tags: string[]
 	[k: string]: any
-// 	PortfolioProjectType = PortfolioProjectApiType & {
-//     tags: PortfolioTag[];
-//     credits?: PortfolioCreditsType[];
-//     description?: string;
-//     text?: string;
-// } & {
-//     isLink: false;
-// }
+	// PortfolioProjectType = PortfolioProjectApiType & {
+	// 	tags: PortfolioTag[];
+	// 	credits?: PortfolioCreditsType[];
+	// 	description?: string;
+	// 	text?: string;
+	// } & {
+	// 	isLink: false;
+	// }
 }
 
 const sortableProjectByVendor = (a: PortfolioProjectTableFullType, b: PortfolioProjectTableFullType) => {
@@ -131,10 +131,10 @@ const extractWithDOMParser = (htmlString: string, selector: string) => {
 }
 
 type UseProjectType = () => {
-    isLoading: boolean
-    isEmpty: boolean
+	isLoading: boolean
+	isEmpty: boolean
 	tableProjects: PortfolioProjectTableFullType[]
-    tagList: PortfolioGroupedTagType[]
+	tagList: PortfolioGroupedTagType[]
 	isSelected: (tagName: TagName) => boolean
 	toggleTag: (tagName: TagName) => () => void
 }

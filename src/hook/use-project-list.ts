@@ -10,10 +10,10 @@ import { useLoadingState } from './use-loading-state'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 type UseProjectType = () => {
-    isLoading: boolean
-    isEmpty: boolean
-    projectList: PortfolioProjectFullType[]
-    tagList: PortfolioGroupedTagType[]
+	isLoading: boolean
+	isEmpty: boolean
+	projectList: PortfolioProjectFullType[]
+	tagList: PortfolioGroupedTagType[]
 }
 /**
  * Вернёт список проектов

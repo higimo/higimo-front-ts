@@ -16,11 +16,11 @@ type UseProjectViewerType = (vendorCode: string, projectCode: string) => [Portfo
  * @returns
 */
 export const useProjectViewer: UseProjectViewerType = (vendorCode, projectCode) => {
-    const [projectApi] = useApi<PortfolioProjectDetailType>(API_ROUTE.projectSingle({ vendorCode, projectCode }))
-    const isLoadingApi = useLoadingState([projectApi.status])
-    const isEmptyApi = useEmptyDataState(projectApi.data)
+	const [projectApi] = useApi<PortfolioProjectDetailType>(API_ROUTE.projectSingle({ vendorCode, projectCode }))
+	const isLoadingApi = useLoadingState([projectApi.status])
+	const isEmptyApi = useEmptyDataState(projectApi.data)
 
-    const currentProjectApi = projectApi.data
+	const currentProjectApi = projectApi.data
 
-    return [currentProjectApi, isLoadingApi, isEmptyApi]
+	return [currentProjectApi, isLoadingApi, isEmptyApi]
 }

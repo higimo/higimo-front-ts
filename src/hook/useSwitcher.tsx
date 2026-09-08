@@ -9,11 +9,11 @@ import { useState, useCallback } from 'preact/hooks';
  * const [isChooseVisualizator, setVizualizator] = useSwitcher<ValueOf<typeof VISUALIZATOR_MAP>>(VISUALIZATOR_MAP.CARD)
  *
  * <Switcher
- *     options={[
- *         { title: 'Все', active: isChooseVisitedMode(VISITED_MAP.INIT), onClick: setVisitedMode(VISITED_MAP.INIT), },
- *         { title: 'Только посещённые', active: isChooseVisitedMode(VISITED_MAP.VISITED), onClick: setVisitedMode(VISITED_MAP.VISITED), },
- *         { title: 'Только непосещённые', active: isChooseVisitedMode(VISITED_MAP.WANTED), onClick: setVisitedMode(VISITED_MAP.WANTED), },
- *     ]}
+ * 	options={[
+ * 		{ title: 'Все', active: isChooseVisitedMode(VISITED_MAP.INIT), onClick: setVisitedMode(VISITED_MAP.INIT), },
+ * 		{ title: 'Только посещённые', active: isChooseVisitedMode(VISITED_MAP.VISITED), onClick: setVisitedMode(VISITED_MAP.VISITED), },
+ * 		{ title: 'Только непосещённые', active: isChooseVisitedMode(VISITED_MAP.WANTED), onClick: setVisitedMode(VISITED_MAP.WANTED), },
+ * 	]}
  * />
  */
 export const useSwitcher = <T extends Object>(initValue?: T): [(value: T) => boolean, (value: T) => () => void] => {

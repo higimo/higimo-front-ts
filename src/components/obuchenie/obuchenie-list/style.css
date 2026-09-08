@@ -5,16 +5,16 @@
 	padding-left: 1rem;
 	padding-right: 1rem;
 	display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+	flex-wrap: wrap;
+	gap: 16px;
 }
 
 .obuchenie-list__element {
-    width: calc(50% - 16px);
-    border: 1px solid #ebebeb;
-    border-radius: 6px;
-    background: #efefef36;
-    padding: 16px;
+	width: calc(50% - 16px);
+	border: 1px solid #ebebeb;
+	border-radius: 6px;
+	background: #efefef36;
+	padding: 16px;
 	min-height: 140px;
 	color: #3984d4;
 	transition: all 150ms ease-in;

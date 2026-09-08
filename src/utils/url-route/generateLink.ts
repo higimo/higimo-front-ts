@@ -8,11 +8,11 @@
  * ```
  */
 type ExtractParams<T extends string> =
-    T extends `${string}:${infer Param}/${infer Rest}`
-        ? Param | ExtractParams<Rest>
-        : T extends `${string}:${infer Param}`
-            ? Param
-            : never
+	T extends `${string}:${infer Param}/${infer Rest}`
+		? Param | ExtractParams<Rest>
+		: T extends `${string}:${infer Param}`
+			? Param
+			: never
 
 /**
  * Создаёт тип для параметров на основе шаблона URI
@@ -48,17 +48,17 @@ type ApiV2Path = `/api/v2/${string}`
  * ```
  */
 export const generateLink = <T extends string>(link: T) => {
-    /**
-     * @param params - Объект с параметрами для подстановки
-     * @returns Сформированный URI
-     */
-    return (params: ParamsObject<T>): ApiV2Path => {
-        let result = link as string
+	/**
+	 * @param params - Объект с параметрами для подстановки
+	 * @returns Сформированный URI
+	 */
+	return (params: ParamsObject<T>): ApiV2Path => {
+		let result = link as string
 
-        for (const [key, value] of Object.entries(params)) {
-            result = result.replace(new RegExp(`:${key}`, 'g'), (value as any))
-        }
+		for (const [key, value] of Object.entries(params)) {
+			result = result.replace(new RegExp(`:${key}`, 'g'), (value as any))
+		}
 
-        return result as ApiV2Path
-    }
+		return result as ApiV2Path
+	}
 }

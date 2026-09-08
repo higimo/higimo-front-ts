@@ -109,5 +109,5 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 }
 
 export const isRouteType = (key: string): key is RouteType => {
-    return key in BREADCRUMS_DIC
+	return key in BREADCRUMS_DIC
 }

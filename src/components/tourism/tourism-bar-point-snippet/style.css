@@ -46,9 +46,9 @@
 
 .bar-pov__snippet--visited {
 	background-color: rgb(37, 61, 46, .7);
-    color: #fff;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, .2);
+	color: #fff;
+	border-style: solid;
+	border-color: rgba(255, 255, 255, .2);
 }
 
 .bar-pov__title {

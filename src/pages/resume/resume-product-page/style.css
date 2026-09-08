@@ -32,7 +32,7 @@
 }
 
 .resume-product-sss-page p + ul {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 .resume-product-sss-page p:not(:first-of-type) {
@@ -59,7 +59,7 @@
 
 .resume-product-sss-page .expirience__element.company {
 	border-top: 2px solid #e1e1e1;
-    padding-top: 10px;
+	padding-top: 10px;
 }
 
 .resume-product-sss-page .company__meta {

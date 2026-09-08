@@ -18,22 +18,22 @@
 
 .suggestion-list {
 	overflow: auto;
-    scroll-behavior: smooth;
-    position: absolute;
-    top: 16px;
-    height: calc(100% - 16px * 2);
-    background: rgb(50 50 50 / 85%);
-    width: 90%;
-    border-radius: 6px;
-    padding: 4px 0;
-    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.5), 0 24px 24px -12px rgba(0, 0, 0, 0.2);
+	scroll-behavior: smooth;
+	position: absolute;
+	top: 16px;
+	height: calc(100% - 16px * 2);
+	background: rgb(50 50 50 / 85%);
+	width: 90%;
+	border-radius: 6px;
+	padding: 4px 0;
+	box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.5), 0 24px 24px -12px rgba(0, 0, 0, 0.2);
 }
 
 .suggestion-list__item {
 	font-size: 16px;
-    padding: 4px 12px;
-    color: #fff;
-    transition: all 50ms ease-in;
+	padding: 4px 12px;
+	color: #fff;
+	transition: all 50ms ease-in;
 }
 
 .suggestion-list__item--active {

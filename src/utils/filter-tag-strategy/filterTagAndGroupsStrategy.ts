@@ -9,8 +9,8 @@ import { DataItemWithTags, SelectedTags } from './types'
  * ### Использование
  * ```ts
  * const filteredData = useMemo(
- *     () => filterTagAndGroupsStrategy(stateData.barPovMoscow, selectedTags),
- *     [stateData.barPovMoscow, selectedTags]
+ * 	() => filterTagAndGroupsStrategy(stateData.barPovMoscow, selectedTags),
+ * 	[stateData.barPovMoscow, selectedTags]
  * );
  * ```
  *

@@ -1,11 +1,11 @@
 .blog-invite {
 	background: #efefef;
-    color: #000;
+	color: #000;
 }
 
 .blog-invite__gallery {
 	display: grid;
-    grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(6, 1fr);
 	padding: 24px;
-    gap: 16px;
+	gap: 16px;
 }

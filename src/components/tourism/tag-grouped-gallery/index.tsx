@@ -29,8 +29,8 @@ export const TagGroupedGallery: FunctionComponent<TagGroupedGalleryProps> = ({
 		<TextContainer className="tag-tree">
 			{groups.map(({ group, tags }) => {
 				// const hasAllDisable = tags.includes(TAG_GROUP_ALL_DISABLE)
-        		// const hasAllEnable = tags.includes(TAG_GROUP_ALL_ENABLE)
-        		// const realTags = tags.filter(t => t !== TAG_GROUP_ALL_DISABLE && t !== TAG_GROUP_ALL_ENABLE)
+				// const hasAllEnable = tags.includes(TAG_GROUP_ALL_ENABLE)
+				// const realTags = tags.filter(t => t !== TAG_GROUP_ALL_DISABLE && t !== TAG_GROUP_ALL_ENABLE)
 
 				return (
 					<div className="tag-tree__category" key={group.title}>

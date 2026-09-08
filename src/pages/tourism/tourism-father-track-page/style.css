@@ -6,24 +6,24 @@
 }
 
 .trip-day__events {
-    display: flex;
-    gap: var(--gap);
-    flex-direction: column;
+	display: flex;
+	gap: var(--gap);
+	flex-direction: column;
 }
 
 .trip-day__event {
-    display: flex;
-    gap: var(--gap);
+	display: flex;
+	gap: var(--gap);
 	font-family: monospace;
 	white-space: break-spaces;
 }
 
 .trip-day__left {
-    margin: 0;
-    max-width: var(--left-witdth);
-    width: 100%;
-    text-align: right;
-    color: var(--color-accent);
+	margin: 0;
+	max-width: var(--left-witdth);
+	width: 100%;
+	text-align: right;
+	color: var(--color-accent);
 }
 
 .trip-day__text {

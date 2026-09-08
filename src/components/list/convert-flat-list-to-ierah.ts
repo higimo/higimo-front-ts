@@ -28,10 +28,9 @@ import { ListerItem, ListListType } from 'api-types/listlist.types'
  * convertFlatListToIerah(flat)
  * // Результат:
  * // [
- * //   { id: 1, parent: null, name: 'Root', child: [
- * //       { id: 2, parent: true, parent_id: 1, name: 'Child', child: [] }
- * //     ]
- * //   },
+ * // 	{ id: 1, parent: null, name: 'Root', child: [
+ * // 		{ id: 2, parent: true, parent_id: 1, name: 'Child', child: [] }
+ * // 	] },
  * //   { id: 2, parent: true, parent_id: 1, name: 'Child', child: [] } // дублирование
  * // ]
  *

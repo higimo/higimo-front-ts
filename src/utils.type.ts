@@ -33,7 +33,7 @@ export type ValueOfType<T, Type> = Extract<ValueOf<T>, Type>
  * type StringKeys = KeysOfType<typeof mixed, string> // 'b'
  */
 export type KeysOfType<T, Type> = {
-    [K in keyof T]: T[K] extends Type ? K : never
+	[K in keyof T]: T[K] extends Type ? K : never
 }[keyof T]
 
 /**
@@ -50,11 +50,11 @@ export type LiteralValueOf<T> = T[keyof T]
  * const value = getValueOrDefault(obj, 'key', 'default')
  */
 export function getValueOrDefault<T extends Record<string, any>, K extends keyof T>(
-    obj: T,
-    key: K,
-    defaultValue: T[K]
+	obj: T,
+	key: K,
+	defaultValue: T[K]
 ): T[K] {
-    return obj[key] ?? defaultValue
+	return obj[key] ?? defaultValue
 }
 
 /*******************************

@@ -222,7 +222,7 @@
 	overflow: hidden;
 }
 .browser__screen img {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 
@@ -290,8 +290,8 @@
 }
 .project-viewer blockquote {
 	border-left: 5px solid #cacaca;
-    padding: 16px 24px;
-    margin: 0;
+	padding: 16px 24px;
+	margin: 0;
 }
 .project-viewer blockquote *:last-child {
 	margin-bottom: 0;
@@ -683,7 +683,7 @@
 
 .factoid-gallery__counter {
 	font-size: 400%;
-    line-height: 1;
+	line-height: 1;
 	font-feature-settings: "lnum", "tnum";
 }
 .factoid-gallery__description {
@@ -794,7 +794,7 @@
 	color: #6c7883;
 	text-align: right;
 	height: 10px;
-    margin-top: -6px;
+	margin-top: -6px;
 }
 
 .tg-chat__keyboard {
