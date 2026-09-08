@@ -7,6 +7,7 @@ import { smoothScroll } from 'utils/smooth-scroll'
 import { todayStr } from 'utils/todayStr'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 const INIT_CARD: PasteApiType = {
 	id: -1,
@@ -43,7 +44,7 @@ export const useHiringResponseCardForm = ({
 	}, [cards])
 
 	const handleDelete = useCallback((id: number) => async () => {
-		await sendRequest(`/api/v2/paste/${id}`, { method: 'DELETE' })
+		await sendRequest(API_ROUTE.pasteSingle({ id: id.toString() }), { method: 'DELETE' })
 		await fetchUpdate()
 	}, [fetchUpdate])
 
@@ -58,14 +59,13 @@ export const useHiringResponseCardForm = ({
 			content: selectedCard.content,
 		}
 		const isUpdateMode = selectedCard.id > 0
-		const fwe = await sendRequest(
-			(isUpdateMode ? `/api/v2/paste/${selectedCard.id}` : `/api/v2/paste/`),
+		await sendRequest(
+			(isUpdateMode ? API_ROUTE.pasteSingle({ id: selectedCard.id.toString() }) : API_ROUTE.paste),
 			{
 				method: (isUpdateMode ? 'PUT' : 'POST'),
 				values: newContentCard
 			}
 		)
-		console.log(fwe)
 		await fetchUpdate()
 	}, [selectedCard, fetchUpdate])
 

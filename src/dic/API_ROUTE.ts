@@ -61,6 +61,9 @@ export const API_ROUTE = {
 
 	merchantProducts: '/api/v2/products',
 	merchantSingleProduct: generateLink('/api/v2/products/:productId'),
+
+	paste: '/api/v2/paste/',
+	pasteSingle: generateLink('/api/v2/paste/:id'),
 } as const
 
 export type ApiRouteType = Exclude<

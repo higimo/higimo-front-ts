@@ -16,12 +16,12 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 import { OnlyAdmin } from 'components/util/only-admin'
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const HiringResponsePage: FunctionComponent = () => {
 	usePageTitle('Мои отклики')
 
-	// TODO: [LIGHT] путь в словарь
-	const [ data, fetchUpdate ] = useApi<PasteApiType[]>('/api/v2/paste/', {
+	const [ data, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
 		// TODO: [BACKEND] добавить сортировку в обратном порядке
 		filter: {
 			// TODO: [BACKEND] реализовать на бекенде
