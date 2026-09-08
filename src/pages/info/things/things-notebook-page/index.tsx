@@ -1,25 +1,22 @@
 import { FunctionComponent } from 'preact'
+import { ThingsApiType } from 'api-types/json-api.types'
 
+import { useJsonApi } from 'hook/use-json-api'
 import { usePageTitle } from 'hook/use-page-title'
 
-import { ThingsNotebook } from 'components/data/things/things-notebook'
-import { TextContainer } from 'components/ui/text-container'
-import { useJsonApi } from 'hook/use-json-api'
 import { Loading } from 'components/ui/loading'
+import { ThingsNotebook } from 'components/data/things/things-notebook'
 
 export const ThingsNotebookPage: FunctionComponent = () => {
 	usePageTitle('Ноутбук')
 
-	// TODO: [LIGHT] вынести в отдельный тип, оно ещё где-то используется
-	const data = useJsonApi<[string, string][]>('/json/things/things-notebook.json')
+	const data = useJsonApi<ThingsApiType[]>('/json/things/things-notebook.json')
 
 	if (data === null) {
 		return <Loading />
 	}
 
 	return (
-		<TextContainer>
-			<ThingsNotebook data={data} />
-		</TextContainer>
+		<ThingsNotebook data={data} />
 	)
 }

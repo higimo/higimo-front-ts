@@ -1,8 +1,10 @@
-import { TextContainer } from 'components/ui/text-container'
 import { FunctionComponent } from 'preact'
+import { ThingsApiType } from 'api-types/json-api.types'
+
+import { TextContainer } from 'components/ui/text-container'
 
 type ThingsNotebookPropsType = {
-	data: [string, string][]
+	data: ThingsApiType[]
 }
 
 export const ThingsNotebook: FunctionComponent<ThingsNotebookPropsType> = ({ data }) => (
