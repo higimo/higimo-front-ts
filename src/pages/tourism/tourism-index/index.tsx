@@ -15,8 +15,11 @@ import { TourismRow } from 'components/tourism/tourism-row'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 
+import { ADVENTURES } from 'components/tourism/tourism-adventure/ADVENTURES'
+
 import '../tourism-style.css'
 import './style.css'
+import { TourismAdventureEmpty } from 'components/tourism/tourism-adventure-empty'
 
 // TODO: [HARD] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
@@ -44,9 +47,8 @@ export const TourismIndexPage: FunctionComponent = () => {
 					Билеты в приключения
 				</TourismHeader>
 				<TourismRow>
-					<TourismAdventure />
-					<TourismAdventure />
-					<TourismAdventure />
+					<TourismAdventure adventure={ADVENTURES[0]} />
+					<TourismAdventureEmpty />
 				</TourismRow>
 			</TextContainer>
 

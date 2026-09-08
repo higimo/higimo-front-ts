@@ -5,7 +5,7 @@ type AdventureOptionType = {
 	value: string
 }
 
-type AdventureType = {
+export type AdventureType = {
 	id: number
 	title: string
 	description: string
@@ -17,7 +17,7 @@ type AdventureType = {
 export const ADVENTURES: AdventureType[] = [
 	{
 		id: 1,
-		title: 'Нижний Новгород — Сочи — Москва',
+		title: 'Путешествие с отцом',
 		description: 'Путешествие по Волге, через Кавказ к Сочи и обратно через Липецк в Москву',
 		advent: 'При предъявлении билета, позволяет пройти через рамки искателя радости без очереди',
 		href: ROUTE_LINKS.tourismFatherTrack,
@@ -28,7 +28,7 @@ export const ADVENTURES: AdventureType[] = [
 			},
 			{
 				title: 'длит.',
-				value: '10 дней',
+				value: '9 дней',
 			},
 			{
 				title: 'тип',

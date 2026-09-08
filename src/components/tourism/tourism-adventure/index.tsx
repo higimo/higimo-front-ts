@@ -1,19 +1,14 @@
 import { FunctionComponent } from 'preact'
-
-import { ADVENTURES } from './ADVENTURES'
+import { AdventureType } from './ADVENTURES'
 
 import './style.css'
 
-export const TourismAdventure: FunctionComponent = () => {
-	const adventure = ADVENTURES[0]
-
-	// TODO: добавить кликабельность
-	// adventure?.href
-
-	// ROUTE_LINKS.tourismFatherTrack
-
+type TourismAdventurePropsType = {
+	adventure: AdventureType | null
+}
+export const TourismAdventure: FunctionComponent<TourismAdventurePropsType> = ({ adventure }) => {
 	return (
-		<div className="tourism-adventure">
+		<a className="tourism-adventure" href={adventure?.href}>
 			<div className="tourism-adventure__options">
 				{adventure?.options.map(option => (
 					<div className="tourism-adventure__option-item">
@@ -48,6 +43,6 @@ export const TourismAdventure: FunctionComponent = () => {
 					{adventure?.advent}
 				</div>
 			</div>
-		</div>
+		</a>
 	)
 }
