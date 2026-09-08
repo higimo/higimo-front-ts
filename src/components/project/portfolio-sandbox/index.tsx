@@ -1,7 +1,5 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
-
 import { TextContainer } from 'components/ui/text-container'
 
 import { getHumanDate } from 'components/project/utils/get-human-date'
@@ -10,8 +8,6 @@ import '../project-viewer/style.css'
 import './style.css'
 
 export const PortfolioSandbox: FunctionComponent = () => {
-	usePageTitle('Тестовая страница')
-
 	return (
 		<div className="project-viewer">
 			<TextContainer className="project-viewer__date">
@@ -303,5 +299,3 @@ export const PortfolioSandbox: FunctionComponent = () => {
 		</div>
 	)
 }
-
-export default PortfolioSandbox

@@ -17,13 +17,10 @@ import { ServicePage } from 'pages/service-page'
 
 import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
-// TODO: [LIGHT] добавить компонент пейджа
-const PortfolioSandbox  = lazy(() => import('components/project/portfolio-sandbox'))
 // TODO: [MEDUIM] Отключить из продакшен-сборки
+const PortfolioSandbox  = lazy(() => import('pages/project/portfolio-sandbox'))
 const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
-// TODO: [LIGHT] добавить компонент пейджа
-// TODO: [MEDUIM] Отключить из продакшен-сборки
-const ProjectTypography = lazy(() => import('components/project/project-test'))
+const ProjectTypography = lazy(() => import('pages/project/project-test'))
 
 import { ComojiPage }          from 'pages/test-page/tools/comoji-page'
 import { DemagogPage }         from 'pages/test-page/tools/demagog-page'

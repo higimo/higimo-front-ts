@@ -8,7 +8,6 @@ import { ProjectViewer } from 'components/project/project-viewer'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-
 export const ProjectSinglePage: FunctionComponent = () => {
 	const { params: { vendor, project } } = useRoute()
 
