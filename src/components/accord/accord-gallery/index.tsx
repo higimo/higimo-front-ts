@@ -16,8 +16,7 @@ export const AccordGallery: FunctionComponent = () => {
 	const list = useAccord()
 
 	const {
-		// TODO: [LIGHT] переименовать в selectedTagTitles
-		selectedIds,
+		selectedTagTitles,
 		toggleTag,
 		isSelected,
 	} = useSmartTags({
@@ -25,7 +24,7 @@ export const AccordGallery: FunctionComponent = () => {
 		mode: 'single',
 	})
 
-	const filtredList = useFilterByTags(list, selectedIds)
+	const filtredList = useFilterByTags(list, selectedTagTitles)
 
 	return (
 		<TextContainer className="accord">

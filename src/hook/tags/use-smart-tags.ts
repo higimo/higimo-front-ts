@@ -27,7 +27,7 @@ type UseSmartTagsProps = {
 
 type UseSmartTagsReturn = {
 	// Состояние
-	selectedIds: Set<TagName>
+	selectedTagTitles: Set<TagName>
 	selectedCount: number
 	totalCount: number
 
@@ -73,7 +73,7 @@ export const useSmartTags = ({
 	mode = 'multiple',
 	initialSelected = [],
 }: UseSmartTagsProps): UseSmartTagsReturn => {
-	const [selectedTitles, setSelectedTitles] = useState<Set<TagName>>(() => new Set(initialSelected))
+	const [selectedTagTitles, setSelectedTagTitles] = useState<Set<TagName>>(() => new Set(initialSelected))
 
 
 	const allTagTitles = useMemo(() => getAllTagIds(categories), [categories])
@@ -81,7 +81,7 @@ export const useSmartTags = ({
 
 
 	const select = useCallback((tagName: TagName) => {
-		setSelectedTitles(prev => {
+		setSelectedTagTitles(prev => {
 			if (mode === 'single') {
 				return new Set([tagName])
 			}
@@ -92,7 +92,7 @@ export const useSmartTags = ({
 	}, [mode])
 
 	const deselect = useCallback((tagName: TagName) => {
-		setSelectedTitles(prev => {
+		setSelectedTagTitles(prev => {
 			const next = new Set(prev)
 			next.delete(tagName)
 			return next
@@ -100,33 +100,33 @@ export const useSmartTags = ({
 	}, [])
 
 	const toggleTag = useCallback((tagName: TagName) => () => {
-		if (selectedTitles.has(tagName)) {
+		if (selectedTagTitles.has(tagName)) {
 			deselect(tagName)
 		} else {
 			select(tagName)
 		}
-	}, [selectedTitles, select, deselect])
+	}, [selectedTagTitles, select, deselect])
 
 	const isSelected = useCallback((tagName: TagName) => {
-		return selectedTitles.has(tagName)
-	}, [selectedTitles])
+		return selectedTagTitles.has(tagName)
+	}, [selectedTagTitles])
 
 
 
 	const isCategoryAllSelected = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
 		if (tagTitles.length === 0) return false
-		return tagTitles.every(id => selectedTitles.has(id))
-	}, [categories, selectedTitles])
+		return tagTitles.every(id => selectedTagTitles.has(id))
+	}, [categories, selectedTagTitles])
 
 	const selectAllInCategory = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
-		setSelectedTitles(prev => new Set(Array.from(prev).concat(tagTitles)))
+		setSelectedTagTitles(prev => new Set(Array.from(prev).concat(tagTitles)))
 	}, [categories])
 
 	const deselectAllInCategory = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
-		setSelectedTitles(prev => {
+		setSelectedTagTitles(prev => {
 			const next = new Set(prev)
 			tagTitles.forEach(tagName => next.delete(tagName))
 			return next
@@ -144,9 +144,9 @@ export const useSmartTags = ({
 
 	const getCategorySelectedCount = useCallback((categoryTitle: CategoryName) => {
 		const tagTitles = getCategoryTagTitles(categories, categoryTitle)
-		const selected = tagTitles.filter(id => selectedTitles.has(id)).length
+		const selected = tagTitles.filter(id => selectedTagTitles.has(id)).length
 		return { selected, total: tagTitles.length }
-	}, [categories, selectedTitles])
+	}, [categories, selectedTagTitles])
 
 	const getTagsInCategory = useCallback((categoryTitle: CategoryName) => {
 		return getCategoryTags(categories, categoryTitle)
@@ -154,23 +154,23 @@ export const useSmartTags = ({
 
 
 	const selectAll = useCallback(() => {
-		setSelectedTitles(new Set(allTagTitles))
+		setSelectedTagTitles(new Set(allTagTitles))
 	}, [allTagTitles])
 
 	const deselectAll = useCallback(() => {
-		setSelectedTitles(new Set())
+		setSelectedTagTitles(new Set())
 	}, [])
 
 	const reset = useCallback(() => {
-		setSelectedTitles(new Set(initialSelected))
+		setSelectedTagTitles(new Set(initialSelected))
 	}, [initialSelected])
 
 
-	const selectedCount = useMemo(() => selectedTitles.size, [selectedTitles])
+	const selectedCount = useMemo(() => selectedTagTitles.size, [selectedTagTitles])
 
 
 	return {
-		selectedIds: selectedTitles,
+		selectedTagTitles,
 		selectedCount,
 		totalCount,
 
