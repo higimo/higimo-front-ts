@@ -5,12 +5,11 @@ import cs from 'classnames'
 import { TilesGallery } from 'components/ui/tiles-gallery'
 import { TileElement } from 'components/ui/tile-element'
 
-// TODO: [LIGHT] to assets
-import screen	from './img/screen.png'
-import rak	   from './img/rak.png'
-import tech	  from './img/tech.png'
-import obuchenie from './img/obuchenie.png'
 import intersection from './img/intersection.svg'
+import obuchenie    from './img/obuchenie.png'
+import rak          from './img/rak.png'
+import screen       from './img/screen.png'
+import tech         from './img/tech.png'
 
 import { KnowlageType, shareKnowledgeData } from './data'
 
