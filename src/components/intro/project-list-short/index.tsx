@@ -19,7 +19,6 @@ import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 import './style.css'
 
 export const ProjectListShort: FunctionComponent = () => {
-	// TODO: [LIGHT] надо как-то типизировать meta
 	// TODO: [DATA] исправить обложки и размеры, сейчас грандиозные бывают normal
 	// TODO: [BACKEND] присылать определённое количество, чтобы дырка не появлялась
 	const [ highlightProjects ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject, {

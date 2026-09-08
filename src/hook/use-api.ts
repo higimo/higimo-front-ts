@@ -61,6 +61,7 @@ type ApiUrlType = ApiRouteType
 // TODO: [HIGH] Добавить ещё POST, DELETE
 // TODO: [HIGH] Добавить вывод сразу useLoadingState
 // TODO: [HIGH] что если пользоваться ServiceApi, в дополнение к простым строчкам?
+// TODO: [LIGHT] Типизировать meta
 const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T>, initialState as ApiState<T>)
 
