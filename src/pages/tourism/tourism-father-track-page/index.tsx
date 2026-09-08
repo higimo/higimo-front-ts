@@ -5,7 +5,7 @@ import { PovType } from 'components/tourism/data/types'
 
 import { useEffect, useState } from 'preact/hooks'
 import { useJsonApi } from 'hook/fetch/use-json-api'
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
 import { Breadcrumps } from 'components/ui/breadcrumps'

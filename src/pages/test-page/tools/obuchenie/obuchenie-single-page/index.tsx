@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { ObuchenieSingle } from 'components/obuchenie/obuchenie-single'
 import { LectionType } from 'api-types/lection.types'

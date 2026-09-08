@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { AboutInvite } from 'components/intro/about-invite'
 import { FunnyIntro } from 'components/intro/funny-invite'

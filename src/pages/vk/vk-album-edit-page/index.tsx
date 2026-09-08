@@ -4,7 +4,7 @@ import { VkApi, VkResponceError } from 'vendor/vk-api'
 
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 import { useMessage } from 'hook/use-message'
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 
 import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import useApi from 'hook/fetch/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'

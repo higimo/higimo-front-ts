@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { TextContainer } from 'components/ui/text-container'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TourismChecklist } from 'components/tourism/tourism-checklist'

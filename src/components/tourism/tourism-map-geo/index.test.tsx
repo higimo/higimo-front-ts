@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/preact'; // <-- Импорт для Preact
 import { PovType } from '../data/types';
-import { useWindowSize } from 'hook/use-window-size'
+import { useWindowSize } from 'hook/browser/use-window-size'
 import { Coord } from 'utils.type'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { TourismMapGeo } from './index'

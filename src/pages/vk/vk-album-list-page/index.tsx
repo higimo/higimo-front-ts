@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { VKAlbumType } from 'api-types/vk.types'
 import { VkApi, VkResponceError } from 'vendor/vk-api'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMessage } from 'hook/use-message'
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 

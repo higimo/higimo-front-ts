@@ -1,7 +1,7 @@
 import { Fragment } from 'preact'
 import { BasePointType, Coord } from 'utils.type'
 
-import { useWindowSize } from 'hook/use-window-size'
+import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { Clusterer, FullscreenControl, Map, Placemark, Polyline, YMaps } from 'react-yandex-maps'
 

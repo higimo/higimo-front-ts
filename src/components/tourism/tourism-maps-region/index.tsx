@@ -1,6 +1,6 @@
 import { createRef } from 'preact'
 
-import { useWindowSize } from 'hook/use-window-size'
+import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { YMaps, Map, YMapsApi } from 'react-yandex-maps'
 

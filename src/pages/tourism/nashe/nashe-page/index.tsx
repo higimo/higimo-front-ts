@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { NasheAlbums } from 'components/data/concert/nashe-albums'

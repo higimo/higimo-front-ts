@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import { useProjectViewer } from 'components/project/hooks/use-project-viewer'
 import { useRoute } from 'preact-iso'
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { ProjectViewer } from 'components/project/project-viewer'
 import { Loading } from 'components/ui/loading'

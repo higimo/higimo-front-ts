@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NokiaTagType } from 'api-types/nokia.types'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import { useState } from 'preact/hooks'
 
 import { NokiaMenu } from 'components/nokia/nokia-menu'

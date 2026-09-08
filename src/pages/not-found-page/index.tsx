@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import { useEffect } from 'preact/hooks'
 import { useGlobalContext } from 'context/global'
 

@@ -6,7 +6,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useJsonApi } from 'hook/fetch/use-json-api'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMemo } from 'preact/hooks'
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import useApi from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'

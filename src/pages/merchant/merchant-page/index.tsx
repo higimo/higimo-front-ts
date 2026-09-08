@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMerchant } from 'hook/use-merchant'
 
 import { TextContainer } from 'components/ui/text-container'

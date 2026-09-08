@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { useJsonApi } from 'hook/fetch/use-json-api'
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Loading } from 'components/ui/loading'

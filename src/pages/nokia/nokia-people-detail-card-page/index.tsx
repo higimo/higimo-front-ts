@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/use-page-title'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPeopleDetailCard } from 'components/nokia/nokia-people-detail-card'

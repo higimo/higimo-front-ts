@@ -3,7 +3,7 @@ import { ValueOf } from 'utils.type'
 
 import { useLoadMoscowWalkaround } from './useLoadMoscowWalkaround'
 import { useSwitcher } from 'hook/use-switcher'
-import { useWindowSize } from 'hook/use-window-size'
+import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { GeoObject, Map, Placemark, YMaps } from 'react-yandex-maps'
 import { Loading } from 'components/ui/loading'
