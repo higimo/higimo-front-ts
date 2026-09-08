@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
 import { TextContainerBlock } from 'components/block-renderer/types'
 
-import { TextContainer } from 'components/ui/text-container'
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
+import { TextContainer } from 'components/ui/text-container'
 
 export const TextContainerRenderer: FunctionComponent<TextContainerBlock> = ({ children }) => (
 	<TextContainer>

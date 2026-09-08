@@ -1,8 +1,8 @@
-import type { ListBlock } from '../types'
+import type { ListBlock } from 'components/block-renderer/types'
 
 import { render, screen } from '@testing-library/preact'
 
-import { ListRenderer } from './ListRenderer'
+import { ListRenderer } from 'components/block-renderer/renrerers/ListRenderer'
 
 describe('ListRenderer', () => {
 

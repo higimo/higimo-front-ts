@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { CollapseSection } from 'components/ui/collapse-section'
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
+import { CollapseSection } from 'components/ui/collapse-section'
 
 type CollapsibleRendererPropsType = {
 	header: string

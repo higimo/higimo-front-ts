@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'preact'
 import { AnyBlock } from 'components/block-renderer/types'
+import { FunctionComponent } from 'preact'
 
+import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
-import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
 
 type SlideRendererPropsType = {
 	className?: string

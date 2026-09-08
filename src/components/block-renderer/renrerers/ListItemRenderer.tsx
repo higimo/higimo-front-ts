@@ -1,6 +1,8 @@
 import { FunctionComponent } from 'preact'
-import { ListItem } from '../types'
-import { ListRenderer } from './ListRenderer'
+import { ListItem } from 'components/block-renderer/types'
+
+import { ListRenderer } from 'components/block-renderer/renrerers/ListRenderer'
+
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 import { variablesRenderBlockSignal } from 'components/stores/render-block-variables-store'
 

@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'preact'
+
 import { SkillsBlock } from 'components/block-renderer/types'
 
 export const SkillsRenderer: FunctionComponent<SkillsBlock> = ({ title, items }) => (

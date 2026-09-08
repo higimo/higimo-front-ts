@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact'
 import { ExperienceListBlock } from 'components/block-renderer/types'
+import { FunctionComponent } from 'preact'
 
 import { ExperienceItemRenderer } from 'components/block-renderer/renrerers/ExperienceItemRenderer'
 

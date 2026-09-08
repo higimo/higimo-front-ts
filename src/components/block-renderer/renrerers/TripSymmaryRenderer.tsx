@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'preact'
-import { TripSymmary } from '../types'
+import { TripSymmary } from 'components/block-renderer/types'
+
 import { FactoidRow } from 'components/ui/factoid-row'
 
 export const TripSymmaryRenderer: FunctionComponent<TripSymmary> = ({

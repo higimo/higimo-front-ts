@@ -1,4 +1,4 @@
-import { FactoidType } from "components/ui/factoid"
+import { FactoidType } from 'components/ui/factoid'
 
 export interface BaseBlock {
 	type: string
@@ -43,7 +43,7 @@ interface CollapsibleBlock extends BaseBlock {
 }
 interface SlideBlock extends BaseBlock {
 	type: 'slide'
-	/** "slide" или "resume-hero" */
+	/** slide или resume-hero */
 	className?: string
 	/** внутри слайда могут быть заголовки, параграфы и т.д. */
 	children: ContentBlock[]

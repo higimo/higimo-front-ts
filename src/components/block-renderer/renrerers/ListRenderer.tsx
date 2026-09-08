@@ -1,8 +1,11 @@
 import { FunctionComponent, h } from 'preact'
-import { ListBlock, ListItem } from '../types'
-import { isListItem } from 'components/block-renderer/type-guard.utils'
+import { ListBlock, ListItem } from 'components/block-renderer/types'
+
 import { useMemo } from 'preact/hooks'
-import { ListItemRenderer } from './ListItemRenderer'
+
+import { ListItemRenderer } from 'components/block-renderer/renrerers/ListItemRenderer'
+
+import { isListItem } from 'components/block-renderer/utils/type-guard/is-list-item'
 
 type ListRendererPropsType = ListBlock
 

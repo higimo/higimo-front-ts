@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
-import { TripDay } from '../types'
-
-import cs from 'classnames'
+import { TripDay } from 'components/block-renderer/types'
 
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
+
+import cs from 'classnames'
 
 export const TripDayRenderer: FunctionComponent<TripDay> = ({
 	title,
