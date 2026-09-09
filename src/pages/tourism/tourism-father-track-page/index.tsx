@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { Coord } from 'utils.type'
 import { PageJSONData } from 'components/block-renderer/types'
-import { PovType } from 'components/tourism/data/types'
+import { PovType } from 'components/tourism/types'
 
 import { useEffect, useState } from 'preact/hooks'
 import { useJsonApi } from 'hook/fetch/use-json-api'

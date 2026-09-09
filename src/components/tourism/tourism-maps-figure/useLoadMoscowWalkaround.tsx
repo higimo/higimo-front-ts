@@ -1,6 +1,6 @@
 import { useJsonApi } from 'hook/fetch/use-json-api';
 import { useState, useEffect } from 'preact/hooks';
-import { HigimoMapPoint, YaMapPolygon } from '../data/types';
+import { HigimoMapPoint, YaMapPolygon } from '../types';
 
 export type MoscowWalkaroundStateDataType = {
 	stateYear2021: YaMapPolygon[]

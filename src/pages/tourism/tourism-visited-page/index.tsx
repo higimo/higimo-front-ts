@@ -1,4 +1,4 @@
-import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'components/tourism/data/types'
+import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'components/tourism/types'
 import { FunctionComponent } from 'preact'
 
 import { useEffect, useState } from 'preact/hooks'

@@ -1,7 +1,7 @@
 import cs from 'classnames'
 
 import { FunctionComponent } from 'preact'
-import { PovType } from '../data/types'
+import { PovType } from '../types'
 
 import './style.css'
 
