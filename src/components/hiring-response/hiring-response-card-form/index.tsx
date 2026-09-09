@@ -1,7 +1,6 @@
-import { FunctionComponent } from 'preact'
+import { DateOnlyString } from 'utils.type'
+import { FunctionComponent, TargetedEvent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
-
-import { useCallback } from 'preact/hooks'
 
 import './style.css'
 
@@ -23,13 +22,13 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 		<input
 			type="date"
 			value={selectedCard.date}
-			onChange={event => onUpdate({ date: event.target.value })}
+			onChange={(event: TargetedEvent<HTMLInputElement>) => onUpdate({ date: event.currentTarget.value as DateOnlyString })}
 			aria-label="Дата"
 		/>
 		<textarea
 			placeholder="Содержание карточки…"
 			value={selectedCard.content}
-			onChange={event => onUpdate({ content: event.target.value})}
+			onChange={event => onUpdate({ content: event.currentTarget.value})}
 			rows={10}
 			aria-label="Содержание"
 		/>

@@ -1,11 +1,11 @@
 import { PortfolioGroupedTagType, PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
-import { TagName } from './tags/use-smart-tags'
+import { TagName } from 'hook/tags/use-smart-tags'
 
 import { useMemo } from 'preact/hooks'
-import { useSmartTags } from './tags/use-smart-tags'
-import useApi from './fetch/use-api'
-import { useEmptyDataState } from './fetch/use-empty-data-state'
-import { useLoadingState } from './fetch/use-loading-state'
+import { useSmartTags } from 'hook/tags/use-smart-tags'
+import useApi from 'hook/fetch/use-api'
+import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -151,7 +151,7 @@ export const useTableProject: UseProjectType = () => {
 	const isTagListEmpty = useEmptyDataState(tagList.data)
 
 	const {
-		selectedIds,
+		selectedTagTitles,
 		isSelected,
 		toggleTag,
 	} = useSmartTags({
@@ -161,7 +161,7 @@ export const useTableProject: UseProjectType = () => {
 	const tableProjects: PortfolioProjectTableFullType[] = useMemo(() => {
 		return projects.data
 			.filter(project => {
-				for (const selectedTag of Array.from(selectedIds)) {
+				for (const selectedTag of Array.from(selectedTagTitles)) {
 					for (const itemTag of project.tags) {
 						if (itemTag.title === selectedTag) {
 							return true
@@ -172,7 +172,7 @@ export const useTableProject: UseProjectType = () => {
 			})
 			.map(calculateProjectTableList)
 			.sort(sortableProjectByVendor)
-	}, [projects, selectedIds])
+	}, [projects, selectedTagTitles])
 
 
 	return {

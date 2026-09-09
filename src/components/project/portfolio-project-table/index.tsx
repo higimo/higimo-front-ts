@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import type { PortfolioProjectTableFullType } from 'hook/use-table-project'
+import type { PortfolioProjectTableFullType } from 'hook/data/use-table-project'
 
 import cs from 'classnames'
 

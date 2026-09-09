@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
-import { useTableProject } from 'hook/use-table-project'
+import { useTableProject } from 'hook/data/use-table-project'
 
 import { PortfolioProjectTable } from 'components/project/portfolio-project-table'
 import { ProjectTagCategory } from 'components/project/project-tag-category'

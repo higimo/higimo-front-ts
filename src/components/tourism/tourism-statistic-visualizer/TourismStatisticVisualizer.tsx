@@ -23,7 +23,7 @@ type TourismStatisticVisualizerPropsType = {
 }
 export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisualizerPropsType> = ({ pov }) => {
 	const {
-		selectedIds, toggleTag, isSelected,
+		selectedTagTitles, toggleTag, isSelected,
 	} = useSmartTags({
 		categories: TOURISM_VISITED_TAG_CATEGORY,
 		mode: 'single',
@@ -37,11 +37,11 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 	const filtredRussiaCity = useMemo(
 		() => pov
 			.filter(handleFilterMapPoint({
-				selectedIds,
+				selectedIds: selectedTagTitles,
 				isChooseVisitedMode,
 			}))
 			.sort(handleSort(isChooseSortMode)),
-		[pov, selectedIds, isChooseVisitedMode, isChooseSortMode]
+		[pov, selectedTagTitles, isChooseVisitedMode, isChooseSortMode]
 	)
 
 	return (

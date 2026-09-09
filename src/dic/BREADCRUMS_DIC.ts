@@ -22,7 +22,7 @@ type ExcludeRouteType =
 	| typeof ROUTE_LINKS['login'] | typeof ROUTE_LINKS['adminIndex']
 	| typeof ROUTE_LINKS['typo'] | typeof ROUTE_LINKS['TODO']
 	| typeof ROUTE_LINKS['projectTable']
-	| typeof ROUTE_LINKS['projectTest']
+	| typeof ROUTE_LINKS['projectTypography']
 	| typeof ROUTE_LINKS['projectSandbox']
 
 type RouteType = Exclude<ValueOf<typeof ROUTE_LINKS>, ExcludeRouteType>
@@ -54,6 +54,7 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.tourismCityIndex]: 'Оценка городов',
 	[ROUTE_LINKS.tourismVisited]: 'Посещённые',
 	[ROUTE_LINKS.tourismFatherTrack]: 'Путешествие с отцом',
+	[ROUTE_LINKS.tourismMoscowMuseum]: 'Московские музеи',
 
 	[ROUTE_LINKS.listListIndex]: 'Спискота',
 	[ROUTE_LINKS.listListCreate]: 'Создать элемент',
@@ -76,10 +77,11 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 
 	[ROUTE_LINKS.resumeIndex]: 'Мои резюме',
 	[ROUTE_LINKS.resumeHowToWork]: 'Как работаю',
-	[ROUTE_LINKS.resumeLead]: 'ТУДУ',
-	[ROUTE_LINKS.resumeTechProduct]: 'ТУДУ',
-	[ROUTE_LINKS.resumeProductSmart]: 'ТУДУ',
-	[ROUTE_LINKS.resumeProduct]: 'ТУДУ',
+	[ROUTE_LINKS.resumeLead]: 'Продакт-лид',
+	[ROUTE_LINKS.resumeTechProduct]: 'Тех продакт',
+	[ROUTE_LINKS.resumeProductSmart]: 'Продакт-менеджер',
+	[ROUTE_LINKS.resumeProduct]: 'Продакт',
+	[ROUTE_LINKS.response]: 'Отклики',
 
 	[ROUTE_LINKS.thingsIndex]: 'ТУДУ',
 	[ROUTE_LINKS.thingsNotebook]: 'ТУДУ',

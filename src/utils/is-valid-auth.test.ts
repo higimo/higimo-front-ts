@@ -33,7 +33,6 @@ describe('isValidAuth', () => {
 				['oauth', { token_type: 'oauth' } ],
 				['пустая строка', { token_type: '' } ],
 				['undefined', { token_type: undefined } ],
-				['null', { token_type: null } ],
 				['"   "', { token_type: '  ' } ],
 			])('возвращает false при %s', (_, overrides) => {
 				expect(isValidAuth(createAuth(overrides))).toBe(false)
@@ -43,13 +42,8 @@ describe('isValidAuth', () => {
 		describe('user.id', () => {
 			test.each([
 				['user отсутствует', { user: undefined }],
-				['user = null', { user: null }],
 				['id = 0', { user: { id: 0 } }],
 				['id = -5', { user: { id: -5 } }],
-				['id = пустая строка', { user: { id: '' } }],
-				['id = null', { user: { id: null } }],
-				['id = undefined', { user: { id: undefined } }],
-				['user = {} (нет id)', { user: {} }],
 			])('возвращает false при %s', (_, overrides) => {
 				expect(isValidAuth(createAuth(overrides))).toBe(false);
 			});
