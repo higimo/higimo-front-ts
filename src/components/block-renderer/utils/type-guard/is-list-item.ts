@@ -1,5 +1,5 @@
-import { ListItem } from 'components/block-renderer/types'
+import { ListItemBlock } from 'components/block-renderer/types'
 
-export const isListItem = (item: string | ListItem): item is ListItem => {
+export const isListItem = (item: string | ListItemBlock): item is ListItemBlock => {
 	return typeof item !== 'string' && 'text' in item
 }

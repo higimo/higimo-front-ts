@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
-import { InlineSpanBlock } from 'components/block-renderer/types'
+import { SpanInlineBlock } from 'components/block-renderer/types'
 
-export const InlineSpanRenderer: FunctionComponent<InlineSpanBlock> = ({ className, value }) => (
+export const InlineSpanRenderer: FunctionComponent<SpanInlineBlock> = ({ className, value }) => (
 	<span className={className || ''}>{value}</span>
 )

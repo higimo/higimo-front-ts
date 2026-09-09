@@ -1,10 +1,10 @@
-import { ListItem } from 'components/block-renderer/types'
+import { ListItemBlock } from 'components/block-renderer/types'
 
 import { isListItem } from 'components/block-renderer/utils/type-guard/is-list-item'
 
 describe('isListItem — type guard утилита BlockRenderer', () => {
 	it('возвращает true для ListItem', () => {
-		const item: ListItem = { text: 'test' }
+		const item: ListItemBlock = { text: 'test' }
 		expect(isListItem(item)).toBe(true)
 	})
 

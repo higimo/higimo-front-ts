@@ -32,6 +32,8 @@ const renderers: Record<AnyBlock['type'], any> = {
 	link: InlineLinkRenderer,
 	strong: InlineStrongRenderer,
 	textContainer: TextContainerRenderer,
+
+	// resume
 	contactInfo: ContactInfoRenderer,
 	experienceList: ExperienceListRenderer,
 	skills: SkillsRenderer,

@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
-import { TripSymmary } from 'components/block-renderer/types'
+import { TripSummary } from 'components/block-renderer/types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
 
-export const TripSummaryRenderer: FunctionComponent<TripSymmary> = ({
+export const TripSummaryRenderer: FunctionComponent<TripSummary> = ({
 	counters
 }) => (
 	<FactoidRow

@@ -1,5 +1,5 @@
 import { FunctionComponent, h } from 'preact'
-import { ListBlock, ListItem } from 'components/block-renderer/types'
+import { ListBlock, ListItemBlock } from 'components/block-renderer/types'
 
 import { useMemo } from 'preact/hooks'
 
@@ -14,7 +14,7 @@ export const ListRenderer: FunctionComponent<ListRendererPropsType> = ({ ordered
 		return null
 	}
 
-	const listItems: ListItem[] = useMemo(() => items.map(item => {
+	const listItems: ListItemBlock[] = useMemo(() => items.map(item => {
 		if (isListItem(item)) {
 			return item
 		}
