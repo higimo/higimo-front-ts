@@ -1,13 +1,13 @@
+import { cityTypes, subjectPederationTypes } from 'components/tourism/types'
 import { FunctionComponent } from 'preact'
 import { PovType } from 'components/tourism/types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
 
-import { cityTypes, subjectPederationTypes } from 'components/tourism/data/city-types'
-
 type TourismStatisticRussiaPropsType = {
 	total: PovType[]
 }
+
 export const TourismStatisticRussia: FunctionComponent<TourismStatisticRussiaPropsType> = ({ total }) => {
 	const russianPov = total.filter(item => item.country === 'Россия')
 	const russianCity = russianPov.filter(item => cityTypes.includes(item.type as any))

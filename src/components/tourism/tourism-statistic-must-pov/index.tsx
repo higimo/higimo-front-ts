@@ -1,9 +1,8 @@
 import { FunctionComponent } from 'preact'
+import { onlyPovTypes } from 'components/tourism/types'
 import { PovType } from 'components/tourism/types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
-
-import { onlyPovTypes } from 'components/tourism/data/city-types'
 
 type TourismStatisticMustPovPropsType = {
 	total: PovType[]

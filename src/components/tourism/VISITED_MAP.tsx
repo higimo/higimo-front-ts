@@ -1,4 +1,4 @@
-import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/data/city-types'
+import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/types'
 import { TagCategory } from 'hook/tags/use-smart-tags'
 
 // TODO: [DATA] вынести в JSON API

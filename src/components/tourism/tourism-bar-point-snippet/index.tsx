@@ -1,9 +1,9 @@
-import cs from 'classnames'
-
+import { BarPovRealTags } from 'components/tourism/types'
 import { FunctionComponent } from 'preact'
 
-import { BarPovRealTags } from 'components/tourism/data/bar-pov-moscow'
 import { Tag } from 'components/ui/tag'
+
+import cs from 'classnames'
 
 import './style.css'
 

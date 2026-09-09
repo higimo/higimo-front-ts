@@ -1,4 +1,4 @@
-import { MoscowMuseumType } from 'components/tourism/data/museum-moscow'
+import { MoscowMuseumType } from 'components/tourism/types'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import { FunctionComponent } from 'preact'
 

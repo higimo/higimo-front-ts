@@ -1,6 +1,4 @@
-import { BasePointType, Coord } from 'utils.type'
-
-// TODO: [LIGHT] Добавить сюда все типы в директории и вынести файл выше
+import { BasePointType, Coord, KeyOf, ValueOf } from 'utils.type'
 
 // TODO: [HIGH] Добавить типа "Самые красивые дороги России"
 export type YaMapPolygon = {
@@ -131,7 +129,6 @@ export type PovType =
 	| Memorial
 	| Placefield
 
-import { Coord, KeyOf, ValueOf } from 'utils.type'
 
 export const BAR_COLOR_MAPPING = {
 	'Не посещал': '#F9FAFB',

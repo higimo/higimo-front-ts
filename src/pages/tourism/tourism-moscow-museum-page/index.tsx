@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'preact'
+import { MoscowMuseumType } from 'components/tourism/types'
 
 import { useJsonApi } from 'hook/fetch/use-json-api'
 import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Loading } from 'components/ui/loading'
-import { MoscowMuseumType } from 'components/tourism/data/museum-moscow'
 import { MuseumGallery } from 'components/tourism/museum-gallery'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/tourism-header'

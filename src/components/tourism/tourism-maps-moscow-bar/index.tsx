@@ -1,18 +1,18 @@
+import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/types'
 import { Coord } from 'utils.type'
+import { TagCategory } from 'hook/tags/use-smart-tags'
 
-import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/data/bar-pov-moscow'
-import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
-import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
+import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
+import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
-import { TagCategory, useSmartTags } from 'hook/tags/use-smart-tags'
-import useApi from 'hook/fetch/use-api'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMemo } from 'preact/hooks'
-
-import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
+import { useSmartTags } from 'hook/tags/use-smart-tags'
+import useApi from 'hook/fetch/use-api'
 
 import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStrategy'
 
