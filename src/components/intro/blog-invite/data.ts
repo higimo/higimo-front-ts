@@ -42,4 +42,10 @@ export const blogInviteData: BlogListType[] = [
 		link: EXTERNAL_LINKS.socialIg,
 		description: 'Рассказываю про города, Ведьмака, дизайн, что крутого происходит в России, иногда репощу впечатляющее.'
 	},
+	{
+		isArhive: true,
+		name: 'Флоу из глаз',
+		link: EXTERNAL_LINKS.socialTgView,
+		description: 'Жизнь из моих глаз'
+	},
 ] as const

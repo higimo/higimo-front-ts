@@ -10,6 +10,7 @@ export const EXTERNAL_LINKS = {
 	socialVk: 'https://vk.com/higimo',
 	socialVkPhoto: 'https://vk.com/albums16174219',
 	socialTg: 'https://t.me/higimoblog',
+	socialTgView: 'https://t.me/higimoview',
 	socialTwitter: 'https://twitter.com/higimo',
 	socialIg: 'https://www.instagram.com/higimo/',
 
