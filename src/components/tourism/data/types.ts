@@ -5,8 +5,7 @@ import { BasePointType, Coord } from 'utils.type'
 // TODO: [HIGH] Добавить типа "Самые красивые дороги России"
 export type YaMapPolygon = {
 	type: 'Polygon'
-	// TODO: [LIGHT] исправить на Coord
-	coordinates: number[][][]
+	coordinates: Coord[][]
 }
 
 export type HigimoMapPoint = {
