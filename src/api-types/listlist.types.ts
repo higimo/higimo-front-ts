@@ -1,48 +1,43 @@
 import { Brand, Code } from 'utils.type'
 
-type ListItemId     = Brand<number, 'ListItemId'>
-type ListPropertyId = Brand<number, 'ListPropertyId'>
-type ListValueId    = Brand<number, 'ListValueId'>
+type NestedListItemId     = Brand<number, 'NestedListItemId'>
+type NestedListPropertyId = Brand<number, 'NestedListPropertyId'>
+type NestedListValueId    = Brand<number, 'NestedListValueId'>
 
-export type ListerProperty = {
-	id: ListValueId
+export type NestedListProperty = {
+	id: NestedListValueId
 	name: string
 	type: string
 	item: number
 }
 
-export type ListerValue = {
+export type NestedListValue = {
 	id: number
 	value: string
 	property: number
 	item: number
 }
 
-export type ListPropertyType = {
-	id: ListPropertyId
+export type NestedListPropertyType = {
+	id: NestedListPropertyId
 	item_id: number
-	property_id: ListPropertyId
+	property_id: NestedListPropertyId
 	value: string
 	property: {
-		id: ListItemId
+		id: NestedListItemId
 		item_id: number
 		name: string
 		type: string
 	}
 }
 
-export type ListerItem = {
-	id: ListItemId
-	parent_id: ListItemId
+export type NestedListItem = {
+	id: NestedListItemId
+	parent_id: NestedListItemId
 	title: string
 	code: Code
 	created_at: number
-	children?: ListerItem[]
-	parent?: ListerItem
-	values?: ListPropertyType[]
-}
-
-// TODO: [LIGHT] rename IerarhListType
-export type ListListType = ListerItem & {
-	child?: ListerItem[]
+	children?: NestedListItem[]
+	parent?: NestedListItem
+	values?: NestedListPropertyType[]
 }

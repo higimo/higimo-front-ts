@@ -1,4 +1,4 @@
-import { ListerItem } from 'api-types/listlist.types'
+import { NestedListItem } from 'api-types/listlist.types'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
@@ -14,7 +14,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 export const ListList = () => {
 	// TODO: [LIGHT] перенести в page
 	const { params: { idcode = '' } } = useRoute()
-	const [ listlistList ] = useApi<ListerItem[]>(API_ROUTE.lister, {
+	const [ listlistList ] = useApi<NestedListItem[]>(API_ROUTE.lister, {
 		filter: {
 			id: idcode,
 		},

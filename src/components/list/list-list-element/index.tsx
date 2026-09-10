@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ListListType } from 'api-types/listlist.types'
+import { NestedListItem } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/fetch/use-auth'
 
@@ -11,7 +11,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-const handleRemove = (id: ListListType['id']) => async () => {
+const handleRemove = (id: NestedListItem['id']) => async () => {
 	try {
 		await sendRequest(API_ROUTE.listerItemSingle({ id: id.toString() }), {
 			method: 'DELETE',
@@ -23,7 +23,7 @@ const handleRemove = (id: ListListType['id']) => async () => {
 	}
 }
 
-export const ListListElement: FunctionComponent<{ listItem: ListListType }> = ({ listItem }) => {
+export const ListListElement: FunctionComponent<{ listItem: NestedListItem }> = ({ listItem }) => {
 	const { isAuth } = useAuth()
 
 	return (

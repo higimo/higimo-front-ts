@@ -1,6 +1,6 @@
 import { FunctionComponent, h } from 'preact'
 import { HigimoServerResponse } from 'api-types/server-response.types'
-import { ListerItem } from 'api-types/listlist.types'
+import { NestedListItem } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
 import { useState, useEffect, useCallback } from 'preact/hooks'
@@ -19,10 +19,10 @@ const ListListScheme = ['id', 'title', 'parent', 'code'] as const
 type ListListSchemeType = typeof ListListScheme[number]
 
 type FormValues = {
-	id: ListerItem['id']
-	parent: ListerItem['parent']
-	title: ListerItem['title']
-	code: ListerItem['code']
+	id: NestedListItem['id']
+	parent: NestedListItem['parent']
+	title: NestedListItem['title']
+	code: NestedListItem['code']
 }
 
 type FormScheme<T extends string> = {
@@ -104,7 +104,7 @@ export const ListListForm: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
 	// @ts-ignore TODO: [BACKEND] пока игнорируем ошибку, но надо получать данные с бэка и заполнять
 	// см. ниже useEffect, он вроде делает
-	const [ values, setValues ] = useState<ListerItem>({})
+	const [ values, setValues ] = useState<NestedListItem>({})
 	const [ status, setStatus ] = useState<HigimoServerResponse[]>([])
 
 	const addStatus = useCallback(
