@@ -22,6 +22,7 @@ import '../yandex-map.css'
 
 // TODO: [LIGHT] удалить useGroupTags, когда тут заработает
 export const TourismMapsMoscowBar = () => {
+	// TODO: [LIGHT] перенести в page
 	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
 
 	const isLoading = useLoadingState([barPovMoscow.status])

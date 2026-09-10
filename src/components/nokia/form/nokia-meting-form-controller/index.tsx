@@ -34,6 +34,7 @@ interface PersonFormContainerProps {
 export const NokiaMetingFormController: FunctionComponent<PersonFormContainerProps> = ({
 	meetingApi = new MeetingApiService()
 }) => {
+	// TODO: [LIGHT] перенести в page
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 
 	const [singleMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))

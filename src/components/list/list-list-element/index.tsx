@@ -3,11 +3,11 @@ import { ListListType } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/fetch/use-auth'
 
-import sendRequest, { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
+import sendRequest, { ApiError } from 'utils/api/send-request'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
@@ -35,6 +35,7 @@ export const ListListElement: FunctionComponent<{ listItem: ListListType }> = ({
 					</a>
 				</div>
 			)}
+
 			<div className="element-node__data">
 				<div className="element-node__title">
 					<a href={ROUTE_LINKS.listListDetail({ idcode: listItem.id.toString() })}>{listItem.title}</a>
@@ -52,6 +53,7 @@ export const ListListElement: FunctionComponent<{ listItem: ListListType }> = ({
 					{!!listItem.children?.length && <div className="element-node__child-count">{listItem.children.length} элементов в списке</div>}
 				</div>
 			</div>
+
 			{!!listItem.values?.length && (
 				<div className="element-node__values">
 					{listItem.values.map(value => (
@@ -66,6 +68,7 @@ export const ListListElement: FunctionComponent<{ listItem: ListListType }> = ({
 					))}
 				</div>
 			)}
+
 			{!!listItem.children && listItem.children.map((item, iter) => (
 				<ListListElement key={iter} listItem={item} />
 			))}

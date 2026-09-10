@@ -39,11 +39,13 @@ export const ProjectTablePage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Таблица сделанного</h1>
 			</TextContainer>
+
 			<ProjectTagCategory
 				groupedTags={tagList}
 				isSelected={isSelected}
 				toggleTag={toggleTag}
 			/>
+
 			<PortfolioProjectTable tableProjects={tableProjects} />
 		</div>
 	)

@@ -9,6 +9,7 @@ import './style.css'
 type ComojiGalery = {
 	comoji: ComojiType[]
 }
+
 export const ComojiGalery: FunctionComponent<ComojiGalery> = ({ comoji }) => (
 	<TextContainer>
 		<div className="gallery-comoji">

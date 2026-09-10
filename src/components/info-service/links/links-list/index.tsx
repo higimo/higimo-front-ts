@@ -7,12 +7,11 @@ import { TextContainer } from 'components/ui/text-container'
 type LinksListPropsType = {
 	links: LinksType[]
 }
-export const LinksList: FunctionComponent<LinksListPropsType> = ({ links }) => {
-	return (
-		<TextContainer>
-			<ul>
-				{links.map(item => <LinksElement {...item} />)}
-			</ul>
-		</TextContainer>
-	)
-}
+
+export const LinksList: FunctionComponent<LinksListPropsType> = ({ links }) => (
+	<TextContainer>
+		<ul>
+			{links.map(item => <LinksElement {...item} />)}
+		</ul>
+	</TextContainer>
+)

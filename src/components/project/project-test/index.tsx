@@ -12,25 +12,23 @@ import { tags } from 'fixtures/tags.fixtures'
 
 import '../project-viewer/style.css'
 
-export const ProjectTypography: FunctionComponent = () => {
-	return (
-		<div className="project-viewer">
-			<TextContainer className="project-viewer__date">
-				{getHumanDate('2026-02-13')}
-			</TextContainer>
-			<TextContainer>
-				<h1>Тестовая страница</h1>
-			</TextContainer>
-			<div className="content">
-				<ProjectTypographicTest />
-			</div>
-
-			<PortfolioCreditsGallery credits={credits} />
-			<PortfolioCreditsGallery credits={credits.slice(0, 2)} />
-			<PortfolioCreditsGallery credits={credits.slice(0, 1)} />
-
-			<PortfolioViewerTags tags={tags} />
-			<PortfolioViewerTags tags={tags.slice(-5)} />
+export const ProjectTypography: FunctionComponent = () => (
+	<div className="project-viewer">
+		<TextContainer className="project-viewer__date">
+			{getHumanDate('2026-02-13')}
+		</TextContainer>
+		<TextContainer>
+			<h1>Тестовая страница</h1>
+		</TextContainer>
+		<div className="content">
+			<ProjectTypographicTest />
 		</div>
-	)
-}
+
+		<PortfolioCreditsGallery credits={credits} />
+		<PortfolioCreditsGallery credits={credits.slice(0, 2)} />
+		<PortfolioCreditsGallery credits={credits.slice(0, 1)} />
+
+		<PortfolioViewerTags tags={tags} />
+		<PortfolioViewerTags tags={tags.slice(-5)} />
+	</div>
+)

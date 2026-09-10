@@ -25,18 +25,14 @@ export const NasheIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>
-					Нашествие
-				</TourismHeader>
+				<TourismHeader main>Нашествие</TourismHeader>
 				<TourismSecondary>
 					Я дважды был на Нашествии. В 2017 и 2018 годах.
 				</TourismSecondary>
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Лайнапы Нашествия
-				</TourismHeader>
+				<TourismHeader secondary>Лайнапы Нашествия</TourismHeader>
 				<TourismSecondary>
 					С подсветами того, что посетил.
 				</TourismSecondary>
@@ -44,9 +40,7 @@ export const NasheIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Фотоотчёты Нашествия во ВКонтакте
-				</TourismHeader>
+				<TourismHeader secondary>Фотоотчёты Нашествия во ВКонтакте</TourismHeader>
 				<NasheAlbums />
 			</TextContainer>
 		</div>

@@ -23,9 +23,7 @@ export const TourismCityStarPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>
-					Оценки городов
-				</TourismHeader>
+				<TourismHeader main>Оценки городов</TourismHeader>
 			</TextContainer>
 
 			<TourismCityStarForm />

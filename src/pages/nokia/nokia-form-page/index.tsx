@@ -5,6 +5,7 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaMetingFormController } from 'components/nokia/form/nokia-meting-form-controller'
 
+// TODO: [LIGHT] перенести в page
 import '../../../components/nokia/nokia-style.css'
 
 export const NokiaMeetingFormPage: FunctionComponent = () => {
@@ -13,6 +14,7 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 	return (
 		<div className="nokia">
 			<NokiaMenu />
+
 			<div className="nokia__content">
 				<NokiaMetingFormController />
 			</div>

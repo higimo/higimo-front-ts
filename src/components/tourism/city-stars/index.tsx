@@ -11,6 +11,7 @@ import './style.css'
 
 // TODO: [BACKEND] сделать ссылки на города
 export const CityStars: FunctionComponent = () => {
+	// TODO: [LIGHT] перенести в page
 	const cityList = useJsonApi<CityStarsType[]>('/json/city.json')
 
 	if (!cityList) {

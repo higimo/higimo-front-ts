@@ -16,6 +16,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import '../../../pages/tourism/tourism-style.css'
 
 export const TourismWalkGallery: FunctionComponent = () => {
+	// TODO: [LIGHT] перенести в page
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 	const isLoading = useLoadingState([yamapList.status])
 	const isListEmpty = useEmptyDataState(yamapList.data)

@@ -8,10 +8,8 @@ import './style.css'
 type DemagogGaleryPropsType = {
 	demagogs: DemagogType[]
 }
-export const DemagogGalery: FunctionComponent<DemagogGaleryPropsType> = ({ demagogs }) => {
-	return (
-		<div className="demagog">
-			{demagogs.map(item => <DemagogElement {...item} />)}
-		</div>
-	)
-}
+export const DemagogGalery: FunctionComponent<DemagogGaleryPropsType> = ({ demagogs }) => (
+	<div className="demagog">
+		{demagogs.map(item => <DemagogElement {...item} />)}
+	</div>
+)

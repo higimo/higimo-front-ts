@@ -1,22 +1,24 @@
 import { FunctionComponent } from 'preact'
-
-import { usePageTitle } from 'hook/browser/use-page-title'
-
-import { ObuchenieSingle } from 'components/obuchenie/obuchenie-single'
 import { LectionType } from 'api-types/lection.types'
-import { Loading } from 'components/ui/loading'
-import { API_ROUTE } from 'dic/API_ROUTE'
-import useApi from 'hook/fetch/use-api'
+
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { NotFoundPage } from 'pages/not-found-page'
+import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
+import useApi from 'hook/fetch/use-api'
 
+import { Loading } from 'components/ui/loading'
+import { ObuchenieSingle } from 'components/obuchenie/obuchenie-single'
+
+import { NotFoundPage } from 'pages/not-found-page'
+
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const ObuchenieSinglePage: FunctionComponent = () => {
 	usePageTitle('Обучение')
+
 	const { params: { idcode } } = useRoute()
-	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode }))
+	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode: idcode?.toString() || '' }))
 	const isLoading = useLoadingState([lectionDetail.status])
 	const isListEmpty = useEmptyDataState(lectionDetail.data)
 

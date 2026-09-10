@@ -22,6 +22,7 @@ const GEO_OBJECT_OPTIONS = {
 }
 
 export const TourismMoscowWalkaround = () => {
+	// TODO: [LIGHT] перенести в page
 	// TODO: Перенести в TourismMoscowWalkaroundPage
 	const { isLoading, data: stateData } = useLoadMoscowWalkaround()
 

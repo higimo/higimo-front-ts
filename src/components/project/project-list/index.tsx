@@ -11,6 +11,7 @@ type ProjectListPropsType = {
 	projectsList: PortfolioProjectFullType[]
 }
 export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
+	// TODO: [LIGHT] перенести в page
 	const packedRows = packElements(props.projectsList)
 
 	return (

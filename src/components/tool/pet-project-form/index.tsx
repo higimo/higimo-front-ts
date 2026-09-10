@@ -51,6 +51,7 @@ const DEFAULT_ID = '-1'
 // Ис админ заменить на разграничения прав
 
 export const PetProjectForm = () => {
+	// TODO: [LIGHT] перенести в page
 	const { params: { projectId = DEFAULT_ID } } = useRoute()
 	// TODO: [HARD] заменить на EmptyObject
 	const[ probbiSingle ] = useApi<PetProjectType | {}>(API_ROUTE.probbiSingle({ projectId })) // TODO: [HARD] типизация такая на самом деле

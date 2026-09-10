@@ -34,6 +34,7 @@ type VkPhotosContentType = {
 // TODO: [HARD] Не скачивает данные, обман!
 // TODO: [HARD] Не работает от слова совсем
 export const VkDownloadAlbum: FunctionComponent = () => {
+	// TODO: [LIGHT] перенести в page
 	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
 	const { size, push, pull, view } = useQueue<VkQueueType>()
 	const [photos, setPhotos] = useState<VkPhotosContentType[]>([])

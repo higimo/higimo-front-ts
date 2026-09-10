@@ -61,9 +61,8 @@ export const NasheSinglePage: FunctionComponent = () => {
 			/>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Другие лайнапы
-				</TourismHeader>
+				<TourismHeader secondary>Другие лайнапы</TourismHeader>
+
 				<NasheLineupGallery />
 			</TextContainer>
 		</div>

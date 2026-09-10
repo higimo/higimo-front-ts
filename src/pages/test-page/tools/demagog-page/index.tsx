@@ -1,15 +1,16 @@
-import { FunctionComponent } from 'preact'
 import { DemagogType } from 'api-types/demagog.types'
+import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-import useApi from 'hook/fetch/use-api'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
+import { usePageTitle } from 'hook/browser/use-page-title'
+import useApi from 'hook/fetch/use-api'
 
-import { TextContainer } from 'components/ui/text-container'
 import { DemagogGalery } from 'components/info-service/demagog/demagog-galery'
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+import { TextContainer } from 'components/ui/text-container'
+
+import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -25,11 +26,9 @@ export const DemagogPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
-		return <NotFoundData />
+		return <NotFoundPage />
 	}
-
 
 	return (
 		<div className="demagog-page">

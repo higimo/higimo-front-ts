@@ -12,6 +12,8 @@ import '../resume-style.css'
 import './style.css'
 
 // Ого, нигде не используется
+// TODO: [LIGHT] По-разному называется?
+// TODO: [LIGHT] Добавить в скрытое в ResumeIndexPage
 export const ResumeProduct2Page: FunctionComponent = () => {
 	usePageTitle('Дмитрий Уткин, Product owner/manager')
 

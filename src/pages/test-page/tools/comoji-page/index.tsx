@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact'
 import { ComojiType } from 'api-types/comoji.types'
+import { FunctionComponent } from 'preact'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
@@ -8,8 +8,9 @@ import useApi from 'hook/fetch/use-api'
 
 import { ComojiGalery } from 'components/tool/comoji-galery'
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
+
+import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -23,9 +24,8 @@ export const ComojiPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
-		return <NotFoundData />
+		return <NotFoundPage />
 	}
 
 	return (

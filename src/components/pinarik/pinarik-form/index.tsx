@@ -47,6 +47,7 @@ type PinarikFormPropsType = {
 	forceUpdate: Dispatch<StateUpdater<boolean>>
 }
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
+	// TODO: [LIGHT] перенести в page
 	const { isAuth, redirectToLogin } = useAuth()
 	const formMethods = useForm<FormValues>({
 		defaultValues: {

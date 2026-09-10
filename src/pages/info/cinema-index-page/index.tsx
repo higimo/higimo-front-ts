@@ -35,10 +35,13 @@ export const CinemaIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Я и фильмы</h1>
 			</TextContainer>
+
 			<TextContainer>
 				<h2><a href={ROUTE_LINKS.cinemaScriptIndex}>Сценарии</a></h2>
 			</TextContainer>
+
 			<CinemaScriptList scripts={cinema.data} />
+
 			<TextContainer>
 				{/* TODO: [BACKEND] показать оценки фильмов и аниме */}
 				Однажды, я выведу здесь оценки фильмов

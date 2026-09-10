@@ -7,7 +7,6 @@ import { FunnyIntro } from 'components/intro/funny-invite'
 import { ShareKnowledge } from 'components/intro/share-knowledge'
 import { ToolsIntro } from 'components/intro/tools-intro'
 
-
 export const ServicePage: FunctionComponent = () => {
 	usePageTitle('Сервисы')
 

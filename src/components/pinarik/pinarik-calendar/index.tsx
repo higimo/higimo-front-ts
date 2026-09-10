@@ -14,6 +14,7 @@ import { PinarikEventPreview } from 'components/pinarik/pinarik-event-preview'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const PinarikCalendar = () => {
+	// TODO: [LIGHT] перенести в page
 	const [ previewId, setPreviewId ] = useState(0)
 	const [ pinarikList ] = useApi<PinarikType[]>(API_ROUTE.pinarik)
 	const isLoading = useLoadingState([pinarikList.status])

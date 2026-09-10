@@ -35,7 +35,9 @@ export const ProjectIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<h1>Сделал</h1>
 			</TextContainer>
+
 			<ProjectClickTagCategory groupedTags={tagList} />
+
 			<ProjectList projectsList={projectList} />
 		</div>
 	)

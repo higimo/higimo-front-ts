@@ -1,15 +1,15 @@
 import { FunctionComponent } from 'preact'
-import { TextContainer } from 'components/ui/text-container'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { TextContainer } from 'components/ui/text-container'
 import { TourismChecklist } from 'components/tourism/tourism-checklist'
+import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 import '../tourism-style.css'
-import { TourismHeader } from 'components/tourism/tourism-header'
-import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 export const TourismChecklistPage: FunctionComponent = () => {
 	usePageTitle('Чек-лист туриста')

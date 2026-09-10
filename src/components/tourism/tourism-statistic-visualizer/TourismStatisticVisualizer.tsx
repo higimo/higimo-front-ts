@@ -5,18 +5,18 @@ import { useSmartTags } from 'hook/tags/use-smart-tags'
 import { useSwitcher } from 'hook/use-switcher'
 import { useMemo } from 'preact/hooks'
 
-import { PovType } from 'components/tourism/types'
-import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
-import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
-import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
 import { FullWidthContainer } from 'components/ui/full-width-container'
+import { PovType } from 'components/tourism/types'
 import { Switcher } from 'components/ui/switcher'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
+import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
+import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
 
 import { handleFilterMapPoint, handleSort } from 'components/tourism/tourism-statistic-visualizer/handleFilterMapPoint'
-import { TOURISM_VISITED_TAG_CATEGORY } from '../VISITED_MAP'
-import { SORT_MAP, VISITED_MAP, VISUALIZATOR_MAP } from 'components/tourism/VISITED_MAP'
+
+import { SORT_MAP, TOURISM_VISITED_TAG_CATEGORY, VISITED_MAP, VISUALIZATOR_MAP } from 'components/tourism/VISITED_MAP'
 
 type TourismStatisticVisualizerPropsType = {
 	pov: PovType[]

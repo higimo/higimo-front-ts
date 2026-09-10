@@ -5,8 +5,8 @@ import { useEffect } from 'preact/hooks'
 import { useLocation } from 'preact-iso'
 import { usePageTitle } from 'hook/browser/use-page-title'
 
-import { TextContainer } from 'components/ui/text-container'
 import { AuthForm } from 'components/form/auth-form'
+import { TextContainer } from 'components/ui/text-container'
 
 import { getBackPath } from 'utils/get-back-path'
 

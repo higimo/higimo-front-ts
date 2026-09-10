@@ -8,6 +8,7 @@ import { FactoidRow } from 'components/ui/factoid-row'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismAdventure } from 'components/tourism/tourism-adventure'
+import { TourismAdventureEmpty } from 'components/tourism/tourism-adventure-empty'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
@@ -19,7 +20,6 @@ import { ADVENTURES } from 'components/tourism/tourism-adventure/ADVENTURES'
 
 import '../tourism-style.css'
 import './style.css'
-import { TourismAdventureEmpty } from 'components/tourism/tourism-adventure-empty'
 
 // TODO: [FEATURE] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
@@ -96,33 +96,26 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Оценка городов
-				</TourismHeader>
+				<TourismHeader secondary>Оценка городов</TourismHeader>
 				<CityStarsIntro />
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Эксперименты в Я.Картах
-				</TourismHeader>
+				<TourismHeader secondary>Эксперименты в Я.Картах</TourismHeader>
 				<TourismExperimentMaps />
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Конструктор карт
-				</TourismHeader>
+				<TourismHeader secondary>Конструктор карт</TourismHeader>
 				<TourismWalkGallery />
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary={true}>
-					Нашествие
-				</TourismHeader>
+				<TourismHeader secondary>Нашествие</TourismHeader>
 				<TourismSecondary>
 					Путешествия — не только города, но и фестивали радости.
 				</TourismSecondary>
+
 				<NasheLineupGallery />
 			</TextContainer>
 		</div>

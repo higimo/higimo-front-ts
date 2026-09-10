@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'preact'
 import { FaqType } from 'api-types/faq.types'
+import { FunctionComponent } from 'preact'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
@@ -22,7 +22,6 @@ export const FaqListPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}

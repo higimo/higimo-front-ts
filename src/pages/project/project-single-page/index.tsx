@@ -11,6 +11,7 @@ import { NotFoundData } from 'components/ui/not-found-data'
 export const ProjectSinglePage: FunctionComponent = () => {
 	const { params: { vendor, project } } = useRoute()
 
+	// @ts-ignore
 	const [curProject, isLoading, isEmpty] = useProjectViewer(vendor, project)
 
 	usePageTitle(curProject.name ? `${curProject.name} | Проект Хигимо` : 'Проект Хигимо')

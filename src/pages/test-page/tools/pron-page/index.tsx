@@ -14,6 +14,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const PronPage: FunctionComponent = () => {
 	usePageTitle('pron')
+
 	const [ pronList ] = useApi<PronType[]>(API_ROUTE.pron)
 	const isLoading = useLoadingState([pronList.status])
 	const isListEmpty = useEmptyDataState(pronList.data)
@@ -21,7 +22,6 @@ export const PronPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}

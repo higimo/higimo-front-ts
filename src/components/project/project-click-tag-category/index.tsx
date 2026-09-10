@@ -8,9 +8,14 @@ import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 import './style.css'
 
+// TODO: [LIGHT] перенести в page
 const IGRORED_TAG_GROUPS = ['other', 'Локация', 'Продукт', 'Технология']
 
-export const ProjectClickTagCategory: FunctionComponent<{ groupedTags: PortfolioGroupedTagType[]; }> = ({ groupedTags }) => {
+type ProjectClickTagCategoryPropsType = {
+	groupedTags: PortfolioGroupedTagType[]
+}
+
+export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryPropsType> = ({ groupedTags }) => {
 	return (
 		<TextContainer className="project-tag">
 			{groupedTags.map(({ group, tags }) => {

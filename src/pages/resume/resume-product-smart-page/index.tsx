@@ -24,6 +24,7 @@ export const ResumeProductSmartPage: FunctionComponent = () => {
 	return (
 		<div className="resume-product2-page resume-page">
 			<Breadcrumps />
+
 			{pageData2.blocks.map((block, idx) => (
 				<BlockRenderer key={idx} block={block} />
 			))}

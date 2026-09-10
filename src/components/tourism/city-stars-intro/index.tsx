@@ -6,6 +6,7 @@ import { CityStarElement } from 'components/tourism/city-star-element'
 import { Loading } from 'components/ui/loading'
 
 export const CityStarsIntro = () => {
+	// TODO: [LIGHT] перенести в page
 	const cityList = useJsonApi<CityStarsType[]>('/json/city.json')
 
 	if (!cityList) {

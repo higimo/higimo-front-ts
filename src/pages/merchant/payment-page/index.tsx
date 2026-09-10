@@ -1,11 +1,11 @@
 import { FormValues } from 'components/merchant/merchant-payment-form/types'
 import { FunctionComponent } from 'preact'
 
+import { useForm } from 'react-hook-form'
+import { useLayoutEffect } from 'preact/hooks'
+import { useLocation } from 'preact-iso'
 import { useMerchant } from 'hook/data/use-merchant'
 import { usePageTitle } from 'hook/browser/use-page-title'
-import { useLocation } from 'preact-iso'
-import { useLayoutEffect } from 'preact/hooks'
-import { useForm } from 'react-hook-form'
 
 import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
 import { MerchantPaymentForm } from 'components/merchant/merchant-payment-form'
@@ -61,18 +61,24 @@ export const PaymentPage: FunctionComponent = () => {
 			<TextContainer>
 				<MerchantProductCard product={currentProduct} />
 			</TextContainer>
+
 			<TextContainer>
 				<MerchantPayBlock />
 			</TextContainer>
+
 			<TextContainer>
 				<MerchantPaymentForm register={register} />
 			</TextContainer>
+
 			<MerchantProductBenefits product={currentProduct} />
+
 			<TextContainer>
 				<MerchantProductFeature product={currentProduct} />
 			</TextContainer>
+
 			{/* TODO: [FEATURE] Пошерить */}
 			{/* TODO: [FEATURE] Купить другому */}
+
 			<TextContainer>
 				<a href={ROUTE_LINKS.merchantIndex}>← В магазин</a>
 				<br />

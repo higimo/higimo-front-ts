@@ -26,15 +26,18 @@ export const TourismMoscowMuseumPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
+
 			<TextContainer>
 				<Breadcrumps />
 			</TextContainer>
+
 			<TextContainer>
 				<TourismHeader main>Список музеев Москвы</TourismHeader>
 				<TourismSecondary>
 					Список музеев Москвы для посещения
 				</TourismSecondary>
 			</TextContainer>
+
 			<TextContainer>
 				<MuseumGallery museums={moscowMuseums} />
 			</TextContainer>

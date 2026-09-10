@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'preact'
-import type { PortfolioProjectTableFullType } from 'hook/data/use-table-project'
+import { PortfolioProjectTableFullType } from 'hook/data/use-table-project'
 
 import cs from 'classnames'
 
 import './style.css'
 
+// TODO: [LIGHT] перенести в utils
 export const getProjectKeys = <T extends object>(
 	data: T,
 	priorityKeys: string[] = []
@@ -32,6 +33,7 @@ export const getProjectKeys = <T extends object>(
 	return sortedPriority.concat(sortedOther)
 }
 
+// TODO: [LIGHT] перенести в utils
 export const formatValue = (value: any): string => {
 	if (value === null || value === undefined) {
 		return '—'
@@ -65,6 +67,7 @@ export const formatValue = (value: any): string => {
 	return String(value)
 }
 
+// TODO: [LIGHT] перенести в utils
 export const getValueType = (value: any): string => {
 	if (value === null || value === undefined) return 'empty'
 	if (typeof value === 'number') return 'number'
@@ -87,6 +90,7 @@ export const PortfolioProjectTable: FunctionComponent<PortfolioProjectTableProps
 			</div>
 		)
 	}
+	// @ts-ignore
 	const allKeys = getProjectKeys(tableProjects[0], [
 		'id', 'vendor', 'date',
 		'isHide',

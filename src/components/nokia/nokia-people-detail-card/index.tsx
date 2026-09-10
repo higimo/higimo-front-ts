@@ -15,6 +15,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 import '../nokia-style.css'
 
 export const NokiaPeopleDetailCard = () => {
+	// TODO: [LIGHT] перенести в page
 	const { params: { personId = '-1'}} = useRoute()
 
 	const [personSingle] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: parseInt(personId, 10).toString() }))

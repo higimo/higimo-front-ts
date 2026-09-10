@@ -22,6 +22,7 @@ export const HowToWorkPage: FunctionComponent = () => {
 	return (
 		<div className="resume-head-page resume-page">
 			<Breadcrumps />
+
 			{pageData2.blocks.map((block, idx) => (
 				<BlockRenderer key={idx} block={block} />
 			))}

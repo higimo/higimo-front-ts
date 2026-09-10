@@ -3,10 +3,11 @@ import { FunctionComponent } from 'preact'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMerchant } from 'hook/data/use-merchant'
 
-import { TextContainer } from 'components/ui/text-container'
 import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { ProductBanner } from 'components/merchant/product-banner'
+import { TextContainer } from 'components/ui/text-container'
+
+import { NotFoundPage } from 'pages/not-found-page'
 
 import '../merchant-style.css'
 
@@ -19,7 +20,7 @@ export const MerchantPage: FunctionComponent = () => {
 		return <Loading />
 	}
 	if (isProductEmpty) {
-		return <NotFoundData />
+		return <NotFoundPage />
 	}
 
 	return (

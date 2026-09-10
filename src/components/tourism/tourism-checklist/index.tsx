@@ -6,7 +6,7 @@ import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 import './style.css'
 
-// TODO: [HARD] переписать на бекенд списка списков
+// TODO: [BACKEND] переписать на бекенд списка списков
 const organizeListData = [
 	'все зарядить',
 	'проверить снярягу',

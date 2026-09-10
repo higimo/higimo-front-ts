@@ -2,13 +2,13 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
+import { OnlyAdmin } from 'components/util/only-admin'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../resume-style.css'
-import { OnlyAdmin } from 'components/util/only-admin'
 
 export const ResumeIndexPage: FunctionComponent = () => {
 	usePageTitle('Мои резюме')

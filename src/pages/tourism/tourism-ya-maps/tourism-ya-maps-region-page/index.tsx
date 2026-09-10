@@ -7,11 +7,11 @@ import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapsRegion } from 'components/tourism/tourism-maps-region'
+import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import '../../tourism-style.css'
-import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 export const TourismYaMapsRegionPage: FunctionComponent = () => {
 	usePageTitle('Карта регионов России')
@@ -25,9 +25,7 @@ export const TourismYaMapsRegionPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>
-					Карта регионов России
-				</TourismHeader>
+				<TourismHeader main>Карта регионов России</TourismHeader>
 			</TextContainer>
 
 			<TextContainer>
@@ -37,9 +35,6 @@ export const TourismYaMapsRegionPage: FunctionComponent = () => {
 				<TourismSecondary>
 					Синеньким то, куда хочется сгонять
 				</TourismSecondary>
-			</TextContainer>
-
-			<TextContainer>
 			</TextContainer>
 
 			<TourismMapsRegion />

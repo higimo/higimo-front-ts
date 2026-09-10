@@ -1,6 +1,7 @@
 import { VkPhotoType } from 'api-types/vk.types'
 import { FunctionComponent } from 'preact'
 
+// TODO: [LIGHT] перенести в utils
 const getPhotosUrl = (sizes: VkPhotoType['sizes']): string => {
 	const finded = sizes.find(item => item.type === 'r' || item.type === 'x')
 	if (finded) {
@@ -12,18 +13,17 @@ const getPhotosUrl = (sizes: VkPhotoType['sizes']): string => {
 type VkPhotoToolAlbumEditPropsType = {
 	photos: VkPhotoType[]
 }
-export const VkPhotoToolAlbumEdit: FunctionComponent<VkPhotoToolAlbumEditPropsType> = ({ photos }) => {
-	return (
-		<div className="album-sort-page">
-			<div>
-				{photos.map(photo => (
-					<div key={photo.id}>
-						<img src={getPhotosUrl(photo.sizes)} />
-						<br />
-						<textarea>{photo.text}</textarea>
-					</div>
-				))}
-			</div>
+
+export const VkPhotoToolAlbumEdit: FunctionComponent<VkPhotoToolAlbumEditPropsType> = ({ photos }) => (
+	<div className="album-sort-page">
+		<div>
+			{photos.map(photo => (
+				<div key={photo.id}>
+					<img src={getPhotosUrl(photo.sizes)} />
+					<br />
+					<textarea>{photo.text}</textarea>
+				</div>
+			))}
 		</div>
-	)
-}
+	</div>
+)

@@ -14,9 +14,10 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+// TODO: [LIGHT] перенести в page
 import '../../../components/nokia/nokia-style.css'
 
-// Добавить фильтрацию по типам встреч
+// TODO: Добавить фильтрацию по типам встреч
 export const NokiaIndexPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
 
@@ -34,6 +35,7 @@ export const NokiaIndexPage: FunctionComponent = () => {
 	return (
 		<div className="nokia">
 			<NokiaMenu />
+
 			<div className="nokia__content">
 				<h1>Встречи</h1>
 				<NokiaMeetingGallery meetings={richMeetings.data} />

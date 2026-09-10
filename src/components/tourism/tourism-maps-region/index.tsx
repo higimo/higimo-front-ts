@@ -6,6 +6,7 @@ import { YMaps, Map, YMapsApi } from 'react-yandex-maps'
 
 import '../yandex-map.css'
 
+// TODO: [LIGHT] перенести в словарь
 const districtVisited = [
 	'RU-VLA', 'RU-VGG', 'RU-KGD', 'RU-KIR', 'RU-LEN', 'RU-MOS', 'RU-NIZ', 'RU-NGR',
 	'RU-NVS', 'RU-PSK', 'RU-SVE', 'RU-TVE', 'RU-TUL', 'RU-TYU', 'RU-YAR', 'RU-DA',
@@ -21,6 +22,7 @@ const districtVacant = [
 	'RU-STA', 'RU-CHU', 'RU-YEV',
 ]
 
+// TODO: [LIGHT] перенести в utils
 const getDistrictColor = (iso: any) => {
 	return (
 		districtVisited.includes(iso) ? '#ff4aff' :
@@ -42,6 +44,7 @@ export const TourismMapsRegion = () => {
 			const collection = new ymaps.GeoObjectCollection(null)
 			mapRef.current.geoObjects.add(collection)
 
+			// TODO: [LIGHT] использовать стандартные компоненты
 			borders.features.forEach((feature: any) => {
 				collection.add(new ymaps.GeoObject(feature, {
 					fillColor: getDistrictColor(feature.properties.iso3166),

@@ -88,20 +88,21 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 	return (
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
+
 			<TextContainer>
 				<Breadcrumps />
 			</TextContainer>
+
 			<TextContainer>
 				<TourismHeader main>Путешествие с отцом</TourismHeader>
 			</TextContainer>
+
 			<TextContainer className="car-list">
 				{roadmap.blocks.map((child, idx) => (
 					<BlockRenderer key={idx} block={child} />
 				))}
 			</TextContainer>
-			<TextContainer className="car-list">
 
-			</TextContainer>
 			<TourismMapGeo<PovType, Coord>
 				lines={lines}
 				items={modCities}

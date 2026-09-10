@@ -23,6 +23,7 @@ export const ResumeProductLeadPage: FunctionComponent = () => {
 	return (
 		<div className="resume-product-sss-page resume-page">
 			<Breadcrumps />
+
 			{pageData2.blocks.map((block, idx) => (
 				<BlockRenderer key={idx} block={block} />
 			))}

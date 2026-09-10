@@ -12,6 +12,7 @@ import { NotFoundData } from 'components/ui/not-found-data'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const ListList = () => {
+	// TODO: [LIGHT] перенести в page
 	const { params: { idcode = '' } } = useRoute()
 	const [ listlistList ] = useApi<ListerItem[]>(API_ROUTE.lister, {
 		filter: {
