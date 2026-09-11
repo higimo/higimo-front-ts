@@ -1,0 +1,28 @@
+Элементы и формы.todo.txt
+Вынести взамодействие кнопок в классы с API
+
+Но сделать так, чтобы handleUpdate, handleDelete handleCreate работали хорошо
+
+export class PersonApiService implements PersonApi {
+	// async getAll(): Promise<NokiaPersonApiType[]> {
+	// 	const response = await sendRequest(API_ROUTE.nokiaPerson)
+	// 	return response.data
+	// }
+
+	// async getById(id: string): Promise<NokiaPersonApiType> {
+	// 	const response = await sendRequest(API_ROUTE.nokiaPersonSingle({ id }))
+	// 	return response.data
+	// }
+
+	async createOrUpdate(person: Partial<NokiaPersonSimpleType>): Promise<any> {
+		const method = person.id ? 'PUT' : 'POST'
+		const endpoint = person.id
+			? API_ROUTE.nokiaPersonSingle({ id: person.id.toString() })
+			: API_ROUTE.nokiaPerson
+
+		return sendRequest(endpoint, {
+			method,
+			values: compact(omit(person, 'id'))
+		})
+	}
+}
