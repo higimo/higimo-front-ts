@@ -3,80 +3,11 @@ import { PortfolioProjectTableFullType } from 'hook/data/use-table-project'
 
 import cs from 'classnames'
 
+import { formatValue } from 'utils/project/format-value'
+import { getProjectKeys } from 'utils/project/get-project-keys'
+import { getValueType } from 'utils/project/get-value-type'
+
 import './style.css'
-
-// TODO: [LIGHT] перенести в utils
-export const getProjectKeys = <T extends object>(
-	data: T,
-	priorityKeys: string[] = []
-): string[] => {
-	const allKeys = Object.keys(data)
-
-	const prioritySet = new Set(priorityKeys)
-	const priority: string[] = []
-	const other: string[] = []
-
-	allKeys.forEach(key => {
-		if (prioritySet.has(key)) {
-			priority.push(key)
-		} else {
-			other.push(key)
-		}
-	})
-
-	const sortedPriority = priority.sort((a, b) =>
-		priorityKeys.indexOf(a) - priorityKeys.indexOf(b)
-	)
-
-	const sortedOther = other.sort()
-
-	return sortedPriority.concat(sortedOther)
-}
-
-// TODO: [LIGHT] перенести в utils
-export const formatValue = (value: any): string => {
-	if (value === null || value === undefined) {
-		return '—'
-	}
-
-	if (typeof value === 'boolean') {
-		return value ? '✓' : '✗'
-	}
-
-	if (typeof value === 'number') {
-		if (value > 1000000) return `${(value / 1000000).toFixed(1)}M`
-		if (value > 1000) return `${(value / 1000).toFixed(1)}K`
-		return value.toLocaleString()
-	}
-
-	if (typeof value === 'string') {
-		if (/^\d{4}-\d{2}-\d{2}/.test(value)) {
-		return new Date(value).toLocaleDateString()
-		}
-		return value
-	}
-
-	if (Array.isArray(value)) {
-		return value.join(', ')
-	}
-
-	if (typeof value === 'object') {
-		return `{${Object.keys(value).length}}`
-	}
-
-	return String(value)
-}
-
-// TODO: [LIGHT] перенести в utils
-export const getValueType = (value: any): string => {
-	if (value === null || value === undefined) return 'empty'
-	if (typeof value === 'number') return 'number'
-	if (typeof value === 'boolean') return 'boolean'
-	if (Array.isArray(value)) return 'array'
-	if (typeof value === 'object') return 'object'
-	if (/^\d{4}-\d{2}-\d{2}/.test(value)) return 'date'
-	return 'string'
-}
 
 type PortfolioProjectTablePropsType = {
 	tableProjects: PortfolioProjectTableFullType[]

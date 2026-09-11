@@ -1,14 +1,7 @@
 import { VkPhotoType } from 'api-types/vk.types'
 import { FunctionComponent } from 'preact'
 
-// TODO: [LIGHT] перенести в utils
-const getPhotosUrl = (sizes: VkPhotoType['sizes']): string => {
-	const finded = sizes.find(item => item.type === 'r' || item.type === 'x')
-	if (finded) {
-		return finded.url
-	}
-	return ''
-}
+import { getPhotosUrl } from 'utils/get-photos-url'
 
 type VkPhotoToolAlbumEditPropsType = {
 	photos: VkPhotoType[]

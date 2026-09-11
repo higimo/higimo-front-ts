@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { GradientDicType } from 'components/tool/pet-project/types'
+import { GradientDicType } from 'api-types/json-api.types'
 import { PetProjectType } from 'api-types/petproject.types'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
