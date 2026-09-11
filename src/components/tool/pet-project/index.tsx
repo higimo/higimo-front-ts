@@ -1,14 +1,12 @@
 import { FunctionComponent } from 'preact'
-import { GradientDicType } from 'components/tool/pet-project/types'
+import { GradientDicType } from 'api-types/json-api.types'
 import { PetProjectType } from 'api-types/petproject.types'
+
+import { PetProjectElement } from 'components/tool/pet-project-element'
 
 import { useMemo } from 'preact/hooks'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-
 import './style.css'
-
-const getDescription = (str: string) => (str || '').replace(/(https:\/\/[\S]+)/g, '<a href="$1">Ссылка</a>').substring(0, 320)
 
 type PetProject = {
 	petprojects: PetProjectType[]
@@ -25,26 +23,12 @@ export const PetProject: FunctionComponent<PetProject> = ({ petprojects, gradien
 
 	return (
 		<div className="pet-project-gallery">
-			{petprojects.map(({ id, name, description = '' }, index) => (
-				<div
-					className="pet-project__item"
-					style={{
-						background: goodGradients[index]?.g,
-						'--color': goodGradients[index]?.c,
-					}}
-				>
-					<div className="pet-project__title">{name}</div>
-					<div
-						className="pet-project__description"
-						dangerouslySetInnerHTML={{ __html: getDescription(description)}}
-					/>
-					<a
-						href={ROUTE_LINKS.petProjectEdit({ projectId: id.toString()})}
-						className="pet-project__edit"
-					>
-						✐
-					</a>
-				</div>
+			{petprojects.map((project, index) => (
+				<PetProjectElement
+					key={index}
+					project={project}
+					gradient={goodGradients[index]!}
+				/>
 			))}
 		</div>
 	)
