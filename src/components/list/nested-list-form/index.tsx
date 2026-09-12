@@ -65,6 +65,8 @@ const scheme: FormScheme<ListListSchemeType>[] = [
 type HandleListListSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
 	(values: FormValues) => Promise<void>
 const handleListListSubmit: HandleListListSubmitType = addStatus => async values => {
+	// TODO: [MIDDLE] сейчас многострочное мультисоздание, надо добавить к нему,
+	// редактирование текущего, создание одного и, конечно, лучше через сервис это делать
 	const titles: string[] = values.title.split('\n').filter((title: string) => title.trim())
 
 	if (titles.length === 0) {
@@ -100,22 +102,17 @@ const handleListListSubmit: HandleListListSubmitType = addStatus => async values
 	}
 }
 
-export const NestedListForm: FunctionComponent = () => {
-	const { params: { idcode = '' } } = useRoute()
-	// @ts-ignore TODO: [BACKEND] пока игнорируем ошибку, но надо получать данные с бэка и заполнять
-	// см. ниже useEffect, он вроде делает
-	const [ values, setValues ] = useState<NestedListItem>({})
+type NestedListFormPropsType = {
+	values: NestedListItem | undefined
+}
+
+export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ values }) => {
 	const [ status, setStatus ] = useState<HigimoServerResponse[]>([])
 
 	const addStatus = useCallback(
 		(val: HigimoServerResponse) => setStatus(pState => pState.concat(val)),
 		[setStatus]
 	)
-
-	useEffect(() => {
-		sendRequest(API_ROUTE.listerItemSingle({ id: idcode }))
-			.then(val => setValues(val.data[0]))
-	}, [idcode])
 
 	const {
 		register,
@@ -137,7 +134,7 @@ export const NestedListForm: FunctionComponent = () => {
 						{
 							...register(schemeElement.code),
 							name: schemeElement.code,
-							defaultValue: values[schemeElement.code] || '',
+							defaultValue: (values && values[schemeElement.code]) || '',
 							className: schemeElement.input,
 						}
 					),
