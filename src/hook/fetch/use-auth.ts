@@ -10,7 +10,6 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import { signal } from '@preact/signals'
 
-// TODO: [LIGHT] move to hook/fetch
 export const AUTH_STATUS_DIC = {
 	INIT:    'INIT',
 	LOADING: 'LOADING',

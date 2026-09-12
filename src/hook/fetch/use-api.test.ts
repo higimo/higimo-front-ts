@@ -4,7 +4,6 @@ import sendRequest from 'utils/api/send-request'
 import useApi, { API_STATUS, apiReducer } from 'hook/fetch/use-api'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: [LIGHT] move to hook/fetch
 vi.mock('utils/api/send-request', () => ({
 	default: vi.fn()
 }))
