@@ -3,8 +3,7 @@ import { HigimoServerResponse } from 'api-types/server-response.types'
 import { NestedListItem } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
-import { useState, useEffect, useCallback } from 'preact/hooks'
-import { useRoute } from 'preact-iso'
+import { useState, useCallback } from 'preact/hooks'
 
 import { ShowFormResult } from 'components/form/show-form-result'
 
