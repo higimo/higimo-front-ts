@@ -11,6 +11,7 @@ import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps-figure'
 
 import '../../tourism-style.css'
+import '../../yandex-map.css'
 
 export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 	usePageTitle('Обхожу Москву')

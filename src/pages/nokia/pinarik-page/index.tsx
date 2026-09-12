@@ -11,6 +11,7 @@ import useApi from 'hook/fetch/use-api'
 import { Loading } from 'components/ui/loading'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { PinarikCalendar } from 'components/pinarik/pinarik-calendar'
+import { PinarikEventPreview } from 'components/pinarik/pinarik-event-preview'
 import { PinarikForm } from 'components/pinarik/pinarik-form'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -18,8 +19,8 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+import '../nokia-style.css'
 import './style.css'
-import { PinarikEventPreview } from 'components/pinarik/pinarik-event-preview'
 
 export const PinarikPage: FunctionComponent = () => {
 	const makeUpdate = useForceUpdate()

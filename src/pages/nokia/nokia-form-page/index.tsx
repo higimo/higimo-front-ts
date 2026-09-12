@@ -5,8 +5,7 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaMetingFormController } from 'components/nokia/form/nokia-meting-form-controller'
 
-// TODO: [LIGHT] перенести в page
-import '../../../components/nokia/nokia-style.css'
+import '../nokia-style.css'
 
 export const NokiaMeetingFormPage: FunctionComponent = () => {
 	usePageTitle('Редактирование и создание встречи // Нокиа')

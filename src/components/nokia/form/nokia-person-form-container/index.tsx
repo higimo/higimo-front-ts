@@ -8,8 +8,6 @@ import { PersonApi } from 'components/nokia/form/person-api'
 import { NokiaPersonFormFields } from 'components/nokia/form/nokia-person-form-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import '../../nokia-style.css'
-
 interface NokiaPersonFormContainerProps {
 	personApi: PersonApi
 	initialData: NokiaPersonSimpleType | undefined

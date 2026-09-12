@@ -6,9 +6,6 @@ import { TourismBulletListItem } from '../tourism-bullet-list-item'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-// TODO: [LIGHT] перенести в page
-import '../../../pages/tourism/tourism-style.css'
-
 export const TourismWalkGallery: FunctionComponent<{ yamapList: YaMapType[] }> = ({
 	yamapList,
 }) => (

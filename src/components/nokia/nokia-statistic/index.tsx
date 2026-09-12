@@ -12,8 +12,6 @@ import { updateChart } from 'components/nokia/nokia-statistic/utils/update-chart
 
 import { HEIGHT, WIDTH } from 'components/nokia/nokia-statistic/utils/update-chart'
 
-import '../nokia-style.css'
-
 // TODO: [HARD] https://www.npmjs.com/package/@observablehq/plot
 type NokiaStatisticPropsType = {
 	meetingStatistic: NokiaMeetingStatisticType[]

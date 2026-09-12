@@ -12,9 +12,6 @@ import { TextContainer } from 'components/ui/text-container'
 import { MAP_MODE } from './MAP_MODE'
 import { GEO_OBJECT_OPTIONS } from './GEO_OBJECT_OPTIONS'
 
-// TODO: [LIGHT] перенести в page
-import '../yandex-map.css'
-
 type TourismMoscowWalkaroundPropsType = {
 	stateData: MoscowWalkaroundStateDataType
 }

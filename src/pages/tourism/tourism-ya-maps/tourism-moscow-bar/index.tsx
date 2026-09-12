@@ -9,6 +9,7 @@ import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapsMoscowBar } from 'components/tourism/tourism-maps-moscow-bar'
 
 import '../../tourism-style.css'
+import '../../yandex-map.css'
 
 export const TourismMoscowBarPage: FunctionComponent = () => {
 	usePageTitle('Московские бары')

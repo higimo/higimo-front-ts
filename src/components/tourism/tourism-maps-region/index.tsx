@@ -6,9 +6,6 @@ import { YMaps, Map, YMapsApi } from 'react-yandex-maps'
 
 import { getDistrictColor } from 'utils/get-district-color'
 
-// TODO: [LIGHT] перенести в page
-import '../yandex-map.css'
-
 export const TourismMapsRegion = () => {
 	const mapRef = createRef()
 	const { width, height } = useWindowSize()

@@ -15,7 +15,6 @@ import { MeetingApiService } from 'components/nokia/form/person-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import '../../nokia-style.css'
 import './style.css'
 
 const getUserSuggestions = (persons: NokiaPersonSimpleType[]): string[] => persons.map(person => {

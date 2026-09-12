@@ -5,8 +5,6 @@ import { UseFormReturn } from 'react-hook-form'
 import TextInput from 'react-autocomplete-input'
 import { Controller } from 'react-hook-form'
 
-import '../../nokia-style.css'
-
 interface PersonMeetingFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>
 	peoplesSuggest: string[]

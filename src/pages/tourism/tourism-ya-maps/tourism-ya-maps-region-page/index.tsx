@@ -12,6 +12,7 @@ import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import '../../tourism-style.css'
+import '../../yandex-map.css'
 
 export const TourismYaMapsRegionPage: FunctionComponent = () => {
 	usePageTitle('Карта регионов России')

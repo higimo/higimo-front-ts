@@ -15,8 +15,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: [LIGHT] перенести в page
-import '../../../components/nokia/nokia-style.css'
+import '../nokia-style.css'
 
 export const NokiaPeopleDetailCardPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')

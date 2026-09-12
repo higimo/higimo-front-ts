@@ -14,7 +14,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import '../../../components/nokia/nokia-style.css'
+import '../nokia-style.css'
 
 export const NokiaStatisticPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
