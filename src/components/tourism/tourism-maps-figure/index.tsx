@@ -12,6 +12,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { MAP_MODE } from './MAP_MODE'
 
+// TODO: [LIGHT] перенести в page
 import '../yandex-map.css'
 
 const GEO_OBJECT_OPTIONS = {

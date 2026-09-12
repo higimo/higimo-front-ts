@@ -18,6 +18,7 @@ import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStra
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+// TODO: [LIGHT] перенести в page
 import '../yandex-map.css'
 
 // TODO: [LIGHT] удалить useGroupTags, когда тут заработает
