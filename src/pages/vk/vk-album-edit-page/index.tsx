@@ -7,8 +7,10 @@ import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 
-import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
 import { TextContainer } from 'components/ui/text-container'
+import { VkHeading } from 'components/vk/vk-heading'
+import { VkParagraph } from 'components/vk/vk-paragraph'
+import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
 
 import { printVkError } from 'vendor/print-vk-error'
 
@@ -28,31 +30,41 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 		fetchLogin()
 	}, [fetchLogin])
 
-	const fetchPhotos = useCallback(async (ownerId: string, albumId: string) => {
+	const fetchPhotos = useCallback(async (ownerId: string, albumId: number) => {
+		// TODO: try бы вынести в сервис VkApi
 		try {
 			const photos = await VkApi.getPhotos(ownerId, albumId)
 			setPhotos(photos)
 		} catch (error) {
 			const vkError = error as VkResponceError
+			// TODO: в таких местах бы сменить на тост?
 			showMessage(printVkError(vkError))
 		}
 	}, [showMessage])
 
 	useEffect(() => {
 		if (isVkLogin && session && session.user.id && albumId) {
+			// @ts-ignore
 			fetchPhotos(session.user.id, albumId)
 		}
 	}, [isVkLogin, session, albumId])
 
 	return (
-		<div className="vk-photo">
+		<div className="vk-identity-page vk-photo">
 			<TextContainer>
-				<h1>Сортировка фотографий альбома</h1>
+				<VkHeading level={1}>Сортировка фотографий альбома</VkHeading>
+				<VkParagraph>
+					Всего фотографий: {photos.length}
+					<br />
+					С комментариями: {photos.filter(i => !!i.text).length}
+				</VkParagraph>
 			</TextContainer>
 			<TextContainer>
 				<MessageContainer />
 			</TextContainer>
-			<VkPhotoToolAlbumEdit photos={photos} />
+			<VkPhotoToolAlbumEdit
+				photos={photos}
+			/>
 		</div>
 	)
 }

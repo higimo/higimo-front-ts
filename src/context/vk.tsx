@@ -24,6 +24,9 @@ const DEFAULT_VK_STATE = {
 	fetchLogin: () => {}
 }
 
+// TODO: [MIDDLE] надо сменить на сигнал, который если не подгружен —
+// загружает данные о логине, пусть сам делает fetchLogin
+// TODO: [MIDDLE] запоминать в localstorage хотя бы на сутки?
 export const VkContext = createContext<IVkContext>(DEFAULT_VK_STATE)
 
 type VkStateType = {

@@ -1,0 +1,30 @@
+.vk-heading {
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+.vk-heading--1 {
+	font-size: 20px;
+	line-height: 1.3;
+	font-weight: 500;
+	margin: 0 0 16px 0;
+}
+
+.vk-heading--2 {
+	font-size: 20px;
+	line-height: 1.3;
+	font-weight: 500;
+}
+
+.vk-heading--3 {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 600;
+}
+
+.vk-heading--4 {
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: 600;
+}

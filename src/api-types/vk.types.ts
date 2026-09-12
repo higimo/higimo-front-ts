@@ -1,4 +1,4 @@
-import { UnixTime } from 'utils.type'
+import { UnixTime, UnixTimeSecond } from 'utils.type'
 
 export type VKAlbumSizesType = {
 	type: 'x' | 's'
@@ -6,14 +6,26 @@ export type VKAlbumSizesType = {
 }
 
 export type VKAlbumType = {
-	id: string
-	privacy_view: {
-		type: 'all' | 'private'
-	}
+	/** Идентификатор альбома */
+	id: number
+	/** Идентификатор создателя */
+	owner_id: number
+	/** Видимость */
+	is_locked: boolean
+	/** Название */
 	title: string
-	size: string
+	/** Дата создания */
+	created: UnixTimeSecond
+	/** Дата обновления */
+	updated: UnixTimeSecond
+	/** Количество фотографий в альбоме */
+	size: number
+	/** Описание альбома */
 	description: string
+	/** Изображения обложки */
 	sizes: VKAlbumSizesType[]
+	/** Доступ к удалению */
+	can_delete: boolean
 }
 
 export type VkPhotoOrigType = {

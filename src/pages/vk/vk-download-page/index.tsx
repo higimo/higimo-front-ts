@@ -1,21 +1,125 @@
-import { FunctionComponent } from 'preact'
+import { FunctionComponent, TargetedEvent } from 'preact'
+import { VkPhotosContentType, VkQueueType } from 'components/vk/types'
 
+import { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks'
+import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/browser/use-page-title'
+import { useQueue } from 'hook/use-queue'
 
 import { TextContainer } from 'components/ui/text-container'
-import { VkDownloadAlbum } from 'components/vk/vk-download-album'
+import { VkDownloadForm } from 'components/vk/vk-download-form'
+import { VkHeading } from 'components/vk/vk-heading'
+import { VkParagraph } from 'components/vk/vk-paragraph'
+
+import { VkContext } from 'context/vk'
+
+import { ALBUM_MAX_COUNT, QUEUE_TIMER, VkDownloadService } from 'components/vk/service/vk-download-service'
+
+import '../vk-style.css'
+import './style.css'
+
+type ChangeEvent = TargetedEvent<HTMLInputElement, InputEvent>
 
 export const VkDownloadPage: FunctionComponent = () => {
 	usePageTitle('Скачать свои альбомы')
 
+	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
+	const { size, push, pull, view } = useQueue<VkQueueType>()
+	const [ photos, setPhotos ] = useState<VkPhotosContentType[]>([])
+	const [ downloadId, setDownloadId ] = useState<string>('')
+	const { showMessage, MessageContainer } = useMessage()
+
+	const showMessageRef = useRef(showMessage)
+	showMessageRef.current = showMessage
+
+	const serviceRef = useRef<VkDownloadService | null>(null)
+	if (!serviceRef.current) {
+		serviceRef.current = new VkDownloadService((message) => showMessageRef.current(message))
+	}
+	const service = serviceRef.current
+
+	useLayoutEffect(fetchLogin, [fetchLogin])
+
+	// TODO: [LIGHT] вынести в ControllerForm или хук
+	const handleGroupId = useCallback((event: ChangeEvent) => {
+		if (!event.target) return
+		setDownloadId('-' + event.currentTarget.value)
+		setPhotos([])
+	}, [])
+
+	const handleUserId = useCallback((event: ChangeEvent) => {
+		setDownloadId(event.currentTarget.value)
+		setPhotos([])
+	}, [])
+
+	const handleSelf = useCallback(() => {
+		if (!session) return
+		setDownloadId(session.user.id)
+		setPhotos([])
+	}, [session])
+
+	useEffect(() => {
+		if (!isVkLogin || !session || downloadId.length === 0) {
+			return
+		}
+		(async () => {
+			const albums = await service.getAlbums(session.user.id, downloadId)
+			if (!albums) return
+			albums.slice(0, ALBUM_MAX_COUNT).forEach(album => {
+				push({
+					type: 'album',
+					id: album.id,
+					title: album.title,
+				})
+			})
+		})()
+	}, [isVkLogin, session, downloadId, service, push])
+
+	useEffect(() => {
+		if (!size) return
+		const headQueue = view()
+		if (headQueue && headQueue.type === 'album') {
+			showMessage(`Осталось скачать ${size} альбома`)
+			;(async () => {
+				const albumPhotos = await service.getPhotos(downloadId, headQueue.id)
+				if (!albumPhotos) return
+				setPhotos(prev => [
+					...prev,
+					{
+						title: headQueue.title,
+						photos: albumPhotos.map(item => item.orig_photo.url),
+					},
+				])
+			})()
+		}
+		setTimeout(() => pull(), QUEUE_TIMER)
+	}, [downloadId, size, view, pull, service, showMessage])
+
 	return (
-		<div className="download-page">
+		<div className="vk-identity-page download-page">
 			<TextContainer>
-				<h1>Скачать свои альбомы</h1>
+				<VkHeading level={1}>Скачать свои альбомы</VkHeading>
+				<VkParagraph>
+					Введите ид альбома, скопируйте результат и бахните его в wget
+				</VkParagraph>
+				<VkParagraph>
+					Загрузит фотки из первых попавшихся {ALBUM_MAX_COUNT} твоих альбомов. Таймаут загрузки {QUEUE_TIMER / 1000}, чтобы не дудосить серваки ВК.
+				</VkParagraph>
 			</TextContainer>
-			<VkDownloadAlbum />
+			<VkDownloadForm
+				onGroupId={handleGroupId}
+				onUserId={handleUserId}
+				onSelf={handleSelf}
+			/>
+			<TextContainer>
+				<MessageContainer />
+			</TextContainer>
+			<TextContainer>
+				<VkHeading level={2}>Результат</VkHeading>
+			</TextContainer>
+			<textarea className="download-page__pre">
+				{JSON.stringify(photos, null, '\t')}
+			</textarea>
 		</div>
 	)
 }
-
-export default VkDownloadPage

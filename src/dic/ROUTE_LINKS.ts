@@ -67,7 +67,6 @@ const ROUTE_LIST_LIST_LINKS = Object.freeze({
 
 const ROUTE_VK_LINKS = Object.freeze({
 	toolVkIndex:             '/tool/vk/',
-	toolVkStaticAlbum:       '/tool/vk/static-album/',
 	toolVkDownloadAlbum:     '/tool/vk/download-album/',
 	toolVkAlbums:            '/tool/vk/albums/',
 	toolVkAlbumSingle_CONST: '/tool/vk/albums/:albumId/',

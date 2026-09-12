@@ -14,6 +14,8 @@ import { printVkError } from 'vendor/print-vk-error'
 import { VkContext } from 'context/vk'
 
 import '../vk-style.css'
+import { VkHeading } from 'components/vk/vk-heading'
+import { VkParagraph } from 'components/vk/vk-paragraph'
 
 export const VkAlbumListPage: FunctionComponent = () => {
 	usePageTitle('Список альбомов')
@@ -43,9 +45,14 @@ export const VkAlbumListPage: FunctionComponent = () => {
 	}, [isVkLogin, session])
 
 	return (
-		<div className="vk-photo">
+		<div className="vk-identity-page vk-photo">
 			<TextContainer>
-				<h1>Список альбомов</h1>
+				<VkHeading level={1}>Список альбомов</VkHeading>
+				<VkParagraph>
+					Альбомов: {albums.length} {' | '}
+					Публичных: {albums.filter(i => !i.is_locked).length} {' | '}
+					Фотографий всего: {albums.reduce((acc, i) => acc + i.size, 0)}
+				</VkParagraph>
 			</TextContainer>
 			<TextContainer>
 				<MessageContainer />

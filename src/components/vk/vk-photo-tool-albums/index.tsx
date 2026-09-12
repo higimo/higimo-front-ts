@@ -3,6 +3,8 @@ import { FunctionComponent } from 'preact'
 
 import { VkAlbumElement } from 'components/vk/vk-album-element'
 
+import './style.css'
+
 type VkPhotoAlbumListPropsType = {
 	albums: VKAlbumType[]
 }

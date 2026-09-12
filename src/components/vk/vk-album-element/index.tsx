@@ -4,10 +4,10 @@ import { VKAlbumType } from 'api-types/vk.types'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const VkAlbumElement: FunctionComponent<VKAlbumType> = (album) => (
-	<a href={ROUTE_LINKS.toolVkAlbumSingle({ albumId: album.id })} className="album-element">
+	<a href={ROUTE_LINKS.toolVkAlbumSingle({ albumId: album.id.toString() })} className="album-element">
 		<div className="album-element__meta">
 			<div className="album-element__title">
-				<span dangerouslySetInnerHTML={{__html: album.privacy_view.type !== 'all' ? '🔒' : ''}} />
+				<span dangerouslySetInnerHTML={{__html: album.is_locked ? '🔒' : ''}} />
 				{album.title} | {album.size}
 			</div>
 			<div className="album-element__description" dangerouslySetInnerHTML={{__html: album.description}} />

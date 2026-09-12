@@ -106,6 +106,13 @@ export const assertISOString = (str: string): asserts str is ISOString => {
  */
 export type UnixTime = Brand<number, 'UnixTime'>
 
+/**
+ * Число в формате эпохи nix БЕЗ МИЛИСЕКУНД (надо умножать на 1000)
+ *
+ * Например, 1778155911069
+ */
+export type UnixTimeSecond = Brand<number, 'UnixTimeSecond'>
+
 
 /**
  * Число года

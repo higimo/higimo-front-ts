@@ -60,7 +60,6 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.listListCreate]: 'Создать элемент',
 
 	[ROUTE_LINKS.toolVkIndex]: 'Фотографии ВК',
-	[ROUTE_LINKS.toolVkStaticAlbum]: 'Статические альбомы',
 	[ROUTE_LINKS.toolVkDownloadAlbum]: 'Скачать альбом',
 	[ROUTE_LINKS.toolVkAlbums]: 'Альбомы',
 
