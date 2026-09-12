@@ -7,7 +7,6 @@ import cs from 'classnames'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Dispatch, StateUpdater }  from 'preact/hooks'
 
-import { useAuth } from 'hook/fetch/use-auth'
 import { useFormStatus } from 'hook/utils/use-form-status'
 
 import sendRequest, { ApiError } from 'utils/api/send-request'
@@ -47,8 +46,6 @@ type PinarikFormPropsType = {
 	forceUpdate: Dispatch<StateUpdater<boolean>>
 }
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
-	// TODO: [LIGHT] перенести в page
-	const { isAuth, redirectToLogin } = useAuth()
 	const formMethods = useForm<FormValues>({
 		defaultValues: {
 			date: (new Date()).toISOString().substr(0, 10),
@@ -63,17 +60,13 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 	const setScore = (value: PinarikType['score']) => () => setValue('score', value)
 	const score = watch('score')
 
-	if (!isAuth) {
-		redirectToLogin()
-		return null
-	}
-
 	return (
 		<FormProvider {...formMethods}>
 			<form className="container pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit(addStatus))}>
 				<label htmlFor="date">Дата</label>
 				<input {...register('date')} name="date" type="date" />
 				<label htmlFor="fewfwe">Оценка</label>
+				{/* TODO: вынести в отдельный контроллер */}
 				<div className="score">
 					<div className={cs('score__item', { active: score === -1 })} onClick={setScore(-1)} />
 					<div className={cs('score__item', { active: score === 0 })} onClick={setScore(0)} />

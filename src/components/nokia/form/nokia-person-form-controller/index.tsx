@@ -20,7 +20,6 @@ interface PersonFormContainerProps {
 export const NokiaPersonFormController: FunctionComponent<PersonFormContainerProps> = ({
 	personApi = new PersonApiService()
 }) => {
-	// TODO: [LIGHT] перенести в page
 	const { params: { personId = DEFAULT_PERSON_ID } } = useRoute()
 
 	const [singlePerson] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
