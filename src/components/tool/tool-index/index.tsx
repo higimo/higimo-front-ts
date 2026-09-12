@@ -1,6 +1,6 @@
 import { TextContainer } from 'components/ui/text-container'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { TOOL_LINKS } from './TOOL_LINKS'
 
 // TODO: [LIGHT] Вынести анонсом на страницу сервисов
 // TODO: [LIGHT] Удалить страницу /tool/
@@ -9,10 +9,9 @@ export const ToolIndex = () => (
 	<TextContainer>
 		<h2>Мои тулы, инвентари</h2>
 		<ul>
-			<li><a href={ROUTE_LINKS.toolEmailer}>Эмайлер</a></li>
-			<li><a href={ROUTE_LINKS.toolComoji}>Комоджики</a></li>
-			<li><a href={ROUTE_LINKS.toolMagic}>Волшебный шар</a></li>
-			<li><a href={ROUTE_LINKS.petProject}>Пет-проекты</a></li>
+			{TOOL_LINKS.map(item => (
+				<li><a href={item.href}>{item.title}</a></li>
+			))}
 		</ul>
 	</TextContainer>
 )
