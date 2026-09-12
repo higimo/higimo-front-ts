@@ -57,7 +57,9 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 				<TourismHeader secondary>
 					Другие карты
 				</TourismHeader>
-				<TourismWalkGallery />
+				<TourismWalkGallery
+					yamapList={yamapList.data}
+				/>
 			</TextContainer>
 		</div>
 	)

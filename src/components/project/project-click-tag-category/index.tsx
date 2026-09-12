@@ -5,11 +5,9 @@ import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
+import { IGRORED_TAG_GROUPS } from './IGRORED_TAG_GROUPS'
 
 import './style.css'
-
-// TODO: [LIGHT] перенести в page
-const IGRORED_TAG_GROUPS = ['other', 'Локация', 'Продукт', 'Технология']
 
 type ProjectClickTagCategoryPropsType = {
 	groupedTags: PortfolioGroupedTagType[]

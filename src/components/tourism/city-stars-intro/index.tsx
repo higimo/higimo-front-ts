@@ -1,18 +1,15 @@
 import { CityStarsType } from 'api-types/city-stars.types'
-
-import { useJsonApi } from 'hook/fetch/use-json-api'
+import { FunctionComponent } from 'preact'
 
 import { CityStarElement } from 'components/tourism/city-star-element'
-import { Loading } from 'components/ui/loading'
 
-export const CityStarsIntro = () => {
-	// TODO: [LIGHT] перенести в page
-	const cityList = useJsonApi<CityStarsType[]>('/json/city.json')
+type CityStarsIntroPropsType = {
+	cityList: CityStarsType[]
+}
 
-	if (!cityList) {
-		return <Loading />
-	}
-
+export const CityStarsIntro: FunctionComponent<CityStarsIntroPropsType> = ({
+	cityList,
+}) => {
 	const filtredCityList = cityList.filter(city => city.star.length === 5)
 
 	return (

@@ -1,6 +1,8 @@
 import { FunctionComponent } from 'preact'
 import { PortfolioProjectFullType } from 'api-types/portfolio.types'
 
+import { useMemo } from 'preact/hooks'
+
 import { ProjectElement } from 'components/project/project-element'
 
 import { packElements } from 'components/project/utils/pack-elements'
@@ -11,8 +13,7 @@ type ProjectListPropsType = {
 	projectsList: PortfolioProjectFullType[]
 }
 export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
-	// TODO: [LIGHT] перенести в page
-	const packedRows = packElements(props.projectsList)
+	const packedRows = useMemo(() => packElements(props.projectsList), [props.projectsList])
 
 	return (
 		<div className="project__list">

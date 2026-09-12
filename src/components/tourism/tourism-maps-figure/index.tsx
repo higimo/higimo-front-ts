@@ -1,38 +1,29 @@
-import { Fragment, VNode } from 'preact'
+import { Fragment, FunctionComponent, VNode } from 'preact'
 import { ValueOf } from 'utils.type'
 
-import { useLoadMoscowWalkaround } from './useLoadMoscowWalkaround'
+import { MoscowWalkaroundStateDataType } from './useLoadMoscowWalkaround'
 import { useSwitcher } from 'hook/use-switcher'
 import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { GeoObject, Map, Placemark, YMaps } from 'react-yandex-maps'
-import { Loading } from 'components/ui/loading'
 import { Switcher } from 'components/ui/switcher'
 import { TextContainer } from 'components/ui/text-container'
 
 import { MAP_MODE } from './MAP_MODE'
+import { GEO_OBJECT_OPTIONS } from './GEO_OBJECT_OPTIONS'
 
 // TODO: [LIGHT] перенести в page
 import '../yandex-map.css'
 
-const GEO_OBJECT_OPTIONS = {
-	fillColor: '#748865',
-	strokeColor: '#FFB681',
-	opacity: 0.6,
-	strokeWidth: 0.7,
+type TourismMoscowWalkaroundPropsType = {
+	stateData: MoscowWalkaroundStateDataType
 }
 
-export const TourismMoscowWalkaround = () => {
-	// TODO: [LIGHT] перенести в page
-	// TODO: Перенести в TourismMoscowWalkaroundPage
-	const { isLoading, data: stateData } = useLoadMoscowWalkaround()
-
-	const [isMode, setMode] = useSwitcher<ValueOf<typeof MAP_MODE>>(MAP_MODE['2024'])
+export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundPropsType> = ({
+	stateData,
+}) => {
+	const [ isMode, setMode ] = useSwitcher<ValueOf<typeof MAP_MODE>>(MAP_MODE['2024'])
 	const { width } = useWindowSize()
-
-	if (isLoading) {
-		return <Loading />
-	}
 
 	const renderByMode = () => {
 		if (isMode(MAP_MODE['2021'])) {

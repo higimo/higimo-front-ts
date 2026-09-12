@@ -1,5 +1,6 @@
-import { PetProjectType } from 'api-types/petproject.types'
+import { EmptyObject } from 'utils.type'
 import { HigimoServerResponse } from 'api-types/server-response.types'
+import { PetProjectType } from 'api-types/petproject.types'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useForm } from 'react-hook-form'
@@ -49,12 +50,10 @@ const DEFAULT_ID = '-1'
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
-
 export const PetProjectForm = () => {
-	// TODO: [LIGHT] перенести в page
 	const { params: { projectId = DEFAULT_ID } } = useRoute()
-	// TODO: [HARD] заменить на EmptyObject
-	const[ probbiSingle ] = useApi<PetProjectType | {}>(API_ROUTE.probbiSingle({ projectId })) // TODO: [HARD] типизация такая на самом деле
+	// TODO: [HARD] типизация такая на самом деле
+	const[ probbiSingle ] = useApi<PetProjectType | EmptyObject>(API_ROUTE.probbiSingle({ projectId }))
 	const isLoading = useLoadingState([probbiSingle.status])
 	const isEmpty = useEmptyDataState(probbiSingle.data)
 
