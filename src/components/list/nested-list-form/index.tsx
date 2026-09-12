@@ -100,7 +100,7 @@ const handleListListSubmit: HandleListListSubmitType = addStatus => async values
 	}
 }
 
-export const ListListForm: FunctionComponent = () => {
+export const NestedListForm: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
 	// @ts-ignore TODO: [BACKEND] пока игнорируем ошибку, но надо получать данные с бэка и заполнять
 	// см. ниже useEffect, он вроде делает

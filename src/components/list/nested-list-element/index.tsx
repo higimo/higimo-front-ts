@@ -23,7 +23,11 @@ const handleRemove = (id: NestedListItem['id']) => async () => {
 	}
 }
 
-export const ListListElement: FunctionComponent<{ listItem: NestedListItem }> = ({ listItem }) => {
+type NestedListElementPropsType = {
+	nestedListItem: NestedListItem
+}
+
+export const NestedListElement: FunctionComponent<NestedListElementPropsType> = ({ nestedListItem: listItem }) => {
 	const { isAuth } = useAuth()
 
 	return (
@@ -70,7 +74,7 @@ export const ListListElement: FunctionComponent<{ listItem: NestedListItem }> = 
 			)}
 
 			{!!listItem.children && listItem.children.map((item, iter) => (
-				<ListListElement key={iter} listItem={item} />
+				<NestedListElement key={iter} nestedListItem={item} />
 			))}
 		</div>
 	)

@@ -2,14 +2,14 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
-import { ListListForm } from 'components/list/list-list-form'
+import { NestedListForm } from 'components/list/nested-list-form'
 
 export const ListListFormPage: FunctionComponent = () => {
 	usePageTitle('Список списков')
 
 	return (
 		<div className="list-list">
-			<ListListForm />
+			<NestedListForm />
 		</div>
 	)
 }
