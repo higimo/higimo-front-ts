@@ -108,8 +108,8 @@ const ROUTE_RESUME_LINKS = Object.freeze({
 	resumeLead:          '/resume/product-lead/',
 	resumeTechProduct:   '/resume/tech-product/',
 	resumeHowToWork:     '/resume/how-to-work/',
-	resumeProductSmart:  '/resume/product-smart/', // TODO: [LIGHT] Стилистика перестала быть хорошей
-	response:            '/response/', // Отклики
+	resumeProductSmart:  '/resume/product-smart/',
+	response:            '/response/',
 })
 
 const ROUTE_THINGS_LINKS = Object.freeze({
