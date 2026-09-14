@@ -1,41 +1,25 @@
 import { FunctionComponent } from 'preact'
 
-import { useAuth } from 'hook/fetch/use-auth'
-
-import { TilesGallery } from 'components/ui/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element'
+import { IntroHeader } from 'components/intro/intro-header'
+import { IntroTileGallery } from 'components/intro/intro-tile-gallery'
+import { PrecentationContainer } from 'components/ui/precentation-container'
+import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-
-import { ToolDataType, toolListData } from './data'
+import { toolListData } from 'components/intro/tools-intro/data'
 
 import './style.css'
 
-const TileElementCon: FunctionComponent<ToolDataType> = props => (
-	<TileElement
-		className="tools-intro__item"
-		isInactive={!props.link}
-		href={props.link as string}
-		name={props.name}
-		description={props.description}
-	/>
+export const ToolsIntro: FunctionComponent = () => (
+	<PrecentationContainer className="tools-intro" id={ANCHOR_LINKS.service}>
+		<TextContainer>
+			<IntroHeader>Сделал сервисов</IntroHeader>
+		</TextContainer>
+
+		<TextContainer>
+			<IntroTileGallery
+				list={toolListData}
+			/>
+		</TextContainer>
+	</PrecentationContainer>
 )
-
-export const ToolsIntro: FunctionComponent = () => {
-	const { isAuth } = useAuth()
-	const toolList = toolListData.filter(toolItem => {
-		return toolItem.isAdmin && isAuth || !toolItem.isAdmin
-	})
-
-	const HALF_LIST = Math.round(toolList.length / 2)
-
-	return (
-		<TilesGallery
-			className="tools-intro"
-			id={ANCHOR_LINKS.service}
-			title="Сделал сервисов"
-			left={toolList.slice(0, HALF_LIST).map(item => <TileElementCon {...item} />)}
-			right={toolList.slice(HALF_LIST).map(item => <TileElementCon {...item} />)}
-		/>
-	)
-}

@@ -1,21 +1,22 @@
 import { FunctionComponent } from 'preact'
 
-import { TextContainer } from 'components/ui/text-container'
-import { CategoryTitle } from './category-title'
 import { GridTail } from './grid-tail'
+// TODO: конкурент CategoryTitle
+import { IntroHeader } from 'components/intro/intro-header'
+import { TextContainer } from 'components/ui/text-container'
 
 // TODO: [LAST] мб, такие датасеты унести в отдельную папку?
 import { blogInviteData } from 'components/intro/blog-invite/data'
-
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'
 
 export const BlogInvite: FunctionComponent = () => (
-	<div id={ANCHOR_LINKS.blog} className="blog-invite">
+	<div className="blog-invite" id={ANCHOR_LINKS.blog}>
 		<TextContainer>
-			<CategoryTitle>Пишу в блоги</CategoryTitle>
+			<IntroHeader>Пишу в блоги</IntroHeader>
 		</TextContainer>
+
 		<div className="blog-invite__gallery">
 			{blogInviteData.map(item => (
 				<GridTail

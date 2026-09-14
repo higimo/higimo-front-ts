@@ -1,25 +1,32 @@
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ToolDataType } from 'utils.type'
 
-export const aboutMeList = [
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+
+export const aboutMeList: ToolDataType[] = [
 	{
-		title: 'сериалы',
-		url: EXTERNAL_LINKS.aboutMyshows,
+		name: 'сериалы',
+		href: EXTERNAL_LINKS.aboutMyshows,
+		description: '',
 	},
 	{
-		title: 'кино',
-		url: EXTERNAL_LINKS.aboutKinopoisk,
+		name: 'кино',
+		href: EXTERNAL_LINKS.aboutKinopoisk,
+		description: '',
 	},
 	{
-		title: 'аниме',
-		url: EXTERNAL_LINKS.aboutAnime,
+		name: 'аниме',
+		href: EXTERNAL_LINKS.aboutAnime,
+		description: '',
 	},
 	{
-		title: 'книги',
-		url: EXTERNAL_LINKS.aboutLivelib,
+		name: 'книги',
+		href: EXTERNAL_LINKS.aboutLivelib,
+		description: '',
 	},
 	{
-		title: 'домашняя библиотека',
-		url: ROUTE_LINKS.libraryIndex,
+		name: 'домашняя библиотека',
+		href: ROUTE_LINKS.libraryIndex,
+		description: '',
 	},
 ] as const

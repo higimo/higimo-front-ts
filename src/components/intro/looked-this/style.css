@@ -22,7 +22,7 @@
 	border-color: #fff;
 }
 
-.looked-this__title {
+.looked-this .intro-header {
 	font-weight: 500;
 	font-variant: small-caps;
 	max-width: 4em;
@@ -35,13 +35,13 @@
 }
 
 @media (min-width: 768px) {
-	.looked-this__title {
+	.looked-this .intro-header {
 		font-size: 10vw;
 		max-width: 4em;
 	}
 }
 @media (min-width: 1600px) {
-	.looked-this__title {
+	.looked-this .intro-header {
 		font-size: 8vw;
 	}
 }

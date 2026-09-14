@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'preact'
+import { IntroImageMappingType } from 'utils.type'
 
-import cs from 'classnames'
-
-import { TilesGallery } from 'components/ui/tiles-gallery'
-import { TileElement } from 'components/ui/tile-element'
+import { IntroHeader } from 'components/intro/intro-header'
+import { IntroTileGallery } from 'components/intro/intro-tile-gallery'
+import { PrecentationContainer } from 'components/ui/precentation-container'
+import { TextContainer } from 'components/ui/text-container'
 
 import intersection from './img/intersection.svg'
 import obuchenie    from './img/obuchenie.png'
@@ -11,11 +11,11 @@ import rak          from './img/rak.png'
 import screen       from './img/screen.png'
 import tech         from './img/tech.png'
 
-import { KnowlageType, shareKnowledgeData } from './data'
+import { shareKnowledgeData } from 'components/intro/share-knowledge/data'
 
 import './style.css'
 
-const imageMapping: Record<KnowlageType['imgId'], string> = {
+const imageMapping: IntroImageMappingType = {
 	screen,
 	rak,
 	tech,
@@ -23,31 +23,17 @@ const imageMapping: Record<KnowlageType['imgId'], string> = {
 	intersection,
 }
 
-const HALF_LIST = Math.round(shareKnowledgeData.length / 2)
-
-const TileElementCon: FunctionComponent<KnowlageType> = ({ isArchive, link, imgId, name, description }) => (
-	<TileElement
-		className={cs(
-			'share-knowledge__element',
-			{ 'share-knowledge__element--archive': isArchive }
-		)}
-		isInactive={isArchive}
-		href={link}
-		image={<img className="tile-element__img" src={imageMapping[imgId]} />}
-		name={name}
-		description={description}
-	/>
-)
-
 export const ShareKnowledge = () => (
-	<TilesGallery
-		className="share-knowledge"
-		title="Делюсь знаниями"
-		left={shareKnowledgeData.slice(0, HALF_LIST).map((item: KnowlageType) => (
-			<TileElementCon key={item.name} {...item} />
-		))}
-		right={shareKnowledgeData.slice(HALF_LIST, shareKnowledgeData.length).map((item: KnowlageType) => (
-			<TileElementCon key={item.name} {...item} />
-		))}
-	/>
+	<PrecentationContainer className="share-knowledge">
+		<TextContainer>
+			<IntroHeader>Делюсь знаниями</IntroHeader>
+		</TextContainer>
+
+		<TextContainer>
+			<IntroTileGallery
+				list={shareKnowledgeData}
+				imageMapping={imageMapping}
+			/>
+		</TextContainer>
+	</PrecentationContainer>
 )

@@ -11,9 +11,9 @@ export const ToolIndexPage: FunctionComponent = () => {
 	return (
 		<div className="tool-index-page">
 			<TextContainer>
-				<h1>Tools</h1>
+				<h1>Мои тулы, инвентари</h1>
+				<ToolIndex />
 			</TextContainer>
-			<ToolIndex />
 		</div>
 	)
 }

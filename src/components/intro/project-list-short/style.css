@@ -4,19 +4,6 @@
 	padding-bottom: 164px;
 }
 
-.project-list__header {
-	font-size: 32px;
-	line-height: 1;
-	color: #000;
-	margin: 0;
-}
-
-@media (min-width: 768px) {
-	.project-list__header {
-		font-size: 64px;
-	}
-}
-
 .project-list__filter {
 	display: flex;
 	justify-content: flex-start;

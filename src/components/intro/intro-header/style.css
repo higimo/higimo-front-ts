@@ -1,0 +1,14 @@
+.intro-header {
+	font-size: 32px;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: .75em;
+}
+
+@media (min-width: 768px) {
+	.intro-header {
+        font-size: 64px;
+    }
+}
+
+

@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'preact'
 
+import { CompanyLogo } from 'components/company-logo'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { PseudoLink } from 'components/ui/pseudo-link'
 import { TextContainer } from 'components/ui/text-container'
-import { CompanyLogo } from 'components/intro/company-logo'
 
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
@@ -22,6 +22,7 @@ export const MainIntro: FunctionComponent = () => (
 				Участвую <span class="nowrap">в <a href={EXTERNAL_LINKS.intersection} class="nowrap"><CompanyLogo name="intersection" /> Пересечениях</a></span>. <PseudoLink href={ANCHOR_LINKS.travel}>Путешествую</PseudoLink>, веду <PseudoLink href={ANCHOR_LINKS.blog}>тематические блоги</PseudoLink>. Создаю <a href={ROUTE_LINKS.serviceIndex}>полезные сервисы</a>.
 			</p>
 		</TextContainer>
+
 		<div className="animation">
 			<CompanyLogo name="R-top" />
 			<CompanyLogo name="ALS" />

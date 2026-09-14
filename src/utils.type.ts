@@ -1,3 +1,6 @@
+import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+
 /*******************************
 		ValueOf/KeyOf
 ********************************/
@@ -168,3 +171,27 @@ export type EmptyObject = {}
  * Использовать, например, для useApi, когда передаётся -1 (в этом случае, он возвращает `{}`)
  */
 export type EmptyObjectBy<T extends PropertyKey> = Record<T, never>
+
+
+/**********************
+	Пока не понятно, куда это положить
+***********************/
+
+export type InterLinkType = {
+	title: string,
+	href: ValueOf<typeof ROUTE_LINKS>
+}
+
+export type IntroImageMappingType = Record<string, string>
+
+// TODO: rename IntroLinkDataType
+export type ToolDataType = {
+	isAdmin?: boolean,
+	isArchive?: boolean
+	isInactive?: boolean
+	// TODO: rename title
+	name: string
+	href: ValueOf<typeof EXTERNAL_LINKS> | ValueOf<typeof ROUTE_LINKS>
+	description: string
+	// imgId: 'screen' | 'rak' | 'tech' | 'obuchenie' | 'intersection'
+} & ({ imgId: string } | { imgId?: undefined })

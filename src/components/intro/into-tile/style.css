@@ -1,0 +1,29 @@
+.intro-tile__item {
+	display: flex;
+	gap: var(--grid-gap);
+	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
+	border: none;
+	color: #000;
+	padding: var(--grid-gap);
+	border-radius: 8px;
+}
+
+.intro-tile__anons {
+	display: flex;
+	flex-direction: column;
+	gap: var(--grid-gap);
+}
+
+.intro-tile__title {
+	font-weight: 500;
+	line-height: 1;
+	border-bottom: 1px solid rgba(0, 0, 0, .35);
+}
+
+.intro-tile__item:hover .intro-tile__title {
+	border-color: #000;
+}
+
+.intro-tile__description {
+    line-height: 1.3;
+}

@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
-import { LibraryHeader } from 'components/library/library-header'
-import { LibraryAdmin } from 'components/library/library-admin'
+import { LibraryHeader } from 'components/data/library/library-header'
+import { LibraryAdmin } from 'components/data/library/library-admin'
 
 export const LibAdminPage: FunctionComponent = () => {
 	usePageTitle('Библиотека')

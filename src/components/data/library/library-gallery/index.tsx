@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { LibraryBookType } from 'components/library/types'
+import { LibraryBookType } from 'components/data/library/types'
 
-import { LibraryBookElement } from 'components/library/library-book-element'
+import { LibraryBookElement } from 'components/data/library/library-book-element'
 
 import './style.css'
 

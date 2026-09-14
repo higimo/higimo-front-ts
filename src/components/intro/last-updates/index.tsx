@@ -1,17 +1,16 @@
-import { UpdateNewsType } from 'api-types/last-update.types'
 import { FunctionComponent } from 'preact'
 import { KeyOf, ValueOf } from 'utils.type'
+import { UpdateNewsType } from 'api-types/last-update.types'
 
-import useApi from 'hook/fetch/use-api'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
+import useApi from 'hook/fetch/use-api'
 
+import { IntroHeader } from 'components/intro/intro-header'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
-import { TileElement } from 'components/ui/tile-element'
+import { TextContainer } from 'components/ui/text-container'
 import { TilesGallery } from 'components/ui/tiles-gallery'
-
-import { getDate } from 'utils/formatter/get-date'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -22,6 +21,8 @@ import tech from './img/tech.png'
 import tg from './img/tg.svg'
 
 import './style.css'
+import { PrecentationContainer } from 'components/ui/precentation-container'
+import { TileElement } from 'components/ui/tile-element'
 
 const imgMapping = {
 	'Техники → навыки → счастье': [tg, tech],
@@ -61,6 +62,7 @@ const TileElementCon: FunctionComponent<TileElementConPropsType> = props => (
 	/>
 )
 
+// TODO: кжтс, не используется, это надо исправить
 export const LastUpdates: FunctionComponent = () => {
 	const [ newsList ] = useApi<UpdateNewsType[]>(API_ROUTE.updateNews, { limit: 12 })
 	const isLoading = useLoadingState([newsList.status])
@@ -69,16 +71,24 @@ export const LastUpdates: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
 
 	return (
-		<TilesGallery
-			className="last-updates"
-			title="Недавно опубликовал"
-			left={newsList.data.map(item => <TileElementCon key={item.id} {...item} />)}
-		/>
+		<PrecentationContainer className="last-updates__container">
+			<TextContainer>
+				<IntroHeader>Недавно опубликовал</IntroHeader>
+			</TextContainer>
+
+			{/* TODO: пока не могу заменить, нужно переверстать заново */}
+			<TilesGallery
+				className="last-updates"
+				title="Недавно опубликовал"
+				left={newsList.data.map(item => (
+					<TileElementCon key={item.id} {...item} />
+				))}
+			/>
+		</PrecentationContainer>
 	)
 }

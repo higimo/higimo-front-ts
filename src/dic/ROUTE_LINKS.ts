@@ -82,6 +82,8 @@ const ROUTE_PETPROJECT_LINKS = Object.freeze({
 })
 
 const ROUTE_TOOL_LINKS = Object.freeze({
+	// TODO: перенести в /service/
+	// TODO: после переноса поставить редирект
 	toolIndex:   '/tool/',
 	toolComoji:  '/tool/comoji/',
 	toolEmailer: '/tool/emailer/',

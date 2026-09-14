@@ -3,7 +3,14 @@
 	font-size: 18px;
 }
 
-.tools-intro__item {
-	margin-left: -4px;
-	margin-right: -4px;
+.tools-intro .intro-tile__item {
+	background: radial-gradient(ellipse 50% 100% at -10% 50%, rgba(0, 144, 255, .2), transparent);
+	background-position-x: -200px;
+    background-repeat: no-repeat;
+	border: 1px solid transparent;
+	transition: all 100ms ease-in, background-position 250ms ease-in;
+}
+.tools-intro .intro-tile__item:hover {
+	background-position-x: 0;
+	border-color: #ffffffb8;
 }

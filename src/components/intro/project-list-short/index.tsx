@@ -5,6 +5,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import useApi from 'hook/fetch/use-api'
 
+import { IntroHeader } from 'components/intro/intro-header'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { ProjectList } from 'components/project/project-list'
@@ -15,6 +16,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
+import { PROJECT_SHORT_TAGS } from './PROJECT_SHORT_TAGS'
 
 import './style.css'
 
@@ -41,19 +43,18 @@ export const ProjectListShort: FunctionComponent = () => {
 	return (
 		<div className="project-list project-list--short" id={ANCHOR_LINKS.done}>
 			<TextContainer>
-				<h2 className="project-list__header">Сделал</h2>
+				<IntroHeader>Сделал</IntroHeader>
 			</TextContainer>
+
 			<TextContainer className="project-list__filter">
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>грандиозный</ProjectTag>
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>SuperJob</ProjectTag>
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Рамблер</ProjectTag>
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Студия Лебедева</ProjectTag>
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Эртоп</ProjectTag>
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>Пересечения</ProjectTag>
-				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>хомяк</ProjectTag>
+				{PROJECT_SHORT_TAGS.map(tagName => (
+					<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>{tagName}</ProjectTag>
+				))}
 			</TextContainer>
+
 			<ProjectList projectsList={projectsList} />
-			{'meta' in highlightProjects && 'totalCount' in highlightProjects?.meta ? (
+			{/* @ts-ignore */}
+			{'meta' in highlightProjects && 'totalCount' in highlightProjects.meta ? (
 				<ProjectMore count={highlightProjects.meta.totalCount as number} />
 			) : null}
 		</div>

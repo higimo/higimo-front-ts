@@ -23,7 +23,6 @@ export const LogismSingle: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-
 	if (isListEmpty) {
 		return <NotFoundData />
 	}
@@ -43,7 +42,7 @@ export const LogismSingle: FunctionComponent = () => {
 				>
 					↺
 				</span>
-				<a href={ROUTE_LINKS.logism} className="single-logism__link">Другие логизмы →</a>
+				<a href={ROUTE_LINKS.logism} className="single-logism__link">Другие логизмы →</a>
 			</TextContainer>
 		</PrecentationContainer>
 	)

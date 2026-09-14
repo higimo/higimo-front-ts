@@ -1,49 +1,43 @@
+import { ToolDataType } from 'utils.type'
+
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-export type KnowlageType = {
-	isArchive?: boolean
-	link: string
-	imgId: 'screen' | 'rak' | 'tech' | 'obuchenie' | 'intersection'
-	name: string
-	description: string
-}
-
-export const shareKnowledgeData: KnowlageType[] = [
+export const shareKnowledgeData: ToolDataType[] = [
 	{
 		imgId: "intersection",
 		name: "Пересечения",
 		description: "Творческое объединение крутанов. Коллабимся и делаем.",
-		link: EXTERNAL_LINKS.intersection,
+		href: EXTERNAL_LINKS.intersection,
 	},
 	{
 		imgId: "rak",
 		name: "Раковарня 2.0",
 		description: "Коллаб канал про пользу, мотивацию, дизайн, кодинг и музыку.",
-		link: EXTERNAL_LINKS.canalRak,
+		href: EXTERNAL_LINKS.canalRak,
 	},
 	{
 		imgId: "tech",
 		name: "Техники → навыки → счастье",
 		description: "Дважды в неделю публикуем техники эффективной и счастливой жизни.",
-		link: EXTERNAL_LINKS.canalEfficient,
+		href: EXTERNAL_LINKS.canalEfficient,
 	},
 	{
 		imgId: "tech",
 		name: "Сайт техник",
 		description: "Сайт с техниками. Каталогизированный и простой навигатор",
-		link: EXTERNAL_LINKS.techIntersection,
+		href: EXTERNAL_LINKS.techIntersection,
 	},
 	{
 		imgId: "screen",
 		name: "Скриншотил",
 		description: "Единицы смысла на основе скриншотов",
-		link: EXTERNAL_LINKS.canalScreen,
+		href: EXTERNAL_LINKS.canalScreen,
 	},
 	{
 		imgId: "obuchenie",
 		name: "Обучение",
 		description: "В 2017 году, я написал курс переподготовки по программированию и рассказал его в ННГУ.",
-		link: ROUTE_LINKS.learningIndex,
+		href: ROUTE_LINKS.learningIndex,
 	},
 ] as const
