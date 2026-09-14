@@ -29,6 +29,7 @@ export const EXTERNAL_LINKS = {
 	botDoll: 'https://t.me/taskDollBot',
 	wishlist: 'https://www.pinterest.at/higim0/список-желаний/',
 	vatrikovskySchool: '#TODO',
+	sweebe: 'https://sweebe.ru/',
 
 	vatrikovsky: 'https://vatrikovsky.ru/',
 

@@ -7,15 +7,14 @@ export const funnyList: ToolDataType[] = [
 	{
 		name: '🕑 Калькулятор времени',
 		href: EXTERNAL_LINKS.serviceTimer,
-		description: 'Когда нужно подсчитать сколько времени ушло в дне'
+		description: 'Когда нужно подсчитать сколько времени ушло в дне'
 	},
 	{
 		name: 'Комоджи (⌐■_■)',
 		href: ROUTE_LINKS.toolComoji,
-		description: 'Смайлики на случай важных переговоров'
+		description: 'Смайлики на случай важных переговоров'
 	},
 	{
-		imgId: undefined,
 		name: 'Волшебный шар',
 		href: ROUTE_LINKS.toolMagic,
 		description: 'Когда особенно хочется погадать'
@@ -23,7 +22,7 @@ export const funnyList: ToolDataType[] = [
 	{
 		name: 'Календарь деплоя',
 		href: EXTERNAL_LINKS.serviceDeploy,
-		description: 'Астрологи предсказали, когда лучше попридержать публикацию, и не гневать богов'
+		description: 'Астрологи предсказали, когда лучше попридержать публикацию, и не гневать богов'
 	},
 	{
 		name: "Настольные игры",
