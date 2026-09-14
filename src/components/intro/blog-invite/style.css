@@ -9,3 +9,8 @@
 	padding: 24px;
 	gap: 16px;
 }
+
+.blog-invite .grid-tile--archive {
+	opacity: .5;
+	background: #ffffffef;
+}
