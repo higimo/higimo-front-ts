@@ -8,22 +8,22 @@ import vk from './img/vk.svg'
 export const contactListData = [
 	{
 		img: gmail,
-		link: EXTERNAL_LINKS.contactMail,
 		name: 'Электропочта',
+		link: EXTERNAL_LINKS.contactMail,
 	},
 	{
 		img: tg,
-		link: EXTERNAL_LINKS.contactTg,
 		name: 'Телеграм',
+		link: EXTERNAL_LINKS.contactTg,
 	},
 	{
 		img: vk,
-		link: EXTERNAL_LINKS.socialVk,
 		name: 'ВКонтакте',
+		link: EXTERNAL_LINKS.socialVk,
 	},
 	{
 		img: github,
-		link: EXTERNAL_LINKS.github,
 		name: 'Гитхаб',
+		link: EXTERNAL_LINKS.github,
 	},
 ] as const

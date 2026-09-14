@@ -49,6 +49,7 @@ export const EXTERNAL_LINKS = {
 	aboutKinopoisk: 'https://www.kinopoisk.ru/user/509833/votes/',
 	aboutAnime: 'https://listanime.ru/userpage?userid=357&s=1&view=seen',
 	aboutLivelib: 'https://www.livelib.ru/reader/higimo',
+	aboutMusic: 'https://music.yandex.ru/playlists/lk.766ce6c9-b44f-4fd9-973d-5abde4646465',
 } as const
 
 export type ExternalLinksType = KeyOf<typeof EXTERNAL_LINKS>

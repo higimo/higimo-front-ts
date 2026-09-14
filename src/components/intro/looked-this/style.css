@@ -26,7 +26,7 @@
 	font-weight: 500;
 	font-variant: small-caps;
 	max-width: 4em;
-	font-size: 12vh;
+	font-size: 11vh;
 	line-height: 0.9;
 	letter-spacing: .09em;
 	margin: 0;
@@ -52,31 +52,19 @@
 	line-height: 1;
 	list-style: none;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-content: flex-start;
 	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: flex-start;
 	padding: 0;
 	text-align: center;
+	gap: 16px;
 }
 
 @media (min-width: 768px) {
 	.looked-this__lists {
-		margin: 0;
-		font-size: 48px;
-		flex-direction: column;
-	}
-}
-
-.looked-this__item {
-	width: auto;
-	margin: 0 16px 16px 0;
-}
-
-@media (min-width: 768px) {
-	.looked-this__item {
-		width: 100%;
-		margin: 23px 24px 3px 0;
+		font-size: 32px;
+		gap: 32px;
 	}
 }
