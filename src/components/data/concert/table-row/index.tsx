@@ -1,3 +1,5 @@
+import { UnixTime } from 'utils.type'
+
 import { formatTime } from 'utils/formatter/format-time'
 
 interface TableRowProps {
@@ -14,7 +16,7 @@ export const TableRow: React.FC<TableRowProps> = ({ time, name, visit, day }) =>
 	return (
 		<tr>
 			<td className="date">{day}</td>
-			<td className="time">{formatTime(time)}</td>
+			<td className="time">{formatTime(time as UnixTime)}</td>
 			<td className="artist-name">
 				{visit ? <span className="visited">★</span> : ''}
 				{name}

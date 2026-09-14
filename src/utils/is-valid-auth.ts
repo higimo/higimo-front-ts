@@ -1,10 +1,4 @@
-type AuthDataType = {
-	access_token?: string
-	token_type?: string
-	user?: {
-		id: number
-	}
-}
+import { AuthDataType } from 'api-types/auth.types'
 
 export const isValidAuth = (authData: AuthDataType): boolean => {
 	return !!authData.access_token?.length &&

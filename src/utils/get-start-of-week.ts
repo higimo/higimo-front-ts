@@ -1,4 +1,3 @@
-
 export function getStartOfWeek(date: Date) {
 	const d = new Date(date);
 	const day = d.getDay();
