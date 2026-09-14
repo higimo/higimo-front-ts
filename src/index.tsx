@@ -22,18 +22,18 @@ const PortfolioSandbox  = lazy(() => import('pages/project/portfolio-sandbox'))
 const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
 const ProjectTypographyPage = lazy(() => import('pages/project/project-typography'))
 
-import { ComojiPage }          from 'pages/test-page/tools/comoji-page'
-import { DemagogPage }         from 'pages/test-page/tools/demagog-page'
-import { EmailerPage }         from 'pages/test-page/tools/emailer-page'
-import { FaqListPage }         from 'pages/test-page/tools/faq/faq-list-page'
-import { FaqSinglePage }       from 'pages/test-page/tools/faq/faq-single-page'
-import { MagicBallPage }       from 'pages/test-page/tools/magic-ball-page'
-import { ObuchenieListPage }   from 'pages/test-page/tools/obuchenie/obuchenie-list-page'
-import { ObuchenieSinglePage } from 'pages/test-page/tools/obuchenie/obuchenie-single-page'
-import { PronPage }            from 'pages/test-page/tools/pron-page'
+import { ComojiPage }          from 'pages/tools/comoji-page'
+import { DemagogPage }         from 'pages/tools/demagog-page'
+import { EmailerPage }         from 'pages/tools/emailer-page'
+import { FaqListPage }         from 'pages/tools/faq/faq-list-page'
+import { FaqSinglePage }       from 'pages/tools/faq/faq-single-page'
+import { MagicBallPage }       from 'pages/tools/magic-ball-page'
+import { ObuchenieListPage }   from 'pages/tools/obuchenie/obuchenie-list-page'
+import { ObuchenieSinglePage } from 'pages/tools/obuchenie/obuchenie-single-page'
+import { PronPage }            from 'pages/tools/pron-page'
 
-import { LibAdminPage } from 'pages/test-page/tools/lib/lib-admin-page'
-import { LibIndexPage } from 'pages/test-page/tools/lib/lib-index-page'
+import { LibAdminPage } from 'pages/tools/lib/lib-admin-page'
+import { LibIndexPage } from 'pages/tools/lib/lib-index-page'
 
 import { CinemaIndexPage }    from 'pages/info/cinema-index-page'
 import { CinemaScriptPage }   from 'pages/info/cinema-script-page'
@@ -47,8 +47,8 @@ import { ThingsNotebookPage } from 'pages/info/things/things-notebook-page'
 import { ThingsVeloPage }     from 'pages/info/things/things-velo-page'
 import { YoutubePage }        from 'pages/info/youtube-page'
 
-import { PetProjectFormPage } from 'pages/test-page/tools/pet-project/pet-project-form-page'
-import { PetProjectPage }     from 'pages/test-page/tools/pet-project/pet-project-page'
+import { PetProjectFormPage } from 'pages/tools/pet-project/pet-project-form-page'
+import { PetProjectPage }     from 'pages/tools/pet-project/pet-project-page'
 
 import { ListListFormPage }  from 'pages/tool/list-list-form-page'
 import { ListListIndexPage } from 'pages/tool/list-list-index-page'

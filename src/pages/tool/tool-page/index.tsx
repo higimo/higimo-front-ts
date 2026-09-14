@@ -13,6 +13,7 @@ import { parseJsonWithFallback } from 'components/admin-tool/utils/parseJsonWith
 
 import './style.css'
 
+// TODO: перенести в папку pages/admin
 export const ToolPage: FunctionComponent = () => {
 	const { formData, response, updateField, setResponse } = useToolForm()
 	const { sendRequest } = useApiRequest()
