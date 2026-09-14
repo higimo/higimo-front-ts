@@ -11,12 +11,12 @@ export const funnyList: ToolDataType[] = [
 	},
 	{
 		name: 'Комоджи (⌐■_■)',
-		href: ROUTE_LINKS.toolComoji,
+		href: ROUTE_LINKS.comoji,
 		description: 'Смайлики на случай важных переговоров'
 	},
 	{
 		name: 'Волшебный шар',
-		href: ROUTE_LINKS.toolMagic,
+		href: ROUTE_LINKS.magic,
 		description: 'Когда особенно хочется погадать'
 	},
 	{

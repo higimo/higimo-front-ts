@@ -8,7 +8,7 @@ export const TOOL_LINKS: ToolDataType[] = [
 	{
 		isAdmin: true,
 		name: '✉ Эмайлер',
-		href: ROUTE_LINKS.toolEmailer,
+		href: ROUTE_LINKS.emailer,
 		description: 'Пошлёт на почту страницу интернета, чтобы прочитать в статью в удобном месте, даже без интернета',
 	},
 	{
@@ -137,12 +137,12 @@ export const TOOL_LINKS: ToolDataType[] = [
 	},
 	{
 		name: 'Комоджи (⌐■_■)',
-		href: ROUTE_LINKS.toolComoji,
+		href: ROUTE_LINKS.comoji,
 		description: 'Смайлики на случай важных переговоров'
 	},
 	{
 		name: 'Волшебный шар',
-		href: ROUTE_LINKS.toolMagic,
+		href: ROUTE_LINKS.magic,
 		description: 'Когда особенно хочется погадать'
 	},
 	{

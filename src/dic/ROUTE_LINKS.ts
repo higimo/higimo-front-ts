@@ -85,9 +85,9 @@ const ROUTE_TOOL_LINKS = Object.freeze({
 	// TODO: перенести в /service/
 	// TODO: после переноса поставить редирект
 	serviceIndex: '/service/',
-	toolComoji:  '/service/comoji/',
-	toolEmailer: '/service/emailer/',
-	toolMagic:   '/service/magic/',
+	comoji:  '/service/comoji/',
+	emailer: '/service/emailer/',
+	magic:   '/service/magic/',
 
 	...ROUTE_VK_LINKS,
 	...ROUTE_PETPROJECT_LINKS,

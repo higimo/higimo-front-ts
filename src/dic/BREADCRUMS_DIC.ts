@@ -68,9 +68,9 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.petProject]:       'Пробби',
 	[ROUTE_LINKS.petProjectCreate]: 'Создать проект',
 
-	[ROUTE_LINKS.toolComoji]:  'Комоджи (⌐■_■)',
-	[ROUTE_LINKS.toolEmailer]: 'Эмайлер',
-	[ROUTE_LINKS.toolMagic]:   'Магический шар',
+	[ROUTE_LINKS.comoji]:  'Комоджи (⌐■_■)',
+	[ROUTE_LINKS.emailer]: 'Эмайлер',
+	[ROUTE_LINKS.magic]:   'Магический шар',
 
 	[ROUTE_LINKS.cinemaIndex]:       'Кинолог',
 	[ROUTE_LINKS.cinemaScriptIndex]: 'Фрагменты сценариев',

@@ -189,9 +189,9 @@ export function App() {
 								{/* Сервисы о себе */}
 								<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
-								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
-								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
-								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />
+								<Route path={ROUTE_LINKS.emailer} component={EmailerPage} />
+								<Route path={ROUTE_LINKS.comoji} component={ComojiPage} />
+								<Route path={ROUTE_LINKS.magic} component={MagicBallPage} />
 								<Route path={ROUTE_LINKS.petProject} component={PetProjectPage} />
 								<PrivateRoute path={ROUTE_LINKS.petProjectCreate} component={PetProjectFormPage} />
 								<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
