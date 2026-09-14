@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/preact'; // <-- Импорт для Preact
+import { render, screen } from '@testing-library/preact';
 import { PovType } from '../types';
 import { useWindowSize } from 'hook/browser/use-window-size'
 import { Coord } from 'utils.type'
@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { TourismMapGeo } from './index'
 
 // Мокаем зависимости
-vi.mock('hook/use-window-size', () => ({
+vi.mock('hook/browser/use-window-size', () => ({
 	useWindowSize: vi.fn(() => ({ width: 1920, height: 1080 }))
 }))
 

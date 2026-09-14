@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PrivateRoute } from '.';
 
 // Мокаем зависимости
-vi.mock('hook/use-auth', () => ({
+vi.mock('hook/fetch/use-auth', () => ({
 	useAuth: vi.fn()
 }));
 
