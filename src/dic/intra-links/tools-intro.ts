@@ -22,6 +22,17 @@ export const hardToolList: ToolDataType[] = [
 		description: 'Менеджмент своих коннектов с людьми'
 	},
 	{
+		name: 'Свиби',
+		href: EXTERNAL_LINKS.sweebe,
+		description: 'Менеджмент своих коннектов с людьми'
+	},
+	{
+		name: 'Пинарик',
+		isAdmin: true,
+		href: ROUTE_LINKS.nokiaPinarik,
+		description: 'Отслеживание своего довольства работая в календаре-хитмапе'
+	},
+	{
 		name: 'Путешествия',
 		isAdmin: true,
 		href: ROUTE_LINKS.tourismIndex,
@@ -31,6 +42,18 @@ export const hardToolList: ToolDataType[] = [
 		name: '🖼 Фотографии во ВКонтакте',
 		href: ROUTE_LINKS.toolVkIndex,
 		description: 'Для удобной подписи и сортировки фотографий, используя всё пространство монитора, вместо узкой колонки оригинала'
+	},
+	{
+		isAdmin: true,
+		name: '✉ Эмайлер',
+		href: ROUTE_LINKS.emailer,
+		description: 'Пошлёт на почту страницу интернета, чтобы прочитать в статью в удобном месте, даже без интернета',
+	},
+	{
+		isAdmin: true,
+		name: 'RSS-читалка на почту',
+		href: ROUTE_LINKS.TODO,
+		description: 'Подписываешься здесь — получаешь на почту',
 	},
 ] as const
 
@@ -46,12 +69,6 @@ export const unfinishedToolList: ToolDataType[] = [
 		isAdmin: true,
 		href: ROUTE_LINKS.demagog,
 		description: 'Справочник по демагогическим приёмам'
-	},
-	{
-		name: 'Пинарик',
-		isAdmin: true,
-		href: ROUTE_LINKS.nokiaPinarik,
-		description: 'Отслеживание своего довольства работая в календаре-хитмапе'
 	},
 ] as const
 
