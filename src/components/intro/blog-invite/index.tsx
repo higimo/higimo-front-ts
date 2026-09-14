@@ -1,18 +1,18 @@
 import { FunctionComponent } from 'preact'
 
-import { GridTail } from './grid-tail'
+import { GridTail } from '../grid-tail'
 // TODO: конкурент CategoryTitle
 import { IntroHeader } from 'components/intro/intro-header'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-// TODO: [LAST] мб, такие датасеты унести в отдельную папку?
-import { blogInviteData } from 'components/intro/blog-invite/data'
+import { blogInviteData } from 'dic/intra-links/blog-invite'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'
 
 export const BlogInvite: FunctionComponent = () => (
-	<div className="blog-invite" id={ANCHOR_LINKS.blog}>
+	<PrecentationContainer className="blog-invite" id={ANCHOR_LINKS.blog}>
 		<TextContainer>
 			<IntroHeader>Пишу в блоги</IntroHeader>
 		</TextContainer>
@@ -27,5 +27,5 @@ export const BlogInvite: FunctionComponent = () => (
 				/>
 			))}
 		</div>
-	</div>
+	</PrecentationContainer>
 )

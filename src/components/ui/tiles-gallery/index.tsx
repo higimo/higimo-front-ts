@@ -2,9 +2,9 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
+import { CategoryTitle } from 'components/intro/category-title'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
-import { CategoryTitle } from 'components/intro/blog-invite/category-title'
 
 import './style.css'
 

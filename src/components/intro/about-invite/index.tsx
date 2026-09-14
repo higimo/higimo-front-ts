@@ -5,7 +5,7 @@ import { IntroTileGallery } from 'components/intro/intro-tile-gallery'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-import { aboutInviteList } from 'components/intro/about-invite/data'
+import { aboutInviteList } from 'dic/intra-links/about-invite'
 
 import './style.css'
 

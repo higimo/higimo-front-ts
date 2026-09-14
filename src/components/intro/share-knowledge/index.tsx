@@ -11,7 +11,7 @@ import rak          from './img/rak.png'
 import screen       from './img/screen.png'
 import tech         from './img/tech.png'
 
-import { shareKnowledgeData } from 'components/intro/share-knowledge/data'
+import { shareKnowledgeData } from 'dic/intra-links/share-knowledge'
 
 import './style.css'
 

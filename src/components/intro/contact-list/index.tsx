@@ -4,7 +4,7 @@ import { IntroHeader } from 'components/intro/intro-header'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-import { contactListData } from 'components/intro/contact-list/data'
+import { contactListData } from 'dic/intra-links/contact-list'
 
 import './style.css'
 

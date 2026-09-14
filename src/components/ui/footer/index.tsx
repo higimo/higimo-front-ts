@@ -3,12 +3,12 @@ import { FunctionComponent } from 'preact'
 import { useAuth } from 'hook/fetch/use-auth'
 import { useGlobalContext } from 'context/global'
 
-import { contactListData } from 'components/intro/contact-list/data'
-import { blogInviteData } from 'components/intro/blog-invite/data'
-import { shareKnowledgeData } from 'components/intro/share-knowledge/data'
-import { aboutInviteList } from 'components/intro/about-invite/data'
-import { toolListData } from 'components/intro/tools-intro/data'
-import { funnyList } from 'components/intro/funny-invite/data'
+import { contactListData } from 'dic/intra-links/contact-list'
+import { blogInviteData } from 'dic/intra-links/blog-invite'
+import { shareKnowledgeData } from 'dic/intra-links/share-knowledge'
+import { aboutInviteList } from 'dic/intra-links/about-invite'
+import { toolListData } from 'dic/intra-links/tools-intro'
+import { funnyList } from 'dic/intra-links/funny-invite'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
