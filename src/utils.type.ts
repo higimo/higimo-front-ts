@@ -194,4 +194,6 @@ export type ToolDataType = {
 	href: ValueOf<typeof EXTERNAL_LINKS> | ValueOf<typeof ROUTE_LINKS>
 	description: string
 	// imgId: 'screen' | 'rak' | 'tech' | 'obuchenie' | 'intersection'
-} & ({ imgId: string } | { imgId?: undefined })
+}
+	& ({ imgId: string } | { imgId?: undefined })
+	& ({ img: string } | { img?: undefined })

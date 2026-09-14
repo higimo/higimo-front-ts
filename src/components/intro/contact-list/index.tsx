@@ -17,7 +17,7 @@ export const ContactList: FunctionComponent = () => (
 		<TextContainer>
 			<div className="contact-list__gallery">
 				{contactListData.map(item => (
-					<a className="contact-list__link" href={item.link}>
+					<a className="contact-list__link" href={item.href as string}>
 						<img className="contact-list__img" src={item.img} />
 					</a>
 				))}

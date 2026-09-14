@@ -34,4 +34,9 @@ export const aboutMeList: ToolDataType[] = [
 		href: EXTERNAL_LINKS.aboutMusic,
 		description: '',
 	},
+	{
+		name: 'Википедия',
+		href: EXTERNAL_LINKS.aboutWiki,
+		description: '',
+	},
 ] as const

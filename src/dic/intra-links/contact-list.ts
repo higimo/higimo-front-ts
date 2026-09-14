@@ -1,3 +1,5 @@
+import { ToolDataType } from 'utils.type'
+
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
 import github from 'components/intro/contact-list/img/github.svg'
@@ -5,25 +7,29 @@ import gmail from 'components/intro/contact-list/img/gmail.svg'
 import tg from 'components/intro/contact-list/img/telegram.svg'
 import vk from 'components/intro/contact-list/img/vk.svg'
 
-export const contactListData = [
+export const contactListData: ToolDataType[] = [
 	{
 		img: gmail,
 		name: 'Электропочта',
-		link: EXTERNAL_LINKS.contactMail,
+		href: EXTERNAL_LINKS.contactMail,
+		description: '',
 	},
 	{
 		img: tg,
 		name: 'Телеграм',
-		link: EXTERNAL_LINKS.contactTg,
+		href: EXTERNAL_LINKS.contactTg,
+		description: '',
 	},
 	{
 		img: vk,
 		name: 'ВКонтакте',
-		link: EXTERNAL_LINKS.socialVk,
+		href: EXTERNAL_LINKS.socialVk,
+		description: '',
 	},
 	{
 		img: github,
 		name: 'Гитхаб',
-		link: EXTERNAL_LINKS.github,
+		href: EXTERNAL_LINKS.github,
+		description: '',
 	},
 ] as const
