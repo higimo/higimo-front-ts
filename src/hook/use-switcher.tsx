@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'preact/hooks';
 
 /**
+ * Переключение состояния, можно использовать словарь
+ *
  * @example
  * ```tsx
  * const [isChooseVisualizator, setVizualizator] = useSwitcher<ValueOf<typeof VISUALIZATOR_MAP>>(VISUALIZATOR_MAP.CARD)

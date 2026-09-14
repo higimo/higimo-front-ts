@@ -8,7 +8,7 @@ vi.mock('utils/api/send-request', () => ({
 	default: vi.fn()
 }))
 
-const api = (obj) => ({ data: obj })
+const api = (obj: Object) => ({ data: obj })
 
 describe('useApi', () => {
 	beforeEach(() => {

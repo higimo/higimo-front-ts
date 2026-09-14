@@ -53,9 +53,9 @@ export const useTags: UseTagsType = <T,>(initialValue: T[]): [T[], (newTagsList:
 		}
 		// Если один элемент: убираем, если есть в массиве, добавляем, если отсутствует
 		const year = newTagsList[0]
-		let newTagsSet = selectedTags.includes(year)
+		let newTagsSet = selectedTags.includes(year!)
 			? selectedTags.filter(y => y !== year)
-			: selectedTags.concat([year])
+			: selectedTags.concat([year!])
 			setSelectedTags(newTagsSet)
 	}, [setSelectedTags, selectedTags])
 
