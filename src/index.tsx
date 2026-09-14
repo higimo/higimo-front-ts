@@ -35,7 +35,6 @@ import { PronPage }            from 'pages/test-page/tools/pron-page'
 import { LibAdminPage } from 'pages/test-page/tools/lib/lib-admin-page'
 import { LibIndexPage } from 'pages/test-page/tools/lib/lib-index-page'
 
-import { ToolIndexPage }      from 'pages/test-page/tools/tool-page'
 import { CinemaIndexPage }    from 'pages/info/cinema-index-page'
 import { CinemaScriptPage }   from 'pages/info/cinema-script-page'
 import { CinemaSinglePage }   from 'pages/info/cinema-single-page'
@@ -190,7 +189,6 @@ export function App() {
 								{/* Сервисы о себе */}
 								<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
 								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
-								<Route path={ROUTE_LINKS.toolIndex} component={ToolIndexPage} />
 								<Route path={ROUTE_LINKS.toolEmailer} component={EmailerPage} />
 								<Route path={ROUTE_LINKS.toolComoji} component={ComojiPage} />
 								<Route path={ROUTE_LINKS.toolMagic} component={MagicBallPage} />

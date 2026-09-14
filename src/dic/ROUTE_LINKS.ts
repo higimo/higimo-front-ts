@@ -84,10 +84,10 @@ const ROUTE_PETPROJECT_LINKS = Object.freeze({
 const ROUTE_TOOL_LINKS = Object.freeze({
 	// TODO: перенести в /service/
 	// TODO: после переноса поставить редирект
-	toolIndex:   '/tool/',
-	toolComoji:  '/tool/comoji/',
-	toolEmailer: '/tool/emailer/',
-	toolMagic:   '/tool/magic/',
+	serviceIndex: '/service/',
+	toolComoji:  '/service/comoji/',
+	toolEmailer: '/service/emailer/',
+	toolMagic:   '/service/magic/',
 
 	...ROUTE_VK_LINKS,
 	...ROUTE_PETPROJECT_LINKS,
@@ -177,7 +177,6 @@ const ROUTE_MERCHANT_LINKS = Object.freeze({
 
 export const ROUTE_LINKS = {
 	index:        '/',
-	serviceIndex: '/service',
 
 	...ROUTE_PROJECT_LINKS,
 	...ROUTE_ACCORD_LINKS,

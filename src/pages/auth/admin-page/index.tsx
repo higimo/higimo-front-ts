@@ -68,8 +68,6 @@ export const AdminPage: FunctionComponent = () => {
 				<h3>Чё-то там</h3>
 				<br />
 				<a href={ROUTE_LINKS.igLink}>Инста-ссылки</a>
-				<br />
-				<a href={ROUTE_LINKS.toolIndex}>Тулы</a>
 			</TextContainer>
 		</div>
 	)
