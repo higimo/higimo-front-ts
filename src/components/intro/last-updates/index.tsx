@@ -9,8 +9,13 @@ import useApi from 'hook/fetch/use-api'
 import { IntroHeader } from 'components/intro/intro-header'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+import { TileElement } from 'components/ui/tile-element'
 import { TilesGallery } from 'components/ui/tiles-gallery'
+
+import { getDate } from 'utils/formatter/get-date'
+import { getText } from './getText'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -21,8 +26,6 @@ import tech from './img/tech.png'
 import tg from './img/tg.svg'
 
 import './style.css'
-import { PrecentationContainer } from 'components/ui/precentation-container'
-import { TileElement } from 'components/ui/tile-element'
 
 const imgMapping = {
 	'Техники → навыки → счастье': [tg, tech],
@@ -58,7 +61,7 @@ const TileElementCon: FunctionComponent<TileElementConPropsType> = props => (
 				<span className="post-element__date">{getDate(props.date)}</span>
 			</div>
 		)}
-		description={props.text.replace('</p>', '').split('<p>').filter(Boolean).slice(0, 1)[0]}
+		description={getText(props.text)}
 	/>
 )
 
