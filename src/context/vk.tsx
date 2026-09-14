@@ -1,4 +1,4 @@
-import { VkSessionType } from 'pages/vk/types'
+import { VkSessionType } from 'api-types/vk.types'
 
 import { useCallback, useState } from 'preact/hooks'
 import { useEffect } from 'preact/hooks'
