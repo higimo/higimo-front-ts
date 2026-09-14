@@ -5,7 +5,7 @@ import sendRequest from 'utils/api/send-request'
 
 import { MerchantProductType } from 'components/merchant/types'
 import { FormValues } from 'components/merchant/merchant-payment-form/types'
-import { loadJs } from 'utils/merchant/loadJs'
+import { loadJs } from 'utils/merchant/load-js'
 
 type GetInfoType = () => {
 	currentProduct: MerchantProductType

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { filterTagAnyStrategy } from './filterTagAnyStrategy'
+import { filterTagAnyStrategy } from './filter-tag-any-strategy'
 import { DataItemWithTags, SelectedTags } from './types'
 
 const tags = {
@@ -200,7 +200,7 @@ describe('[Стратегия фильтрации] filterTagAnyStrategy', () =>
 			const result = filterTagAnyStrategy(dataWithEmptyTags, selectedTags);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].id).toBe(2);
+			expect(result[0]?.id).toBe(2);
 		});
 
 		it('должен сохранять порядок элементов', () => {

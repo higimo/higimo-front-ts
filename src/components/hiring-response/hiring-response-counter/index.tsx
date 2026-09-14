@@ -3,9 +3,9 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
 
-import { getNowDay } from 'utils/getNowDay'
-import { getStartOfWeek } from 'utils/getStartOfWeek'
-import { getYesterday } from 'utils/getYesterday'
+import { getNowDay } from 'utils/get-now-day'
+import { getStartOfWeek } from 'utils/get-start-of-week'
+import { getYesterday } from 'utils/get-yesterday'
 
 type HiringResponseCounterPropsType = {
 	data: PasteApiType[]

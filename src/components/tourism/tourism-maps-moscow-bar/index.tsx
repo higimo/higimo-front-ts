@@ -14,7 +14,7 @@ import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'
 import useApi from 'hook/fetch/use-api'
 
-import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filterTagAnyStrategy'
+import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filter-tag-any-strategy'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

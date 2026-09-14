@@ -1,6 +1,6 @@
 import { ValueOf } from 'utils.type'
 
-import { generateLink } from 'utils/url-route/generateLink'
+import { generateLink } from 'utils/url-route/generate-link'
 
 export const API_ROUTE = {
 	login: '/api/v2/auth/login',

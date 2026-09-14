@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { filterTagOrGroupsStrategy } from './filterTagOrGroupsStrategy'
+import { filterTagOrGroupsStrategy } from './filter-tag-or-groups-strategy'
 import { DataItemWithTags, SelectedTags } from './types'
 
 const tags = {
@@ -79,7 +79,7 @@ describe('[Стратегия фильтрации] filterTagOrGroupsStrategy', 
 			const result = filterTagOrGroupsStrategy(dataWithEmpty, selectedTags);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].id).toBe(2);
+			expect(result[0]?.id).toBe(2);
 		});
 
 		it('возвращает пустой массив, если нет совпадений', () => {

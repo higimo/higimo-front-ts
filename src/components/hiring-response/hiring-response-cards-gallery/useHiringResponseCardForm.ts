@@ -4,7 +4,7 @@ import { useState, useCallback } from 'preact/hooks'
 
 import sendRequest from 'utils/api/send-request'
 import { smoothScroll } from 'utils/smooth-scroll'
-import { todayStr } from 'utils/todayStr'
+import { todayStr } from 'utils/today-str'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'

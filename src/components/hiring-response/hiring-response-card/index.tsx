@@ -3,7 +3,7 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { OnlyAdmin } from 'components/util/only-admin'
 
-import { formatDate } from 'utils/formatDate'
+import { formatDate } from 'utils/formatter/format-date'
 
 type HiringResponseCardPropsType = PasteApiType & {
 	onEdit: () => void

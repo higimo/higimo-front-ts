@@ -113,4 +113,5 @@ const sendRequest = <T = any>(
 	}
 })
 
+// TODO: пора удалить
 export default sendRequest
