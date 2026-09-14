@@ -66,19 +66,19 @@ const ROUTE_LIST_LIST_LINKS = Object.freeze({
 })
 
 const ROUTE_VK_LINKS = Object.freeze({
-	toolVkIndex:             '/tool/vk/',
-	toolVkDownloadAlbum:     '/tool/vk/download-album/',
-	toolVkAlbums:            '/tool/vk/albums/',
-	toolVkAlbumSingle_CONST: '/tool/vk/albums/:albumId/',
+	toolVkIndex:             '/service/vk/',
+	toolVkDownloadAlbum:     '/service/vk/download-album/',
+	toolVkAlbums:            '/service/vk/albums/',
+	toolVkAlbumSingle_CONST: '/service/vk/albums/:albumId/',
 
-	toolVkAlbumSingle: generateLink('/tool/vk/albums/:albumId/'),
+	toolVkAlbumSingle: generateLink('/service/vk/albums/:albumId/'),
 })
 
 const ROUTE_PETPROJECT_LINKS = Object.freeze({
-	petProject:           '/tool/pet-project/',
-	petProjectCreate:     '/tool/pet-project/create/',
-	petProjectEdit_CONST: '/tool/pet-project/:projectId/edit/',
-	petProjectEdit:       generateLink('/tool/pet-project/:projectId/edit/'),
+	petProject:           '/service/pet-project/',
+	petProjectCreate:     '/service/pet-project/create/',
+	petProjectEdit_CONST: '/service/pet-project/:projectId/edit/',
+	petProjectEdit:       generateLink('/service/pet-project/:projectId/edit/'),
 })
 
 const ROUTE_TOOL_LINKS = Object.freeze({

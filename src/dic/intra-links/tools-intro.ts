@@ -6,6 +6,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 // TODO: вынести в src/data и объединить с другими
 export const hardToolList: ToolDataType[] = [
 	{
+		isAdmin: true,
 		name: 'Пробби',
 		href: ROUTE_LINKS.petProject,
 		description: 'Список проектов, которыми я занят'
@@ -16,8 +17,8 @@ export const hardToolList: ToolDataType[] = [
 		description: 'Когда мания каталогизации становится слишком сильной, можно составлять списки из всего, что попадётся под руку'
 	},
 	{
-		name: 'Нокиа',
 		isAdmin: true,
+		name: 'Нокиа',
 		href: ROUTE_LINKS.nokiaIndex,
 		description: 'Менеджмент своих коннектов с людьми'
 	},
@@ -27,14 +28,14 @@ export const hardToolList: ToolDataType[] = [
 		description: 'Менеджмент своих коннектов с людьми'
 	},
 	{
-		name: 'Пинарик',
 		isAdmin: true,
+		name: 'Пинарик',
 		href: ROUTE_LINKS.nokiaPinarik,
 		description: 'Отслеживание своего довольства работая в календаре-хитмапе'
 	},
 	{
-		name: 'Путешествия',
 		isAdmin: true,
+		name: 'Путешествия',
 		href: ROUTE_LINKS.tourismIndex,
 		description: 'Собираю инфу про свои путешествия, где был, какие города понравились, куда ходить'
 	},
@@ -59,14 +60,14 @@ export const hardToolList: ToolDataType[] = [
 
 export const unfinishedToolList: ToolDataType[] = [
 	{
-		name: 'Прон',
 		isAdmin: true,
+		name: 'Прон',
 		href: ROUTE_LINKS.pron,
 		description: 'Ну ты понел'
 	},
 	{
-		name: 'Демагог',
 		isAdmin: true,
+		name: 'Демагог',
 		href: ROUTE_LINKS.demagog,
 		description: 'Справочник по демагогическим приёмам'
 	},
