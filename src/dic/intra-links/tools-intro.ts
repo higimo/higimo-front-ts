@@ -11,19 +11,9 @@ export const hardToolList: ToolDataType[] = [
 		description: 'Список проектов, которыми я занят'
 	},
 	{
-		name: 'Список списков',
-		href: ROUTE_LINKS.listListIndex,
-		description: 'Когда мания каталогизации становится слишком сильной, можно составлять списки из всего, что попадётся под руку'
-	},
-	{
 		isAdmin: true,
 		name: 'Нокиа',
 		href: ROUTE_LINKS.nokiaIndex,
-		description: 'Менеджмент своих коннектов с людьми'
-	},
-	{
-		name: 'Свиби',
-		href: EXTERNAL_LINKS.sweebe,
 		description: 'Менеджмент своих коннектов с людьми'
 	},
 	{
@@ -33,15 +23,9 @@ export const hardToolList: ToolDataType[] = [
 		description: 'Отслеживание своего довольства работая в календаре-хитмапе'
 	},
 	{
-		isAdmin: true,
 		name: 'Путешествия',
 		href: ROUTE_LINKS.tourismIndex,
 		description: 'Собираю инфу про свои путешествия, где был, какие города понравились, куда ходить'
-	},
-	{
-		name: '🖼 Фотографии во ВКонтакте',
-		href: ROUTE_LINKS.toolVkIndex,
-		description: 'Для удобной подписи и сортировки фотографий, используя всё пространство монитора, вместо узкой колонки оригинала'
 	},
 	{
 		isAdmin: true,
@@ -55,9 +39,26 @@ export const hardToolList: ToolDataType[] = [
 		href: ROUTE_LINKS.TODO,
 		description: 'Подписываешься здесь — получаешь на почту',
 	},
-] as const
-
-export const unfinishedToolList: ToolDataType[] = [
+	{
+		name: 'Список списков',
+		href: ROUTE_LINKS.listListIndex,
+		description: 'Когда мания каталогизации становится слишком сильной, можно составлять списки из всего, что попадётся под руку'
+	},
+	{
+		name: 'Свиби',
+		href: EXTERNAL_LINKS.sweebe,
+		description: 'Менеджмент своих коннектов с людьми'
+	},
+	{
+		name: '🖼 Фотографии во ВКонтакте',
+		href: ROUTE_LINKS.toolVkIndex,
+		description: 'Для удобной подписи и сортировки фотографий, используя всё пространство монитора, вместо узкой колонки оригинала'
+	},
+	{
+		name: '🕑 Калькулятор времени',
+		href: EXTERNAL_LINKS.serviceTimer,
+		description: 'Когда нужно подсчитать сколько времени ушло в дне'
+	},
 	{
 		isAdmin: true,
 		name: 'Прон',
@@ -86,13 +87,5 @@ export const botToolList: ToolDataType[] = [
 ] as const
 
 export const toolListData: ToolDataType[] = ([] as ToolDataType[])
-	.concat(hardToolList)
-	.concat(unfinishedToolList)
 	.concat(botToolList)
-	.concat([
-		{
-			name: '☝ Логизмы',
-			href: ROUTE_LINKS.logism,
-			description: 'Цитаты друзей, знаменитостей, чтобы помнить и направлять себя'
-		},
-	])
+	.concat(hardToolList)

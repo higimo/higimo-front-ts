@@ -4,11 +4,6 @@ import { ToolDataType } from 'utils.type'
 
 export const funnyList: ToolDataType[] = [
 	{
-		name: '🕑 Калькулятор времени',
-		href: EXTERNAL_LINKS.serviceTimer,
-		description: 'Когда нужно подсчитать сколько времени ушло в дне'
-	},
-	{
 		name: 'Комоджи (⌐■_■)',
 		href: ROUTE_LINKS.comoji,
 		description: 'Смайлики на случай важных переговоров'
@@ -22,11 +17,6 @@ export const funnyList: ToolDataType[] = [
 		name: 'Календарь деплоя',
 		href: EXTERNAL_LINKS.serviceDeploy,
 		description: 'Астрологи предсказали, когда лучше попридержать публикацию, и не гневать богов'
-	},
-	{
-		name: 'Настольные игры',
-		href: ROUTE_LINKS.gameIndex,
-		description: 'Настолки, которые есть внутри моей компании, когда хочется поиграть, чтоб не спрашивать что ещё есть.'
 	},
 	{
 		name: 'Аккорды',

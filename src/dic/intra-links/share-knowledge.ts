@@ -40,4 +40,9 @@ export const shareKnowledgeData: ToolDataType[] = [
 		description: 'В 2017 году, я написал курс переподготовки по программированию и рассказал его в ННГУ',
 		href: ROUTE_LINKS.learningIndex,
 	},
+	{
+		name: 'FAQ',
+		href: ROUTE_LINKS.faqIndex,
+		description: 'Чтобы не искать и компилировать ответ на сложный вопрос каждый раз, я собираю их в специальную копилку'
+	},
 ] as const
