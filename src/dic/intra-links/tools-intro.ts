@@ -3,7 +3,6 @@ import { ToolDataType } from 'utils.type'
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-// TODO: вынести в src/data и объединить с другими
 export const hardToolList: ToolDataType[] = [
 	{
 		isAdmin: true,
@@ -92,8 +91,8 @@ export const toolListData: ToolDataType[] = ([] as ToolDataType[])
 	.concat(botToolList)
 	.concat([
 		{
-			name: "☝ Логизмы",
+			name: '☝ Логизмы',
 			href: ROUTE_LINKS.logism,
-			description: "Цитаты друзей, знаменитостей, чтобы помнить и направлять себя"
+			description: 'Цитаты друзей, знаменитостей, чтобы помнить и направлять себя'
 		},
 	])

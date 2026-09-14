@@ -2,7 +2,6 @@ import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { ToolDataType } from 'utils.type'
 
-// TODO: вынести в src/data и объединить с другими
 export const funnyList: ToolDataType[] = [
 	{
 		name: '🕑 Калькулятор времени',
@@ -25,13 +24,13 @@ export const funnyList: ToolDataType[] = [
 		description: 'Астрологи предсказали, когда лучше попридержать публикацию, и не гневать богов'
 	},
 	{
-		name: "Настольные игры",
+		name: 'Настольные игры',
 		href: ROUTE_LINKS.gameIndex,
-		description: "Настолки, которые есть внутри моей компании, когда хочется поиграть, чтоб не спрашивать что ещё есть."
+		description: 'Настолки, которые есть внутри моей компании, когда хочется поиграть, чтоб не спрашивать что ещё есть.'
 	},
 	{
-		name: "Аккорды",
+		name: 'Аккорды',
 		href: ROUTE_LINKS.accordIndex,
-		description: "Песни, которые я играю на гитарниках, чтобы было понятно чему можно подпеть или какой будет репертуар с моей стороны"
+		description: 'Песни, которые я играю на гитарниках, чтобы было понятно чему можно подпеть или какой будет репертуар с моей стороны'
 	},
 ] as const
