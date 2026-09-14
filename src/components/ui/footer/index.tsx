@@ -53,15 +53,13 @@ export const Footer: FunctionComponent = () => {
 			</div>
 
 			<div className="footer__column">
-				<div className="footer__header">Храню знания</div>
-				{aboutInviteList.slice(0, SLICE_ABOUT).map(renderLink(isAuth))}
-				{aboutInviteList.slice(SLICE_ABOUT).map(renderLink(isAuth))}
+				<div className="footer__header">Мои полочки</div>
+				{aboutInviteList.map(renderLink(isAuth))}
 			</div>
 
 			<div className="footer__column">
 				<div className="footer__header">Сделал сервисов</div>
-				{toolListData.slice(0, SLICE_TOOL).map(renderLink(isAuth))}
-				{toolListData.slice(SLICE_TOOL).map(renderLink(isAuth))}
+				{toolListData.map(renderLink(isAuth))}
 			</div>
 			<div className="footer__copyright">
 				Сделал Хиги́мо с гордостью в 🇷🇺

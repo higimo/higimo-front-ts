@@ -12,7 +12,7 @@ import './style.css'
 export const AboutInvite: FunctionComponent = () => (
 	<PrecentationContainer className="about-invite">
 		<TextContainer>
-			<IntroHeader>Храню знания</IntroHeader>
+			<IntroHeader>Мои полочки</IntroHeader>
 		</TextContainer>
 
 		<TextContainer>
