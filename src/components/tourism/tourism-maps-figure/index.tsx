@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent, VNode } from 'preact'
+import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/types'
 import { ValueOf } from 'utils.type'
 
-import { MoscowWalkaroundStateDataType } from './useLoadMoscowWalkaround'
 import { useSwitcher } from 'hook/use-switcher'
 import { useWindowSize } from 'hook/browser/use-window-size'
 
@@ -9,41 +9,45 @@ import { GeoObject, Map, Placemark, YMaps } from 'react-yandex-maps'
 import { Switcher } from 'components/ui/switcher'
 import { TextContainer } from 'components/ui/text-container'
 
-import { MAP_MODE } from './MAP_MODE'
-import { GEO_OBJECT_OPTIONS } from './GEO_OBJECT_OPTIONS'
+import { GEO_OBJECT_OPTIONS } from 'components/tourism/tourism-maps-figure/GEO_OBJECT_OPTIONS'
+import { MAP_MODE } from 'components/tourism/tourism-maps-figure/MAP_MODE'
 
 type TourismMoscowWalkaroundPropsType = {
-	stateData: MoscowWalkaroundStateDataType
+	moscowPovPoints: HigimoMapPoint[]
+	stateYear2021: YaMapPolygon[]
+	stateYear2024: YaMapPolygon[]
 }
 
 export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundPropsType> = ({
-	stateData,
+	moscowPovPoints,
+	stateYear2021,
+	stateYear2024,
 }) => {
 	const [ isMode, setMode ] = useSwitcher<ValueOf<typeof MAP_MODE>>(MAP_MODE['2024'])
 	const { width } = useWindowSize()
 
 	const renderByMode = () => {
 		if (isMode(MAP_MODE['2021'])) {
-			return stateData.stateYear2021.map((item: any) => (
+			return stateYear2021.map((item: any) => (
 				<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
 			))
 		}
 		if (isMode(MAP_MODE['2024'])) {
-			return stateData.stateYear2024.map((item: any) => (
+			return stateYear2024.map((item: any) => (
 				<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
 			))
 		}
 		if (isMode(MAP_MODE['21vs24'])) {
 			return ([] as VNode[])
-				.concat(stateData.stateYear2021.map((item: any) => (
+				.concat(stateYear2021.map((item: any) => (
 					<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
 				)))
-				.concat(stateData.stateYear2024.map((item: any) => (
+				.concat(stateYear2024.map((item: any) => (
 					<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
 				)))
 		}
 		if (isMode(MAP_MODE['POV'])) {
-			return stateData.moscowPovPoints.map((pov) => (
+			return moscowPovPoints.map((pov) => (
 				<Placemark geometry={pov.coord} properties={{ hintContent: pov.title }} />
 			))
 		}

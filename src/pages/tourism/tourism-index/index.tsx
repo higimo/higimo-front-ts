@@ -36,9 +36,15 @@ export const TourismIndexPage: FunctionComponent = () => {
 	usePageTitle('Туризм')
 
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
-	const isLoading = useLoadingState([yamapList.status])
+	const [ cityList ] = useJsonApi<CityStarsType[]>('/json/city.json')
+
+	const isLoading = useLoadingState([yamapList.status, cityList.status])
 	const isListEmpty = useEmptyDataState(yamapList.data)
-	const cityList = useJsonApi<CityStarsType[]>('/json/city.json')
+	const isError = cityList.status === 'ERROR'
+
+	if (isLoading) {
+		return <Loading />
+	}
 
 	if (isLoading || !cityList) {
 		return <Loading />
@@ -60,9 +66,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Билеты в приключения
-				</TourismHeader>
+				<TourismHeader secondary>Билеты в приключения</TourismHeader>
 				<TourismRow>
 					<TourismAdventure adventure={ADVENTURES[0]!} />
 					<TourismAdventureEmpty />
@@ -114,7 +118,10 @@ export const TourismIndexPage: FunctionComponent = () => {
 
 			<TextContainer>
 				<TourismHeader secondary>Оценка городов</TourismHeader>
-				<CityStarsIntro cityList={cityList} />
+				{(isError
+					? (<NotFoundData />)
+					: (<CityStarsIntro cityList={cityList.data} />)
+				)}
 			</TextContainer>
 
 			<TextContainer>

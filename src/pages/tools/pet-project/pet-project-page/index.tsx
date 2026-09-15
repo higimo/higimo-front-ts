@@ -2,7 +2,6 @@ import { FunctionComponent } from 'preact'
 import { GradientDicType } from 'api-types/json-api.types'
 import { PetProjectType } from 'api-types/petproject.types'
 
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useJsonApi } from 'hook/fetch/use-json-api'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMemo } from 'preact/hooks'
@@ -11,6 +10,7 @@ import useApi from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
+import { OnlyAdmin } from 'components/util/only-admin'
 import { PetProject } from 'components/tool/pet-project'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -23,42 +23,47 @@ export const PetProjectPage: FunctionComponent = () => {
 	usePageTitle('Пробби')
 
 	const [ unsortProjectList ] = useApi<PetProjectType[]>(API_ROUTE.probbi)
-	const isLoading = useLoadingState([unsortProjectList.status])
-	const isListEmpty = useEmptyDataState(unsortProjectList.data)
+	const [ gradients ] = useJsonApi<GradientDicType[]>('/json/pet-project/gradient.json')
+	const [ textProjects ] = useJsonApi<PetProjectType[]>('/json/pet-project/projects.json')
 
-	const gradients = useJsonApi<GradientDicType[]>('/json/pet-project/gradient.json')
-	const textProjects = useJsonApi<PetProjectType[]>('/json/pet-project/projects.json')
+	const isLoading = useLoadingState([unsortProjectList.status, gradients.status, textProjects.status])
+	const isError = [unsortProjectList.status, gradients.status, textProjects.status]
+		.some(i => i === 'ERROR')
 
 	const projects = useMemo(() => {
-		if (isLoading || gradients === null || textProjects === null) {
+		if (isLoading) {
 			return []
 		}
 
 		return unsortProjectList.data
-			.concat(textProjects)
+			.concat(textProjects.data)
 			.sort((a, b) => a.priority - b.priority)
 	}, [unsortProjectList.data, textProjects])
 
-	if (isLoading || gradients === null || textProjects === null) {
+	if (isLoading) {
 		return <Loading />
 	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
-
 
 	return (
 		<div className="pet-project">
 			<TextContainer>
 				<h1>Пробби</h1>
-				<div>
-					<a href={ROUTE_LINKS.petProjectCreate}>Добавить</a>
-				</div>
+				<OnlyAdmin>
+					<div>
+						<a href={ROUTE_LINKS.petProjectCreate}>Добавить</a>
+					</div>
+				</OnlyAdmin>
 			</TextContainer>
-			<PetProject
-				petprojects={projects}
-				gradients={gradients}
-			/>
+
+			{(isError
+				? (<NotFoundData />)
+				: (
+					<PetProject
+						petprojects={projects}
+						gradients={gradients.data}
+					/>
+				)
+			)}
 		</div>
 	)
 }

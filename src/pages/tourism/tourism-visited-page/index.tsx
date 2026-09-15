@@ -1,14 +1,15 @@
 import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'components/tourism/types'
 import { FunctionComponent } from 'preact'
 
-import { useEffect, useState } from 'preact/hooks'
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useJsonApi } from 'hook/fetch/use-json-api'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
+import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { TextContainer } from 'components/ui/text-container'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMainStatistic } from 'components/tourism/tourism-main-statistic/TourismMainStatistic'
@@ -25,58 +26,40 @@ import './style.css'
 // TODO: [FEATURE] Наконец, надо задизайнить процесс, как писать «отчёты» о городах.
 // Может быть, я начну с парочки в markdown, чтобы сформулировать стиль и форму.
 
-type PovListType = { isLoading: true, data: null } | { isLoading: false, data: PovType[] }
-
-const usePovList = (): PovListType => {
-	const [result, setResult] = useState<PovListType>({
-		isLoading: true,
-		data: null,
-	})
-
-	// TODO: [BACKEND] вынести в бекенд API из JSON
-	const admOrkugMoscow    = useJsonApi<AdmOrkugMoscow[]>('/json/tourism/admin-okrug-moscow.json')
-	const castle            = useJsonApi<Castle[]>('/json/tourism/castle.json')
-	const country           = useJsonApi<Country[]>('/json/tourism/country.json')
-	const districtMoscow    = useJsonApi<DistrictMoscow[]>('/json/tourism/district-moscow.json')
-	const placefield        = useJsonApi<Placefield[]>('/json/tourism/placefield.json')
-	const subjectFederation = useJsonApi<SubjectFederation[]>('/json/tourism/subject-federation.json')
-	const townMoscow        = useJsonApi<TownMoscow[]>('/json/tourism/town-moscow.json')
-	const town              = useJsonApi<Town[]>('/json/tourism/town.json')
-
-	useEffect(() => {
-		const isLoading = admOrkugMoscow === null || castle === null || country === null
-			|| districtMoscow === null || placefield === null || subjectFederation === null
-			|| townMoscow === null || town === null
-		if (isLoading) {
-			if (!result.isLoading) {
-				setResult({ isLoading: true, data: null })
-			}
-			return
-		}
-
-		const combined: PovType[] = ([] as unknown as PovType[])
-			.concat(admOrkugMoscow)
-			.concat(castle)
-			.concat(country)
-			.concat(districtMoscow)
-			.concat(placefield)
-			.concat(subjectFederation)
-			.concat(townMoscow)
-			.concat(town)
-		setResult({ isLoading: false, data: combined })
-	}, [admOrkugMoscow, castle, country, districtMoscow, placefield, subjectFederation, townMoscow, town])
-
-	return result
-}
-
 export const TourismVisitedPage: FunctionComponent = () => {
 	usePageTitle('Результаты путешествий')
 
-	const { isLoading, data } = usePovList()
+	// TODO: [BACKEND] вынести в бекенд API из JSON
+	const [ admOrkugMoscow ]    = useJsonApi<AdmOrkugMoscow[]>('/json/tourism/admin-okrug-moscow.json')
+	const [ castle ]            = useJsonApi<Castle[]>('/json/tourism/castle.json')
+	const [ country ]           = useJsonApi<Country[]>('/json/tourism/country.json')
+	const [ districtMoscow ]    = useJsonApi<DistrictMoscow[]>('/json/tourism/district-moscow.json')
+	const [ placefield ]        = useJsonApi<Placefield[]>('/json/tourism/placefield.json')
+	const [ subjectFederation ] = useJsonApi<SubjectFederation[]>('/json/tourism/subject-federation.json')
+	const [ townMoscow ]        = useJsonApi<TownMoscow[]>('/json/tourism/town-moscow.json')
+	const [ town ]              = useJsonApi<Town[]>('/json/tourism/town.json')
+
+	const statusList = [
+		admOrkugMoscow.status, castle.status, country.status,
+		districtMoscow.status, placefield.status, subjectFederation.status,
+		townMoscow.status, town.status,
+	]
+	const isLoading = useLoadingState(statusList)
+	const isError = statusList.some(status => status === 'ERROR')
 
 	if (isLoading) {
 		return <Loading />
 	}
+
+	const data: PovType[] = ([] as PovType[])
+			.concat(admOrkugMoscow.data)
+			.concat(castle.data)
+			.concat(country.data)
+			.concat(districtMoscow.data)
+			.concat(placefield.data)
+			.concat(subjectFederation.data)
+			.concat(townMoscow.data)
+			.concat(town.data)
 
 	return (
 		<div className="tourism-identy-page">
@@ -90,9 +73,15 @@ export const TourismVisitedPage: FunctionComponent = () => {
 				<TourismHeader main>Результаты путешествий</TourismHeader>
 			</TextContainer>
 
-			<TourismMainStatistic totalStatistic={data} />
-
-			<TourismStatisticVisualizer pov={data} />
+			{(isError
+				? (<NotFoundData />)
+				: (
+					<>
+						<TourismMainStatistic totalStatistic={data} />
+						<TourismStatisticVisualizer pov={data} />
+					</>
+				)
+			)}
 		</div>
 	)
 }

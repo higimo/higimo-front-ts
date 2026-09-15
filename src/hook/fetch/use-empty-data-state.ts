@@ -2,7 +2,7 @@ type EmptyValue = null | undefined | [] | Record<string, never>;
 
 /**
  * Проверит, что в аргументе не пустой список элементов или непустой единственный элемент
- * TODO: [HARD] после интеграции этого в uaeApi переименовать в is
+ * TODO: [HARD] после интеграции этого в useApi переименовать в is
  */
 export const useEmptyDataState = (data: unknown): data is EmptyValue => {
 	if (Array.isArray(data)) {

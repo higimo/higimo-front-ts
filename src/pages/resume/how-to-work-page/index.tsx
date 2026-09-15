@@ -2,20 +2,24 @@ import { FunctionComponent } from 'preact'
 import { PageJSONData } from 'components/block-renderer/types'
 
 import { useJsonApi } from 'hook/fetch/use-json-api'
+import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Loading } from 'components/ui/loading'
+import { NotFoundData } from 'components/ui/not-found-data'
 
 import '../resume-style.css'
 
 export const HowToWorkPage: FunctionComponent = () => {
 	usePageTitle('Как работаю')
 
-	const pageData2 = useJsonApi<PageJSONData>('/json/resume/how-to-work-page.json')
+	const [ data ] = useJsonApi<PageJSONData>('/json/resume/how-to-work-page.json')
+	const isLoading = useLoadingState([data.status])
+	const isError = data.status === 'ERROR'
 
-	if (!pageData2) {
+	if (isLoading) {
 		return <Loading />
 	}
 
@@ -23,9 +27,14 @@ export const HowToWorkPage: FunctionComponent = () => {
 		<div className="resume-head-page resume-page">
 			<Breadcrumps />
 
-			{pageData2.blocks.map((block, idx) => (
-				<BlockRenderer key={idx} block={block} />
-			))}
+			{(isError
+				? (<NotFoundData />)
+				: (
+					data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))
+				)
+			)}
 		</div>
 	)
 }
