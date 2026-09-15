@@ -2,10 +2,15 @@ import { createRef } from 'preact'
 
 import { useWindowSize } from 'hook/browser/use-window-size'
 
-import { YMaps, Map, YMapsApi } from 'react-yandex-maps'
+import { YMaps, Map, YMapsApi, FullscreenControl } from 'react-yandex-maps'
 
 import { getDistrictColor } from 'utils/get-district-color'
 
+// TODO: [BACKEND] страница больше не работает
+// Надо разместить у себя файл
+// https://huggingface.co/datasets/world-igr-plum/regions/raw/main/v2/RU_RU_ru_1.json
+// И показать его как обычную геометрию, убрав handleMapLoad
+// Загружать JSON как остальные JSON
 export const TourismMapsRegion = () => {
 	const mapRef = createRef()
 	const { width, height } = useWindowSize()
@@ -20,7 +25,6 @@ export const TourismMapsRegion = () => {
 			const collection = new ymaps.GeoObjectCollection(null)
 			mapRef.current.geoObjects.add(collection)
 
-			// TODO: [LIGHT] использовать стандартные компоненты
 			borders.features.forEach((feature: any) => {
 				collection.add(new ymaps.GeoObject(feature, {
 					fillColor: getDistrictColor(feature.properties.iso3166),
@@ -34,7 +38,7 @@ export const TourismMapsRegion = () => {
 
 	return (
 		<div className="yandex-map">
-			<YMaps query={{ lang: 'ru_RU' }}>
+			<YMaps query={{ lang: 'ru_RU', apikey: '36482037-351d-458f-87ce-c2bf4a1e508b' }}>
 				<Map
 					// @ts-ignore
 					instanceRef={mapRef}
@@ -51,6 +55,7 @@ export const TourismMapsRegion = () => {
 						'GeoObject',
 					]}
 				>
+					<FullscreenControl />
 				</Map>
 			</YMaps>
 		</div>
