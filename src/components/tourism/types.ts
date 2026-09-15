@@ -12,7 +12,7 @@ export type HigimoMapPoint = {
 	color: `#${string}` // hex
 }
 
-// TODO: [LIGHT] Перебрать типы
+// TODO: [MIDDLE] Перебрать типы
 type CountryTitle = 'Россия' | 'Абхазия' | 'Эстония'
 
 interface PovTitle extends BasePointType {
@@ -138,7 +138,7 @@ export const BAR_COLOR_MAPPING = {
 } as const
 export const barColor = (mood: KeyOf<typeof BAR_COLOR_MAPPING>): ValueOf<typeof BAR_COLOR_MAPPING> => BAR_COLOR_MAPPING[mood]
 
-// TODO: [LIGHT] Эту группировку унести на бекенд
+// TODO: [BACKEND] Эту группировку унести на бекенд
 export const barTagsCategory = {
 	'Отношение': ['Не посещал', 'Любимый', 'Хорошо', 'Обычно'],
 	'Алкоголь': ['пиво', 'крафт', 'сидр', 'коктейли', 'настойки', 'минту', 'вино', 'отличный крафт'],
@@ -169,7 +169,7 @@ export type BarPovType = {
 	rating?: string
 	adress?: string
 	description?: string
-	// TODO: [LIGHT] сделать нормальные типы тегов сразу
+	// TODO: [MIDDLE] сделать нормальные типы тегов сразу
 	tags: BarPovTagType[]
 }
 

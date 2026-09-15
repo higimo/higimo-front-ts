@@ -23,9 +23,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>
-					Московские бары
-				</TourismHeader>
+				<TourismHeader main>Московские бары</TourismHeader>
 			</TextContainer>
 
 			<TourismMapsMoscowBar />

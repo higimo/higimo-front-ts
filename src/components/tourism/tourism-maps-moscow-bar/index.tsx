@@ -18,9 +18,7 @@ import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filter-tag-any-s
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: [LIGHT] удалить useGroupTags, когда тут заработает
 export const TourismMapsMoscowBar = () => {
-	// TODO: [LIGHT] перенести в page
 	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
 
 	const isLoading = useLoadingState([barPovMoscow.status])
