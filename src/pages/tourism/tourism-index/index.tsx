@@ -26,6 +26,7 @@ import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 
 import { ADVENTURES } from 'components/tourism/tourism-adventure/ADVENTURES'
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../tourism-style.css'
 import './style.css'
@@ -102,12 +103,11 @@ export const TourismIndexPage: FunctionComponent = () => {
 							digitFrom: 'из 435',
 							description: 'станций метро Москвы',
 						},
-						// TODO: [LIGHT] добавить ссылку
-						// {
-						// 	→
-						// 	Смотреть полностью
-						// ROUTE_LINKS.tourismVisited
-						// },
+						{
+							digit: '→',
+							description: 'Смотреть полностью',
+							href: ROUTE_LINKS.tourismVisited,
+						},
 					]}
 				/>
 			</TextContainer>

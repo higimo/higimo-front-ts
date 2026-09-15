@@ -10,3 +10,11 @@
 	--factoid-padding: 16px 0;
 	--grid-gap: 16px;
 }
+
+.tourism-identy-page .factoid-row a.factoid {
+	color: var(--color-accent);
+	border: none;
+}
+.tourism-identy-page .factoid-row a.factoid:hover {
+	filter: brightness(0.8);
+}
