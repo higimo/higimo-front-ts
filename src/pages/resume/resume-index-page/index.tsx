@@ -32,6 +32,7 @@ export const ResumeIndexPage: FunctionComponent = () => {
 					<h2>Скрытые резюме</h2>
 					<ul>
 						<li><a href={ROUTE_LINKS.resumeProductSmart}>smart</a></li>
+						<li><a href={ROUTE_LINKS.resumeProductFull}>full value</a></li>
 					</ul>
 				</TextContainer>
 			</OnlyAdmin>

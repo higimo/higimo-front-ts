@@ -86,6 +86,7 @@ import { ResumeTechProductPage }   from 'pages/resume/resume-tech-product'
 import { ResumeProductLeadPage }   from 'pages/resume/resume-product-lead-page'
 import { HowToWorkPage }           from 'pages/resume/how-to-work-page'
 import { ResumeProductSmartPage }  from 'pages/resume/resume-product-smart-page'
+import { ResumeProductFullValuePage } from 'pages/resume/resume-full-value-page'
 
 import { HiringResponsePage } from 'pages/hiring-response/hiring-response-page'
 
@@ -174,6 +175,7 @@ export function App() {
 								<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductLeadPage} />
 								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
 								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProductSmartPage} />
+								<Route path={ROUTE_LINKS.resumeProductFull} component={ResumeProductFullValuePage} />
 								<Route path={ROUTE_LINKS.response} component={HiringResponsePage} />
 
 								{/* Инфостраницы о себе */}

@@ -108,6 +108,7 @@ const ROUTE_RESUME_LINKS = Object.freeze({
 	resumeLead:          '/resume/product-lead/',
 	resumeTechProduct:   '/resume/tech-product/',
 	resumeHowToWork:     '/resume/how-to-work/',
+	resumeProductFull:   '/resume/product-full/',
 	resumeProductSmart:  '/resume/product-smart/',
 	response:            '/response/',
 })

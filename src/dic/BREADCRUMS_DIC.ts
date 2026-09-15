@@ -80,6 +80,7 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.resumeLead]:         'Продакт-лид',
 	[ROUTE_LINKS.resumeTechProduct]:  'Тех продакт',
 	[ROUTE_LINKS.resumeProductSmart]: 'Продакт-менеджер',
+	[ROUTE_LINKS.resumeProductFull]:  'Продакт-менеджер',
 	[ROUTE_LINKS.resumeProduct]:      'Продакт',
 	[ROUTE_LINKS.response]:           'Отклики',
 
