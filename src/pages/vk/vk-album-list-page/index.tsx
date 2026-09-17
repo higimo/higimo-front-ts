@@ -6,16 +6,16 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMessage } from 'hook/use-message'
 import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 
-import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'
 import { TextContainer } from 'components/ui/text-container/index.js'
+import { VkHeading } from 'components/vk/vk-heading'
+import { VkParagraph } from 'components/vk/vk-paragraph'
+import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'
 
 import { printVkError } from 'vendor/print-vk-error'
 
 import { VkContext } from 'context/vk'
 
 import '../vk-style.css'
-import { VkHeading } from 'components/vk/vk-heading'
-import { VkParagraph } from 'components/vk/vk-paragraph'
 
 export const VkAlbumListPage: FunctionComponent = () => {
 	usePageTitle('Список альбомов')
