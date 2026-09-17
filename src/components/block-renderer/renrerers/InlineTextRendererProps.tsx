@@ -1,5 +1,9 @@
 import { FunctionComponent } from 'preact'
 
+import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
+
+import { variablesRenderBlockSignal } from 'components/stores/render-block-variables-store'
+
 type InlineTextRendererPropsType = {
 	value: string
 }
@@ -7,5 +11,5 @@ type InlineTextRendererPropsType = {
 export const InlineTextRenderer: FunctionComponent<InlineTextRendererPropsType> = ({
 	value,
 }) => (
-	<>{value}</>
+	<>{replaceRenderBlockVariables(value, variablesRenderBlockSignal.value)}</>
 )

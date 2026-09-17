@@ -1,5 +1,5 @@
 /**
- * Заменяет все плейсхолдеры вида {КЛЮЧ} в строке на соответствующие значения из объекта variables.
+ * Заменяет все плейсхолдеры вида {%КЛЮЧ%} в строке на соответствующие значения из объекта variables.
  * Если переменная не найдена, плейсхолдер остаётся без изменений.
  *
  * @param text - исходная строка, содержащая плейсхолдеры
@@ -10,6 +10,9 @@ export const replaceRenderBlockVariables = (
 	text: string,
 	variables: Record<string, string> = {}
 ): string => {
+	if (!Object.keys(variables).length) {
+		return text
+	}
 	return text.replace(/\{%([^}]+)%\}/g, (match, key) => {
 		const value = variables[key];
 		return value !== undefined ? value : match;

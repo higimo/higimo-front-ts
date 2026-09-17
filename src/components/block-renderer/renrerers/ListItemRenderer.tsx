@@ -4,13 +4,13 @@ import { ListItemBlock } from 'components/block-renderer/types'
 import { ListRenderer } from 'components/block-renderer/renrerers/ListRenderer'
 
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
+
 import { variablesRenderBlockSignal } from 'components/stores/render-block-variables-store'
 
 type ListItemRendererPropsType = {
 	item: ListItemBlock
 }
 
-// TODO: [LIGHT] добавить replaceRenderBlockVariables в другие рендереры
 export const ListItemRenderer: FunctionComponent<ListItemRendererPropsType> = ({ item }) => (
 	<li>
 		<span
