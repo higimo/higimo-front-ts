@@ -1,8 +1,35 @@
-import { UnixTime, UnixTimeSecond } from 'utils.type'
+import { UnixTimeSecond } from 'utils.type'
 
 export type VKAlbumSizesType = {
 	type: 'x' | 's'
 	src: string
+}
+
+export type VkPhotoOrigType = {
+	height: number
+	width: number
+	type: 'base'
+	url: string
+}
+
+export type VkPhotoSizesType = {
+	height: number
+	width: number
+	type: 'm' | 'o' | 'p' | 'q' | 'r' | 's' | 'w' | 'x' | 'y' | 'z'
+	url: string
+}
+
+export type VkPhotoType = {
+	album_id: number
+	date: UnixTimeSecond
+	id: number
+	/** user_id */
+	owner_id: number
+	sizes: VkPhotoSizesType[]
+	text: string
+	web_view_token: string
+	has_tags: boolean
+	orig_photo: VkPhotoOrigType
 }
 
 export type VKAlbumType = {
@@ -28,44 +55,29 @@ export type VKAlbumType = {
 	can_delete: boolean
 }
 
-export type VkPhotoOrigType = {
-	height: number
-	width: number
-	type: 'base'
-	url: string
-}
-
-export type VkPhotoSizesType = {
-	height: number
-	width: number
-	type: 'm' | 'o' | 'p' | 'q' | 'r' | 's' | 'w' | 'x' | 'y' | 'z'
-	url: string
-}
-
-export type VkPhotoType = {
-	album_id: number
-	date: UnixTime // timestamp
-	id: number
-	owner_id: number // user_id
-	sizes: VkPhotoSizesType[]
-	text: string
-	web_view_token: string
-	has_tags: boolean
-	orig_photo: VkPhotoOrigType
-}
-
 export type VkAlbumType = {
-	id: number // album id
-	owner_id: number // userId
-	size: number // count photos
-	title: string // Название альбома
-	feed_disabled: number // bool? вижу 0
-	feed_has_pinned: number // bool? вижу 0
-	created: number // timestamp
+	/** идентификатор альбома */
+	id: number
+	/** идентификатор владельца альбома */
+	owner_id: number
+	/** идентификатор фотографии, которая является обложкой (0, если обложка отсутствует) */
+	thumb_id: number
+	/** ссылка на изображение обложки альбома (если был указан параметр need_covers) */
+	thumb_src: string
+	/** количество фотографий в альбоме */
+	size: number
+	/** название альбома */
+	title: string
+	feed_disabled: number
+	feed_has_pinned: number
+	/** дата создания альбома в формате unixtime (не приходит для системных альбомов) */
+	created: UnixTimeSecond
+	/** дата последнего обновления альбома в формате unixtime (не приходит для системных альбомов) */
+	updated: UnixTimeSecond
+	/** описание альбома (не приходит для системных альбомов) */
 	description: string
-	can_delete: boolean
-	can_include_to_feed: boolean
 	is_locked: boolean
+	/** настройки приватности для альбома в формате настроек приватности (только для альбома пользователя, не приходит для системных альбомов) */
 	privacy_comment: {
 		category: 'all'
 		lists: {
@@ -77,6 +89,7 @@ export type VkAlbumType = {
 			excluded: []
 		}
 	}
+	/** настройки приватности для альбома в формате настроек приватности (только для альбома пользователя, не приходит для системных альбомов) */
 	privacy_view: {
 		category: string // 'only_me',
 		lists: {
@@ -89,23 +102,35 @@ export type VkAlbumType = {
 		}
 	}
 	sizes: VkPhotoSizesType[]
-	thumb_id: number
 	thumb_is_last: number // bool? вижу 1
-	updated: number // timestamp
+
 }
 
 export type VkSessionType = {
-	mid: string // userId,
-	sid: string // vk-sid
-	sig: string // key
+	/** userId */
+	mid: string
+	/** время в формате Unixtime, когда сессия устареет */
+	expire: UnixTimeSecond
+
+	// Служебное
+	/** vk-sid */
+	sid: string
+	/** key */
+	sig: string
 	secret: 'oauth'
-	expire: number // date timestamp
+
 	user: {
-		id: string // userId
-		domain: string // userLogin
+		/** userId */
+		id: string
+		/** короткий адрес страницы */
+		domain: string
+		/** ссылка на страницу в формате https://vk.com/domain */
 		href: string // http url
+		/** имя */
 		first_name: string
+		/** фамилия */
 		last_name: string
-		nickname: string // там пусто почему-то, отчество?
+		/** отчество или никнейм (если указано) */
+		nickname: string
 	}
 }
