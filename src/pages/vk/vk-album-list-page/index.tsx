@@ -30,7 +30,7 @@ export const VkAlbumListPage: FunctionComponent = () => {
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
 		try {
-			const albums = await VkApi.getAlbums(ownerId, ownerId)
+			const albums = await VkApi.getAlbums(ownerId)
 			setAlbums(albums)
 		} catch (error) {
 			const vkError = error as VkResponceError
