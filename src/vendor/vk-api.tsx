@@ -22,6 +22,7 @@ function vkApiCall<T>(method: string, params: Record<string, unknown>): Promise<
 		})
 	})
 }
+// TODO: VkDownloadService
 export const VkApi = {
 	// @ts-ignore TODO: [LIGHT] видимо, в сессии есть userId уже и его не надо передавать
 	async getAlbums(ownerId: string): Promise<VKAlbumType[]> {

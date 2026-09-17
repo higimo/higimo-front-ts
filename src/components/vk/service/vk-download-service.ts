@@ -6,6 +6,7 @@ import { VkApi, VkResponceError } from 'vendor/vk-api'
 export const ALBUM_MAX_COUNT = 3
 export const QUEUE_TIMER = 1500
 
+// TODO: VkApi
 export class VkDownloadService {
 	constructor(
 		private showMessage: (message: string) => void,
