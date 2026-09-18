@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useReducer } from 'preact/hooks'
 
-// TODO: вынести в отдельный словарь, использую одно и то же постоянно
+// TODO: [LIGHT] вынести в отдельный словарь, использую одно и то же постоянно
 const API_STATUS = {
 	INIT: 'INIT',
 	LOADING: 'LOADING',

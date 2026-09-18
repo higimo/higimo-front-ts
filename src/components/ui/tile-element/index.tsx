@@ -6,7 +6,7 @@ import { MaybeLink } from 'components/ui/maybe-link'
 
 import './style.css'
 
-// TODO: кажется, надо удалить
+// TODO: [LIGHT] кажется, надо удалить
 type TileElementPropsType = {
 	isInactive?: boolean
 	className: string

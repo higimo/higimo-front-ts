@@ -16,7 +16,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../nokia-style.css'
 
-// TODO: Добавить фильтрацию по типам встреч
+// TODO: [MIDDLE] Добавить фильтрацию по типам встреч
 export const NokiaIndexPage: FunctionComponent = () => {
 	usePageTitle('Нокиа сервис')
 

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'preact/hooks'
 
-// TODO: unused
+// TODO: [LIGHT] unused
 
 export const TAG_GROUP_ALL_DISABLE = 'TAG_GROUP_ALL_DISABLE'
 export const TAG_GROUP_ALL_ENABLE = 'TAG_GROUP_ALL_ENABLE'

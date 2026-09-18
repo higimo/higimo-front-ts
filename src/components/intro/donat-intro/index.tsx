@@ -8,7 +8,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-// TODO: у меня есть такое предложение — надо показать его в этом компоненте, оно уже есть на главной
+// TODO: [LIGHT] у меня есть такое предложение — надо показать его в этом компоненте, оно уже есть на главной
 export const DonatIntro: FunctionComponent = () => (
 	<OnlyAdmin>
 		<PrecentationContainer>

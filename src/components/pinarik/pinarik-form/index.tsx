@@ -66,7 +66,7 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 				<label htmlFor="date">Дата</label>
 				<input {...register('date')} name="date" type="date" />
 				<label htmlFor="fewfwe">Оценка</label>
-				{/* TODO: вынести в отдельный контроллер */}
+				{/* TODO: [LIGHT] вынести в отдельный контроллер */}
 				<div className="score">
 					<div className={cs('score__item', { active: score === -1 })} onClick={setScore(-1)} />
 					<div className={cs('score__item', { active: score === 0 })} onClick={setScore(0)} />

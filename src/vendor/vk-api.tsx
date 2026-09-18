@@ -22,7 +22,7 @@ function vkApiCall<T>(method: string, params: Record<string, unknown>): Promise<
 		})
 	})
 }
-// TODO: VkDownloadService
+// TODO: [LIGHT] VkDownloadService
 export const VkApi = {
 	async getAlbums(ownerId: VkUserId): Promise<VKAlbumType[]> {
 		try {

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
 import { GridTail } from '../grid-tail'
-// TODO: конкурент CategoryTitle
+// TODO: [LIGHT] конкурент CategoryTitle
 import { IntroHeader } from 'components/intro/intro-header'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'

@@ -67,7 +67,7 @@ export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundP
 				/>
 			</TextContainer>
 			<div className="yandex-map">
-				{/* TODO: вынести ключ в .env */}
+				{/* TODO: [LIGHT] вынести ключ в .env */}
 				<YMaps query={{ lang: 'ru_RU', apikey: '36482037-351d-458f-87ce-c2bf4a1e508b' }}>
 					<Map
 						width={Math.min(width * .85, 1200)}

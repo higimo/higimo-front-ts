@@ -36,11 +36,12 @@ export const VkDownloadPage: FunctionComponent = () => {
 
 	const serviceRef = useRef<VkDownloadService | null>(null)
 	if (!serviceRef.current) {
+		// TODO: [MIDDLE] перевести на тосты
 		serviceRef.current = new VkDownloadService((message) => showMessageRef.current(message))
 	}
 	const service = serviceRef.current
 
-	// TODO: [LIGHT] вынести в ControllerForm или хук
+	// TODO: [MIDDLE] вынести в ControllerForm или хук
 	const handleGroupId = useCallback((event: ChangeEvent) => {
 		if (!event.target) return
 		setDownloadId('-' + event.currentTarget.value)

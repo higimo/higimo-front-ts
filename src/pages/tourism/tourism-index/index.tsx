@@ -81,7 +81,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 					mini
 					countInRow={6}
 					factoids={[
-						// TODO: неужели, это нужно прям писать? Откуда я это взял?
+						// TODO: [LIGHT] неужели, это нужно прям писать? Откуда я это взял?
 						{
 							digit: 262,
 							digitFrom: 'из 626',

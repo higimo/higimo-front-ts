@@ -65,7 +65,7 @@ const TileElementCon: FunctionComponent<TileElementConPropsType> = props => (
 	/>
 )
 
-// TODO: кжтс, не используется, это надо исправить
+// TODO: [LIGHT] кжтс, не используется, это надо исправить
 export const LastUpdates: FunctionComponent = () => {
 	const [ newsList ] = useApi<UpdateNewsType[]>(API_ROUTE.updateNews, { limit: 12 })
 	const isLoading = useLoadingState([newsList.status])
@@ -84,7 +84,7 @@ export const LastUpdates: FunctionComponent = () => {
 				<IntroHeader>Недавно опубликовал</IntroHeader>
 			</TextContainer>
 
-			{/* TODO: пока не могу заменить, нужно переверстать заново */}
+			{/* TODO: [LIGHT] пока не могу заменить, нужно переверстать заново */}
 			<TilesGallery
 				className="last-updates"
 				title="Недавно опубликовал"

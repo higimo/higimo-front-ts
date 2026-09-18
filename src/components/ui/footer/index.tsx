@@ -59,7 +59,7 @@ export const Footer: FunctionComponent = () => {
 				{toolListData.map(renderLink(isAuth))}
 			</div>
 			<div className="footer__copyright">
-				{/* TODO: заменить на svg, чтоб везде было видно */}
+				{/* TODO: [LIGHT] заменить на svg, чтоб везде было видно */}
 				Сделал Хиги́мо с гордостью в 🇷🇺
 			</div>
 		</footer>

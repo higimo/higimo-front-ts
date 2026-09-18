@@ -29,13 +29,13 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 	const { showMessage, MessageContainer } = useMessage()
 
 	const fetchPhotos = useCallback(async (ownerId: string, albumId: number) => {
-		// TODO: try бы вынести в сервис VkApi
+		// TODO: [LIGHT] try бы вынести в сервис VkApi
 		try {
 			const photos = await VkApi.getPhotos(ownerId, albumId)
 			setPhotos(photos)
 		} catch (error) {
 			const vkError = error as VkResponceError
-			// TODO: в таких местах бы сменить на тост?
+			// TODO: [LIGHT] в таких местах бы сменить на тост?
 			showMessage(printVkError(vkError))
 		}
 	}, [showMessage])
