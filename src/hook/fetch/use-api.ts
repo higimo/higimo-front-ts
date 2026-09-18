@@ -15,17 +15,17 @@ export const API_STATUS = {
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
-type ApiState<T> = {
+type ApiState<T, M = Object> = {
 	status: ApiStatusNameType
 	data: T
-	meta?: Object
+	meta?: M
 	error?: Error
 }
 
-type ApiAction<T> =
+type ApiAction<T, M = Object> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
-	| { type: 'LOADED'; payload: T; meta?: any }
+	| { type: 'LOADED'; payload: T; meta?: M }
 	| { type: 'ERROR';  payload: Error }
 
 const initialState = {
@@ -35,7 +35,7 @@ const initialState = {
 	error: undefined,
 }
 
-export const apiReducer = <T,>(state: ApiState<T>, action: ApiAction<T>): ApiState<T> => {
+export const apiReducer = <T, M = Object>(state: ApiState<T, M>, action: ApiAction<T, M>): ApiState<T, M> => {
 	switch (action.type) {
 		case API_STATUS.INIT:
 			return { ...state, status: 'INIT' }
@@ -60,9 +60,8 @@ type ApiUrlType = ApiRouteType
 // TODO: [HIGH] Добавить ещё POST, DELETE
 // TODO: [HIGH] Добавить вывод сразу useLoadingState
 // TODO: [HIGH] что если пользоваться ServiceApi, в дополнение к простым строчкам?
-// TODO: [LIGHT] Типизировать meta
-const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T>, () => void] => {
-	const [state, dispatch] = useReducer(apiReducer<T>, initialState as ApiState<T>)
+const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T, M>, () => void] => {
+	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 
 	const fetchData = async () => {
 		try {
@@ -71,7 +70,7 @@ const useApi = <T,>(url: ApiUrlType, values: Record<string, any> = {}): [ApiStat
 				dispatch({ type: API_STATUS.LOADED, payload: ({} as T), meta: undefined })
 			} else {
 				const { data, meta } = await sendRequest(url as string, { values })
-				dispatch({ type: API_STATUS.LOADED, payload: data, meta })
+				dispatch({ type: API_STATUS.LOADED, payload: data, meta: meta as M | undefined })
 			}
 		} catch (error) {
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })

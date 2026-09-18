@@ -20,10 +20,14 @@ import { PROJECT_SHORT_TAGS } from './PROJECT_SHORT_TAGS'
 
 import './style.css'
 
+type PortfolioMetaType = {
+	totalCount: number
+}
+
 export const ProjectListShort: FunctionComponent = () => {
 	// TODO: [DATA] исправить обложки и размеры, сейчас грандиозные бывают normal
 	// TODO: [BACKEND] присылать определённое количество, чтобы дырка не появлялась
-	const [ highlightProjects ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject, {
+	const [ highlightProjects ] = useApi<PortfolioProjectFullType[], PortfolioMetaType>(API_ROUTE.projectProject, {
 		// filter: { cover_size: 'high'},
 		limit: 6
 	})
@@ -53,9 +57,8 @@ export const ProjectListShort: FunctionComponent = () => {
 			</TextContainer>
 
 			<ProjectList projectsList={projectsList} />
-			{/* @ts-ignore */}
-			{'meta' in highlightProjects && 'totalCount' in highlightProjects.meta ? (
-				<ProjectMore count={highlightProjects.meta.totalCount as number} />
+			{!!highlightProjects.meta ? (
+				<ProjectMore count={highlightProjects.meta.totalCount} />
 			) : null}
 		</div>
 	)
