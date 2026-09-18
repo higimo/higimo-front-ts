@@ -5,7 +5,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
-// TODO: [MIDDLE] плохо выглядит, надо переделать на тайлы
+// TODO: [FEATURE] опубликовать на IndexPage
+// TODO: [FEATURE] плохо выглядит, надо переделать на тайлы
 export const CharityIntro: FunctionComponent = () => (
 	<PrecentationContainer>
 		<TextContainer>

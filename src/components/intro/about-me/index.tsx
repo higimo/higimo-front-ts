@@ -5,6 +5,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
+// TODO: [FEATURE] опубликовать на IndexPage
+// TODO: [FEATURE] не красиво выглядит
 export const AboutMe: FunctionComponent = () => (
 	<PrecentationContainer className="about-me">
 		<TextContainer>

@@ -2,8 +2,6 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
-// import { AboutMe } from 'components/intro/about-me'
-// import { CharityIntro } from 'components/intro/carity-intro'
 import { BlogInvite } from 'components/intro/blog-invite'
 import { ContactList } from 'components/intro/contact-list'
 import { DonatIntro } from 'components/intro/donat-intro'
@@ -21,14 +19,11 @@ export const IndexPage: FunctionComponent = () => {
 	return [
 		<MainIntro />,
 		<DonatIntro />,
-		// TODO: [FEATURE] опубликовать, но пока не оч красиво выглядит
-		// <AboutMe />,
 		<ProjectListShort />,
 		<ContactList />,
 		<TravelInvite />,
 		<LookedThis />,
 		<LogismSingle />,
 		<BlogInvite />,
-		// <CharityIntro />,
 	]
 }
