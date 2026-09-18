@@ -3,11 +3,12 @@
 	--background--form: #f2f3f5;
 	--background--code: #f9f9f9;
 	--background--accent: #f9f9f9;
+	--background--smoke: #edeef0;
 
 	--border-color--main: #e1e3e6;
 	--border-color--field: #0000001f;
 
-	background: var(--background--main);
+	background: var(--background--smoke);
 	padding: 32px 0;
 	font-family: Roboto, sans-serif;
 	font-size: 15px;
@@ -30,4 +31,13 @@
 	padding: 8px 8px;
 	max-width: 65rem;
 	margin: 0 auto;
+}
+
+.vk-identity-page .intro-tile__item {
+	background: var(--background--main);
+    --grid-gap: 16px;
+}
+
+.vk-identity-page .intro-tile__anons {
+	gap: calc(var(--grid-gap) / 2);
 }

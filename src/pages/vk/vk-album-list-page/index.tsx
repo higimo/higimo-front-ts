@@ -6,6 +6,7 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMessage } from 'hook/use-message'
 import { useState, useCallback, useEffect } from 'preact/hooks'
 
+import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container/index.js'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
@@ -52,16 +53,22 @@ export const VkAlbumListPage: FunctionComponent = () => {
 			<VkSdkLoader />
 
 			<TextContainer>
-				<VkHeading level={1}>Список альбомов</VkHeading>
+				<Breadcrumps />
+			</TextContainer>
+
+			<TextContainer>
+				<VkHeading>Список альбомов</VkHeading>
 				<VkParagraph>
 					Альбомов: {albums.length} {' | '}
 					Публичных: {albums.filter(i => !i.is_locked).length} {' | '}
 					Фотографий всего: {albums.reduce((acc, i) => acc + i.size, 0)}
 				</VkParagraph>
 			</TextContainer>
+
 			<TextContainer>
 				<MessageContainer />
 			</TextContainer>
+
 			<VkPhotoAlbumList albums={albums} />
 		</div>
 	)

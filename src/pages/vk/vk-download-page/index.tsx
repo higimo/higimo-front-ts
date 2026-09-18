@@ -6,6 +6,7 @@ import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useQueue } from 'hook/use-queue'
 
+import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'
 import { VkDownloadForm } from 'components/vk/vk-download-form'
 import { VkHeading } from 'components/vk/vk-heading'
@@ -98,7 +99,11 @@ export const VkDownloadPage: FunctionComponent = () => {
 			<VkSdkLoader />
 
 			<TextContainer>
-				<VkHeading level={1}>Скачать свои альбомы</VkHeading>
+				<Breadcrumps />
+			</TextContainer>
+
+			<TextContainer>
+				<VkHeading>Скачать свои альбомы</VkHeading>
 				<VkParagraph>
 					Введите ид альбома, скопируйте результат и бахните его в wget
 				</VkParagraph>
@@ -106,17 +111,21 @@ export const VkDownloadPage: FunctionComponent = () => {
 					Загрузит фотки из первых попавшихся {ALBUM_MAX_COUNT} твоих альбомов. Таймаут загрузки {QUEUE_TIMER / 1000}, чтобы не дудосить серваки ВК.
 				</VkParagraph>
 			</TextContainer>
+
 			<VkDownloadForm
 				onGroupId={handleGroupId}
 				onUserId={handleUserId}
 				onSelf={handleSelf}
 			/>
+
 			<TextContainer>
 				<MessageContainer />
 			</TextContainer>
+
 			<TextContainer>
 				<VkHeading level={2}>Результат</VkHeading>
 			</TextContainer>
+
 			<textarea className="download-page__pre">
 				{JSON.stringify(photos, null, '\t')}
 			</textarea>

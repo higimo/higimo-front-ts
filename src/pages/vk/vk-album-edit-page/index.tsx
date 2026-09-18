@@ -7,6 +7,7 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 import { useState, useCallback, useEffect } from 'preact/hooks'
 
+import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
@@ -56,16 +57,22 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			<VkSdkLoader />
 
 			<TextContainer>
-				<VkHeading level={1}>Сортировка фотографий альбома</VkHeading>
+				<Breadcrumps />
+			</TextContainer>
+
+			<TextContainer>
+				<VkHeading>Сортировка фотографий альбома</VkHeading>
 				<VkParagraph>
 					Всего фотографий: {photos.length}
 					<br />
 					С комментариями: {photos.filter(i => !!i.text).length}
 				</VkParagraph>
 			</TextContainer>
+
 			<TextContainer>
 				<MessageContainer />
 			</TextContainer>
+
 			<VkPhotoToolAlbumEdit
 				photos={photos}
 			/>

@@ -2,6 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
+import { Breadcrumps } from 'components/ui/breadcrumps'
+import { IntroTileGallery } from 'components/intro/intro-tile-gallery'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 
@@ -15,11 +17,26 @@ export const VkIndexPage: FunctionComponent = () => {
 	return (
 		<div className="vk-identity-page vk-photo">
 			<TextContainer>
-				<VkHeading level={1}>VK tool</VkHeading>
-				<ul>
-					<li><a href={ROUTE_LINKS.toolVkDownloadAlbum}>Скачать фотки из альбома</a></li>
-					<li><a href={ROUTE_LINKS.toolVkAlbums}>Мои альбомы</a></li>
-				</ul>
+				<Breadcrumps />
+			</TextContainer>
+
+			<TextContainer>
+				<VkHeading>VK tool</VkHeading>
+
+				<IntroTileGallery
+					list={[
+						{
+							name: 'Скачать фотки из альбома',
+							description: 'Инструмент выгрузки ссылок на файлы картинок',
+							href: ROUTE_LINKS.toolVkDownloadAlbum,
+						},
+						{
+							name: 'Редактирование альбомов',
+							description: 'Сортировка и описания фотографий в более удобном для массового редактирования виде',
+							href: ROUTE_LINKS.toolVkAlbums,
+						}
+					]}
+				/>
 			</TextContainer>
 		</div>
 	)
