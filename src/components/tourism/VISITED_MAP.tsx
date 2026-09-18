@@ -92,5 +92,5 @@ export const TOURISM_VISITED_TAG_CATEGORY: TagCategory[] = [
 			title: tagName
 		}))
 	},
-];
+] as const
 
