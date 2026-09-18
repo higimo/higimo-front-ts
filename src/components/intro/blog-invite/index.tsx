@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { GridTail } from 'components/intro/grid-tail'
+import { GridTail } from 'components/ui/grid-tail'
 import { IntroHeader } from 'components/intro/intro-header'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'

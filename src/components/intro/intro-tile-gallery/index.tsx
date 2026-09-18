@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { IntroImageMappingType, IntroLinkDataType } from 'utils.type'
 
-import { IntoTile } from 'components/intro/into-tile'
+import { IntoTile } from 'components/ui/into-tile'
 
 import cs from 'classnames'
 
