@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
 import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/types'
 
-import { useJsonApi } from 'hook/fetch/use-json-api'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
+import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
 import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
@@ -16,15 +16,22 @@ import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps-figure'
 import '../../tourism-style.css'
 import '../yandex-map.css'
 
+type WalkaroundType = {
+	moscowPovPoints: HigimoMapPoint[]
+	stateYear2021: YaMapPolygon[]
+	stateYear2024: YaMapPolygon[]
+}
+
 export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 	usePageTitle('Обхожу Москву')
 
-	const [ moscowPovPoints ] = useJsonApi<HigimoMapPoint[]>('/json/tourism/moscow-pov-points.json')
-	const [ stateYear2021 ] = useJsonApi<YaMapPolygon[]>('/json/tourism/walk-moscow-2021.json')
-	const [ stateYear2024 ] = useJsonApi<YaMapPolygon[]>('/json/tourism/walk-moscow-2024.json')
-	const isLoading = useLoadingState([moscowPovPoints.status, stateYear2021.status, stateYear2024.status])
-	const isError = [moscowPovPoints.status, stateYear2021.status, stateYear2024.status]
-		.some(status => status === 'ERROR')
+	const [ data ] = useMultiJsonApi<WalkaroundType>({
+		moscowPovPoints: '/json/tourism/moscow-pov-points.json',
+		stateYear2021: '/json/tourism/walk-moscow-2021.json',
+		stateYear2024: '/json/tourism/walk-moscow-2024.json',
+	})
+	const isLoading = useLoadingState([data.status])
+	const isError = data.status === 'ERROR'
 
 	if (isLoading) {
 		return <Loading />
@@ -46,9 +53,9 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 				? (<NotFoundData />)
 				: (
 					<TourismMoscowWalkaround
-						moscowPovPoints={moscowPovPoints.data}
-						stateYear2021={stateYear2021.data}
-						stateYear2024={stateYear2024.data}
+						moscowPovPoints={data.data.moscowPovPoints!}
+						stateYear2021={data.data.stateYear2021!}
+						stateYear2024={data.data.stateYear2024!}
 					/>
 				)
 			)}

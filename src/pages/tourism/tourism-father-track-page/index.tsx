@@ -3,8 +3,8 @@ import { FunctionComponent } from 'preact'
 import { PageJSONData } from 'components/block-renderer/types'
 import { PovType } from 'components/tourism/types'
 
-import { useJsonApi } from 'hook/fetch/use-json-api'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
+import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
 import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
@@ -19,33 +19,36 @@ import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 import '../tourism-style.css'
 import './style.css'
 
+type FatherJsonType = {
+	roadmap: PageJSONData
+	mainTrack: Coord[]
+	cities: PovType[]
+	rostovNaDonuPlace: PovType[]
+	rostovNaDonuPolygon: Coord[]
+}
+
 export const TourismFatherTrackPage: FunctionComponent = () => {
 	usePageTitle('Путешествие с отцом')
 
-	const [ roadmap ] = useJsonApi<PageJSONData>('/json/tourism/father-trip-roadmap.json')
+	const [ data ] = useMultiJsonApi<FatherJsonType>({
+		roadmap: '/json/tourism/father-trip-roadmap.json',
+		mainTrack: '/json/tourism/father-trip-main-track.json',
+		cities: '/json/tourism/father-trip-cities.json',
+		rostovNaDonuPlace: '/json/tourism/father-trip-rostov-na-donu-place.json',
+		rostovNaDonuPolygon: '/json/tourism/father-trip-rostov-na-donu-polygon.json',
+	})
 
-	const [ mainTrack ] = useJsonApi<Coord[]>('/json/tourism/father-trip-main-track.json')
-	const [ cities ] = useJsonApi<PovType[]>('/json/tourism/father-trip-cities.json')
-	const [ rostovNaDonuPlace ] = useJsonApi<PovType[]>('/json/tourism/father-trip-rostov-na-donu-place.json')
-	const [ rostovNaDonuPolygon ] = useJsonApi<Coord[]>('/json/tourism/father-trip-rostov-na-donu-polygon.json')
-
-	const statusList = [
-		mainTrack.status, cities.status,
-		rostovNaDonuPlace.status, rostovNaDonuPolygon.status,
-	]
-
-	const isLoading = useLoadingState(statusList)
-	const isError = statusList.some(i => i === 'ERROR')
-	const isRoadmapError = roadmap.status === 'ERROR'
+	const isLoading = useLoadingState([data.status])
+	const isError = data.status === 'ERROR'
 
 	if (isLoading) {
 		return <Loading />
 	}
 
-	const modCities = cities.data
-		.concat(rostovNaDonuPlace.data)
-	const lines = mainTrack.data
-		.concat(rostovNaDonuPolygon.data)
+	const modCities = data.data.cities!
+		.concat(data.data.rostovNaDonuPlace!)
+	const lines = data.data.mainTrack!
+		.concat(data.data.rostovNaDonuPolygon!)
 
 	return (
 		<div className="tourism-identy-page">
@@ -60,9 +63,9 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer className="car-list">
-				{(isRoadmapError
+				{(isError
 					? (<NotFoundData />)
-					: (roadmap.data.blocks.map((child, idx) => (
+					: (data.data.roadmap!.blocks.map((child, idx) => (
 						<BlockRenderer key={idx} block={child} />
 					)))
 				)}

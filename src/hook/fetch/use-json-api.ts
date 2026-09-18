@@ -47,7 +47,7 @@ const initialState = {
 	error: null,
 } as const
 
-export const useJsonApi = <T,>(uri: string): [JsonApiState<T>, () => void] => {
+export const useJsonApi = <T,>(uri: string): [JsonApiState<T>, () => Promise<void>] => {
 	const [state, dispatch] = useReducer(jsonApiReducer<T>, initialState as JsonApiState<T>)
 
 	// Функция выполнения запроса (будет возвращена как refetch)
