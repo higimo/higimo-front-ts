@@ -1,9 +1,0 @@
-.donat-intro {
-	font-size: 24px;
-}
-
-@media (min-width: 768px) {
-	.donat-intro {
-		font-size: 48px;
-	}
-}

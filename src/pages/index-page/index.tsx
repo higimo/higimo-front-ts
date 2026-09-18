@@ -2,17 +2,16 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 
+// import { AboutMe } from 'components/intro/about-me'
+// import { CharityIntro } from 'components/intro/carity-intro'
 import { BlogInvite } from 'components/intro/blog-invite'
 import { ContactList } from 'components/intro/contact-list'
+import { DonatIntro } from 'components/intro/donat-intro'
 import { LogismSingle } from 'components/intro/logism-single'
 import { LookedThis } from 'components/intro/looked-this'
 import { MainIntro } from 'components/intro/main-intro'
 import { ProjectListShort } from 'components/intro/project-list-short'
 import { TravelInvite } from 'components/intro/travel-invite'
-// import { CharityIntro } from 'components/intro/carity-intro'
-import { ProductServerBanner } from 'components/merchant/product-server-banner'
-// import { DonatIntro } from 'components/intro/donat-intro'
-// import { AboutMe } from 'components/intro/about-me'
 
 // TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
@@ -21,7 +20,7 @@ export const IndexPage: FunctionComponent = () => {
 
 	return [
 		<MainIntro />,
-		<ProductServerBanner productKey="COFFEE" />,
+		<DonatIntro />,
 		// TODO: [FEATURE] опубликовать, но пока не оч красиво выглядит
 		// <AboutMe />,
 		<ProjectListShort />,
@@ -31,6 +30,5 @@ export const IndexPage: FunctionComponent = () => {
 		<LogismSingle />,
 		<BlogInvite />,
 		// <CharityIntro />,
-		// <DonatIntro />,
 	]
 }
