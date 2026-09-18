@@ -189,8 +189,7 @@ export type ToolDataType = {
 	isAdmin?: boolean,
 	isArchive?: boolean
 	isInactive?: boolean
-	// TODO: rename title
-	name: string
+	title: string
 	href: ValueOf<typeof EXTERNAL_LINKS> | ValueOf<typeof ROUTE_LINKS>
 	description: string
 	// imgId: 'screen' | 'rak' | 'tech' | 'obuchenie' | 'intersection'

@@ -10,25 +10,25 @@ import vk from 'components/intro/contact-list/img/vk.svg'
 export const contactListData: ToolDataType[] = [
 	{
 		img: gmail,
-		name: 'Электропочта',
+		title: 'Электропочта',
 		href: EXTERNAL_LINKS.contactMail,
 		description: '',
 	},
 	{
 		img: tg,
-		name: 'Телеграм',
+		title: 'Телеграм',
 		href: EXTERNAL_LINKS.contactTg,
 		description: '',
 	},
 	{
 		img: vk,
-		name: 'ВКонтакте',
+		title: 'ВКонтакте',
 		href: EXTERNAL_LINKS.socialVk,
 		description: '',
 	},
 	{
 		img: github,
-		name: 'Гитхаб',
+		title: 'Гитхаб',
 		href: EXTERNAL_LINKS.github,
 		description: '',
 	},

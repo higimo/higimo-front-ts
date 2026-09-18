@@ -23,7 +23,7 @@ export const LookedThis: FunctionComponent = () => (
 							target="_blank"
 							href={item.href as string}
 						>
-							{item.name}
+							{item.title}
 						</a>
 					</li>
 				))}

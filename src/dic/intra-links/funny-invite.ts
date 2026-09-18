@@ -4,22 +4,22 @@ import { ToolDataType } from 'utils.type'
 
 export const funnyList: ToolDataType[] = [
 	{
-		name: 'Комоджи (⌐■_■)',
+		title: 'Комоджи (⌐■_■)',
 		href: ROUTE_LINKS.comoji,
 		description: 'Смайлики на случай важных переговоров'
 	},
 	{
-		name: 'Волшебный шар',
+		title: 'Волшебный шар',
 		href: ROUTE_LINKS.magic,
 		description: 'Когда особенно хочется погадать'
 	},
 	{
-		name: 'Календарь деплоя',
+		title: 'Календарь деплоя',
 		href: EXTERNAL_LINKS.serviceDeploy,
 		description: 'Астрологи предсказали, когда лучше попридержать публикацию, и не гневать богов'
 	},
 	{
-		name: 'Аккорды',
+		title: 'Аккорды',
 		href: ROUTE_LINKS.accordIndex,
 		description: 'Песни, которые я играю на гитарниках, чтобы было понятно чему можно подпеть или какой будет репертуар с моей стороны'
 	},

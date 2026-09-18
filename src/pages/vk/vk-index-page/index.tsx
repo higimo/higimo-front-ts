@@ -26,12 +26,12 @@ export const VkIndexPage: FunctionComponent = () => {
 				<IntroTileGallery
 					list={[
 						{
-							name: 'Скачать фотки из альбома',
+							title: 'Скачать фотки из альбома',
 							description: 'Инструмент выгрузки ссылок на файлы картинок',
 							href: ROUTE_LINKS.toolVkDownloadAlbum,
 						},
 						{
-							name: 'Редактирование альбомов',
+							title: 'Редактирование альбомов',
 							description: 'Сортировка и описания фотографий в более удобном для массового редактирования виде',
 							href: ROUTE_LINKS.toolVkAlbums,
 						}

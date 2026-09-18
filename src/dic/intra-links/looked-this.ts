@@ -5,37 +5,37 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const aboutMeList: ToolDataType[] = [
 	{
-		name: 'Сериалы',
+		title: 'Сериалы',
 		href: EXTERNAL_LINKS.aboutMyshows,
 		description: '',
 	},
 	{
-		name: 'Кино',
+		title: 'Кино',
 		href: EXTERNAL_LINKS.aboutKinopoisk,
 		description: '',
 	},
 	{
-		name: 'Аниме',
+		title: 'Аниме',
 		href: EXTERNAL_LINKS.aboutAnime,
 		description: '',
 	},
 	{
-		name: 'Книги',
+		title: 'Книги',
 		href: EXTERNAL_LINKS.aboutLivelib,
 		description: '',
 	},
 	{
-		name: 'Домашняя библиотека',
+		title: 'Домашняя библиотека',
 		href: ROUTE_LINKS.libraryIndex,
 		description: '',
 	},
 	{
-		name: 'Я.Музыка',
+		title: 'Я.Музыка',
 		href: EXTERNAL_LINKS.aboutMusic,
 		description: '',
 	},
 	{
-		name: 'Википедия',
+		title: 'Википедия',
 		href: EXTERNAL_LINKS.aboutWiki,
 		description: '',
 	},

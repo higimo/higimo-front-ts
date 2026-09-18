@@ -19,7 +19,7 @@ export const IntoTile: FunctionComponent<IntoTilePropsType> = ({
 	imgId,
 	description,
 	href,
-	name,
+	title,
 	isAdmin,
 	isArchive,
 	isInactive,
@@ -52,7 +52,7 @@ export const IntoTile: FunctionComponent<IntoTilePropsType> = ({
 				<div className="intro-tile__name">
 					<span
 						className="intro-tile__title"
-						dangerouslySetInnerHTML={{ __html: name }}
+						dangerouslySetInnerHTML={{ __html: title }}
 					/>
 				</div>
 				<div

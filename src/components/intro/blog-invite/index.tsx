@@ -20,7 +20,7 @@ export const BlogInvite: FunctionComponent = () => (
 		<div className="blog-invite__gallery">
 			{blogInviteData.map(item => (
 				<GridTail
-					title={[item.name, item.isArchive ? <sup>(архив)</sup> : null]}
+					title={[item.title, item.isArchive ? <sup>(архив)</sup> : null]}
 					description={item.description}
 					href={item.href as string}
 					isArhive={item.isArchive}
