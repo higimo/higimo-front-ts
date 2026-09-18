@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { IntroImageMappingType, ToolDataType } from 'utils.type'
+import { IntroImageMappingType, IntroLinkDataType } from 'utils.type'
 
 import { useAuth } from 'hook/fetch/use-auth'
 
@@ -9,7 +9,7 @@ import cs from 'classnames'
 
 import './style.css'
 
-type IntoTilePropsType = ToolDataType & {
+type IntoTilePropsType = IntroLinkDataType & {
 	imageMapping?: IntroImageMappingType
 	className?: string
 }

@@ -1,4 +1,4 @@
-import { ToolDataType } from 'utils.type'
+import { IntroLinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
@@ -7,7 +7,7 @@ import gmail from 'components/intro/contact-list/img/gmail.svg'
 import tg from 'components/intro/contact-list/img/telegram.svg'
 import vk from 'components/intro/contact-list/img/vk.svg'
 
-export const contactListData: ToolDataType[] = [
+export const contactListData: IntroLinkDataType[] = [
 	{
 		img: gmail,
 		title: 'Электропочта',

@@ -1,8 +1,8 @@
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { ToolDataType } from 'utils.type'
+import { IntroLinkDataType } from 'utils.type'
 
-export const funnyList: ToolDataType[] = [
+export const funnyList: IntroLinkDataType[] = [
 	{
 		title: 'Комоджи (⌐■_■)',
 		href: ROUTE_LINKS.comoji,

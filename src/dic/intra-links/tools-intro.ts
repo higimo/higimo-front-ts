@@ -1,9 +1,9 @@
-import { ToolDataType } from 'utils.type'
+import { IntroLinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-export const hardToolList: ToolDataType[] = [
+export const hardToolList: IntroLinkDataType[] = [
 	{
 		isAdmin: true,
 		title: 'Пробби',
@@ -73,7 +73,7 @@ export const hardToolList: ToolDataType[] = [
 	},
 ] as const
 
-export const botToolList: ToolDataType[] = [
+export const botToolList: IntroLinkDataType[] = [
 	{
 		title: 'Бот упоминаний',
 		href: EXTERNAL_LINKS.botRole,
@@ -86,6 +86,6 @@ export const botToolList: ToolDataType[] = [
 	},
 ] as const
 
-export const toolListData: ToolDataType[] = ([] as ToolDataType[])
+export const toolListData: IntroLinkDataType[] = ([] as IntroLinkDataType[])
 	.concat(botToolList)
 	.concat(hardToolList)

@@ -184,8 +184,7 @@ export type InterLinkType = {
 
 export type IntroImageMappingType = Record<string, string>
 
-// TODO: [LIGHT] rename IntroLinkDataType
-export type ToolDataType = {
+export type IntroLinkDataType = {
 	isAdmin?: boolean,
 	isArchive?: boolean
 	isInactive?: boolean

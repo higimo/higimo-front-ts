@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { ToolDataType } from 'utils.type'
+import { IntroLinkDataType } from 'utils.type'
 
 import { useAuth } from 'hook/fetch/use-auth'
 import { useGlobalContext } from 'context/global'
@@ -15,7 +15,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-const renderLink = (isAuth: boolean) => (toolElement: ToolDataType) => {
+const renderLink = (isAuth: boolean) => (toolElement: IntroLinkDataType) => {
 	if (!!toolElement.isAdmin && !isAuth || !!toolElement.isArchive) {
 		return null
 	}

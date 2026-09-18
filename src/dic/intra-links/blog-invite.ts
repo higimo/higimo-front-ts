@@ -1,8 +1,8 @@
-import { ToolDataType } from 'utils.type'
+import { IntroLinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 
-export const blogInviteData: ToolDataType[] = [
+export const blogInviteData: IntroLinkDataType[] = [
 	{
 		title: 'Личный блог Хигимо',
 		href: EXTERNAL_LINKS.socialTg,

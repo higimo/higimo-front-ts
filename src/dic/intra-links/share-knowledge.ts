@@ -1,9 +1,9 @@
-import { ToolDataType } from 'utils.type'
+import { IntroLinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-export const shareKnowledgeData: ToolDataType[] = [
+export const shareKnowledgeData: IntroLinkDataType[] = [
 	{
 		imgId: 'intersection',
 		title: 'Пересечения',

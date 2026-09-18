@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { IntroImageMappingType, ToolDataType } from 'utils.type'
+import { IntroImageMappingType, IntroLinkDataType } from 'utils.type'
 
 import { IntoTile } from 'components/intro/into-tile'
 
@@ -8,7 +8,7 @@ import cs from 'classnames'
 import './style.css'
 
 type IntroTileGalleryPropsType = {
-	list: ToolDataType[]
+	list: IntroLinkDataType[]
 	className?: string
 	imageMapping?: IntroImageMappingType
 }
