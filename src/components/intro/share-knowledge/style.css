@@ -17,7 +17,7 @@
 }
 
 .share-knowledge .intro-tile__item:hover {
-	box-shadow: inset 0 0 45px -20px #8db8ff87, 0 0 0 1px #d3d3d354;
+	box-shadow: inset -50px 0px 85px -40px #8db8ff87, 0 0 0 1px #d3d3d354;
 	border-color: #3984d4;
 }
 
