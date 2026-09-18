@@ -1,7 +1,7 @@
 import { InitOptions } from 'api-types/tinkoff'
-
 import { UseFormGetValues } from 'react-hook-form'
-import sendRequest from 'utils/api/send-request'
+
+import { sendRequest } from 'utils/api/send-request'
 
 import { MerchantProductType } from 'components/merchant/types'
 import { FormValues } from 'components/merchant/merchant-payment-form/types'

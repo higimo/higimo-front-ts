@@ -49,7 +49,7 @@ export interface ApiResponse<T = any> {
 
 const FREEZE_META = {} as const
 
-const sendRequest = <T = any>(
+export const sendRequest = <T = any>(
 	url: string,
 	{
 		method = 'GET',
@@ -112,6 +112,3 @@ const sendRequest = <T = any>(
 		xhttp.send(httpBuildQuery(values))
 	}
 })
-
-// TODO: [LIGHT] пора удалить
-export default sendRequest

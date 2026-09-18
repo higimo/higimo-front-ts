@@ -1,12 +1,12 @@
-import { FunctionComponent } from 'preact'
 import { ApiError } from 'utils/api/send-request'
+import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
 
 import { getBackPath } from 'utils/get-back-path'
 import { isValidAuth } from 'utils/is-valid-auth'
+import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
-import sendRequest from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

@@ -2,7 +2,7 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { useState, useCallback } from 'preact/hooks'
 
-import sendRequest from 'utils/api/send-request'
+import { sendRequest } from 'utils/api/send-request'
 import { smoothScroll } from 'utils/smooth-scroll'
 import { todayStr } from 'utils/today-str'
 

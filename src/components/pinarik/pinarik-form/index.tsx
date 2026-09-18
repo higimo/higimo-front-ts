@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
-import { PinarikType } from 'api-types/pinarik.types'
 import { HigimoServerResponse } from 'api-types/server-response.types'
+import { PinarikType } from 'api-types/pinarik.types'
 
 import cs from 'classnames'
 
@@ -9,7 +9,7 @@ import { Dispatch, StateUpdater }  from 'preact/hooks'
 
 import { useFormStatus } from 'hook/utils/use-form-status'
 
-import sendRequest, { ApiError } from 'utils/api/send-request'
+import { sendRequest, ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { FormButton } from 'components/form/form-button'

@@ -3,8 +3,8 @@ import { NestedListItem } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/fetch/use-auth'
 
+import { sendRequest, ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
-import sendRequest, { ApiError } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'

@@ -3,7 +3,7 @@ import { ValueOf } from 'utils.type'
 import { useLocation } from 'preact-iso'
 import { useCallback, useEffect } from 'preact/hooks'
 
-import sendRequest from 'utils/api/send-request'
+import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'

@@ -1,6 +1,6 @@
 import { useEffect } from 'preact/hooks'
 
-import sendRequest from 'utils/api/send-request'
+import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

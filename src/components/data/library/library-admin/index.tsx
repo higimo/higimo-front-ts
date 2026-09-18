@@ -5,7 +5,7 @@ import { LibraryType } from 'api-types/library.types'
 import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
-import sendRequest, { ApiError } from 'utils/api/send-request'
+import { ApiError } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
