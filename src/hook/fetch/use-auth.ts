@@ -1,29 +1,23 @@
 import { ValueOf } from 'utils.type'
 
-import { useLocation } from 'preact-iso'
 import { useCallback, useEffect } from 'preact/hooks'
+import { useLocation } from 'preact-iso'
 
 import { sendRequest } from 'utils/api/send-request'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-
 import { signal } from '@preact/signals'
 
-export const AUTH_STATUS_DIC = {
-	INIT:    'INIT',
-	LOADING: 'LOADING',
-	LOADED:  'LOADED',
-	ERROR:   'ERROR',
-} as const
+import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_STATUS } from 'dic/API_STATUS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+
 
 interface AuthState {
-	status: ValueOf<typeof AUTH_STATUS_DIC>
+	status: ValueOf<typeof API_STATUS>
 	isAuth: boolean
 }
 
 const authSignal = signal<AuthState>({
-	status: AUTH_STATUS_DIC.INIT,
+	status: API_STATUS.INIT,
 	isAuth: false,
 });
 
@@ -45,25 +39,25 @@ export const useAuth = (): UseAuthReturn => {
 	}, [path])
 
 	useEffect(() => {
-		if (authSignal.value.status !== AUTH_STATUS_DIC.INIT || requestInProgress) return;
+		if (authSignal.value.status !== API_STATUS.INIT || requestInProgress) return;
 
 		requestInProgress = true;
-		authSignal.value = { ...authSignal.value, status: AUTH_STATUS_DIC.LOADING };
+		authSignal.value = { ...authSignal.value, status: API_STATUS.LOADING };
 
 		sendRequest(API_ROUTE.authMe)
 			.then(() => {
 				requestInProgress = false;
-				authSignal.value = { status: AUTH_STATUS_DIC.LOADED, isAuth: true };
+				authSignal.value = { status: API_STATUS.LOADED, isAuth: true };
 			})
 			.catch(() => {
 				requestInProgress = false;
-				authSignal.value = { status: AUTH_STATUS_DIC.LOADED, isAuth: false };
+				authSignal.value = { status: API_STATUS.LOADED, isAuth: false };
 			});
 	}, []) // Должен выполняться однажды при монтировании
 
 	return {
 		get isAuth() { return authSignal.value.isAuth; },
-		get isAuthLoaded() { return authSignal.value.status === AUTH_STATUS_DIC.LOADED; },
+		get isAuthLoaded() { return authSignal.value.status === API_STATUS.LOADED; },
 		redirectToLogin,
 		routeTo: route,
 	};

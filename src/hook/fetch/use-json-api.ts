@@ -1,12 +1,6 @@
 import { useEffect, useCallback, useReducer } from 'preact/hooks'
 
-// TODO: [LIGHT] вынести в отдельный словарь, использую одно и то же постоянно
-const API_STATUS = {
-	INIT: 'INIT',
-	LOADING: 'LOADING',
-	LOADED: 'LOADED',
-	ERROR: 'ERROR',
-} as const
+import { API_STATUS } from 'dic/API_STATUS'
 
 type ApiStatusName = keyof typeof API_STATUS
 

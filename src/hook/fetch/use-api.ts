@@ -1,17 +1,11 @@
+import { ApiRouteType } from 'dic/API_ROUTE'
 import { KeyOf } from 'utils.type'
 
 import { useEffect, useReducer } from 'preact/hooks'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { ApiRouteType } from 'dic/API_ROUTE'
-
-export const API_STATUS = {
-	INIT:    'INIT',
-	LOADING: 'LOADING',
-	LOADED:  'LOADED',
-	ERROR:   'ERROR',
-} as const
+import { API_STATUS } from 'dic/API_STATUS'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 

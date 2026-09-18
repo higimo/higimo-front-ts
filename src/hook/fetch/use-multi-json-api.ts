@@ -1,11 +1,6 @@
-import { useCallback, useEffect, useReducer } from "preact/hooks"
+import { useCallback, useEffect, useReducer } from 'preact/hooks'
 
-export const API_STATUS = {
-	INIT: 'INIT',
-	LOADING: 'LOADING',
-	LOADED: 'LOADED',
-	ERROR: 'ERROR',
-} as const
+import { API_STATUS } from 'dic/API_STATUS'
 
 type ApiStatusName = keyof typeof API_STATUS
 

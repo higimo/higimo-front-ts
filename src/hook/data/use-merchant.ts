@@ -1,27 +1,21 @@
-import { useEffect } from 'preact/hooks'
-
-import { sendRequest } from 'utils/api/send-request'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
-
-import { signal } from '@preact/signals'
 import { MerchantProductType } from 'components/merchant/types'
 import { ValueOf } from 'utils.type'
 
-export const MERCHANT_PRODUCT_STATUS_DIC = {
-	INIT:    'INIT',
-	LOADING: 'LOADING',
-	LOADED:  'LOADED',
-	ERROR:   'ERROR',
-} as const
+import { useEffect } from 'preact/hooks'
+
+import { sendRequest } from 'utils/api/send-request'
+import { signal } from '@preact/signals'
+
+import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_STATUS } from 'dic/API_STATUS'
 
 interface MerchantProductState {
-	status: ValueOf<typeof MERCHANT_PRODUCT_STATUS_DIC>
+	status: ValueOf<typeof API_STATUS>
 	products: MerchantProductType[]
 }
 
 const merchantProductSignal = signal<MerchantProductState>({
-	status: MERCHANT_PRODUCT_STATUS_DIC.INIT,
+	status: API_STATUS.INIT,
 	products: [],
 });
 
@@ -38,25 +32,25 @@ interface UseAuthReturn {
  */
 export const useMerchant = (): UseAuthReturn => {
 	useEffect(() => {
-		if (merchantProductSignal.value.status !== MERCHANT_PRODUCT_STATUS_DIC.INIT || requestInProgress) return;
+		if (merchantProductSignal.value.status !== API_STATUS.INIT || requestInProgress) return;
 
 		requestInProgress = true;
 		merchantProductSignal.value = {
 			...merchantProductSignal.value,
-			status: MERCHANT_PRODUCT_STATUS_DIC.LOADING
+			status: API_STATUS.LOADING
 		};
 
 		sendRequest(API_ROUTE.merchantProducts)
 			.then((products) => {
 				merchantProductSignal.value = {
-					status: MERCHANT_PRODUCT_STATUS_DIC.LOADED,
+					status: API_STATUS.LOADED,
 					products: products.data,
 				};
 			})
 			.catch(() => {
 				requestInProgress = false;
 				merchantProductSignal.value = {
-					status: MERCHANT_PRODUCT_STATUS_DIC.LOADED,
+					status: API_STATUS.LOADED,
 					products: [],
 				};
 			});
@@ -64,7 +58,7 @@ export const useMerchant = (): UseAuthReturn => {
 
 	return {
 		get products() { return merchantProductSignal.value.products },
-		get isProductLoaded() { return merchantProductSignal.value.status === MERCHANT_PRODUCT_STATUS_DIC.LOADED },
+		get isProductLoaded() { return merchantProductSignal.value.status === API_STATUS.LOADED },
 		get isProductEmpty() { return !merchantProductSignal.value.products.length },
 	};
 }
