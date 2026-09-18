@@ -47,7 +47,6 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 	return (
 		<Fragment>
 			<TextContainer>
-				{/* TODO: [LIGHT] сменить на UI-kit теги из этой сборки */}
 				{/* @ts-ignore TODO: [LIGHT] пофиксить, после рефакторинга сборки данных */}
 				{TOURISM_VISITED_TAG_CATEGORY[0].tags.map((tag) => (
 					<Tag key={tag.id} active={isSelected(tag.title)} onClick={toggleTag(tag.title)}>

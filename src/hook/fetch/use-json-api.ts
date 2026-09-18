@@ -1,8 +1,7 @@
 import { useEffect, useCallback, useReducer } from 'preact/hooks'
 
-// TODO: [LIGHT] Добавить реализацию мульти загрузки отдельным хуком
-
-export const API_STATUS = {
+// TODO: вынести в отдельный словарь, использую одно и то же постоянно
+const API_STATUS = {
 	INIT: 'INIT',
 	LOADING: 'LOADING',
 	LOADED: 'LOADED',

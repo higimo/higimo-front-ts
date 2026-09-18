@@ -66,10 +66,7 @@ export const TourismMapsMoscowBar = () => {
 	// TODO: [USE_TAGS] есть же хук useYearFilter(AND_GROUP_STRATEGY)
 	const filteredData = useMemo(
 		() => {
-			console.log('INTO filteredData', normalizedTagsBarPovMoscow, selectedTagTitles)
-			const res = filterTagAnyStrategy(normalizedTagsBarPovMoscow, { all: selectedTagTitles })
-			console.log('HIGIMO', res)
-			return res
+			return filterTagAnyStrategy(normalizedTagsBarPovMoscow, { all: selectedTagTitles })
 		},
 		[normalizedTagsBarPovMoscow, selectedTagTitles]
 	);
