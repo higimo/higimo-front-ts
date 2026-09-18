@@ -2,7 +2,7 @@ import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { CategoryTitle } from 'components/intro/category-title'
+import { IntroHeader } from 'components/intro/intro-header'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -26,7 +26,7 @@ export const TilesGallery: FunctionComponent<TilesGalleryProps> = ({ id, title, 
 	<PrecentationContainer className={cs('tiles-gallery', className)} id={id}>
 		<TextContainer>
 			{!!title && (
-				<CategoryTitle className={cs('tiles-gallery__title', `${className}__title`)}>{title}</CategoryTitle>
+				<IntroHeader className={cs('tiles-gallery__title', `${className}__title`)}>{title}</IntroHeader>
 			)}
 		</TextContainer>
 		<TextContainer className="tiles-gallery__content">

@@ -1,7 +1,13 @@
 import { FunctionComponent } from 'preact'
 
+import cs from 'classnames'
+
 import './style.css'
 
-export const IntroHeader: FunctionComponent = ({ children }) => (
-	<h2 className="intro-header">{children}</h2>
+type IntroHeaderPropsType = {
+	className?: string
+}
+
+export const IntroHeader: FunctionComponent<IntroHeaderPropsType> = ({ children, className }) => (
+	<h2 className={cs('intro-header', className)}>{children}</h2>
 )
