@@ -12,9 +12,9 @@ export class VkDownloadService {
 		private showMessage: (message: string) => void,
 	) {}
 
-	async getAlbums(userId: string, downloadId: string): Promise<VKAlbumType[] | null> {
+	async getAlbums(userId: string): Promise<VKAlbumType[] | null> {
 		try {
-			const albums = await VkApi.getAlbums(userId, downloadId)
+			const albums = await VkApi.getAlbums(userId)
 			this.showMessage(`Всего альбомов ${albums.length}, беру первые ${ALBUM_MAX_COUNT}`)
 			return albums
 		} catch (error) {

@@ -6,7 +6,6 @@ import { Header } from 'components/ui/header'
 import { ToastContainer } from 'toast'
 
 import { GlobalProvider }    from './context/global'
-import { VkContextProvider } from './context/vk'
 
 import { AccordGallery } from 'components/accord/accord-gallery'
 import { AccordSingle }  from 'components/accord/accord-single'
@@ -114,7 +113,6 @@ export function App() {
 		<LocationProvider>
 			<ErrorBoundary onError={(e) => console.log(e)}>
 					<GlobalProvider>
-						<VkContextProvider>
 						<Header />
 						<main>
 							<Router>
@@ -236,9 +234,9 @@ export function App() {
 								<Route default component={NotFoundPage} />
 							</Router>
 						</main>
+						<div id="vk_api_transport" />
 						<ToastContainer />
 						<Footer />
-						</VkContextProvider>
 					</GlobalProvider>
 			</ErrorBoundary>
 		</LocationProvider>

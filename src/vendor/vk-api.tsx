@@ -1,4 +1,4 @@
-import { VKAlbumType, VkPhotoType } from 'api-types/vk.types'
+import { VKAlbumType, VkPhotoType, VkUserId } from 'api-types/vk.types'
 
 export type VkResponceError = {
 	error: {

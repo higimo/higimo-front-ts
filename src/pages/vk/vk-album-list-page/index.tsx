@@ -4,29 +4,26 @@ import { VkApi, VkResponceError } from 'vendor/vk-api'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMessage } from 'hook/use-message'
-import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
+import { useState, useCallback, useEffect } from 'preact/hooks'
 
 import { TextContainer } from 'components/ui/text-container/index.js'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'
+import { VkSdkLoader } from 'components/vk/vk-sdk-loader/index.js'
 
 import { printVkError } from 'vendor/print-vk-error'
 
-import { VkContext } from 'context/vk'
+import { vkSession } from 'context/vk'
 
 import '../vk-style.css'
 
 export const VkAlbumListPage: FunctionComponent = () => {
 	usePageTitle('Список альбомов')
 
-	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
+	const { status, session, error } = vkSession.value
 	const [ albums, setAlbums ] = useState<VKAlbumType[]>([])
 	const { showMessage, MessageContainer } = useMessage()
-
-	useLayoutEffect(() => {
-		fetchLogin()
-	}, [fetchLogin])
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
 		try {
@@ -39,13 +36,21 @@ export const VkAlbumListPage: FunctionComponent = () => {
 	}, [showMessage])
 
 	useEffect(() => {
-		if (isVkLogin && session && session.user.id) {
+		if (status === 'LOADED' && session?.user.id) {
 			fetchAlbums(session.user.id)
 		}
-	}, [isVkLogin, session])
+	}, [status, session, fetchAlbums])
+
+	useEffect(() => {
+		if (status === 'ERROR' && error) {
+			showMessage(error.message)
+		}
+	}, [status, error, showMessage])
 
 	return (
 		<div className="vk-identity-page vk-photo">
+			<VkSdkLoader />
+
 			<TextContainer>
 				<VkHeading level={1}>Список альбомов</VkHeading>
 				<VkParagraph>

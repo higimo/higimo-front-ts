@@ -1,7 +1,7 @@
 import { FunctionComponent, TargetedEvent } from 'preact'
 import { VkPhotosContentType, VkQueueType } from 'components/vk/types'
 
-import { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks'
+import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
 import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useQueue } from 'hook/use-queue'
@@ -10,8 +10,9 @@ import { TextContainer } from 'components/ui/text-container'
 import { VkDownloadForm } from 'components/vk/vk-download-form'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
+import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
-import { VkContext } from 'context/vk'
+import { vkSession } from 'context/vk'
 
 import { ALBUM_MAX_COUNT, QUEUE_TIMER, VkDownloadService } from 'components/vk/service/vk-download-service'
 
@@ -23,7 +24,7 @@ type ChangeEvent = TargetedEvent<HTMLInputElement, InputEvent>
 export const VkDownloadPage: FunctionComponent = () => {
 	usePageTitle('Скачать свои альбомы')
 
-	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
+	const { status, session } = vkSession.value
 	const { size, push, pull, view } = useQueue<VkQueueType>()
 	const [ photos, setPhotos ] = useState<VkPhotosContentType[]>([])
 	const [ downloadId, setDownloadId ] = useState<string>('')
@@ -37,8 +38,6 @@ export const VkDownloadPage: FunctionComponent = () => {
 		serviceRef.current = new VkDownloadService((message) => showMessageRef.current(message))
 	}
 	const service = serviceRef.current
-
-	useLayoutEffect(fetchLogin, [fetchLogin])
 
 	// TODO: [LIGHT] вынести в ControllerForm или хук
 	const handleGroupId = useCallback((event: ChangeEvent) => {
@@ -59,21 +58,20 @@ export const VkDownloadPage: FunctionComponent = () => {
 	}, [session])
 
 	useEffect(() => {
-		if (!isVkLogin || !session || downloadId.length === 0) {
-			return
-		}
-		(async () => {
-			const albums = await service.getAlbums(session.user.id, downloadId)
-			if (!albums) return
-			albums.slice(0, ALBUM_MAX_COUNT).forEach(album => {
-				push({
-					type: 'album',
-					id: album.id,
-					title: album.title,
+		if (status === 'LOADED' && session?.user.id) {
+			(async () => {
+				const albums = await service.getAlbums(session.user.id)
+				if (!albums) return
+				albums.slice(0, ALBUM_MAX_COUNT).forEach(album => {
+					push({
+						type: 'album',
+						id: album.id,
+						title: album.title,
+					})
 				})
-			})
-		})()
-	}, [isVkLogin, session, downloadId, service, push])
+			})()
+		}
+	}, [status, session, downloadId, service, push])
 
 	useEffect(() => {
 		if (!size) return
@@ -97,6 +95,8 @@ export const VkDownloadPage: FunctionComponent = () => {
 
 	return (
 		<div className="vk-identity-page download-page">
+			<VkSdkLoader />
+
 			<TextContainer>
 				<VkHeading level={1}>Скачать свои альбомы</VkHeading>
 				<VkParagraph>

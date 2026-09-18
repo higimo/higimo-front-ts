@@ -2,33 +2,30 @@ import { FunctionComponent } from 'preact'
 import { VkPhotoType } from 'api-types/vk.types'
 import { VkApi, VkResponceError } from 'vendor/vk-api'
 
-import { useContext, useState, useLayoutEffect, useCallback, useEffect } from 'preact/hooks'
 import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
+import { useState, useCallback, useEffect } from 'preact/hooks'
 
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
+import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { printVkError } from 'vendor/print-vk-error'
 
-import { VkContext } from 'context/vk'
+import { vkSession } from 'context/vk'
 
 import '../vk-style.css'
 
 export const VkAlbumEditPage: FunctionComponent = () => {
 	usePageTitle('Просмотр альбома')
 
-	const { isVkLogin, session, fetchLogin } = useContext(VkContext)
+	const { status, session, error } = vkSession.value
 	const { params: { albumId = '' } } = useRoute()
 	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
 	const { showMessage, MessageContainer } = useMessage()
-
-	useLayoutEffect(() => {
-		fetchLogin()
-	}, [fetchLogin])
 
 	const fetchPhotos = useCallback(async (ownerId: string, albumId: number) => {
 		// TODO: try бы вынести в сервис VkApi
@@ -43,14 +40,21 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 	}, [showMessage])
 
 	useEffect(() => {
-		if (isVkLogin && session && session.user.id && albumId) {
-			// @ts-ignore
-			fetchPhotos(session.user.id, albumId)
+		if (status === 'LOADED' && session?.user.id) {
+			fetchPhotos(session.user.id, albumId as unknown as number)
 		}
-	}, [isVkLogin, session, albumId])
+	}, [status, session, fetchPhotos, albumId])
+
+	useEffect(() => {
+		if (status === 'ERROR' && error) {
+			showMessage(error.message)
+		}
+	}, [status, error, showMessage])
 
 	return (
 		<div className="vk-identity-page vk-photo">
+			<VkSdkLoader />
+
 			<TextContainer>
 				<VkHeading level={1}>Сортировка фотографий альбома</VkHeading>
 				<VkParagraph>
