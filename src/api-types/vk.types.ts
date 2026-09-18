@@ -1,5 +1,7 @@
 import { UnixTimeSecond } from 'utils.type'
 
+export type VkUserId = string
+
 export type VKAlbumSizesType = {
 	type: 'x' | 's'
 	src: string
@@ -24,7 +26,7 @@ export type VkPhotoType = {
 	date: UnixTimeSecond
 	id: number
 	/** user_id */
-	owner_id: number
+	owner_id: VkUserId
 	sizes: VkPhotoSizesType[]
 	text: string
 	web_view_token: string
@@ -36,7 +38,7 @@ export type VKAlbumType = {
 	/** Идентификатор альбома */
 	id: number
 	/** Идентификатор создателя */
-	owner_id: number
+	owner_id: VkUserId
 	/** Видимость */
 	is_locked: boolean
 	/** Название */
@@ -59,7 +61,7 @@ export type VkAlbumType = {
 	/** идентификатор альбома */
 	id: number
 	/** идентификатор владельца альбома */
-	owner_id: number
+	owner_id: VkUserId
 	/** идентификатор фотографии, которая является обложкой (0, если обложка отсутствует) */
 	thumb_id: number
 	/** ссылка на изображение обложки альбома (если был указан параметр need_covers) */
@@ -106,9 +108,10 @@ export type VkAlbumType = {
 
 }
 
+
 export type VkSessionType = {
 	/** userId */
-	mid: string
+	mid: VkUserId
 	/** время в формате Unixtime, когда сессия устареет */
 	expire: UnixTimeSecond
 
@@ -121,7 +124,7 @@ export type VkSessionType = {
 
 	user: {
 		/** userId */
-		id: string
+		id: VkUserId
 		/** короткий адрес страницы */
 		domain: string
 		/** ссылка на страницу в формате https://vk.com/domain */

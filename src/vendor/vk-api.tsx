@@ -25,7 +25,7 @@ function vkApiCall<T>(method: string, params: Record<string, unknown>): Promise<
 // TODO: VkDownloadService
 export const VkApi = {
 	// @ts-ignore TODO: [LIGHT] видимо, в сессии есть userId уже и его не надо передавать
-	async getAlbums(ownerId: string): Promise<VKAlbumType[]> {
+	async getAlbums(ownerId: VkUserId): Promise<VKAlbumType[]> {
 		try {
 			const response = await vkApiCall<VkResponseData<{ items: VKAlbumType[] }>>('photos.getAlbums', {
 				owner_id: ownerId,
@@ -39,7 +39,7 @@ export const VkApi = {
 		}
 	},
 
-	async getPhotos(ownerId: string, albumId: VKAlbumType['id']): Promise<VkPhotoType[]> {
+	async getPhotos(ownerId: VkUserId, albumId: VKAlbumType['id']): Promise<VkPhotoType[]> {
 		try {
 			const response = await vkApiCall<VkResponseData<{ items: VkPhotoType[] }>>('photos.get', {
 				owner_id: ownerId,
