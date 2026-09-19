@@ -172,6 +172,7 @@ hook:       src/hook
 dic:        src/dic
 pages:      src/pages
 utils:      src/utils
+errors:     src/errors
 types:      src/types
 vendor:     src/vendor
 fixtures:   src/fixtures

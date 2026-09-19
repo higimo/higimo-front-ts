@@ -135,6 +135,7 @@ export default defineConfig(
 					'vendor':     path.resolve(__dirname, './src/vendor'),
 					'fixtures':   path.resolve(__dirname, './src/fixtures'),
 					'toast':      path.resolve(__dirname, './src/toast'),
+					'errors':     path.resolve(__dirname, './src/errors'),
 				}
 			},
 		}

@@ -1,6 +1,6 @@
-import { VkResponceError } from 'vendor/vk-api'
+import { VkResponseError } from './types'
 
-export const printVkError = (response: VkResponceError) => {
+export const printVkError = (response: VkResponseError) => {
 	console.error(response)
 	return 'SEE CONSOLE'
 	// return '' +

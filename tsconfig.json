@@ -50,6 +50,7 @@
 			"toast": ["./src/toast/index.tsx"],
 			"utils.type": ["./src/utils.type.ts"],
 			"types": ["./src/types.ts"],
+			"errors/*": ["./src/errors/*"],
 		},
 		"types": [
 			"vitest/globals",

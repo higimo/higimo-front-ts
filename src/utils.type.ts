@@ -1,3 +1,5 @@
+import { TargetedEvent } from 'preact'
+
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
@@ -195,3 +197,8 @@ export type IntroLinkDataType = {
 }
 	& ({ imgId: string } | { imgId?: undefined })
 	& ({ img: string } | { img?: undefined })
+
+export type ChangeEvent = TargetedEvent<
+	HTMLInputElement|HTMLTextAreaElement,
+	InputEvent|Event
+>

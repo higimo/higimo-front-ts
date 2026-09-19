@@ -11,6 +11,18 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../vk-style.css'
 
+const pagesList = [
+	{
+		title: 'Скачать фотки из альбома',
+		description: 'Инструмент выгрузки ссылок на файлы картинок',
+		href: ROUTE_LINKS.toolVkDownloadAlbum,
+	},
+	{
+		title: 'Редактирование альбомов',
+		description: 'Сортировка и описания фотографий в более удобном для массового редактирования виде',
+		href: ROUTE_LINKS.toolVkAlbums,
+	}
+]
 export const VkIndexPage: FunctionComponent = () => {
 	usePageTitle('VK tool index')
 
@@ -24,18 +36,7 @@ export const VkIndexPage: FunctionComponent = () => {
 				<VkHeading>VK tool</VkHeading>
 
 				<IntroTileGallery
-					list={[
-						{
-							title: 'Скачать фотки из альбома',
-							description: 'Инструмент выгрузки ссылок на файлы картинок',
-							href: ROUTE_LINKS.toolVkDownloadAlbum,
-						},
-						{
-							title: 'Редактирование альбомов',
-							description: 'Сортировка и описания фотографий в более удобном для массового редактирования виде',
-							href: ROUTE_LINKS.toolVkAlbums,
-						}
-					]}
+					list={pagesList}
 				/>
 			</TextContainer>
 		</div>

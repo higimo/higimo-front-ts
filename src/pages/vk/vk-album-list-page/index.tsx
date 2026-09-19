@@ -1,9 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { VKAlbumType } from 'api-types/vk.types'
-import { VkApi, VkResponceError } from 'vendor/vk-api'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
-import { useMessage } from 'hook/use-message'
 import { useState, useCallback, useEffect } from 'preact/hooks'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
@@ -13,9 +11,10 @@ import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader/index.js'
 
-import { printVkError } from 'vendor/print-vk-error'
-
 import { vkSession } from 'context/vk'
+
+import { VkServiceApi } from 'pages/vk/vk-api-service'
+import { toast } from 'toast'
 
 import '../vk-style.css'
 
@@ -24,29 +23,25 @@ export const VkAlbumListPage: FunctionComponent = () => {
 
 	const { status, session, error } = vkSession.value
 	const [ albums, setAlbums ] = useState<VKAlbumType[]>([])
-	const { showMessage, MessageContainer } = useMessage()
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
-		try {
-			const albums = await VkApi.getAlbums(ownerId)
-			setAlbums(albums)
-		} catch (error) {
-			const vkError = error as VkResponceError
-			showMessage(printVkError(vkError))
+		const albums = await VkServiceApi.getAlbums(ownerId)
+		if (!albums) {
+			return undefined
 		}
-	}, [showMessage])
+
+		setAlbums(albums)
+	}, [setAlbums])
 
 	useEffect(() => {
-		if (status === 'LOADED' && session?.user.id) {
+		if (status === 'LOADED') {
+			// @ts-ignore надо в сигнале поправить, что если загрузился — точно есть, либо в ошибке данные
 			fetchAlbums(session.user.id)
+		} else if (status === 'ERROR') {
+			// @ts-ignore надо в сигнале поправить, что если ошибка, то ошибка установлена
+			toast.error(error.message)
 		}
 	}, [status, session, fetchAlbums])
-
-	useEffect(() => {
-		if (status === 'ERROR' && error) {
-			showMessage(error.message)
-		}
-	}, [status, error, showMessage])
 
 	return (
 		<div className="vk-identity-page vk-photo">
@@ -65,12 +60,7 @@ export const VkAlbumListPage: FunctionComponent = () => {
 				</VkParagraph>
 			</TextContainer>
 
-			<TextContainer>
-				<MessageContainer />
-			</TextContainer>
-
 			<VkPhotoAlbumList albums={albums} />
 		</div>
 	)
 }
-export default VkAlbumListPage

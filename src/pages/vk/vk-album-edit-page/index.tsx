@@ -1,8 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { VkPhotoType } from 'api-types/vk.types'
-import { VkApi, VkResponceError } from 'vendor/vk-api'
 
-import { useMessage } from 'hook/use-message'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 import { useState, useCallback, useEffect } from 'preact/hooks'
@@ -14,43 +12,43 @@ import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
-import { printVkError } from 'vendor/print-vk-error'
-
 import { vkSession } from 'context/vk'
+
+import { toast } from 'toast'
+import { VkServiceApi } from 'pages/vk/vk-api-service'
 
 import '../vk-style.css'
 
+// TODO: реализовать сортировку альбома
 export const VkAlbumEditPage: FunctionComponent = () => {
 	usePageTitle('Просмотр альбома')
 
 	const { status, session, error } = vkSession.value
 	const { params: { albumId = '' } } = useRoute()
 	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
-	const { showMessage, MessageContainer } = useMessage()
 
 	const fetchPhotos = useCallback(async (ownerId: string, albumId: number) => {
-		// TODO: [LIGHT] try бы вынести в сервис VkApi
-		try {
-			const photos = await VkApi.getPhotos(ownerId, albumId)
-			setPhotos(photos)
-		} catch (error) {
-			const vkError = error as VkResponceError
-			// TODO: [LIGHT] в таких местах бы сменить на тост?
-			showMessage(printVkError(vkError))
+		if (photos.length) {
+			return undefined
 		}
-	}, [showMessage])
+
+		const loadedPhotos = await VkServiceApi.getPhotos(ownerId, albumId)
+		if (!loadedPhotos) {
+			return undefined
+		}
+
+		setPhotos(loadedPhotos)
+	}, [photos])
 
 	useEffect(() => {
-		if (status === 'LOADED' && session?.user.id) {
+		if (status === 'LOADED') {
+			// @ts-ignore надо в сигнале поправить, что если загрузился — точно есть, либо в ошибке данные
 			fetchPhotos(session.user.id, albumId as unknown as number)
+		} else if (status === 'ERROR') {
+			// @ts-ignore надо в сигнале поправить, что если ошибка, то ошибка установлена
+			toast.error(error.message)
 		}
-	}, [status, session, fetchPhotos, albumId])
-
-	useEffect(() => {
-		if (status === 'ERROR' && error) {
-			showMessage(error.message)
-		}
-	}, [status, error, showMessage])
+	}, [status, error, session, fetchPhotos, albumId])
 
 	return (
 		<div className="vk-identity-page vk-photo">
@@ -61,16 +59,12 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<VkHeading>Сортировка фотографий альбома</VkHeading>
+				<VkHeading>Редактирование описаний альбома</VkHeading>
 				<VkParagraph>
 					Всего фотографий: {photos.length}
 					<br />
 					С комментариями: {photos.filter(i => !!i.text).length}
 				</VkParagraph>
-			</TextContainer>
-
-			<TextContainer>
-				<MessageContainer />
 			</TextContainer>
 
 			<VkPhotoToolAlbumEdit
@@ -79,5 +73,3 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 		</div>
 	)
 }
-
-export default VkAlbumEditPage

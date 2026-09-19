@@ -41,20 +41,17 @@
 }
 
 .vk-button--s {
-	height: 28px;
-	padding: 0 12px;
+	padding: 4px;
 	font-size: 13px;
 }
 
 .vk-button--m {
-	height: 36px;
-	padding: 0 16px;
+	padding: 8px;
 	font-size: 14px;
 }
 
 .vk-button--l {
-	height: 44px;
-	padding: 0 20px;
+	padding: 16px;
 	font-size: 15px;
 	border-radius: 10px;
 }
