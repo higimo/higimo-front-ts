@@ -7,7 +7,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
-// TODO: так странно
+// TODO: [LIGHT] так странно
 import '../project-click-tag-category/style.css'
 
 type ProjectTagCategoryPropsType = {

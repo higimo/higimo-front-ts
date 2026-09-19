@@ -14,7 +14,7 @@ type VkPhotoToolAlbumEditPropsType = {
 	photos: VkPhotoType[]
 }
 
-// TODO: не нравится название компонента
+// TODO: [LIGHT] не нравится название компонента
 export const VkPhotoToolAlbumEdit: FunctionComponent<VkPhotoToolAlbumEditPropsType> = ({ photos }) => {
 	const handleChange = useCallback((
 		userId: VkPhotoType['owner_id'],
@@ -24,7 +24,7 @@ export const VkPhotoToolAlbumEdit: FunctionComponent<VkPhotoToolAlbumEditPropsTy
 			(description: string) => {
 				console.log('lets go into debounce')
 				if (description.length) {
-					// TODO: надо ли await и сообщать об ошибках?
+					// TODO: [LIGHT] надо ли await и сообщать об ошибках?
 					VkServiceApi.editPhoto(userId, photoId, description)
 				}
 			},

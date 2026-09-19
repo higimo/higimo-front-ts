@@ -28,7 +28,7 @@ class VkApiService {
 
 			return albums
 		} catch (error) {
-			// TODO: распространить по проекту, printVkError удалить
+			// TODO: [LIGHT] распространить по проекту, printVkError удалить
 			if (error instanceof VKError) {
 				toast.warning(error.error_msg)
 			} else {
@@ -54,7 +54,7 @@ class VkApiService {
 			})
 			return response.response.items
 		} catch (error) {
-			// TODO: распространить по проекту, printVkError удалить
+			// TODO: [LIGHT] распространить по проекту, printVkError удалить
 			if (error instanceof VKError) {
 				toast.warning(error.error_msg)
 			} else {
@@ -64,7 +64,7 @@ class VkApiService {
 		}
 	}
 
-	// TODO: прикольно добавить тип Positive для photoId
+	// TODO: [LIGHT] прикольно добавить тип Positive для photoId
 	/** Редактирует описание у фотографии */
 	async editPhoto(
 		userId: VkPhotoType['owner_id'],
@@ -72,7 +72,6 @@ class VkApiService {
 		description: VkPhotoType['text']
 	): Promise<boolean> {
 		try {
-			// TODO: вернёт 1
 			const response = await vkApiCall<VkResponseData<boolean>>('photos.edit', {
 				owner_id: userId,
 				photo_id: photoId,
@@ -82,7 +81,7 @@ class VkApiService {
 			})
 			return response.response
 		} catch (error) {
-			// TODO: распространить по проекту, printVkError удалить
+			// TODO: [LIGHT] распространить по проекту, printVkError удалить
 			if (error instanceof VKError) {
 				toast.warning(error.error_msg)
 			} else {

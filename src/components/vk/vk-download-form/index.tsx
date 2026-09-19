@@ -25,7 +25,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 
 	useEffect(() => {
 		const subscription = watch(() => {
-			// TODO: тротлер/дебаунс бы добавить
+			// TODO: [LIGHT] тротлер/дебаунс бы добавить
 			handleSubmit(onSubmit)()
 		})
 		return () => subscription.unsubscribe()

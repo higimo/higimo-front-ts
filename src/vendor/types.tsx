@@ -1,4 +1,3 @@
-// TODO: rename VkResponseError
 export type VkResponseError = {
 	error: {
 		error_code: number

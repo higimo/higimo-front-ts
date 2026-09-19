@@ -19,7 +19,7 @@ import { VkServiceApi } from 'pages/vk/vk-api-service'
 
 import '../vk-style.css'
 
-// TODO: реализовать сортировку альбома
+// TODO: [FEATURE] реализовать сортировку альбома
 export const VkAlbumEditPage: FunctionComponent = () => {
 	usePageTitle('Просмотр альбома')
 
