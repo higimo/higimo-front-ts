@@ -48,8 +48,9 @@ export const ToastContainer: React.FC<ToastContainerProps> = () => {
 	useEffect(() => {
 		const handleAddToast = (event: CustomEvent<{ message: string; id?: string }>) => {
 			const { message, id } = event.detail
+
 			const newToast: ToastType = {
-				id: id || Date.now().toString(),
+				id: id || crypto.randomUUID(),
 				message,
 			}
 			setToasts((prev) => [newToast].concat(prev))
