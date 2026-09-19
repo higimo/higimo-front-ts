@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { MoscowMuseumType } from 'components/tourism/types'
+import { MoscowMuseumType } from 'api-types/tourism.types'
 
 import { useJsonApi } from 'hook/fetch/use-json-api'
 import { useLoadingState } from 'hook/fetch/use-loading-state'

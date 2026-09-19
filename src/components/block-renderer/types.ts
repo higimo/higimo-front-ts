@@ -1,4 +1,4 @@
-import { FactoidType } from 'components/ui/factoid'
+import { FactoidType } from 'types'
 
 export interface BaseBlock {
 	type: string

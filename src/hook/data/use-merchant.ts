@@ -1,4 +1,4 @@
-import { MerchantProductType } from 'components/merchant/types'
+import { MerchantProductType } from 'api-types/merchant.types'
 import { ValueOf } from 'utils.type'
 
 import { useEffect } from 'preact/hooks'

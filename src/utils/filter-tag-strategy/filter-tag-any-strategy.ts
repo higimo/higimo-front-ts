@@ -1,4 +1,4 @@
-import { DataItemWithTags, SelectedTags } from './types'
+import { DataItemWithTags, SelectedTags } from 'types'
 
 /**
  * Стратегия "Любой тег" (OR по всем выбранным тегам).

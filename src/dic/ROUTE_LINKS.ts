@@ -1,5 +1,3 @@
-import { KeyOf } from 'utils.type'
-
 import { generateLink } from 'utils/url-route/generate-link'
 
 const ROUTE_PROJECT_LINKS = Object.freeze({
@@ -194,5 +192,3 @@ export const ROUTE_LINKS = {
 	textarea:   '/textarea/',
 	TODO:       '#',
 } as const
-
-export type RouteLinksType = KeyOf<typeof ROUTE_LINKS>

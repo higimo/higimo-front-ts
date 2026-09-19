@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { MerchantProductType } from 'components/merchant/types'
+import { MerchantProductType } from 'api-types/merchant.types'
 
 import './style.css'
 

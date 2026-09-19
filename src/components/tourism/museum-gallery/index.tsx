@@ -1,4 +1,4 @@
-import { MoscowMuseumType } from 'components/tourism/types'
+import { MoscowMuseumType } from 'api-types/tourism.types'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import { FunctionComponent } from 'preact'
 

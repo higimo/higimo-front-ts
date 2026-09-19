@@ -21,6 +21,7 @@ export default defineConfig({
 			'dic':        path.resolve(__dirname, './src/dic'),
 			'pages':      path.resolve(__dirname, './src/pages'),
 			'utils':      path.resolve(__dirname, './src/utils'),
+			'types':      path.resolve(__dirname, './src/types'),
 			'vendor':     path.resolve(__dirname, './src/vendor'),
 			'fixtures':   path.resolve(__dirname, './src/fixtures'),
 			'toast':      path.resolve(__dirname, './src/toast'),

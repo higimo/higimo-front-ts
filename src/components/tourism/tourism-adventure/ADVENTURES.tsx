@@ -1,18 +1,6 @@
+import { AdventureType } from 'types'
+
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-
-type AdventureOptionType = {
-	title: string
-	value: string
-}
-
-export type AdventureType = {
-	id: number
-	title: string
-	description: string
-	advent: string
-	options: AdventureOptionType[]
-	href: string
-}
 
 export const ADVENTURES: AdventureType[] = [
 	{

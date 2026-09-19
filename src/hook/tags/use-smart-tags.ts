@@ -1,23 +1,5 @@
-// use-smart-tags.ts
 import { useState, useCallback, useMemo } from 'preact/hooks'
-
-export type TagName = string
-export type CategoryName = string
-
-export type Tag = {
-	id: number
-	title: TagName
-}
-
-export type TagGroup = {
-	id: number
-	title: string
-}
-
-export type TagCategory = {
-	group: TagGroup
-	tags: Tag[]
-}
+import { CategoryName, Tag, TagCategory, TagName } from 'types'
 
 type UseSmartTagsProps = {
 	categories: TagCategory[]

@@ -1,8 +1,5 @@
-import { TagCategory } from 'hook/tags/use-smart-tags'
-
-type AccordTags = {
-	[key: string]: string
-}
+import { AccordTags } from 'api-types/accord.types'
+import { TagCategory } from 'types'
 
 export const MAIN_TAGS: AccordTags = {
 	liric:     'лирика',

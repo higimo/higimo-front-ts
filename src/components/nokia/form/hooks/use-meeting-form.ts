@@ -2,9 +2,10 @@ import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.t
 
 import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
+import { useRoute } from 'preact-iso'
 
 import { MeetingApiService } from 'components/nokia/form/person-api'
-import { useRoute } from 'preact-iso'
+
 import { toast } from 'toast'
 import { ApiError } from 'utils/api/send-request'
 

@@ -1,4 +1,4 @@
-import { ChartDataType } from 'components/hiring-response/hiring-response-diagram/ChartDataType'
+import { ChartDataType } from 'components/hiring-response/chart.types'
 
 export const updateChart = async (
 	svgRef: any,

@@ -137,3 +137,14 @@ export type VkSessionType = {
 		nickname: string
 	}
 }
+
+export type VkQueueType = {
+	type: 'album'
+	id: VKAlbumType['id']
+	title: VKAlbumType['title']
+}
+
+export type VkPhotosContentType = {
+	title: VKAlbumType['title']
+	photos: VkPhotoType['orig_photo']['url'][]
+}

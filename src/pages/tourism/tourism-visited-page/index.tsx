@@ -1,4 +1,4 @@
-import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'components/tourism/types'
+import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'api-types/tourism.types'
 import { FunctionComponent } from 'preact'
 
 import { useLoadingState } from 'hook/fetch/use-loading-state'

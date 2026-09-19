@@ -1,4 +1,4 @@
-import { PovType } from 'components/tourism/types'
+import { PovType } from 'api-types/tourism.types'
 import { Fragment, FunctionComponent } from 'preact'
 
 import { TextContainer } from 'components/ui/text-container'

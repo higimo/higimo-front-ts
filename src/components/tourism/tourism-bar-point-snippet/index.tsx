@@ -1,4 +1,4 @@
-import { BarPovRealTags } from 'components/tourism/types'
+import { BarPovRealTags } from 'api-types/tourism.types'
 import { FunctionComponent } from 'preact'
 
 import { Tag } from 'components/ui/tag'

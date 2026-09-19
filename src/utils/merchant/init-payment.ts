@@ -3,7 +3,7 @@ import { UseFormGetValues } from 'react-hook-form'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { MerchantProductType } from 'components/merchant/types'
+import { MerchantProductType } from 'api-types/merchant.types'
 import { FormValues } from 'components/merchant/merchant-payment-form/types'
 import { loadJs } from 'utils/merchant/load-js'
 

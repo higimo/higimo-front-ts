@@ -1,5 +1,5 @@
 import { FunctionComponent, TargetedEvent } from 'preact'
-import { VkPhotosContentType, VkQueueType } from 'components/vk/types'
+import { VkQueueType, VkPhotosContentType } from 'api-types/vk.types'
 
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
 import { useMessage } from 'hook/use-message'

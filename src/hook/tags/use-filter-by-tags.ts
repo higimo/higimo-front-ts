@@ -1,5 +1,4 @@
-import { DataItemWithTags } from 'utils/filter-tag-strategy/types'
-import { TagName } from './use-smart-tags'
+import { DataItemWithTags, TagName } from 'types'
 
 import { useMemo } from 'preact/hooks'
 

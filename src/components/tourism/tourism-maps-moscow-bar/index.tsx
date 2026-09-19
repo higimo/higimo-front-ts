@@ -1,6 +1,6 @@
-import { BarPovRealTags, BarPovType, barTagsCategory } from 'components/tourism/types'
+import { BarPovRealTags, BarPovType, barTagsCategory } from 'api-types/tourism.types'
 import { Coord } from 'utils.type'
-import { TagCategory } from 'hook/tags/use-smart-tags'
+import { TagCategory } from 'types'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'

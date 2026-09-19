@@ -1,4 +1,4 @@
-import { Brand, Code } from '../utils.type'
+import { Brand, Code } from 'utils.type'
 
 type AccordId = Brand<number, 'AccordId'>
 
@@ -22,4 +22,8 @@ type AccordTagType = {
 
 export type AccordRealTagType = AccordType & {
 	tags: AccordTagType[]
+}
+
+export type AccordTags = {
+	[key: string]: string
 }

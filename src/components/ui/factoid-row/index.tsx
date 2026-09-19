@@ -1,8 +1,9 @@
+import { FactoidType } from 'types'
 import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
-import { Factoid, FactoidType } from 'components/ui/factoid'
+import { Factoid } from 'components/ui/factoid'
 
 import './style.css'
 

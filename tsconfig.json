@@ -49,6 +49,7 @@
 			"fixtures/*": ["./src/fixtures/*"],
 			"toast": ["./src/toast/index.tsx"],
 			"utils.type": ["./src/utils.type.ts"],
+			"types": ["./src/types.ts"],
 		},
 		"types": [
 			"vitest/globals",

@@ -1,10 +1,10 @@
-import { ChartDataType } from 'components/hiring-response/hiring-response-diagram/ChartDataType'
+import { ChartDataType } from 'components/hiring-response/chart.types'
 import { FunctionComponent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
 
 import { useEffect, useRef } from 'preact/hooks'
 
-import { aggregateByDay } from 'components/hiring-response/hiring-response-diagram/aggregateByDay'
+import { aggregateByDay } from 'components/hiring-response/hiring-response-diagram/aggregate-by-day'
 import { updateChart } from 'components/hiring-response/hiring-response-diagram/updateChart'
 
 type HiringResponseDiagramPropsType = {

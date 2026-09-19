@@ -17,7 +17,7 @@ export const HiringResponseCounter: FunctionComponent<HiringResponseCounterProps
 	const day = getNowDay(new Date()).toISOString().substr(0, 10)
 
 	const dataStartOfWeek = data.filter(d => d.date >= startOfWeek)
-	const dataYesterDay = data.filter(d => d.date >= yesterday)
+	const dataYesterDay = data.filter(d => d.date >= yesterday && d.date < day)
 	const dataNowDay = data.filter(d => d.date >= day)
 
 	return (

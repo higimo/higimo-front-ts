@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LibraryBookType } from 'components/data/library/types'
+import { LibraryBookType } from 'api-types/library.types'
 
 import { LibraryBookElement } from 'components/data/library/library-book-element'
 

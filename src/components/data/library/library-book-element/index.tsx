@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { LibraryBookType } from 'components/data/library/types'
+import { LibraryBookType } from 'api-types/library.types'
 
 export const LibraryBookElement: FunctionComponent<LibraryBookType> = (book) => (
 	<div className="library-gallery__item">

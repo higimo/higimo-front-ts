@@ -1,4 +1,4 @@
-import { MerchantProductType } from 'components/merchant/types'
+import { MerchantProductType } from 'api-types/merchant.types'
 import { FunctionComponent } from 'preact'
 import { formatPrice } from 'utils/formatter/format-price'
 

@@ -1,5 +1,5 @@
-import { subjectPederationTypes, onlyPovTypes } from 'components/tourism/types'
-import { TagCategory } from 'hook/tags/use-smart-tags'
+import { subjectPederationTypes, onlyPovTypes } from 'api-types/tourism.types'
+import { TagCategory } from 'types'
 
 // TODO: [DATA] вынести в JSON API
 // Переключение визуализации статистики путешествий

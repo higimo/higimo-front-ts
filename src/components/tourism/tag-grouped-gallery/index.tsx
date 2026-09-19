@@ -1,5 +1,5 @@
-import { TagCategory } from 'hook/tags/use-smart-tags'
 import { FunctionComponent } from 'preact'
+import { TagCategory } from 'types'
 
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'

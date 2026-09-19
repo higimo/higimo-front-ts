@@ -33,6 +33,7 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 		fetchUpdate,
 	})
 
+	// TODO: [LIGHT] Реализовать кнопки удаления и редактирования
 	return (
 		<div>
 			<div className="hiring-cards">
@@ -42,6 +43,7 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 					cards.map(card => (
 						<HiringResponseCard
 							{...card}
+							key={card.id.toString()}
 							onEdit={handleSelect(card.id)}
 							onDelete={handleDelete(card.id)}
 						/>

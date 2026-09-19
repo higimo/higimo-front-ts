@@ -1,12 +1,13 @@
-import { TagName } from 'hook/tags/use-smart-tags'
 import { FunctionComponent } from 'preact'
 import { PortfolioGroupedTagType } from 'api-types/portfolio.types'
+import { TagName } from 'types'
 
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
+// TODO: так странно
 import '../project-click-tag-category/style.css'
 
 type ProjectTagCategoryPropsType = {

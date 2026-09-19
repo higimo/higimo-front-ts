@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent, VNode } from 'preact'
-import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/types'
+import { HigimoMapPoint, YaMapPolygon } from 'api-types/tourism.types'
 import { ValueOf } from 'utils.type'
 
 import { useSwitcher } from 'hook/use-switcher'

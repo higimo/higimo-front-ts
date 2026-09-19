@@ -1,5 +1,5 @@
 import { PortfolioGroupedTagType, PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
-import { TagName } from 'hook/tags/use-smart-tags'
+import { TagName } from 'types'
 
 import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'

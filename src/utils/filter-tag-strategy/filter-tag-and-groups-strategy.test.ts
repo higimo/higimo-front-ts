@@ -1,6 +1,7 @@
+import { DataItemWithTags, SelectedTags } from 'types'
+
 import { describe, it, expect } from 'vitest'
 import { filterTagAndGroupsStrategy } from './filter-tag-and-groups-strategy'
-import { DataItemWithTags, SelectedTags } from './types'
 
 const tags = {
 	'белый': { id: 1, title: 'белый' },
@@ -133,7 +134,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 			const result = filterTagAndGroupsStrategy(mockData, selectedTags);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].id).toBe(5);
+			expect(result[0]?.id).toBe(5);
 		});
 	});
 
@@ -192,7 +193,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 			const result = filterTagAndGroupsStrategy(dataWithDuplicates, selectedTags);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].id).toBe(1);
+			expect(result[0]?.id).toBe(1);
 		});
 
 		it('отфильтровывает элементы без тегов', () => {
@@ -208,7 +209,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 			const result = filterTagAndGroupsStrategy(dataWithEmptyTags, selectedTags);
 
 			expect(result).toHaveLength(1);
-			expect(result[0].id).toBe(2);
+			expect(result[0]?.id).toBe(2);
 		});
 
 		it('отрабатывает элементы с тегами null|undefined', () => {

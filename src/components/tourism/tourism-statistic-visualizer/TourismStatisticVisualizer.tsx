@@ -6,7 +6,7 @@ import { useSwitcher } from 'hook/use-switcher'
 import { useMemo } from 'preact/hooks'
 
 import { FullWidthContainer } from 'components/ui/full-width-container'
-import { PovType } from 'components/tourism/types'
+import { PovType } from 'api-types/tourism.types'
 import { Switcher } from 'components/ui/switcher'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'

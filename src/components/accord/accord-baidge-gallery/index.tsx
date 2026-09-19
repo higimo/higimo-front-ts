@@ -1,7 +1,9 @@
 import { FunctionComponent } from 'preact'
+import { TagName } from 'types'
+
 import { Tag } from 'components/ui/tag'
+
 import { ACCORD_TAG_CATEGORY } from 'components/accord/tags'
-import { TagName } from 'hook/tags/use-smart-tags'
 
 type AccordTagGalleryPropsType = {
 	toggleTag: (label: TagName) => () => void

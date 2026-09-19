@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
-import { onlyPovTypes } from 'components/tourism/types'
-import { PovType } from 'components/tourism/types'
+import { onlyPovTypes } from 'api-types/tourism.types'
+import { PovType } from 'api-types/tourism.types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
 

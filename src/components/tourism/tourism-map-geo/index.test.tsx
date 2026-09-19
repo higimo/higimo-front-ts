@@ -1,9 +1,12 @@
-import { render, screen } from '@testing-library/preact';
-import { PovType } from '../types';
-import { useWindowSize } from 'hook/browser/use-window-size'
+import { PovType } from 'api-types/tourism.types'
 import { Coord } from 'utils.type'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+
+import { useWindowSize } from 'hook/browser/use-window-size'
+
 import { TourismMapGeo } from './index'
+
+import { render, screen } from '@testing-library/preact'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Мокаем зависимости
 vi.mock('hook/browser/use-window-size', () => ({

@@ -1,4 +1,4 @@
-import { PovType } from 'components/tourism/types'
+import { PovType } from 'api-types/tourism.types'
 import { ValueOf } from 'utils.type'
 
 import { SORT_MAP, TAGS_NAME, TAGS_NAME_TO_POV_TYPE_MAPPING, VISITED_MAP } from 'components/tourism/VISITED_MAP'

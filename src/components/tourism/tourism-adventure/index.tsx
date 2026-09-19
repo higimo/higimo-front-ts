@@ -1,5 +1,5 @@
+import { AdventureType } from 'types'
 import { FunctionComponent } from 'preact'
-import { AdventureType } from './ADVENTURES'
 
 import './style.css'
 

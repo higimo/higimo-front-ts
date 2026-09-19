@@ -1,7 +1,8 @@
+import { FunctionComponent } from 'preact'
+import { PovType } from 'api-types/tourism.types'
+
 import cs from 'classnames'
 
-import { FunctionComponent } from 'preact'
-import { PovType } from '../types'
 
 import './style.css'
 

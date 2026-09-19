@@ -1,4 +1,4 @@
-import { PovType } from 'components/tourism/types'
+import { PovType } from 'api-types/tourism.types'
 
 import { FactoidRow } from 'components/ui/factoid-row'
 import { FunctionComponent } from 'preact'

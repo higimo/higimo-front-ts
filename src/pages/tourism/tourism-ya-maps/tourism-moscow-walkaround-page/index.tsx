@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { HigimoMapPoint, YaMapPolygon } from 'components/tourism/types'
+import { HigimoMapPoint, YaMapPolygon } from 'api-types/tourism.types'
 
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'

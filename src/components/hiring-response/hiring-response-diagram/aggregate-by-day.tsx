@@ -1,4 +1,4 @@
-import { ChartDataType } from 'components/hiring-response/hiring-response-diagram/ChartDataType'
+import { ChartDataType } from 'components/hiring-response/chart.types'
 import { PasteApiType } from 'api-types/paste.types'
 
 export const aggregateByDay = async (data: PasteApiType[]): Promise<ChartDataType[]> => {

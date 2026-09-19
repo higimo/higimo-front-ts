@@ -1,11 +1,12 @@
-import { signal } from '@preact/signals'
-
+import { KeyOf } from 'utils.type'
 import { VkSessionType } from 'api-types/vk.types'
 
-export type VkSessionStatusType = 'INIT' | 'LOADING' | 'LOADED' | 'ERROR'
+import { signal } from '@preact/signals'
+
+import { API_STATUS } from 'dic/API_STATUS'
 
 export type VkSessionStateType = {
-	status: VkSessionStatusType
+	status: KeyOf<typeof API_STATUS>
 	session: VkSessionType | null
 	error: Error | null
 }

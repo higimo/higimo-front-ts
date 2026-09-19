@@ -1,7 +1,7 @@
 import { Coord } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { PageJSONData } from 'components/block-renderer/types'
-import { PovType } from 'components/tourism/types'
+import { PovType } from 'api-types/tourism.types'
 
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
