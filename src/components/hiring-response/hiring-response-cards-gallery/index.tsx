@@ -33,7 +33,6 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 		fetchUpdate,
 	})
 
-	// TODO: [LIGHT] Реализовать кнопки удаления и редактирования
 	return (
 		<div>
 			<div className="hiring-cards">
