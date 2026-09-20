@@ -33,37 +33,3 @@
 .pinarik-form button:hover {
 	opacity: .75;
 }
-
-.pinarik-form .score {
-	display: flex;
-	width: 100%;
-	height: 2rem;
-	margin-bottom: 1rem;
-}
-
-.score__item {
-	width: 100%;
-	opacity: .45;
-	cursor: pointer;
-}
-
-.score__item:hover {
-	opacity: .8;
-}
-
-.score__item.active {
-	opacity: 1;
-}
-
-.score__item:nth-child(1) {
-	background: #ec371a;
-}
-
-.score__item:nth-child(2) {
-	background: #f5e423;
-}
-
-.score__item:nth-child(3) {
-	background: #33c519;
-}
-

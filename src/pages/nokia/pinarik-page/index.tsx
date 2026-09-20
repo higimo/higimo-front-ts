@@ -4,7 +4,6 @@ import { PinarikTreeYearType, PinarikType } from 'api-types/pinarik.types'
 import { useAuth } from 'hook/fetch/use-auth'
 import { useCallback, useMemo, useState } from 'preact/hooks'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useForceUpdate } from 'hook/utils/use-force-update'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import useApi from 'hook/fetch/use-api'
 
@@ -23,8 +22,6 @@ import '../nokia-style.css'
 import './style.css'
 
 export const PinarikPage: FunctionComponent = () => {
-	const makeUpdate = useForceUpdate()
-
 	const { isAuth, redirectToLogin } = useAuth()
 	const [ pinarikList ] = useApi<PinarikType[]>(API_ROUTE.pinarik)
 	const isLoading = useLoadingState([pinarikList.status])
@@ -35,6 +32,9 @@ export const PinarikPage: FunctionComponent = () => {
 	const handleClickPreviewId = useCallback((id: PinarikType['id']) => () => setPreviewId(id), [setPreviewId])
 
 	const treeYear: PinarikTreeYearType = useMemo(() => {
+		if (pinarikList.status !== 'LOADED') {
+			return {}
+		}
 		let treeYear: PinarikTreeYearType = {}
 		for (const item of pinarikList.data) {
 			const year = item.date.substring(0, 4)
@@ -44,8 +44,7 @@ export const PinarikPage: FunctionComponent = () => {
 			treeYear[year].push(item)
 		}
 		return treeYear
-	}, [])
-
+	}, [pinarikList.status])
 
 	if (!isAuth) {
 		redirectToLogin()
@@ -63,9 +62,9 @@ export const PinarikPage: FunctionComponent = () => {
 		<div className="nokia">
 			<NokiaMenu />
 
-			<PinarikForm
-				forceUpdate={makeUpdate}
-			/>
+			<TextContainer>
+				<PinarikForm />
+			</TextContainer>
 
 			<TextContainer>
 				<PinarikEventPreview

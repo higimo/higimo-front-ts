@@ -1,19 +1,18 @@
+import { Dispatch, StateUpdater }  from 'preact/hooks'
 import { FunctionComponent } from 'preact'
 import { HigimoServerResponse } from 'api-types/server-response.types'
 import { PinarikType } from 'api-types/pinarik.types'
 
-import cs from 'classnames'
-
 import { FormProvider, useForm } from 'react-hook-form'
-import { Dispatch, StateUpdater }  from 'preact/hooks'
 
 import { useFormStatus } from 'hook/utils/use-form-status'
 
-import { sendRequest, ApiError } from 'utils/api/send-request'
-import { toast } from 'toast'
-
 import { FormButton } from 'components/form/form-button'
 import { ShowFormResult } from 'components/form/show-form-result'
+import { TrafficLight } from '../traffic-light'
+
+import { sendRequest, ApiError } from 'utils/api/send-request'
+import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -29,7 +28,6 @@ type HandlePinarikSubmitType = (addStatus: (val: HigimoServerResponse) => void) 
 	(values: FormValues) => Promise<void>
 const handlePinarikSubmit: HandlePinarikSubmitType = addStatus => async values => {
 	try {
-		// TODO: [BACKEND] бэк не принимает такие запросы
 		const { data: serverPostResult } = await sendRequest(API_ROUTE.pinarik, {
 			method: 'POST',
 			values,
@@ -43,8 +41,8 @@ const handlePinarikSubmit: HandlePinarikSubmitType = addStatus => async values =
 }
 
 type PinarikFormPropsType = {
-	forceUpdate: Dispatch<StateUpdater<boolean>>
 }
+
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 	const formMethods = useForm<FormValues>({
 		defaultValues: {
@@ -54,27 +52,36 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 		},
 	})
 
-	const { register, handleSubmit, setValue, watch, formState, reset } = formMethods
+	const { register, handleSubmit, formState, reset } = formMethods
 	const [ status, addStatus ] = useFormStatus()
-
-	const setScore = (value: PinarikType['score']) => () => setValue('score', value)
-	const score = watch('score')
 
 	return (
 		<FormProvider {...formMethods}>
-			<form className="container pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit(addStatus))}>
-				<label htmlFor="date">Дата</label>
-				<input {...register('date')} name="date" type="date" />
-				<label htmlFor="fewfwe">Оценка</label>
-				{/* TODO: [LIGHT] вынести в отдельный контроллер */}
-				<div className="score">
-					<div className={cs('score__item', { active: score === -1 })} onClick={setScore(-1)} />
-					<div className={cs('score__item', { active: score === 0 })} onClick={setScore(0)} />
-					<div className={cs('score__item', { active: score === 1 })} onClick={setScore(1)} />
-					<input {...register('score')} name="score" type="hidden" />
+			<form className="container nokia-form pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit(addStatus))}>
+				<div className="form-row">
+					<div>
+						<label htmlFor="date">Дата</label>
+					</div>
+					<div>
+						<input {...register('date')} name="date" type="date" />
+					</div>
 				</div>
-				<label htmlFor="description">Описание</label>
-				<textarea {...register('description')} name="description" />
+				<div className="form-row">
+					<div>
+						<label htmlFor="score">Оценка</label>
+					</div>
+					<div>
+						<TrafficLight<FormValues> name="score" />
+					</div>
+				</div>
+				<div className="form-row">
+					<div>
+						<label htmlFor="description">Описание</label>
+					</div>
+					<div>
+						<textarea {...register('description')} name="description" />
+					</div>
+				</div>
 				<div className="form__button">
 					<FormButton>Записать</FormButton>
 					{(formState.isSubmitted || formState.isSubmitting) && (

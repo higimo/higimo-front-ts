@@ -7,7 +7,6 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
-// TODO: [LIGHT] так странно
 import '../project-click-tag-category/style.css'
 
 type ProjectTagCategoryPropsType = {
@@ -16,6 +15,7 @@ type ProjectTagCategoryPropsType = {
 	toggleTag: (tagName: TagName) => () => void
 }
 
+// TODO: [HARD] почти то же, что ProjectClickTagCategory
 export const ProjectTagCategory: FunctionComponent<ProjectTagCategoryPropsType> = ({
 	groupedTags,
 	isSelected,
@@ -29,7 +29,7 @@ export const ProjectTagCategory: FunctionComponent<ProjectTagCategoryPropsType> 
 					{tags.map(tag => (
 						<ProjectTag
 							filterName={PROJECT_FILTER_DIC.FILTER_TAG}
-							isLink={false}
+							// isLink={false}
 							isSelected={isSelected(tag.title)}
 							toggleTag={toggleTag(tag.title)}
 						>
