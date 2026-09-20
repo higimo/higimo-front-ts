@@ -1,3 +1,4 @@
+import { Positive } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { VkPhotoType } from 'api-types/vk.types'
 
@@ -27,7 +28,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 	const { params: { albumId = '' } } = useRoute()
 	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
 
-	const fetchPhotos = useCallback(async (ownerId: string, albumId: number) => {
+	const fetchPhotos = useCallback(async (ownerId: string, albumId: Positive) => {
 		if (photos.length) {
 			return undefined
 		}
@@ -42,7 +43,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 
 	useEffect(() => {
 		if (status === 'LOADED') {
-			fetchPhotos(session.user.id, albumId as unknown as number)
+			fetchPhotos(session.user.id, albumId as unknown as Positive)
 		} else if (status === 'ERROR') {
 			toast.error(error.message)
 		}
