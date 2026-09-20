@@ -9,7 +9,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
-import { VkPhotoToolAlbumEdit } from 'components/vk/vk-photo-tool-album-edit'
+import { VkPhotoAlbumEdit } from 'components/vk/vk-photo-album-edit'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { vkSession } from 'context/vk'
@@ -67,7 +67,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 				</VkParagraph>
 			</TextContainer>
 
-			<VkPhotoToolAlbumEdit
+			<VkPhotoAlbumEdit
 				photos={photos}
 			/>
 		</div>

@@ -8,7 +8,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TextContainer } from 'components/ui/text-container/index.js'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
-import { VkPhotoAlbumList } from 'components/vk/vk-photo-tool-albums/index.js'
+import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list/index.js'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader/index.js'
 
 import { vkSession } from 'context/vk'

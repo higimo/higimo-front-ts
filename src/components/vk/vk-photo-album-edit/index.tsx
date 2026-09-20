@@ -6,33 +6,33 @@ import { useCallback } from 'preact/hooks'
 
 import { debounce } from '@github/mini-throttle'
 import { getPhotosUrl } from 'utils/get-photos-url'
+import { toast } from 'toast'
 import { VkServiceApi } from 'pages/vk/vk-api-service'
 
 import './style.css'
 
-type VkPhotoToolAlbumEditPropsType = {
+type VkPhotoAlbumEditPropsType = {
 	photos: VkPhotoType[]
 }
 
-// TODO: [LIGHT] не нравится название компонента
-export const VkPhotoToolAlbumEdit: FunctionComponent<VkPhotoToolAlbumEditPropsType> = ({ photos }) => {
+export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({ photos }) => {
 	const handleChange = useCallback((
 		userId: VkPhotoType['owner_id'],
 		photoId: VkPhotoType['id']
 	) => {
 		const debouncedEdit = debounce(
-			(description: string) => {
-				console.log('lets go into debounce')
+			async (description: string) => {
 				if (description.length) {
-					// TODO: [LIGHT] надо ли await и сообщать об ошибках?
-					VkServiceApi.editPhoto(userId, photoId, description)
+					const result = await VkServiceApi.editPhoto(userId, photoId, description)
+					if (!result) {
+						toast.error('ВК отказал в изменении')
+					}
 				}
 			},
 			1500 // 1,5 секунды
 		)
 
 		return (event: ChangeEvent) => {
-			console.log('declarate debounce')
 			debouncedEdit(event.currentTarget.value)
 		}
 	}, [])

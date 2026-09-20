@@ -1,4 +1,3 @@
-import { Dispatch, StateUpdater }  from 'preact/hooks'
 import { FunctionComponent } from 'preact'
 import { HigimoServerResponse } from 'api-types/server-response.types'
 import { PinarikType } from 'api-types/pinarik.types'
