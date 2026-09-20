@@ -11,8 +11,12 @@ type GridTailPropsType = {
 	description: string
 }
 
-// TODO: [LIGHT] гриды тоже хорошие, вынести их выше в директории
-export const GridTail: FunctionComponent<GridTailPropsType> = ({ href, title, isArhive, description }) => {
+export const GridTail: FunctionComponent<GridTailPropsType> = ({
+	href,
+	title,
+	isArhive,
+	description,
+}) => {
 	return (
 		<a
 			className={cs(

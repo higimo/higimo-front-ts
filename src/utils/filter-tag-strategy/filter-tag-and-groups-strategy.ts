@@ -1,6 +1,6 @@
 import { DataItemWithTags, SelectedTags } from 'types'
 
-// TODO: [LIGHT] unused
+// TODO: [LAST] unused
 
 /**
  * Стратегия "AND между группами, OR внутри группы".
