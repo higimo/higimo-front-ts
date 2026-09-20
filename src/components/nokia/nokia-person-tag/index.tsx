@@ -1,13 +1,13 @@
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import './style.css'
 
-interface PersonTagProps {
+type PersonTagProps = ClassNameType & {
 	person: NokiaPersonSimpleType
 	onClick?: () => void
 	onRemove?: () => void
-	className?: string
 }
 
 export const NokiaPersonTag: FunctionComponent<PersonTagProps> = ({
@@ -24,7 +24,9 @@ export const NokiaPersonTag: FunctionComponent<PersonTagProps> = ({
 				className="person-tag__name"
 				onClick={(event) => {
 					event.stopPropagation()
-					onClick()
+					if (onClick) {
+						onClick()
+					}
 				}}
 			>
 				{displayName}

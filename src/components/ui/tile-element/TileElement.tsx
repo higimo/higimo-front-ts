@@ -1,3 +1,4 @@
+import { ClassNameType } from 'utils.type'
 import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
@@ -7,9 +8,8 @@ import { MaybeLink } from 'components/ui/maybe-link'
 import './style.css'
 
 // TODO: [MIDDLE] кажется, надо удалить, используется и там сложно
-type TileElementPropsType = {
+type TileElementPropsType = ClassNameType & {
 	isInactive?: boolean
-	className: string
 	href: string
 	image?: ComponentChildren
 	name: ComponentChildren

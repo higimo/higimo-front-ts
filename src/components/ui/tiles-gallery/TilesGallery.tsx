@@ -1,3 +1,4 @@
+import { ClassNameType } from 'utils.type'
 import { ComponentChildren, FunctionComponent } from 'preact'
 
 import { IntroHeader } from 'components/intro/intro-header'
@@ -14,8 +15,7 @@ import './style.css'
 * @param left Контент слева
 * @param right Контент справа, опционально
 */
-type TilesGalleryProps = {
-	className?: string
+type TilesGalleryProps = ClassNameType & {
 	id?: string
 	title: string
 	left: ComponentChildren

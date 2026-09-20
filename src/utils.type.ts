@@ -265,3 +265,8 @@ export type ChangeEvent = TargetedEvent<
 	HTMLInputElement|HTMLTextAreaElement,
 	InputEvent|Event
 >
+
+
+export type ClassNameType = {
+	className?: string
+}

@@ -1,3 +1,4 @@
+import { ClassNameType } from 'utils.type'
 import { ComponentChildren, FunctionComponent, h } from 'preact'
 
 import cs from 'classnames'
@@ -6,9 +7,8 @@ import './style.css'
 
 type VkHeadingLevel = 1 | 2 | 3 | 4
 
-type VkHeadingPropsType = {
+type VkHeadingPropsType = ClassNameType & {
 	level?: VkHeadingLevel
-	className?: string
 	children: ComponentChildren | string
 }
 

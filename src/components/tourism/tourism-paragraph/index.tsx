@@ -1,12 +1,12 @@
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
 import './style.css'
 
-type TourismSecondaryPropsType = {
+type TourismSecondaryPropsType = ClassNameType & {
 	main?: boolean
-	className?: string
 }
 
 export const TourismSecondary: FunctionComponent<TourismSecondaryPropsType> = ({ children, main = false, className }) => (

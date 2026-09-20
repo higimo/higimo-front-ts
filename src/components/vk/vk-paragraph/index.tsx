@@ -1,3 +1,4 @@
+import { ClassNameType } from 'utils.type'
 import { ComponentChildren, FunctionComponent } from 'preact'
 
 import cs from 'classnames'
@@ -6,9 +7,8 @@ import './style.css'
 
 type VkParagraphVariant = 'primary' | 'secondary' | 'caption'
 
-type VkParagraphPropsType = {
+type VkParagraphPropsType = ClassNameType & {
 	variant?: VkParagraphVariant
-	className?: string
 	children: ComponentChildren | string
 }
 

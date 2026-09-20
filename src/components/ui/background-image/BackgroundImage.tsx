@@ -1,11 +1,12 @@
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import './style.css'
 
-type BackgroundImagePropsType = {
-	className?: string
+type BackgroundImagePropsType = ClassNameType & {
 	src: string
 }
+
 export const BackgroundImage: FunctionComponent<BackgroundImagePropsType> = ({ src, children }) => (
 	<div className="background-image">
 		<div

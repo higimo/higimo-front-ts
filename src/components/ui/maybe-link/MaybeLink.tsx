@@ -1,12 +1,13 @@
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import { h } from 'preact'
 
-type MaybeLinkPropsType = {
-	className?: string
+type MaybeLinkPropsType = ClassNameType & {
 	href?: string
 	isHref?: boolean
 }
+
 export const MaybeLink: FunctionComponent<MaybeLinkPropsType> = ({
 	href,
 	isHref = true,

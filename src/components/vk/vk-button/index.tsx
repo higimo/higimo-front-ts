@@ -1,3 +1,4 @@
+import { ClassNameType } from 'utils.type'
 import { ComponentChildren, FunctionComponent, TargetedMouseEvent } from 'preact'
 
 import cs from 'classnames'
@@ -7,13 +8,12 @@ import './style.css'
 type VkButtonVariant = 'primary' | 'secondary' | 'tertiary'
 type VkButtonSize = 's' | 'm' | 'l'
 
-type VkButtonPropsType = {
+type VkButtonPropsType = ClassNameType & {
 	variant?: VkButtonVariant
 	size?: VkButtonSize
 	type?: 'button' | 'submit' | 'reset'
 	disabled?: boolean
 	stretched?: boolean
-	className?: string
 	onClick?: (event: TargetedMouseEvent<HTMLButtonElement>) => void
 	children: ComponentChildren | string
 }

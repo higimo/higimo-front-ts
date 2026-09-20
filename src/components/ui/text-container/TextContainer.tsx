@@ -1,11 +1,11 @@
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
 import './style.css'
 
-type TextContainerPropsType = {
-	className?: string
+type TextContainerPropsType = ClassNameType & {
 	style?: any
 }
 

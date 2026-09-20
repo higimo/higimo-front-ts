@@ -1,13 +1,15 @@
-import cs from 'classnames'
+import { ClassNameType } from 'utils.type'
+
 import { FieldValues, FieldPath, useController } from 'react-hook-form'
+
+import cs from 'classnames'
 
 import './style.css'
 
 const SCORE_VALUES = [-1, 0, 1] as const
 
-type TrafficLightPropsType<T extends FieldValues> = {
+type TrafficLightPropsType<T extends FieldValues> = ClassNameType & {
 	name: FieldPath<T>
-	className?: string
 }
 
 export const TrafficLight = <T extends FieldValues>({

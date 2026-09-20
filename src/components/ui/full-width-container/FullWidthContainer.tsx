@@ -1,13 +1,11 @@
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
 
 import './style.css'
 
-type FullWidthContainerPropsType = {
-	// TODO: [LIGHT] добавить общий тип с классом, чтоб не писать каждый раз
-	className?: string
-}
+type FullWidthContainerPropsType = ClassNameType
 
 export const FullWidthContainer: FunctionComponent<FullWidthContainerPropsType> = props => (
 	<div className={cs('full-width-container', props.className)}>
@@ -15,9 +13,7 @@ export const FullWidthContainer: FunctionComponent<FullWidthContainerPropsType> 
 	</div>
 )
 
-type FullWidthColumnPropsType = {
-	className?: string
-}
+type FullWidthColumnPropsType = ClassNameType
 
 export const FullWidthColumn: FunctionComponent<FullWidthColumnPropsType> = props => (
 	<div className={cs('full-width-column', props.className)}>

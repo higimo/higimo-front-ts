@@ -1,9 +1,9 @@
-import cs from 'classnames'
-
+import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
-type TourismBulletListItemPropsType = {
-	className?: string
+import cs from 'classnames'
+
+type TourismBulletListItemPropsType = ClassNameType & {
 	href: string
 	title: string
 }
