@@ -28,7 +28,6 @@ class VkApiService {
 
 			return albums
 		} catch (error) {
-			// TODO: [LIGHT] распространить по проекту, printVkError удалить
 			if (error instanceof VKError) {
 				toast.warning(error.error_msg)
 			} else {
@@ -54,7 +53,6 @@ class VkApiService {
 			})
 			return response.response.items
 		} catch (error) {
-			// TODO: [LIGHT] распространить по проекту, printVkError удалить
 			if (error instanceof VKError) {
 				toast.warning(error.error_msg)
 			} else {
@@ -81,7 +79,6 @@ class VkApiService {
 			})
 			return response.response
 		} catch (error) {
-			// TODO: [LIGHT] распространить по проекту, printVkError удалить
 			if (error instanceof VKError) {
 				toast.warning(error.error_msg)
 			} else {

@@ -1,10 +1,15 @@
 import { VkResponseError } from 'vendor/types'
 
 export class VKError extends Error {
+	/** Код ошибки */
 	readonly error_code: number
+	/** Текст ошибки */
 	readonly error_msg: string
+	/** Параметры ошибки от ВК */
 	readonly request_params: Record<string, unknown>
+	/** Используемый метод запроса */
 	readonly method: string
+	/** Параметры запроса */
 	readonly params: Record<string, unknown>
 
 	constructor(

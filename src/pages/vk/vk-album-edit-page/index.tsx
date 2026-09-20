@@ -42,10 +42,8 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 
 	useEffect(() => {
 		if (status === 'LOADED') {
-			// @ts-ignore надо в сигнале поправить, что если загрузился — точно есть, либо в ошибке данные
 			fetchPhotos(session.user.id, albumId as unknown as number)
 		} else if (status === 'ERROR') {
-			// @ts-ignore надо в сигнале поправить, что если ошибка, то ошибка установлена
 			toast.error(error.message)
 		}
 	}, [status, error, session, fetchPhotos, albumId])

@@ -79,7 +79,6 @@ export const useVkDownload: UseVkDownloadType = () => {
 		} else if (data.userId !== '') {
 			setDownloadId(data.userId)
 		} else {
-			// @ts-ignore надо в сигнале поправить, что если загрузился — точно есть, либо в ошибке данные
 			setDownloadId(session.user.id)
 		}
 	}, [setPhotos, setDownloadId, session])
