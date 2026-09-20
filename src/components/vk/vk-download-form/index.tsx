@@ -7,6 +7,7 @@ import { VkButton } from 'components/vk/vk-button'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 
 import { VkDownloadFormValuesType } from 'components/vk/vk-download-form/types'
+import { debounce } from '@github/mini-throttle'
 
 type VkDownloadFormContainerPropsType = {
 	onSubmit: (values: VkDownloadFormValuesType) => void
@@ -24,11 +25,18 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 	})
 
 	useEffect(() => {
-		const subscription = watch(() => {
-			// TODO: [LIGHT] тротлер/дебаунс бы добавить
+		const debouncedSubmit = debounce(() => {
 			handleSubmit(onSubmit)()
+		}, 500)
+
+		const subscription = watch(() => {
+			debouncedSubmit()
 		})
-		return () => subscription.unsubscribe()
+
+		return () => {
+			subscription.unsubscribe()
+			debouncedSubmit.cancel()
+		}
 	}, [watch, handleSubmit])
 
 	return (
