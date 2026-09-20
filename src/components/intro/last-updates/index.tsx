@@ -84,7 +84,7 @@ export const LastUpdates: FunctionComponent = () => {
 				<IntroHeader>Недавно опубликовал</IntroHeader>
 			</TextContainer>
 
-			{/* TODO: [LIGHT] пока не могу заменить, нужно переверстать заново */}
+			{/* TODO: [LIGHT] пока не могу заменить аналогично другим интро, нужно переверстать заново */}
 			<TilesGallery
 				className="last-updates"
 				title="Недавно опубликовал"
