@@ -17,7 +17,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-import '../../pet-project.css'
+import '../pet-project.css'
 
 type PetProjectDataType = {
 	gradients: GradientDicType[]

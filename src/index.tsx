@@ -49,8 +49,8 @@ import { YoutubePage }        from 'pages/info/youtube-page'
 import { PetProjectFormPage } from 'pages/tools/pet-project/pet-project-form-page'
 import { PetProjectPage }     from 'pages/tools/pet-project/pet-project-page'
 
-import { ListListFormPage }  from 'pages/tool/list-list-form-page'
-import { ListListIndexPage } from 'pages/tool/list-list-index-page'
+import { ListListFormPage }  from 'pages/tools/list-list/list-list-form-page'
+import { ListListIndexPage } from 'pages/tools/list-list/list-list-index-page'
 
 import { NokiaAddPersonPage }        from 'pages/nokia/nokia-add-person-page'
 import { NokiaIndexPage }            from 'pages/nokia/nokia-index-page'
