@@ -15,6 +15,8 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
+import rfFlag from 'components/ui/footer/img/rf-flag.svg'
+
 const renderLink = (isAuth: boolean) => (toolElement: IntroLinkDataType) => {
 	if (!!toolElement.isAdmin && !isAuth || !!toolElement.isArchive) {
 		return null
@@ -59,8 +61,10 @@ export const Footer: FunctionComponent = () => {
 				{toolListData.map(renderLink(isAuth))}
 			</div>
 			<div className="footer__copyright">
-				{/* TODO: [LIGHT] заменить на svg, чтоб везде было видно */}
-				Сделал Хиги́мо с гордостью в 🇷🇺
+				<span className="nowrap">
+					Сделал Хиги́мо с гордостью в{' '}
+					<img src={rfFlag} height={12} style={{ verticalAlign: 'middle', border: '1px solid #dedede'}} />
+				</span>
 			</div>
 		</footer>
 	)
