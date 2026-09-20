@@ -10,14 +10,13 @@ import useApi from 'hook/fetch/use-api'
 import { Loading } from 'components/ui/loading'
 import { NestedList } from 'components/list/nested-list'
 
-import { NotFoundPage } from 'pages/not-found-page'
-
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { NotFoundData } from 'components/ui/not-found-data/NotFoundData'
 
 export const ListListIndexPage: FunctionComponent = () => {
 	usePageTitle('Список списков')
 
-	const { params: { idcode = '' } } = useRoute()
+	const { params: { idcode = 'main' } } = useRoute()
 	const [ nestedListItems ] = useApi<NestedListItem[]>(API_ROUTE.lister, {
 		filter: {
 			id: idcode,
@@ -32,13 +31,15 @@ export const ListListIndexPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
-	if (isListEmpty) {
-		return <NotFoundPage />
-	}
 
 	return (
 		<div className="list-list">
-			<NestedList nestedList={nestedListItems.data} />
+			{(isListEmpty
+				? <NotFoundData />
+				: <NestedList
+					nestedList={nestedListItems.data}
+				/>
+			)}
 		</div>
 	)
 }

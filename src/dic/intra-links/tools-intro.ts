@@ -41,7 +41,7 @@ export const hardToolList: IntroLinkDataType[] = [
 	},
 	{
 		title: 'Список списков',
-		href: ROUTE_LINKS.listListIndex,
+		href: ROUTE_LINKS.listListMain,
 		description: 'Когда мания каталогизации становится слишком сильной, можно составлять списки из всего, что попадётся под руку'
 	},
 	{

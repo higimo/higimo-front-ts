@@ -1,7 +1,9 @@
-import { Loading } from 'components/ui/loading'
-import { useAuth } from 'hook/fetch/use-auth'
 import { VNode } from 'preact'
 import { Route, RouteProps } from 'preact-iso'
+
+import { useAuth } from 'hook/fetch/use-auth'
+
+import { Loading } from 'components/ui/loading'
 
 export const PrivateRoute = (props: RouteProps<{}>): VNode | null => {
 	const { isAuth, isAuthLoaded, redirectToLogin } = useAuth()

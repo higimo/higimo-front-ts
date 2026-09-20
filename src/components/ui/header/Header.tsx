@@ -35,7 +35,7 @@ const menu = [
 const secretMenu = [
 	// TODO: [BACKEND] всё же сделать публичным, но сейчас бэк сломан
 	{
-		href: ROUTE_LINKS.listListIndex,
+		href: ROUTE_LINKS.listListMain,
 		name: 'Спискота',
 	},
 	{

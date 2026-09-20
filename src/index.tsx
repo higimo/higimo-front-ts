@@ -1,13 +1,15 @@
 import { render } from 'preact'
 import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso'
 
+import { PrivateRoute }  from 'components/util/private-route'
+import { Redirect } from 'components/util/redirect'
+
 import { Footer } from 'components/ui/footer'
 import { Header } from 'components/ui/header'
 import { ToastContainer } from 'toast'
 
 import { AccordGallery } from 'components/accord/accord-gallery'
 import { AccordSingle }  from 'components/accord/accord-single'
-import { PrivateRoute }  from 'components/util/private-route'
 
 import { IndexPage }   from 'pages/index-page'
 import { ServicePage } from 'pages/tools/service-page'
@@ -142,7 +144,9 @@ export function App() {
 						<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 
 						{/* Список списков */}
-						<Route path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />
+						<PrivateRoute path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />
+						<Redirect path={ROUTE_LINKS.listListDefault} to={ROUTE_LINKS.listListMain} />
+						<Route path={ROUTE_LINKS.listListMain} component={ListListIndexPage} />
 						<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />
 						<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />
 

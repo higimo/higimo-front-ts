@@ -58,7 +58,7 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.tourismFatherTrack]:   'Путешествие с отцом',
 	[ROUTE_LINKS.tourismMoscowMuseum]:  'Московские музеи',
 
-	[ROUTE_LINKS.listListIndex]:  'Спискота',
+	[ROUTE_LINKS.listListMain]:  'Спискота',
 	[ROUTE_LINKS.listListCreate]: 'Создать элемент',
 
 	[ROUTE_LINKS.toolVkIndex]:         'Фотографии ВК',

@@ -54,7 +54,8 @@ const ROUTE_TOURISM_LINKS = Object.freeze({
 })
 
 const ROUTE_LIST_LIST_LINKS = Object.freeze({
-	listListIndex:        '/list-list/main/',
+	listListDefault:      '/list-list/',
+	listListMain:         '/list-list/main/',
 	listListDetail_CONST: '/list-list/:idcode/',
 	listListCreate:       '/list-list/create/',
 	listListEdit_CONST:   '/list-list/edit/:idcode/',
