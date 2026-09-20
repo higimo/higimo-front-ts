@@ -2,19 +2,17 @@ import { FunctionComponent } from 'preact'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useEffect } from 'preact/hooks'
-import { useGlobalContext } from 'context/global'
+import { setIsNotFound } from 'context/global'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
 export const NotFoundPage: FunctionComponent = () => {
-	const { toggleNotFound } = useGlobalContext()
-
 	useEffect(() => {
-		toggleNotFound(true)
-		return () => toggleNotFound(false)
-	}, [toggleNotFound])
+		setIsNotFound(true)
+		return () => setIsNotFound(false)
+	}, [])
 
 	usePageTitle('Ошибка 404: страница не найдена')
 

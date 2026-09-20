@@ -1,11 +1,13 @@
 import { FunctionComponent } from 'preact'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-
-import './style.css'
-import { useGlobalContext } from 'context/global'
 import { Logotype } from 'components/ui/logotype-mini'
 import { OnlyAdmin } from 'components/util/only-admin'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+
+import { isNotFound } from 'context/global'
+
+import './style.css'
 
 const menu = [
 	{
@@ -48,8 +50,7 @@ const secretMenu = [
 
 type HeaderPropsType = {}
 export const Header: FunctionComponent<HeaderPropsType> = () => {
-	const { isNotFound } = useGlobalContext()
-	if (isNotFound) {
+	if (isNotFound.value) {
 		return null
 	}
 

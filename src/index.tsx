@@ -5,8 +5,6 @@ import { Footer } from 'components/ui/footer'
 import { Header } from 'components/ui/header'
 import { ToastContainer } from 'toast'
 
-import { GlobalProvider }    from './context/global'
-
 import { AccordGallery } from 'components/accord/accord-gallery'
 import { AccordSingle }  from 'components/accord/accord-single'
 import { PrivateRoute }  from 'components/util/private-route'
@@ -112,132 +110,130 @@ export function App() {
 	return (
 		<LocationProvider>
 			<ErrorBoundary onError={(e) => console.log(e)}>
-					<GlobalProvider>
-						<Header />
-						<main>
-							<Router>
-								<Route path={ROUTE_LINKS.index} component={IndexPage} />
-								<Route path={ROUTE_LINKS.serviceIndex} component={ServicePage} />
+				<Header />
+				<main>
+					<Router>
+						<Route path={ROUTE_LINKS.index} component={IndexPage} />
+						<Route path={ROUTE_LINKS.serviceIndex} component={ServicePage} />
 
-								{/* Магазин */}
-								<Route path={ROUTE_LINKS.merchantIndex} component={MerchantPage} />
-								<Route path={ROUTE_LINKS.merchantCheckout} component={PaymentPage} />
-								<Route path={ROUTE_LINKS.merchantPaymentPolicy} component={PaymentPolicyPage} />
-								<Route path={ROUTE_LINKS.merchantPersonalPolicy} component={PersonalPolicyPage} />
-								<Route path={ROUTE_LINKS.merchantPaymentOferta} component={PaymentOfertaPage} />
-								<Route path={ROUTE_LINKS.merchantDonationOferta} component={DonationOfertaPage} />
+						{/* Магазин */}
+						<Route path={ROUTE_LINKS.merchantIndex} component={MerchantPage} />
+						<Route path={ROUTE_LINKS.merchantCheckout} component={PaymentPage} />
+						<Route path={ROUTE_LINKS.merchantPaymentPolicy} component={PaymentPolicyPage} />
+						<Route path={ROUTE_LINKS.merchantPersonalPolicy} component={PersonalPolicyPage} />
+						<Route path={ROUTE_LINKS.merchantPaymentOferta} component={PaymentOfertaPage} />
+						<Route path={ROUTE_LINKS.merchantDonationOferta} component={DonationOfertaPage} />
 
-								<Route path={ROUTE_LINKS.textarea} component={TextareaPage} />
+						<Route path={ROUTE_LINKS.textarea} component={TextareaPage} />
 
-								{/* admin */}
-								<Route path={ROUTE_LINKS.login} component={LoginPage} />
-								<PrivateRoute path={ROUTE_LINKS.adminIndex} component={AdminPage} />
-								<PrivateRoute path="/admin/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} />
-								<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
+						{/* admin */}
+						<Route path={ROUTE_LINKS.login} component={LoginPage} />
+						<PrivateRoute path={ROUTE_LINKS.adminIndex} component={AdminPage} />
+						<PrivateRoute path="/admin/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} />
+						<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
-								{/* Секретные разработки не для продакшена */}
-								<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />
-								<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
-								<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
+						{/* Секретные разработки не для продакшена */}
+						<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />
+						<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
+						<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
 
-								{/* Портфолио */}
-								<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
-								<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
+						{/* Портфолио */}
+						<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
+						<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />
 
-								{/* Список списков */}
-								<Route path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />
-								<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />
-								<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />
+						{/* Список списков */}
+						<Route path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />
+						<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />
+						<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />
 
-								{/* Аккорды */}
-								<Route path={ROUTE_LINKS.accordIndex} component={AccordGallery} />
-								<Route path={ROUTE_LINKS.accordDetail_CONST} component={AccordSingle} />
+						{/* Аккорды */}
+						<Route path={ROUTE_LINKS.accordIndex} component={AccordGallery} />
+						<Route path={ROUTE_LINKS.accordDetail_CONST} component={AccordSingle} />
 
-								{/* Инфосервисы */}
-								<Route path={ROUTE_LINKS.logism} component={LogismPage} />
-								<Route path={ROUTE_LINKS.demagog} component={DemagogPage} />
-								<Route path={ROUTE_LINKS.faqIndex} component={FaqListPage} />
-								<Route path={ROUTE_LINKS.faqDetail_CONST} component={FaqSinglePage} />
-								<Route path={ROUTE_LINKS.learningIndex} component={ObuchenieListPage} />
-								<Route path={ROUTE_LINKS.learningDetail_CONST} component={ObuchenieSinglePage} />
+						{/* Инфосервисы */}
+						<Route path={ROUTE_LINKS.logism} component={LogismPage} />
+						<Route path={ROUTE_LINKS.demagog} component={DemagogPage} />
+						<Route path={ROUTE_LINKS.faqIndex} component={FaqListPage} />
+						<Route path={ROUTE_LINKS.faqDetail_CONST} component={FaqSinglePage} />
+						<Route path={ROUTE_LINKS.learningIndex} component={ObuchenieListPage} />
+						<Route path={ROUTE_LINKS.learningDetail_CONST} component={ObuchenieSinglePage} />
 
-								{/* Сервисы-развлекухи */}
-								<Route path={ROUTE_LINKS.pron} component={PronPage} />
-								<Route path={ROUTE_LINKS.youtube} component={YoutubePage} />
-								<Route path={ROUTE_LINKS.links} component={LinksPage} />
+						{/* Сервисы-развлекухи */}
+						<Route path={ROUTE_LINKS.pron} component={PronPage} />
+						<Route path={ROUTE_LINKS.youtube} component={YoutubePage} />
+						<Route path={ROUTE_LINKS.links} component={LinksPage} />
 
-								{/* Резюме */}
-								<Route path={ROUTE_LINKS.resumeIndex} component={ResumeIndexPage} />
-								<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductPage} />
-								<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
-								<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductLeadPage} />
-								<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
-								<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProductSmartPage} />
-								<Route path={ROUTE_LINKS.resumeProductFull} component={ResumeProductFullValuePage} />
-								<Route path={ROUTE_LINKS.response} component={HiringResponsePage} />
+						{/* Резюме */}
+						<Route path={ROUTE_LINKS.resumeIndex} component={ResumeIndexPage} />
+						<Route path={ROUTE_LINKS.resumeProduct} component={ResumeProductPage} />
+						<Route path={ROUTE_LINKS.resumeTechProduct} component={ResumeTechProductPage} />
+						<Route path={ROUTE_LINKS.resumeLead} component={ResumeProductLeadPage} />
+						<Route path={ROUTE_LINKS.resumeHowToWork} component={HowToWorkPage} />
+						<Route path={ROUTE_LINKS.resumeProductSmart} component={ResumeProductSmartPage} />
+						<Route path={ROUTE_LINKS.resumeProductFull} component={ResumeProductFullValuePage} />
+						<Route path={ROUTE_LINKS.response} component={HiringResponsePage} />
 
-								{/* Инфостраницы о себе */}
-								<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
-								<Route path={ROUTE_LINKS.thingsIndex} component={ThingsIndexPage} />
-								<Route path={ROUTE_LINKS.thingsNotebook} component={ThingsNotebookPage} />
-								<Route path={ROUTE_LINKS.thingsVelo} component={ThingsVeloPage} />
-								<Route path={ROUTE_LINKS.igLink} component={IgLinkPage} />
-								<Route path={ROUTE_LINKS.cinemaIndex} component={CinemaIndexPage} />
-								<Route path={ROUTE_LINKS.cinemaScriptIndex} component={CinemaScriptPage} />
-								<Route path={ROUTE_LINKS.cinemaScriptDetail_CONST} component={CinemaSinglePage} />
+						{/* Инфостраницы о себе */}
+						<Route path={ROUTE_LINKS.gameIndex} component={GamePage} />
+						<Route path={ROUTE_LINKS.thingsIndex} component={ThingsIndexPage} />
+						<Route path={ROUTE_LINKS.thingsNotebook} component={ThingsNotebookPage} />
+						<Route path={ROUTE_LINKS.thingsVelo} component={ThingsVeloPage} />
+						<Route path={ROUTE_LINKS.igLink} component={IgLinkPage} />
+						<Route path={ROUTE_LINKS.cinemaIndex} component={CinemaIndexPage} />
+						<Route path={ROUTE_LINKS.cinemaScriptIndex} component={CinemaScriptPage} />
+						<Route path={ROUTE_LINKS.cinemaScriptDetail_CONST} component={CinemaSinglePage} />
 
-								{/* Сервисы о себе */}
-								<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
-								<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
-								<Route path={ROUTE_LINKS.emailer} component={EmailerPage} />
-								<Route path={ROUTE_LINKS.comoji} component={ComojiPage} />
-								<Route path={ROUTE_LINKS.magic} component={MagicBallPage} />
-								<Route path={ROUTE_LINKS.petProject} component={PetProjectPage} />
-								<PrivateRoute path={ROUTE_LINKS.petProjectCreate} component={PetProjectFormPage} />
-								<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
-
-
-								{/* Nokia / Sweebe */}
-								<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaPeople} component={NokiaPeopleListPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaMeetingFormPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaMeetingFormPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleForm} component={NokiaAddPersonPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
-								<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
+						{/* Сервисы о себе */}
+						<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
+						<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
+						<Route path={ROUTE_LINKS.emailer} component={EmailerPage} />
+						<Route path={ROUTE_LINKS.comoji} component={ComojiPage} />
+						<Route path={ROUTE_LINKS.magic} component={MagicBallPage} />
+						<Route path={ROUTE_LINKS.petProject} component={PetProjectPage} />
+						<PrivateRoute path={ROUTE_LINKS.petProjectCreate} component={PetProjectFormPage} />
+						<PrivateRoute path={ROUTE_LINKS.petProjectEdit_CONST} component={PetProjectFormPage} />
 
 
-								{/* VK тулы */}
-								<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
-								<Route path={ROUTE_LINKS.toolVkAlbums} component={VkAlbumListPage} />
-								<Route path={ROUTE_LINKS.toolVkAlbumSingle_CONST} component={VkAlbumEditPage} />
-								<Route path={ROUTE_LINKS.toolVkDownloadAlbum} component={VkDownloadPage} />
+						{/* Nokia / Sweebe */}
+						<PrivateRoute path={ROUTE_LINKS.nokiaIndex} component={NokiaIndexPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaPeople} component={NokiaPeopleListPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaForm} component={NokiaMeetingFormPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaFormEdit_CONST} component={NokiaMeetingFormPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaPeopleForm} component={NokiaAddPersonPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaPeopleDetail_CONST} component={NokiaPeopleDetailCardPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaPeopleEdit_CONST} component={NokiaAddPersonPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaStatistic} component={NokiaStatisticPage} />
+						<PrivateRoute path={ROUTE_LINKS.nokiaPinarik} component={PinarikPage} />
 
 
-								{/* Туризм */}
-								<Route path={ROUTE_LINKS.tourismIndex} component={TourismIndexPage} />
-								<Route path={ROUTE_LINKS.tourismChecklist} component={TourismChecklistPage} />
-								<Route path={ROUTE_LINKS.tourismCityIndex} component={TourismCityStarPage} />
-								<Route path={ROUTE_LINKS.tourismFatherTrack} component={TourismFatherTrackPage} />
-								<Route path={ROUTE_LINKS.tourismMaps} component={TourismMapsPage} />
-								<Route path={ROUTE_LINKS.tourismMapsMoscowBar} component={TourismMoscowBarPage} />
-								<Route path={ROUTE_LINKS.tourismMapsMoscowWalkaround} component={TourismMoscowWalkaroundPage} />
-								<Route path={ROUTE_LINKS.tourismMapsRegion} component={TourismYaMapsRegionPage} />
-								<Route path={ROUTE_LINKS.tourismNashe_CONST} component={NasheSinglePage} />
-								<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
-								<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
-								<Route path={ROUTE_LINKS.tourismMoscowMuseum} component={TourismMoscowMuseumPage} />
-								<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
+						{/* VK тулы */}
+						<Route path={ROUTE_LINKS.toolVkIndex} component={VkIndexPage} />
+						<Route path={ROUTE_LINKS.toolVkAlbums} component={VkAlbumListPage} />
+						<Route path={ROUTE_LINKS.toolVkAlbumSingle_CONST} component={VkAlbumEditPage} />
+						<Route path={ROUTE_LINKS.toolVkDownloadAlbum} component={VkDownloadPage} />
 
-								<Route default component={NotFoundPage} />
-							</Router>
-						</main>
-						<div id="vk_api_transport" />
-						<ToastContainer />
-						<Footer />
-					</GlobalProvider>
+
+						{/* Туризм */}
+						<Route path={ROUTE_LINKS.tourismIndex} component={TourismIndexPage} />
+						<Route path={ROUTE_LINKS.tourismChecklist} component={TourismChecklistPage} />
+						<Route path={ROUTE_LINKS.tourismCityIndex} component={TourismCityStarPage} />
+						<Route path={ROUTE_LINKS.tourismFatherTrack} component={TourismFatherTrackPage} />
+						<Route path={ROUTE_LINKS.tourismMaps} component={TourismMapsPage} />
+						<Route path={ROUTE_LINKS.tourismMapsMoscowBar} component={TourismMoscowBarPage} />
+						<Route path={ROUTE_LINKS.tourismMapsMoscowWalkaround} component={TourismMoscowWalkaroundPage} />
+						<Route path={ROUTE_LINKS.tourismMapsRegion} component={TourismYaMapsRegionPage} />
+						<Route path={ROUTE_LINKS.tourismNashe_CONST} component={NasheSinglePage} />
+						<Route path={ROUTE_LINKS.tourismNashe} component={NasheIndexPage} />
+						<Route path={ROUTE_LINKS.tourismVisited} component={TourismVisitedPage} />
+						<Route path={ROUTE_LINKS.tourismMoscowMuseum} component={TourismMoscowMuseumPage} />
+						<Route path={ROUTE_LINKS.tourismWalkDetail_CONST} component={TourismWalkSinglePage} />
+
+						<Route default component={NotFoundPage} />
+					</Router>
+				</main>
+				<div id="vk_api_transport" />
+				<ToastContainer />
+				<Footer />
 			</ErrorBoundary>
 		</LocationProvider>
 	)

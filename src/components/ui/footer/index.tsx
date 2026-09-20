@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { IntroLinkDataType } from 'utils.type'
 
 import { useAuth } from 'hook/fetch/use-auth'
-import { useGlobalContext } from 'context/global'
+import { isNotFound } from 'context/global'
 
 import { aboutInviteList } from 'dic/intra-links/about-invite'
 import { blogInviteData } from 'dic/intra-links/blog-invite'
@@ -27,12 +27,12 @@ const renderLink = (isAuth: boolean) => (toolElement: IntroLinkDataType) => {
 }
 
 export const Footer: FunctionComponent = () => {
-	const { isNotFound } = useGlobalContext()
-	if (isNotFound) {
+	const { isAuth } = useAuth()
+
+	if (isNotFound.value) {
 		return null
 	}
 
-	const { isAuth } = useAuth()
 
 	return (
 		<footer className="footer">
