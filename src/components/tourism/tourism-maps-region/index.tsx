@@ -38,7 +38,7 @@ export const TourismMapsRegion = () => {
 
 	return (
 		<div className="yandex-map">
-			<YMaps query={{ lang: 'ru_RU', apikey: '36482037-351d-458f-87ce-c2bf4a1e508b' }}>
+			<YMaps query={{ lang: 'ru_RU', apikey: import.meta.env.VITE_YA_MAP_KEY }}>
 				<Map
 					// @ts-ignore
 					instanceRef={mapRef}
