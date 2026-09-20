@@ -156,6 +156,24 @@ export type BasePointType = {
 }
 
 
+/**
+ * Поизитивное число: 1, 100, но не 0 и -2
+ */
+export type Positive = Brand<number, 'positive'>
+
+export function asPositive(n: number): Positive {
+	if (n <= 0) {
+		throw new RangeError(`Expected positive number, got ${n}`)
+	}
+	return n as Positive
+}
+
+
+/**
+ * Белево значение, но в виде числа 1 | 0
+ */
+export type BooleanNumber = Brand<number, 'BooleanNumber'>
+
 
 
 /**

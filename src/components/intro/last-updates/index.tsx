@@ -65,7 +65,7 @@ const TileElementCon: FunctionComponent<TileElementConPropsType> = props => (
 	/>
 )
 
-// TODO: [MIDDLE] кжтс, не используется, это надо исправить
+// TODO: [MIDDLE] кжтс, не используется, это надо исправить. Вывести на отдельную страницу, получать данные с бекенда
 export const LastUpdates: FunctionComponent = () => {
 	const [ newsList ] = useApi<UpdateNewsType[]>(API_ROUTE.updateNews, { limit: 12 })
 	const isLoading = useLoadingState([newsList.status])

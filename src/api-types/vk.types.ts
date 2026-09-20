@@ -1,4 +1,4 @@
-import { UnixTimeSecond } from 'utils.type'
+import { BooleanNumber, Positive, UnixTimeSecond } from 'utils.type'
 
 export type VkUserId = string
 
@@ -22,9 +22,9 @@ export type VkPhotoSizesType = {
 }
 
 export type VkPhotoType = {
-	album_id: number
+	album_id: Positive
 	date: UnixTimeSecond
-	id: number
+	id: Positive
 	/** user_id */
 	owner_id: VkUserId
 	sizes: VkPhotoSizesType[]
@@ -36,7 +36,7 @@ export type VkPhotoType = {
 
 export type VKAlbumType = {
 	/** Идентификатор альбома */
-	id: number
+	id: Positive
 	/** Идентификатор создателя */
 	owner_id: VkUserId
 	/** Видимость */
@@ -59,7 +59,7 @@ export type VKAlbumType = {
 
 export type VkAlbumType = {
 	/** идентификатор альбома */
-	id: number
+	id: Positive
 	/** идентификатор владельца альбома */
 	owner_id: VkUserId
 	/** идентификатор фотографии, которая является обложкой (0, если обложка отсутствует) */
@@ -70,8 +70,8 @@ export type VkAlbumType = {
 	size: number
 	/** название альбома */
 	title: string
-	feed_disabled: number
-	feed_has_pinned: number
+	feed_disabled: BooleanNumber
+	feed_has_pinned: BooleanNumber
 	/** дата создания альбома в формате unixtime (не приходит для системных альбомов) */
 	created: UnixTimeSecond
 	/** дата последнего обновления альбома в формате unixtime (не приходит для системных альбомов) */
@@ -93,7 +93,8 @@ export type VkAlbumType = {
 	}
 	/** настройки приватности для альбома в формате настроек приватности (только для альбома пользователя, не приходит для системных альбомов) */
 	privacy_view: {
-		category: string // 'only_me',
+		/** 'only_me' */
+		category: string
 		lists: {
 			allowed: []
 			excluded: []
@@ -104,7 +105,7 @@ export type VkAlbumType = {
 		}
 	}
 	sizes: VkPhotoSizesType[]
-	thumb_is_last: number // bool? вижу 1
+	thumb_is_last: BooleanNumber
 
 }
 
@@ -128,7 +129,7 @@ export type VkSessionType = {
 		/** короткий адрес страницы */
 		domain: string
 		/** ссылка на страницу в формате https://vk.com/domain */
-		href: string // http url
+		href: string
 		/** имя */
 		first_name: string
 		/** фамилия */

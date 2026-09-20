@@ -81,7 +81,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 					mini
 					countInRow={6}
 					factoids={[
-						// TODO: [LIGHT] неужели, это нужно прям писать? Откуда я это взял?
+						// TODO: [BACKEND] получать данные из бекенда, когда сделаю
 						{
 							digit: 262,
 							digitFrom: 'из 626',

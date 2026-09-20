@@ -62,7 +62,6 @@ class VkApiService {
 		}
 	}
 
-	// TODO: [LIGHT] прикольно добавить тип Positive для photoId
 	/** Редактирует описание у фотографии */
 	async editPhoto(
 		userId: VkPhotoType['owner_id'],
