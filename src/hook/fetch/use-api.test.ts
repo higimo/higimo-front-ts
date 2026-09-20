@@ -9,7 +9,7 @@ import { API_STATUS } from 'dic/API_STATUS'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 vi.mock('utils/api/send-request', () => ({
-	default: vi.fn()
+	sendRequest: vi.fn()
 }))
 
 const api = (obj: Object) => ({ data: obj })

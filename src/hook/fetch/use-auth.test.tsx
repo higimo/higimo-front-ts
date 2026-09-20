@@ -5,7 +5,7 @@ import { useLocation } from 'preact-iso'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 vi.mock('utils/api/send-request', () => ({
-	default: vi.fn()
+	sendRequest: vi.fn()
 }));
 
 vi.mock('dic/api-route', () => ({
