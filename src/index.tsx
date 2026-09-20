@@ -12,7 +12,7 @@ import { AccordSingle }  from 'components/accord/accord-single'
 import { PrivateRoute }  from 'components/util/private-route'
 
 import { IndexPage }   from 'pages/index-page'
-import { ServicePage } from 'pages/service-page'
+import { ServicePage } from 'pages/tools/service-page'
 
 import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
@@ -92,7 +92,7 @@ import { HiringResponsePage } from 'pages/hiring-response/hiring-response-page'
 import { AdminPage }     from 'pages/admin/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
 import { TestPage }      from 'pages/admin/test-page'
-import { TextareaPage }  from 'pages/textarea-page'
+import { TextareaPage }  from 'pages/admin/textarea-page'
 import { ToolPage }      from 'pages/admin/tool-page'
 
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
