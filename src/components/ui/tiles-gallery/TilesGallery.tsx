@@ -1,10 +1,10 @@
 import { ComponentChildren, FunctionComponent } from 'preact'
 
-import cs from 'classnames'
-
 import { IntroHeader } from 'components/intro/intro-header'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+
+import cs from 'classnames'
 
 import './style.css'
 

@@ -5,11 +5,11 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { useState, useCallback, useEffect } from 'preact/hooks'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { TextContainer } from 'components/ui/text-container/index.js'
+import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
-import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list/index.js'
-import { VkSdkLoader } from 'components/vk/vk-sdk-loader/index.js'
+import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list'
+import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { vkSession } from 'context/vk'
 
