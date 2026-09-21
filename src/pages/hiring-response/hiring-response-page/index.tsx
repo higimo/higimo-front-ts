@@ -9,9 +9,8 @@ import { HiringResponseCardsGallery } from 'components/hiring-response/hiring-re
 import { HiringResponseCounter } from 'components/hiring-response/hiring-response-counter'
 import { HiringResponseDiagram } from 'components/hiring-response/hiring-response-diagram'
 import { HiringResponseLinks } from 'components/hiring-response/hiring-response-links'
-import { HiringResponseTodo } from 'components/hiring-response/hiring-response-todo'
+import { HiringResponseTodoController } from 'components/hiring-response/hiring-response-todo'
 import { Loading } from 'components/ui/loading'
-import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
@@ -24,7 +23,6 @@ export const HiringResponsePage: FunctionComponent = () => {
 	usePageTitle('Мои отклики')
 
 	const [ data, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
-		// TODO: [BACKEND] добавить сортировку в обратном порядке
 		filter: {
 			// TODO: [BACKEND] реализовать на бекенде
 			key: 'send-resume*'
@@ -46,9 +44,7 @@ export const HiringResponsePage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<OnlyAdmin>
-					<HiringResponseTodo />
-				</OnlyAdmin>
+				<HiringResponseTodoController />
 				<HiringResponseLinks />
 				<HiringResponseCounter data={data.data} />
 				<HiringResponseDiagram data={data.data} />

@@ -24,6 +24,7 @@ export const HiringResponseDiagram: FunctionComponent<HiringResponseDiagramProps
 	width = 920,
 	height = 270,
 }) => {
+	// TODO: а я там сделал paste/statistic
 	const svgRef = useRef(null)
 
 	useEffect(() => {
