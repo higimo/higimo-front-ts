@@ -4,7 +4,7 @@ import { LibraryBookType } from 'api-types/library.types'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { LibraryGallery } from 'components/data/library/library-gallery'
 import { LibraryHeader } from 'components/data/library/library-header'

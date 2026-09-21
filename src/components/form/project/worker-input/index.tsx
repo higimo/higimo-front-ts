@@ -4,7 +4,7 @@ import { PortfolioProjectId, PortfolioWorkerType } from 'api-types/portfolio.typ
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useState } from 'preact/hooks'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { ChooseWorkersForm } from 'components/form/project/choose-workers-form'
 import { CollapseSection } from 'components/ui/collapse-section'

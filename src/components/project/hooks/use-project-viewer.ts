@@ -2,7 +2,7 @@ import { PortfolioProjectDetailType } from 'api-types/portfolio.types'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

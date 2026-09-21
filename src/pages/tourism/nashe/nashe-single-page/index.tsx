@@ -7,7 +7,7 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 import { useScenesData } from 'hook/data/use-scenes-data'
 import { useYearFilter } from 'hook/data/use-year-filter'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Loading } from 'components/ui/loading'

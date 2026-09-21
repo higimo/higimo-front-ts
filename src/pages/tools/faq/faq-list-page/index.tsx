@@ -4,7 +4,7 @@ import { FunctionComponent } from 'preact'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { FaqList } from 'components/info-service/faq/faq-list'
 import { Loading } from 'components/ui/loading'

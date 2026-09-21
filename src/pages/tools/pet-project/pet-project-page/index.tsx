@@ -6,7 +6,7 @@ import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMemo } from 'preact/hooks'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
 import { usePageTitle } from 'hook/browser/use-page-title'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'

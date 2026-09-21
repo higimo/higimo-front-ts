@@ -5,7 +5,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMemo } from 'preact/hooks'
 import { useRoute } from 'preact-iso'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'

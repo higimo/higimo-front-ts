@@ -5,7 +5,7 @@ import { useAuth } from 'hook/fetch/use-auth'
 import { useCallback, useMemo, useState } from 'preact/hooks'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaMenu } from 'components/nokia/nokia-menu'

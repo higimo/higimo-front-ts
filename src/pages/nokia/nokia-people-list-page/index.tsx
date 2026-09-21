@@ -5,7 +5,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useState } from 'preact/hooks'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaMenu } from 'components/nokia/nokia-menu'

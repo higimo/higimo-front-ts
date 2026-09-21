@@ -3,7 +3,7 @@ import { PortfolioGroupedTagType, PortfolioProjectFullType } from 'api-types/por
 import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
 
 import { useRoute } from 'preact-iso'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 

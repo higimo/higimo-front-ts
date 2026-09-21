@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
 
 import { useCallback } from 'preact/hooks'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading/Loading'
 

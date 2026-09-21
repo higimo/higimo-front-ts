@@ -54,7 +54,7 @@ type ApiUrlType = ApiRouteType
 // TODO: [HIGH] Добавить ещё POST, DELETE
 // TODO: [HIGH] Добавить вывод сразу useLoadingState
 // TODO: [HIGH] что если пользоваться ServiceApi, в дополнение к простым строчкам?
-const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T, M>, () => void] => {
+export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T, M>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 
 	const fetchData = async () => {
@@ -77,5 +77,3 @@ const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}
 
 	return [state, fetchData]
 }
-
-export default useApi

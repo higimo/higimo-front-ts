@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useRoute } from 'preact-iso'
 import { useState, useEffect } from 'preact/hooks'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { Message } from 'components/ui/message'

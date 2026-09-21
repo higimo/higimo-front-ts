@@ -4,7 +4,7 @@ import { UpdateNewsType } from 'api-types/last-update.types'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { IntroHeader } from 'components/intro/intro-header'
 import { Loading } from 'components/ui/loading'

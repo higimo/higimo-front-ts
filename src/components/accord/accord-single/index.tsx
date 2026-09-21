@@ -5,7 +5,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRandomElements } from 'hook/utils/use-random-elements'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { AccordContent } from 'components/accord/accord-content'
 import { Loading } from 'components/ui/loading'

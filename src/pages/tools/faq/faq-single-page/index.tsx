@@ -5,7 +5,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 
 import { FaqSingle } from 'components/info-service/faq/faq-single'
 import { Loading } from 'components/ui/loading'

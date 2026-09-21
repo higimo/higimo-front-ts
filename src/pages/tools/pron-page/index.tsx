@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { PronType } from 'api-types/pron.types'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 

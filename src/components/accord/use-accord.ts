@@ -1,6 +1,6 @@
 import { AccordRealTagType, AccordType } from 'api-types/accord.types'
 
-import useApi from 'hook/fetch/use-api'
+import { useApi } from 'hook/fetch/use-api'
 import { useMemo } from 'preact/hooks'
 
 import { median } from 'utils/math/median'
@@ -14,6 +14,7 @@ const NEWS_ACCORD_LENGTH = 30
 export const useAccord = (): AccordRealTagType[] => {
 	const [ accordUnsortList ] = useApi<AccordType[]>(API_ROUTE.accord)
 
+	// @ts-ignore
 	const accordList: AccordRealTagType[] = useMemo(() => {
 		const firstTags = accordUnsortList.data.map(item => ({
 				...item,
