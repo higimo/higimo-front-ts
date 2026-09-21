@@ -12,14 +12,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
-type FormValues = {
-	author: LibraryType['author']
-	name: LibraryType['name']
-	addon: LibraryType['addon']
-	isbn: LibraryType['isbn']
-	img: LibraryType['img']
-	anons: LibraryType['anons']
-}
+type FormValues = Omit<LibraryType, 'id'>
 
 type HandleLibSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
 	(values: FormValues) => Promise<void>
