@@ -42,5 +42,3 @@ export const VkIndexPage: FunctionComponent = () => {
 		</div>
 	)
 }
-
-export default VkIndexPage

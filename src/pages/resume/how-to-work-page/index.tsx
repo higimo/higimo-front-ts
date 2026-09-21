@@ -38,5 +38,3 @@ export const HowToWorkPage: FunctionComponent = () => {
 		</div>
 	)
 }
-
-export default HowToWorkPage

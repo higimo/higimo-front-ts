@@ -39,5 +39,3 @@ export const ResumeTechProductPage: FunctionComponent = () => {
 		</div>
 	)
 }
-
-export default ResumeTechProductPage

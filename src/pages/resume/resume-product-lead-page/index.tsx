@@ -39,5 +39,3 @@ export const ResumeProductLeadPage: FunctionComponent = () => {
 		</div>
 	)
 }
-
-export default ResumeProductLeadPage
