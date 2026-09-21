@@ -16,6 +16,7 @@ type VkPhotoAlbumEditPropsType = {
 }
 
 export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({ photos }) => {
+	// Каждое изменение отправляем в ВК, но дебаунсим, чтоб не ддосить сервера
 	const handleChange = useCallback((
 		userId: VkPhotoType['owner_id'],
 		photoId: VkPhotoType['id']
