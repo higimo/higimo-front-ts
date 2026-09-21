@@ -30,14 +30,14 @@ const menu = [
 		href: ROUTE_LINKS.merchantIndex,
 		name: 'Магазин',
 	},
-] as const
-
-const secretMenu = [
-	// TODO: [BACKEND] всё же сделать публичным, но сейчас бэк сломан
 	{
 		href: ROUTE_LINKS.listListMain,
 		name: 'Спискота',
 	},
+] as const
+
+const secretMenu = [
+	// TODO: [BACKEND] всё же сделать публичным, но сейчас бэк сломан
 	{
 		href: ROUTE_LINKS.nokiaIndex,
 		name: 'Нокиа',
