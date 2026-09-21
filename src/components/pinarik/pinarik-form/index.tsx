@@ -52,6 +52,7 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 	})
 
 	const { register, handleSubmit, formState, reset } = formMethods
+	// TODO: надо иначе сообщать об успехе
 	const [ status, addStatus ] = useFormStatus()
 
 	return (
