@@ -16,11 +16,19 @@ import { NotFoundData } from 'components/ui/not-found-data/NotFoundData'
 export const ListListIndexPage: FunctionComponent = () => {
 	usePageTitle('Список списков')
 
-	const { params: { idcode = 'main' } } = useRoute()
+	const { params: { idcode = '' } } = useRoute()
+
+	const filter = (parseInt(idcode, 10) > 0
+		? { id: idcode }
+		: (idcode.length
+			? { code: idcode }
+			: {}
+		)
+	)
+
+
 	const [ nestedListItems ] = useApi<NestedListItem[]>(API_ROUTE.lister, {
-		filter: {
-			id: idcode,
-		},
+		filter,
 		withParent: 'true',
 		withChild: 'true',
 		withProps: 'true',
