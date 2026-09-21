@@ -16,7 +16,6 @@ import { ServicePage } from 'pages/tools/service-page'
 
 import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
-// TODO: [MEDUIM] Отключить из продакшен-сборки
 const PortfolioSandbox  = lazy(() => import('pages/project/portfolio-sandbox'))
 const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
 const ProjectTypographyPage = lazy(() => import('pages/project/project-typography'))
@@ -135,9 +134,11 @@ export function App() {
 						<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 						{/* Секретные разработки не для продакшена */}
-						<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />
-						<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />
-						<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />
+						{import.meta.env.DEV ? [
+							<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />,
+							<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />,
+							<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />,
+						] : <></>}
 
 						{/* Портфолио */}
 						<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />
