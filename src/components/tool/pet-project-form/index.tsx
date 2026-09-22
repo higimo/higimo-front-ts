@@ -1,3 +1,4 @@
+import { ApiError } from 'errors/higimo-api-error'
 import { EmptyObject } from 'utils.type'
 import { HigimoServerResponse } from 'api-types/server-response.types'
 import { PetProjectType } from 'api-types/petproject.types'
@@ -14,7 +15,7 @@ import { Message } from 'components/ui/message'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import { sendRequest, ApiError } from 'utils/api/send-request'
+import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'

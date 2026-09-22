@@ -1,39 +1,10 @@
+import { ApiError } from 'errors/higimo-api-error'
+
 import httpBuildQuery from 'http-build-query'
 
 declare global {
 	interface ErrorConstructor {
-		captureStackTrace(targetObject: object, constructorOpt?: Function): void;
-	}
-}
-
-export class ApiError extends Error {
-	public status: number
-	public url?: string
-	public response?: any
-
-	constructor(message: string, status: number, url?: string, response?: any) {
-		super(message)
-
-		this.name = 'ApiError'
-		this.status = status
-		this.url = url
-		this.response = response
-
-		if (Error.captureStackTrace) {
-			Error.captureStackTrace(this, ApiError)
-		}
-	}
-
-	// Дополнительные методы если нужно
-	public toJSON() {
-		return {
-			name: this.name,
-			message: this.message,
-			status: this.status,
-			url: this.url,
-			response: this.response,
-			stack: this.stack
-		}
+		captureStackTrace(targetObject: object, constructorOpt?: Function): void
 	}
 }
 

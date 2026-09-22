@@ -1,3 +1,4 @@
+import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
 import { PortfolioProjectId, PortfolioWorkerType } from 'api-types/portfolio.types'
 
@@ -15,7 +16,7 @@ import { WorkersTree } from 'components/form/project/workers-tree'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-import { sendRequest, ApiError } from 'utils/api/send-request'
+import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import './style.css'

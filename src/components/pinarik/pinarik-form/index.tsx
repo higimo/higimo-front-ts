@@ -1,3 +1,4 @@
+import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
 import { HigimoServerResponse } from 'api-types/server-response.types'
 import { PinarikType } from 'api-types/pinarik.types'
@@ -10,7 +11,7 @@ import { FormButton } from 'components/form/form-button'
 import { ShowFormResult } from 'components/form/show-form-result'
 import { TrafficLight } from '../traffic-light'
 
-import { sendRequest, ApiError } from 'utils/api/send-request'
+import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'

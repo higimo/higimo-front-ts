@@ -1,3 +1,4 @@
+import { ApiError } from 'errors/higimo-api-error'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useCallback, useEffect, useState } from 'preact/hooks'
@@ -7,7 +8,6 @@ import { useRoute } from 'preact-iso'
 import { MeetingApiService } from 'components/nokia/form/person-api'
 
 import { toast } from 'toast'
-import { ApiError } from 'utils/api/send-request'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]

@@ -7,7 +7,7 @@ import { useState, useCallback } from 'preact/hooks'
 
 import { ShowFormResult } from 'components/form/show-form-result'
 
-import { sendRequest, ApiError } from 'utils/api/send-request'
+import { sendRequest} from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'

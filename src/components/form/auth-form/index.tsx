@@ -1,4 +1,4 @@
-import { ApiError } from 'utils/api/send-request'
+import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'

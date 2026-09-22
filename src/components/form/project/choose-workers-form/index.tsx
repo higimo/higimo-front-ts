@@ -1,6 +1,6 @@
+import { ApiError } from 'errors/higimo-api-error'
 import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { FunctionComponent } from 'preact'
-import { ApiError } from 'utils/api/send-request'
 
 import { useForm, UseFormReset } from 'react-hook-form'
 import { Dispatch, StateUpdater, useState } from 'preact/hooks'
