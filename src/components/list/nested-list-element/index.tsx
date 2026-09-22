@@ -1,31 +1,25 @@
-import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
-import { NestedListItem } from 'api-types/listlist.types'
+import { NestedListItemFullType, NestedListItemType } from 'api-types/listlist.types'
 
 import { useAuth } from 'hook/fetch/use-auth'
 
-import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
+import { nestedListApi } from '../nested-list-form/nestedListApi'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { plural } from 'utils/plural'
 
-const handleRemove = (id: NestedListItem['id']) => async () => {
-	try {
-		await sendRequest(API_ROUTE.listerItemSingle({ id: id.toString() }), {
-			method: 'DELETE',
-		})
-		toast.show('Элемент удалён')
-	} catch (error) {
-		const apiError = error as ApiError
-		toast.error(apiError.message || 'Ошибка при входе в систему')
+const handleRemove = (id: NestedListItemType['id'], title: NestedListItemType['title']) => async () => {
+	const res = await nestedListApi.delete(id)
+	if (!!res) {
+		toast.success(`Удалён [${id}] ${title}`)
 	}
 }
 
 type NestedListElementPropsType = {
-	nestedListItem: NestedListItem
+	nestedListItem: NestedListItemFullType
 }
 
 export const NestedListElement: FunctionComponent<NestedListElementPropsType> = ({ nestedListItem: listItem }) => {
@@ -33,6 +27,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 
 	return (
 		<div className="element-node">
+			{/* TODO: вот бы присылало всех parent по цепочке и показывать из них хлебные крошки вложенности */}
 			{!!listItem.parent && (
 				<div className="element-node__parent">
 					← <a href={ROUTE_LINKS.listListDetail({ idcode: listItem.parent.id.toString() })}>
@@ -43,6 +38,10 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 
 			<div className="element-node__data">
 				<div className="element-node__title">
+					{/* TODO: оформить id */}
+					<span className="element-node__id">
+						[{listItem.id}]
+					</span>
 					<a href={ROUTE_LINKS.listListDetail({ idcode: listItem.id.toString() })}>{listItem.title}</a>
 				</div>
 				<div className="element-node__meta">
@@ -51,11 +50,20 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 							{[
 								<a href={ROUTE_LINKS.listListCreate}>создать</a>,
 								<a href={ROUTE_LINKS.listListEdit({ idcode: listItem.id.toString() })}>редактировать</a>,
-								<span className="pseudo-link" onClick={handleRemove(listItem.id)}>удалить</span>
+								<span
+									className="pseudo-link"
+									onClick={handleRemove(listItem.id, listItem.title)}
+								>
+									удалить
+								</span>
 							]}
 						</span>
 					)}
-					{!!listItem.children?.length && <div className="element-node__child-count">{listItem.children.length} элементов в списке</div>}
+					{!!listItem.children?.length && (
+						<div className="element-node__child-count">
+							{`${listItem.children.length} ${plural(listItem.children.length, ['элемент', 'элемента', 'элементов'])} в списке`}
+						</div>
+					)}
 				</div>
 			</div>
 
@@ -74,6 +82,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 				</div>
 			)}
 
+			{/* TODO: добавить отступ вложенности */}
 			{!!listItem.children && listItem.children.map((item, iter) => (
 				<NestedListElement key={iter} nestedListItem={item} />
 			))}

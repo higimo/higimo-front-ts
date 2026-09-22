@@ -7,10 +7,12 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 
 // HtmlTagDescriptor
 
+// TODO: подключить size-limit
 // https://vitejs.dev/config/
 export default defineConfig(
 	({ mode }) => {
-		const isProduction = mode === 'production';
+		const isProduction = mode === 'production'
+		const isAnal = mode === 'anal'
 
 		const proxy = {
 			'/api': {
@@ -105,7 +107,7 @@ export default defineConfig(
 			plugins: [
 				preact(),
 				isProduction ? htmlPlugin : undefined,
-				analyzer(),
+				isAnal ? analyzer() : undefined,
 			],
 			server: {
 				proxy: !isProduction ? proxy : undefined

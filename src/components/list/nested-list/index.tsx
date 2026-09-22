@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
-import { NestedListItem } from 'api-types/listlist.types'
+import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { NestedListElement } from 'components/list/nested-list-element'
 
 type NestedListPropType = {
-	nestedList: NestedListItem[]
+	nestedList: NestedListItemFullType[]
 }
 
 export const NestedList: FunctionComponent<NestedListPropType> = ({ nestedList }) => (

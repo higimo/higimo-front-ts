@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NestedListItem } from 'api-types/listlist.types'
+import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
@@ -26,8 +26,7 @@ export const ListListIndexPage: FunctionComponent = () => {
 		)
 	)
 
-
-	const [ nestedListItems ] = useApi<NestedListItem[]>(API_ROUTE.lister, {
+	const [ nestedListItems ] = useApi<NestedListItemFullType[]>(API_ROUTE.lister, {
 		filter,
 		withParent: 'true',
 		withChild: 'true',

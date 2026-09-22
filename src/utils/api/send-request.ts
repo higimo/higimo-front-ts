@@ -14,8 +14,8 @@ export interface SendRequestOptions {
 }
 
 export interface ApiResponse<T = any> {
-	data: T;
-	meta?: any; // или более конкретный тип, если известен
+	data: T
+	meta?: any // или более конкретный тип, если известен
 }
 
 const FREEZE_META = {} as const
@@ -44,24 +44,24 @@ export const sendRequest = <T = any>(
 				resolve({ data: json, meta })
 			}
 			if (this.readyState == 4 && (this.status !== 200 && this.status !== 201)) {
-				let errorData;
-				let errorMessage = this.statusText;
+				let errorData
+				let errorMessage = this.statusText
 
 				try {
-					const parsedResponse = JSON.parse(this.responseText);
-					errorData = parsedResponse;
+					const parsedResponse = JSON.parse(this.responseText)
+					errorData = parsedResponse
 
 					if (parsedResponse.message) {
-						errorMessage = parsedResponse.message;
+						errorMessage = parsedResponse.message
 					} else if (parsedResponse.errors) {
-						const errorMessages = Object.values(parsedResponse.errors).flat();
-						errorMessage = errorMessages.join(', ');
+						const errorMessages = Object.values(parsedResponse.errors).flat()
+						errorMessage = errorMessages.join(', ')
 					}
 				} catch (e) {
-					errorData = this.responseText;
+					errorData = this.responseText
 				}
 
-				const error = new ApiError(errorMessage, this.status, url, errorData);
+				const error = new ApiError(errorMessage, this.status, url, errorData)
 				console.error(error, {
 					status: this.status,
 					url,

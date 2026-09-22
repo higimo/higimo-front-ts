@@ -46,6 +46,7 @@ type ApiV2Path = `/api/v2/${string}`
  *
  * postComments({ postId: '1', commentId: '2' })
  * ```
+ * TODO: <T extends string | number>
  */
 export const generateLink = <T extends string>(link: T) => {
 	/**

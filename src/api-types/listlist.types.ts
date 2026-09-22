@@ -31,13 +31,16 @@ export type NestedListPropertyType = {
 	}
 }
 
-export type NestedListItem = {
+export type NestedListItemType = {
 	id: NestedListItemId
 	parent_id: NestedListItemId
 	title: string
 	code: Code
+}
+
+export type NestedListItemFullType = NestedListItemType & {
 	created_at: number
-	children?: NestedListItem[]
-	parent?: NestedListItem
+	children?: NestedListItemFullType[]
+	parent?: NestedListItemFullType
 	values?: NestedListPropertyType[]
 }

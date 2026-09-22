@@ -61,3 +61,10 @@
 .element-node__value-group {
 	opacity: .5;
 }
+
+.element-node__id {
+	display: inline-block;
+	margin-right: 1rem;
+	font-size: 14px;
+	opacity: .3;
+}
