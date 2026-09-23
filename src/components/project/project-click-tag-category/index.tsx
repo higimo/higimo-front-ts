@@ -34,4 +34,4 @@ export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryP
 			})}
 		</TextContainer>
 	)
-};
+}

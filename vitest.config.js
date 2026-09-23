@@ -29,4 +29,4 @@ export default defineConfig({
 			'repositories': path.resolve(__dirname, './src/repositories'),
 		}
 	},
-});
+})

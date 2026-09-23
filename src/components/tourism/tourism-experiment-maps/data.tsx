@@ -17,4 +17,4 @@ export const tourismExperimentMapsData = [
 		title: 'Список музеев Москвы',
 		href: ROUTE_LINKS.tourismMoscowMuseum,
 	},
-] as const;
+] as const

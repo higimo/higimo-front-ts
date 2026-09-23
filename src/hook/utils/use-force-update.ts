@@ -1,8 +1,9 @@
-import { useState, useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks'
 
-type UseForceUpdatePropsType = () => () => void;
+type UseForceUpdatePropsType = () => () => void
+
 export const useForceUpdate: UseForceUpdatePropsType = () => {
-	const [, setA] = useState(false);
-	const makeUpdate = useCallback(() => setA(pState => !pState), [setA]);
-	return makeUpdate;
-};
+	const [, setA] = useState(false)
+	const makeUpdate = useCallback(() => setA(pState => !pState), [setA])
+	return makeUpdate
+}

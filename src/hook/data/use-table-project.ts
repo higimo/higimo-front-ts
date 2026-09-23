@@ -20,12 +20,12 @@ export type PortfolioProjectTableFullType = {
 	tags: string[]
 	[k: string]: any
 	// PortfolioProjectType = PortfolioProjectApiType & {
-	// 	tags: PortfolioTag[];
-	// 	credits?: PortfolioCreditsType[];
-	// 	description?: string;
-	// 	text?: string;
+	// 	tags: PortfolioTag[]
+	// 	credits?: PortfolioCreditsType[]
+	// 	description?: string
+	// 	text?: string
 	// } & {
-	// 	isLink: false;
+	// 	isLink: false
 	// }
 }
 

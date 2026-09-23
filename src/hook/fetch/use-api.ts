@@ -19,8 +19,8 @@ type ApiState<T, M = Object> = {
 type ApiAction<T, M = Object> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
-	| { type: 'LOADED'; payload: T; meta?: M }
-	| { type: 'ERROR';  payload: Error }
+	| { type: 'LOADED', payload: T, meta?: M }
+	| { type: 'ERROR',  payload: Error }
 
 const initialState = {
 	status: API_STATUS.INIT,

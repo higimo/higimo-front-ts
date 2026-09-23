@@ -27,5 +27,5 @@ export const credits: PortfolioCreditsType[] = [
 			worker: {
 				id: portfolioWorkerId, full_name: item[0] as string, company: '', image: null, login: 'login', role: 'few', link: '/',
 			},
-		};
-	});
+		}
+	})

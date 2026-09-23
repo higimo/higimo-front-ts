@@ -16,7 +16,7 @@ type UseSmartTagsReturn = {
 	// Проверка
 	isSelected: (tagName: TagName) => boolean
 	isCategoryAllSelected: (categoryTitle: CategoryName) => boolean
-	getCategorySelectedCount: (categoryTitle: CategoryName) => { selected: number; total: number }
+	getCategorySelectedCount: (categoryTitle: CategoryName) => { selected: number, total: number }
 
 	// Действия с отдельными тегами
 	toggleTag: (tagName: TagName) => () => void

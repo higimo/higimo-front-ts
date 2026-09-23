@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks'
 
 /**
  * Переключение состояния, можно использовать словарь
@@ -16,10 +16,10 @@ import { useState, useCallback } from 'preact/hooks';
  * />
  */
 export const useSwitcher = <T extends Object>(initValue?: T): [(value: T) => boolean, (value: T) => () => void] => {
-	const [state, setState] = useState<T | undefined>(initValue);
+	const [state, setState] = useState<T | undefined>(initValue)
 
-	const isChoosed = useCallback((value: T) => value === state, [state]);
-	const setChoose = useCallback((value: T) => () => setState(value), [setState]);
+	const isChoosed = useCallback((value: T) => value === state, [state])
+	const setChoose = useCallback((value: T) => () => setState(value), [setState])
 
-	return [isChoosed, setChoose];
-};
+	return [isChoosed, setChoose]
+}

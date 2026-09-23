@@ -45,9 +45,9 @@ describe('isValidAuth', () => {
 				['id = 0', { user: { id: 0 } }],
 				['id = -5', { user: { id: -5 } }],
 			])('возвращает false при %s', (_, overrides) => {
-				expect(isValidAuth(createAuth(overrides))).toBe(false);
-			});
-		});
+				expect(isValidAuth(createAuth(overrides))).toBe(false)
+			})
+		})
 
 		test('возвращает false при полностью пустом объекте', () => {
 			expect(isValidAuth({})).toBe(false)

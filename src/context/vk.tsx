@@ -3,10 +3,10 @@ import { VkSessionType } from 'api-types/vk.types'
 import { signal } from '@preact/signals'
 
 export type VkSessionStateType =
-	| { status: 'INIT'; session: null; error: null }
-	| { status: 'LOADING'; session: null; error: null }
-	| { status: 'LOADED'; session: VkSessionType; error: null }
-	| { status: 'ERROR'; session: null; error: Error }
+	| { status: 'INIT', session: null, error: null }
+	| { status: 'LOADING', session: null, error: null }
+	| { status: 'LOADED', session: VkSessionType, error: null }
+	| { status: 'ERROR', session: null, error: Error }
 
 export const vkSession = signal<VkSessionStateType>({
 	status: 'INIT',

@@ -12,7 +12,7 @@ import { DataItemWithTags, SelectedTags } from 'types'
  * const filteredData = useMemo(
  * 	() => filterTagAnyStrategy(stateData.barPovMoscow, selectedTags),
  * 	[stateData.barPovMoscow, selectedTags]
- * );
+ * )
  * ```
  *
  * @param data - Массив элементов с полем `tags: string[]`.
@@ -23,14 +23,14 @@ export const filterTagAnyStrategy = <T extends DataItemWithTags>(
 	data: T[],
 	selectedTags: SelectedTags
 ): T[] => {
-	const selectedFlat = Object.values(selectedTags).flatMap(set => Array.from(set));
+	const selectedFlat = Object.values(selectedTags).flatMap(set => Array.from(set))
 
 	if (selectedFlat.length === 0) {
-		return [];
+		return []
 	}
 
 	return data.filter(item => {
-		const itemTagsSet = new Set(item.tags.map(i => i.title));
-		return selectedFlat.some(tag => itemTagsSet.has(tag));
-	});
-};
+		const itemTagsSet = new Set(item.tags.map(i => i.title))
+		return selectedFlat.some(tag => itemTagsSet.has(tag))
+	})
+}

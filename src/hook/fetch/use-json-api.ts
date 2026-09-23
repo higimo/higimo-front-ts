@@ -13,8 +13,8 @@ type JsonApiState<T> = {
 type JsonApiAction<T> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
-	| { type: 'LOADED'; payload: T }
-	| { type: 'ERROR'; payload: Error }
+	| { type: 'LOADED', payload: T }
+	| { type: 'ERROR', payload: Error }
 
 const jsonApiReducer = <T>(
 	state: JsonApiState<T>,

@@ -6,4 +6,4 @@ export const tags: PortfolioTag[] = 'ALS|Студия|большой|норма�
 	.split('|')
 	.map(tagName => ({
 		id: portfolioTagId, title: tagName
-	}));
+	}))

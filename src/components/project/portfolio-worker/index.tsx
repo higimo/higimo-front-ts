@@ -4,8 +4,9 @@ import { PortfolioCreditsType } from 'api-types/portfolio.types'
 import { MaybeLink } from 'components/ui/maybe-link'
 
 type PortfolioWorkerPropsType = {
-	author: PortfolioCreditsType;
-};
+	author: PortfolioCreditsType
+}
+
 export const PortfolioWorker: FunctionComponent<PortfolioWorkerPropsType> = ({ author }) => {
 	return (
 		<div className="project-viewer__person portfolio-person">
@@ -18,5 +19,5 @@ export const PortfolioWorker: FunctionComponent<PortfolioWorkerPropsType> = ({ a
 				{author.role}
 			</div>
 		</div>
-	);
-};
+	)
+}

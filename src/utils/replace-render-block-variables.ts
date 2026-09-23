@@ -14,7 +14,7 @@ export const replaceRenderBlockVariables = (
 		return text
 	}
 	return text.replace(/\{%([^}]+)%\}/g, (match, key) => {
-		const value = variables[key];
-		return value !== undefined ? value : match;
-	});
-};
+		const value = variables[key]
+		return value !== undefined ? value : match
+	})
+}

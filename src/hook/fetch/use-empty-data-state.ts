@@ -1,4 +1,5 @@
-type EmptyValue = null | undefined | [] | Record<string, never>;
+// TODO: есть в общих такой тип
+type EmptyValue = null | undefined | [] | Record<string, never>
 
 /**
  * Проверит, что в аргументе не пустой список элементов или непустой единственный элемент

@@ -14,13 +14,14 @@ interface MerchantProductState {
 	products: MerchantProductType[]
 }
 
+// TODO: отделить сигнал отдельно
 const merchantProductSignal = signal<MerchantProductState>({
 	status: API_STATUS.INIT,
 	products: [],
-});
+})
 
 // Флаг для предотвращения множественных запросов
-let requestInProgress = false;
+let requestInProgress = false
 
 interface UseAuthReturn {
 	products: MerchantProductType[]
@@ -32,33 +33,33 @@ interface UseAuthReturn {
  */
 export const useMerchant = (): UseAuthReturn => {
 	useEffect(() => {
-		if (merchantProductSignal.value.status !== API_STATUS.INIT || requestInProgress) return;
+		if (merchantProductSignal.value.status !== API_STATUS.INIT || requestInProgress) return
 
-		requestInProgress = true;
+		requestInProgress = true
 		merchantProductSignal.value = {
 			...merchantProductSignal.value,
 			status: API_STATUS.LOADING
-		};
+		}
 
 		sendRequest(API_ROUTE.merchantProducts)
 			.then((products) => {
 				merchantProductSignal.value = {
 					status: API_STATUS.LOADED,
 					products: products.data,
-				};
+				}
 			})
 			.catch(() => {
-				requestInProgress = false;
+				requestInProgress = false
 				merchantProductSignal.value = {
 					status: API_STATUS.LOADED,
 					products: [],
-				};
-			});
+				}
+			})
 	}, [])
 
 	return {
 		get products() { return merchantProductSignal.value.products },
 		get isProductLoaded() { return merchantProductSignal.value.status === API_STATUS.LOADED },
 		get isProductEmpty() { return !merchantProductSignal.value.products.length },
-	};
+	}
 }

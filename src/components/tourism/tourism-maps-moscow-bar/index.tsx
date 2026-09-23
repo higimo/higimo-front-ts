@@ -69,7 +69,7 @@ export const TourismMapsMoscowBar = () => {
 			return filterTagAnyStrategy(normalizedTagsBarPovMoscow, { all: selectedTagTitles })
 		},
 		[normalizedTagsBarPovMoscow, selectedTagTitles]
-	);
+	)
 
 	if (isLoading) {
 		return <Loading />

@@ -20,4 +20,4 @@ export const MerchantProductFeature: FunctionComponent<MerchantProductBenefitsPr
 			))}
 		</div>
 	</Fragment>
-);
+)

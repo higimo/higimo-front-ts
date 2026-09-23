@@ -13,7 +13,7 @@ type GetInfoType = () => {
 }
 
 export async function initPayment(getInfo: GetInfoType) {
-	await loadJs('https://integrationjs.tbank.ru/integration.js');
+	await loadJs('https://integrationjs.tbank.ru/integration.js')
 
 	const initConfig: InitOptions = {
 		terminalKey: '25872718',
@@ -41,7 +41,7 @@ export async function initPayment(getInfo: GetInfoType) {
 							{
 								method: 'POST',
 								values: {
-									offer_id: currentProduct.offers[0].id,
+									offer_id: currentProduct.offers[0]?.id,
 									payment_type: paymentType,
 									comment: comment,
 									email: email,
@@ -50,20 +50,20 @@ export async function initPayment(getInfo: GetInfoType) {
 						)
 
 						if (!data.payment_url) {
-							throw new Error('Бэкенд не вернул payment_url');
+							throw new Error('Бэкенд не вернул payment_url')
 						}
 
-						return data.payment_url;
+						return data.payment_url
 					} catch (error) {
-						console.error('Ошибка при инициализации платежа:', error);
-						throw error;
+						console.error('Ошибка при инициализации платежа:', error)
+						throw error
 					}
 				},
 			},
 		},
-	};
+	}
 
-	await PaymentIntegration.init(initConfig);
+	await PaymentIntegration.init(initConfig)
 }
 
 

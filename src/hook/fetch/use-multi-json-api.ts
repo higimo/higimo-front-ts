@@ -19,9 +19,9 @@ export type MultiJsonApiState<T> = {
 
 type MultiJsonApiAction =
 	| { type: 'INIT' }
-	| { type: 'LOADING'; count: number }
-	| { type: 'LOADED'; key: string; payload: unknown }
-	| { type: 'ERROR'; key: string; payload: Error }
+	| { type: 'LOADING', count: number }
+	| { type: 'LOADED', key: string, payload: unknown }
+	| { type: 'ERROR', key: string, payload: Error }
 
 const multiJsonApiReducer = <T,>(
 	state: MultiJsonApiState<T>,

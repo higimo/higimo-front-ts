@@ -6,11 +6,12 @@ import { PortfolioWorker } from 'components/project/portfolio-worker'
 import './style.css'
 
 type PortfolioCreditsGalleryPropsType = {
-	credits: PortfolioCreditsType[];
-};
+	credits: PortfolioCreditsType[]
+}
+
 export const PortfolioCreditsGallery: FunctionComponent<PortfolioCreditsGalleryPropsType> = ({ credits }) => {
 	if (!credits.length) {
-		return null;
+		return null
 	}
 
 	return (
@@ -19,5 +20,5 @@ export const PortfolioCreditsGallery: FunctionComponent<PortfolioCreditsGalleryP
 				<PortfolioWorker author={author} />
 			))}
 		</div>
-	);
-};
+	)
+}

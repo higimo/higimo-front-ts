@@ -4,4 +4,4 @@ export const MAP_MODE = {
 	'2021': '2021',
 	'21vs24': '21vs24',
 	'POV': 'POV',
-} as const;
+} as const

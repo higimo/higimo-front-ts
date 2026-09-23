@@ -13,4 +13,4 @@ export const data = [
 		href: ROUTE_LINKS.tourismMapsRegion,
 		title: 'Посещённые регионы России',
 	},
-] as const;
+] as const

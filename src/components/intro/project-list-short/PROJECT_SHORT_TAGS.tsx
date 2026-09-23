@@ -6,4 +6,4 @@ export const PROJECT_SHORT_TAGS = [
 	'Эртоп',
 	'Пересечения',
 	'хомяк',
-] as const;
+] as const

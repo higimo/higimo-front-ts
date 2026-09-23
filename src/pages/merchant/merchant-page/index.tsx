@@ -14,7 +14,7 @@ import '../merchant-style.css'
 export const MerchantPage: FunctionComponent = () => {
 	usePageTitle('Магазин')
 
-	const { products, isProductEmpty, isProductLoaded } = useMerchant();
+	const { products, isProductEmpty, isProductLoaded } = useMerchant()
 
 	if (!isProductLoaded) {
 		return <Loading />

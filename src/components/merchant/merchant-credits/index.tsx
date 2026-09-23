@@ -18,4 +18,4 @@ export const MerchantCredits: FunctionComponent = () => (
 		<br />
 		{EMAIL}
 	</p>
-);
+)

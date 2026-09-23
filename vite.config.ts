@@ -22,9 +22,9 @@ export default defineConfig(
 				rewrite: (path: string) => path.replace(/^\/api/, ''),
 				configure: (proxy: HttpProxy.Server) => {
 					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive';
-						proxyRes.headers['cache-control'] = 'no-cache';
-					});
+						proxyRes.headers.connection = 'keep-alive'
+						proxyRes.headers['cache-control'] = 'no-cache'
+					})
 				},
 			},
 			'/assets': {
@@ -33,9 +33,9 @@ export default defineConfig(
 				rewrite: (path: string) => path.replace(/^\/assets/, ''),
 				configure: (proxy: HttpProxy.Server) => {
 					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive';
-						proxyRes.headers['cache-control'] = 'no-cache';
-					});
+						proxyRes.headers.connection = 'keep-alive'
+						proxyRes.headers['cache-control'] = 'no-cache'
+					})
 				},
 			},
 			'/img': {
@@ -44,9 +44,9 @@ export default defineConfig(
 				rewrite: (path: string) => path.replace(/^\/img/, ''),
 				configure: (proxy: HttpProxy.Server) => {
 					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive';
-						proxyRes.headers['cache-control'] = 'no-cache';
-					});
+						proxyRes.headers.connection = 'keep-alive'
+						proxyRes.headers['cache-control'] = 'no-cache'
+					})
 				},
 			},
 			'/json': {
@@ -55,9 +55,9 @@ export default defineConfig(
 				rewrite: (path: string) => path.replace(/^\/json/, ''),
 				configure: (proxy: HttpProxy.Server) => {
 					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive';
-						proxyRes.headers['cache-control'] = 'no-cache';
-					});
+						proxyRes.headers.connection = 'keep-alive'
+						proxyRes.headers['cache-control'] = 'no-cache'
+					})
 				},
 			},
 		}
@@ -92,12 +92,12 @@ export default defineConfig(
 					{
 						injectTo: 'body',
 						tag: 'script',
-						children: '(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter34085560 = new Ya.Metrika({ id:34085560, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ecommerce:"dataLayer" }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");'
+						children: '(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter34085560 = new Ya.Metrika({ id:34085560, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ecommerce:"dataLayer" }) } catch(e) { } }) var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n) } s.type = "text/javascript" s.async = true s.src = "https://mc.yandex.ru/metrika/watch.js" if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false) } else { f() } })(document, window, "yandex_metrika_callbacks")'
 					},
 					{
 						injectTo: 'body',
 						tag: 'div',
-						children: '<noscript><div><img src="https://mc.yandex.ru/watch/34085560" style="position:absolute; left:-9999px;" alt="" /></div></noscript>'
+						children: '<noscript><div><img src="https://mc.yandex.ru/watch/34085560" style="position:absolute left:-9999px" alt="" /></div></noscript>'
 					},
 				],
 			},
@@ -143,4 +143,4 @@ export default defineConfig(
 			},
 		}
 	}
-);
+)
