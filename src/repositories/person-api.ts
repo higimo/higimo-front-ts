@@ -84,7 +84,7 @@ export class PersonApiRepository implements PersonApi {
 	async createOrUpdate(person: Partial<NokiaPersonSimpleType>): Promise<any> {
 		const method = person.id ? 'PUT' : 'POST'
 		const endpoint = person.id
-			? API_ROUTE.nokiaPersonSingle({ id: person.id.toString() })
+			? API_ROUTE.nokiaPersonSingle({ id: person.id })
 			: API_ROUTE.nokiaPerson
 
 		return sendRequest(endpoint, {

@@ -37,7 +37,7 @@ class PasteApiRepository {
 		values: Partial<PasteApiType>
 	): Promise<PasteApiType | null> {
 		try {
-			const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id: values.id?.toString() || '' }), {
+			const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id: values.id || '' }), {
 				method: 'PUT',
 				values: values
 			})

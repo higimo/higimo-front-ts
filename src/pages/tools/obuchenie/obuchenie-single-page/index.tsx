@@ -18,7 +18,7 @@ export const ObuchenieSinglePage: FunctionComponent = () => {
 	usePageTitle('Обучение')
 
 	const { params: { idcode } } = useRoute()
-	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode: idcode?.toString() || '' }))
+	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode: idcode || '' }))
 	const isLoading = useLoadingState([lectionDetail.status])
 	const isListEmpty = useEmptyDataState(lectionDetail.data)
 

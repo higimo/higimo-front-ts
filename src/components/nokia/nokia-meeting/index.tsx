@@ -21,7 +21,7 @@ export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting 
 						{new Date(meeting.date * 1000).toLocaleDateString()}
 					</div>
 					<div className="meeting__type">
-						<a href={ROUTE_LINKS.nokiaFormEdit({ meetingId: meeting.id.toString() })}>{meeting.type}</a>
+						<a href={ROUTE_LINKS.nokiaFormEdit({ meetingId: meeting.id })}>{meeting.type}</a>
 					</div>
 				</div>
 				<div className="meeting__persons">

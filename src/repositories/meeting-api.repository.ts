@@ -17,7 +17,7 @@ export class MeetingApiRepository implements MeetingApi {
 		console.log('MeetingApiService.createOrUpdate', meeting)
 		const method = meeting.id ? 'PUT' : 'POST'
 		const endpoint = meeting.id
-			? API_ROUTE.nokiaMeetingSingle({ id: meeting.id.toString() })
+			? API_ROUTE.nokiaMeetingSingle({ id: meeting.id })
 			: API_ROUTE.nokiaMeeting
 
 		return sendRequest(endpoint, {
@@ -29,7 +29,7 @@ export class MeetingApiRepository implements MeetingApi {
 	async syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any> {
 		console.log('MeetingApiService.createOrUpdate', persons)
 		return sendRequest(
-			API_ROUTE.nokiaSyncPersonForMeeting({ meetingId: meetingId.toString() }),
+			API_ROUTE.nokiaSyncPersonForMeeting({ meetingId: meetingId }),
 			{
 				method: 'POST',
 				values: {

@@ -14,51 +14,38 @@ export default defineConfig(
 		const isProduction = mode === 'production'
 		const isAnal = mode === 'anal'
 
+		const configure = (proxy: HttpProxy.Server) => {
+			proxy.on('proxyRes', (proxyRes: any) => {
+				proxyRes.headers.connection = 'keep-alive'
+				proxyRes.headers['cache-control'] = 'no-cache'
+			})
+		}
+
 		const proxy = {
 			'/api': {
 				target: 'https://higimo.ru/api',
 				// target: 'http://127.0.0.1:8000/api',
-				changeOrigin: true,
 				rewrite: (path: string) => path.replace(/^\/api/, ''),
-				configure: (proxy: HttpProxy.Server) => {
-					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive'
-						proxyRes.headers['cache-control'] = 'no-cache'
-					})
-				},
+				changeOrigin: true,
+				configure,
 			},
 			'/assets': {
 				target: 'https://higimo.ru/assets',
-				changeOrigin: true,
 				rewrite: (path: string) => path.replace(/^\/assets/, ''),
-				configure: (proxy: HttpProxy.Server) => {
-					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive'
-						proxyRes.headers['cache-control'] = 'no-cache'
-					})
-				},
+				changeOrigin: true,
+				configure,
 			},
 			'/img': {
 				target: 'https://higimo.ru/img',
-				changeOrigin: true,
 				rewrite: (path: string) => path.replace(/^\/img/, ''),
-				configure: (proxy: HttpProxy.Server) => {
-					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive'
-						proxyRes.headers['cache-control'] = 'no-cache'
-					})
-				},
+				changeOrigin: true,
+				configure,
 			},
 			'/json': {
 				target: 'https://higimo.ru/json',
-				changeOrigin: true,
 				rewrite: (path: string) => path.replace(/^\/json/, ''),
-				configure: (proxy: HttpProxy.Server) => {
-					proxy.on('proxyRes', (proxyRes: any) => {
-						proxyRes.headers.connection = 'keep-alive'
-						proxyRes.headers['cache-control'] = 'no-cache'
-					})
-				},
+				changeOrigin: true,
+				configure,
 			},
 		}
 

@@ -22,7 +22,7 @@ export const NokiaPeopleDetailCardPage: FunctionComponent = () => {
 
 	const { params: { personId = '-1'}} = useRoute()
 
-	const [personSingle] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: parseInt(personId, 10).toString() }))
+	const [personSingle] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: parseInt(personId, 10) }))
 	const isLoadingPersonSingle = useLoadingState([personSingle.status])
 	const isEmptyPersonSingle = useEmptyDataState(personSingle.data)
 

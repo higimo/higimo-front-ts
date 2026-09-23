@@ -14,7 +14,7 @@ export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardI
 	return (
 		<div className="nokia-people-detail person-full-data">
 			<div className="person-full-data__edit">
-				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id.toString() })}>Редактировать профиль</a>
+				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id })}>Редактировать профиль</a>
 			</div>
 			<div className="person-full-data__header">
 				<div className="person-full-data__name">

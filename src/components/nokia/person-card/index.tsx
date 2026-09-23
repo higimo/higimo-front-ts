@@ -14,7 +14,7 @@ type PersonMiniProfilePropsType = {
 
 export const PersonCard: FunctionComponent<PersonMiniProfilePropsType> = ({ person }) => (
 	<a
-		href={ROUTE_LINKS.nokiaPeopleDetail({ personId: person.id.toString() })}
+		href={ROUTE_LINKS.nokiaPeopleDetail({ personId: person.id })}
 		className="person-mini-profile"
 	>
 		<NokiaUserAvatar name={person.name} />
@@ -32,7 +32,7 @@ export const PersonCard: FunctionComponent<PersonMiniProfilePropsType> = ({ pers
 		</div>
 		<div className="person-mini-profile__buttons">
 			<div className="person-mini-profile__edit">
-				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id.toString() })}>edit</a>
+				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id })}>edit</a>
 			</div>
 		</div>
 	</a>

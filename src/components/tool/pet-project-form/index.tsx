@@ -33,7 +33,7 @@ type HandlePetprojectSubmitType = (addStatus: (val: HigimoServerResponse) => voi
 const handlePetprojectSubmit: HandlePetprojectSubmitType = setStatus => async values => {
 	try {
 		const { data: serverResult } = await sendRequest(
-			API_ROUTE.probbiSingle({ projectId: values.id.toString() }),
+			API_ROUTE.probbiSingle({ projectId: values.id }),
 			{
 				method: 'POST',
 				values,

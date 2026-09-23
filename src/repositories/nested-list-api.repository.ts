@@ -26,7 +26,7 @@ class NestedListApiRepository {
 		values: NestedListItemType
 	): Promise<NestedListItemType | null> {
 		try {
-			const data = await sendRequest<NestedListItemType>(API_ROUTE.listerItemSingle({ id: values.id?.toString() }), {
+			const data = await sendRequest<NestedListItemType>(API_ROUTE.listerItemSingle({ id: values.id }), {
 				method: 'PUT',
 				values: values,
 			})
@@ -41,7 +41,7 @@ class NestedListApiRepository {
 		id: NestedListItemType['id']
 	): Promise<MessageApiType | null> {
 		try {
-			const data = await sendRequest<MessageApiType>(API_ROUTE.listerItemSingle({ id: id.toString() }), {
+			const data = await sendRequest<MessageApiType>(API_ROUTE.listerItemSingle({ id: id }), {
 				method: 'DELETE',
 			})
 			return data.data

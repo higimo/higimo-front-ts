@@ -30,7 +30,7 @@ export const NasheSinglePage: FunctionComponent = () => {
 	const { params: { year } } = useRoute()
 	const curYear = year ? parseInt(year, 10) : 2017
 
-	const [ nasheFullData ] = useApi<NasheType[]>(API_ROUTE.nasheSingle({ year: curYear.toString() }))
+	const [ nasheFullData ] = useApi<NasheType[]>(API_ROUTE.nasheSingle({ year: curYear }))
 	const filteredData = useYearFilter(nasheFullData.data, curYear)
 	const { mainScene, secondScene } = useScenesData(filteredData)
 

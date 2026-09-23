@@ -29,7 +29,7 @@ export const ListListFormPage: FunctionComponent = () => {
 		<div className="list-list">
 			<TextContainer>
 				{!!values?.parent ? (
-					<a href={ROUTE_LINKS.listListDetail({ idcode: values?.parent?.id.toString() })}>
+					<a href={ROUTE_LINKS.listListDetail({ idcode: values?.parent?.id })}>
 						{values?.parent.title}
 					</a>
 				) : (

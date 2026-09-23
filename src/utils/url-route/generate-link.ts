@@ -17,7 +17,7 @@ type ExtractParams<T extends string> =
 /**
  * Создаёт тип для параметров на основе шаблона URI
  */
-type ParamsObject<T extends string> = Record<ExtractParams<T>, string>
+type ParamsObject<T extends string> = Record<ExtractParams<T>, string | number>
 
 /**
  * Тип для результата - всегда строка, начинающаяся с /api/v2/
@@ -46,18 +46,18 @@ type ApiV2Path = `/api/v2/${string}`
  *
  * postComments({ postId: '1', commentId: '2' })
  * ```
- * TODO: [LIGHT] <T extends string | number>
  */
-export const generateLink = <T extends string>(link: T) => {
+export const generateLink = <T extends string | number>(link: T) => {
 	/**
 	 * @param params - Объект с параметрами для подстановки
 	 * @returns Сформированный URI
 	 */
-	return (params: ParamsObject<T>): ApiV2Path => {
-		let result = link as string
+	return (params: ParamsObject<`${T}`>): ApiV2Path => {
+		let result = String(link)
 
 		for (const [key, value] of Object.entries(params)) {
-			result = result.replace(new RegExp(`:${key}`, 'g'), (value as any))
+			result = result.replaceAll(`:${key}`, encodeURIComponent(String(value)))
+			result = result.replace(new RegExp(`:${key}`, 'g'), String(value))
 		}
 
 		return result as ApiV2Path

@@ -28,7 +28,7 @@ export const PetProjectElement: FunctionComponent<PetProjectElementPropsType> = 
 			dangerouslySetInnerHTML={{ __html: getDescription(project.description)}}
 		/>
 		<a
-			href={ROUTE_LINKS.petProjectEdit({ projectId: project.id.toString() })}
+			href={ROUTE_LINKS.petProjectEdit({ projectId: project.id })}
 			className="pet-project__edit"
 		>
 			✐

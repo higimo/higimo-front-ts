@@ -30,7 +30,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 			{/* TODO: [BACKEND] вот бы присылало всех parent по цепочке и показывать из них хлебные крошки вложенности */}
 			{!!listItem.parent && (
 				<div className="element-node__parent">
-					← <a href={ROUTE_LINKS.listListDetail({ idcode: listItem.parent.id.toString() })}>
+					← <a href={ROUTE_LINKS.listListDetail({ idcode: listItem.parent.id })}>
 						{listItem.parent.title}
 					</a>
 				</div>
@@ -46,7 +46,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 
 				<div className="element-node__main-info">
 					<div className="element-node__title">
-						<a href={ROUTE_LINKS.listListDetail({ idcode: listItem.id.toString() })}>
+						<a href={ROUTE_LINKS.listListDetail({ idcode: listItem.id })}>
 							{listItem.title}
 						</a>
 					</div>
@@ -63,7 +63,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 							<span className="element-node__admin-controll">
 								{[
 									<a href={ROUTE_LINKS.listListCreate}>создать</a>,
-									<a href={ROUTE_LINKS.listListEdit({ idcode: listItem.id.toString() })}>редактировать</a>,
+									<a href={ROUTE_LINKS.listListEdit({ idcode: listItem.id })}>редактировать</a>,
 									<span
 										className="pseudo-link"
 										onClick={handleRemove(listItem.id, listItem.title)}
