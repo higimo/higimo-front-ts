@@ -5,7 +5,6 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: [LIGHT] отделить Repository в корень
 class NestedListApiService {
 	async create(values: Omit<NestedListItemType, 'id'>): Promise<NestedListItemType | null> {
 		try {
