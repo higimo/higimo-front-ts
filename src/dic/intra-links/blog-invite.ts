@@ -43,4 +43,15 @@ export const blogInviteData: IntroLinkDataType[] = [
 		href: EXTERNAL_LINKS.socialTgView,
 		description: 'Жизнь, которую я видел собственными глазами. И показал'
 	},
+	{
+		isArchive: true,
+		title: 'Хорошие новости',
+		href: EXTERNAL_LINKS.goodNews,
+		description: 'Рассказываем позитивные новости о мире, России, технологиях, дизайне и прочем'
+	},
+	{
+		title: 'Продакт Кэмп Подкаст',
+		href: EXTERNAL_LINKS.productCampPodcast,
+		description: 'Подкаст про продуктовый менеджмент от лидеров рынка'
+	},
 ] as const

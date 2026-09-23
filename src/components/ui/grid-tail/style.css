@@ -1,33 +1,36 @@
 .grid-tile {
+	--grid-count: 6;
+	--grid-gap: 16px;
+
 	display: flex;
-	gap: 8px;
+	gap: calc(var(--grid-gap) / 4);
 	flex-direction: column;
 	color: #000;
 	border-bottom: none;
-	grid-column: span 6;
+	grid-column: span var(--grid-count);
 	background: #ffffff;
 	border: 1px solid #c8c8c8;
-	border-radius: 24px;
-	padding: 24px;
+	border-radius: 8px;
+	padding: var(--grid-gap);
 }
 @media (min-width: 768px) {
 	.grid-tile {
-		grid-column: span 3;
+		--grid-count: 3;
 	}
 }
 @media (min-width: 1280px) {
 	.grid-tile {
-		grid-column: span 2;
+		--grid-count: 2;
 	}
 }
 @media (min-width: 1520px) {
 	.grid-tile {
-		grid-column: span 1;
+		--grid-count: 1;
 	}
 }
 
 .grid-tile--archive {
-	opacity: .65;
+	opacity: .85;
 }
 
 .grid-tile:hover {
@@ -45,4 +48,5 @@
 
 .grid-tile__description {
 	font-size: 14px;
+	line-height: 1.4;
 }

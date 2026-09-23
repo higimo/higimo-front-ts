@@ -64,6 +64,8 @@ export const EXTERNAL_LINKS = {
 	kidguru:           'https://kidgu.ru/',
 	techIntersection:  'https://tech.intersection.team',
 	sweebe:            'https://sweebe.ru/',
+	goodNews:          'https://goodnewsforeveryone.mave.digital/',
+	productCampPodcast:'https://productcamppodcast.mave.digital/',
 
 	// Моя работа
 	afishaDaily: 'https://daily.afisha.ru/',
