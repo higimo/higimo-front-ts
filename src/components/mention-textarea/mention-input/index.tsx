@@ -53,6 +53,7 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 		props.onMention(mentionList)
 	}, [props.onMention, refTextarea, filtredSuggestList])
 
+	// TODO: [LIGHT] ChangeEventType в общих лежит
 	const handleKeyDown = useCallback((event: JSX.TargetedKeyboardEvent<HTMLTextAreaElement>) => {
 		if (!showSuggestion) {
 			return null

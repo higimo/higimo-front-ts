@@ -34,6 +34,7 @@ export const usePersonForm = ({
 	const [isSubmitted, setIsSubmitted] = useState(false)
 
 	const handlePersonSubmit = useCallback(async (data: NokiaPersonSimpleType) => {
+		// TODO: [MIDDLE] тут странное происходит, повторяет sendRequest, но await его
 		setIsSubmitting(true)
 		try {
 			const result = await personApi.createOrUpdate(data)
