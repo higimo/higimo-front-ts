@@ -80,7 +80,7 @@ TODO: [MIDDLE] Добавить аналитику поблочную
 
 TODO: [LIGHT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
 
-TODO: [LIGHT] интересный код событий для форм https://doka.guide/js/queuemicrotask/
+TODO: [MIDDLE] интересный код событий для форм https://doka.guide/js/queuemicrotask/
 
 ## VK и прочие собственные разработки
 

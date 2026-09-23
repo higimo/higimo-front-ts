@@ -20,7 +20,7 @@ export const AccordElement: FunctionComponent<AccordElementPropsType> = ({
 	showBaidge = true
 }) => (
 	<span>
-		{showAlf && name[0] !== alf && <div className="alf">{alf = name[0]}</div>}
+		{showAlf && name[0] !== alf && <div className="alf">{alf = (name[0] || '')}</div>}
 		<div>
 			<a className="accord__link" href={ROUTE_LINKS.accordDetail({ idcode: id })}>{name}</a>
 			{showBaidge && [

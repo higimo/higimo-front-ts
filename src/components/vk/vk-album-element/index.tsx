@@ -14,7 +14,7 @@ export const VkAlbumElement: FunctionComponent<VKAlbumType> = (album) => (
 		</div>
 		<img
 			className="album-element__image"
-			src={album.sizes.filter(i => i.type == 'x')[0].src}
+			src={album.sizes.filter(i => i.type == 'x')[0]!.src}
 		/>
 	</a>
 )
