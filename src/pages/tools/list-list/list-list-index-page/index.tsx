@@ -12,6 +12,7 @@ import { NestedList } from 'components/list/nested-list'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { NotFoundData } from 'components/ui/not-found-data/NotFoundData'
+import { NotFoundPage } from 'pages/not-found-page'
 
 export const ListListIndexPage: FunctionComponent = () => {
 	usePageTitle('Список списков')
@@ -38,9 +39,13 @@ export const ListListIndexPage: FunctionComponent = () => {
 	if (isLoading) {
 		return <Loading />
 	}
+	// TODO: бекенд не присылает ошибку для несуществующих
+	if (nestedListItems.status === 'ERROR') {
+		<NotFoundPage />
+	}
 
 	return (
-		<div className="list-list">
+		<div className="list-list-identity-page">
 			{(isListEmpty
 				? <NotFoundData />
 				: <NestedList

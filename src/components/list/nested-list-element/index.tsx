@@ -36,34 +36,44 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 				</div>
 			)}
 
-			<div className="element-node__data">
-				<div className="element-node__title">
-					{/* TODO: [LIGHT] оформить id */}
+			<div className="element-node__element">
+
+				<div className="element-node__tech-info">
 					<span className="element-node__id">
-						[{listItem.id}]
+						№ {listItem.id}
 					</span>
-					<a href={ROUTE_LINKS.listListDetail({ idcode: listItem.id.toString() })}>{listItem.title}</a>
 				</div>
-				<div className="element-node__meta">
-					{isAuth && (
-						<span className="element-node__link">
-							{[
-								<a href={ROUTE_LINKS.listListCreate}>создать</a>,
-								<a href={ROUTE_LINKS.listListEdit({ idcode: listItem.id.toString() })}>редактировать</a>,
-								<span
-									className="pseudo-link"
-									onClick={handleRemove(listItem.id, listItem.title)}
-								>
-									удалить
-								</span>
-							]}
-						</span>
-					)}
-					{!!listItem.children?.length && (
-						<div className="element-node__child-count">
-							{`${listItem.children.length} ${plural(listItem.children.length, ['элемент', 'элемента', 'элементов'])} в списке`}
-						</div>
-					)}
+
+				<div className="element-node__main-info">
+					<div className="element-node__title">
+						<a href={ROUTE_LINKS.listListDetail({ idcode: listItem.id.toString() })}>
+							{listItem.title}
+						</a>
+					</div>
+
+					<div className="element-node__meta">
+
+						{!!listItem.children?.length && (
+							<div className="element-node__child-count">
+								{`${listItem.children.length} ${plural(listItem.children.length, ['элемент', 'элемента', 'элементов'])} в списке`}
+							</div>
+						)}
+
+						{isAuth && (
+							<span className="element-node__admin-controll">
+								{[
+									<a href={ROUTE_LINKS.listListCreate}>создать</a>,
+									<a href={ROUTE_LINKS.listListEdit({ idcode: listItem.id.toString() })}>редактировать</a>,
+									<span
+										className="pseudo-link"
+										onClick={handleRemove(listItem.id, listItem.title)}
+									>
+										удалить
+									</span>
+								]}
+							</span>
+						)}
+					</div>
 				</div>
 			</div>
 
@@ -82,7 +92,6 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 				</div>
 			)}
 
-			{/* TODO: [LIGHT] добавить отступ вложенности */}
 			{!!listItem.children && listItem.children.map((item, iter) => (
 				<NestedListElement key={iter} nestedListItem={item} />
 			))}
