@@ -16,7 +16,7 @@ import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 import { vkSession } from 'context/vk'
 
 import { toast } from 'toast'
-import { VkServiceApi } from 'repositories/vk-api-service'
+import { VkApi } from 'repositories/vk-api.repository'
 
 import '../vk-style.css'
 
@@ -33,7 +33,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			return undefined
 		}
 
-		const loadedPhotos = await VkServiceApi.getPhotos(ownerId, albumId)
+		const loadedPhotos = await VkApi.getPhotos(ownerId, albumId)
 		if (!loadedPhotos) {
 			return undefined
 		}

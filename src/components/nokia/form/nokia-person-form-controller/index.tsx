@@ -8,17 +8,17 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'
-import { PersonApiService } from 'repositories/person-api'
+import { PersonApiRepository } from 'repositories/person-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 const DEFAULT_PERSON_ID = '-1'
 
 interface PersonFormContainerProps {
-  personApi?: PersonApiService
+  personApi?: PersonApiRepository
 }
 export const NokiaPersonFormController: FunctionComponent<PersonFormContainerProps> = ({
-	personApi = new PersonApiService()
+	personApi = new PersonApiRepository()
 }) => {
 	const { params: { personId = DEFAULT_PERSON_ID } } = useRoute()
 

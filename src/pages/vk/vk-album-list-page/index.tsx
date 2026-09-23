@@ -13,8 +13,8 @@ import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { vkSession } from 'context/vk'
 
-import { VkServiceApi } from 'repositories/vk-api-service'
 import { toast } from 'toast'
+import { VkApi } from 'repositories/vk-api.repository'
 
 import '../vk-style.css'
 
@@ -25,7 +25,7 @@ export const VkAlbumListPage: FunctionComponent = () => {
 	const [ albums, setAlbums ] = useState<VKAlbumType[]>([])
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
-		const albums = await VkServiceApi.getAlbums(ownerId)
+		const albums = await VkApi.getAlbums(ownerId)
 		if (!albums) {
 			return undefined
 		}

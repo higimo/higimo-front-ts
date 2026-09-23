@@ -4,7 +4,7 @@ import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
 
-import { nestedListApi } from 'repositories/nestedListApi'
+import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { toast } from 'toast'
 
 import './style.css'

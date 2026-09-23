@@ -11,7 +11,7 @@ import { Loading } from 'components/ui/loading'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { MeetingApiService } from 'repositories/person-api'
+import { MeetingApiRepository } from 'repositories/meeting-api.repository'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -27,11 +27,11 @@ const getUserSuggestions = (persons: NokiaPersonSimpleType[]): string[] => perso
 const DEFAULT_MEETING_ID = '-1'
 
 interface PersonFormContainerProps {
-  meetingApi?: MeetingApiService
+  meetingApi?: MeetingApiRepository
 }
 
 export const NokiaMetingFormController: FunctionComponent<PersonFormContainerProps> = ({
-	meetingApi = new MeetingApiService()
+	meetingApi = new MeetingApiRepository()
 }) => {
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 

@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
-import { MeetingApiService } from 'repositories/person-api'
+import { MeetingApiRepository } from 'repositories/meeting-api.repository'
 
 import { toast } from 'toast'
 
@@ -14,7 +14,7 @@ export type MeetingFormValues = NokiaMeetingSimpleType & {
 }
 
 export interface UseMeetingFormProps {
-	meetingApi: MeetingApiService
+	meetingApi: MeetingApiRepository
 	isEditMode: boolean
 	persons: NokiaPersonSimpleType[]
 }

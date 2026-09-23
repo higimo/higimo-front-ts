@@ -3,7 +3,7 @@ import { NestedListItemFullType, NestedListItemType } from 'api-types/listlist.t
 
 import { useAuth } from 'hook/fetch/use-auth'
 
-import { nestedListApi } from 'repositories/nestedListApi'
+import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { plural } from 'utils/plural'
 import { toast } from 'toast'
 

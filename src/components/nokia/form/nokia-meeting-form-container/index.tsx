@@ -4,13 +4,13 @@ import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from '
 import { useEffect } from 'preact/hooks'
 import { useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'
 
-import { MeetingApiService } from 'repositories/person-api'
+import { MeetingApiRepository } from 'repositories/meeting-api.repository'
 import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
 
 interface NokiaMeetingFormContainerProps {
-	meetingApi: MeetingApiService
+	meetingApi: MeetingApiRepository
 	initialData: NokiaMeetingSimpleType | undefined
 	initialPersons: NokiaPersonSimpleType[]
 	isEditMode: boolean

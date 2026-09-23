@@ -9,7 +9,7 @@ import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'components/vk/consts'
 import { vkSession } from 'context/vk'
 
 import { toast } from 'toast'
-import { VkServiceApi } from 'repositories/vk-api-service'
+import { VkApi } from 'repositories/vk-api.repository'
 
 export type UseVkDownloadType = () => {
 	onSubmit: (data: VkDownloadFormValuesType) => undefined
@@ -32,7 +32,7 @@ export const useVkDownload: UseVkDownloadType = () => {
 			if (!downloadId) {
 				return undefined
 			}
-			const albums = await VkServiceApi.getAlbums(downloadId)
+			const albums = await VkApi.getAlbums(downloadId)
 			if (!albums) {
 				return undefined
 			}
@@ -54,7 +54,7 @@ export const useVkDownload: UseVkDownloadType = () => {
 			toast.info(`Осталось скачать ${size} альбома`);
 
 			(async () => {
-				const albumPhotos = await VkServiceApi.getPhotos(downloadId, headQueue.id)
+				const albumPhotos = await VkApi.getPhotos(downloadId, headQueue.id)
 				if (!albumPhotos) return
 				setPhotos(prev => [
 					...prev,

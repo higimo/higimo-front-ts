@@ -6,10 +6,7 @@ import { vkApiCall } from 'vendor/vk-api-call'
 
 import { VKError } from 'errors/vk-error'
 
-class VkApiService {
-	constructor() {
-	}
-
+class VkApiRepository {
 	async getAlbums(
 		userId: VKAlbumType['owner_id']
 	): Promise<VKAlbumType[] | null> {
@@ -88,4 +85,4 @@ class VkApiService {
 	}
 }
 
-export const VkServiceApi = new VkApiService()
+export const VkApi = new VkApiRepository()

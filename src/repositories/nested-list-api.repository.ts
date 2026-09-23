@@ -5,8 +5,10 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-class NestedListApiService {
-	async create(values: Omit<NestedListItemType, 'id'>): Promise<NestedListItemType | null> {
+class NestedListApiRepository {
+	async create(
+		values: Omit<NestedListItemType, 'id'>
+	): Promise<NestedListItemType | null> {
 		try {
 			const data = await sendRequest<NestedListItemType>(API_ROUTE.lister, {
 				method: 'POST',
@@ -20,7 +22,9 @@ class NestedListApiService {
 		}
 	}
 
-	async edit(values: NestedListItemType): Promise<NestedListItemType | null> {
+	async edit(
+		values: NestedListItemType
+	): Promise<NestedListItemType | null> {
 		try {
 			const data = await sendRequest<NestedListItemType>(API_ROUTE.listerItemSingle({ id: values.id?.toString() }), {
 				method: 'PUT',
@@ -33,7 +37,9 @@ class NestedListApiService {
 		}
 	}
 
-	async delete(id: NestedListItemType['id']): Promise<MessageApiType | null> {
+	async delete(
+		id: NestedListItemType['id']
+	): Promise<MessageApiType | null> {
 		try {
 			const data = await sendRequest<MessageApiType>(API_ROUTE.listerItemSingle({ id: id.toString() }), {
 				method: 'DELETE',
@@ -46,4 +52,4 @@ class NestedListApiService {
 	}
 }
 
-export const nestedListApi = new NestedListApiService()
+export const nestedListApi = new NestedListApiRepository()

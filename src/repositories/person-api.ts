@@ -1,4 +1,4 @@
-import { NokiaPersonSimpleType, NokiaRichMeetingType } from 'api-types/nokia.types'
+import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { sendRequest } from 'utils/api/send-request'
 
@@ -15,7 +15,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
  * compact({ a: 1, b: null, c: '', d: [], e: {} })
  * // Результат: { a: 1 }
  */
-const compact = <T extends Record<string, any>>(obj: T): Partial<T> => {
+export const compact = <T extends Record<string, any>>(obj: T): Partial<T> => {
 	return Object.fromEntries(
 		Object.entries(obj).filter(([_, value]) => {
 			// Проверяем на null и undefined
@@ -54,7 +54,7 @@ const compact = <T extends Record<string, any>>(obj: T): Partial<T> => {
  * const result = omit(data, 'b', 'd')
  * // Результат: { a: 1, c: 3 }
  */
-const omit = <T extends Record<string, any>, K extends keyof T>(
+export const omit = <T extends Record<string, any>, K extends keyof T>(
 	obj: T,
 	...keys: K[]
 ): Omit<T, K> => {
@@ -70,7 +70,7 @@ export interface PersonApi {
 	createOrUpdate(person: Partial<NokiaPersonSimpleType>): Promise<any>
 }
 
-export class PersonApiService implements PersonApi {
+export class PersonApiRepository implements PersonApi {
 	// async getAll(): Promise<NokiaPersonApiType[]> {
 	// 	const response = await sendRequest(API_ROUTE.nokiaPerson)
 	// 	return response.data
@@ -90,41 +90,6 @@ export class PersonApiService implements PersonApi {
 		return sendRequest(endpoint, {
 			method,
 			values: compact(omit(person, 'id'))
-		})
-	}
-}
-
-
-export interface MeetingApi {
-	// getAll(): Promise<NokiaRichMeetingType[]>
-	// getById(id: string): Promise<NokiaRichMeetingType>
-	createOrUpdate(meeting: Partial<NokiaRichMeetingType>): Promise<any>
-	syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any>
-}
-
-export class MeetingApiService implements MeetingApi {
-	async createOrUpdate(meeting: Partial<NokiaRichMeetingType>): Promise<any> {
-		console.log('MeetingApiService.createOrUpdate', meeting)
-		const method = meeting.id ? 'PUT' : 'POST'
-		const endpoint = meeting.id
-			? API_ROUTE.nokiaMeetingSingle({ id: meeting.id.toString() })
-			: API_ROUTE.nokiaMeeting
-
-		return sendRequest(endpoint, {
-			method,
-			values: compact(omit(meeting, 'id'))
-		})
-	}
-
-	async syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any> {
-		console.log('MeetingApiService.createOrUpdate', persons)
-		return sendRequest(
-			API_ROUTE.nokiaSyncPersonForMeeting({ meetingId: meetingId.toString() }),
-			{
-				method: 'POST',
-				values: {
-					person_ids: persons.map(i => i.id)
-				}
 		})
 	}
 }
