@@ -10,11 +10,3 @@
 .hiring-response-page .factoid {
 	color: #1a439b;
 }
-
-.chart-wrapper {
-	box-shadow:
-		0 16px 36px -8px rgba(0, 0, 0, .05),
-		0 24px 16px -24px rgba(0, 0, 0, .1),
-		0 36px 8px -36px rgba(0, 0, 0, .15)
-		;
-}

@@ -33,7 +33,7 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 			aria-label="Содержание"
 		/>
 		<button type="submit" className="hiring-response-card-form__submit" onClick={onSubmitCard}>
-			＋ Добавить карточку
+			Сохранить
 		</button>
 		<button className="btn-reset" onClick={onReset}>
 			Сбросить

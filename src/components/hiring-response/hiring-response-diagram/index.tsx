@@ -7,6 +7,8 @@ import { useEffect, useRef } from 'preact/hooks'
 import { aggregateByDay } from 'components/hiring-response/hiring-response-diagram/aggregate-by-day'
 import { updateChart } from 'components/hiring-response/hiring-response-diagram/updateChart'
 
+import './style.css'
+
 type HiringResponseDiagramPropsType = {
 	data: PasteApiType[]
 	width?: number
