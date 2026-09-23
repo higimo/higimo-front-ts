@@ -44,6 +44,7 @@ export const EXTERNAL_LINKS = {
 	serviceDeploy: 'https://deploy-calendar.ru/',
 
 	// Хомяки
+	// TODO: [FEATURE] показать их структурой
 	vatrikovsky: 'https://vatrikovsky.ru/',
 	lego:        'https://legostaev.ru/',
 	lepekhin:    'https://lepekhin.ru/',
@@ -52,6 +53,7 @@ export const EXTERNAL_LINKS = {
 	voronej2:    'https://napisal.ru/',
 	ilyahov:     'https://maximilyahov.ru/',
 	birman:      'https://ilyabirman.ru/',
+	vas3k:       'https://vas3k.blog/',
 
 	// Яндекс формы
 	tourismReviewForm:     'https://forms.yandex.ru/u/5f4a4603153cbc6a3f2a4922/',
