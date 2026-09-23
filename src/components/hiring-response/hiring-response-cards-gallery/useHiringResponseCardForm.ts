@@ -8,6 +8,7 @@ import { todayStr } from 'utils/today-str'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { pasteApi } from 'repositories/paste-api.repository'
 
 const INIT_CARD: PasteApiType = {
 	id: -1,
@@ -53,20 +54,13 @@ export const useHiringResponseCardForm = ({
 	}, [setSelectedCard])
 
 	const handleSubmit = useCallback(async () => {
-		// TODO: [LIGHT] см. PasteApiService
-		const newContentCard: Omit<PasteApiType, 'id'> = {
-			key: selectedCard.key,
-			date: selectedCard.date,
-			content: selectedCard.content,
-		}
 		const isUpdateMode = selectedCard.id > 0
-		await sendRequest(
-			(isUpdateMode ? API_ROUTE.pasteSingle({ id: selectedCard.id.toString() }) : API_ROUTE.paste),
-			{
-				method: (isUpdateMode ? 'PUT' : 'POST'),
-				values: newContentCard
-			}
-		)
+		if (isUpdateMode) {
+			// TODO: [MIDDLE] мб, об ошибках сообщать?
+			await pasteApi.edit(selectedCard)
+		} else {
+			await pasteApi.create(selectedCard)
+		}
 		await fetchUpdate()
 	}, [selectedCard, fetchUpdate])
 
