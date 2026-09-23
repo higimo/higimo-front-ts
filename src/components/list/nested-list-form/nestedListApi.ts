@@ -5,7 +5,7 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: отделить сервис-провайдеры в корень
+// TODO: [LIGHT] отделить Repository в корень
 class NestedListApiService {
 	async create(values: Omit<NestedListItemType, 'id'>): Promise<NestedListItemType | null> {
 		try {
@@ -15,7 +15,7 @@ class NestedListApiService {
 			})
 			return data.data
 		} catch (error) {
-			// TODO: Оборачивать бы в HigimoApiError и кидать наружу для тостов
+			// TODO: [LIGHT] Оборачивать бы в HigimoApiError и кидать наружу для тостов
 			console.error(error)
 			return null
 		}

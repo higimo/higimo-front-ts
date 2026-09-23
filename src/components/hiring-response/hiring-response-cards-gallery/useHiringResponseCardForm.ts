@@ -53,7 +53,7 @@ export const useHiringResponseCardForm = ({
 	}, [setSelectedCard])
 
 	const handleSubmit = useCallback(async () => {
-		// TODO: см. PasteApiService
+		// TODO: [LIGHT] см. PasteApiService
 		const newContentCard: Omit<PasteApiType, 'id'> = {
 			key: selectedCard.key,
 			date: selectedCard.date,

@@ -24,7 +24,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 		reset,
 	} = useForm<FormValues>()
 
-	// TODO: по-моему, есть отдельный компонент
+	// TODO: [LIGHT] по-моему, есть отдельный компонент
 	const ShowError = ({ filerError }: { filerError?: FieldError }) => {
 		if (!filerError) {
 			return null

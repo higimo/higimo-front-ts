@@ -7,7 +7,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 
 // HtmlTagDescriptor
 
-// TODO: подключить size-limit
+// TODO: [CONFIG] подключить size-limit
 // https://vitejs.dev/config/
 export default defineConfig(
 	({ mode }) => {

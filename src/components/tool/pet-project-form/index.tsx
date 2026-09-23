@@ -62,7 +62,7 @@ export const PetProjectForm = () => {
 	const [ status, setStatus ] = useState(null)
 
 	useEffect(() => {
-		// TODO: можно ли это через дефолты задавать? Хотябы предварительно собрать объект
+		// TODO: [MIDDLE] можно ли это через дефолты задавать? Хотябы предварительно собрать объект
 		if (probbiSingle.data && 'id' in probbiSingle.data) {
 			setValue('id', probbiSingle.data.id)
 			setValue('name', probbiSingle.data.name)

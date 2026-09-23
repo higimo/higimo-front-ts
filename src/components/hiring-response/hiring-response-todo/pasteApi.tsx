@@ -8,7 +8,7 @@ class PasteApiService {
 			const data = await sendRequest<PasteApiType[]>(API_ROUTE.pasteSingle({ id: key }));
 			return data.data;
 		} catch (error) {
-			// TODO: что-то получше бы предоставить, тост хотя бы
+			// TODO: [MIDDLE] что-то получше бы предоставить, тост хотя бы
 			console.error(error);
 			return null;
 		}

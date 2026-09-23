@@ -8,7 +8,7 @@ import { lazy, Suspense } from 'preact/compat'
 
 import './style.css'
 
-// TODO: что он ругается?
+// TODO: [LIGHT] что он ругается?
 const LazyCollapse = lazy(() => import('react-collapse'))
 
 type CollapseSectionPropsType = {

@@ -1,10 +1,16 @@
 
+## Используемость
+
 TODO: [MIDDLE] проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
 
+TODO: [MIDDLE] Почистить хомяк от неиспользуемых компонентов
+
+## Вес скрипта
+
 TODO: [MIDDLE] уменьшить бандл, там d3 что-то косячно импортируется
+TODO: [MIDDLE] vite.config.ts отделяет чанк с библиотекой, но не подгружает её асинхронно, так что для всех страни подгружается d3 и openapi
 
-TODO vite.config.ts отделяет чанк с библиотекой, но не подгружает её асинхронно, так что для всех страни подгружается d3 и openapi
-
+## Сторонние библиотеки
 https://github.com/antfu-collective/taze
 https://github.com/antfu/export-size
 https://icones.js.org/
@@ -51,78 +57,98 @@ https://habr.com/ru/companies/jugru/articles/444652/
 https://mastodon.online/@vas3k
 http://paperjs.org/tutorials/
 
-Добавить вастрика в любимые хомяки
+## Контент
 
-TODO https://github.com/welldone-software/react-component-splitter кажется очень удобным
+TODO: [LIGHT] Добавить вастрика в любимые хомяки
+TODO: [FEATURE] страницу для итогов года: скрин нокии и скрин обхожу Москву
 
-TODO eslint
+TODO: [LIGHT] Добавить подкаст Хорошие новости в Блоги
+TODO: [LIGHT] Добавить подкаст Кэмпа в Блоги
+TODO: [MIDDLE] в портфолио бот Хигимору
 
-TODO Добавить аналитику поблочную
-
-https://habr.com/ru/articles/673640/ добавить куда-то
-
-TODO интересный код событий для форм https://doka.guide/js/queuemicrotask/
-
-https://higimo.ru/vk/
-https://github.com/higimo/vk-photos-react/blob/master/src/scss/index.scss
-https://github.com/higimo/analytics
-https://github.com/higimo/list-new/blob/master/src/routes/list-list-add/index.js
-https://github.com/higimo/museum
-
-TODO: использовать Wouter
-
-TODO: Как настроить PWA на этом стеке?
-
-TODO link #2196f3
-#3984d4 -- неплохой синий
-
-
-TODO: страницу для итогов года: скрин нокии и скрин обхожу Москву
-
-TODO Добавить подкаст Хорошие новости в Блоги
-TODO Добавить подкаст Кэмпа в Блоги
-TODO в портфолио бот Хигимору
-
+TODO: [BACKEND] Добавить в FAQ
 {/* <h1>Конспект по верстке эмейлов</h1>
 <p>
 	Проследите за тем, чтобы письмо адекватно отображалось в Outlook, Gmail, Yandex и Mail.ru — этого достаточно
 </p> */}
 
 
-Дневник своих маленьких успехов
-
-TODO: ну пусть люди прям в списки могут заходить?
-TODO: показать иконки крепостей
-TODO: год посещения
-TODO: Список российских городов для посещения
-TODO: Города для посещений
-TODO: Список городов близ Москвы
-TODO: Показать на сайте
-TODO: Главные мечети посетил
-TODO: Преображенская крепость
-Вулканы
-Горелый
-TODO: Добавить регионы городов
-TODO: Был в 4 городах, в 5 заброшенных городах, в 30 крепостях
-2025 год население
-TODO: искать: Регионы России Статистический сборник
-Научиться p3 express
-Купить книгу Цель: процесс непрерывного улучшения16+ Элияху Голдратт, Джефф Кокс
-Обхожу Метро https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D0%B9_%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BC%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B5%D0%BD%D0%B0
-2022-03-10 Ушёл из Рамблера
-2015-09-01 пришёл в Эртоп
-2016-12-31 Ушёл из Эртоп
-
-TODO: Получается всё отсюда надо перенести на страницу
-TODO: Фильтровать точки здесь, а в дочерний с картой передавать точки, пусть рисует
+## Разобрать
+TODO: [MIDDLE] https://github.com/welldone-software/react-component-splitter кажется очень удобным
 
 
-TODO: Почистить хомяк от неиспользуемых компонентов
+TODO: [MIDDLE] Добавить аналитику поблочную
+
+TODO: [LIGHT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
+
+TODO: [LIGHT] интересный код событий для форм https://doka.guide/js/queuemicrotask/
+
+## VK и прочие собственные разработки
+
+TODO: [MIDDLE]
+	https://higimo.ru/vk/
+	https://github.com/higimo/vk-photos-react/blob/master/src/scss/index.scss
+	https://github.com/higimo/analytics
+	https://github.com/higimo/list-new/blob/master/src/routes/list-list-add/index.js
+	https://github.com/higimo/museum
+
+## config
+TODO: [CONFIG] eslint
+TODO: [CONFIG] использовать Wouter
+TODO: [FEATURE] Как настроить PWA на этом стеке?
 
 
+## style
+TODO: [MIDDLE] link #2196f3
+#3984d4 -- неплохой синий
 
+## nokia
+TODO: [NOKIA] Дневник своих маленьких успехов
 
-TODO: Хуки
+## Туризм
+
+TODO: [FEATURE] показать иконки крепостей
+TODO: [FEATURE] год посещения
+
+### Буду посещать
+TODO: [FEATURE] Список российских городов для посещения
+TODO: [FEATURE] Города для посещений
+TODO: [FEATURE] Список городов близ Москвы
+
+### Посетил
+
+TODO: [FEATURE] Показать на сайте
+TODO: [FEATURE] Главные мечети посетил
+TODO: [FEATURE] Преображенская крепость
+TODO: [FEATURE] Вулканы
+	Горелый
+TODO: [FEATURE] Был в 4 городах, в 5 заброшенных городах, в 30 крепостях
+
+TODO: [FEATURE] Добавить регионы городов
+TODO: [FEATURE] искать: Регионы России Статистический сборник
+
+TODO: [FEATURE] Обхожу Метро https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D0%B9_%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BC%D0%B5%D1%82%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B5%D0%BD%D0%B0
+
+### Статистика
+TODO: [FEATURE] 2025 год население
+
+### Код
+TODO: [FEATURE] Получается всё отсюда надо перенести на страницу
+TODO: [FEATURE] Фильтровать точки здесь, а в дочерний с картой передавать точки, пусть рисует
+
+## backend
+
+TODO: [FEATURE] Научиться p3 express
+
+## Обомне. График работы
+
+TODO: [FEATURE] 2022-03-10 Ушёл из Рамблера
+TODO: [FEATURE] 2015-09-01 пришёл в Эртоп
+TODO: [FEATURE] 2016-12-31 Ушёл из Эртоп
+
+## Интегрировать хуки
+
+TODO: [FEATURE] Хуки
 	https://usehooks.com/useDebounce/
 	https://usehooks.com/useOnScreen/
 	https://usehooks.com/usePrevious/
@@ -139,9 +165,7 @@ TODO: Хуки
 	https://usehooks.com/useKeyPress/
 	https://fireship.io/snippets/use-media-query-hook/
 
-
-
-
+## Взаимосвязи компонентов
 
 Для быстрой и комплексной проверки лучше всего подойдёт Knip. Он даст наиболее полную картину и не требует глубокой настройки.
 
@@ -149,22 +173,14 @@ TODO: Хуки
 
 Для регулярных проверок «на лету» можно интегрировать ESLint с соответствующими правилами (no-unused-vars, no-unused-modules). Это не заменит полноценный анализ связей между файлами, но поможет поддерживать порядок в процессе разработки.
 
-
-
-
-
-
-
+## Запрос к нейронке
 
 2. Мне не нравится сейчас, что для создания формы нужно создавать 3 отдельных компонента, как это можно исправить, оставив лёгкость самих компонентов? Учитывай, что формы будут сложнее и встраиваться в модальные окна
 
+## Уязвимости
 
+### 3. CSRF уязвимость при использовании JWT в cookies
 
-
-
-
-
-3. CSRF уязвимость при использовании JWT в cookies
 В коде нет явной установки токена, но, судя по логике, сервер, вероятно, устанавливает httpOnly cookie после логина.
 Проблема: Без защиты CSRF злоумышленник может отправить запрос от имени пользователя через подставной сайт (т.к. cookie отправятся автоматически).
 Исправление на сервере:
@@ -176,41 +192,35 @@ TODO: Хуки
 Для критических операций (POST/PUT/DELETE) требуйте дополнительное подтверждение.
 
 
-4. Отсутствие Content Security Policy (CSP)
+### 4. Отсутствие Content Security Policy (CSP)
+
 Ни в одном из файлов нет заголовка CSP. Это увеличивает риск выполнения инъекций.
 Исправление: Настройте веб-сервер (или Vite middleware) для отправки заголовка Content-Security-Policy: default-src 'self'. Для dev-режима мож
 
+### 6. Нет обработки истечения JWT и рефреша
 
-
-6. Нет обработки истечения JWT и рефреша
 Токен, вероятно, живёт ограниченное время. В коде нет механизма обновления (refresh token) или автоматического редиректа на логин по статусу 401.
 Исправление: В apiClient перехватывайте статус 401 и вызывайте redirectToLogin() или отправляйте запрос на /api/refresh.
 
-
-
-🟢 Оценка использования JWT в cookies
+## 🟢 Оценка использования JWT в cookies
 Хорошая идея, если соблюдены условия:
 
-Cookies httpOnly (недоступны JS) – защита от XSS кражи токена.
-
-Secure (только HTTPS) – защита от перехвата.
-
-SameSite=Lax или Strict – защита от CSRF.
+1. Cookies httpOnly (недоступны JS) – защита от XSS кражи токена.
+2. Secure (только HTTPS) – защита от перехвата.
+3. SameSite=Lax или Strict – защита от CSRF.
 
 Токен короткоживущий, а для долгих сессий используется refresh token тоже в httpOnly cookie.
 
+## Проблемы use Api
 
-
-
-
-
-4. Множественные useApi на одной странице без кэширования
+### 4. Множественные useApi на одной странице без кэширования
 📍 pages/person-list-page/index.tsx
 
-ts
-const [persons]   = useApi<NokiaPersonFullType[]>(API_ROUTE.personList)
-const [tags]      = useApi<NokiaTagType[]>(API_ROUTE.tagList)
+```ts
+const [persons]	 = useApi<NokiaPersonFullType[]>(API_ROUTE.personList)
+const [tags]			= useApi<NokiaTagType[]>(API_ROUTE.tagList)
 const [tagGroups] = useApi<NokiaGrouppedTagType[]>(API_ROUTE.tagGroupList)
+```
 Проблема: Три независимых запроса, которые не кэшируются между переходами. При каждом возврате на страницу они шлются заново.
 Оптимизация:
 
@@ -218,194 +228,184 @@ const [tagGroups] = useApi<NokiaGrouppedTagType[]>(API_ROUTE.tagGroupList)
 
 Или объединить запросы на бекенде в один эндпоинт /api/nokia/person-list-data, возвращающий всё сразу.
 
-
-
-
-
-
-
-
-
-🟡 Все формы имеют одинаковую структуру
+### 🟡 Все формы имеют одинаковую структуру
 📍 components/form/*-form-container/index.tsx (4 компонента)
 
-Проблема: Каждый контейнер формы (Person, Meeting, Tag, TagGroup) содержит почти идентичный код:
+Проблема: Каждый контейнер формы (`Person`, `Meeting`, `Tag`, `TagGroup`) содержит почти идентичный код:
 
-useEffect для заполнения initialData
+1. `useEffect` для заполнения `initialData`
+2. обёртка `<form onSubmit={handleSubmit(...)}>`
+3. рендер полей
+4. кнопка с состоянием `isSubmitting` / `isSubmitted`
+5. `ShowFormResult` с `reset`
 
-обёртка <form onSubmit={handleSubmit(...)}>
+Решение: Создать универсальный компонент `<EntityForm>`:
 
-рендер полей
-
-кнопка с состоянием isSubmitting / isSubmitted
-
-ShowFormResult с reset
-
-Решение: Создать универсальный компонент <EntityForm>:
-
-tsx
+```tsx
 function EntityForm<T>({ fields, useFormHook, renderCustom, ...props }) {
-  const { formMethods, status, isSubmitting, isSubmitted, handleSubmit, reset } = useFormHook();
-  useEffect(() => { /* заполнение initialData */ }, [initialData]);
-  return (
-    <form onSubmit={formMethods.handleSubmit(handleSubmit)}>
-      {fields ? <DynamicFields fields={fields} formMethods={formMethods} /> : renderCustom(formMethods)}
-      <button disabled={isSubmitting || isSubmitted}>Сохранить</button>
-      {(isSubmitted || isSubmitting) && <ShowFormResult status={status} reset={reset} />}
-    </form>
-  );
+	const { formMethods, status, isSubmitting, isSubmitted, handleSubmit, reset } = useFormHook();
+	useEffect(() => { /* заполнение initialData */ }, [initialData]);
+	return (
+		<form onSubmit={formMethods.handleSubmit(handleSubmit)}>
+			{fields ? <DynamicFields fields={fields} formMethods={formMethods} /> : renderCustom(formMethods)}
+			<button disabled={isSubmitting || isSubmitted}>Сохранить</button>
+			{(isSubmitted || isSubmitting) && <ShowFormResult status={status} reset={reset} />}
+		</form>
+	);
 }
+```
 
+### 2. 🟡 Хуки форм дублируют бизнес-логику
 
+📍 `hook/form/use-person-form.ts`, `use-meeting-form.ts`, `use-tag-form.ts`, `use-tag-group-form.ts`
 
+Проблема: Все четыре хука имеют одинаковые поля: `status`, `isSubmitting`, `isSubmitted`, `resetForm`, одинаковую обработку ошибок (`ApiError`, `setError`), вызов API и т.д.
 
+Решение: Создать фабрику `useEntityForm<T>`:
 
-
-2. 🟡 Хуки форм дублируют бизнес-логику
-📍 hook/form/use-person-form.ts, use-meeting-form.ts, use-tag-form.ts, use-tag-group-form.ts
-
-Проблема: Все четыре хука имеют одинаковые поля: status, isSubmitting, isSubmitted, resetForm, одинаковую обработку ошибок (ApiError, setError), вызов API и т.д.
-
-Решение: Создать фабрику useEntityForm<T>:
-
-ts
+```ts
 export function useEntityForm<T, D>({ api, isEditMode, onSuccess }) {
-  const [status, setStatus] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const formMethods = useForm<T>();
+	const [status, setStatus] = useState([]);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [isSubmitted, setIsSubmitted] = useState(false);
+	const formMethods = useForm<T>();
 
-  const handleSubmit = useCallback(async (data) => {
-    setIsSubmitting(true);
-    try {
-      const result = await (isEditMode ? api.update(data.id, data) : api.create(data));
-      if (result.id) formMethods.setValue('id', result.id);
-      toast.show('Сохранено');
-      setIsSubmitted(true);
-      onSuccess?.(result);
-    } catch (error) {
-      toast.error(error.message);
-      setStatus(prev => [...prev, error]);
-      if (error.errors) Object.keys(error.errors).forEach(key => formMethods.setError(key, error.errors[key][0]));
-    } finally { setIsSubmitting(false); }
-  }, [api, isEditMode]);
+	const handleSubmit = useCallback(async (data) => {
+		setIsSubmitting(true);
+		try {
+			const result = await (isEditMode ? api.update(data.id, data) : api.create(data));
+			if (result.id) formMethods.setValue('id', result.id);
+			toast.show('Сохранено');
+			setIsSubmitted(true);
+			onSuccess?.(result);
+		} catch (error) {
+			toast.error(error.message);
+			setStatus(prev => [...prev, error]);
+			if (error.errors) Object.keys(error.errors).forEach(key => formMethods.setError(key, error.errors[key][0]));
+		} finally { setIsSubmitting(false); }
+	}, [api, isEditMode]);
 
-  const resetForm = useCallback(() => { if (!isEditMode) formMethods.reset(); setStatus([]); setIsSubmitted(false); }, [isEditMode]);
+	const resetForm = useCallback(() => { if (!isEditMode) formMethods.reset(); setStatus([]); setIsSubmitted(false); }, [isEditMode]);
 
-  return { formMethods, status, isSubmitting, isSubmitted, handleSubmit, resetForm };
+	return { formMethods, status, isSubmitting, isSubmitted, handleSubmit, resetForm };
 }
+```
 
+### 3. 🟡 API-сервисы createOrUpdate копируют код
 
-
-
-
-
-
-
-
-3. 🟡 API-сервисы createOrUpdate копируют код
-📍 services/person-api.ts, tag-api.ts, tag-group-api.ts, meeting-api.ts
+📍 `services/person-api.ts`, `tag-api.ts`, `tag-group-api.ts`, `meeting-api.ts`
 
 Проблема: В каждом классе метод createOrUpdate делает одно и то же: определяет метод (PUT/POST), строит endpoint, вызывает apiClient с compact(omit(obj, 'id')).
 
 Решение: Базовый класс или функция-хелпер:
 
-ts
+```ts
 class BaseApiService {
-  protected async createOrUpdate<T>(entity: Partial<T> & { id?: number }, routes: { create: string, update: (id: string) => string }) {
-    const method = entity.id ? 'PUT' : 'POST';
-    const endpoint = entity.id ? routes.update(entity.id.toString()) : routes.create;
-    const { promise } = apiClient(endpoint, { method, body: compact(omit(entity, 'id')) });
-    return promise;
-  }
+	protected async createOrUpdate<T>(entity: Partial<T> & { id?: number }, routes: { create: string, update: (id: string) => string }) {
+		const method = entity.id ? 'PUT' : 'POST';
+		const endpoint = entity.id ? routes.update(entity.id.toString()) : routes.create;
+		const { promise } = apiClient(endpoint, { method, body: compact(omit(entity, 'id')) });
+		return promise;
+	}
 }
+```
 
 Использование:
+```ts
 class PersonApiService extends BaseApiService {
-  async createOrUpdate(person: Partial<NokiaPersonSimpleType>) {
-    return this.createOrUpdate(person, { create: API_ROUTE.personCreate, update: API_ROUTE.personUpdate });
-  }
+	async createOrUpdate(person: Partial<NokiaPersonSimpleType>) {
+		return this.createOrUpdate(person, { create: API_ROUTE.personCreate, update: API_ROUTE.personUpdate });
+	}
 }
+```
 
+### 4. 🟡 Страницы дублируют логику загрузки/ошибок
 
-
-
-4. 🟡 Страницы дублируют логику загрузки/ошибок
 📍 pages/person-create-page, meeting-create-page, tag-create-page, tag-group-create-page, person-list-page, meeting-list-page, statistic-page
 
 Паттерн (встречается >10 раз):
 
-ts
+```ts
 const [data] = useApi(...)
 const isLoading = useLoadingState([data.status])
 const isEmpty = useEmptyDataState(data.data)
 if (isLoading) return <Loading />
 if (isEmpty) return <NotFoundPage />
 if (!isApiLoaded(data)) return null
+```
+
 Решение: Компонент-обёртка ApiBoundary:
 
-tsx
+```tsx
 function ApiBoundary<T>({ apiState, children, loading = <Loading />, empty = <NotFoundPage /> }) {
-  if (useLoadingState([apiState.status])) return loading;
-  if (useEmptyDataState(apiState.data)) return empty;
-  if (!isApiLoaded(apiState)) return null;
-  return children(apiState.data);
+	if (useLoadingState([apiState.status])) return loading;
+	if (useEmptyDataState(apiState.data)) return empty;
+	if (!isApiLoaded(apiState)) return null;
+	return children(apiState.data);
 }
+```
 
 Использование:
+```tsx
 <ApiBoundary apiState={personSingle}>
-  {data => <PersonDetail person={data} />}
+	{data => <PersonDetail person={data} />}
 </ApiBoundary>
-5. 🟡 Страницы создания/редактирования почти идентичны
+```
+
+### 5. 🟡 Страницы создания/редактирования почти идентичны
+
 📍 person-create-page, meeting-create-page, tag-create-page, tag-group-create-page
 
 Проблема: Все страницы создания/редактирования имеют:
 
 получение id из роута
+1. режим isEditMode = id !== DEFAULT_ID
+2. загрузку одной сущности
+3. рендер контроллера формы
+4. Решение: Фабрика страниц:
 
-режим isEditMode = id !== DEFAULT_ID
-
-загрузку одной сущности
-
-рендер контроллера формы
-
-Решение: Фабрика страниц:
-
-ts
+```ts
 function createEntityPage({ entityName, useApiHook, FormController, defaultId = '-1' }) {
-  return () => {
-    usePageTitle(`Редактирование ${entityName}`);
-    const { params: { id = defaultId } } = useRoute();
-    const isEditMode = id !== defaultId;
-    const [entity] = useApiHook(id);
-    if (useLoadingState([entity.status])) return <Loading />;
-    if (isEditMode && useEmptyDataState(entity.data)) return <NotFoundPage />;
-    return <FormController isEditMode={isEditMode} entity={entity.data} />;
-  };
+	return () => {
+		usePageTitle(`Редактирование ${entityName}`);
+		const { params: { id = defaultId } } = useRoute();
+		const isEditMode = id !== defaultId;
+		const [entity] = useApiHook(id);
+		if (useLoadingState([entity.status])) return <Loading />;
+		if (isEditMode && useEmptyDataState(entity.data)) return <NotFoundPage />;
+		return <FormController isEditMode={isEditMode} entity={entity.data} />;
+	};
 }
 
 export const PersonCreatePage = createEntityPage({ entityName: 'человека', useApiHook: id => useApi(API_ROUTE.personRead({ personId: id })), FormController: NokiaPersonFormController });
-6. 🟡 Три стратегии фильтрации тегов
+```
+
+### 6. 🟡 Три стратегии фильтрации тегов
+
 📍 utils/filter-tag-strategy/filterTagAndGroupsStrategy.ts, filterTagAnyStrategy.ts, filterTagOrGroupsStrategy.ts
 
 Проблема: Все три функции содержат похожий код проверки выбранных тегов и прохода по элементам. Различаются только логикой: AND/OR между группами/тегами.
 
 Решение: Параметризовать стратегию:
 
-ts
+```ts
 type FilterStrategy = 'AND_GROUPS_OR_TAGS' | 'ANY_TAG' | 'OR_GROUPS_OR_TAGS';
 
 export const filterByStrategy = <T extends DataItemWithTags>(data: T[], selectedTags: SelectedTags, strategy: FilterStrategy): T[] => {
-  Реализация через switch или объект стратегий
+	Реализация через switch или объект стратегий
 };
-7. 🟡 Хуки useTags и useSmartTags частично пересекаются
+```
+
+### 7. 🟡 Хуки useTags и useSmartTags частично пересекаются
+
 📍 hook/use-tags.ts и hook/tags/use-smart-tags.ts
 
 Проблема: Оба управляют множественным выбором тегов. useTags проще, useSmartTags мощнее. Нет смысла держать два разных подхода.
 
 Решение: Оставить только useSmartTags, а useTags переписать как обёртку над ним или удалить. Либо вынести общую логику работы с Set в отдельный хук useMultiSelect.
 
-8. 🟡 Компоненты полей форм (*Fields) дублируют разметку
+### 8. 🟡 Компоненты полей форм (*Fields) дублируют разметку
+
 📍 components/form/nokia-person-form-fields, nokia-meeting-fields, nokia-tag-fields, tag-group-fields
 
 Проблема: Каждый компонент рендерит поля с label, input, обработкой ошибок. Это можно вынести в конфигурацию.
@@ -414,45 +414,47 @@ export const filterByStrategy = <T extends DataItemWithTags>(data: T[], selected
 
 tsx
 const personFieldsConfig = [
-  { name: 'id', label: 'ID', type: 'number', readOnly: true },
-  { name: 'name', label: 'Имя', required: true },
-  { name: 'alias', label: 'Псевдоним', help: 'ник, кличка…' },
-  { name: 'description', label: 'Описание', type: 'textarea' },
+	{ name: 'id', label: 'ID', type: 'number', readOnly: true },
+	{ name: 'name', label: 'Имя', required: true },
+	{ name: 'alias', label: 'Псевдоним', help: 'ник, кличка…' },
+	{ name: 'description', label: 'Описание', type: 'textarea' },
 ];
 
 В форме
-<FormFields config={personFieldsConfig} formMethods={formMethods} />
-9. 🟡 useLoadingState и useEmptyDataState почти всегда используются вместе
+`<FormFields config={personFieldsConfig} formMethods={formMethods} />`
+
+### 9. 🟡 useLoadingState и useEmptyDataState почти всегда используются вместе
 📍 В каждой странице: const isLoading = useLoadingState([...]) + const isEmpty = useEmptyDataState(...)
 
 Решение: Объединить в один хук useApiStatus:
 
-ts
+```ts
 export function useApiStatus<T>(apiState: ApiState<T>) {
-  const isLoading = useLoadingState([apiState.status]);
-  const isEmpty = useEmptyDataState(apiState.data);
-  const isError = !!apiState.error;
-  return { isLoading, isEmpty, isError, data: apiState.data };
+	const isLoading = useLoadingState([apiState.status]);
+	const isEmpty = useEmptyDataState(apiState.data);
+	const isError = !!apiState.error;
+	return { isLoading, isEmpty, isError, data: apiState.data };
 }
-10. 🟡 Редиректы с backpath в разных местах
+```
+
+### 10. 🟡 Редиректы с backpath в разных местах
+
 📍 LoginPage (использует getBackpath()), PrivateRoute (вызывает redirectToLogin с текущим path), а также в useAuth функция redirectToLogin формирует backpath.
 
 Проблема: Логика сохранения и восстановления backpath размазана по трём файлам.
 
 Решение: Создать сервис navigationService:
 
-ts
+```ts
 export const navigation = {
-  saveBackpath() { sessionStorage.setItem('backpath', window.location.pathname); },
-  getBackpath() { return sessionStorage.getItem('backpath') || ROUTE_LINKS.adminIndex; },
-  redirectToLogin() { window.location.href = `${ROUTE_LINKS.login}?backpath=${encodeURIComponent(this.getBackpath())}`; },
-  clearBackpath() { sessionStorage.removeItem('backpath'); }
+	saveBackpath() { sessionStorage.setItem('backpath', window.location.pathname); },
+	getBackpath() { return sessionStorage.getItem('backpath') || ROUTE_LINKS.adminIndex; },
+	redirectToLogin() { window.location.href = `${ROUTE_LINKS.login}?backpath=${encodeURIComponent(this.getBackpath())}`; },
+	clearBackpath() { sessionStorage.removeItem('backpath'); }
 };
-Тогда и PrivateRoute, и LoginPage, и useAuth будут использовать один и тот же объект.
+```
 
-
-
-
+Тогда и `PrivateRoute`, и `LoginPage`, и `useAuth` будут использовать один и тот же объект.
 
 ## 10 потенциальных улучшений в кодовой базе
 
@@ -489,16 +491,8 @@ Unit-тесты покрывают отдельные функции, но кр�
 ### 10. **Оптимизировать загрузку шрифтов и CSS (critical CSS)**
 В `style.css` импортируется весь CSS глобально. Использовать `vite-plugin-critical` или `@loadable/component` для инлайна критических стилей (шапка, карточки встреч) и отложенной загрузки остальных. Для шрифтов добавить `preconnect` и `font-display: swap` в заголовок. Это улучшит First Contentful Paint и метрики Core Web Vitals.
 
----
-
-**Бонус-улучшение** (за 11):
+### **Бонус-улучшение** (за 11):
 Настроить `vite-bundle-analyzer` не только для production, но и для dev-сборки с опцией `open: true` – поможет отслеживать рост бандла на ранних этапах. Уже используется, но можно интегрировать в `npm run analyze` скрипт.
-
-
-
-
-
-
 
 ## 10 архитектурных улучшений
 
@@ -542,9 +536,6 @@ Unit-тесты покрывают отдельные функции, но кр�
 **Проблема**: После успешного создания встречи мы хотим обновить статистику, список встреч, уведомить другие компоненты. Сейчас это делается через `toast` и ручной редирект.
 **Решение**: Внедрить шину событий (event bus) на сигналах. Публиковать события типа `meeting:created`, `person:updated`. Подписчики (другие фичи) могут реагировать, например, инвалидировать кэш или показывать нотификацию. Это ослабит связанность между модулями.
 
-
-
-
 ## 5 мест, где неудобно работать с бекендом (и вы можете это исправить на сервере)
 
 ### 1. **Нет массового создания/обновления тегов для персоны**
@@ -567,13 +558,8 @@ Unit-тесты покрывают отдельные функции, но кр�
 **Проблема**: На странице статистики сейчас только встречи по типам и годам. Нет аналитики: сколько встреч с человеком, у которого есть тег `"друг"`, или распределение встреч по тегам персон.
 **Решение на сервере**: Создать эндпоинт `GET /api/statistics/person-tags`, который возвращает `{ tag_title: string, meeting_count: number }[]` за выбранный период. Это позволит строить круговые диаграммы и выявить, с кем и по каким темам чаще всего общаетесь.
 
----
-
-**Дополнительное исправление (бонус)**:
+### **Дополнительное исправление (бонус)**:
 Сейчас в `API_ROUTE` закомментированы многие старые эндпоинты (`nokiaMeeting`, `nokiaPerson` и т.д.), но в коде они используются через `@ts-ignore`. Удалите их с сервера или приведите в соответствие с текущими (`/api/meetings`, `/api/person`). Это избавит клиент от лишних заглушек.
-
-
-
 
 ## 5 мест, где можно (и нужно) использовать хуки, но пока нет
 
@@ -603,10 +589,10 @@ on('toast:show', (payload) => addToast(payload));
 **Как должно быть**:
 ```ts
 const [filter, setFilter] = useFilterWithUrl({
-  paramName: 'tag',
-  defaultValue: null,
-  parse: (value) => parseInt(value, 10),
-  serialize: (value) => value?.toString()
+	paramName: 'tag',
+	defaultValue: null,
+	parse: (value) => parseInt(value, 10),
+	serialize: (value) => value?.toString()
 });
 ```
 
@@ -620,9 +606,9 @@ if (isAuth) redirectToDashboard();
 **Как должно быть**:
 ```ts
 useAuthRedirect({
-  redirectIfNotAuth: '/login',
-  redirectIfAuth: '/admin',
-  loadingFallback: <Loading />
+	redirectIfNotAuth: '/login',
+	redirectIfAuth: '/admin',
+	loadingFallback: <Loading />
 });
 ```
 
@@ -685,9 +671,6 @@ const [folded, setFolded] = usePersistedState('collapse-section-meetings', false
 
 Выберите любую тему, и я предоставлю развёрнутый ответ с конкретными шагами, примерами кода и рекомендациями.
 
-
-
-
-
+## Классы Repository
 
 Можно ли как-то проверять, что в тестовом ответе именно такой класс используется и чем он заполняется? Я бы тогда только классы ресурсов тестировал на соответствие ответам

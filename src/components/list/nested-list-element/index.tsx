@@ -27,7 +27,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 
 	return (
 		<div className="element-node">
-			{/* TODO: вот бы присылало всех parent по цепочке и показывать из них хлебные крошки вложенности */}
+			{/* TODO: [BACKEND] вот бы присылало всех parent по цепочке и показывать из них хлебные крошки вложенности */}
 			{!!listItem.parent && (
 				<div className="element-node__parent">
 					← <a href={ROUTE_LINKS.listListDetail({ idcode: listItem.parent.id.toString() })}>
@@ -38,7 +38,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 
 			<div className="element-node__data">
 				<div className="element-node__title">
-					{/* TODO: оформить id */}
+					{/* TODO: [LIGHT] оформить id */}
 					<span className="element-node__id">
 						[{listItem.id}]
 					</span>
@@ -82,7 +82,7 @@ export const NestedListElement: FunctionComponent<NestedListElementPropsType> = 
 				</div>
 			)}
 
-			{/* TODO: добавить отступ вложенности */}
+			{/* TODO: [LIGHT] добавить отступ вложенности */}
 			{!!listItem.children && listItem.children.map((item, iter) => (
 				<NestedListElement key={iter} nestedListItem={item} />
 			))}
