@@ -16,7 +16,7 @@ import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 import { vkSession } from 'context/vk'
 
 import { toast } from 'toast'
-import { VkServiceApi } from 'pages/vk/vk-api-service'
+import { VkServiceApi } from 'repositories/vk-api-service'
 
 import '../vk-style.css'
 

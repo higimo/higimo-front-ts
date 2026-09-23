@@ -7,7 +7,7 @@ import { useCallback } from 'preact/hooks'
 import { debounce } from '@github/mini-throttle'
 import { getPhotosUrl } from 'utils/get-photos-url'
 import { toast } from 'toast'
-import { VkServiceApi } from 'pages/vk/vk-api-service'
+import { VkServiceApi } from 'repositories/vk-api-service'
 
 import './style.css'
 

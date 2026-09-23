@@ -11,7 +11,7 @@ import { Loading } from 'components/ui/loading'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
 import { NotFoundData } from 'components/ui/not-found-data'
 
-import { MeetingApiService } from 'components/nokia/form/person-api'
+import { MeetingApiService } from 'repositories/person-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

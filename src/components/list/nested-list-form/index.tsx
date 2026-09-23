@@ -1,11 +1,11 @@
-import { FormValues, formScheme } from './FormValues'
+import { FormValues, formScheme } from 'components/list/nested-list-form/FormValues'
 import { FunctionComponent, h } from 'preact'
 import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
 
+import { nestedListApi } from 'repositories/nestedListApi'
 import { toast } from 'toast'
-import { nestedListApi } from './nestedListApi'
 
 import './style.css'
 

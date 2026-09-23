@@ -9,11 +9,11 @@ import { Loading } from 'components/ui/loading/Loading'
 
 import { debounce } from '@github/mini-throttle'
 import { toast } from 'toast'
+import { pasteApi } from 'repositories/pasteApi'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
-import { pasteApi } from './pasteApi'
 
 const getUriTimestamp = () => new Date().toISOString().replace(/\D/g, '-').substring(0, 23)
 

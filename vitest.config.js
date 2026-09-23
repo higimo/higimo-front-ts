@@ -26,6 +26,7 @@ export default defineConfig({
 			'fixtures':   path.resolve(__dirname, './src/fixtures'),
 			'toast':      path.resolve(__dirname, './src/toast'),
 			'errors':     path.resolve(__dirname, './src/errors'),
+			'repositories': path.resolve(__dirname, './src/repositories'),
 		}
 	},
 });

@@ -1,6 +1,8 @@
 import { PasteApiType } from 'api-types/paste.types';
-import { API_ROUTE } from 'dic/API_ROUTE';
+
 import { sendRequest } from 'utils/api/send-request';
+
+import { API_ROUTE } from 'dic/API_ROUTE';
 
 class PasteApiService {
 	async getByKey(key: PasteApiType['key']): Promise<PasteApiType[] | null> {

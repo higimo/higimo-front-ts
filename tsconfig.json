@@ -51,6 +51,7 @@
 			"utils.type": ["./src/utils.type.ts"],
 			"types": ["./src/types.ts"],
 			"errors/*": ["./src/errors/*"],
+			"repositories/*": ["./src/repositories/*"],
 		},
 		"types": [
 			"vitest/globals",

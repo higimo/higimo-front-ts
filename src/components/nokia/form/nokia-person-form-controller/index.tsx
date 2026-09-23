@@ -8,7 +8,7 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
 import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'
-import { PersonApiService } from 'components/nokia/form/person-api'
+import { PersonApiService } from 'repositories/person-api'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

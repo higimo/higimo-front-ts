@@ -4,7 +4,7 @@ import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 import { useEffect } from 'preact/hooks'
 import { usePersonForm } from 'components/nokia/form/hooks/use-person-form'
 
-import { PersonApi } from 'components/nokia/form/person-api'
+import { PersonApi } from 'repositories/person-api'
 import { NokiaPersonFormFields } from 'components/nokia/form/nokia-person-form-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
 

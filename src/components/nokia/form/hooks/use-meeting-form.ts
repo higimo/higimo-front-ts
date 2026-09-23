@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
-import { MeetingApiService } from 'components/nokia/form/person-api'
+import { MeetingApiService } from 'repositories/person-api'
 
 import { toast } from 'toast'
 

@@ -4,13 +4,12 @@ import { VkQueueType, VkPhotosContentType } from 'api-types/vk.types'
 import { useQueue } from 'hook/use-queue'
 import { useState, useEffect, useCallback } from 'preact/hooks'
 
-import { toast } from 'toast'
-
 import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'components/vk/consts'
 
 import { vkSession } from 'context/vk'
 
-import { VkServiceApi } from 'pages/vk/vk-api-service'
+import { toast } from 'toast'
+import { VkServiceApi } from 'repositories/vk-api-service'
 
 export type UseVkDownloadType = () => {
 	onSubmit: (data: VkDownloadFormValuesType) => undefined

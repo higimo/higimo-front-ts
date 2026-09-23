@@ -1,6 +1,6 @@
 import { ApiError } from 'errors/higimo-api-error'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
-import { PersonApi } from 'components/nokia/form/person-api'
+import { PersonApi } from 'repositories/person-api'
 
 import { useCallback, useEffect, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'

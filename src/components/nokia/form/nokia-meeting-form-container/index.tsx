@@ -4,7 +4,7 @@ import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from '
 import { useEffect } from 'preact/hooks'
 import { useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'
 
-import { MeetingApiService } from 'components/nokia/form/person-api'
+import { MeetingApiService } from 'repositories/person-api'
 import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
