@@ -2,12 +2,10 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { useState, useCallback } from 'preact/hooks'
 
-import { sendRequest } from 'utils/api/send-request'
 import { smoothScroll } from 'utils/smooth-scroll'
 import { todayStr } from 'utils/today-str'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-import { API_ROUTE } from 'dic/API_ROUTE'
 import { pasteApi } from 'repositories/paste-api.repository'
 
 const INIT_CARD: PasteApiType = {
@@ -45,7 +43,7 @@ export const useHiringResponseCardForm = ({
 	}, [cards])
 
 	const handleDelete = useCallback((id: number) => async () => {
-		await sendRequest(API_ROUTE.pasteSingle({ id: id.toString() }), { method: 'DELETE' })
+		await pasteApi.delete(id)
 		await fetchUpdate()
 	}, [fetchUpdate])
 

@@ -47,6 +47,18 @@ class PasteApiRepository {
 			return null
 		}
 	}
+
+	async delete(
+		id: PasteApiType['id']
+	): Promise<PasteApiType | null> {
+		try {
+			const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id }), { method: 'DELETE' })
+			return data.data
+		} catch (error) {
+			console.error(error)
+			return null
+		}
+	}
 }
 
 export const pasteApi = new PasteApiRepository()
