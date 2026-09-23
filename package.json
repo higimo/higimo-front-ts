@@ -12,7 +12,8 @@
 		"test:watch": "vitest --watch",
 		"test:coverage": "vitest --coverage",
 		"test:ui": "vitest --ui",
-		"size": "size-limit"
+		"size": "size-limit",
+		"anal": "vite build --mode anal"
 	},
 	"dependencies": {
 		"@github/mini-throttle": "^2.1.1",
