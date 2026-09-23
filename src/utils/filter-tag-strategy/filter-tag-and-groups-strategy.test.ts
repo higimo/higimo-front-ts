@@ -252,7 +252,7 @@ describe('[Стратегия фильтрации] filterTagAndGroupsStrategy',
 
 		it('работает с большим количеством групп и данных', () => {
 			let manyGroups: SelectedTags = {}
-			for (let i = 0 i < 250 i++) {
+			for (let i = 0; i < 250; i++) {
 				manyGroups[`group_${i}`] = new Set([`tag_${i}`])
 			}
 

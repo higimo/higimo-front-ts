@@ -227,7 +227,7 @@ describe('[Стратегия фильтрации] filterTagAnyStrategy', () =>
 
 		it('отрабатывает большое количество групп', () => {
 			const manyGroups: Record<string, Set<string>> = {}
-			for (let i = 0 i < 100 i++) {
+			for (let i = 0; i < 100; i++) {
 				manyGroups[`group_${i}`] = new Set([`tag_${i}`])
 			}
 
