@@ -1,8 +1,8 @@
-import { ChartDataType } from 'components/hiring-response/chart.types'
+import { PasteStatisticApiType } from 'api-types/paste.types'
 
 export const updateChart = async (
 	svgRef: any,
-	data: ChartDataType[],
+	data: PasteStatisticApiType[],
 	width: number,
 	height: number
 ) => {
@@ -37,13 +37,13 @@ export const updateChart = async (
 			.range([innerHeight, 0])
 
 		// Линия
-		const lineGenerator = line<ChartDataType>()
+		const lineGenerator = line<PasteStatisticApiType>()
 			.x(d => xScale(d.label)!)
 			.y(d => yScale(d.value))
 			.curve(curveMonotoneX)
 
 		// Заливка под линией
-		const areaGenerator = area<ChartDataType>()
+		const areaGenerator = area<PasteStatisticApiType>()
 			.x(d => xScale(d.label)!)
 			.y0(yScale(0))
 			.y1(d => yScale(d.value))

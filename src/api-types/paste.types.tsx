@@ -6,3 +6,8 @@ export type PasteApiType = {
 	id: number
 	key: string
 }
+
+export type PasteStatisticApiType = {
+	label: DateOnlyString
+	value: number
+}

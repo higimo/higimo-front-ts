@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PasteApiType } from 'api-types/paste.types'
+import { PasteApiType, PasteStatisticApiType } from 'api-types/paste.types'
 
 import { usePageTitle } from 'hook/browser/use-page-title'
 import { useApi } from 'hook/fetch/use-api'
@@ -22,17 +22,15 @@ import './style.css'
 export const HiringResponsePage: FunctionComponent = () => {
 	usePageTitle('Мои отклики')
 
-	const [ data, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
-		filter: {
-			// TODO: [BACKEND] реализовать на бекенде
-			key: 'send-resume*'
-		}
+	const [ pasteData, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
+		filter: { key: 'send-resume*' }
 	})
+	const [ statistic ] = useApi<PasteStatisticApiType[]>(API_ROUTE.pasteStatistic, { key: 'send-resume' })
 
-	if (data.status === 'LOADING') {
+	if (pasteData.status === 'LOADING') {
 		return <Loading />
 	}
-	if (data.status === 'ERROR') {
+	if (pasteData.status === 'ERROR') {
 		return <NotFoundPage />
 	}
 
@@ -46,15 +44,16 @@ export const HiringResponsePage: FunctionComponent = () => {
 			<TextContainer>
 				<HiringResponseTodoController />
 				<HiringResponseLinks />
-				<HiringResponseCounter data={data.data} />
-				<HiringResponseDiagram data={data.data} />
+				<HiringResponseCounter data={pasteData.data} />
+				<h2>График откликов</h2>
+				<HiringResponseDiagram data={statistic.data} />
 			</TextContainer>
 
 			<TextContainer>
 				<h2>Карточки откликов</h2>
 			</TextContainer>
 			<HiringResponseCardsGallery
-				cards={data.data}
+				cards={pasteData.data}
 				fetchUpdate={fetchUpdate}
 			/>
 		</div>

@@ -63,6 +63,7 @@ export const API_ROUTE = {
 	merchantSingleProduct: generateLink('/api/v2/products/:productId'),
 
 	paste: '/api/v2/paste/',
+	pasteStatistic: '/api/v2/paste/statistic',
 	pasteSingle: generateLink('/api/v2/paste/:id'),
 } as const
 
