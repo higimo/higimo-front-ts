@@ -2,9 +2,10 @@ import { ApiError } from 'errors/higimo-api-error'
 import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { FunctionComponent } from 'preact'
 
-import { FieldError, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import { CollapseSection } from 'components/ui/collapse-section'
+import { ShowError } from 'components/ui/show-error'
 
 import { toast } from 'toast'
 
@@ -23,16 +24,6 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 		formState: { errors, isSubmitting },
 		reset,
 	} = useForm<FormValues>()
-
-	// TODO: [LIGHT] по-моему, есть отдельный компонент
-	const ShowError = ({ filerError }: { filerError?: FieldError }) => {
-		if (!filerError) {
-			return null
-		}
-		return (
-			<span className="error-message">{filerError.message}</span>
-		)
-	}
 
 	const handleFormSubmit = async (data: PortfolioWorkerType) => {
 		try {
@@ -61,7 +52,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 							{...register('full_name', { required: 'Обязательное поле' })}
 							className={errors.full_name ? 'error' : ''}
 						/>
-						<ShowError filerError={errors.full_name} />
+						<ShowError error={errors.full_name} />
 					</div>
 
 					<div className="form-group">
@@ -72,13 +63,13 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 							{...register('family', { required: 'Обязательное поле' })}
 							className={errors.family ? 'error' : ''}
 						/>
-						<ShowError filerError={errors.family} /> */}
+						<ShowError error={errors.family} /> */}
 					</div>
 
 					<div className="form-group">
 						<label htmlFor="image">Ссылка на фотку:</label>
 						<input type="text" {...register('image')} />
-						<ShowError filerError={errors.image} />
+						<ShowError error={errors.image} />
 						{errors.image && <span className="error-message">{errors.image.message}</span>}
 					</div>
 
@@ -90,7 +81,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 							{...register('login', { required: 'Обязательное поле' })}
 							className={errors.login ? 'error' : ''}
 						/>
-						<ShowError filerError={errors.login} />
+						<ShowError error={errors.login} />
 					</div>
 
 					<div className="form-group">
@@ -115,10 +106,10 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 							})}
 							className={errors.link ? 'error' : ''}
 						/>
-						<ShowError filerError={errors.link} />
+						<ShowError error={errors.link} />
 					</div>
 
-					<ShowError filerError={errors.company} />
+					<ShowError error={errors.company} />
 
 					<button
 						type="submit"
