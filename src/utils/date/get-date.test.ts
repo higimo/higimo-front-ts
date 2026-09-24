@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getDate } from 'utils/formatter/get-date'
+import { getDate } from 'utils/date/get-date'
 
 describe('[utils] formatDate', () => {
 	it('обрабатывает null', () => {

@@ -14,7 +14,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { TileElement } from 'components/ui/tile-element'
 import { TilesGallery } from 'components/ui/tiles-gallery'
 
-import { getDate } from 'utils/formatter/get-date'
+import { getDate } from 'utils/date/get-date'
 import { getText } from './getText'
 
 import { API_ROUTE } from 'dic/API_ROUTE'

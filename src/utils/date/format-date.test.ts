@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { formatDate } from 'utils/formatter/format-date'
+import { formatDate } from 'utils/date/format-date'
 
 describe('[utils] formatDate', () => {
 	it('Форматирует псевдо ISO в русскую дату', () => {

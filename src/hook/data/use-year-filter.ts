@@ -1,7 +1,7 @@
 import { useMemo } from 'preact/hooks'
 import { UnixTime } from 'utils.type'
 
-import { getYearFromTimestamp } from 'utils/formatter/get-year-from-timestamp'
+import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
 
 /**
  * Хук для фильтрации данных по году

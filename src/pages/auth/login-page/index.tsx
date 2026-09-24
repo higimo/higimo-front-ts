@@ -8,7 +8,7 @@ import { usePageTitle } from 'hook/browser/use-page-title'
 import { AuthForm } from 'components/form/auth-form'
 import { TextContainer } from 'components/ui/text-container'
 
-import { getBackPath } from 'utils/get-back-path'
+import { getBackPath } from 'utils/url-route/get-back-path'
 
 export const LoginPage: FunctionComponent = () => {
 	usePageTitle('Вход')

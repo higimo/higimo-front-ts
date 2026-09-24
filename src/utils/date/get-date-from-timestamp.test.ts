@@ -1,7 +1,7 @@
 import { UnixTime } from 'utils.type'
 
 import { describe, it, expect } from 'vitest'
-import { getDateFromTimestamp } from 'utils/formatter/get-date-from-timestamp'
+import { getDateFromTimestamp } from 'utils/date/get-date-from-timestamp'
 
 describe('[utils] getDateFromTimestamp', () => {
 	it('Возвращает дату числом', () => {

@@ -1,7 +1,7 @@
 import { UnixTime } from 'utils.type'
 
 import { describe, it, expect } from 'vitest'
-import { formatTime } from 'utils/formatter/format-time'
+import { formatTime } from 'utils/date/format-time'
 
 describe('[utils] formatTime', () => {
 	it('Показывает только время из DateTime', () => {

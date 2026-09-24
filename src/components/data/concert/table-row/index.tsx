@@ -1,6 +1,6 @@
 import { UnixTime } from 'utils.type'
 
-import { formatTime } from 'utils/formatter/format-time'
+import { formatTime } from 'utils/date/format-time'
 
 interface TableRowProps {
 	time: number

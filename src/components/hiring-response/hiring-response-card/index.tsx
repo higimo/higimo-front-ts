@@ -5,7 +5,7 @@ import { useToggle } from 'hook/use-toggle'
 
 import { OnlyAdmin } from 'components/util/only-admin'
 
-import { formatDate } from 'utils/formatter/format-date'
+import { formatDate } from 'utils/date/format-date'
 
 type HiringResponseCardPropsType = PasteApiType & {
 	onEdit: () => void
