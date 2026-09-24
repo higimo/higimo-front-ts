@@ -1,5 +1,16 @@
-export const PinarikEventPreview = props => {
-	const data = props.list.filter(i => i.id == props.id) || { description: 'data' }
+import { PinarikType } from "api-types/pinarik.types"
+import { FunctionComponent } from "preact"
+
+type PinarikEventPreviewPropsType = {
+	id: PinarikType['id']
+	pinarik: PinarikType[]
+}
+
+export const PinarikEventPreview: FunctionComponent<PinarikEventPreviewPropsType> = ({
+	id,
+	pinarik,
+}) => {
+	const data = pinarik.filter(i => i.id == id) || { description: 'data' }
 
 	return (
 		<div className="test">

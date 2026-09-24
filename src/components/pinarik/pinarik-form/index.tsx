@@ -1,20 +1,14 @@
 import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
-import { HigimoServerResponse } from 'api-types/server-response.types'
 import { PinarikType } from 'api-types/pinarik.types'
 
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { useFormStatus } from 'hook/utils/use-form-status'
-
 import { FormButton } from 'components/form/form-button'
-import { ShowFormResult } from 'components/form/show-form-result'
-import { TrafficLight } from '../traffic-light'
+import { TrafficLight } from 'components/pinarik/traffic-light'
 
-import { sendRequest } from 'utils/api/send-request'
+import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
@@ -24,20 +18,20 @@ type FormValues = {
 	description: PinarikType['description']
 }
 
-type HandlePinarikSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
-	(values: FormValues) => Promise<void>
-const handlePinarikSubmit: HandlePinarikSubmitType = addStatus => async values => {
+const handlePinarikSubmit = async (values: FormValues): Promise<void> => {
 	try {
-		const { data: serverPostResult } = await sendRequest(API_ROUTE.pinarik, {
-			method: 'POST',
-			values,
-		})
-
-		addStatus(serverPostResult)
+		await pinarikApi.create(values)
 	} catch (error) {
 		const apiError = error as ApiError
 		toast.error(apiError.message || 'Не получилось добавить пинарик')
 	}
+}
+
+const DEFAULT_VALUE: FormValues = {
+	// TODO: [LIGHT] здесь бы функцию, которая возвращает правильный тип
+	date: (new Date()).toISOString().substr(0, 10) as PinarikType['date'],
+	score: 0,
+	description: '',
 }
 
 type PinarikFormPropsType = {
@@ -45,20 +39,22 @@ type PinarikFormPropsType = {
 
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 	const formMethods = useForm<FormValues>({
-		defaultValues: {
-			date: (new Date()).toISOString().substr(0, 10),
-			score: 0,
-			description: '',
-		},
+		defaultValues: DEFAULT_VALUE,
 	})
 
-	const { register, handleSubmit, formState, reset } = formMethods
-	// TODO: [LIGHT] надо иначе сообщать об успехе
-	const [ status, addStatus ] = useFormStatus()
+	const {
+		register,
+		handleSubmit,
+		formState: {
+			isDirty,
+		},
+		reset
+
+	} = formMethods
 
 	return (
 		<FormProvider {...formMethods}>
-			<form className="container nokia-form pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit(addStatus))}>
+			<form className="container nokia-form pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit)}>
 				<div className="form-row">
 					<div>
 						<label htmlFor="date">Дата</label>
@@ -85,8 +81,8 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 				</div>
 				<div className="form__button">
 					<FormButton>Записать</FormButton>
-					{(formState.isSubmitted || formState.isSubmitting) && (
-						<ShowFormResult status={status} reset={() => reset()} />
+					{isDirty && (
+						<button type="reset" onClick={() => reset(DEFAULT_VALUE)}>Очистить</button>
 					)}
 				</div>
 			</form>
