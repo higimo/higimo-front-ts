@@ -1,4 +1,5 @@
-import { FunctionComponent, JSX } from 'preact'
+import { FunctionComponent } from 'preact'
+import { KeyDownEvent } from 'utils.type'
 
 import { useCallback, useRef, useState } from 'preact/hooks'
 
@@ -28,7 +29,9 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	const refTextarea = useRef<HTMLTextAreaElement>(null)
 
 	const handleMentionSelect = useCallback((targetMention: MentionSuggest) => {
-		if (!refTextarea.current) return null
+		if (!refTextarea.current) {
+			return undefined
+		}
 
 		setShowSuggestion(false)
 
@@ -44,7 +47,9 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	}, [setShowSuggestion, setInputValue, refTextarea])
 
 	const handleMentionValidation = useCallback(() => {
-		if (!refTextarea.current) return null
+		if (!refTextarea.current) {
+			return undefined
+		}
 
 		const mentionList = normalizeMentionList(
 			getMentionList(refTextarea.current.value),
@@ -54,9 +59,9 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	}, [props.onMention, refTextarea, filtredSuggestList])
 
 	// TODO: [LIGHT] ChangeEventType в общих лежит
-	const handleKeyDown = useCallback((event: JSX.TargetedKeyboardEvent<HTMLTextAreaElement>) => {
+	const handleKeyDown = useCallback((event: KeyDownEvent) => {
 		if (!showSuggestion) {
-			return null
+			return undefined
 		}
 		if (KEY.ESC === event.code) {
 			event.preventDefault()
@@ -74,6 +79,10 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 			event.preventDefault()
 			const targetMention = filtredSuggestList[selectedSuggest]
 
+			if (!targetMention) {
+				console.warn('targetMention из фильтрованного списка не выбрался')
+				return undefined
+			}
 			handleMentionSelect(targetMention)
 		}
 	}, [
@@ -98,7 +107,9 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	}, [])
 
 	const handleChange = useCallback(() => {
-		if (!refTextarea.current) return null
+		if (!refTextarea.current) {
+			return undefined
+		}
 
 		if (isMention(refTextarea.current.value, refTextarea.current.selectionStart)) {
 			setShowSuggestion(true)

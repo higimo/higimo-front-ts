@@ -266,6 +266,12 @@ export type ChangeEvent = TargetedEvent<
 	InputEvent|Event
 >
 
+/** Событие onKeyDown */
+export type KeyDownEvent = TargetedEvent<
+	HTMLTextAreaElement,
+	KeyboardEvent
+>
+
 
 export type ClassNameType = {
 	className?: string
