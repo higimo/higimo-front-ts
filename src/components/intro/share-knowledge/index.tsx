@@ -10,6 +10,7 @@ import obuchenie    from './img/obuchenie.png'
 import rak          from './img/rak.png'
 import screen       from './img/screen.png'
 import tech         from './img/tech.png'
+import faq          from './img/faq.svg'
 
 import { shareKnowledgeData } from 'dic/intra-links/share-knowledge'
 
@@ -21,6 +22,7 @@ const imageMapping: IntroImageMappingType = {
 	tech,
 	obuchenie,
 	intersection,
+	faq,
 }
 
 export const ShareKnowledge = () => (

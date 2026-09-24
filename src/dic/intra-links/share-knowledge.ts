@@ -41,6 +41,7 @@ export const shareKnowledgeData: IntroLinkDataType[] = [
 		href: ROUTE_LINKS.learningIndex,
 	},
 	{
+		imgId: 'faq',
 		title: 'FAQ',
 		href: ROUTE_LINKS.faqIndex,
 		description: 'Чтобы не искать и компилировать ответ на сложный вопрос каждый раз, я собираю их в специальную копилку'
