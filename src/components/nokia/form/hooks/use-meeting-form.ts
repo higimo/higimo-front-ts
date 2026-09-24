@@ -8,6 +8,7 @@ import { useRoute } from 'preact-iso'
 import { MeetingApiRepository } from 'repositories/meeting-api.repository'
 
 import { toast } from 'toast'
+import { MentionSuggest } from 'components/mention-textarea/types'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -28,7 +29,7 @@ export interface UseMeetingFormReturn {
 	resetForm: () => void
 	handleAddPerson: (person: NokiaPersonSimpleType) => void
 	handleRemovePerson: (person: NokiaPersonSimpleType) => void
-	handleTextAssign: (trigger: string, slug: string) => string
+	handleTextAssign: (newMentionList: MentionSuggest[]) => void
 }
 
 export const useMeetingForm = ({
@@ -47,6 +48,7 @@ export const useMeetingForm = ({
 		setIsSubmitting(true)
 
 		try {
+			// TODO: поработать над репозиторием
 			const resultMeeting = await meetingApi.createOrUpdate({
 				id:          data.id,
 				type:        data.type,
@@ -102,12 +104,12 @@ export const useMeetingForm = ({
 	}, [formMethods, isEditMode])
 
 	const handleAddPerson = useCallback((person: NokiaPersonSimpleType) => {
-		const currentPersons = formMethods.getValues('persons') || []
+		// const currentPersons = formMethods.getValues('persons') || []
 
-		const isAlreadyAdded = currentPersons.some(i => i.id === person.id)
-		if (!isAlreadyAdded) {
-			formMethods.setValue('persons', currentPersons.concat([person]))
-		}
+		// const isAlreadyAdded = currentPersons.some(i => i.id === person.id)
+		// if (!isAlreadyAdded) {
+		// 	formMethods.setValue('persons', currentPersons.concat([person]))
+		// }
 	}, [formMethods])
 
 	const handleRemovePerson = useCallback((person: NokiaPersonSimpleType) => {
@@ -116,22 +118,13 @@ export const useMeetingForm = ({
 		formMethods.setValue('persons', updatedPersons)
 	}, [formMethods])
 
-	const handleTextAssign = useCallback((trigger: string, slug: string) => {
-		// Парсим slug (например: "Иван Петров [123]")
-		const match = slug.match(/^(.*?)\s*\[(\d+)\]$/)
-
-		if (match) {
-			const [_, name, personId] = match
-
-			const person = persons.find(i => i.id === parseInt(personId!, 10))
-
-			if (person) {
-				handleAddPerson(person)
-				return trigger + name
-			}
-		}
-
-		return trigger // Если не нашли, возвращаем как есть
+	const handleTextAssign = useCallback((newMentionList: MentionSuggest[]) => {
+		// @ts-ignore
+		const foundedPersons: NokiaPersonSimpleType[] = newMentionList.map(item =>
+			persons.find(person => person.id === item.id)
+		).filter(Boolean)
+		formMethods.setValue('persons', foundedPersons)
+		// handleAddPerson(foundedPersons)
 	}, [handleAddPerson, persons])
 
 	useEffect(resetForm, [path, resetForm])

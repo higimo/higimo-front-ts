@@ -2,7 +2,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"postinstall": "chmod +x scripts/setup-permissions.sh && bash scripts/setup-permissions.sh",
+		"post-install": "chmod +x scripts/setup-permissions.sh && bash scripts/setup-permissions.sh",
 		"dev": "vite",
 		"build": "vite build",
 		"deploy": "bash ./deploy/deploy.sh",
@@ -27,13 +27,12 @@
 		"preact": "^10.29.1",
 		"preact-iso": "^2.12.0",
 		"preact-render-to-string": "^6.5.13",
-		"react-autocomplete-input": "^1.0.31",
 		"react-hook-form": "^7.54.2",
 		"react-yandex-maps": "^4.6.0"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.10.5",
-		"@size-limit/preset-app": "^14.0.0",
+		"@size-limit/file": "14.0.0",
 		"@testing-library/dom": "^10.4.1",
 		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/preact": "^3.2.4",
@@ -46,7 +45,7 @@
 		"eslint": "^8.57.1",
 		"eslint-config-preact": "^1.5.0",
 		"jsdom": "^27.4.0",
-		"size-limit": "^14.0.0",
+		"size-limit": "14.0.0",
 		"typescript": "^5.8.2",
 		"vite": "^6.0.4",
 		"vite-bundle-analyzer": "^0.18.1",
@@ -82,5 +81,8 @@
 			"limit": "96 KB",
 			"gzip": true
 		}
-	]
+	],
+	"allowScripts": {
+		"esbuild@0.25.12": true
+	}
 }

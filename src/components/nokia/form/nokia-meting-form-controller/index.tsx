@@ -8,6 +8,7 @@ import { useRoute } from 'preact-iso'
 import { useApi } from 'hook/fetch/use-api'
 
 import { Loading } from 'components/ui/loading'
+import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
 import { NotFoundData } from 'components/ui/not-found-data'
 
@@ -17,11 +18,11 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
-const getUserSuggestions = (persons: NokiaPersonSimpleType[]): string[] => persons.map(person => {
-	return [
-		person.name,
-		person.nick,
-	].filter(Boolean).join(' ') + ` [${person.id}]`
+const getUserSuggestions = (persons: NokiaPersonSimpleType[]): MentionSuggest[] => persons.map(person => {
+	return {
+		id: person.id,
+		display: [person.name, person.alias, person.nick].filter(Boolean).join(' | ')
+	} as MentionSuggest
 })
 
 const DEFAULT_MEETING_ID = '-1'
@@ -30,6 +31,7 @@ interface PersonFormContainerProps {
   meetingApi?: MeetingApiRepository
 }
 
+// TODO: [LIGHT] почистить весь компонент, много лишнего
 export const NokiaMetingFormController: FunctionComponent<PersonFormContainerProps> = ({
 	meetingApi = new MeetingApiRepository()
 }) => {
@@ -39,7 +41,8 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 	const isLoadingSingleMeeting = useLoadingState([singleMeeting.status])
 	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)
 
-	const [persons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaPerson)
+	// TODO: [BACKEND] на беке получать сортируя по популярности
+	const [persons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaSuggestPerson)
 	const isLoadingPersons = useLoadingState([persons.status])
 	const isEmptyPersons = useEmptyDataState(persons.data)
 

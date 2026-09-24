@@ -8,13 +8,14 @@ import { MeetingApiRepository } from 'repositories/meeting-api.repository'
 import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ShowFormResult } from 'components/form/show-form-result'
+import { MentionSuggest } from 'components/mention-textarea/types'
 
 interface NokiaMeetingFormContainerProps {
 	meetingApi: MeetingApiRepository
 	initialData: NokiaMeetingSimpleType | undefined
 	initialPersons: NokiaPersonSimpleType[]
 	isEditMode: boolean
-	peoplesSuggest: string[]
+	peoplesSuggest: MentionSuggest[]
 	topPersons: NokiaPersonType[]
 	persons: NokiaPersonType[]
 }
@@ -39,7 +40,9 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		handleTextAssign,
 	} = useMeetingForm({ meetingApi, isEditMode, persons })
 
-	const { handleSubmit, setValue, reset } = formMethods
+	const { handleSubmit, setValue, reset, watch } = formMethods
+
+	console.log('persons', watch('persons'))
 
 	useEffect(() => {
 		if (initialData) {
