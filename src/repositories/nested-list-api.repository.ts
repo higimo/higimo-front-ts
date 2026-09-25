@@ -16,7 +16,8 @@ class NestedListApiRepository {
 			})
 			return data.data
 		} catch (error) {
-			// TODO: [LIGHT] Оборачивать бы в HigimoApiError и кидать наружу для тостов
+			// TODO: [MIDDLE] Оборачивать бы в HigimoApiError и кидать наружу для тостов
+			// TODO: [MIDDLE] sendRequest сам консолит ошибку
 			console.error(error)
 			return null
 		}

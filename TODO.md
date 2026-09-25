@@ -78,7 +78,7 @@ TODO: [MIDDLE] https://github.com/welldone-software/react-component-splitter к�
 
 TODO: [MIDDLE] Добавить аналитику поблочную
 
-TODO: [LIGHT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
+TODO: [CONTENT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
 
 TODO: [MIDDLE] интересный код событий для форм https://doka.guide/js/queuemicrotask/
 
