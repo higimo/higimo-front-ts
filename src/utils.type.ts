@@ -279,7 +279,5 @@ export const assertISOString = (str: string): asserts str is ISOString => {
 	}
 }
 
-export const createDateOnly = (date: Date): DateOnlyString => date.toISOString().substring(0, 10) as DateOnlyString
-
 export const isValidDateOnly = (str: string): str is DateOnlyString => /^\d{4}-\d{2}-\d{2}$/.test(str)
 

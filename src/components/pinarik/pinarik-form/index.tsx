@@ -6,17 +6,13 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FormButton } from 'components/form/form-button'
 import { TrafficLight } from 'components/pinarik/traffic-light'
 
-import { createDateOnly } from 'utils.type'
+import { createDateOnly } from 'utils/date/createDateOnly'
 import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
 
 import './style.css'
 
-type FormValues = {
-	date: PinarikType['date']
-	score: PinarikType['score']
-	description: PinarikType['description']
-}
+type FormValues = Omit<PinarikType, 'id'>
 
 const handlePinarikSubmit = async (values: FormValues): Promise<void> => {
 	const pinarik = await pinarikApi.create(values)
@@ -46,7 +42,6 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 			isDirty,
 		},
 		reset
-
 	} = formMethods
 
 	return (
