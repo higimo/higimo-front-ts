@@ -1,26 +1,22 @@
 import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
-import { HigimoServerResponse } from 'api-types/server-response.types'
 import { LibraryType } from 'api-types/library.types'
 
-import { useCallback, useState } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
-import { sendRequest } from 'utils/api/send-request'
+import { libApi } from 'repositories/lib-api.repository'
 import { toast } from 'toast'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
 type FormValues = Omit<LibraryType, 'id'>
 
-type HandleLibSubmitType = (addStatus: (val: HigimoServerResponse) => void) =>
-	(values: FormValues) => Promise<void>
-const handleLibSubmit: HandleLibSubmitType = setStatus => async values => {
+const handleLibSubmit = async (values: FormValues) => {
 	try {
-		const { data: serverResult } = await sendRequest(API_ROUTE.lib, { method: 'POST', values })
-		setStatus(serverResult)
+		const book = await libApi.create(values)
+		if (!book) {
+
+		}
 	} catch (error) {
 		const apiError = error as ApiError
 		toast.error(apiError.message || 'Не получилось добавить пинарик')
@@ -28,23 +24,17 @@ const handleLibSubmit: HandleLibSubmitType = setStatus => async values => {
 }
 
 export const LibraryAdmin: FunctionComponent = () => {
-	const [ status, setStatus ] = useState<HigimoServerResponse>()
 	const {
 		register,
 		handleSubmit,
 		reset,
-		formState: { isSubmitting },
+		formState: { isSubmitting, isDirty },
 	} = useForm<FormValues>()
-
-	const handleReset = useCallback(() => {
-		reset()
-		setStatus(null)
-	}, [reset, setStatus])
 
 	return (
 		<form
 			className="library-admin"
-			onSubmit={handleSubmit(handleLibSubmit(setStatus))}
+			onSubmit={handleSubmit(handleLibSubmit)}
 			autocomplete="off"
 		>
 			{/* TODO: [MEDIUM] генерировать форму */}
@@ -88,18 +78,17 @@ export const LibraryAdmin: FunctionComponent = () => {
 				</div>
 			</div>
 			<div className="library-admin__row">
-				<button type="submit" class="library-admin__button" disabled={isSubmitting}>
+				<button type="submit" className="library-admin__button" disabled={isSubmitting}>
 					{isSubmitting ? 'Добавление…' : 'Добавить'}
 				</button>
-				<p>TODO: [LIGHT] Пока не сохраняет, надо пофиксить</p>
 			</div>
-			{!!status && (
-				<div className="library-admin__row">
-					<p>
-						{status}
-					</p>
-					<button class="library-admin__button" onClick={handleReset}>Сбросить</button>
-				</div>
+			{isDirty && (
+				<button
+					className="library-admin__button"
+					onClick={() => reset()}
+				>
+					Сбросить
+				</button>
 			)}
 		</form>
 	)

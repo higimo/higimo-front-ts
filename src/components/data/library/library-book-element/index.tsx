@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { LibraryBookType } from 'api-types/library.types'
 
+// TODO: [MIDDLE] добавить редактирование удаление
 export const LibraryBookElement: FunctionComponent<LibraryBookType> = (book) => (
 	<div className="library-gallery__item">
 		<div className="library-gallery__cover">
