@@ -4,7 +4,6 @@ import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
 
-import { isDefined } from 'utils/is-defined'
 import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { toast } from 'toast'
 
@@ -20,7 +19,7 @@ const handleListListSubmit = async (values: FormValues): Promise<void> => {
 		return
 	}
 
-	const titles = (values.title ?? '').split('\n').map(t => t.trim()).filter(isDefined)
+	const titles = (values.title ?? '').split('\n').map(t => t.trim()).filter(Boolean)
 	if (titles.length > 1) {
 		titles.map(async title => {
 			const res = await nestedListApi.create({

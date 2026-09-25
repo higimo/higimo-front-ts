@@ -5,8 +5,6 @@ import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { Clusterer, FullscreenControl, Map, Placemark, Polyline, YMaps } from 'react-yandex-maps'
 
-import { isDefined } from 'utils/is-defined'
-
 // TODO: [FEATURE] посещение рек РФ
 
 const DEFAULT_ZOOM = 8
@@ -79,14 +77,14 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 												'okrug' in point && point.okrug,
 												'region' in point && point.region,
 												'country' in point ? point.country : 'Россия',
-											].filter(isDefined).join(', '),
+											].filter(Boolean).join(', '),
 											'description' in point && point.description,
-										].filter(isDefined).join('<br />'),
+										].filter(Boolean).join('<br />'),
 										balloonContentFooter: [
 											'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
 											'population' in point ? `Население: ${point.population} К` : false,
 											point.coord.join(', '),
-										].filter(isDefined).join(' | '),
+										].filter(Boolean).join(' | '),
 									}}
 									options={{
 										iconColor: 'visited' in point && point.visited ? '#344d3d' : '#b3b3b3',

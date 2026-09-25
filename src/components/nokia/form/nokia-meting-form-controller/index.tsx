@@ -10,8 +10,6 @@ import { Loading } from 'components/ui/loading'
 import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
 
-import { isDefined } from 'utils/is-defined'
-
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
@@ -19,7 +17,7 @@ import './style.css'
 const getUserSuggestions = (persons: NokiaPersonSimpleType[]): MentionSuggest[] => persons.map(person => {
 	return {
 		id: person.id,
-		display: [person.name, person.alias, person.nick].filter(isDefined).join(' | ')
+		display: [person.name, person.alias, person.nick].filter(Boolean).join(' | ')
 	} as MentionSuggest
 })
 
