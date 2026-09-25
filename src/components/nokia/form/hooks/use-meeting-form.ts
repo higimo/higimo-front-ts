@@ -1,4 +1,5 @@
 import { ApiError } from 'errors/higimo-api-error'
+import { DateTimeInputType } from 'utils.type'
 import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
@@ -9,9 +10,6 @@ import { useRoute } from 'preact-iso'
 import { isDefined } from 'utils/is-defined'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
-
-// TODO: [LIGHT] уточнить и унести в примитивные типы
-type DateTimeInputType = string
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]

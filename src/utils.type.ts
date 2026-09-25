@@ -96,6 +96,12 @@ export type UnixTimeSecond = Brand<number, 'UnixTimeSecond'>
  */
 export type DateOnlyString = Brand<string, 'DateOnlyString'>
 
+/**
+ * Для инпутов со временем `2024-12-31T23:55`
+ */
+export type DateTimeInputType = string
+
+
 
 /**
  * Число года
