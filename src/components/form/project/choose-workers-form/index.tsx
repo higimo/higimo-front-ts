@@ -9,6 +9,7 @@ import { Message } from 'components/ui/message'
 import { Tag } from 'components/ui/tag'
 import { ShowError } from 'components/ui/show-error'
 
+import { isDefined } from 'utils/is-defined'
 import { toast } from 'toast'
 
 import './style.css'
@@ -75,7 +76,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 									className="worker-tag"
 									onClick={() => onRemoveWorker(worker)}
 								>
-									{[worker.full_name, worker.login].filter(Boolean).join(' ')}
+									{[worker.full_name, worker.login].filter(isDefined).join(' ')}
 								</Tag>
 							</div>
 							<div className="worker-role">

@@ -11,6 +11,8 @@ import { MentionSuggest } from 'components/mention-textarea/types'
 import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 
+import { isDefined } from 'utils/is-defined'
+
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const TextareaPage: FunctionComponent = () => {
@@ -26,7 +28,7 @@ export const TextareaPage: FunctionComponent = () => {
 	const suggestList: MentionSuggest[] = useMemo(() => {
 		return personList.data.map(item => ({
 			id: item.id,
-			display: [item.name, item.alias, item.nick].filter(Boolean).join(' | '),
+			display: [item.name, item.alias, item.nick].filter(isDefined).join(' | '),
 		}))
 	}, [personList.data])
 
@@ -41,6 +43,7 @@ export const TextareaPage: FunctionComponent = () => {
 		<div className="nokia">
 			<pre>{JSON.stringify(mentionList, null, '\t')}</pre>
 			<MentionsInput
+				register={{}}
 				suggestList={suggestList}
 				onMention={appendMentionList}
 			/>

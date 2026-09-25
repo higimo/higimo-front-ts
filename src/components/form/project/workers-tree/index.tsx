@@ -5,6 +5,8 @@ import { useMemo } from 'preact/hooks'
 
 import { Tag } from 'components/ui/tag'
 
+import { isDefined } from 'utils/is-defined'
+
 import './style.css'
 
 type WorkersTreeProps = {
@@ -62,7 +64,7 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 													className="worker-tag"
 													onClick={() => handleClickWorker(worker)}
 												>
-													{[worker.full_name, worker.login].filter(Boolean).join(' ')}
+													{[worker.full_name, worker.login].filter(isDefined).join(' ')}
 												</Tag>
 											))}
 										</div>

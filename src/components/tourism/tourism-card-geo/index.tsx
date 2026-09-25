@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'preact'
 import { PovType } from 'api-types/tourism.types'
 
+import { isDefined } from 'utils/is-defined'
 import cs from 'classnames'
-
 
 import './style.css'
 
@@ -32,7 +32,7 @@ export const TourismCardGeo: FunctionComponent<TourismCardGeoPropsType> = ({ ite
 							'okrug' in povItem && povItem.okrug,
 							'region' in povItem && povItem.region,
 							'country' in povItem ? povItem.country : 'Россия',
-						].filter(Boolean).join(', ')}
+						].filter(isDefined).join(', ')}
 					</div>
 					{'description' in povItem && (
 						<div className="tourism-card-geo__description">

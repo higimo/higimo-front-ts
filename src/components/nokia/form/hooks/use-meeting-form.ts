@@ -6,11 +6,9 @@ import { useCallback, useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
+import { isDefined } from 'utils/is-defined'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
-
-// TODO: [LIGHT] отнести в utils
-const isDefined = <T,>(v: T | undefined): v is T => v !== undefined
 
 // TODO: [LIGHT] уточнить и унести в примитивные типы
 type DateTimeInputType = string
