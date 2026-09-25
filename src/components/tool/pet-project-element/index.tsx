@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { GradientDicType } from 'api-types/json-api.types'
 import { PetProjectType } from 'api-types/petproject.types'
 
-import { getDescription } from 'utils/get-description'
+import { getDescription } from 'utils/text/get-description'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 

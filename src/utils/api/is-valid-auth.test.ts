@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { isValidAuth } from 'utils/is-valid-auth'
+import { isValidAuth } from 'utils/api/is-valid-auth'
 
 const createAuth = (overrides: Partial<Parameters<typeof isValidAuth>[0]> = {}) => ({
 	access_token: 'some-token',

@@ -4,7 +4,7 @@ import { FunctionComponent } from 'preact'
 import { useForm } from 'react-hook-form'
 
 import { getBackPath } from 'utils/url-route/get-back-path'
-import { isValidAuth } from 'utils/is-valid-auth'
+import { isValidAuth } from 'utils/api/is-valid-auth'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 

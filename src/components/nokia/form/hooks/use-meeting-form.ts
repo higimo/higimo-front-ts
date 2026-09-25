@@ -7,7 +7,7 @@ import { useCallback, useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
-import { isDefined } from 'utils/is-defined'
+import { isDefined } from 'utils/types/is-defined'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
 
