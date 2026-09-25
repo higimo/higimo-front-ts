@@ -1,65 +1,64 @@
 import { FunctionComponent } from 'preact'
+import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
-import { useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'
+import { MeetingFormValues, useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'
 
-import { MeetingApiRepository } from 'repositories/meeting-api.repository'
 import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
-import { ShowFormResult } from 'components/form/show-form-result'
-import { MentionSuggest } from 'components/mention-textarea/types'
+import { ISOString } from 'utils.type'
 
 interface NokiaMeetingFormContainerProps {
-	meetingApi: MeetingApiRepository
-	initialData: NokiaMeetingSimpleType | undefined
+	initialMeeting: NokiaMeetingSimpleType | undefined
 	initialPersons: NokiaPersonSimpleType[]
-	isEditMode: boolean
 	peoplesSuggest: MentionSuggest[]
 	topPersons: NokiaPersonType[]
 	persons: NokiaPersonType[]
 }
 
 export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContainerProps> = ({
-	meetingApi,
-	initialData,
+	initialMeeting,
 	initialPersons,
-	isEditMode,
 	peoplesSuggest,
 	topPersons,
 	persons,
 }) => {
+	// TODO: [LIGHT] вот бы удалять ещё научиться
 	const {
 		formMethods,
-		status,
-		isSubmitting,
-		isSubmitted,
 		handleMeetingSubmit,
 		handleAddPerson,
 		handleRemovePerson,
 		handleTextAssign,
-	} = useMeetingForm({ meetingApi, isEditMode, persons })
+	} = useMeetingForm({ persons })
 
-	const { handleSubmit, setValue, reset, watch } = formMethods
+	const { handleSubmit, formState: { isSubmitting, isDirty }, reset } = formMethods
 
-	console.log('persons', watch('persons'))
-
+	// TODO: [HARD] идеально, бы сделать функцию/хук, которая заполняет любые формы
 	useEffect(() => {
-		if (initialData) {
-			Object.entries(initialData).forEach(([key, value]) => {
-				if (key === 'date') {
-					// @ts-ignore TODO: [HARD] небось, тут дата приходит
-					setValue(key, new Date(value * 1000).toISOString().substring(0, 10))
-				} else {
-					// @ts-ignore TODO: [MIDDLE] тут ключи оригинального типа и FormValue нужно синхронизировать
-					setValue(key, value)
-				}
-			})
+		if (!initialMeeting && !initialPersons) {
+			return
 		}
-		if (initialPersons) {
-			setValue('persons', initialPersons)
+		let values: Partial<MeetingFormValues> = {
+			persons: initialPersons ?? [],
 		}
-	}, [initialData, initialPersons, setValue])
+		if (initialMeeting) {
+			const { date, ...rest } = initialMeeting
+
+			if (date) {
+				values.date = new Date(date).toISOString().substring(0, 10) as ISOString
+			}
+			if (!initialMeeting.type) {
+				values.type = 'offline'
+			}
+
+			Object.assign(values, rest)
+		}
+		reset(values, { keepDefaultValues: true })
+	}, [initialMeeting, initialPersons, reset])
+
+	// Обновлять бы поле при изменении другого
 
 	return (
 		<form className="container nokia-form" onSubmit={handleSubmit(handleMeetingSubmit)}>
@@ -81,16 +80,12 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 				<button
 					type="submit"
 					className="default-form__submit"
-					disabled={isSubmitting || isSubmitted}
+					disabled={isSubmitting}
 				>
 					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 				</button>
-
-				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult
-						status={status}
-						reset={() => reset(/*{date: date}*/)}
-					/>
+				{isDirty && (
+					<button type="reset" onClick={() => reset()}>Очистить</button>
 				)}
 			</div>
 		</form>

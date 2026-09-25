@@ -1,4 +1,4 @@
-import { Brand, ISOString, UnixTime } from 'utils.type'
+import { Brand, ISOString } from 'utils.type'
 
 type NokiaTagId     = Brand<number, 'TagId'>
 type NokiaPersonId  = Brand<number, 'PersonId'>
@@ -23,8 +23,7 @@ export type NokiaMeetingSimpleType = {
 	id: NokiaMeetingId
 	/** 'meeting' 'tg' 'offline' */
 	type: string
-	/** unixtime / 1000 */
-	date: UnixTime // TODO: [BACKEND] заменить на бэке на date
+	date: ISOString
 	date_start: ISOString
 	date_end: ISOString
 	description: string

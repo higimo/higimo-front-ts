@@ -10,7 +10,7 @@ export const PinarikEventPreview: FunctionComponent<PinarikEventPreviewPropsType
 	id,
 	pinarik,
 }) => {
-	const data = pinarik.filter(i => i.id == id) || { description: 'data' }
+	const data = pinarik.filter(i => i.id == id) || [{ description: 'data' }]
 
 	return (
 		<div className="test">

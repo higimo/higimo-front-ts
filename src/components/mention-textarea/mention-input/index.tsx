@@ -19,8 +19,9 @@ import '../style.css'
 type MentionsInputPropsType = {
 	suggestList: MentionSuggest[]
 	onMention: (mentionList: MentionSuggest[]) => void
+	register: any
 }
-// TODO: [MEDIUM] добавить в нокиа
+
 export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) => {
 	const [ inputValue, setInputValue ] = useState<string>('')
 	const [ showSuggestion, setShowSuggestion ] = useState<boolean>(false)
@@ -133,6 +134,7 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 				onChange={handleChange}
 				onKeyDown={handleKeyDown}
 				onBlur={handleBlur}
+				{...props.register}
 			/>
 			{showSuggestion && (
 				<MentionList

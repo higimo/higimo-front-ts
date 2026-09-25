@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { PinarikType } from 'api-types/pinarik.types'
 
-import { useAuth } from 'hook/fetch/use-auth'
 import { useCallback, useState } from 'preact/hooks'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'

@@ -8,7 +8,7 @@ import { MentionSuggest } from 'components/mention-textarea/types'
 interface PersonMeetingFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>
 	peoplesSuggest: MentionSuggest[]
-	handleTextAssign: (trigger: string, slug: string) => string
+	handleTextAssign: (newMentionList: MentionSuggest[]) => void
 }
 
 export const NokiaMeetingFields: FunctionComponent<PersonMeetingFieldsProps> = ({
@@ -37,6 +37,29 @@ export const NokiaMeetingFields: FunctionComponent<PersonMeetingFieldsProps> = (
 
 		<div className="form-row">
 			<div>
+				<label>Начало</label>
+			</div>
+			<div>
+				<input {...register('date_start')} type="datetime-local" name="date_start" />
+				<div class="support">
+					<small>Можно оставить пустым</small>
+				</div>
+			</div>
+		</div>
+		<div className="form-row">
+			<div>
+				<label>Окончание</label>
+			</div>
+			<div>
+				<input {...register('date_end')} type="datetime-local" name="date_end" />
+				<div class="support">
+					<small>Можно оставить пустым, помогает рассчёту потраченного времени</small>
+				</div>
+			</div>
+		</div>
+
+		<div className="form-row">
+			<div>
 				<label>Тип встречи</label>
 			</div>
 			<div>
@@ -56,11 +79,12 @@ export const NokiaMeetingFields: FunctionComponent<PersonMeetingFieldsProps> = (
 			</div>
 			<div class="single-row">
 				<MentionsInput
+					register={register('description')}
 					suggestList={peoplesSuggest}
 					onMention={handleTextAssign}
 				/>
 				<div class="support">
-					<small>Упомяните пользователя через @</small>
+					<small>Упоминать персон через @</small>
 				</div>
 			</div>
 		</div>

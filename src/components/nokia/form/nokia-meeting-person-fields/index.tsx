@@ -14,16 +14,16 @@ interface NokiaMeetingPersonFieldsProps {
 	formMethods: UseFormReturn<MeetingFormValues>
 	topPersons: NokiaPersonType[]
 	persons: NokiaPersonType[]
-	handleAddPerson: (person: NokiaPersonSimpleType) => void
-	handleRemovePerson: (person: NokiaPersonSimpleType) => void
+	handleAddPerson: (person: NokiaPersonSimpleType) => () => void
+	handleRemovePerson: (person: NokiaPersonSimpleType) => () => void
 }
 
 export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonFieldsProps> = ({
 	formMethods: { watch },
 	topPersons,
 	persons,
-	handleRemovePerson,
 	handleAddPerson,
+	handleRemovePerson,
 }) => {
 	const selectedPersons = watch('persons') || []
 
@@ -34,14 +34,14 @@ export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonField
 			<div className="form-row">
 				<div className="single-row">
 					<label>С кем </label>
-					<a href={ROUTE_LINKS.nokiaPeopleForm}>+ person</a>
+					<a href={ROUTE_LINKS.nokiaPeopleForm}>[Создать персону]</a>
 				</div>
 				<div className="single-row">
 					{!!selectedPersons.length && (
 						<div>
 							{selectedPersons.map(person => (
 								<NokiaPersonTag
-									onRemove={() => handleRemovePerson(person)}
+									onRemove={handleRemovePerson(person)}
 									person={person}
 								/>
 							))}
@@ -50,6 +50,8 @@ export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonField
 				</div>
 				<div className="single-row">
 					Самые частые
+					<br />
+					<small>Можно кликать</small>
 					<div className="person-selector">
 						{topPersons.map(person => {
 							if (selectedPersonIds.includes(person.id)) {
@@ -57,7 +59,7 @@ export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonField
 							}
 							return (
 								<NokiaPersonTag
-									onClick={() => handleAddPerson(person)}
+									onClick={handleAddPerson(person)}
 									person={person}
 								/>
 							)
@@ -73,7 +75,7 @@ export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonField
 								}
 								return (
 									<NokiaPersonTag
-										onClick={() => handleAddPerson(person)}
+										onClick={handleAddPerson(person)}
 										person={person}
 									/>
 								)

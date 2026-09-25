@@ -1,130 +1,143 @@
 import { ApiError } from 'errors/higimo-api-error'
+import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import { useCallback, useEffect, useState } from 'preact/hooks'
+import { useCallback, useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
-import { MeetingApiRepository } from 'repositories/meeting-api.repository'
-
+import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
-import { MentionSuggest } from 'components/mention-textarea/types'
+
+// TODO: [LIGHT] отнести в utils
+const isDefined = <T,>(v: T | undefined): v is T => v !== undefined
+
+// TODO: [LIGHT] уточнить и унести в примитивные типы
+type DateTimeInputType = string
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
+	date_end: DateTimeInputType
+	date_start: DateTimeInputType
 }
 
 export interface UseMeetingFormProps {
-	meetingApi: MeetingApiRepository
-	isEditMode: boolean
 	persons: NokiaPersonSimpleType[]
 }
 
 export interface UseMeetingFormReturn {
 	formMethods: ReturnType<typeof useForm<MeetingFormValues>>
-	status: any[]
-	isSubmitting: boolean
-	isSubmitted: boolean
 	handleMeetingSubmit: (data: MeetingFormValues) => Promise<void>
-	resetForm: () => void
-	handleRemovePerson: (person: NokiaPersonSimpleType) => void
+	handleAddPerson: (person: NokiaPersonSimpleType) => () => void
+	handleRemovePerson: (person: NokiaPersonSimpleType) => () => void
 	handleTextAssign: (newMentionList: MentionSuggest[]) => void
 }
 
 export const useMeetingForm = ({
-	meetingApi,
-	isEditMode,
 	persons,
 }: UseMeetingFormProps): UseMeetingFormReturn => {
 	const { path } = useRoute()
-	const formMethods = useForm<MeetingFormValues>()
+	const formMethods = useForm<MeetingFormValues>({
+		defaultValues: {
+			date: (new Date()).toISOString().substring(0, 10)
+		}
+	})
 
-	const [status, setStatus] = useState<any[]>([])
-	const [isSubmitting, setIsSubmitting] = useState(false)
-	const [isSubmitted, setIsSubmitted] = useState(false)
-
-	const handleMeetingSubmit = useCallback(async (data: MeetingFormValues) => {
-		setIsSubmitting(true)
-
+	const handleMeetingSubmit = useCallback(async (values: MeetingFormValues) => {
 		try {
-			// TODO: поработать над репозиторием
-			const resultMeeting = await meetingApi.createOrUpdate({
-				id:          data.id,
-				type:        data.type,
-				date:        data.date,
-				date_start:  data.date_start,
-				date_end:    data.date_end,
-				description: data.description,
-			})
-
-			const meetingId = resultMeeting.id || data.id
-
-			if (!meetingId) {
-				throw new Error('Meeting ID not found')
+			let backendEntity: NokiaMeetingSimpleType | null = null
+			// TODO: мб, всё же шаблон createOrUpdate?
+			if (values.id) {
+				backendEntity = await meetingApi.edit({
+					id: values.id,
+					date: values.date,
+					date_start: values.date_start,
+					date_end: values.date_end,
+					description: values.description,
+					type: values.type,
+				})
+				if (!backendEntity) {
+					throw new ApiError('Бекенд не отредактировал', 400)
+				}
+				toast.success(`[${backendEntity.id}] встреча отредактирована`)
+			} else {
+				backendEntity = await meetingApi.create({
+					date: values.date,
+					date_start: values.date_start,
+					date_end: values.date_end,
+					description: values.description,
+					type: values.type,
+				})
+				// TODO: написать guard type функцию, после которой точно задаётся существование сущности в переменно
+				if (!backendEntity) {
+					console.log('backendEntity', backendEntity)
+					throw new ApiError('Бекенд не создал', 400)
+				}
+				toast.success(`[${backendEntity.id}] встреча создана`)
 			}
+
+			console.log('backendEntity,', backendEntity)
+			const meetingId = backendEntity!.id
 
 			let resultPerson = null
-			if (data.persons && data.persons.length > 0) {
-				resultPerson = await meetingApi.syncPerson(meetingId, data.persons)
+			if (values.persons && values.persons.length > 0) {
+				resultPerson = await meetingApi.syncPerson(meetingId, values.persons)
 			}
 
-			setStatus(prev => [
-				...prev,
-				{
-					type: 'meeting',
-					data: resultMeeting,
-				},
-				...(resultPerson ? [{
-					type: 'persons',
-					data: resultPerson,
-				}] : [])
-			])
-
-			if (resultMeeting.id) {
-				formMethods.setValue('id', resultMeeting.id)
-			}
-
-			setIsSubmitted(true)
+			formMethods.setValue('id', meetingId)
+			// TODO: добавить
+			formMethods.reset({
+				...(backendEntity || {}),
+				persons: resultPerson
+			}, { keepDefaultValues: true })
 		} catch (error) {
+			console.log('error', error)
 			const apiError = error as ApiError
-			toast.show(apiError.message)
-			setStatus(prev => prev.concat([{ apiError }]))
-		} finally {
-			setIsSubmitting(false)
+			toast.error(apiError.message)
 		}
 	}, [meetingApi])
 
-	const resetForm = useCallback(() => {
-		if (!isEditMode) {
-			formMethods.reset()
-		}
-		setStatus([])
-		setIsSubmitted(false)
-	}, [formMethods, isEditMode])
+	// TODO: [MIDDLE] да просто внешнюю функцию/две которые аппендят или исключают из массива
+	const handleAddPerson = useCallback((person: NokiaPersonSimpleType) => () => {
+		const currentPersons = formMethods.getValues('persons') ?? []
+		const alreadyExists = currentPersons.some(i => i.id === person.id)
 
-	const handleRemovePerson = useCallback((person: NokiaPersonSimpleType) => {
+		if (alreadyExists) {
+			return
+		}
+
+		formMethods.setValue('persons', currentPersons.concat(person), {
+			shouldDirty: true,
+			shouldValidate: true,
+		})
+	}, [formMethods])
+
+	const handleRemovePerson = useCallback((person: NokiaPersonSimpleType) => () => {
 		const currentPersons = formMethods.getValues('persons') || []
 		const updatedPersons = currentPersons.filter(i => i.id !== person.id)
-		formMethods.setValue('persons', updatedPersons)
+		formMethods.setValue('persons', updatedPersons, {
+			shouldDirty: true,
+			shouldValidate: true,
+		})
 	}, [formMethods])
 
 	const handleTextAssign = useCallback((newMentionList: MentionSuggest[]) => {
-		// @ts-ignore
-		const foundedPersons: NokiaPersonSimpleType[] = newMentionList.map(item =>
-			persons.find(person => person.id === item.id)
-		).filter(Boolean)
-		formMethods.setValue('persons', foundedPersons)
+		const foundedPersons = newMentionList
+			.map(item => persons.find(person => person.id === item.id))
+			.filter(isDefined)
+
+		formMethods.setValue('persons', foundedPersons, {
+			shouldDirty: true,
+			shouldValidate: true,
+		})
 	}, [persons])
 
-	useEffect(resetForm, [path, resetForm])
+	useEffect(() => formMethods.reset(), [path, formMethods.reset])
 
 	return {
 		formMethods,
-		status,
-		isSubmitting,
-		isSubmitted,
 		handleMeetingSubmit,
-		resetForm,
+		handleAddPerson,
 		handleRemovePerson,
 		handleTextAssign,
 	}
