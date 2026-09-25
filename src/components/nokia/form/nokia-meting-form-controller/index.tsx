@@ -38,23 +38,23 @@ export const NokiaMetingFormController: FunctionComponent<PersonFormContainerPro
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 
 	const [singleMeeting] = useApi<NokiaRichMeetingType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
-	const isLoadingSingleMeeting = useLoadingState([singleMeeting.status])
-	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)
-
 	// TODO: [BACKEND] на беке получать сортируя по популярности
 	const [persons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaSuggestPerson)
-	const isLoadingPersons = useLoadingState([persons.status])
-	const isEmptyPersons = useEmptyDataState(persons.data)
-
 	// TODO: [BACKEND] получать самых популярных за последние пол года
 	const [topPersons] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
-	const isLoadingTopPersons = useLoadingState([topPersons.status])
+
+	const isLoading = useLoadingState([singleMeeting.status, persons.status, topPersons.status])
+	const isEmptySingleMeeting = useEmptyDataState(singleMeeting.data)
+	const isEmptyPersons = useEmptyDataState(persons.data)
 	const isEmptyTopPersons = useEmptyDataState(topPersons.data)
 
-	if (isLoadingSingleMeeting || isLoadingPersons || isLoadingTopPersons) {
+	if (isLoading) {
 		return <Loading />
 	}
-	if (isEmptyPersons || isEmptyTopPersons) {
+	if (singleMeeting.status === 'ERROR' || persons.status === 'ERROR' || topPersons.status === 'ERROR') {
+		return <NotFoundData />
+	}
+	if (isEmptySingleMeeting || isEmptyPersons || isEmptyTopPersons) {
 		return <NotFoundData />
 	}
 

@@ -27,7 +27,6 @@ export interface UseMeetingFormReturn {
 	isSubmitted: boolean
 	handleMeetingSubmit: (data: MeetingFormValues) => Promise<void>
 	resetForm: () => void
-	handleAddPerson: (person: NokiaPersonSimpleType) => void
 	handleRemovePerson: (person: NokiaPersonSimpleType) => void
 	handleTextAssign: (newMentionList: MentionSuggest[]) => void
 }
@@ -103,15 +102,6 @@ export const useMeetingForm = ({
 		setIsSubmitted(false)
 	}, [formMethods, isEditMode])
 
-	const handleAddPerson = useCallback((person: NokiaPersonSimpleType) => {
-		// const currentPersons = formMethods.getValues('persons') || []
-
-		// const isAlreadyAdded = currentPersons.some(i => i.id === person.id)
-		// if (!isAlreadyAdded) {
-		// 	formMethods.setValue('persons', currentPersons.concat([person]))
-		// }
-	}, [formMethods])
-
 	const handleRemovePerson = useCallback((person: NokiaPersonSimpleType) => {
 		const currentPersons = formMethods.getValues('persons') || []
 		const updatedPersons = currentPersons.filter(i => i.id !== person.id)
@@ -124,8 +114,7 @@ export const useMeetingForm = ({
 			persons.find(person => person.id === item.id)
 		).filter(Boolean)
 		formMethods.setValue('persons', foundedPersons)
-		// handleAddPerson(foundedPersons)
-	}, [handleAddPerson, persons])
+	}, [persons])
 
 	useEffect(resetForm, [path, resetForm])
 
@@ -136,7 +125,6 @@ export const useMeetingForm = ({
 		isSubmitted,
 		handleMeetingSubmit,
 		resetForm,
-		handleAddPerson,
 		handleRemovePerson,
 		handleTextAssign,
 	}
