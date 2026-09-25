@@ -91,7 +91,7 @@ export const LibraryAdmin: FunctionComponent = () => {
 				<button type="submit" class="library-admin__button" disabled={isSubmitting}>
 					{isSubmitting ? 'Добавление…' : 'Добавить'}
 				</button>
-				<p>Пока не сохраняет, надо пофиксить</p>
+				<p>TODO: [LIGHT] Пока не сохраняет, надо пофиксить</p>
 			</div>
 			{!!status && (
 				<div className="library-admin__row">
