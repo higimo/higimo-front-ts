@@ -12,6 +12,20 @@ type HiringResponseCardPropsType = PasteApiType & {
 	onDelete: () => void
 }
 
+// TODO: [LIGHT] Вынести в утилиты текста
+const getBr = (str: string): string => str.replace(/\n/g, '<br />')
+const getHr = (str: string): string => str.replace(/----/g, '<hr />')
+const linkify = (str: string): string =>
+	str.replace(/https?:\/\/[^\s<>"']+/g, (match) => {
+	try {
+		const url = new URL(match);
+		const label = url.host + url.pathname; // без протокола и query
+		return `<a href="${url.href}">${label}</a>`;
+	} catch {
+		return match; // если URL невалидный — оставляем как есть
+	}
+});
+
 export const HiringResponseCard: FunctionComponent<HiringResponseCardPropsType> = ({
 	id,
 	key,
@@ -38,7 +52,7 @@ export const HiringResponseCard: FunctionComponent<HiringResponseCardPropsType> 
 			<div
 				className="hiring-cards__content"
 				onClick={toggleShowFull}
-				dangerouslySetInnerHTML={{ __html: content }}
+				dangerouslySetInnerHTML={{ __html: linkify(getHr(getBr(content))) }}
 				style={(showFull
 					? { maxHeight: '100%' }
 					: {}
