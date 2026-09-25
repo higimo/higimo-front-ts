@@ -68,56 +68,6 @@ export function getValueOrDefault<T extends Record<string, any>, K extends keyof
 
 export type Brand<T, B extends string> = T & { readonly __brand: B }
 
-/**
- * Проверяет, что значение является брендированным типом с указанным брендом
- *
- * Проверяется в рантайме, только поле __brand, это никаких других проверок быть не может
- *
- * @template T — базовый тип, скрытый за брендом (например, `number`).
- * @template B — строковый литерал бренда (например, `'Positive'`).
- *
- * @param value — значение для проверки.
- * @param brand — ожидаемое имя бренда.
- *
- * @returns `true`, если значение является объектом с полем `__brand`,
- *          равным `brand`; иначе `false`.
- *
- * @example
- * ```ts
- * const x: unknown = asPositive(5)
- * if (isBranded<number, 'Positive'>(x, 'Positive')) {
- *   // x: Brand<number, 'Positive'>
- *   console.log(x) // 5
- * }
- * ```
- */
-export const isBranded = <T, B extends string>(value: unknown, brand: B): value is Brand<T, B> => {
-	return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand
-}
-
-/**
- * Снимает бренд со значения и возвращает его базовый тип
- *
- * В рантайме буквально: `val => val`
- *
- * @template T — базовый тип, который нужно получить
- * @template B — строковый литерал бренда
- *
- * @param value — брендированное значение
- *
- * @returns То же значение с типом `T`
- *
- * @example
- * ```ts
- * const positive: Brand<number, 'Positive'> = asPositive(5)
- * const plain: number = unbrand(positive)
- * console.log(plain + 1) // 6
- * ```
- */
-export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as T
-
-
-
 /*******************************
 		Расширение примитивов
 ********************************/
@@ -126,26 +76,6 @@ export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as 
  * 2024-01-15T10:00:00Z
  */
 export type ISOString = Brand<string, 'ISOString'>
-
-export const toISOString = (date: Date): ISOString => date.toISOString() as ISOString
-
-export const fromISOString = (str: string): Date | null => {
-	if (isISOString(str)) {
-		return new Date(str)
-	}
-	return null
-}
-
-export const isISOString = (str: string): str is ISOString => {
-	return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z$/.test(str)
-}
-
-// Гвард для использования в рантайме
-export const assertISOString = (str: string): asserts str is ISOString => {
-	if (!isISOString(str)) {
-		throw new Error(`Invalid ISO string: ${str}`)
-	}
-}
 
 /**
  * Число в формате эпохи nix
@@ -157,25 +87,20 @@ export type UnixTime = Brand<number, 'UnixTime'>
 /**
  * Число в формате эпохи nix БЕЗ МИЛИСЕКУНД (надо умножать на 1000)
  *
- * Например, 1778155911069
+ * Например, 1790328682 (10 чисел)
  */
 export type UnixTimeSecond = Brand<number, 'UnixTimeSecond'>
-
-
-/**
- * Число года
- */
-export type YearNumber = Brand<number, 'YearNumber'>
-
 
 /**
  * Только дата в формате `2024-01-15`
  */
 export type DateOnlyString = Brand<string, 'DateOnlyString'>
 
-export const createDateOnly = (date: Date): DateOnlyString => date.toISOString().split('T')[0] as DateOnlyString
 
-export const isValidDateOnly = (str: string): str is DateOnlyString => /^\d{4}-\d{2}-\d{2}$/.test(str)
+/**
+ * Число года
+ */
+export type YearNumber = Brand<number, 'YearNumber'>
 
 
 /**
@@ -197,7 +122,6 @@ export type BasePointType = {
 	title: string
 	coord: Coord
 }
-
 
 /**
  * Поизитивное число: 1, 100, но не 0 и -2
@@ -276,3 +200,80 @@ export type KeyDownEvent = TargetedEvent<
 export type ClassNameType = {
 	className?: string
 }
+
+/******************************
+ * Функции над типами
+ ******************************/
+
+/**
+ * Проверяет, что значение является брендированным типом с указанным брендом
+ *
+ * Проверяется в рантайме, только поле __brand, это никаких других проверок быть не может
+ *
+ * @template T — базовый тип, скрытый за брендом (например, `number`).
+ * @template B — строковый литерал бренда (например, `'Positive'`).
+ *
+ * @param value — значение для проверки.
+ * @param brand — ожидаемое имя бренда.
+ *
+ * @returns `true`, если значение является объектом с полем `__brand`,
+ *          равным `brand`; иначе `false`.
+ *
+ * @example
+ * ```ts
+ * const x: unknown = asPositive(5)
+ * if (isBranded<number, 'Positive'>(x, 'Positive')) {
+ *   // x: Brand<number, 'Positive'>
+ *   console.log(x) // 5
+ * }
+ * ```
+ */
+export const isBranded = <T, B extends string>(value: unknown, brand: B): value is Brand<T, B> => {
+	return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand
+}
+
+/**
+ * Снимает бренд со значения и возвращает его базовый тип
+ *
+ * В рантайме буквально: `val => val`
+ *
+ * @template T — базовый тип, который нужно получить
+ * @template B — строковый литерал бренда
+ *
+ * @param value — брендированное значение
+ *
+ * @returns То же значение с типом `T`
+ *
+ * @example
+ * ```ts
+ * const positive: Brand<number, 'Positive'> = asPositive(5)
+ * const plain: number = unbrand(positive)
+ * console.log(plain + 1) // 6
+ * ```
+ */
+export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as T
+
+export const toISOString = (date: Date): ISOString => date.toISOString() as ISOString
+
+export const fromISOString = (str: string): Date | null => {
+	if (isISOString(str)) {
+		return new Date(str)
+	}
+	return null
+}
+
+export const isISOString = (str: string): str is ISOString => {
+	return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z$/.test(str)
+}
+
+// Гвард для использования в рантайме
+export const assertISOString = (str: string): asserts str is ISOString => {
+	if (!isISOString(str)) {
+		throw new Error(`Invalid ISO string: ${str}`)
+	}
+}
+
+export const createDateOnly = (date: Date): DateOnlyString => date.toISOString().substring(0, 10) as DateOnlyString
+
+export const isValidDateOnly = (str: string): str is DateOnlyString => /^\d{4}-\d{2}-\d{2}$/.test(str)
+

@@ -1,4 +1,3 @@
-import { ApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
 import { PinarikType } from 'api-types/pinarik.types'
 
@@ -7,6 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FormButton } from 'components/form/form-button'
 import { TrafficLight } from 'components/pinarik/traffic-light'
 
+import { createDateOnly } from 'utils.type'
 import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
 
@@ -19,17 +19,14 @@ type FormValues = {
 }
 
 const handlePinarikSubmit = async (values: FormValues): Promise<void> => {
-	try {
-		await pinarikApi.create(values)
-	} catch (error) {
-		const apiError = error as ApiError
-		toast.error(apiError.message || 'Не получилось добавить пинарик')
+	const pinarik = await pinarikApi.create(values)
+	if (!pinarik) {
+		toast.error('Не получилось добавить пинарик')
 	}
 }
 
 const DEFAULT_VALUE: FormValues = {
-	// TODO: [LIGHT] здесь бы функцию, которая возвращает правильный тип
-	date: (new Date()).toISOString().substr(0, 10) as PinarikType['date'],
+	date: createDateOnly(new Date()),
 	score: 0,
 	description: '',
 }
