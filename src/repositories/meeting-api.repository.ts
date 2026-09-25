@@ -1,3 +1,4 @@
+import { MessageApiType } from 'api-types/message.types'
 import { NokiaPersonSimpleType, NokiaMeetingSimpleType } from 'api-types/nokia.types'
 
 import { sendRequest } from 'utils/api/send-request'
@@ -42,6 +43,13 @@ class MeetingApiRepository {
 				values: values
 			}
 		)
+		return data.data
+	}
+
+	async delete(id: NokiaMeetingSimpleType['id']): Promise<MessageApiType | null> {
+		const data = await sendRequest<MessageApiType>(API_ROUTE.nokiaMeetingSingle({ id }), {
+				method: 'DELETE',
+		})
 		return data.data
 	}
 

@@ -338,3 +338,25 @@ form.container.nokia-form .single-row:nth-child(2n-1) {
 	border: none;
 	margin: 0;
 }
+
+.nokia-form .nokia-form__action-bar {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: flex-end;
+	background: #f3f3f3;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #e8e8e8;
+}
+
+.nokia-form .nokia-form__delete {
+	border: 1px solid #e8e8e8;
+	background: #fff;
+	border-radius: 4px;
+	padding: 4px 8px;
+}
+
+.nokia-form .nokia-form__delete:hover {
+	background: #e8e8e8;
+}

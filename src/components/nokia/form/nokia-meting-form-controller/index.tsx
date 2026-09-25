@@ -28,7 +28,6 @@ const DEFAULT_MEETING_ID = '-1'
 interface PersonFormContainerProps {
 }
 
-// TODO: [LIGHT] почистить весь компонент, много лишнего
 export const NokiaMetingFormController: FunctionComponent<PersonFormContainerProps> = () => {
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 

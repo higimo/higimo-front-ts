@@ -26,6 +26,7 @@ export interface UseMeetingFormReturn {
 	handleMeetingSubmit: (data: MeetingFormValues) => Promise<void>
 	handleAddPerson: (person: NokiaPersonSimpleType) => () => void
 	handleRemovePerson: (person: NokiaPersonSimpleType) => () => void
+	handleRemoveMeeting: (id: NokiaMeetingSimpleType['id']) => () => void
 	handleTextAssign: (newMentionList: MentionSuggest[]) => void
 }
 
@@ -128,6 +129,10 @@ export const useMeetingForm = ({
 		})
 	}, [persons])
 
+	const handleRemoveMeeting = useCallback((id: NokiaMeetingSimpleType['id']) => () => {
+		meetingApi.delete(id)
+	}, [])
+
 	useEffect(() => formMethods.reset(), [path, formMethods.reset])
 
 	return {
@@ -136,5 +141,6 @@ export const useMeetingForm = ({
 		handleAddPerson,
 		handleRemovePerson,
 		handleTextAssign,
+		handleRemoveMeeting
 	}
 }

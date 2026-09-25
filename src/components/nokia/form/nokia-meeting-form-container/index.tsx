@@ -24,13 +24,13 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 	topPersons,
 	persons,
 }) => {
-	// TODO: [LIGHT] вот бы удалять ещё научиться
 	const {
 		formMethods,
 		handleMeetingSubmit,
 		handleAddPerson,
 		handleRemovePerson,
 		handleTextAssign,
+		handleRemoveMeeting,
 	} = useMeetingForm({ persons })
 
 	const { handleSubmit, formState: { isSubmitting, isDirty }, reset } = formMethods
@@ -58,10 +58,19 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		reset(values, { keepDefaultValues: true })
 	}, [initialMeeting, initialPersons, reset])
 
-	// Обновлять бы поле при изменении другого
-
 	return (
 		<form className="container nokia-form" onSubmit={handleSubmit(handleMeetingSubmit)}>
+			{!!initialMeeting?.id && (
+				<div className="nokia-form__action-bar">
+					<button
+						className="nokia-form__delete"
+						type="button"
+						onClick={handleRemoveMeeting(initialMeeting.id)}
+					>
+						Удалить
+					</button>
+				</div>
+			)}
 			<NokiaMeetingFields
 				formMethods={formMethods}
 				peoplesSuggest={peoplesSuggest}
