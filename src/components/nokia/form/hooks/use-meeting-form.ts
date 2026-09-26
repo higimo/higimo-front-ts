@@ -95,7 +95,6 @@ export const useMeetingForm = ({
 		}
 	}, [meetingApi])
 
-	// TODO: [MIDDLE] да просто внешнюю функцию/две которые аппендят или исключают из массива
 	const handleAddPerson = useCallback((person: NokiaPersonSimpleType) => () => {
 		const currentPersons = formMethods.getValues('persons') ?? []
 		const alreadyExists = currentPersons.some(i => i.id === person.id)

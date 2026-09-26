@@ -8,56 +8,35 @@ class PasteApiRepository {
 	async getByKey(
 		key: PasteApiType['key']
 	): Promise<PasteApiType[] | null> {
-		try {
-			const data = await sendRequest<PasteApiType[]>(API_ROUTE.pasteSingle({ id: key }))
-			return data.data
-		} catch (error) {
-			// TODO: [MIDDLE] что-то получше бы предоставить, тост хотя бы
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<PasteApiType[]>(API_ROUTE.pasteSingle({ id: key }))
+		return data.data
 	}
 
 	async create(
 		values: Partial<Omit<PasteApiType, 'id'>>
 	): Promise<PasteApiType | null> {
-		try {
-			const data = await sendRequest<PasteApiType>(API_ROUTE.paste, {
-				method: 'POST',
-				values: values
-			})
-			return data.data
-		} catch (error) {
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<PasteApiType>(API_ROUTE.paste, {
+			method: 'POST',
+			values: values
+		})
+		return data.data
 	}
 
 	async edit(
 		values: Partial<PasteApiType>
 	): Promise<PasteApiType | null> {
-		try {
-			const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id: values.id || '' }), {
-				method: 'PUT',
-				values: values
-			})
-			return data.data
-		} catch (error) {
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id: values.id || '' }), {
+			method: 'PUT',
+			values: values
+		})
+		return data.data
 	}
 
 	async delete(
 		id: PasteApiType['id']
 	): Promise<PasteApiType | null> {
-		try {
-			const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id }), { method: 'DELETE' })
-			return data.data
-		} catch (error) {
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<PasteApiType>(API_ROUTE.pasteSingle({ id }), { method: 'DELETE' })
+		return data.data
 	}
 }
 

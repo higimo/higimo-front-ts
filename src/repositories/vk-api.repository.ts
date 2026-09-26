@@ -20,6 +20,7 @@ class VkApiRepository {
 
 			const albums = response.response.items
 			if (!albums) {
+				// TODO: [MIDDLE] Использовать VKError
 				throw new Error('Альбомы не загрузились')
 			}
 

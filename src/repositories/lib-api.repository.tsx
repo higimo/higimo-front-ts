@@ -20,22 +20,22 @@ class LibApiRepository {
 		return data.data
 	}
 
-	// async edit(
-	// 	values: Partial<LibraryType>
-	// ): Promise<LibraryType | null> {
-	// 	const data = await sendRequest<LibraryType>(API_ROUTE.libSingle({ id: values.id }), {
-	// 		method: 'PUT',
-	// 		values: values
-	// 	})
-	// 	return data.data
-	// }
+	async edit(
+		values: LibraryType
+	): Promise<LibraryType | null> {
+		const data = await sendRequest<LibraryType>(API_ROUTE.libSingle({ id: values.id }), {
+			method: 'PUT',
+			values: values
+		})
+		return data.data
+	}
 
-	// async delete(
-	// 	id: LibraryType['id']
-	// ): Promise<LibraryType | null> {
-	// 	const data = await sendRequest<LibraryType>(API_ROUTE.libSingle({ id }), { method: 'DELETE' })
-	// 	return data.data
-	// }
+	async delete(
+		id: LibraryType['id']
+	): Promise<LibraryType | null> {
+		const data = await sendRequest<LibraryType>(API_ROUTE.libSingle({ id }), { method: 'DELETE' })
+		return data.data
+	}
 }
 
 export const libApi = new LibApiRepository()

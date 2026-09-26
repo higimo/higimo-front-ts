@@ -12,11 +12,12 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 // 	syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any>
 // }
 
+// TODO: вынести бы в отдельный метод заполнения и возвращать значение
 class MeetingApiRepository {
+	// TODO: решить создавать ли createOrUpdate
 	async create(
 		values: Omit<NokiaMeetingSimpleType, 'id'>
 	): Promise<NokiaMeetingSimpleType | null> {
-		// TODO: вынести бы в отдельный метод заполнения и возвращать значение
 		let newValue = Object.assign({}, values)
 		if (!values.date_start.length) {
 			// @ts-ignore
@@ -48,7 +49,7 @@ class MeetingApiRepository {
 
 	async delete(id: NokiaMeetingSimpleType['id']): Promise<MessageApiType | null> {
 		const data = await sendRequest<MessageApiType>(API_ROUTE.nokiaMeetingSingle({ id }), {
-				method: 'DELETE',
+			method: 'DELETE',
 		})
 		return data.data
 	}
@@ -72,19 +73,6 @@ class MeetingApiRepository {
 			return null
 		}
 	}
-
-	// async createOrUpdate(meeting: Partial<NokiaRichMeetingType>): Promise<any> {
-	// 	console.log('MeetingApiService.createOrUpdate', meeting)
-	// 	const method = meeting.id ? 'PUT' : 'POST'
-	// 	const endpoint = meeting.id
-	// 		? API_ROUTE.nokiaMeetingSingle({ id: meeting.id })
-	// 		: API_ROUTE.nokiaMeeting
-
-	// 	return sendRequest(endpoint, {
-	// 		method,
-	// 		values: compact(omit(meeting, 'id'))
-	// 	})
-	// }
 }
 
 export const meetingApi = new MeetingApiRepository()

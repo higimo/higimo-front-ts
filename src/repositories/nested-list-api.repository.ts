@@ -5,51 +5,36 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+// TODO: [MIDDLE] Оборачивать бы в HigimoApiError и кидать наружу для тостов
+// TODO: [MIDDLE] sendRequest сам консолит ошибку
 class NestedListApiRepository {
 	async create(
 		values: Omit<NestedListItemType, 'id'>
 	): Promise<NestedListItemType | null> {
-		try {
-			const data = await sendRequest<NestedListItemType>(API_ROUTE.lister, {
-				method: 'POST',
-				values: values,
-			})
-			return data.data
-		} catch (error) {
-			// TODO: [MIDDLE] Оборачивать бы в HigimoApiError и кидать наружу для тостов
-			// TODO: [MIDDLE] sendRequest сам консолит ошибку
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<NestedListItemType>(API_ROUTE.lister, {
+			method: 'POST',
+			values: values,
+		})
+		return data.data
 	}
 
 	async edit(
 		values: NestedListItemType
 	): Promise<NestedListItemType | null> {
-		try {
-			const data = await sendRequest<NestedListItemType>(API_ROUTE.listerItemSingle({ id: values.id }), {
-				method: 'PUT',
-				values: values,
-			})
-			return data.data
-		} catch (error) {
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<NestedListItemType>(API_ROUTE.listerItemSingle({ id: values.id }), {
+			method: 'PUT',
+			values: values,
+		})
+		return data.data
 	}
 
 	async delete(
 		id: NestedListItemType['id']
 	): Promise<MessageApiType | null> {
-		try {
-			const data = await sendRequest<MessageApiType>(API_ROUTE.listerItemSingle({ id: id }), {
-				method: 'DELETE',
-			})
-			return data.data
-		} catch (error) {
-			console.error(error)
-			return null
-		}
+		const data = await sendRequest<MessageApiType>(API_ROUTE.listerItemSingle({ id: id }), {
+			method: 'DELETE',
+		})
+		return data.data
 	}
 }
 

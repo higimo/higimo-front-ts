@@ -36,6 +36,7 @@ export const API_ROUTE = {
 	attachAuthor_BAD_WAY: '/api/v2/project/credits', // post
 
 	lib: '/api/v2/lib',
+	libSingle: generateLink('/api/v2/lib/:id'),
 	logism: '/api/v2/logism',
 	logismSingle: '/api/v2/logism/single',
 
