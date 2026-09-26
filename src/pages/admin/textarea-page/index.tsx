@@ -27,6 +27,7 @@ export const TextareaPage: FunctionComponent = () => {
 		return personList.data.map(item => ({
 			id: item.id,
 			display: [item.name, item.alias, item.nick].filter(Boolean).join(' | '),
+			person: item,
 		}))
 	}, [personList.data])
 

@@ -7,7 +7,6 @@ import { useCallback, useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
-import { isDefined } from 'utils/types/is-defined'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
 
@@ -119,14 +118,14 @@ export const useMeetingForm = ({
 	}, [formMethods])
 
 	const handleTextAssign = useCallback((newMentionList: MentionSuggest[]) => {
-		const foundedPersons = newMentionList
-			.map(item => persons.find(person => person.id === item.id))
-			.filter(isDefined)
-
-		formMethods.setValue('persons', foundedPersons, {
-			shouldDirty: true,
-			shouldValidate: true,
-		})
+		formMethods.setValue(
+			'persons',
+			newMentionList.map(item => item.person),
+			{
+				shouldDirty: true,
+				shouldValidate: true,
+			}
+		)
 	}, [persons])
 
 	const handleRemoveMeeting = useCallback((id: NokiaMeetingSimpleType['id']) => () => {

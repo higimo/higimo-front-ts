@@ -14,11 +14,14 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
-const getUserSuggestions = (persons: NokiaPersonSimpleType[]): MentionSuggest[] => persons.map(person => {
+const getUserSuggestions = (
+	persons: NokiaPersonSimpleType[]
+): MentionSuggest[] => persons.map(person => {
 	return {
 		id: person.id,
-		display: [person.name, person.alias, person.nick].filter(Boolean).join(' | ')
-	} as MentionSuggest
+		display: [person.name, person.alias, person.nick].filter(Boolean).join(' | '),
+		person: person
+	}
 })
 
 const DEFAULT_MEETING_ID = '-1'

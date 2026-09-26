@@ -1,5 +1,8 @@
 import { MentionSuggest } from 'components/mention-textarea/types'
 
+/**
+ * Выдаёт наружу очищенные от фигурных скобок данные
+ */
 export const normalizeMentionList = (list: string[], filtredSuggestList: MentionSuggest[]): MentionSuggest[] => {
 	let result: MentionSuggest[] = []
 	for (let mention of list) {

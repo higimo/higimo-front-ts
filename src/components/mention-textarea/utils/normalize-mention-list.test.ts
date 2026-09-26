@@ -7,7 +7,14 @@ import { MentionSuggest } from 'components/mention-textarea/types'
 const makeMentionSuggest = ({ id = 1, display = 'username' }): MentionSuggest => {
 	return {
 		id: id as MentionSuggest['id'],
-		display
+		display,
+		person: {
+			id: id as MentionSuggest['id'],
+			name: display,
+			alias: display,
+			nick: display,
+			description: '',
+		}
 	}
 }
 

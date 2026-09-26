@@ -19,7 +19,7 @@ import '../style.css'
 type MentionsInputPropsType = {
 	suggestList: MentionSuggest[]
 	onMention: (mentionList: MentionSuggest[]) => void
-	register: any
+	register: any // name, onChange, onBlur, ref
 }
 
 export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) => {
@@ -128,13 +128,13 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 	return (
 		<div className="mentions-input">
 			<textarea
+				{...props.register}
 				ref={refTextarea}
 				className="mentions-input__field"
 				value={inputValue}
 				onChange={handleChange}
 				onKeyDown={handleKeyDown}
 				onBlur={handleBlur}
-				{...props.register}
 			/>
 			{showSuggestion && (
 				<MentionList

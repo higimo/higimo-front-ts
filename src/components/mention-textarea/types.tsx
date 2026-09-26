@@ -3,8 +3,7 @@ import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 export type MentionSuggest = {
 	id: NokiaPersonSimpleType['id']
 	display: string
-	// TODO: [MIDDLE] мб, добавить сюда, удобнее будет подкидывать в добавление формы
-	// presons: NokiaPersonSimpleType
+	person: NokiaPersonSimpleType
 }
 
 export type MetionSelector = {
