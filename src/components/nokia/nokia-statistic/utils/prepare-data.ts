@@ -4,7 +4,12 @@ import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
 import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
 
-export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
+// TODO: в ES2026 появились функции группировки и добавления в объект, даже если ключа нет, код сильно упростится
+export const prepareData = (
+	meetings: NokiaMeetingStatisticType[],
+	selectedYearTag: number[],
+	selectedTypeTag: string[]
+): PrepareDataResult => {
 	let meetingTypeDic: { [key: NokiaMeetingStatisticType['type']]: number } = {}
 	let resultDataset: {
 		[key: string]: {
@@ -34,7 +39,7 @@ export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearT
 			resultDataset[keyMonth][curMeeting.type] = 0
 		}
 		meetingTypeDic[curMeeting.type] = 1
-		resultDataset[keyMonth][curMeeting.type] += 1
+		resultDataset[keyMonth][curMeeting.type]! += 1
 	}
 
 	const dataset = Object.keys(resultDataset).map((key) => ({
