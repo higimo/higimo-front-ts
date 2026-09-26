@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent, VNode } from 'preact'
-import { HigimoMapPoint, YaMapPolygon } from 'api-types/tourism.types'
+import { SimpleMapPoint, YaMapPolygon } from 'api-types/tourism.types'
 import { ValueOf } from 'utils.type'
 
 import { useSwitcher } from 'hook/use-switcher'
@@ -13,7 +13,7 @@ import { GEO_OBJECT_OPTIONS } from 'components/tourism/tourism-maps-figure/GEO_O
 import { MAP_MODE } from 'components/tourism/tourism-maps-figure/MAP_MODE'
 
 type TourismMoscowWalkaroundPropsType = {
-	moscowPovPoints: HigimoMapPoint[]
+	moscowPovPoints: SimpleMapPoint[]
 	stateYear2021: YaMapPolygon[]
 	stateYear2024: YaMapPolygon[]
 }

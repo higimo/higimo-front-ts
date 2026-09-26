@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { HigimoMapPoint, YaMapPolygon } from 'api-types/tourism.types'
+import { SimpleMapPoint, YaMapPolygon } from 'api-types/tourism.types'
 
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
@@ -17,7 +17,7 @@ import '../../tourism-style.css'
 import '../yandex-map.css'
 
 type WalkaroundType = {
-	moscowPovPoints: HigimoMapPoint[]
+	moscowPovPoints: SimpleMapPoint[]
 	stateYear2021: YaMapPolygon[]
 	stateYear2024: YaMapPolygon[]
 }

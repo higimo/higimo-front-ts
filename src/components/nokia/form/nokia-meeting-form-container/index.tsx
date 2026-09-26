@@ -8,6 +8,7 @@ import { MeetingFormValues, useMeetingForm } from 'components/nokia/form/hooks/u
 import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ISOString } from 'utils.type'
+import { createDateOnly } from 'utils/date/createDateOnly'
 
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
@@ -47,7 +48,8 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 			const { date, ...rest } = initialMeeting
 
 			if (date) {
-				values.date = new Date(date).toISOString().substring(0, 10) as ISOString
+				// TODO: переделать типы
+				values.date = createDateOnly(new Date()) as unknown as ISOString
 			}
 			if (!initialMeeting.type) {
 				values.type = 'offline'

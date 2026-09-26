@@ -1,117 +1,168 @@
-import { BasePointType, Coord, KeyOf, ValueOf } from 'utils.type'
-
+import { BasePointType, Coord, HexType, KeyOf, ValueOf } from 'utils.type'
 // TODO: [HIGH] Добавить типа "Самые красивые дороги России"
-export type YaMapPolygon = {
+
+
+
+/*******************************
+ * Словари
+ *******************************/
+
+type CountryTitle = 'Россия' | 'Абхазия' | 'Эстония'
+
+/*******************************
+ * Расширяющие типы
+ *******************************/
+/**
+ * Флаг посещённости
+ */
+interface PoiVisited {
+	visited: boolean
+}
+/**
+ * Цвет точки на карте
+ */
+interface PoiColor {
+	color: HexType
+}
+/**
+ * Описания точки интереса
+ */
+interface PoiDescription {
+	description?: string
+}
+/**
+ * Указание страны
+ */
+interface PoiCountry {
+	country: CountryTitle
+}
+/**
+ * Флаг возле Москвы
+ */
+interface PoiNearMoscow {
+	nearMoscow: boolean
+}
+
+/*******************************
+ * Простые типы
+ *******************************/
+export interface YaMapPolygon {
 	type: 'Polygon'
 	coordinates: Coord[][]
 }
 
-export type HigimoMapPoint = {
+export interface SimpleMapPoint extends PoiColor {
 	coord: Coord
 	title: string
-	color: `#${string}` // hex
+	color: HexType
 }
 
-// TODO: [MIDDLE] Перебрать типы
-type CountryTitle = 'Россия' | 'Абхазия' | 'Эстония'
+/*******************************
+ * Сложные расширения
+ *******************************/
 
-interface PovTitle extends BasePointType {
-}
-
-interface PovVisited {
-	visited: boolean
-}
-interface PovColor {
-	color: `#${string}`
-}
-interface PovDescription {
-	description?: string
-}
-interface GlobalAdministrativePosition {
-	country: CountryTitle
+interface GlobalAdministrativePosition extends PoiCountry, PoiNearMoscow {
 	region: string
 	okrug?: string
-	nearMoscow: boolean
 }
+
 interface RussianAdmPosition {
 	region: string
 	okrug?: string
 }
-export interface Country extends PovTitle, PovDescription, PovColor, PovVisited {
+
+/*******************************
+ * Типы Place Of Interest POI
+ *******************************/
+
+export interface Country extends BasePointType, PoiDescription, PoiColor, PoiVisited {
 	type: 'страна'
 	title: CountryTitle
 	country?: never
 	region?: never
 	okrug?: never
 	city?: never
+	/**
+	 * В тысячах
+	 */
 	population: number
 }
-export interface SubjectFederation extends PovTitle, PovDescription, PovColor, PovVisited {
+export interface SubjectFederation extends BasePointType, PoiDescription, PoiColor, PoiVisited {
 	type: 'республика' | 'край' | 'область' | 'город федерального значения' | 'автономная область' | 'автономный округ'
 	country: 'Россия'
 	centerCity: string
+	/**
+	 * Квадратные километры
+	 */
 	area: number
+	/**
+	 * В тысячах
+	 */
 	population: number
+	/**
+	 * Номер ОКАТО
+	 */
 	okato: number
+	/**
+	 * Какие административные единицы содержит
+	 */
 	inside: string
 }
-export interface AdmOrkugMoscow extends PovTitle, PovDescription, PovColor, PovVisited {
+export interface AdmOrkugMoscow extends BasePointType, PoiDescription, PoiColor, PoiVisited {
 	type: 'административный округ Москвы'
 	country: 'Россия'
 	area: number
 	population: number
 }
-export interface TownMoscow extends PovTitle, PovDescription, PovColor, PovVisited {
+export interface TownMoscow extends BasePointType, PoiDescription, PoiColor, PoiVisited {
 	type: 'поселение Москвы'
 	country: 'Россия'
+	/**
+	 * Квадратные километры
+	 */
 	area: number
+	/**
+	 * В тысячах
+	 */
 	population: number
 }
-export interface DistrictMoscow extends PovTitle, PovDescription, PovColor, PovVisited {
+export interface DistrictMoscow extends BasePointType, PoiDescription, PoiColor, PoiVisited {
 	type: 'район Москвы'
 	country: 'Россия'
 	moscowOkrug: string
 	population?: never
 }
-export interface Castle extends PovTitle, PovDescription, PovColor, PovVisited, GlobalAdministrativePosition {
+export interface Castle extends BasePointType, PoiDescription, PoiColor, PoiVisited, GlobalAdministrativePosition {
 	type: 'вымерший город' | 'крепость' | 'каньон' | 'парк' | 'монастырь' | 'каменоломни'
 	city?: string
 	population: number
 }
-export interface Town extends PovTitle, PovDescription, PovColor, PovVisited, GlobalAdministrativePosition {
+export interface Town extends BasePointType, PoiDescription, PoiColor, PoiVisited, GlobalAdministrativePosition {
 	type: 'округ Москвы' | 'город' | 'деревня' | 'ЗАТО'
 	population: number
 }
-export interface Teatre extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
-	country: CountryTitle
+export interface Teatre extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
 	type: 'театр'
 	population?: never
 }
-export interface Build extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
-	country: CountryTitle
+export interface Build extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
 	type: 'здание'
 	population?: never
 }
-export interface Landmark extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
-	country: CountryTitle
+export interface Landmark extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
 	type: 'достопримечательность'
 	population?: never
 }
-export interface Church extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
-	country: CountryTitle
+export interface Church extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
 	type: 'церковь'
 	population?: never
 }
-export interface Memorial extends PovTitle, PovDescription, PovVisited, RussianAdmPosition {
-	country: CountryTitle
+export interface Memorial extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
 	type: 'памятник'
 	population?: never
-	bad: boolean
 }
-export interface Placefield extends PovTitle, PovColor, PovVisited {
+export interface Placefield extends BasePointType, PoiColor, PoiVisited, PoiCountry, PoiNearMoscow {
 	type: 'местечко'
-	country: CountryTitle
-	nearMoscow: boolean
 }
 
 export type PovType =
@@ -130,6 +181,15 @@ export type PovType =
 	| Placefield
 
 
+
+
+
+
+
+
+
+
+// TODO: [MIDDLE] перебрать, это здесь не должно находиться
 export const BAR_COLOR_MAPPING = {
 	'Не посещал': '#F9FAFB',
 	'Любимый': '#DC615C',
@@ -156,6 +216,7 @@ const BAR_ICON_MAPPING = {
 type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
 type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>
 
+// TODO: Вынести в утилиты
 export const barIcon = (barIconName: BarIconDictType): BarIconColorType => BAR_ICON_MAPPING[barIconName]
 
 export type BarPovType = {

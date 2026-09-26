@@ -15,6 +15,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
+// TODO: перенести в утилиты
 const getUriTimestamp = () => new Date().toISOString().replace(/\D/g, '-').substring(0, 23)
 
 export const HiringResponseTodoController: FunctionComponent = () => {

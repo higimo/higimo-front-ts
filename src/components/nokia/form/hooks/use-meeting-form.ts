@@ -1,5 +1,5 @@
 import { ApiError } from 'errors/higimo-api-error'
-import { DateTimeInputType } from 'utils.type'
+import { DateTimeInputType, ISOString } from 'utils.type'
 import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
@@ -9,6 +9,7 @@ import { useRoute } from 'preact-iso'
 
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
+import { createDateOnly } from 'utils/date/createDateOnly'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -35,7 +36,8 @@ export const useMeetingForm = ({
 	const { path } = useRoute()
 	const formMethods = useForm<MeetingFormValues>({
 		defaultValues: {
-			date: (new Date()).toISOString().substring(0, 10)
+			// TODO: переделать типы
+			date: createDateOnly(new Date()) as unknown as ISOString
 		}
 	})
 
