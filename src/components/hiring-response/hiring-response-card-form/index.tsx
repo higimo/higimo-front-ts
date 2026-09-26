@@ -29,7 +29,7 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 			placeholder="Содержание карточки…"
 			value={selectedCard.content}
 			onChange={event => onUpdate({ content: event.currentTarget.value})}
-			rows={10}
+			rows={20}
 			aria-label="Содержание"
 		/>
 		<button type="submit" className="hiring-response-card-form__submit" onClick={onSubmitCard}>

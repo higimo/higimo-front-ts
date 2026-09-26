@@ -6,25 +6,14 @@ import { useToggle } from 'hook/use-toggle'
 import { OnlyAdmin } from 'components/util/only-admin'
 
 import { formatDate } from 'utils/date/format-date'
+import { getBr } from 'utils/text/get-br'
+import { getHr } from 'utils/text/get-hr'
+import { linkify } from 'utils/text/linkify'
 
 type HiringResponseCardPropsType = PasteApiType & {
 	onEdit: () => void
 	onDelete: () => void
 }
-
-// TODO: [LIGHT] Вынести в утилиты текста
-const getBr = (str: string): string => str.replace(/\n/g, '<br />')
-const getHr = (str: string): string => str.replace(/----/g, '<hr />')
-const linkify = (str: string): string =>
-	str.replace(/https?:\/\/[^\s<>"']+/g, (match) => {
-	try {
-		const url = new URL(match);
-		const label = url.host + url.pathname; // без протокола и query
-		return `<a href="${url.href}">${label}</a>`;
-	} catch {
-		return match; // если URL невалидный — оставляем как есть
-	}
-});
 
 export const HiringResponseCard: FunctionComponent<HiringResponseCardPropsType> = ({
 	id,
