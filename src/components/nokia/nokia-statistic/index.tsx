@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef } from 'preact/hooks'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
+import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
 import { prepareData } from 'components/nokia/nokia-statistic/utils/prepare-data'
 import { updateChart } from 'components/nokia/nokia-statistic/utils/update-chart'
 
@@ -25,7 +26,7 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 
 	const yearDataset = useMemo(() => {
 		const dataset = Array.from(
-				new Set(meetingStatistic.map(item => new Date(item.date * 1000).getFullYear()))
+				new Set(meetingStatistic.map(item => getYearFromTimestamp(item.date)))
 			)
 			.filter(i => i != 1970)
 			.sort((a, b) => a - b)

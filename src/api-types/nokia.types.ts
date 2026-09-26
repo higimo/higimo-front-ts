@@ -49,6 +49,6 @@ export type NokiaPersonFullType = NokiaPersonSimpleType & {
 }
 export type NokiaMeetingStatisticType = {
 	id: number
-	date: number
+	date: ISOString
 	type: string
 }

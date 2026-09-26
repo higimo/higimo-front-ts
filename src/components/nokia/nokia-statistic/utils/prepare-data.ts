@@ -2,6 +2,8 @@ import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 
 import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
+import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
+
 export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearTag: number[], selectedTypeTag: string[]): PrepareDataResult => {
 	let meetingTypeDic: { [key: NokiaMeetingStatisticType['type']]: number } = {}
 	let resultDataset: {
@@ -11,9 +13,9 @@ export const prepareData = (meetings: NokiaMeetingStatisticType[], selectedYearT
 	} = {}
 
 	for (let curMeeting of meetings) {
-		const date = new Date(parseInt(curMeeting.date + '000', 10))
+		const date = new Date(curMeeting.date)
 		const monthNumber = ('0' + (date.getMonth() + 1)).slice(-2)
-		const yearNumber = date.getFullYear()
+		const yearNumber = getYearFromTimestamp(date)
 
 		const isSelectedYear = !selectedYearTag.includes(yearNumber) // Только выбранный год
 		const isSelectedtype = !selectedTypeTag.includes(curMeeting.type) // Только выбранный год
