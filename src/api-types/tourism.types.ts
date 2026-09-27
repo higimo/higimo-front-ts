@@ -208,7 +208,6 @@ export type BarPovType = {
 	rating?: string
 	adress?: string
 	description?: string
-	// TODO: [MIDDLE] сделать нормальные типы тегов сразу
 	tags: BarPovTagType[]
 }
 

@@ -4,7 +4,6 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: [MIDDLE] Надо научиться работать с ошибками, здесь или в каждом компоненте
 class PinarikApiRepository {
 	async get(
 		id: PinarikType['id']

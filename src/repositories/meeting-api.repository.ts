@@ -59,7 +59,7 @@ class MeetingApiRepository {
 		persons: NokiaPersonSimpleType[]
 	): Promise<any | null> {
 		try {
-			// TODO: что он возвращает?
+			// TODO: [BACKEND] что он возвращает?
 			// TODO: [BACKEND] сейчас этот эндпоинт отключён
 			return sendRequest(
 				API_ROUTE.nokiaSyncPersonForMeeting({ meetingId: meetingId }),

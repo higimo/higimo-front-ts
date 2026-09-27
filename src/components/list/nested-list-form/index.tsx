@@ -10,7 +10,6 @@ import { toast } from 'toast'
 import './style.css'
 
 const handleListListSubmit = async (values: FormValues): Promise<void> => {
-	// TODO: [MIDDLE] отрабатывать бы ошибки создания
 	if (values.id) {
 		const res = await nestedListApi.edit(values)
 		if (!!res) {

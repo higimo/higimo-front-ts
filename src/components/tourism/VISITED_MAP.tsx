@@ -1,7 +1,7 @@
 import { subjectPederationTypes, onlyPovTypes } from 'api-types/tourism.types'
 import { TagCategory } from 'types'
 
-// TODO: [DATA] вынести в JSON API
+// TODO: [BACKEND] вынести в JSON API
 // Переключение визуализации статистики путешествий
 export const VISUALIZATOR_MAP = {
 	MAP:   'MAP',

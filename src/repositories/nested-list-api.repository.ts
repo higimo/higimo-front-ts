@@ -7,6 +7,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 // TODO: [MIDDLE] Оборачивать бы в HigimoApiError и кидать наружу для тостов
 // TODO: [MIDDLE] sendRequest сам консолит ошибку
+// TODO: [MIDDLE] Надо научиться работать с ошибками, здесь или в каждом компоненте
 class NestedListApiRepository {
 	async create(
 		values: Omit<NestedListItemType, 'id'>

@@ -1,4 +1,3 @@
-// TODO: кжтс, у меня парочка таких функций
 // https://developer.tbank.ru/eacq/intro/developer/setup_js/
 export async function loadJs(url: string) {
 	return new Promise((resolve, reject) => {

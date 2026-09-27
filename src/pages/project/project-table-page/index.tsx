@@ -10,7 +10,6 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { NotFoundPage } from 'pages/not-found-page'
 
-// TODO: [USE_TAGS] useTags
 // Мы потихоньку ведём классификационную работу над советами.
 // Помимо формальных характеристик («диаграмма», «таблица», «сайт», «предмет»)
 // советы помечаются идеями, которые в них излагаются. Таким образом, каждый совет
