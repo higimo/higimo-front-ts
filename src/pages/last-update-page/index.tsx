@@ -6,7 +6,7 @@ import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
 
-import { LastUpdates } from 'components/intro/last-updates'
+import { LastUpdates } from 'components/blog/last-updates'
 import { Loading } from 'components/ui/loading/Loading'
 import { NotFoundData } from 'components/ui/not-found-data/NotFoundData'
 
