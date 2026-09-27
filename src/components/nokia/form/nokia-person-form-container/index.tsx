@@ -4,30 +4,32 @@ import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 import { useEffect } from 'preact/hooks'
 import { usePersonForm } from 'components/nokia/form/hooks/use-person-form'
 
-import { PersonApi } from 'repositories/person-api'
 import { NokiaPersonFormFields } from 'components/nokia/form/nokia-person-form-fields'
-import { ShowFormResult } from 'components/form/show-form-result'
 
 interface NokiaPersonFormContainerProps {
-	personApi: PersonApi
 	initialData: NokiaPersonSimpleType | undefined
 	isEditMode: boolean
 }
 
 export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContainerProps> = ({
-	personApi,
 	initialData,
 	isEditMode,
 }) => {
 	const {
 		formMethods,
-		status,
-		isSubmitting,
-		isSubmitted,
 		handlePersonSubmit,
-	} = usePersonForm({ personApi, isEditMode })
+		resetForm,
+	} = usePersonForm({ isEditMode })
 
-	const { handleSubmit, setValue, reset } = formMethods
+	const {
+		handleSubmit,
+		setValue,
+		formState:
+		{
+			isDirty,
+			isSubmitting
+		}
+	} = formMethods
 
 	useEffect(() => {
 		if (initialData) {
@@ -45,16 +47,12 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 				<button
 					type="submit"
 					className="default-form__submit"
-					disabled={isSubmitting || isSubmitted}
+					disabled={isSubmitting}
 				>
 					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 				</button>
-
-				{(isSubmitted || isSubmitting) && (
-					<ShowFormResult
-						status={status}
-						reset={() => reset(/*{ date: date }*/)}
-					/>
+				{isDirty && (
+					<button type="reset" onClick={resetForm}>Очистить</button>
 				)}
 			</div>
 		</form>
