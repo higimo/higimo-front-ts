@@ -1,19 +1,11 @@
-import { EmptyObject } from 'utils.type'
+import { FunctionComponent } from 'preact'
 import { PetProjectType } from 'api-types/petproject.types'
 
-import { useApi } from 'hook/fetch/use-api'
 import { useEffect } from 'preact/hooks'
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useForm } from 'react-hook-form'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { useRoute } from 'preact-iso'
 
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
-
+import { isDefined } from 'utils/types/is-defined'
 import { probbiApi } from 'repositories/probbi-api.repository'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
 
@@ -27,42 +19,24 @@ const handlePetprojectSubmit = async (values: FormValues) => {
 	}
 }
 
-const DEFAULT_ID = '-1'
+type PetProjectFormPropsType = Partial<PetProjectType>
 
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
-export const PetProjectForm = () => {
-	// TODO: [LIGHT] перенести в page
-	const { params: { projectId = DEFAULT_ID } } = useRoute()
-	const[ probbiSingle ] = useApi<PetProjectType | EmptyObject>(API_ROUTE.probbiSingle({ projectId }))
-	const isLoading = useLoadingState([probbiSingle.status])
-	const isEmpty = useEmptyDataState(probbiSingle.data)
-
+export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = (probbi) => {
 	const {
 		register,
 		handleSubmit,
 		formState,
-		setValue,
 		reset
 	} = useForm<FormValues>()
 
 	useEffect(() => {
-		// TODO: [MIDDLE] можно ли это через дефолты задавать? Хотябы предварительно собрать объект
-		// TODO: [MIDDLE] в соседних формах заполнения дефолтами лучше сделано
-		if (probbiSingle.data && 'id' in probbiSingle.data) {
-			setValue('id', probbiSingle.data.id)
-			setValue('name', probbiSingle.data.name)
-			setValue('description', probbiSingle.data.description)
+		if (isDefined(probbi.id)) {
+			reset(probbi)
 		}
-	}, [projectId, probbiSingle.data])
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isEmpty && projectId !== DEFAULT_ID) {
-		return <NotFoundData />
-	}
+	}, [probbi])
 
 	return (
 		<div className="pet-project">
@@ -71,19 +45,19 @@ export const PetProjectForm = () => {
 					<label htmlFor="id">id</label>
 				</div>
 				<div>
-					<input {...register('id')} readOnly name="id" />
+					<input {...register('id')} readOnly />
 				</div>
 				<div>
 					<label htmlFor="name">name</label>
 				</div>
 				<div>
-					<input {...register('name')} name="name" />
+					<input {...register('name')} />
 				</div>
 				<div>
 					<label htmlFor="description">description</label>
 				</div>
 				<div>
-					<textarea {...register('description')} name="description" />
+					<textarea {...register('description')} />
 				</div>
 				<div className="test">
 					<button
