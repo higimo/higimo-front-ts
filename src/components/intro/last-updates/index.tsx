@@ -2,28 +2,20 @@ import { FunctionComponent } from 'preact'
 import { KeyOf, ValueOf } from 'utils.type'
 import { UpdateNewsType } from 'api-types/last-update.types'
 
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { useApi } from 'hook/fetch/use-api'
-
 import { IntroHeader } from 'components/intro/intro-header'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 import { TileElement } from 'components/ui/tile-element'
 import { TilesGallery } from 'components/ui/tiles-gallery'
 
 import { getDate } from 'utils/date/get-date'
-import { getText } from './getText'
+import { getText } from 'components/intro/last-updates/getText'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
-
-import higimo from './img/higimo.png'
-import rak from './img/rak.png'
-import screen from './img/screen.png'
-import tech from './img/tech.png'
-import tg from './img/tg.svg'
+import higimo from 'components/intro/last-updates/img/higimo.png'
+import rak from 'components/intro/last-updates/img/rak.png'
+import screen from 'components/intro/last-updates/img/screen.png'
+import tech from 'components/intro/last-updates/img/tech.png'
+import tg from 'components/intro/last-updates/img/tg.svg'
 
 import './style.css'
 
@@ -65,19 +57,13 @@ const TileElementCon: FunctionComponent<TileElementConPropsType> = props => (
 	/>
 )
 
-// TODO: [MIDDLE] кжтс, не используется, это надо исправить. Вывести на отдельную страницу, получать данные с бекенда
-export const LastUpdates: FunctionComponent = () => {
-	const [ newsList ] = useApi<UpdateNewsType[]>(API_ROUTE.updateNews, { limit: 12 })
-	const isLoading = useLoadingState([newsList.status])
-	const isListEmpty = useEmptyDataState(newsList.data)
+type LastUpdatesPropsType = {
+	newsList: UpdateNewsType[]
+}
 
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
-
+export const LastUpdates: FunctionComponent<LastUpdatesPropsType> = ({
+	newsList,
+}) => {
 	return (
 		<PrecentationContainer className="last-updates__container">
 			<TextContainer>
@@ -88,7 +74,7 @@ export const LastUpdates: FunctionComponent = () => {
 			<TilesGallery
 				className="last-updates"
 				title="Недавно опубликовал"
-				left={newsList.data.map(item => (
+				left={newsList.map(item => (
 					<TileElementCon key={item.id} {...item} />
 				))}
 			/>

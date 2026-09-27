@@ -1,6 +1,7 @@
 import { IntroLinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const blogInviteData: IntroLinkDataType[] = [
 	{
@@ -12,6 +13,16 @@ export const blogInviteData: IntroLinkDataType[] = [
 		title: 'Фотографии во ВКонтакте',
 		href: EXTERNAL_LINKS.socialVkPhoto,
 		description: 'Выкладываю альбомы из городов, мест и событий так, чтоб можно было увидеть это моими глазами. Все фотографии подписаны, чтоб ничего не упустить'
+	},
+	{
+		title: 'Продакт Кэмп Подкаст',
+		href: EXTERNAL_LINKS.productCampPodcast,
+		description: 'Подкаст про продуктовый менеджмент от лидеров рынка'
+	},
+	{
+		title: 'Личный блог',
+		href: ROUTE_LINKS.higimoBlog,
+		description: 'Делюсь опытом и держу в курсе новиной'
 	},
 	{
 		isArchive: true,
@@ -48,10 +59,5 @@ export const blogInviteData: IntroLinkDataType[] = [
 		title: 'Хорошие новости',
 		href: EXTERNAL_LINKS.goodNews,
 		description: 'Рассказываем позитивные новости о мире, России, технологиях, дизайне и прочем'
-	},
-	{
-		title: 'Продакт Кэмп Подкаст',
-		href: EXTERNAL_LINKS.productCampPodcast,
-		description: 'Подкаст про продуктовый менеджмент от лидеров рынка'
 	},
 ] as const

@@ -174,7 +174,8 @@ const ROUTE_MERCHANT_LINKS = Object.freeze({
 })
 
 export const ROUTE_LINKS = {
-	index:        '/',
+	index:      '/',
+	higimoBlog: '/higimoblog',
 
 	...ROUTE_PROJECT_LINKS,
 	...ROUTE_ACCORD_LINKS,

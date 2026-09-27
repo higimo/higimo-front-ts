@@ -106,6 +106,7 @@ import { NotFoundPage } from 'pages/not-found-page'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
+import { LastUpdatePage } from 'pages/last-update-page'
 
 export function App() {
 	return (
@@ -116,6 +117,7 @@ export function App() {
 					<Router>
 						<Route path={ROUTE_LINKS.index} component={IndexPage} />
 						<Route path={ROUTE_LINKS.serviceIndex} component={ServicePage} />
+						<Route path={ROUTE_LINKS.higimoBlog} component={LastUpdatePage} />
 
 						{/* Магазин */}
 						<Route path={ROUTE_LINKS.merchantIndex} component={MerchantPage} />
