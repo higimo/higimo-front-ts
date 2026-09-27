@@ -1,9 +1,24 @@
 import { FunctionComponent } from 'preact'
-import { LibraryBookType } from 'api-types/library.types'
+import { LibraryType } from 'api-types/library.types'
+import { OnlyAdmin } from 'components/util/only-admin'
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-// TODO: [MIDDLE] добавить редактирование удаление
-export const LibraryBookElement: FunctionComponent<LibraryBookType> = (book) => (
+type LibraryBookElementPropsType = LibraryType & {
+	onRemove: (id: LibraryType['id']) => () => void
+}
+
+export const LibraryBookElement: FunctionComponent<LibraryBookElementPropsType> = (book) => (
 	<div className="library-gallery__item">
+		<OnlyAdmin>
+			<div className="library-gallery__action-bar">
+				<a href={ROUTE_LINKS.libraryAdminEdit({ id: book.id })}>
+					✏️
+				</a>
+				<span onClick={book.onRemove(book.id)}>
+					❌
+				</span>
+			</div>
+		</OnlyAdmin>
 		<div className="library-gallery__cover">
 			<img className="library-gallery__img" src={book.img} loading="lazy" />
 		</div>
