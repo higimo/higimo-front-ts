@@ -54,7 +54,6 @@ export const useHiringResponseCardForm = ({
 	const handleSubmit = useCallback(async () => {
 		const isUpdateMode = selectedCard.id > 0
 		if (isUpdateMode) {
-			// TODO: [MIDDLE] мб, об ошибках сообщать?
 			await pasteApi.edit(selectedCard)
 		} else {
 			await pasteApi.create(selectedCard)

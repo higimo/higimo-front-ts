@@ -1,7 +1,10 @@
 import { BasePointType, Coord, HexType, KeyOf, ValueOf } from 'utils.type'
+
+import { BAR_COLOR_MAPPING } from 'dic/tourism/BAR_COLOR_MAPPING'
+import { BAR_ICON_MAPPING } from 'dic/tourism/BAR_ICON_MAPPING'
+import { BAR_TAGS_CATEGORY } from 'dic/tourism/BAR_TAGS_CATEGORY'
+
 // TODO: [HIGH] Добавить типа "Самые красивые дороги России"
-
-
 
 /*******************************
  * Словари
@@ -189,35 +192,10 @@ export type PovType =
 
 
 
-// TODO: [MIDDLE] перебрать, это здесь не должно находиться
-export const BAR_COLOR_MAPPING = {
-	'Не посещал': '#F9FAFB',
-	'Любимый': '#DC615C',
-	'Хорошо': '#47935A',
-	'Обычно': '#939EAA',
-} as const
-export const barColor = (mood: KeyOf<typeof BAR_COLOR_MAPPING>): ValueOf<typeof BAR_COLOR_MAPPING> => BAR_COLOR_MAPPING[mood]
+type BarPovTagType = ValueOf<typeof BAR_TAGS_CATEGORY>[number]
 
-// TODO: [BACKEND] Эту группировку унести на бекенд
-export const barTagsCategory = {
-	'Отношение': ['Не посещал', 'Любимый', 'Хорошо', 'Обычно'],
-	'Алкоголь': ['пиво', 'крафт', 'сидр', 'коктейли', 'настойки', 'минту', 'вино', 'отличный крафт'],
-	'Еда': ['еда', 'бургер', 'отличный бургер', 'рёбрышки', 'орешки', 'чай'],
-	'Прочее': ['музыка', 'стендап', 'ресторан', 'тусовка', 'интерьер', 'золотые настойки', 'франшиза']
-} as const
-
-type BarPovTagType = ValueOf<typeof barTagsCategory>[number]
-
-const BAR_ICON_MAPPING = {
-	'Бар/паб': 'islands#blueBarIcon',
-	'Ресторан': 'islands#blueFoodIcon',
-	'В сердечке': 'islands#blueHeartIcon',
-} as const
-type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
-type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>
-
-// TODO: Вынести в утилиты
-export const barIcon = (barIconName: BarIconDictType): BarIconColorType => BAR_ICON_MAPPING[barIconName]
+export type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
+export type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>
 
 export type BarPovType = {
 	id: number

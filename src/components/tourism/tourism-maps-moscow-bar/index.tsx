@@ -1,4 +1,5 @@
-import { BarPovRealTags, BarPovType, barTagsCategory } from 'api-types/tourism.types'
+import { BarPovRealTags, BarPovType } from 'api-types/tourism.types'
+import { BAR_TAGS_CATEGORY } from 'dic/tourism/BAR_TAGS_CATEGORY'
 import { Coord } from 'utils.type'
 import { TagCategory } from 'types'
 
@@ -37,7 +38,7 @@ export const TourismMapsMoscowBar = () => {
 
 	const tagGroups: TagCategory[] = useMemo(
 		() => {
-			return Object.entries(barTagsCategory).map(([categoryName, tags], indexGroup) => ({
+			return Object.entries(BAR_TAGS_CATEGORY).map(([categoryName, tags], indexGroup) => ({
 				group: {
 					id: indexGroup,
 					title: categoryName,
@@ -48,7 +49,7 @@ export const TourismMapsMoscowBar = () => {
 				}))
 			}))
 		},
-		[barTagsCategory]
+		[BAR_TAGS_CATEGORY]
 	)
 
 	const {
