@@ -23,21 +23,19 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 
 	const {
 		handleSubmit,
-		setValue,
 		formState:
 		{
 			isDirty,
 			isSubmitting
-		}
+		},
+		reset,
 	} = formMethods
 
 	useEffect(() => {
 		if (initialData) {
-			Object.entries(initialData).forEach(([key, value]) => {
-				setValue(key as keyof NokiaPersonSimpleType, value)
-			})
+			reset(initialData)
 		}
-	}, [initialData, setValue])
+	}, [initialData, reset])
 
 	return (
 		<form className="container nokia-form" onSubmit={handleSubmit(handlePersonSubmit)}>
