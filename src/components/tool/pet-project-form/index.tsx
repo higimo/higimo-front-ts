@@ -33,6 +33,7 @@ const DEFAULT_ID = '-1'
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
 export const PetProjectForm = () => {
+	// TODO: [LIGHT] перенести в page
 	const { params: { projectId = DEFAULT_ID } } = useRoute()
 	const[ probbiSingle ] = useApi<PetProjectType | EmptyObject>(API_ROUTE.probbiSingle({ projectId }))
 	const isLoading = useLoadingState([probbiSingle.status])

@@ -156,6 +156,8 @@ const ROUTE_FUNNY_LINKS = Object.freeze({
 const ROUTE_LIBRARY_LINKS = Object.freeze({
 	libraryIndex: '/lib/',
 	libraryAdmin: '/lib/admin/',
+	libraryAdminEdit_CONST: '/lib/admin/:id',
+	libraryAdminEdit: generateLink('/lib/admin/:id'),
 })
 
 // Сервисы о себе

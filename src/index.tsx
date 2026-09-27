@@ -193,6 +193,7 @@ export function App() {
 						{/* Сервисы о себе */}
 						<Route path={ROUTE_LINKS.libraryIndex} component={LibIndexPage} />
 						<PrivateRoute path={ROUTE_LINKS.libraryAdmin} component={LibAdminPage} />
+						<PrivateRoute path={ROUTE_LINKS.libraryAdminEdit_CONST} component={LibAdminPage} />
 						<Route path={ROUTE_LINKS.emailer} component={EmailerPage} />
 						<Route path={ROUTE_LINKS.comoji} component={ComojiPage} />
 						<Route path={ROUTE_LINKS.magic} component={MagicBallPage} />

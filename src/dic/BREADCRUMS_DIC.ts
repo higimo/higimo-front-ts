@@ -18,6 +18,7 @@ type ExcludeRouteType =
 	| typeof ROUTE_LINKS['tourismNashe_CONST']
 	| typeof ROUTE_LINKS['petProjectEdit'] | typeof ROUTE_LINKS['petProjectEdit_CONST']
 	| typeof ROUTE_LINKS['cinemaScriptDetail'] | typeof ROUTE_LINKS['cinemaScriptDetail_CONST']
+	| typeof ROUTE_LINKS['libraryAdminEdit'] | typeof ROUTE_LINKS['libraryAdminEdit_CONST']
 	// Рабочие URI
 	| typeof ROUTE_LINKS['TODO']
 

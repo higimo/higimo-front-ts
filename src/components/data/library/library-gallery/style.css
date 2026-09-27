@@ -37,6 +37,7 @@
 	font-size: 16px;
 	line-height: 1.3;
 	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
+	position: relative;
 }
 
 .library-gallery__cover {
@@ -79,4 +80,30 @@
 
 .library-gallery__anons {
 	display: none;
+}
+
+.library-gallery__action-bar {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    background: #ffffff54;
+    padding: 4px 8px;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+	opacity: 0;
+	transition: all 100ms ease-out;
+}
+
+.library-gallery__item:hover .library-gallery__action-bar {
+	opacity: 1;
+}
+
+.library-gallery__action-bar a,
+.library-gallery__action-bar span {
+	cursor: pointer;
+	border: none;
 }
