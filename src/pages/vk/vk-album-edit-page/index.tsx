@@ -15,6 +15,7 @@ import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { vkSession } from 'context/vk'
 
+import { as } from 'utils/types/as'
 import { toast } from 'toast'
 import { VkApi } from 'repositories/vk-api.repository'
 
@@ -43,7 +44,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 
 	useEffect(() => {
 		if (status === 'LOADED') {
-			fetchPhotos(session.user.id, albumId as unknown as Positive)
+			fetchPhotos(session.user.id, as<Positive>(albumId))
 		} else if (status === 'ERROR') {
 			toast.error(error.message)
 		}
