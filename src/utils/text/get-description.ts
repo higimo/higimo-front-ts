@@ -1,4 +1,5 @@
-// TODO: называть бы её likify
+import { linkify } from 'utils/text/linkify'
+
 /**
  * Пет проектам описание подготавливается
  * http обрамляет в ссылки
@@ -7,4 +8,4 @@
  * @param str Описание пет-проекта
  * @returns string
  */
-export const getDescription = (str: string) => (str || '').replace(/(https:\/\/[\S]+)/g, '<a href="$1">Ссылка</a>').substring(0, 320)
+export const getShortDescription = (str?: string) => linkify((str || '')).substring(0, 320)

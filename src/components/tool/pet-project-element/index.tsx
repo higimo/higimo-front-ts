@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { GradientDicType } from 'api-types/json-api.types'
 import { PetProjectType } from 'api-types/petproject.types'
 
-import { getDescription } from 'utils/text/get-description'
+import { getShortDescription } from 'utils/text/get-description'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
@@ -25,7 +25,7 @@ export const PetProjectElement: FunctionComponent<PetProjectElementPropsType> = 
 		<div className="pet-project__title">{project.name}</div>
 		<div
 			className="pet-project__description"
-			dangerouslySetInnerHTML={{ __html: getDescription(project.description)}}
+			dangerouslySetInnerHTML={{ __html: getShortDescription(project.description)}}
 		/>
 		<a
 			href={ROUTE_LINKS.petProjectEdit({ projectId: project.id })}

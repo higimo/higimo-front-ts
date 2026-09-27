@@ -8,15 +8,13 @@ import { useApi } from 'hook/fetch/use-api'
 import { Loading } from 'components/ui/loading/Loading'
 
 import { debounce } from '@github/mini-throttle'
-import { toast } from 'toast'
+import { getSlugTimestamp } from 'utils/url-route/get-slug-timestamp'
 import { pasteApi } from 'repositories/paste-api.repository'
+import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 import './style.css'
-
-// TODO: перенести в утилиты
-const getUriTimestamp = () => new Date().toISOString().replace(/\D/g, '-').substring(0, 23)
 
 export const HiringResponseTodoController: FunctionComponent = () => {
 	const [ data ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
@@ -31,7 +29,7 @@ export const HiringResponseTodoController: FunctionComponent = () => {
 				if (data.status !== 'LOADED' && !data.data.length) {
 					toast.warning('Что-то там не прогрузилось, попробуй обновить что-ли?')
 				}
-				await pasteApi.create({ key: `hiring-todo/${getUriTimestamp()}`, content })
+				await pasteApi.create({ key: `hiring-todo/${getSlugTimestamp()}`, content })
 				const result = await pasteApi.edit({
 					id: data.data[0]?.id,
 					key: 'hiring-todo',

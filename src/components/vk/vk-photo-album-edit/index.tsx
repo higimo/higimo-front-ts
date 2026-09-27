@@ -5,7 +5,7 @@ import { VkPhotoType } from 'api-types/vk.types'
 import { useCallback } from 'preact/hooks'
 
 import { debounce } from '@github/mini-throttle'
-import { getPhotosUrl } from 'utils/get-photos-url'
+import { getVkPhotosUrl } from 'utils/url-route/get-photos-url'
 import { toast } from 'toast'
 import { VkApi } from 'repositories/vk-api.repository'
 
@@ -43,7 +43,7 @@ export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({
 			{photos.map(photo => (
 				<div key={photo.id} className="vk-photos__element">
 					<img
-						src={getPhotosUrl(photo.sizes)}
+						src={getVkPhotosUrl(photo.sizes)}
 						className="vk-photos__photo"
 					/>
 					<textarea

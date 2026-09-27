@@ -1,0 +1,1 @@
+export const getSlugTimestamp = () => new Date().toISOString().replace(/\D/g, '-').substring(0, 23);
