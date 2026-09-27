@@ -4,6 +4,7 @@ import { useMemo } from 'preact/hooks'
 
 // TODO: [MEDIUM] см. useYearFilter(AND_GROUP_STRATEGY)
 // TODO: [MEDIUM] см. filterTagAndGroupsStrategy
+// TODO: [MEDIUM] надо переделать сравнение на внешнюю функцию
 export const useFilterByTags = <T extends DataItemWithTags>(
 	list: T[],
 	selectedIds: Set<TagName>,
