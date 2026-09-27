@@ -22,7 +22,11 @@ export const usePersonForm = ({
 	const formMethods = useForm<NokiaPersonSimpleType>({})
 
 	const handlePersonSubmit = useCallback(async (data: NokiaPersonSimpleType) => {
-		await personApi.create(data)
+		if (data.id) {
+			await personApi.edit(data)
+		} else {
+			await personApi.create(data)
+		}
 	}, [personApi])
 
 	const resetForm = useCallback(() => {
