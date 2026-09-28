@@ -4,12 +4,12 @@ import { IntroLinkDataType } from 'utils.type'
 import { useAuth } from 'hook/fetch/use-auth'
 import { isNotFound } from 'context/global'
 
-import { aboutInviteList } from 'dic/intra-links/about-invite'
-import { blogInviteData } from 'dic/intra-links/blog-invite'
-import { contactListData } from 'dic/intra-links/contact-list'
-import { funnyList } from 'dic/intra-links/funny-invite'
-import { shareKnowledgeData } from 'dic/intra-links/share-knowledge'
-import { toolListData } from 'dic/intra-links/tools-intro'
+import { aboutInviteList } from 'data/intra-links/about-invite'
+import { blogInviteData } from 'data/intra-links/blog-invite'
+import { contactListData } from 'data/intra-links/contact-list'
+import { funnyList } from 'data/intra-links/funny-invite'
+import { shareKnowledgeData } from 'data/intra-links/share-knowledge'
+import { toolListData } from 'data/intra-links/tools-intro'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 

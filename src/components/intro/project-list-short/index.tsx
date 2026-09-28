@@ -15,8 +15,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
-import { PROJECT_SHORT_TAGS } from './PROJECT_SHORT_TAGS'
+import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
+import { PROJECT_SHORT_TAGS } from 'dic/project/PROJECT_SHORT_TAGS'
 
 import './style.css'
 

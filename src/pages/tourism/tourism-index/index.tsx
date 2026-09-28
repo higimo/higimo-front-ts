@@ -2,11 +2,11 @@ import { CityStarsType } from 'api-types/city-stars.types'
 import { FunctionComponent } from 'preact'
 import { YaMapType } from 'api-types/yamap.types'
 
+import { useApi } from 'hook/fetch/use-api'
 import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
 import { useJsonApi } from 'hook/fetch/use-json-api'
 import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { usePageTitle } from 'hook/browser/use-page-title'
-import { useApi } from 'hook/fetch/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStarsIntro } from 'components/tourism/city-stars-intro'
@@ -24,7 +24,7 @@ import { TourismRow } from 'components/tourism/tourism-row'
 import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
 
-import { ADVENTURES } from 'components/tourism/tourism-adventure/ADVENTURES'
+import { adventures } from 'data/tourism/adventures'
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
@@ -68,7 +68,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<TourismHeader secondary>Билеты в приключения</TourismHeader>
 				<TourismRow>
-					<TourismAdventure adventure={ADVENTURES[0]!} />
+					<TourismAdventure adventure={adventures[0]!} />
 					<TourismAdventureEmpty />
 				</TourismRow>
 			</TextContainer>

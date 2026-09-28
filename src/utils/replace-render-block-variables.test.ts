@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'vitest'
-import { replaceRenderBlockVariables } from './replace-render-block-variables'
+
+import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 
 describe('replaceRenderBlockVariables', () => {
 

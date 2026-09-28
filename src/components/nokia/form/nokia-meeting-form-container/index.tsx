@@ -3,12 +3,12 @@ import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
-import { MeetingFormValues, useMeetingForm } from 'components/nokia/form/hooks/use-meeting-form'
+import { MeetingFormValues, useMeetingForm } from 'hook/nokia/use-meeting-form'
 
 import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
 import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
 import { ISOString } from 'utils.type'
-import { createDateOnly } from 'utils/date/createDateOnly'
+import { createDateOnly } from 'utils/date/create-date-only'
 
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined

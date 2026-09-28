@@ -2,7 +2,7 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { useState, useCallback } from 'preact/hooks'
 
-import { smoothScroll } from 'utils/smooth-scroll'
+import { smoothScroll } from 'utils/browser/smooth-scroll'
 import { todayStr } from 'utils/date/today-str'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'

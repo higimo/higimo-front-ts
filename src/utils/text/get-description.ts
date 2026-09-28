@@ -1,5 +1,7 @@
 import { linkify } from 'utils/text/linkify'
 
+// TODO: написать тесты и JSDoc
+
 /**
  * Пет проектам описание подготавливается
  * http обрамляет в ссылки

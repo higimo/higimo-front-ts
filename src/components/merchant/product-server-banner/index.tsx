@@ -5,7 +5,7 @@ import { useMerchant } from 'hook/data/use-merchant'
 
 import { ProductBanner } from 'components/merchant/product-banner'
 
-import { PRODUCT } from 'components/merchant/data'
+import { PRODUCT } from 'data/merchant/merchant-product-cache'
 
 type ProductServerBannerPropsType = {
 	productKey: KeyOf<typeof PRODUCT>

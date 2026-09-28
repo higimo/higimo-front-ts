@@ -1,4 +1,4 @@
-import { Brand } from 'utils.type';
+import { Brand } from 'utils.type'
 
 /**
  * Снимает бренд со значения и возвращает его базовый тип
@@ -20,4 +20,5 @@ import { Brand } from 'utils.type';
  * ```
  */
 
-export const unbrand = <T, B extends string>(value: Brand<T, B>): T => value as T;
+export const unbrand = <T, B extends string>(value: Brand<T, B>): T =>
+	value as T

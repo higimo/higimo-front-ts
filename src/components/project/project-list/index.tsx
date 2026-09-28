@@ -5,7 +5,7 @@ import { useMemo } from 'preact/hooks'
 
 import { ProjectElement } from 'components/project/project-element'
 
-import { packElements } from 'components/project/utils/pack-elements'
+import { packElements } from 'utils/project/pack-elements'
 
 import './style.css'
 

@@ -1,3 +1,4 @@
+// TODO: написать тесты и JSDoc
 export const linkify = (str: string): string =>
 	str.replace(/https?:\/\/[^\s<>"']+/g, (match) => {
 		try {

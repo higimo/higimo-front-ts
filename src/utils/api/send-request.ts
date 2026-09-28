@@ -20,6 +20,7 @@ export interface ApiResponse<T = any> {
 
 const FREEZE_META = {} as const
 
+// TODO: пора переписать на fetch
 export const sendRequest = <T = any>(
 	url: string,
 	{

@@ -5,7 +5,7 @@ import { useMemo } from 'preact/hooks'
 
 import { ListItemRenderer } from 'components/block-renderer/renrerers/ListItemRenderer'
 
-import { isListItem } from 'components/block-renderer/utils/type-guard/is-list-item'
+import { isListItem } from 'utils/types/is-list-item'
 
 type ListRendererPropsType = ListBlock
 

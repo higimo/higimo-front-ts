@@ -6,7 +6,7 @@ import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-import { toolListData } from 'dic/intra-links/tools-intro'
+import { toolListData } from 'data/intra-links/tools-intro'
 
 import './style.css'
 

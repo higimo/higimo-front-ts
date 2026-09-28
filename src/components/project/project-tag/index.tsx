@@ -1,6 +1,6 @@
 import cs from 'classnames'
 
-import { ProjectRoutingFilterNameType } from 'components/project/filter_dictionary'
+import { ProjectRoutingFilterNameType } from 'dic/project/PROJECT_FILTER_DIC'
 import { FunctionComponent } from 'preact'
 
 import httpBuildQuery from 'http-build-query'

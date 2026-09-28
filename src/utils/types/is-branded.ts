@@ -1,9 +1,5 @@
-import { Brand } from 'utils.type';
+import { Brand } from 'utils.type'
 
-/******************************
- * Функции над типами
- ******************************/
-// TODO: вынести в утилиты
 /**
  * Проверяет, что значение является брендированным типом с указанным брендом
  *
@@ -16,7 +12,7 @@ import { Brand } from 'utils.type';
  * @param brand — ожидаемое имя бренда.
  *
  * @returns `true`, если значение является объектом с полем `__brand`,
- *          равным `brand`; иначе `false`.
+ *          равным `brand`, иначе `false`.
  *
  * @example
  * ```ts
@@ -29,5 +25,5 @@ import { Brand } from 'utils.type';
  */
 
 export const isBranded = <T, B extends string>(value: unknown, brand: B): value is Brand<T, B> => {
-	return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand;
-};
+	return typeof value === 'object' && value !== null && '__brand' in value && (value as any).__brand === brand
+}

@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
-import { usePersonForm } from 'components/nokia/form/hooks/use-person-form'
+import { usePersonForm } from 'hook/nokia/use-person-form'
 
 import { NokiaPersonFormFields } from 'components/nokia/form/nokia-person-form-fields'
 

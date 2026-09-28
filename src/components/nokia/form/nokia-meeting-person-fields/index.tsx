@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 import { UseFormReturn } from 'react-hook-form'
-import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
+import { MeetingFormValues } from 'hook/nokia/use-meeting-form'
 
 import { Fragment } from 'preact/jsx-runtime'
 

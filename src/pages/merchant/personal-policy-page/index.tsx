@@ -12,9 +12,9 @@ import { NotFoundData } from 'components/ui/not-found-data'
 import { MerchantPolicyNavigation } from 'components/merchant/merchant-policy-navigation'
 import { TextContainer } from 'components/ui/text-container'
 
-import { setRenderBlockVariables } from 'components/stores/render-block-variables-store'
+import { setRenderBlockVariables } from 'context/render-block-variables-store'
 
-import { ADRESS, BEGET_ADRESS, NAME, PHONE } from 'components/merchant/merchant-const'
+import { ADRESS, BEGET_ADRESS, NAME, PHONE } from 'data/merchant/merchant-contacts'
 
 import '../merchant-style.css'
 

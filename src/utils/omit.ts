@@ -15,13 +15,12 @@
  * const result = omit(data, 'b', 'd')
  * // Результат: { a: 1, c: 3 }
  */
-
 export const omit = <T extends Record<string, any>, K extends keyof T>(
 	obj: T,
 	...keys: K[]
 ): Omit<T, K> => {
-	const keysToRemove = new Set(keys);
+	const keysToRemove = new Set(keys)
 	return Object.fromEntries(
 		Object.entries(obj).filter(([key]) => !keysToRemove.has(key as K))
-	) as Omit<T, K>;
-};
+	) as Omit<T, K>
+}

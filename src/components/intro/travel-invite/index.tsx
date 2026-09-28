@@ -5,7 +5,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
-import { tourismMenuLinks } from 'components/tourism/tourism-main-menu/data'
+import { tourismMenuLinks } from 'data/tourism/tourism-menu-data'
 
 import './style.css'
 

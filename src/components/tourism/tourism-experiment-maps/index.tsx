@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
 
-import { tourismExperimentMapsData } from './data'
+import { tourismExperimentMapsData } from '../../../data/tourism/tourism-experiment-map-data'
 
-import { TourismBulletList } from '../tourism-bullet-list'
-import { TourismBulletListItem } from '../tourism-bullet-list-item'
+import { TourismBulletList } from 'components/tourism/tourism-bullet-list'
+import { TourismBulletListItem } from 'components/tourism/tourism-bullet-list-item'
 
 export const TourismExperimentMaps: FunctionComponent = () => (
 	<TourismBulletList>

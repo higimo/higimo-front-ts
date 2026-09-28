@@ -8,8 +8,8 @@ import { Footer } from 'components/ui/footer'
 import { Header } from 'components/ui/header'
 import { ToastContainer } from 'toast'
 
-import { AccordGallery } from 'components/accord/accord-gallery'
-import { AccordSingle }  from 'components/accord/accord-single'
+import { AccordIndexPage } from 'pages/accord/accord-index-page'
+import { AccordSinglePage } from 'pages/accord/accord-single-page'
 
 import { IndexPage }   from 'pages/index-page'
 import { ServicePage } from 'pages/tools/service-page'
@@ -154,8 +154,8 @@ export function App() {
 						<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />
 
 						{/* Аккорды */}
-						<Route path={ROUTE_LINKS.accordIndex} component={AccordGallery} />
-						<Route path={ROUTE_LINKS.accordDetail_CONST} component={AccordSingle} />
+						<Route path={ROUTE_LINKS.accordIndex} component={AccordIndexPage} />
+						<Route path={ROUTE_LINKS.accordDetail_CONST} component={AccordSinglePage} />
 
 						{/* Инфосервисы */}
 						<Route path={ROUTE_LINKS.logism} component={LogismPage} />

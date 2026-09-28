@@ -10,7 +10,7 @@ import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
-import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'components/vk/consts'
+import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'config/VK-CONST'
 
 import '../vk-style.css'
 import './style.css'

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { compareRoute } from './compare-route'
+import { compareRoute } from 'utils/url-route/compare-route'
 
 describe('compareRoute', () => {
 	it('должен считать эквивалентными пути со слешем и без', () => {

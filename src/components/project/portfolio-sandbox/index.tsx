@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import { TextContainer } from 'components/ui/text-container'
 
-import { getHumanDate } from 'components/project/utils/get-human-date'
+import { getHumanDate } from 'utils/date/get-human-date'
 
 import '../project-viewer/style.css'
 import './style.css'

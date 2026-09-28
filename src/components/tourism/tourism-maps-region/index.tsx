@@ -4,7 +4,7 @@ import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { YMaps, Map, YMapsApi, FullscreenControl } from 'react-yandex-maps'
 
-import { getDistrictColor } from 'utils/get-district-color'
+import { getDistrictColor } from 'utils/tourism/get-district-color'
 
 // TODO: [BACKEND] страница больше не работает
 // Надо разместить у себя файл

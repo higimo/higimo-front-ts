@@ -5,7 +5,7 @@ import { TagName } from 'types'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
+import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
 
 import '../project-click-tag-category/style.css'
 

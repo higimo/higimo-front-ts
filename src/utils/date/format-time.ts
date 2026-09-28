@@ -18,4 +18,5 @@ import { UnixTime } from 'utils.type'
  * - Не бросает исключений на некорректных значениях: `NaN` даст `"NaN:"`.
  * - Для локализованного вывода лучше `Intl.DateTimeFormat`.
  */
-export const formatTime = (timestamp: UnixTime) => new Date(timestamp).toTimeString().substring(0, 5)
+export const formatTime = (timestamp: UnixTime) =>
+	new Date(timestamp).toTimeString().substring(0, 5)

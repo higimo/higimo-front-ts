@@ -126,6 +126,8 @@ export default defineConfig(
 					'toast':      path.resolve(__dirname, './src/toast'),
 					'errors':     path.resolve(__dirname, './src/errors'),
 					'repositories': path.resolve(__dirname, './src/repositories'),
+					'data':       path.resolve(__dirname, './src/data'),
+					'config':     path.resolve(__dirname, './src/config'),
 				}
 			},
 		}

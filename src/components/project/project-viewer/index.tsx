@@ -7,8 +7,8 @@ import { PortfolioViewerTags } from 'components/project/portfolio-viewer-tags'
 import { TextContainer } from 'components/ui/text-container'
 import { WorkerInput } from 'components/form/project/worker-input'
 
-import { getHumanDate } from 'components/project/utils/get-human-date'
-import { getProjectText } from 'components/project/utils/get-project-text'
+import { getHumanDate } from 'utils/date/get-human-date'
+import { getProjectText } from 'utils/project/get-project-text'
 
 import './style.css'
 

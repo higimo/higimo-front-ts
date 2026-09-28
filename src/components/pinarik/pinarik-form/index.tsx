@@ -6,7 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FormButton } from 'components/form/form-button'
 import { TrafficLight } from 'components/pinarik/traffic-light'
 
-import { createDateOnly } from 'utils/date/createDateOnly'
+import { createDateOnly } from 'utils/date/create-date-only'
 import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
 

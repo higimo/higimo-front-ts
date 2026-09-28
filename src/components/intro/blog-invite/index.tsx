@@ -5,7 +5,7 @@ import { IntroHeader } from 'components/intro/intro-header'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-import { blogInviteData } from 'dic/intra-links/blog-invite'
+import { blogInviteData } from 'data/intra-links/blog-invite'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'

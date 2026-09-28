@@ -3,7 +3,7 @@ import { TagName } from 'types'
 
 import { Tag } from 'components/ui/tag'
 
-import { ACCORD_TAG_CATEGORY } from 'components/accord/tags'
+import { ACCORD_TAG_CATEGORY } from 'data/accord/tags-category'
 
 type AccordTagGalleryPropsType = {
 	toggleTag: (label: TagName) => () => void

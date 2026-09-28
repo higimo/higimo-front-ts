@@ -9,8 +9,8 @@ import { GeoObject, Map, Placemark, YMaps } from 'react-yandex-maps'
 import { Switcher } from 'components/ui/switcher'
 import { TextContainer } from 'components/ui/text-container'
 
-import { GEO_OBJECT_OPTIONS } from 'components/tourism/tourism-maps-figure/GEO_OBJECT_OPTIONS'
-import { MAP_MODE } from 'components/tourism/tourism-maps-figure/MAP_MODE'
+import { GEO_OBJECT_OPTIONS } from 'config/GEO-OBJECT-OPTIONS'
+import { MAP_MODE } from 'dic/tourism/MAP_MODE'
 
 type TourismMoscowWalkaroundPropsType = {
 	moscowPovPoints: SimpleMapPoint[]

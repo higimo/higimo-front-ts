@@ -1,3 +1,4 @@
+// TODO: написать тесты и JSDoc, имя сменить
 export const getProjectKeys = <T extends object>(
 	data: T,
 	priorityKeys: string[] = []

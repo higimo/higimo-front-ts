@@ -1,7 +1,8 @@
 import { DataItemWithTags, SelectedTags } from 'types'
 
 import { describe, it, expect } from 'vitest'
-import { filterTagAndGroupsStrategy } from './filter-tag-and-groups-strategy'
+
+import { filterTagAndGroupsStrategy } from 'utils/filter-tag-strategy/filter-tag-and-groups-strategy'
 
 const tags = {
 	'белый': { id: 1, title: 'белый' },

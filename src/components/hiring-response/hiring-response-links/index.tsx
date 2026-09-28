@@ -1,7 +1,7 @@
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import { Fragment, FunctionComponent } from 'preact'
 
-import { copyToClipboard } from 'utils/copy-to-clipboard'
+import { copyToClipboard } from 'utils/browser/copy-to-clipboard'
 
 import './style.css'
 

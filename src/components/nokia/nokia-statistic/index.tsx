@@ -8,10 +8,10 @@ import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
 import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
-import { prepareData } from 'components/nokia/nokia-statistic/utils/prepare-data'
-import { updateChart } from 'components/nokia/nokia-statistic/utils/update-chart'
+import { prepareData } from 'utils/nokia-statistic/prepare-data'
+import { updateChart } from 'utils/nokia-statistic/update-chart'
 
-import { HEIGHT, WIDTH } from 'components/nokia/nokia-statistic/utils/update-chart'
+import { HEIGHT, WIDTH } from 'config/NOKIA_CHART_CONFIG'
 
 // TODO: [HARD] https://www.npmjs.com/package/@observablehq/plot
 type NokiaStatisticPropsType = {

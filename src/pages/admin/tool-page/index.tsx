@@ -2,14 +2,14 @@
 
 import { FunctionComponent } from 'preact'
 
-import { useApiRequest } from 'components/admin-tool/hook/useApiRequest'
-import { useToolForm } from 'components/admin-tool/hook/useToolForm'
+import { useApiRequest } from 'hook/useApiRequest'
+import { useToolForm } from 'hook/useToolForm'
 import { useCallback } from 'preact/hooks'
 
 import { AdminToolContent } from 'components/admin-tool/admin-tool-content'
 import { Sidebar } from 'components/admin-tool/sidebar'
 
-import { parseJsonWithFallback } from 'components/admin-tool/utils/parseJsonWithFallback'
+import { parseJsonWithFallback } from 'utils/parse-json-with-fallback'
 
 import './style.css'
 

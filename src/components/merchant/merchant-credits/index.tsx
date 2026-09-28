@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { NAME, ADRESS, OGRN, INN, INVOICE, BANK, BIK, EMAIL } from 'components/merchant/merchant-const'
+import { NAME, ADRESS, OGRN, INN, INVOICE, BANK, BIK, EMAIL } from 'data/merchant/merchant-contacts'
 
 export const MerchantCredits: FunctionComponent = () => (
 	<p>

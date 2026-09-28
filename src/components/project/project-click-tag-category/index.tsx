@@ -4,8 +4,8 @@ import { PortfolioGroupedTagType } from 'api-types/portfolio.types'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
-import { IGRORED_TAG_GROUPS } from './IGRORED_TAG_GROUPS'
+import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
+import { IGRORED_TAG_GROUPS } from 'data/project-ignored-tag-groups'
 
 import './style.css'
 

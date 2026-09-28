@@ -1,11 +1,10 @@
+import { FormValues } from 'components/merchant/merchant-payment-form/types'
 import { InitOptions } from 'api-types/tinkoff'
+import { MerchantProductType } from 'api-types/merchant.types'
 import { UseFormGetValues } from 'react-hook-form'
 
-import { sendRequest } from 'utils/api/send-request'
-
-import { MerchantProductType } from 'api-types/merchant.types'
-import { FormValues } from 'components/merchant/merchant-payment-form/types'
 import { loadJs } from 'utils/merchant/load-js'
+import { sendRequest } from 'utils/api/send-request'
 
 type GetInfoType = () => {
 	currentProduct: MerchantProductType
@@ -65,5 +64,3 @@ export async function initPayment(getInfo: GetInfoType) {
 
 	await PaymentIntegration.init(initConfig)
 }
-
-

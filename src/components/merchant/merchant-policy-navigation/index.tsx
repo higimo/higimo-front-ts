@@ -4,7 +4,7 @@ import { MaybeLink } from 'components/ui/maybe-link'
 import { Tag } from 'components/ui/tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { LINKS } from './LINKS'
+import { merchantLinks } from 'data/merchant/merchant-links'
 
 import './style.css'
 
@@ -13,7 +13,7 @@ export const MerchantPolicyNavigation = () => {
 
 	return (
 		<TextContainer className="merchant-policy-navigation">
-			{LINKS.map(link => (
+			{merchantLinks.map(link => (
 				<MaybeLink isHref={link.href !== url} href={link.href}>
 					<Tag active={link.href === url}>{link.title}</Tag>
 				</MaybeLink>

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { ComojiType } from 'api-types/comoji.types'
 
-import { copyToClipboard } from 'utils/copy-to-clipboard'
+import { copyToClipboard } from 'utils/browser/copy-to-clipboard'
 import { getRandomColor } from 'utils/get-random-color'
 
 export const ComojiElement: FunctionComponent<ComojiType> = props => (

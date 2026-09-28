@@ -11,11 +11,10 @@ import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
-import { TourismMainStatistic } from 'components/tourism/tourism-main-statistic/TourismMainStatistic'
-import { TourismStatisticVisualizer } from 'components/tourism/tourism-statistic-visualizer/TourismStatisticVisualizer'
+import { TourismMainStatistic } from 'components/tourism/tourism-main-statistic'
+import { TourismStatisticVisualizer } from 'components/tourism/tourism-statistic-visualizer'
 
 import '../tourism-style.css'
-
 import './style.css'
 
 // TODO: [FEATURE] Следующим этапом подгружу оставшиеся списки для посещений:

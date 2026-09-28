@@ -4,7 +4,7 @@ import { VkQueueType, VkPhotosContentType } from 'api-types/vk.types'
 import { useQueue } from 'hook/use-queue'
 import { useState, useEffect, useCallback } from 'preact/hooks'
 
-import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'components/vk/consts'
+import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'config/VK-CONST'
 
 import { vkSession } from 'context/vk'
 

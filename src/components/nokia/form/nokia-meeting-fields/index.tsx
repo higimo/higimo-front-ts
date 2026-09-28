@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { MeetingFormValues } from 'components/nokia/form/hooks/use-meeting-form'
+import { MeetingFormValues } from 'hook/nokia/use-meeting-form'
 import { UseFormReturn } from 'react-hook-form'
 
 import { MentionsInput } from 'components/mention-textarea/mention-input'

@@ -1,6 +1,6 @@
 import { PortfolioGroupedTagType, PortfolioProjectFullType } from 'api-types/portfolio.types'
 
-import { PROJECT_FILTER_DIC } from 'components/project/filter_dictionary'
+import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
 
 import { useRoute } from 'preact-iso'
 import { useApi } from 'hook/fetch/use-api'

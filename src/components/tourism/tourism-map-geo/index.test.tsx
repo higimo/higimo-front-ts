@@ -198,7 +198,7 @@ describe('TourismMapGeo', () => {
 		})
 
 		it('должен работать с одним элементом', () => {
-		render(<TourismMapGeo items={[mockPoints[0]]} />)
+		render(<TourismMapGeo items={[mockPoints[0]!]} />)
 
 		const placemarks = screen.getAllByTestId('placemark')
 		expect(placemarks).toHaveLength(1)

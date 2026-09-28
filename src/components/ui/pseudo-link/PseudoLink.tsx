@@ -3,7 +3,7 @@ import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import cs from 'classnames'
-import { smoothScroll } from 'utils/smooth-scroll'
+import { smoothScroll } from 'utils/browser/smooth-scroll'
 
 import './style.css'
 

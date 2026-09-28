@@ -12,7 +12,7 @@ import screen       from './img/screen.png'
 import tech         from './img/tech.png'
 import faq          from './img/faq.svg'
 
-import { shareKnowledgeData } from 'dic/intra-links/share-knowledge'
+import { shareKnowledgeData } from 'data/intra-links/share-knowledge'
 
 import './style.css'
 

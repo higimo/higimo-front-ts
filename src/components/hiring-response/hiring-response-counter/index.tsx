@@ -6,7 +6,7 @@ import { FactoidRow } from 'components/ui/factoid-row'
 import { getNowDay } from 'utils/date/get-now-day'
 import { getStartOfWeek } from 'utils/date/get-start-of-week'
 import { getYesterday } from 'utils/date/get-yesterday'
-import { createDateOnly } from 'utils/date/createDateOnly'
+import { createDateOnly } from 'utils/date/create-date-only'
 
 type HiringResponseCounterPropsType = {
 	data: PasteApiType[]

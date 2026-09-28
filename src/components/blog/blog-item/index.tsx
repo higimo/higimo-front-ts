@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 import { UpdateNewsType } from 'api-types/last-update.types'
 
 import { getDate } from 'utils/date/get-date'
-import { getImage } from 'components/blog/last-updates/get-image'
-import { getText } from 'components/blog/last-updates/getText'
+import { getBlogImage } from 'utils/get-blog-image'
+import { getText } from 'utils/text/get-text'
 
 type BlogItemPropsType = UpdateNewsType
 export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => {
@@ -14,7 +14,7 @@ export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => {
 		>
 			<div className="post__meta">
 				<span className="post__favicons">
-					{(getImage(post.source) || []).map(src => (
+					{(getBlogImage(post.source) || []).map(src => (
 						<img className="post__favicon-image" src={src} />
 					))}
 				</span>
