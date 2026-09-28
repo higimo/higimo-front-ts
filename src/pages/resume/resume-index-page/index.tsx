@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
+import { Layout } from 'components/ui/layout/Layout'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
@@ -10,10 +9,8 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../resume-style.css'
 
-export const ResumeIndexPage: FunctionComponent = () => {
-	usePageTitle('Мои резюме')
-
-	return (
+export const ResumeIndexPage: FunctionComponent = () => (
+	<Layout title="Мои резюме">
 		<PrecentationContainer className="resume-hero">
 			<TextContainer>
 				<h1>Мои резюме</h1>
@@ -37,5 +34,5 @@ export const ResumeIndexPage: FunctionComponent = () => {
 				</TextContainer>
 			</OnlyAdmin>
 		</PrecentationContainer>
-	)
-}
+	</Layout>
+)

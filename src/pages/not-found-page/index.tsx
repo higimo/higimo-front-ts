@@ -1,7 +1,9 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useEffect } from 'preact/hooks'
+
+import { Layout } from 'components/ui/layout/Layout'
+
 import { setIsNotFound } from 'context/global'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
@@ -14,17 +16,17 @@ export const NotFoundPage: FunctionComponent = () => {
 		return () => setIsNotFound(false)
 	}, [])
 
-	usePageTitle('Ошибка 404: страница не найдена')
-
 	return (
-		<div className="not-found-page">
-			<h1>Страница не найдена</h1>
-			<p>
-				Неправильно набран адрес, или такой страницы на сайте больше не существует.
-			</p>
-			<p>
-				<a href={ROUTE_LINKS.index}>Главная</a>
-			</p>
-		</div>
+		<Layout title="Ошибка 404: страница не найдена">
+			<div className="not-found-page">
+				<h1>Страница не найдена</h1>
+				<p>
+					Неправильно набран адрес, или такой страницы на сайте больше не существует.
+				</p>
+				<p>
+					<a href={ROUTE_LINKS.index}>Главная</a>
+				</p>
+			</div>
+		</Layout>
 	)
 }

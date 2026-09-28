@@ -1,23 +1,20 @@
 import { NasheType } from 'api-types/nashe.types'
 import { FunctionComponent } from 'preact'
 
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 import { useScenesData } from 'hook/data/use-scenes-data'
 import { useYearFilter } from 'hook/data/use-year-filter'
 import { useApi } from 'hook/fetch/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { Loading } from 'components/ui/loading'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { NasheLineupItem } from 'components/data/concert/nashe-lineup-item'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
-
-import { NotFoundPage } from 'pages/not-found-page'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -25,8 +22,6 @@ import '../../tourism-style.css'
 import './style.css'
 
 export const NasheSinglePage: FunctionComponent = () => {
-	usePageTitle('Нашествие')
-
 	const { params: { year } } = useRoute()
 	const curYear = year ? parseInt(year, 10) : 2017
 
@@ -34,37 +29,32 @@ export const NasheSinglePage: FunctionComponent = () => {
 	const filteredData = useYearFilter(nasheFullData.data, curYear)
 	const { mainScene, secondScene } = useScenesData(filteredData)
 
-	const isLoading = useLoadingState([nasheFullData.status])
-	const isListEmpty = useEmptyDataState(filteredData)
-
-	usePageTitle(`Нашествие ${curYear}`)
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundPage />
-	}
-
 	return (
-		<div className="nashe-single-page tourism-identy-page">
-			<TourismMainMenu />
+		<Layout title={`Нашествие ${curYear}`}>
+			<div className="nashe-single-page tourism-identy-page">
+				<TourismMainMenu />
 
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+				<TextContainer>
+					<Breadcrumps />
+				</TextContainer>
 
-			<NasheLineupItem
-				curYear={curYear}
-				mainScene={mainScene}
-				secondScene={secondScene}
-			/>
+				<LoadSuspense data={nasheFullData}>
+					<EmptyData data={nasheFullData}>
+						<NasheLineupItem
+							curYear={curYear}
+							mainScene={mainScene}
+							secondScene={secondScene}
+						/>
+					</EmptyData>
+				</LoadSuspense>
 
-			<TextContainer>
-				<TourismHeader secondary>Другие лайнапы</TourismHeader>
 
-				<NasheLineupGallery />
-			</TextContainer>
-		</div>
+				<TextContainer>
+					<TourismHeader secondary>Другие лайнапы</TourismHeader>
+
+					<NasheLineupGallery />
+				</TextContainer>
+			</div>
+		</Layout>
 	)
 }

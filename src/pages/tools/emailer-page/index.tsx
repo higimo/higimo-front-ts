@@ -1,15 +1,12 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
 import { Emailer } from 'components/tool/emailer'
+import { Layout } from 'components/ui/layout/Layout'
 
-export const EmailerPage: FunctionComponent = () => {
-	usePageTitle('Эмайлер')
-
-	return (
+export const EmailerPage: FunctionComponent = () => (
+	<Layout title="Эмайлер">
 		<div className="tool-index-page">
 			<Emailer />
 		</div>
-	)
-}
+	</Layout>
+)

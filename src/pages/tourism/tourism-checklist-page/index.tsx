@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismChecklist } from 'components/tourism/tourism-checklist'
 import { TourismHeader } from 'components/tourism/tourism-header'
@@ -11,10 +10,8 @@ import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 
 import '../tourism-style.css'
 
-export const TourismChecklistPage: FunctionComponent = () => {
-	usePageTitle('Чек-лист туриста')
-
-	return (
+export const TourismChecklistPage: FunctionComponent = () => (
+	<Layout title="Чек-лист туриста">
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
 
@@ -39,5 +36,5 @@ export const TourismChecklistPage: FunctionComponent = () => {
 
 			<TourismChecklist />
 		</div>
-	)
-}
+	</Layout>
+)

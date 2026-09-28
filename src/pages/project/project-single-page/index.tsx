@@ -1,29 +1,31 @@
 import { FunctionComponent } from 'preact'
+import { PortfolioProjectDetailType } from 'api-types/portfolio.types'
 
-import { useProjectViewer } from 'hook/use-project-viewer'
+import { useApi } from 'hook/fetch/use-api'
 import { useRoute } from 'preact-iso'
-import { usePageTitle } from 'hook/browser/use-page-title'
 
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { ProjectViewer } from 'components/project/project-viewer'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const ProjectSinglePage: FunctionComponent = () => {
-	const { params: { vendor, project } } = useRoute()
+	const { params: { vendor = '', project = '' } } = useRoute()
 
-	// @ts-ignore
-	const [curProject, isLoading, isEmpty] = useProjectViewer(vendor, project)
-
-	usePageTitle(curProject.name ? `${curProject.name} | Проект Хигимо` : 'Проект Хигимо')
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isEmpty) {
-		return <NotFoundData />
-	}
+	const [ projectApi ] = useApi<PortfolioProjectDetailType>(API_ROUTE.projectSingle({
+		vendorCode: vendor,
+		projectCode: project,
+	}))
 
 	return (
-		<ProjectViewer project={curProject} />
+		<Layout title={projectApi.data.name ? `${projectApi.data.name} | Проект Хигимо` : 'Проект Хигимо'}>
+			<LoadSuspense data={projectApi}>
+				<EmptyData data={projectApi}>
+					<ProjectViewer project={projectApi.data} />
+				</EmptyData>
+			</LoadSuspense>
+		</Layout>
 	)
 }

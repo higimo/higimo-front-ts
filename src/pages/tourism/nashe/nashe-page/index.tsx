@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { Layout } from 'components/ui/layout/Layout'
 import { NasheAlbums } from 'components/data/concert/nashe-albums'
 import { NasheLineupGallery } from 'components/data/concert/nashe-lineup-gallery'
 import { TextContainer } from 'components/ui/text-container'
@@ -13,10 +12,8 @@ import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import '../../tourism-style.css'
 import './style.css'
 
-export const NasheIndexPage: FunctionComponent = () => {
-	usePageTitle('Нашествие')
-
-	return (
+export const NasheIndexPage: FunctionComponent = () => (
+	<Layout title="Нашествие">
 		<div className="nashe-index-page tourism-identy-page">
 			<TourismMainMenu />
 
@@ -44,5 +41,5 @@ export const NasheIndexPage: FunctionComponent = () => {
 				<NasheAlbums />
 			</TextContainer>
 		</div>
-	)
-}
+	</Layout>
+)

@@ -2,11 +2,11 @@ import { Positive } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { VkPhotoType } from 'api-types/vk.types'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRoute } from 'preact-iso'
 import { useState, useCallback, useEffect } from 'preact/hooks'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
@@ -23,8 +23,6 @@ import '../vk-style.css'
 
 // TODO: [FEATURE] реализовать сортировку альбома
 export const VkAlbumEditPage: FunctionComponent = () => {
-	usePageTitle('Просмотр альбома')
-
 	const { status, session, error } = vkSession.value
 	const { params: { albumId = '' } } = useRoute()
 	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
@@ -51,25 +49,27 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 	}, [status, error, session, fetchPhotos, albumId])
 
 	return (
-		<div className="vk-identity-page vk-photo">
-			<VkSdkLoader />
+		<Layout title="Просмотр альбома">
+			<div className="vk-identity-page vk-photo">
+				<VkSdkLoader />
 
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+				<TextContainer>
+					<Breadcrumps />
+				</TextContainer>
 
-			<TextContainer>
-				<VkHeading>Редактирование описаний альбома</VkHeading>
-				<VkParagraph>
-					Всего фотографий: {photos.length}
-					<br />
-					С комментариями: {photos.filter(i => !!i.text).length}
-				</VkParagraph>
-			</TextContainer>
+				<TextContainer>
+					<VkHeading>Редактирование описаний альбома</VkHeading>
+					<VkParagraph>
+						Всего фотографий: {photos.length}
+						<br />
+						С комментариями: {photos.filter(i => !!i.text).length}
+					</VkParagraph>
+				</TextContainer>
 
-			<VkPhotoAlbumEdit
-				photos={photos}
-			/>
-		</div>
+				<VkPhotoAlbumEdit
+					photos={photos}
+				/>
+			</div>
+		</Layout>
 	)
 }

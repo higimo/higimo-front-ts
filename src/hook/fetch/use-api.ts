@@ -9,7 +9,7 @@ import { API_STATUS } from 'dic/API_STATUS'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
-type ApiState<T, M = Object> = {
+export type ApiState<T, M = Object> = {
 	status: ApiStatusNameType
 	data: T
 	meta?: M
@@ -54,6 +54,7 @@ type ApiUrlType = ApiRouteType
 // TODO: [HIGH] Добавить ещё POST, DELETE
 // TODO: [HIGH] Добавить вывод сразу useLoadingState
 // TODO: [HIGH] что если пользоваться ServiceApi, в дополнение к простым строчкам?
+// TODO: [MIDDLE] почекать где упоминается в компонентах и вынести в page
 export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T, M>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 

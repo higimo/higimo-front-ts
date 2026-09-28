@@ -2,13 +2,12 @@ import { FunctionComponent } from 'preact'
 import { PageJSONData } from 'components/block-renderer/types'
 
 import { useJsonApi } from 'hook/fetch/use-json-api'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { BlockRenderer } from 'components/block-renderer/BlockRenderer'
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { MerchantPolicyNavigation } from 'components/merchant/merchant-policy-navigation'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -19,8 +18,6 @@ import { ADRESS, BEGET_ADRESS, NAME, PHONE } from 'data/merchant/merchant-contac
 import '../merchant-style.css'
 
 export const PersonalPolicyPage: FunctionComponent = () => {
-	usePageTitle('Политика обработки ПД')
-
 	setRenderBlockVariables({
 		ADRESS,
 		BEGET_ADRESS,
@@ -29,28 +26,23 @@ export const PersonalPolicyPage: FunctionComponent = () => {
 	})
 
 	const [ data ] = useJsonApi<PageJSONData>('/json/merchant/privacy-policy.json')
-	const isLoading = useLoadingState([data.status])
-	const isError = data.status === 'ERROR'
-
-	if (isLoading) {
-		return <Loading />
-	}
 
 	return (
-		<div className="merchant-text-page">
-			<TextContainer>
-				<Breadcrumps />
-				<MerchantPolicyNavigation />
-			</TextContainer>
+		<Layout title="Политика обработки ПД">
+			<div className="merchant-text-page">
+				<TextContainer>
+					<Breadcrumps />
+					<MerchantPolicyNavigation />
+				</TextContainer>
 
-			{(isError
-				? (<NotFoundData />)
-				: (
-					data.data.blocks.map((block, idx) => (
-						<BlockRenderer key={idx} block={block} />
-					))
-				)
-			)}
-		</div>
+				<LoadSuspense data={data}>
+					<EmptyData data={data}>
+						{data.data.blocks.map((block, idx) => (
+							<BlockRenderer key={idx} block={block} />
+						))}
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }

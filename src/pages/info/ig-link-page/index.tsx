@@ -1,15 +1,13 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
+import { Layout } from 'components/ui/layout/Layout'
 
-import { iglinksData } from './data'
+import { iglinksData } from 'data/ig-link-data'
 
 import './style.css'
 
-export const IgLinkPage: FunctionComponent = () => {
-	usePageTitle('Ссылки в био инсты')
-
-	return (
+export const IgLinkPage: FunctionComponent = () => (
+	<Layout title="Ссылки в био инсты">
 		<div className="ig-link-page">
 			<div className="ig-link-page__content">
 				{iglinksData.map(item => (
@@ -24,5 +22,5 @@ export const IgLinkPage: FunctionComponent = () => {
 				))}
 			</div>
 		</div>
-	)
-}
+	</Layout>
+)

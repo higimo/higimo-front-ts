@@ -1,14 +1,11 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
+import { Layout } from 'components/ui/layout/Layout'
 import { MagicBall } from 'components/tool/magic-ball'
 import { TextContainer } from 'components/ui/text-container'
 
-export const MagicBallPage: FunctionComponent = () => {
-	usePageTitle('ToolPage')
-
-	return (
+export const MagicBallPage: FunctionComponent = () => (
+	<Layout title="ToolPage">
 		<div className="tool-index-page">
 			<TextContainer>
 				<h1>Волшебный шар</h1>
@@ -18,5 +15,5 @@ export const MagicBallPage: FunctionComponent = () => {
 			</TextContainer>
 			<MagicBall />
 		</div>
-	)
-}
+	</Layout>
+)

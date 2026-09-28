@@ -2,17 +2,14 @@ import { AccordType } from 'api-types/accord.types'
 import { FunctionComponent } from 'preact'
 
 import { useApi } from 'hook/fetch/use-api'
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useRandomElements } from 'hook/utils/use-random-elements'
 import { useRoute } from 'preact-iso'
 
 import { AccordContent } from 'components/accord/accord-content'
 import { AccordSeeAlso } from 'components/accord/accord-see-also'
-import { Loading } from 'components/ui/loading/Loading'
-
-import { NotFoundPage } from 'pages/not-found-page'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
@@ -27,29 +24,26 @@ export const AccordSinglePage: FunctionComponent = () => {
 
 	const [accords] = useApi<AccordType[]>(API_ROUTE.accord)
 	const [songSingle] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode: idcode }))
-	const isLoading = useLoadingState([songSingle.status, accords.status])
-	const isListEmpty = useEmptyDataState(accords.data)
-	const isSongEmpty = useEmptyDataState(songSingle.data)
 
 	// TODO: [BACKEND] пусть бекенд присылает эти данные
 	const seeAlsoList = useRandomElements(accords.data, ALSO_ELEMENTS)
 
-	usePageTitle(songSingle.data?.name, 'Песня')
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty || isSongEmpty) {
-		return <NotFoundPage />
-	}
-
 	return (
-		<div className="container accord-single-page">
-			<AccordContent song={songSingle.data} />
-			<div className="backlink">
-				<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
+		<Layout title={songSingle.data?.name || 'Песня'}>
+			<div className="container accord-single-page">
+
+				<LoadSuspense data={songSingle}>
+					<EmptyData data={songSingle}>
+						<AccordContent song={songSingle.data} />
+					</EmptyData>
+				</LoadSuspense>
+
+				<div className="backlink">
+					<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
+				</div>
+
+				<AccordSeeAlso items={seeAlsoList} />
 			</div>
-			<AccordSeeAlso items={seeAlsoList} />
-		</div>
+		</Layout>
 	)
 }

@@ -2,18 +2,17 @@ import { BarPovType, BarPovRealTags } from 'api-types/tourism.types'
 import { Coord } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { TagCategory } from 'types'
-import { TextContainer } from 'components/ui/text-container'
 
 import { useApi } from 'hook/fetch/use-api'
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { Loading } from 'components/ui/loading/Loading'
-import { NotFoundData } from 'components/ui/not-found-data/NotFoundData'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
+import { TextContainer } from 'components/ui/text-container'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
@@ -29,9 +28,6 @@ import '../yandex-map.css'
 
 export const TourismMoscowBarPage: FunctionComponent = () => {
 	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
-
-	const isLoading = useLoadingState([barPovMoscow.status])
-	const isListEmpty = useEmptyDataState(barPovMoscow.data)
 
 	const normalizedTagsBarPovMoscow = useMemo(
 		() => barPovMoscow.data.map((item: BarPovType): BarPovRealTags => ({
@@ -80,47 +76,47 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 		[normalizedTagsBarPovMoscow, selectedTagTitles]
 	)
 
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
-
 	return (
-		<div className="tourism-identy-page">
-			<TourismMainMenu />
+		<Layout title="Московские бары">
+			<div className="tourism-identy-page">
+				<TourismMainMenu />
 
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+				<TextContainer>
+					<Breadcrumps />
+				</TextContainer>
 
-			<TextContainer>
-				<TourismHeader main>Московские бары</TourismHeader>
-			</TextContainer>
+				<TextContainer>
+					<TourismHeader main>Московские бары</TourismHeader>
+				</TextContainer>
 
-			<div className="tourism-maps-moscow-bar">
-				<TourismMapGeo<BarPovRealTags, Coord>
-					items={filteredData}
-					zoom={12}
-					center={[55.758772, 37.617933]}
-					cluster={false}
-				/>
-				<TagGroupedGallery
-					groups={tagGroups}
-					isSelected={isSelected}
-					toggleTag={toggleTag}
-					isCategoryAllSelected={isCategoryAllSelected}
-					toggleAllInCategory={toggleAllInCategory}
-				/>
-				{filteredData && (
-					<div className="bar-pov__gallery">
-						{filteredData.map((mapPoint: BarPovRealTags) => (
-							<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
-						))}
-					</div>
-				)}
+				<LoadSuspense data={barPovMoscow}>
+					<EmptyData data={barPovMoscow}>
+						{/* TODO: вынести в компонент */}
+						<div className="tourism-maps-moscow-bar">
+							<TourismMapGeo<BarPovRealTags, Coord>
+								items={filteredData}
+								zoom={12}
+								center={[55.758772, 37.617933]}
+								cluster={false}
+							/>
+							<TagGroupedGallery
+								groups={tagGroups}
+								isSelected={isSelected}
+								toggleTag={toggleTag}
+								isCategoryAllSelected={isCategoryAllSelected}
+								toggleAllInCategory={toggleAllInCategory}
+							/>
+							{filteredData && (
+								<div className="bar-pov__gallery">
+									{filteredData.map((mapPoint: BarPovRealTags) => (
+										<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
+									))}
+								</div>
+							)}
+						</div>
+					</EmptyData>
+				</LoadSuspense>
 			</div>
-		</div>
+		</Layout>
 	)
 }

@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
@@ -14,10 +13,8 @@ import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import '../../tourism-style.css'
 import '../yandex-map.css'
 
-export const TourismYaMapsRegionPage: FunctionComponent = () => {
-	usePageTitle('Карта регионов России')
-
-	return (
+export const TourismYaMapsRegionPage: FunctionComponent = () => (
+	<Layout title="Карта регионов России">
 		<div className="tourism-identy-page">
 			<TourismMainMenu />
 
@@ -40,5 +37,5 @@ export const TourismYaMapsRegionPage: FunctionComponent = () => {
 
 			<TourismMapsRegion />
 		</div>
-	)
-}
+	</Layout>
+)

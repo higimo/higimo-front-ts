@@ -1,6 +1,6 @@
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-export const data = [
+export const tourismMaps = [
 	{
 		href: ROUTE_LINKS.tourismMapsMoscowWalkaround,
 		title: 'Проект обхожу Москву',

@@ -1,16 +1,13 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
+import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { ThingsVelo } from 'components/data/things/things-velo'
 
-export const ThingsVeloPage: FunctionComponent = () => {
-	usePageTitle('Велосипед')
-
-	return (
+export const ThingsVeloPage: FunctionComponent = () => (
+	<Layout title="Велосипед">
 		<TextContainer>
 			<ThingsVelo />
 		</TextContainer>
-	)
-}
+	</Layout>
+)

@@ -1,0 +1,48 @@
+.state {
+	--state-color: #000;
+	--state-background: #fff;
+	--state-border: #fff;
+
+	border: 1px solid var(--state-border);
+	border-radius: 8px;
+	padding: 56px 16px;
+	background: var(--state-background);
+	color: var(--state-color);
+	text-align: center;
+	margin: 16px;
+	display: flex;
+	gap: 16px;
+	flex-direction: column;
+}
+
+.state__title {
+	font-size: 24px;
+	font-weight: 600;
+	margin: 0;
+}
+
+.state__text {
+	font-size: 16px;
+	margin: 0;
+}
+
+.state__spinner {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-bottom: 12px;
+	border: 3px solid #e0e0e0;
+	border-top-color: #888;
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
+}
+
+.state--error {
+	--state-color: #b3261e;
+	--state-background: #f0c2c2;
+	--state-border: #f0c2c2;
+}

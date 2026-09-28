@@ -1,5 +1,5 @@
 import { render } from 'preact'
-import { LocationProvider, Router, Route, lazy, ErrorBoundary } from 'preact-iso'
+import { LocationProvider, Router, Route, ErrorBoundary } from 'preact-iso'
 
 import { PrivateRoute }  from 'components/util/private-route'
 import { Redirect } from 'components/util/redirect'
@@ -16,9 +16,9 @@ import { ServicePage } from 'pages/tools/service-page'
 
 import { ProjectIndexPage }  from 'pages/project/project-index-page'
 import { ProjectSinglePage } from 'pages/project/project-single-page'
-const PortfolioSandbox  = lazy(() => import('pages/project/portfolio-sandbox'))
-const ProjectTablePage  = lazy(() => import('pages/project/project-table-page'))
-const ProjectTypographyPage = lazy(() => import('pages/project/project-typography'))
+import { PortfolioSandboxPage }  from 'pages/project/portfolio-sandbox'
+import { ProjectTablePage }  from 'pages/project/project-table-page'
+import { ProjectTypographyPage } from 'pages/project/project-typography'
 
 import { ComojiPage }          from 'pages/tools/comoji-page'
 import { DemagogPage }         from 'pages/tools/demagog-page'
@@ -138,7 +138,7 @@ export function App() {
 						{/* Секретные разработки не для продакшена */}
 						{import.meta.env.DEV ? [
 							<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />,
-							<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandbox} />,
+							<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandboxPage} />,
 							<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />,
 						] : <></>}
 

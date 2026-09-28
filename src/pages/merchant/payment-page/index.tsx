@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form'
 import { useLayoutEffect } from 'preact/hooks'
 import { useLocation } from 'preact-iso'
 import { useMerchant } from 'hook/data/use-merchant'
-import { usePageTitle } from 'hook/browser/use-page-title'
 
+import { Layout } from 'components/ui/layout/Layout'
+import { Loading } from 'components/ui/loading'
 import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
 import { MerchantPaymentForm } from 'components/merchant/merchant-payment-form'
 import { MerchantProductBenefits } from 'components/merchant/merchant-product-benefits'
 import { MerchantProductCard } from 'components/merchant/merchant-product-card'
 import { MerchantProductFeature } from 'components/merchant/merchant-product-features'
-import { Loading } from 'components/ui/loading'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -27,8 +27,7 @@ export const PaymentPage: FunctionComponent = () => {
 	const { products, isProductEmpty, isProductLoaded } = useMerchant()
 	const { query: { id = null } } = useLocation()
 
-	usePageTitle('Страница оплаты')
-
+	// TODO: надо, кжтс, хук, который получает по id нужный товар
 	const currentProduct = products.find(product => product.id === id)
 
 	const { register, getValues } = useForm<FormValues>({
@@ -57,44 +56,45 @@ export const PaymentPage: FunctionComponent = () => {
 	}
 
 	return (
-		<div className="payment-page">
-			<TextContainer>
-				<MerchantProductCard product={currentProduct} />
-			</TextContainer>
+		<Layout title="Страница оплаты">
+			<div className="payment-page">
+				<TextContainer>
+					<MerchantProductCard product={currentProduct} />
+				</TextContainer>
 
-			<TextContainer>
-				<MerchantPayBlock />
-			</TextContainer>
+				<TextContainer>
+					<MerchantPayBlock />
+				</TextContainer>
 
-			<TextContainer>
-				<MerchantPaymentForm register={register} />
-			</TextContainer>
+				<TextContainer>
+					<MerchantPaymentForm register={register} />
+				</TextContainer>
 
-			<MerchantProductBenefits product={currentProduct} />
+				<MerchantProductBenefits product={currentProduct} />
 
-			<TextContainer>
-				<MerchantProductFeature product={currentProduct} />
-			</TextContainer>
+				<TextContainer>
+					<MerchantProductFeature product={currentProduct} />
+				</TextContainer>
 
-			{/* TODO: [FEATURE] Пошерить */}
-			{/* TODO: [FEATURE] Купить другому */}
+				{/* TODO: [FEATURE] Пошерить */}
+				{/* TODO: [FEATURE] Купить другому */}
 
-			<TextContainer>
-				<a href={ROUTE_LINKS.merchantIndex}>← В магазин</a>
-				<br />
-				<a href={ROUTE_LINKS.index}>← На главную</a>
-			</TextContainer>
+				<TextContainer>
+					<a href={ROUTE_LINKS.merchantIndex}>← В магазин</a>
+					<br />
+					<a href={ROUTE_LINKS.index}>← На главную</a>
+				</TextContainer>
 
-			<TextContainer>
-				<h2>Дальше быстрым речитативом кому ты платишь</h2>
-				<ul>
-					<li><a href={ROUTE_LINKS.merchantPaymentPolicy}>Порядок оплаты</a></li>
-					<li><a href={ROUTE_LINKS.merchantPersonalPolicy}>Политика обработки ПД</a></li>
-					<li><a href={ROUTE_LINKS.merchantPaymentOferta}>Оферта</a></li>
-					<li><a href={ROUTE_LINKS.merchantDonationOferta}>Донатная оферта</a></li>
-				</ul>
-			</TextContainer>
-
-		</div>
+				<TextContainer>
+					<h2>Дальше быстрым речитативом кому ты платишь</h2>
+					<ul>
+						<li><a href={ROUTE_LINKS.merchantPaymentPolicy}>Порядок оплаты</a></li>
+						<li><a href={ROUTE_LINKS.merchantPersonalPolicy}>Политика обработки ПД</a></li>
+						<li><a href={ROUTE_LINKS.merchantPaymentOferta}>Оферта</a></li>
+						<li><a href={ROUTE_LINKS.merchantDonationOferta}>Донатная оферта</a></li>
+					</ul>
+				</TextContainer>
+			</div>
+		</Layout>
 	)
 }

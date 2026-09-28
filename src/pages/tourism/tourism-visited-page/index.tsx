@@ -1,13 +1,12 @@
 import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'api-types/tourism.types'
 import { FunctionComponent } from 'preact'
 
-import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
-import { usePageTitle } from 'hook/browser/use-page-title'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/tourism-header'
 import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
@@ -36,58 +35,48 @@ type VisitedDataType = {
 }
 
 export const TourismVisitedPage: FunctionComponent = () => {
-	usePageTitle('Результаты путешествий')
-
 	// TODO: [BACKEND] вынести в бекенд API из JSON
 	const [ data ] = useMultiJsonApi<VisitedDataType>({
-		admOrkugMoscow: '/json/tourism/admin-okrug-moscow.json',
-		castle: '/json/tourism/castle.json',
-		country: '/json/tourism/country.json',
-		districtMoscow: '/json/tourism/district-moscow.json',
-		placefield: '/json/tourism/placefield.json',
+		admOrkugMoscow:    '/json/tourism/admin-okrug-moscow.json',
+		castle:            '/json/tourism/castle.json',
+		country:           '/json/tourism/country.json',
+		districtMoscow:    '/json/tourism/district-moscow.json',
+		placefield:        '/json/tourism/placefield.json',
 		subjectFederation: '/json/tourism/subject-federation.json',
-		townMoscow: '/json/tourism/town-moscow.json',
-		town: '/json/tourism/town.json',
+		townMoscow:        '/json/tourism/town-moscow.json',
+		town:              '/json/tourism/town.json',
 	})
 
-	const isLoading = useLoadingState([data.status])
-	const isError = data.status === 'ERROR'
-
-	if (isLoading) {
-		return <Loading />
-	}
-
 	const povList: PovType[] = ([] as PovType[])
-			.concat(data.data.admOrkugMoscow!)
-			.concat(data.data.castle!)
-			.concat(data.data.country!)
-			.concat(data.data.districtMoscow!)
-			.concat(data.data.placefield!)
-			.concat(data.data.subjectFederation!)
-			.concat(data.data.townMoscow!)
-			.concat(data.data.town!)
+		.concat(data.data.admOrkugMoscow || [])
+		.concat(data.data.castle || [])
+		.concat(data.data.country || [])
+		.concat(data.data.districtMoscow || [])
+		.concat(data.data.placefield || [])
+		.concat(data.data.subjectFederation || [])
+		.concat(data.data.townMoscow || [])
+		.concat(data.data.town || [])
 
 	return (
-		<div className="tourism-identy-page">
-			<TourismMainMenu />
+		<Layout title="Результаты путешествий">
+			<div className="tourism-identy-page">
+				<TourismMainMenu />
 
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+				<TextContainer>
+					<Breadcrumps />
+				</TextContainer>
 
-			<TextContainer>
-				<TourismHeader main>Результаты путешествий</TourismHeader>
-			</TextContainer>
+				<TextContainer>
+					<TourismHeader main>Результаты путешествий</TourismHeader>
+				</TextContainer>
 
-			{(isError
-				? (<NotFoundData />)
-				: (
-					<>
+				<LoadSuspense data={data}>
+					<EmptyData data={data}>
 						<TourismMainStatistic totalStatistic={povList} />
 						<TourismStatisticVisualizer pov={povList} />
-					</>
-				)
-			)}
-		</div>
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }

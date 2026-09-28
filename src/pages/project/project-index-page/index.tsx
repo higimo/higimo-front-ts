@@ -1,44 +1,54 @@
 import { FunctionComponent } from 'preact'
+import { PortfolioGroupedTagType, PortfolioProjectFullType } from 'api-types/portfolio.types'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-import { useProjectList } from 'hook/data/use-project-list'
+import { useApi } from 'hook/fetch/use-api'
+import { useRoute } from 'preact-iso'
 
-import { Loading } from 'components/ui/loading'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
+import { ProjectClickTagCategory } from 'components/project/project-click-tag-category'
 import { ProjectList } from 'components/project/project-list'
 import { TextContainer } from 'components/ui/text-container'
 
-import { NotFoundPage } from 'pages/not-found-page'
-import { ProjectClickTagCategory } from 'components/project/project-click-tag-category'
+import { API_ROUTE } from 'dic/API_ROUTE'
+import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
 
 // TODO: [FEATURE] Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
 // TODO: [FEATURE] Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
 // TODO: [FEATURE] показать график когда публиковался на горизонтальном таймлайне, просто названиями
 export const ProjectIndexPage: FunctionComponent = () => {
-	usePageTitle('Сделал')
+	const { query } = useRoute()
 
-	const {
-		isLoading,
-		isEmpty,
-		projectList,
-		tagList,
-	} = useProjectList()
+	const [ projectList ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject)
+	const [ tagList ] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
 
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isEmpty) {
-		return <NotFoundPage />
+	let filterProjectList = projectList.data
+	if (query[PROJECT_FILTER_DIC.FILTER_TAG] && projectList.status === 'LOADED') {
+		filterProjectList = projectList.data.filter(projectItem => {
+			return projectItem.tags.some(tag => tag.title === query[PROJECT_FILTER_DIC.FILTER_TAG])
+		})
 	}
 
 	return (
-		<div className="project-index-page">
-			<TextContainer>
-				<h1>Сделал</h1>
-			</TextContainer>
+		<Layout title="Сделал">
+			<div className="project-index-page">
+				<TextContainer>
+					<h1>Сделал</h1>
+				</TextContainer>
 
-			<ProjectClickTagCategory groupedTags={tagList} />
+				<LoadSuspense data={tagList}>
+					<EmptyData data={tagList}>
+						<ProjectClickTagCategory groupedTags={tagList.data} />
+					</EmptyData>
+				</LoadSuspense>
 
-			<ProjectList projectsList={projectList} />
-		</div>
+				<LoadSuspense data={projectList}>
+					<EmptyData data={projectList}>
+							<ProjectList projectsList={filterProjectList} />
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }

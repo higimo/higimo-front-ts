@@ -6,6 +6,12 @@
 	--border-color--main: #fff4;
 }
 
+.tourism-identy-page .state {
+	--state-color: #c10a00;
+	--state-background: #f0c2c2bb;
+	--state-border: #f0c2c2bb;
+}
+
 .tourism-identy-page {
 	padding-top: 0;
 	padding-bottom: 64px;

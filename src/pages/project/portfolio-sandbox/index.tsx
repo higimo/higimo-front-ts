@@ -1,15 +1,10 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
 import { PortfolioSandbox } from 'components/project/portfolio-sandbox'
+import { Layout } from 'components/ui/layout/Layout'
 
-export const PortfolioSandboxPage: FunctionComponent = () => {
-	usePageTitle('Тестовая страница')
-
-	return (
+export const PortfolioSandboxPage: FunctionComponent = () => (
+	<Layout title="Тестовая страница">
 		<PortfolioSandbox />
-	)
-}
-
-export default PortfolioSandboxPage
+	</Layout>
+)

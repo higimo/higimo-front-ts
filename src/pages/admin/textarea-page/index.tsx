@@ -1,23 +1,21 @@
-import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 import { FunctionComponent } from 'preact'
+import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useApi } from 'hook/fetch/use-api'
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
 import { useCallback, useMemo, useState } from 'preact/compat'
 
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { MentionsInput } from 'components/mention-textarea/mention-input'
 import { MentionSuggest } from 'components/mention-textarea/types'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+// TODO: да удалить нахуй
 export const TextareaPage: FunctionComponent = () => {
 	const [ personList ] = useApi<NokiaPersonSimpleType[]>(API_ROUTE.nokiaPerson)
 	const [ mentionList, setMentionList ] = useState<MentionSuggest[]>([])
-	const isLoading = useLoadingState([personList.status])
-	const isEmpty = useEmptyDataState(personList.data)
 
 	const appendMentionList = useCallback((newMentionList: MentionSuggest[]) => {
 		setMentionList(newMentionList)
@@ -31,21 +29,22 @@ export const TextareaPage: FunctionComponent = () => {
 		}))
 	}, [personList.data])
 
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isEmpty) {
-		return <NotFoundData />
-	}
 
 	return (
-		<div className="nokia">
-			<pre>{JSON.stringify(mentionList, null, '\t')}</pre>
-			<MentionsInput
-				register={{}}
-				suggestList={suggestList}
-				onMention={appendMentionList}
-			/>
-		</div>
+		<Layout title="Textarea test">
+			<div className="nokia">
+				<pre>{JSON.stringify(mentionList, null, '\t')}</pre>
+
+				<LoadSuspense data={personList}>
+					<EmptyData data={personList}>
+						<MentionsInput
+							register={{}}
+							suggestList={suggestList}
+							onMention={appendMentionList}
+						/>
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }

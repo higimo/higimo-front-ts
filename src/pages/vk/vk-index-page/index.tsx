@@ -1,9 +1,8 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { IntroTileGallery } from 'components/intro/intro-tile-gallery'
+import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 
@@ -24,21 +23,21 @@ const pagesList = [
 	}
 ]
 export const VkIndexPage: FunctionComponent = () => {
-	usePageTitle('VK tool index')
-
 	return (
-		<div className="vk-identity-page vk-photo">
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+		<Layout title="VK tool index">
+			<div className="vk-identity-page vk-photo">
+				<TextContainer>
+					<Breadcrumps />
+				</TextContainer>
 
-			<TextContainer>
-				<VkHeading>VK tool</VkHeading>
+				<TextContainer>
+					<VkHeading>VK tool</VkHeading>
 
-				<IntroTileGallery
-					list={pagesList}
-				/>
-			</TextContainer>
-		</div>
+					<IntroTileGallery
+						list={pagesList}
+					/>
+				</TextContainer>
+			</div>
+		</Layout>
 	)
 }

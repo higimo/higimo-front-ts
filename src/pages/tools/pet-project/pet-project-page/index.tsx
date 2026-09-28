@@ -2,14 +2,13 @@ import { FunctionComponent } from 'preact'
 import { GradientDicType } from 'api-types/json-api.types'
 import { PetProjectType } from 'api-types/petproject.types'
 
-import { useLoadingState } from 'hook/fetch/use-loading-state'
+import { useApi } from 'hook/fetch/use-api'
 import { useMemo } from 'preact/hooks'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
-import { usePageTitle } from 'hook/browser/use-page-title'
-import { useApi } from 'hook/fetch/use-api'
 
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { PetProject } from 'components/tool/pet-project'
 import { TextContainer } from 'components/ui/text-container'
@@ -25,19 +24,14 @@ type PetProjectDataType = {
 }
 
 export const PetProjectPage: FunctionComponent = () => {
-	usePageTitle('Пробби')
-
 	const [ unsortProjectList ] = useApi<PetProjectType[]>(API_ROUTE.probbi)
 	const [ data ] = useMultiJsonApi<PetProjectDataType>({
-		gradients: '/json/pet-project/gradient.json',
+		gradients:    '/json/pet-project/gradient.json',
 		textProjects: '/json/pet-project/projects.json',
 	})
 
-	const isLoading = useLoadingState([unsortProjectList.status, data.status])
-	const isError = [unsortProjectList.status, data.status].some(i => i === 'ERROR')
-
 	const projects = useMemo(() => {
-		if (isLoading) {
+		if (data.status === 'LOADING' || unsortProjectList.status === 'LOADING') {
 			return []
 		}
 
@@ -46,30 +40,27 @@ export const PetProjectPage: FunctionComponent = () => {
 			.sort((a, b) => a.priority - b.priority)
 	}, [unsortProjectList.data, data.data.textProjects])
 
-	if (isLoading) {
-		return <Loading />
-	}
-
 	return (
-		<div className="pet-project">
-			<TextContainer>
-				<h1>Пробби</h1>
-				<OnlyAdmin>
-					<div>
-						<a href={ROUTE_LINKS.petProjectCreate}>Добавить</a>
-					</div>
-				</OnlyAdmin>
-			</TextContainer>
+		<Layout title="Пробби">
+			<div className="pet-project">
+				<TextContainer>
+					<h1>Пробби</h1>
+					<OnlyAdmin>
+						<div>
+							<a href={ROUTE_LINKS.petProjectCreate}>Добавить</a>
+						</div>
+					</OnlyAdmin>
+				</TextContainer>
 
-			{(isError
-				? (<NotFoundData />)
-				: (
-					<PetProject
-						petprojects={projects}
-						gradients={data.data.gradients!}
-					/>
-				)
-			)}
-		</div>
+				<LoadSuspense data={[unsortProjectList, data]}>
+					<EmptyData data={[unsortProjectList, data]}>
+						<PetProject
+							petprojects={projects}
+							gradients={data.data.gradients!}
+						/>
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }

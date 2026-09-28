@@ -4,7 +4,7 @@ import { API_STATUS } from 'dic/API_STATUS'
 
 type ApiStatusName = keyof typeof API_STATUS
 
-type JsonApiState<T> = {
+export type JsonApiState<T> = {
 	status: ApiStatusName
 	data: T
 	error: Error | null

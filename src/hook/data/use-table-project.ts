@@ -1,14 +1,6 @@
-import { PortfolioGroupedTagType, PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
-import { TagName } from 'types'
+import { PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
 
-import { useMemo } from 'preact/hooks'
-import { useSmartTags } from 'hook/tags/use-smart-tags'
-import { useApi } from 'hook/fetch/use-api'
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-
-import { API_ROUTE } from 'dic/API_ROUTE'
-
+// TODO: перенести в api типы project
 export type PortfolioProjectTableFullType = {
 	id: PortfolioProjectTableType['id']
 	vendor: PortfolioProjectTableType['vendor']['code']
@@ -29,11 +21,13 @@ export type PortfolioProjectTableFullType = {
 	// }
 }
 
-const sortableProjectByVendor = (a: PortfolioProjectTableFullType, b: PortfolioProjectTableFullType) => {
+// TODO: перенести в utils/project
+export const sortableProjectByVendor = (a: PortfolioProjectTableFullType, b: PortfolioProjectTableFullType) => {
 	return a.vendor.localeCompare(b.vendor) || b.date.localeCompare(a.date)
 }
 
-const calculateProjectTableList = (project: PortfolioProjectDetailType) => {
+// TODO: перенести в utils/project
+export const calculateProjectTableList = (project: PortfolioProjectDetailType) => {
 	const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
 	const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'
 	const checkExistTags = project.tags.length ? 'pass' : 'fail'
@@ -111,7 +105,8 @@ const calculateProjectTableList = (project: PortfolioProjectDetailType) => {
 	}
 }
 
-const extractWithDOMParser = (htmlString: string, selector: string) => {
+// TODO: перенести в utils/project
+export const extractWithDOMParser = (htmlString: string, selector: string) => {
 	const parser = new DOMParser()
 	const doc = parser.parseFromString(htmlString, 'text/html')
 
@@ -127,60 +122,5 @@ const extractWithDOMParser = (htmlString: string, selector: string) => {
 		textContent,
 		innerHTML,
 		resultHtml: doc.body.innerHTML
-	}
-}
-
-type UseProjectType = () => {
-	isLoading: boolean
-	isEmpty: boolean
-	tableProjects: PortfolioProjectTableFullType[]
-	tagList: PortfolioGroupedTagType[]
-	isSelected: (tagName: TagName) => boolean
-	toggleTag: (tagName: TagName) => () => void
-}
-
-/**
- * Вернёт список проектов
- */
-export const useTableProject: UseProjectType = () => {
-	const [projects] = useApi<PortfolioProjectTableType[]>(API_ROUTE.projectProjectTable)
-	const [tagList] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
-
-	const isLoading = useLoadingState([projects.status, tagList.status])
-	const isProjectListEmpty = useEmptyDataState(projects.data)
-	const isTagListEmpty = useEmptyDataState(tagList.data)
-
-	const {
-		selectedTagTitles,
-		isSelected,
-		toggleTag,
-	} = useSmartTags({
-		categories: tagList.data,
-	})
-
-	const tableProjects: PortfolioProjectTableFullType[] = useMemo(() => {
-		return projects.data
-			.filter(project => {
-				for (const selectedTag of Array.from(selectedTagTitles)) {
-					for (const itemTag of project.tags) {
-						if (itemTag.title === selectedTag) {
-							return true
-						}
-					}
-				}
-				return false
-			})
-			.map(calculateProjectTableList)
-			.sort(sortableProjectByVendor)
-	}, [projects, selectedTagTitles])
-
-
-	return {
-		isLoading: isLoading,
-		isEmpty: isProjectListEmpty || isTagListEmpty,
-		tableProjects,
-		tagList: tagList.data,
-		isSelected,
-		toggleTag,
 	}
 }

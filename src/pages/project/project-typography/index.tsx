@@ -1,15 +1,10 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
-
+import { Layout } from 'components/ui/layout/Layout'
 import { ProjectTypography } from 'components/project/project-test'
 
-export const ProjectTypographyPage: FunctionComponent = () => {
-	usePageTitle('Тестовая страница')
-
-	return (
+export const ProjectTypographyPage: FunctionComponent = () => (
+	<Layout title="Тестовая страница">
 		<ProjectTypography />
-	)
-}
-
-export default ProjectTypographyPage
+	</Layout>
+)

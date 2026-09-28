@@ -1,12 +1,12 @@
 // TODO: [BACKEND] а как этим пользоваться, лол?
-
 import { FunctionComponent } from 'preact'
 
 import { useApiRequest } from 'hook/useApiRequest'
-import { useToolForm } from 'hook/useToolForm'
 import { useCallback } from 'preact/hooks'
+import { useToolForm } from 'hook/useToolForm'
 
 import { AdminToolContent } from 'components/admin-tool/admin-tool-content'
+import { Layout } from 'components/ui/layout/Layout'
 import { Sidebar } from 'components/admin-tool/sidebar'
 
 import { parseJsonWithFallback } from 'utils/parse-json-with-fallback'
@@ -31,13 +31,15 @@ export const ToolPage: FunctionComponent = () => {
 	}, [formData, sendRequest, setResponse])
 
 	return (
-		<div className="tool-page">
-			<Sidebar
-				formData={formData}
-				onFieldChange={updateField}
-				onSubmit={handleSubmit}
-			/>
-			<AdminToolContent response={response} />
-		</div>
+		<Layout title="REPLACE">
+			<div className="tool-page">
+				<Sidebar
+					formData={formData}
+					onFieldChange={updateField}
+					onSubmit={handleSubmit}
+				/>
+				<AdminToolContent response={response} />
+			</div>
+		</Layout>
 	)
 }

@@ -1,19 +1,16 @@
 import { FunctionComponent } from 'preact'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useMerchant } from 'hook/data/use-merchant'
 
+import { Layout } from 'components/ui/layout/Layout'
 import { Loading } from 'components/ui/loading'
+import { NotFoundPage } from 'pages/not-found-page'
 import { ProductBanner } from 'components/merchant/product-banner'
 import { TextContainer } from 'components/ui/text-container'
-
-import { NotFoundPage } from 'pages/not-found-page'
 
 import '../merchant-style.css'
 
 export const MerchantPage: FunctionComponent = () => {
-	usePageTitle('Магазин')
-
 	const { products, isProductEmpty, isProductLoaded } = useMerchant()
 
 	if (!isProductLoaded) {
@@ -24,16 +21,19 @@ export const MerchantPage: FunctionComponent = () => {
 	}
 
 	return (
-		<div className="merchant-page">
-			<TextContainer>
-				<h2>Магазинчик Хигимо</h2>
-			</TextContainer>
-			{products.map(product => (
-				<ProductBanner
-					product={product}
-					withBackground={true}
-				/>
-			))}
-		</div>
+		<Layout title="Магазин">
+			<div className="merchant-page">
+				<TextContainer>
+					<h2>Магазинчик Хигимо</h2>
+				</TextContainer>
+
+				{products.map(product => (
+					<ProductBanner
+						product={product}
+						withBackground={true}
+					/>
+				))}
+			</div>
+		</Layout>
 	)
 }

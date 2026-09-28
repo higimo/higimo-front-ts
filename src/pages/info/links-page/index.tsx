@@ -1,41 +1,35 @@
 import { FunctionComponent } from 'preact'
 import { LinksType } from 'api-types/links.types'
 
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useApi } from 'hook/fetch/use-api'
 
+import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
 import { LinksList } from 'components/info-service/links/links-list'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const LinksPage: FunctionComponent = () => {
-	usePageTitle('Избранные ссылки')
-
 	const [ links ] = useApi<LinksType[]>(API_ROUTE.link)
-	const isLoading = useLoadingState([links.status])
-	const isListEmpty = useEmptyDataState(links.data)
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
 
 	return (
-		<div className="links-page">
-			<TextContainer>
-				<h2>Избранные ссылки</h2>
-				<p>
-					Собираю ссылки, которые впечатлили меня. Хочу чтобы про них знало побольше людей.
-				</p>
-			</TextContainer>
-			<LinksList links={links.data} />
-		</div>
+		<Layout title="Избранные ссылки">
+			<div className="links-page">
+				<TextContainer>
+					<h2>Избранные ссылки</h2>
+					<p>
+						Собираю ссылки, которые впечатлили меня. Хочу чтобы про них знало побольше людей.
+					</p>
+				</TextContainer>
+
+				<LoadSuspense data={links}>
+					<EmptyData data={links}>
+						<LinksList links={links.data} />
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }

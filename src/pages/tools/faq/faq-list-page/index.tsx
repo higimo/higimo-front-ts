@@ -1,35 +1,27 @@
 import { FaqType } from 'api-types/faq.types'
 import { FunctionComponent } from 'preact'
 
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useApi } from 'hook/fetch/use-api'
 
+import { EmptyData } from 'components/ui/empty-data'
 import { FaqList } from 'components/info-service/faq/faq-list'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const FaqListPage: FunctionComponent = () => {
-	usePageTitle('Статьи')
-
 	const [ faqList ] = useApi<FaqType[]>(API_ROUTE.faq)
-	const isLoading = useLoadingState([faqList.status])
-	const isListEmpty = useEmptyDataState(faqList.data)
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
-
 
 	return (
-		<div className="faq-page">
-			<FaqList faqs={faqList.data} />
-		</div>
+		<Layout title="Статьи">
+			<div className="faq-page">
+				<LoadSuspense data={faqList}>
+					<EmptyData data={faqList}>
+						<FaqList faqs={faqList.data} />
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
 	)
 }
