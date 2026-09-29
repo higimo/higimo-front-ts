@@ -27,28 +27,28 @@ type EmptyDataPropsType = {
 	data?: ApiState<any, Object> | ApiState<any, Object>[] | JsonApiState<any> | JsonApiState<any>[]
 	errorComponent?: VNode
 	emptyComponent?: VNode
+	skipEmpty?: boolean
 }
 export const EmptyData: FunctionComponent<EmptyDataPropsType> = ({
 	data = [],
 	errorComponent = <ErrorState />,
 	emptyComponent = <EmptyState />,
 	children,
+	skipEmpty = false,
 }) => {
 	const isError = (Array.isArray(data)
 		? data.some(i => i.status === 'ERROR')
 		: data.status === 'ERROR'
 	)
-	if (!isError) {
-		console.log('eror')
+	if (isError) {
 		return errorComponent
 	}
 
-	const isEmpty = (Array.isArray(data)
+	const isEmpty = !skipEmpty && (Array.isArray(data)
 		? data.some(i => i.status === 'LOADED' && checkEmpty(i.data))
 		: data.status === 'LOADED' && checkEmpty(data.data)
 	)
 	if (isEmpty) {
-		console.log('empt')
 		return emptyComponent
 	}
 

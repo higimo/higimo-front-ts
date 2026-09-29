@@ -1,21 +1,43 @@
 import { FunctionComponent } from 'preact'
+import { NokiaPersonType } from 'api-types/nokia.types'
+
+import { useApi } from 'hook/fetch/use-api'
+import { useRoute } from 'preact-iso'
 
 import { Layout } from 'components/ui/layout/Layout'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
-import { NokiaPersonFormController } from 'components/nokia/form/nokia-person-form-controller'
+import { LoadSuspense } from 'components/ui/load-suspense'
+import { EmptyData } from 'components/ui/empty-data'
+import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'
+
+import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../nokia-style.css'
 
-export const NokiaAddPersonPage: FunctionComponent = () => (
-	<Layout title="Редактирование и создание человека // Нокиа">
-		<div className="nokia">
-			<NokiaMenu />
+const DEFAULT_PERSON_ID = '-1'
 
-			<div className="nokia__content">
-				<h1>Редактирование и создание человека</h1>
+export const NokiaAddPersonPage: FunctionComponent = () => {
+	const { params: { personId = DEFAULT_PERSON_ID } } = useRoute()
 
-				<NokiaPersonFormController />
+	const [ singlePerson ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
+
+	return (
+		<Layout title="Редактирование и создание человека // Нокиа">
+			<div className="nokia">
+				<NokiaMenu />
+
+				<div className="nokia__content">
+					<h1>Редактирование и создание человека</h1>
+
+					<LoadSuspense data={singlePerson}>
+						<EmptyData data={singlePerson} skipEmpty>
+							<NokiaPersonFormContainer
+								initialData={singlePerson.data}
+							/>
+						</EmptyData>
+					</LoadSuspense>
+				</div>
 			</div>
-		</div>
-	</Layout>
-)
+		</Layout>
+	)
+}

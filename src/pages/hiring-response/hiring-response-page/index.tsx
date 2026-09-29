@@ -25,6 +25,12 @@ export const HiringResponsePage: FunctionComponent = () => {
 	})
 	const [ statistic ] = useApi<PasteStatisticApiType[]>(API_ROUTE.pasteStatistic, { key: 'send-resume' })
 
+	const [ pasteTodo ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
+		filter: {
+			key: 'hiring-todo'
+		}
+	})
+
 	return (
 		<Layout title="Мои отклики">
 			<div className="hiring-response-page">
@@ -35,7 +41,11 @@ export const HiringResponsePage: FunctionComponent = () => {
 				</TextContainer>
 
 				<TextContainer>
-					<HiringResponseTodoController />
+					<LoadSuspense data={pasteTodo}>
+						<EmptyData data={pasteTodo}>
+							<HiringResponseTodoController todo={pasteTodo.data} />
+						</EmptyData>
+					</LoadSuspense>
 					<HiringResponseLinks />
 
 					<LoadSuspense data={pasteData}>

@@ -2,29 +2,35 @@ import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
-import { usePersonForm } from 'hook/nokia/use-person-form'
+import { useForm } from 'react-hook-form'
+import { useRoute } from 'preact-iso'
 
 import { NokiaPersonFormFields } from 'components/nokia/form/nokia-person-form-fields'
 
+import { personApi } from 'repositories/person-api'
+
+const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {
+	if (data.id) {
+		await personApi.edit(data)
+	} else {
+		await personApi.create(data)
+	}
+}
+
 interface NokiaPersonFormContainerProps {
 	initialData: NokiaPersonSimpleType | undefined
-	isEditMode: boolean
 }
 
 export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContainerProps> = ({
 	initialData,
-	isEditMode,
 }) => {
-	const {
-		formMethods,
-		handlePersonSubmit,
-		resetForm,
-	} = usePersonForm({ isEditMode })
+	const { path } = useRoute()
+
+	const formMethods = useForm<NokiaPersonSimpleType>({})
 
 	const {
 		handleSubmit,
-		formState:
-		{
+		formState: {
 			isDirty,
 			isSubmitting
 		},
@@ -35,7 +41,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 		if (initialData) {
 			reset(initialData)
 		}
-	}, [initialData, reset])
+	}, [initialData, path, reset])
 
 	return (
 		<form className="container nokia-form" onSubmit={handleSubmit(handlePersonSubmit)}>
@@ -50,7 +56,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
 				</button>
 				{isDirty && (
-					<button type="reset" onClick={resetForm}>Очистить</button>
+					<button type="reset" onClick={() => reset(initialData)}>Очистить</button>
 				)}
 			</div>
 		</form>

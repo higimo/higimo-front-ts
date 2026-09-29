@@ -12,6 +12,7 @@ import { TravelInvite } from 'components/intro/travel-invite'
 
 // TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
+// TOOD: Layout поставить
 export const IndexPage: FunctionComponent = () => (
 	<Layout title="Разработчик и менеджер продукта — higimo">
 		<MainIntro />
