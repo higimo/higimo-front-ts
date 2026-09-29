@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { NokiaMeetingFullType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
+import { NokiaMeetingFullType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useApi } from 'hook/fetch/use-api'
 import { useMemo } from 'preact/hooks'
@@ -8,26 +8,15 @@ import { useRoute } from 'preact-iso'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 
+import { getUserSuggestions } from 'utils/get-user-suggestions'
+
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_MEETING_ID } from 'config/DEFAULT-MEETING-ID'
 
 import '../nokia-style.css'
-
-// TODO: [LIGHT] унести в утилиты
-const getUserSuggestions = (
-	persons: NokiaPersonSimpleType[]
-): MentionSuggest[] => persons.map(person => {
-	return {
-		id: person.id,
-		display: [person.name, person.alias, person.nick].filter(Boolean).join(' | '),
-		person: person
-	}
-})
-
-const DEFAULT_MEETING_ID = '-1'
 
 export const NokiaMeetingFormPage: FunctionComponent = () => {
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()

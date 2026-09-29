@@ -1,9 +1,6 @@
 import { VkSessionType } from 'api-types/vk.types'
 
-// TODO: [LIGHT] вынести в конфиг
-const VK_API_ID = 6661731
-const VK_API_VERSION = '5.199'
-const VK_SCOPE = 4
+import { VK_API_ID, VK_API_VERSION, VK_SCOPE } from 'config/VK-API-ID'
 
 export type VkAuthResultType = {
 	status: string
