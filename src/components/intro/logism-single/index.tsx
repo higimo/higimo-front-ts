@@ -1,50 +1,37 @@
 import { FunctionComponent } from 'preact'
 import { LogismType } from 'api-types/logism.types'
 
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { useApi } from 'hook/fetch/use-api'
-
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
-export const LogismSingle: FunctionComponent = () => {
-	// TODO: [MIDDLE] ну и как вынести это в page?
-	const [ logismDetail, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)
-	const isLoading = useLoadingState([logismDetail.status])
-	const isListEmpty = useEmptyDataState(logismDetail.data)
-
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isListEmpty) {
-		return <NotFoundData />
-	}
-
-	return (
-		<PrecentationContainer className="single-logism">
-			<TextContainer>
-				<div
-					className="single-logism__text"
-					dangerouslySetInnerHTML={{__html: logismDetail.data.text}}
-				/>
-			</TextContainer>
-			<TextContainer className="single-logism__navigation">
-				<span
-					className="single-logism__reload"
-					onClick={reload}
-				>
-					↺
-				</span>
-				<a href={ROUTE_LINKS.logism} className="single-logism__link">Другие логизмы →</a>
-			</TextContainer>
-		</PrecentationContainer>
-	)
+type LogismSinglePropsType = {
+	logism: LogismType
+	reload: () => void
 }
+
+export const LogismSingle: FunctionComponent<LogismSinglePropsType> = ({
+	logism,
+	reload,
+}) => (
+	<PrecentationContainer className="single-logism">
+		<TextContainer>
+			<div
+				className="single-logism__text"
+				dangerouslySetInnerHTML={{__html: logism.text}}
+			/>
+		</TextContainer>
+		<TextContainer className="single-logism__navigation">
+			<span
+				className="single-logism__reload"
+				onClick={reload}
+			>
+				↺
+			</span>
+			<a href={ROUTE_LINKS.logism} className="single-logism__link">Другие логизмы →</a>
+		</TextContainer>
+	</PrecentationContainer>
+)

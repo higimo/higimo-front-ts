@@ -91,3 +91,7 @@ export type PortfolioProjectTableFullType = {
 	// 	isLink: false
 	// }
 }
+
+export type PortfolioMetaType = {
+	totalCount: number
+}

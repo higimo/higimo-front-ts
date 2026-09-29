@@ -1,66 +1,41 @@
 import { FunctionComponent } from 'preact'
-import { PortfolioProjectFullType } from 'api-types/portfolio.types'
-
-import { useEmptyDataState } from 'hook/fetch/use-empty-data-state'
-import { useLoadingState } from 'hook/fetch/use-loading-state'
-import { useApi } from 'hook/fetch/use-api'
+import { PortfolioMetaType, PortfolioProjectFullType } from 'api-types/portfolio.types'
 
 import { IntroHeader } from 'components/intro/intro-header'
-import { Loading } from 'components/ui/loading'
-import { NotFoundData } from 'components/ui/not-found-data'
 import { ProjectList } from 'components/project/project-list'
 import { ProjectMore } from 'components/project/project-more'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-import { API_ROUTE } from 'dic/API_ROUTE'
 import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
 import { PROJECT_SHORT_TAGS } from 'dic/project/PROJECT_SHORT_TAGS'
 
 import './style.css'
 
-type PortfolioMetaType = {
-	totalCount: number
+type ProjectListShortPropsType = {
+	projects: PortfolioProjectFullType[]
+	meta?: PortfolioMetaType
 }
 
-export const ProjectListShort: FunctionComponent = () => {
-	// TODO: [MIDDLE] ну и как вынести это в page?
-	// TODO: [DATA] исправить обложки и размеры, сейчас грандиозные бывают normal
-	// TODO: [BACKEND] присылать определённое количество, чтобы дырка не появлялась
-	const [ highlightProjects ] = useApi<PortfolioProjectFullType[], PortfolioMetaType>(API_ROUTE.projectProject, {
-		// filter: { cover_size: 'high'},
-		limit: 6
-	})
+export const ProjectListShort: FunctionComponent<ProjectListShortPropsType> = ({
+	projects,
+	meta,
+}) => (
+	<div className="project-list project-list--short" id={ANCHOR_LINKS.done}>
+		<TextContainer>
+			<IntroHeader>Сделал</IntroHeader>
+		</TextContainer>
 
-	const isLoading = useLoadingState([highlightProjects.status])
-	const isEmpty = useEmptyDataState(highlightProjects.data)
+		<TextContainer className="project-list__filter">
+			{PROJECT_SHORT_TAGS.map(tagName => (
+				<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>{tagName}</ProjectTag>
+			))}
+		</TextContainer>
 
-	if (isLoading) {
-		return <Loading />
-	}
-	if (isEmpty) {
-		return <NotFoundData />
-	}
-
-	const projectsList = highlightProjects.data
-
-	return (
-		<div className="project-list project-list--short" id={ANCHOR_LINKS.done}>
-			<TextContainer>
-				<IntroHeader>Сделал</IntroHeader>
-			</TextContainer>
-
-			<TextContainer className="project-list__filter">
-				{PROJECT_SHORT_TAGS.map(tagName => (
-					<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>{tagName}</ProjectTag>
-				))}
-			</TextContainer>
-
-			<ProjectList projectsList={projectsList} />
-			{!!highlightProjects.meta ? (
-				<ProjectMore count={highlightProjects.meta.totalCount} />
-			) : null}
-		</div>
-	)
-}
+		<ProjectList projectsList={projects} />
+		{!!meta ? (
+			<ProjectMore count={meta.totalCount} />
+		) : null}
+	</div>
+)
