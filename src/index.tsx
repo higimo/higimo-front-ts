@@ -91,7 +91,6 @@ import { HiringResponsePage } from 'pages/hiring-response/hiring-response-page'
 import { AdminPage }     from 'pages/admin/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
 import { TestPage }      from 'pages/admin/test-page'
-import { TextareaPage }  from 'pages/admin/textarea-page'
 import { ToolPage }      from 'pages/admin/tool-page'
 
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
@@ -126,8 +125,6 @@ export function App() {
 						<Route path={ROUTE_LINKS.merchantPersonalPolicy} component={PersonalPolicyPage} />
 						<Route path={ROUTE_LINKS.merchantPaymentOferta} component={PaymentOfertaPage} />
 						<Route path={ROUTE_LINKS.merchantDonationOferta} component={DonationOfertaPage} />
-
-						<Route path={ROUTE_LINKS.textarea} component={TextareaPage} />
 
 						{/* admin */}
 						<Route path={ROUTE_LINKS.login} component={LoginPage} />

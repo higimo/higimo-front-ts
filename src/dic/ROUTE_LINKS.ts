@@ -193,6 +193,5 @@ export const ROUTE_LINKS = {
 	adminIndex: '/admin/',
 	login:      '/login/',
 	typo:       '/typo/',
-	textarea:   '/textarea/',
 	TODO:       '#',
 } as const
