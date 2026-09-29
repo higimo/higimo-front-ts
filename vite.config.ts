@@ -104,7 +104,14 @@ export default defineConfig(
 					output: {
 						manualChunks: {
 							'markdown-it': ['markdown-it'],
-							'd3': ['d3'],
+							'd3': [
+								'd3-selection',
+								'd3-scale',
+								'd3-axis',
+								'd3-shape',
+								'd3-array',
+								'd3-time-format',
+							],
 							'react-hook-form': ['react-hook-form'],
 						},
 					},

@@ -9,15 +9,17 @@ export const updateChart = async (
 	const padding = { top: 8, bottom: 70, left: 32, right: 32 }
 
 	try {
-		const {
-			select,
-			scalePoint,
-			max,
-			scaleLinear,
-			line,
-			curveMonotoneX,
-			area,
-		} = await import('d3')
+		const [
+			{ select },
+			{ scalePoint, scaleLinear },
+			{ max },
+			{ line, curveMonotoneX, area },
+		] = await Promise.all([
+			import('d3-selection'),
+			import('d3-scale'),
+			import('d3-array'),
+			import('d3-shape'),
+		])
 
 		const svg = select(svgRef)
 
