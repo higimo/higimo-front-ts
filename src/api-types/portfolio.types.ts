@@ -69,4 +69,25 @@ export type PortfolioProjectDetailType = PortfolioProjectSimpleType & {
 	// next: PortfolioProjectApiType
 	// prev: PortfolioProjectApiType
 }
+
 export type PortfolioProjectTableType = PortfolioProjectDetailType
+
+export type PortfolioProjectTableFullType = {
+	id: PortfolioProjectTableType['id']
+	vendor: PortfolioProjectTableType['vendor']['code']
+	name: PortfolioProjectTableType['name']
+	code: PortfolioProjectTableType['code']
+	date: PortfolioProjectTableType['date']
+	image: PortfolioProjectTableType['image']
+	cover_size: PortfolioProjectTableType['cover_size']
+	tags: string[]
+	[k: string]: any
+	// PortfolioProjectType = PortfolioProjectApiType & {
+	// 	tags: PortfolioTag[]
+	// 	credits?: PortfolioCreditsType[]
+	// 	description?: string
+	// 	text?: string
+	// } & {
+	// 	isLink: false
+	// }
+}

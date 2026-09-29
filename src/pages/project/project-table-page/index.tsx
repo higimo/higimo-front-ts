@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { PortfolioGroupedTagType, PortfolioProjectTableType } from 'api-types/portfolio.types'
+import { PortfolioGroupedTagType, PortfolioProjectTableFullType, PortfolioProjectTableType } from 'api-types/portfolio.types'
 
 import { useApi } from 'hook/fetch/use-api'
 import { useMemo } from 'preact/hooks'
@@ -12,7 +12,8 @@ import { PortfolioProjectTable } from 'components/project/portfolio-project-tabl
 import { ProjectTagCategory } from 'components/project/project-tag-category'
 import { TextContainer } from 'components/ui/text-container'
 
-import { calculateProjectTableList, PortfolioProjectTableFullType, sortableProjectByVendor } from 'hook/data/use-table-project'
+import { calculateProjectTableList } from 'utils/project/calculate-project-table-list'
+import { sortableProjectByVendor } from 'utils/project/sortable-project-by-vendor'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 

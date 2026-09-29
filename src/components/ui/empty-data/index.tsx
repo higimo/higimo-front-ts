@@ -1,27 +1,9 @@
 import { ApiState } from 'hook/fetch/use-api'
-import { EmptyObject } from 'utils.type'
 import { JsonApiState } from 'hook/fetch/use-json-api'
 import { VNode, FunctionComponent } from 'preact'
 
 import { EmptyState, ErrorState } from 'components/ui/state'
-
-// TODO: [LIGHT] вынести в утилиты
-export const checkEmpty = (data: unknown): data is EmptyObject => {
-	if (Array.isArray(data)) {
-		return data.length === 0
-	}
-
-	if (data === null || data === undefined) {
-		return true
-	}
-
-	if (typeof data === 'object') {
-		return Object.keys(data).length === 0
-	}
-
-	return false
-}
-
+import { checkEmpty } from 'utils/check-empty'
 
 type EmptyDataPropsType = {
 	data?: ApiState<any, Object> | ApiState<any, Object>[] | JsonApiState<any> | JsonApiState<any>[]
@@ -29,6 +11,7 @@ type EmptyDataPropsType = {
 	emptyComponent?: VNode
 	skipEmpty?: boolean
 }
+
 export const EmptyData: FunctionComponent<EmptyDataPropsType> = ({
 	data = [],
 	errorComponent = <ErrorState />,

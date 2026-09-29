@@ -1,32 +1,6 @@
-import { PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
+import { PortfolioProjectDetailType } from 'api-types/portfolio.types'
+import { extractWithDOMParser } from 'utils/project/extract-with-dom-parser'
 
-// TODO: [LIGHT] перенести в api типы project
-export type PortfolioProjectTableFullType = {
-	id: PortfolioProjectTableType['id']
-	vendor: PortfolioProjectTableType['vendor']['code']
-	name: PortfolioProjectTableType['name']
-	code: PortfolioProjectTableType['code']
-	date: PortfolioProjectTableType['date']
-	image: PortfolioProjectTableType['image']
-	cover_size: PortfolioProjectTableType['cover_size']
-	tags: string[]
-	[k: string]: any
-	// PortfolioProjectType = PortfolioProjectApiType & {
-	// 	tags: PortfolioTag[]
-	// 	credits?: PortfolioCreditsType[]
-	// 	description?: string
-	// 	text?: string
-	// } & {
-	// 	isLink: false
-	// }
-}
-
-// TODO: [LIGHT] перенести в utils/project
-export const sortableProjectByVendor = (a: PortfolioProjectTableFullType, b: PortfolioProjectTableFullType) => {
-	return a.vendor.localeCompare(b.vendor) || b.date.localeCompare(a.date)
-}
-
-// TODO: [LIGHT] перенести в utils/project
 export const calculateProjectTableList = (project: PortfolioProjectDetailType) => {
 	const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
 	const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'
@@ -45,11 +19,8 @@ export const calculateProjectTableList = (project: PortfolioProjectDetailType) =
 	const cardTableRaw = extractWithDOMParser(metricRaw.resultHtml, '.announce__card-table, .announce__pic-table, .announce__info-table')
 	const factoidGalleryRaw = extractWithDOMParser(cardTableRaw.resultHtml, '.factoid-gallery')
 	// const resultTextRaw = extractWithDOMParser(factoidGalleryRaw.resultHtml, '.container-panel--30, .container-panel--50, h2, img, video, .horizontal-item__note, .container-panel--70, script, .sector-sum--half, .sector-sum')
-
 	// TODO: [BACKEND] КЦЗНН странно сверстан
-
 	// console.log(resultTextRaw.resultHtml)
-
 	const task = taskRaw.textContent
 	const announceTextHtml = announceTextRaw.innerHTML
 	const announceText = (announceTextRaw.textContent || []).join('').substring(0, 300)
@@ -70,18 +41,18 @@ export const calculateProjectTableList = (project: PortfolioProjectDetailType) =
 
 
 	return {
-		id:           project.id,
-		vendor:       project.vendor.code,
-		name:         project.name,
-		code:         project.code,
-		date:         project.date,
-		image:        project.image,
-		cover_size:   project.cover_size,
-		tags:         project.tags.map(i => i.title),
-		credits:      project.credits.map(i => `${i.role} ${i.worker.full_name}`),
-		description:  project.description,
+		id: project.id,
+		vendor: project.vendor.code,
+		name: project.name,
+		code: project.code,
+		date: project.date,
+		image: project.image,
+		cover_size: project.cover_size,
+		tags: project.tags.map(i => i.title),
+		credits: project.credits.map(i => `${i.role} ${i.worker.full_name}`),
+		description: project.description,
 		// @ts-ignore
-		isHide:       project.hide === 'true' ? 'HIDE' : 'SHOW',
+		isHide: project.hide === 'true' ? 'HIDE' : 'SHOW',
 
 		task,
 		announceText,
@@ -101,25 +72,5 @@ export const calculateProjectTableList = (project: PortfolioProjectDetailType) =
 		checkExistTags,
 		checkCover,
 		checkTask,
-	}
-}
-
-// TODO: [LIGHT] перенести в utils/project
-export const extractWithDOMParser = (htmlString: string, selector: string) => {
-	const parser = new DOMParser()
-	const doc = parser.parseFromString(htmlString, 'text/html')
-
-	const elements = doc.querySelectorAll(selector)
-	const outerHTML = Array.from(elements).map(el => el.outerHTML)
-	const textContent = Array.from(elements).map(el => el.textContent)
-	const innerHTML = Array.from(elements).map(el => el.innerHTML)
-
-	elements.forEach(i => i.remove())
-
-	return {
-		outerHTML,
-		textContent,
-		innerHTML,
-		resultHtml: doc.body.innerHTML
 	}
 }

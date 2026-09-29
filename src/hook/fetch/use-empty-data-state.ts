@@ -1,7 +1,7 @@
 // TODO: [LIGHT] есть в общих такой тип
 type EmptyValue = null | undefined | [] | Record<string, never>
 
-// TODO: [LIGHT] есть дублирующая утилита, по коду найти
+// TODO: [LIGHT] есть дублирующая утилита utils/check-empty
 /**
  * Проверит, что в аргументе не пустой список элементов или непустой единственный элемент
  * TODO: [HARD] после интеграции этого в useApi переименовать в is
