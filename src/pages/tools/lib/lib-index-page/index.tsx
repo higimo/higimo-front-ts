@@ -17,7 +17,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 export const LibIndexPage: FunctionComponent = () => {
 	const [ bookList ] = useApi<LibraryType[]>(API_ROUTE.lib)
 
-	// TODO: а тут точно обёртку надо?
+	// TODO: [LIGHT] а тут точно обёртку надо?
 	const onRemove = useCallback((id: LibraryType['id']) => async () => {
 		libApi.delete(id)
 	}, [])

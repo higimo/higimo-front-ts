@@ -16,7 +16,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import './style.css'
 
 export const LogismSingle: FunctionComponent = () => {
-	// TODO: ну и как вынести это в page?
+	// TODO: [MIDDLE] ну и как вынести это в page?
 	const [ logismDetail, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)
 	const isLoading = useLoadingState([logismDetail.status])
 	const isListEmpty = useEmptyDataState(logismDetail.data)

@@ -12,7 +12,7 @@ import { MentionSuggest } from 'components/mention-textarea/types'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
-// TODO: да удалить нахуй
+// TODO: [LIGHT] да удалить нахуй
 export const TextareaPage: FunctionComponent = () => {
 	const [ personList ] = useApi<NokiaPersonSimpleType[]>(API_ROUTE.nokiaPerson)
 	const [ mentionList, setMentionList ] = useState<MentionSuggest[]>([])

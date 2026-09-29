@@ -25,7 +25,7 @@ type PortfolioMetaType = {
 }
 
 export const ProjectListShort: FunctionComponent = () => {
-	// TODO: ну и как вынести это в page?
+	// TODO: [MIDDLE] ну и как вынести это в page?
 	// TODO: [DATA] исправить обложки и размеры, сейчас грандиозные бывают normal
 	// TODO: [BACKEND] присылать определённое количество, чтобы дырка не появлялась
 	const [ highlightProjects ] = useApi<PortfolioProjectFullType[], PortfolioMetaType>(API_ROUTE.projectProject, {

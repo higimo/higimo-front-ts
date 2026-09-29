@@ -91,7 +91,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 
 				<LoadSuspense data={barPovMoscow}>
 					<EmptyData data={barPovMoscow}>
-						{/* TODO: вынести в компонент */}
+						{/* TODO: [LIGHT] вынести в компонент */}
 						<div className="tourism-maps-moscow-bar">
 							<TourismMapGeo<BarPovRealTags, Coord>
 								items={filteredData}

@@ -1,4 +1,4 @@
-// TODO: написать тесты и JSDoc, имя сменить
+// TODO: [LIGHT] написать тесты и JSDoc, имя сменить
 export const formatValue = (value: any): string => {
 	if (value === null || value === undefined) {
 		return '—'

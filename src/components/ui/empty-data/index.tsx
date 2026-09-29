@@ -5,7 +5,7 @@ import { VNode, FunctionComponent } from 'preact'
 
 import { EmptyState, ErrorState } from 'components/ui/state'
 
-// TODO: вынести в утилиты
+// TODO: [LIGHT] вынести в утилиты
 export const checkEmpty = (data: unknown): data is EmptyObject => {
 	if (Array.isArray(data)) {
 		return data.length === 0

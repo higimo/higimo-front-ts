@@ -16,7 +16,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../nokia-style.css'
 
-// TODO: унести в утилиты
+// TODO: [LIGHT] унести в утилиты
 const getUserSuggestions = (
 	persons: NokiaPersonSimpleType[]
 ): MentionSuggest[] => persons.map(person => {
@@ -32,7 +32,7 @@ const DEFAULT_MEETING_ID = '-1'
 export const NokiaMeetingFormPage: FunctionComponent = () => {
 	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
 
-	// TODO: лучше сменить тип на NokiaMeetingSimpleType, даже если присылает другое
+	// TODO: [LIGHT] лучше сменить тип на NokiaMeetingSimpleType, даже если присылает другое
 	const [ singleMeeting ] = useApi<NokiaMeetingFullType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
 	// TODO: [BACKEND] на беке получать сортируя по популярности
 	const [ persons ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaSuggestPerson)

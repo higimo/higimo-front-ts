@@ -1,4 +1,4 @@
-// TODO: написать тесты и JSDoc, имя сменить
+// TODO: [LIGHT] написать тесты и JSDoc, имя сменить
 export const getText = (str?: string): string => {
 	let result = str || ''
 	if (result.indexOf('</p>') > 0) {

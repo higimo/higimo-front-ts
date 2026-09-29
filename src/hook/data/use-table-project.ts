@@ -1,6 +1,6 @@
 import { PortfolioProjectDetailType, PortfolioProjectTableType } from 'api-types/portfolio.types'
 
-// TODO: перенести в api типы project
+// TODO: [LIGHT] перенести в api типы project
 export type PortfolioProjectTableFullType = {
 	id: PortfolioProjectTableType['id']
 	vendor: PortfolioProjectTableType['vendor']['code']
@@ -21,18 +21,17 @@ export type PortfolioProjectTableFullType = {
 	// }
 }
 
-// TODO: перенести в utils/project
+// TODO: [LIGHT] перенести в utils/project
 export const sortableProjectByVendor = (a: PortfolioProjectTableFullType, b: PortfolioProjectTableFullType) => {
 	return a.vendor.localeCompare(b.vendor) || b.date.localeCompare(a.date)
 }
 
-// TODO: перенести в utils/project
+// TODO: [LIGHT] перенести в utils/project
 export const calculateProjectTableList = (project: PortfolioProjectDetailType) => {
 	const isLinkDefine = project.isLink && 'link' in project ? !!(project.link as string)?.length : false
 	const checkLink = project.isLink && !isLinkDefine ? 'fail' : 'pass'
 	const checkExistTags = project.tags.length ? 'pass' : 'fail'
 	const checkCover = ['jpg', 'png'].includes(project.image) ? 'pass' : 'fail'
-
 
 	const taskRaw = extractWithDOMParser(project.text, '.task')
 	const announceTextRaw = extractWithDOMParser(taskRaw.resultHtml, '.announce__text, .container')
@@ -105,7 +104,7 @@ export const calculateProjectTableList = (project: PortfolioProjectDetailType) =
 	}
 }
 
-// TODO: перенести в utils/project
+// TODO: [LIGHT] перенести в utils/project
 export const extractWithDOMParser = (htmlString: string, selector: string) => {
 	const parser = new DOMParser()
 	const doc = parser.parseFromString(htmlString, 'text/html')

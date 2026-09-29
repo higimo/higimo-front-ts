@@ -12,9 +12,9 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 // 	syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any>
 // }
 
-// TODO: вынести бы в отдельный метод заполнения и возвращать значение
+// TODO: [HARD] вынести бы в отдельный метод заполнения и возвращать значение
 class MeetingApiRepository {
-	// TODO: решить создавать ли createOrUpdate
+	// TODO: [MIDDLE] решить создавать ли createOrUpdate
 	async create(
 		values: Omit<NokiaMeetingSimpleType, 'id'>
 	): Promise<NokiaMeetingSimpleType | null> {

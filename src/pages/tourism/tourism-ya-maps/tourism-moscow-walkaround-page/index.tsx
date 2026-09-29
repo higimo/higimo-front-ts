@@ -30,7 +30,7 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 
 	return (
 		<Layout title="Обхожу Москву">
-			{/* TODO: наверно, div нужно туда занести, ради className */}
+			{/* TODO: [LIGHT] наверно, div нужно туда занести, ради className */}
 			<div className="tourism-identy-page">
 				<TourismMainMenu />
 

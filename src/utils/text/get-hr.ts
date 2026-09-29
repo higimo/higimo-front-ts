@@ -1,2 +1,2 @@
-// TODO: написать тесты и JSDoc
+// TODO: [LIGHT] написать тесты и JSDoc
 export const getHr = (str: string): string => str.replace(/----/g, '<hr />')

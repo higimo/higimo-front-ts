@@ -4,7 +4,7 @@ import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
 import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
 
-// TODO: в ES2026 появились функции группировки и добавления в объект, даже если ключа нет, код сильно упростится
+// TODO: [MIDDLE] в ES2026 появились функции группировки и добавления в объект, даже если ключа нет, код сильно упростится
 export const prepareData = (
 	meetings: NokiaMeetingStatisticType[],
 	selectedYearTag: number[],

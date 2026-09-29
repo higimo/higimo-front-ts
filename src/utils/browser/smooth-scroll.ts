@@ -1,7 +1,7 @@
 import { JSX } from 'preact'
 import { AnchorLinksType } from 'dic/ANCHOR_LINKS'
 
-// TODO: документировать JSDoc
+// TODO: [LIGHT] документировать JSDoc
 export const smoothScroll = (href: AnchorLinksType) => (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
 	if (event) {
 		event.preventDefault()

@@ -36,7 +36,7 @@ export const useMeetingForm = ({
 	const { path } = useRoute()
 	const formMethods = useForm<MeetingFormValues>({
 		defaultValues: {
-			// TODO: переделать типы
+			// TODO: [LIGHT] переделать типы
 			date: createDateOnly(new Date()) as unknown as ISOString
 		}
 	})
@@ -44,7 +44,7 @@ export const useMeetingForm = ({
 	const handleMeetingSubmit = useCallback(async (values: MeetingFormValues) => {
 		try {
 			let backendEntity: NokiaMeetingSimpleType | null = null
-			// TODO: мб, всё же шаблон createOrUpdate?
+			// TODO: [MIDDLE] мб, всё же шаблон createOrUpdate?
 			if (values.id) {
 				backendEntity = await meetingApi.edit({
 					id: values.id,
@@ -66,7 +66,7 @@ export const useMeetingForm = ({
 					description: values.description,
 					type: values.type,
 				})
-				// TODO: написать guard type функцию, после которой точно задаётся существование сущности в переменно
+				// TODO: [LIGHT] написать guard type функцию, после которой точно задаётся существование сущности в переменно
 				if (!backendEntity) {
 					console.log('backendEntity', backendEntity)
 					throw new ApiError('Бекенд не создал', 400)
@@ -83,7 +83,7 @@ export const useMeetingForm = ({
 			}
 
 			formMethods.setValue('id', meetingId)
-			// TODO: добавить
+			// TODO: [LIGHT] добавить
 			formMethods.reset({
 				...(backendEntity || {}),
 				persons: resultPerson

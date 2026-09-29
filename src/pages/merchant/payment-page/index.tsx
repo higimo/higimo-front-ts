@@ -27,7 +27,7 @@ export const PaymentPage: FunctionComponent = () => {
 	const { products, isProductEmpty, isProductLoaded } = useMerchant()
 	const { query: { id = null } } = useLocation()
 
-	// TODO: надо, кжтс, хук, который получает по id нужный товар
+	// TODO: [MIDDLE] надо, кжтс, хук, который получает по id нужный товар
 	const currentProduct = products.find(product => product.id === id)
 
 	const { register, getValues } = useForm<FormValues>({

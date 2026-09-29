@@ -14,7 +14,7 @@ interface MerchantProductState {
 	products: MerchantProductType[]
 }
 
-// TODO: отделить сигнал отдельно
+// TODO: [MIDDLE] отделить сигнал отдельно
 const merchantProductSignal = signal<MerchantProductState>({
 	status: API_STATUS.INIT,
 	products: [],
