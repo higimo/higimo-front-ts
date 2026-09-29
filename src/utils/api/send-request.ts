@@ -20,67 +20,71 @@ export interface ApiResponse<T = any> {
 
 const FREEZE_META = {} as const
 
-// TODO: [MIDDLE] пора переписать на fetch
-export const sendRequest = <T = any>(
+const parseJson = (text: string): any => {
+	try {
+		return JSON.parse(text)
+	} catch {
+		return undefined
+	}
+}
+
+export const sendRequest = async <T = any>(
 	url: string,
 	{
 		method = 'GET',
 		values = {}
 	}: SendRequestOptions = {}
-): Promise<ApiResponse<T>> => new Promise((resolve, reject) => {
-	if (typeof window !== 'undefined') {
-		var xhttp = new XMLHttpRequest()
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && [200, 201].includes(this.status)) {
-				let json
-				let meta
-				try {
-					let jsonObj = JSON.parse(this.responseText)
-
-					json = jsonObj.data
-					meta = jsonObj.meta || FREEZE_META
-				} catch {
-					json = this.responseText
-				}
-				resolve({ data: json, meta })
-			}
-			if (this.readyState == 4 && (this.status !== 200 && this.status !== 201)) {
-				let errorData
-				let errorMessage = this.statusText
-
-				try {
-					const parsedResponse = JSON.parse(this.responseText)
-					errorData = parsedResponse
-
-					if (parsedResponse.message) {
-						errorMessage = parsedResponse.message
-					} else if (parsedResponse.errors) {
-						const errorMessages = Object.values(parsedResponse.errors).flat()
-						errorMessage = errorMessages.join(', ')
-					}
-				} catch (e) {
-					errorData = this.responseText
-				}
-
-				const error = new ApiError(errorMessage, this.status, url, errorData)
-				console.error(error, {
-					status: this.status,
-					url,
-					errorData
-				})
-				reject(error)
-			}
-		}
-
-		xhttp.open(
-			method,
-			(method === 'GET' ? url + (Object.keys(values).length ? '?' + httpBuildQuery(values) : '') : url),
-			true
-		)
-
-		xhttp.setRequestHeader('Accept', 'application/json')
-		xhttp.setRequestHeader('Content-Type', method === 'GET' ? 'application/json' : 'application/x-www-form-urlencoded')
-
-		xhttp.send(httpBuildQuery(values))
+): Promise<ApiResponse<T>> => {
+	if (typeof window === 'undefined') {
+		throw new Error('sendRequest is only available in browser environment')
 	}
-})
+
+	const query = httpBuildQuery(values)
+	const fullUrl = method === 'GET' && Object.keys(values).length
+		? `${url}?${query}`
+		: url
+
+	const response = await fetch(fullUrl, {
+		method,
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': method === 'GET'
+				? 'application/json'
+				: 'application/x-www-form-urlencoded'
+		},
+		body: method === 'GET' ? undefined : query
+	})
+
+	const responseText = await response.text()
+	const parsed = parseJson(responseText)
+
+	if ([200, 201].includes(response.status)) {
+		const json = parsed !== undefined && typeof parsed === 'object' && 'data' in parsed
+			? parsed.data as T
+			: responseText as unknown as T
+		const meta = parsed?.meta || FREEZE_META
+
+		return { data: json, meta }
+	}
+
+	let errorMessage = response.statusText
+	const errorData = parsed !== undefined ? parsed : responseText
+
+	if (parsed?.message) {
+		errorMessage = parsed.message
+	} else if (parsed?.errors) {
+		const errorMessages = Object.values(parsed.errors).flat()
+		errorMessage = errorMessages.join(', ')
+	}
+
+	// TODO: [HARD] мб, разделять типы ошибок:
+	// JsonParse, FetchError (сеть потеряна, таймаут), ServerFail (5**), PolicyFail (4**), ValidationFail (422, 400),
+	// мб их ловить в ErrorBoundary, раз он в роутере всё равно перехватывает их, бизнес-логику обрабатывать в компонентах
+	const error = new ApiError(errorMessage, response.status, url, errorData)
+	console.error(error, {
+		status: response.status,
+		url,
+		errorData
+	})
+	throw error
+}
