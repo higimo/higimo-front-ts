@@ -44,36 +44,22 @@ export const useMeetingForm = ({
 	const handleMeetingSubmit = useCallback(async (values: MeetingFormValues) => {
 		try {
 			let backendEntity: NokiaMeetingSimpleType | null = null
-			// TODO: [MIDDLE] мб, всё же шаблон createOrUpdate?
+
+			const { persons, ...meeting } = values
+
 			if (values.id) {
-				backendEntity = await meetingApi.edit({
-					id: values.id,
-					date: values.date,
-					date_start: values.date_start,
-					date_end: values.date_end,
-					description: values.description,
-					type: values.type,
-				})
-				if (!backendEntity) {
-					throw new ApiError('Бекенд не отредактировал', 400)
-				}
-				toast.success(`[${backendEntity.id}] встреча отредактирована`)
+				backendEntity = await meetingApi.edit(meeting)
 			} else {
-				backendEntity = await meetingApi.create({
-					date: values.date,
-					date_start: values.date_start,
-					date_end: values.date_end,
-					description: values.description,
-					type: values.type,
-				})
-				if (!backendEntity) {
-					throw new ApiError('Бекенд не создал', 400)
-				}
-				toast.success(`[${backendEntity.id}] встреча создана`)
+				backendEntity = await meetingApi.create(meeting)
 			}
 
-			console.log('backendEntity,', backendEntity)
-			const meetingId = backendEntity!.id
+			if (!backendEntity) {
+				return undefined
+			}
+
+			toast.success(`Сохранено`)
+
+			const meetingId = backendEntity.id
 
 			let resultPerson = null
 			if (values.persons && values.persons.length > 0) {
