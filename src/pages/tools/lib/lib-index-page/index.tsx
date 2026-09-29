@@ -2,7 +2,6 @@ import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
 
 import { useApi } from 'hook/fetch/use-api'
-import { useCallback } from 'preact/hooks'
 
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
@@ -14,13 +13,12 @@ import { libApi } from 'repositories/lib-api.repository'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+const onRemove = (id: LibraryType['id']) => () => {
+	libApi.delete(id)
+}
+
 export const LibIndexPage: FunctionComponent = () => {
 	const [ bookList ] = useApi<LibraryType[]>(API_ROUTE.lib)
-
-	// TODO: [LIGHT] а тут точно обёртку надо?
-	const onRemove = useCallback((id: LibraryType['id']) => async () => {
-		libApi.delete(id)
-	}, [])
 
 	return (
 		<Layout title="Библиотека">
