@@ -15,18 +15,16 @@ export const HowToWorkPage: FunctionComponent = () => {
 	const [ data ] = useJsonApi<PageJSONData>('/json/resume/how-to-work-page.json')
 
 	return (
-		<Layout title="Как работаю">
-			<div className="resume-head-page resume-page">
-				<Breadcrumps />
+		<Layout title="Как работаю" className="resume-head-page resume-page">
+			<Breadcrumps />
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.blocks.map((block, idx) => (
-							<BlockRenderer key={idx} block={block} />
-						))}
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					{data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))}
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

@@ -15,21 +15,19 @@ export const LinksPage: FunctionComponent = () => {
 	const [ links ] = useApi<LinksType[]>(API_ROUTE.link)
 
 	return (
-		<Layout title="Избранные ссылки">
-			<div className="links-page">
-				<TextContainer>
-					<h2>Избранные ссылки</h2>
-					<p>
-						Собираю ссылки, которые впечатлили меня. Хочу чтобы про них знало побольше людей.
-					</p>
-				</TextContainer>
+		<Layout title="Избранные ссылки" className="links-page">
+			<TextContainer>
+				<h2>Избранные ссылки</h2>
+				<p>
+					Собираю ссылки, которые впечатлили меня. Хочу чтобы про них знало побольше людей.
+				</p>
+			</TextContainer>
 
-				<LoadSuspense data={links}>
-					<EmptyData data={links}>
-						<LinksList links={links.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={links}>
+				<EmptyData data={links}>
+					<LinksList links={links.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

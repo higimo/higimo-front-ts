@@ -17,16 +17,14 @@ export const NotFoundPage: FunctionComponent = () => {
 	}, [])
 
 	return (
-		<Layout title="Ошибка 404: страница не найдена">
-			<div className="not-found-page">
-				<h1>Страница не найдена</h1>
-				<p>
-					Неправильно набран адрес, или такой страницы на сайте больше не существует.
-				</p>
-				<p>
-					<a href={ROUTE_LINKS.index}>Главная</a>
-				</p>
-			</div>
+		<Layout title="Ошибка 404: страница не найдена" className="not-found-page">
+			<h1>Страница не найдена</h1>
+			<p>
+				Неправильно набран адрес, или такой страницы на сайте больше не существует.
+			</p>
+			<p>
+				<a href={ROUTE_LINKS.index}>Главная</a>
+			</p>
 		</Layout>
 	)
 }

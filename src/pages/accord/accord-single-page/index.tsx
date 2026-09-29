@@ -29,21 +29,18 @@ export const AccordSinglePage: FunctionComponent = () => {
 	const seeAlsoList = useRandomElements(accords.data, ALSO_ELEMENTS)
 
 	return (
-		<Layout title={songSingle.data?.name || 'Песня'}>
-			<div className="container accord-single-page">
+		<Layout title={songSingle.data?.name || 'Песня'} className="container accord-single-page">
+			<LoadSuspense data={songSingle}>
+				<EmptyData data={songSingle}>
+					<AccordContent song={songSingle.data} />
+				</EmptyData>
+			</LoadSuspense>
 
-				<LoadSuspense data={songSingle}>
-					<EmptyData data={songSingle}>
-						<AccordContent song={songSingle.data} />
-					</EmptyData>
-				</LoadSuspense>
-
-				<div className="backlink">
-					<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
-				</div>
-
-				<AccordSeeAlso items={seeAlsoList} />
+			<div className="backlink">
+				<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
 			</div>
+
+			<AccordSeeAlso items={seeAlsoList} />
 		</Layout>
 	)
 }

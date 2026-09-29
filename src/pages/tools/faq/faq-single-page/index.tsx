@@ -17,14 +17,12 @@ export const FaqSinglePage: FunctionComponent = () => {
 	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
 
 	return (
-		<Layout title={faqDetail.data?.name || 'FAQ'}>
-			<div className="faq-page">
-				<LoadSuspense data={faqDetail}>
-					<EmptyData data={faqDetail}>
-						<FaqSingle faq={faqDetail.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+		<Layout title={faqDetail.data?.name || 'FAQ'} className="faq-page">
+			<LoadSuspense data={faqDetail}>
+				<EmptyData data={faqDetail}>
+					<FaqSingle faq={faqDetail.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

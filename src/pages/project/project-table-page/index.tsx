@@ -53,24 +53,22 @@ export const ProjectTablePage: FunctionComponent = () => {
 	}, [projects, selectedTagTitles])
 
 	return (
-		<Layout title="Сделал">
-			<div className="project-index-page">
-				<TextContainer>
-					<h1>Таблица сделанного</h1>
-				</TextContainer>
+		<Layout title="Сделал" className="project-index-page">
+			<TextContainer>
+				<h1>Таблица сделанного</h1>
+			</TextContainer>
 
-				<LoadSuspense data={[projects, tagList]}>
-					<EmptyData data={[projects, tagList]}>
-						<ProjectTagCategory
-							groupedTags={tagList.data}
-							isSelected={isSelected}
-							toggleTag={toggleTag}
-						/>
+			<LoadSuspense data={[projects, tagList]}>
+				<EmptyData data={[projects, tagList]}>
+					<ProjectTagCategory
+						groupedTags={tagList.data}
+						isSelected={isSelected}
+						toggleTag={toggleTag}
+					/>
 
-						<PortfolioProjectTable tableProjects={tableProjects} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+					<PortfolioProjectTable tableProjects={tableProjects} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

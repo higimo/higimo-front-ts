@@ -16,14 +16,12 @@ export const CinemaSinglePage: FunctionComponent = () => {
 	const [ cinemaDetail ] = useApi<CinemaType>(API_ROUTE.cinemaSingle({ idcode }))
 
 	return (
-		<Layout title={cinemaDetail.data.title || 'Кино'}>
-			<div className="cinema-page">
-				<LoadSuspense data={cinemaDetail}>
-					<EmptyData data={cinemaDetail}>
-						<CinemaScriptDetail cinemaScript={cinemaDetail.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+		<Layout title={cinemaDetail.data.title || 'Кино'} className="cinema-page">
+			<LoadSuspense data={cinemaDetail}>
+				<EmptyData data={cinemaDetail}>
+					<CinemaScriptDetail cinemaScript={cinemaDetail.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

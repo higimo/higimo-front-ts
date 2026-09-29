@@ -21,19 +21,17 @@ export const LibIndexPage: FunctionComponent = () => {
 	const [ bookList ] = useApi<LibraryType[]>(API_ROUTE.lib)
 
 	return (
-		<Layout title="Библиотека">
-			<div className="lib-page">
-				<LibraryHeader />
+		<Layout title="Библиотека" className="lib-page">
+			<LibraryHeader />
 
-				<LoadSuspense data={bookList}>
-					<EmptyData data={bookList}>
-						<LibraryGallery
-							books={bookList.data}
-							onRemove={onRemove}
-						/>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={bookList}>
+				<EmptyData data={bookList}>
+					<LibraryGallery
+						books={bookList.data}
+						onRemove={onRemove}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

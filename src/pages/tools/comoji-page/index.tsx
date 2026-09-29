@@ -15,21 +15,19 @@ export const ComojiPage: FunctionComponent = () => {
 	const [ comojiList ] = useApi<ComojiType[]>(API_ROUTE.comoji)
 
 	return (
-		<Layout title="Комоджи смайлы">
-			<div className="tool-index-page">
-				<TextContainer>
-					<h1>Комоджи смайлы</h1>
-					<p>
-						Нажимаешь на смайл — копируется в буфер обмена
-					</p>
-				</TextContainer>
+		<Layout title="Комоджи смайлы" className="tool-index-page">
+			<TextContainer>
+				<h1>Комоджи смайлы</h1>
+				<p>
+					Нажимаешь на смайл — копируется в буфер обмена
+				</p>
+			</TextContainer>
 
-				<LoadSuspense data={comojiList}>
-					<EmptyData data={comojiList}>
-						<ComojiGalery comoji={comojiList.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={comojiList}>
+				<EmptyData data={comojiList}>
+					<ComojiGalery comoji={comojiList.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

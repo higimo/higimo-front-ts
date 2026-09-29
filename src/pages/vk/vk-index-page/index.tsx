@@ -24,20 +24,18 @@ const pagesList = [
 ]
 export const VkIndexPage: FunctionComponent = () => {
 	return (
-		<Layout title="VK tool index">
-			<div className="vk-identity-page vk-photo">
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+		<Layout title="VK tool index" className="vk-identity-page vk-photo">
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<VkHeading>VK tool</VkHeading>
+			<TextContainer>
+				<VkHeading>VK tool</VkHeading>
 
-					<IntroTileGallery
-						list={pagesList}
-					/>
-				</TextContainer>
-			</div>
+				<IntroTileGallery
+					list={pagesList}
+				/>
+			</TextContainer>
 		</Layout>
 	)
 }

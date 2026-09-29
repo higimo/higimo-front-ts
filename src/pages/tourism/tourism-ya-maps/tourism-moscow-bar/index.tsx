@@ -77,45 +77,43 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 	)
 
 	return (
-		<Layout title="Московские бары">
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Московские бары" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>Московские бары</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>Московские бары</TourismHeader>
+			</TextContainer>
 
-				<LoadSuspense data={barPovMoscow}>
-					<EmptyData data={barPovMoscow}>
-						<div className="tourism-maps-moscow-bar">
-							<TourismMapGeo<BarPovRealTags, Coord>
-								items={filteredData}
-								zoom={12}
-								center={[55.758772, 37.617933]}
-								cluster={false}
-							/>
-							<TagGroupedGallery
-								groups={tagGroups}
-								isSelected={isSelected}
-								toggleTag={toggleTag}
-								isCategoryAllSelected={isCategoryAllSelected}
-								toggleAllInCategory={toggleAllInCategory}
-							/>
-							{filteredData && (
-								<div className="bar-pov__gallery">
-									{filteredData.map((mapPoint: BarPovRealTags) => (
-										<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
-									))}
-								</div>
-							)}
-						</div>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={barPovMoscow}>
+				<EmptyData data={barPovMoscow}>
+					<div className="tourism-maps-moscow-bar">
+						<TourismMapGeo<BarPovRealTags, Coord>
+							items={filteredData}
+							zoom={12}
+							center={[55.758772, 37.617933]}
+							cluster={false}
+						/>
+						<TagGroupedGallery
+							groups={tagGroups}
+							isSelected={isSelected}
+							toggleTag={toggleTag}
+							isCategoryAllSelected={isCategoryAllSelected}
+							toggleAllInCategory={toggleAllInCategory}
+						/>
+						{filteredData && (
+							<div className="bar-pov__gallery">
+								{filteredData.map((mapPoint: BarPovRealTags) => (
+									<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
+								))}
+							</div>
+						)}
+					</div>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

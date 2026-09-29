@@ -19,29 +19,27 @@ export const TourismMoscowMuseumPage: FunctionComponent = () => {
 	const [ moscowMuseums ] = useJsonApi<MoscowMuseumType[]>('/json/tourism/moscow-museum.json')
 
 	return (
-		<Layout title="Список музеев Москвы">
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Список музеев Москвы" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>Список музеев Москвы</TourismHeader>
-					<TourismSecondary>
-						Список музеев Москвы для посещения
-					</TourismSecondary>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>Список музеев Москвы</TourismHeader>
+				<TourismSecondary>
+					Список музеев Москвы для посещения
+				</TourismSecondary>
+			</TextContainer>
 
-				<TextContainer>
-					<LoadSuspense data={moscowMuseums}>
-						<EmptyData data={moscowMuseums}>
-							<MuseumGallery museums={moscowMuseums.data} />
-						</EmptyData>
-					</LoadSuspense>
-				</TextContainer>
-			</div>
+			<TextContainer>
+				<LoadSuspense data={moscowMuseums}>
+					<EmptyData data={moscowMuseums}>
+						<MuseumGallery museums={moscowMuseums.data} />
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
 		</Layout>
 	)
 }

@@ -49,27 +49,25 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 	}, [status, error, session, fetchPhotos, albumId])
 
 	return (
-		<Layout title="Просмотр альбома">
-			<div className="vk-identity-page vk-photo">
-				<VkSdkLoader />
+		<Layout title="Просмотр альбома" className="vk-identity-page vk-photo">
+			<VkSdkLoader />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<VkHeading>Редактирование описаний альбома</VkHeading>
-					<VkParagraph>
-						Всего фотографий: {photos.length}
-						<br />
-						С комментариями: {photos.filter(i => !!i.text).length}
-					</VkParagraph>
-				</TextContainer>
+			<TextContainer>
+				<VkHeading>Редактирование описаний альбома</VkHeading>
+				<VkParagraph>
+					Всего фотографий: {photos.length}
+					<br />
+					С комментариями: {photos.filter(i => !!i.text).length}
+				</VkParagraph>
+			</TextContainer>
 
-				<VkPhotoAlbumEdit
-					photos={photos}
-				/>
-			</div>
+			<VkPhotoAlbumEdit
+				photos={photos}
+			/>
 		</Layout>
 	)
 }

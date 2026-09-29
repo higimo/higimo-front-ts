@@ -14,14 +14,12 @@ export const FaqListPage: FunctionComponent = () => {
 	const [ faqList ] = useApi<FaqType[]>(API_ROUTE.faq)
 
 	return (
-		<Layout title="Статьи">
-			<div className="faq-page">
-				<LoadSuspense data={faqList}>
-					<EmptyData data={faqList}>
-						<FaqList faqs={faqList.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+		<Layout title="Статьи" className="faq-page">
+			<LoadSuspense data={faqList}>
+				<EmptyData data={faqList}>
+					<FaqList faqs={faqList.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

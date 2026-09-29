@@ -22,21 +22,19 @@ export const NokiaAddPersonPage: FunctionComponent = () => {
 	const [ singlePerson ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
 	return (
-		<Layout title="Редактирование и создание человека // Нокиа">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Редактирование и создание человека // Нокиа" className="nokia">
+			<NokiaMenu />
 
-				<div className="nokia__content">
-					<h1>Редактирование и создание человека</h1>
+			<div className="nokia__content">
+				<h1>Редактирование и создание человека</h1>
 
-					<LoadSuspense data={singlePerson}>
-						<EmptyData data={singlePerson} skipEmpty>
-							<NokiaPersonFormContainer
-								initialData={singlePerson.data}
-							/>
-						</EmptyData>
-					</LoadSuspense>
-				</div>
+				<LoadSuspense data={singlePerson}>
+					<EmptyData data={singlePerson} skipEmpty>
+						<NokiaPersonFormContainer
+							initialData={singlePerson.data}
+						/>
+					</EmptyData>
+				</LoadSuspense>
 			</div>
 		</Layout>
 	)

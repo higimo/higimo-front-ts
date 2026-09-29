@@ -25,32 +25,30 @@ export const PinarikPage: FunctionComponent = () => {
 	const handleClickPreviewId = useCallback((id: PinarikType['id']) => () => setPreviewId(id), [setPreviewId])
 
 	return (
-		<Layout title="Пинарик">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Пинарик" className="nokia">
+			<NokiaMenu />
 
-				<TextContainer>
-					<PinarikForm />
-				</TextContainer>
+			<TextContainer>
+				<PinarikForm />
+			</TextContainer>
 
-				<LoadSuspense data={pinarikList}>
-					<EmptyData data={pinarikList}>
-						<TextContainer>
-							<PinarikEventPreview
-								id={previewId}
-								pinarik={pinarikList.data}
-							/>
-						</TextContainer>
+			<LoadSuspense data={pinarikList}>
+				<EmptyData data={pinarikList}>
+					<TextContainer>
+						<PinarikEventPreview
+							id={previewId}
+							pinarik={pinarikList.data}
+						/>
+					</TextContainer>
 
-						<TextContainer>
-							<PinarikCalendar
-								pinarik={pinarikList.data}
-								onClickPreviewId={handleClickPreviewId}
-							/>
-						</TextContainer>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+					<TextContainer>
+						<PinarikCalendar
+							pinarik={pinarikList.data}
+							onClickPreviewId={handleClickPreviewId}
+						/>
+					</TextContainer>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

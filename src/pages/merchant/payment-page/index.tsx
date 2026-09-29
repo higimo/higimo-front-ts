@@ -56,45 +56,43 @@ export const PaymentPage: FunctionComponent = () => {
 	}
 
 	return (
-		<Layout title="Страница оплаты">
-			<div className="payment-page">
-				<TextContainer>
-					<MerchantProductCard product={currentProduct} />
-				</TextContainer>
+		<Layout title="Страница оплаты" className="payment-page">
+			<TextContainer>
+				<MerchantProductCard product={currentProduct} />
+			</TextContainer>
 
-				<TextContainer>
-					<MerchantPayBlock />
-				</TextContainer>
+			<TextContainer>
+				<MerchantPayBlock />
+			</TextContainer>
 
-				<TextContainer>
-					<MerchantPaymentForm register={register} />
-				</TextContainer>
+			<TextContainer>
+				<MerchantPaymentForm register={register} />
+			</TextContainer>
 
-				<MerchantProductBenefits product={currentProduct} />
+			<MerchantProductBenefits product={currentProduct} />
 
-				<TextContainer>
-					<MerchantProductFeature product={currentProduct} />
-				</TextContainer>
+			<TextContainer>
+				<MerchantProductFeature product={currentProduct} />
+			</TextContainer>
 
-				{/* TODO: [FEATURE] Пошерить */}
-				{/* TODO: [FEATURE] Купить другому */}
+			{/* TODO: [FEATURE] Пошерить */}
+			{/* TODO: [FEATURE] Купить другому */}
 
-				<TextContainer>
-					<a href={ROUTE_LINKS.merchantIndex}>← В магазин</a>
-					<br />
-					<a href={ROUTE_LINKS.index}>← На главную</a>
-				</TextContainer>
+			<TextContainer>
+				<a href={ROUTE_LINKS.merchantIndex}>← В магазин</a>
+				<br />
+				<a href={ROUTE_LINKS.index}>← На главную</a>
+			</TextContainer>
 
-				<TextContainer>
-					<h2>Дальше быстрым речитативом кому ты платишь</h2>
-					<ul>
-						<li><a href={ROUTE_LINKS.merchantPaymentPolicy}>Порядок оплаты</a></li>
-						<li><a href={ROUTE_LINKS.merchantPersonalPolicy}>Политика обработки ПД</a></li>
-						<li><a href={ROUTE_LINKS.merchantPaymentOferta}>Оферта</a></li>
-						<li><a href={ROUTE_LINKS.merchantDonationOferta}>Донатная оферта</a></li>
-					</ul>
-				</TextContainer>
-			</div>
+			<TextContainer>
+				<h2>Дальше быстрым речитативом кому ты платишь</h2>
+				<ul>
+					<li><a href={ROUTE_LINKS.merchantPaymentPolicy}>Порядок оплаты</a></li>
+					<li><a href={ROUTE_LINKS.merchantPersonalPolicy}>Политика обработки ПД</a></li>
+					<li><a href={ROUTE_LINKS.merchantPaymentOferta}>Оферта</a></li>
+					<li><a href={ROUTE_LINKS.merchantDonationOferta}>Донатная оферта</a></li>
+				</ul>
+			</TextContainer>
 		</Layout>
 	)
 }

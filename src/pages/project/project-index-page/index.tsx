@@ -31,24 +31,22 @@ export const ProjectIndexPage: FunctionComponent = () => {
 	}
 
 	return (
-		<Layout title="Сделал">
-			<div className="project-index-page">
-				<TextContainer>
-					<h1>Сделал</h1>
-				</TextContainer>
+		<Layout title="Сделал" className="project-index-page">
+			<TextContainer>
+				<h1>Сделал</h1>
+			</TextContainer>
 
-				<LoadSuspense data={tagList}>
-					<EmptyData data={tagList}>
-						<ProjectClickTagCategory groupedTags={tagList.data} />
-					</EmptyData>
-				</LoadSuspense>
+			<LoadSuspense data={tagList}>
+				<EmptyData data={tagList}>
+					<ProjectClickTagCategory groupedTags={tagList.data} />
+				</EmptyData>
+			</LoadSuspense>
 
-				<LoadSuspense data={projectList}>
-					<EmptyData data={projectList}>
-							<ProjectList projectsList={filterProjectList} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={projectList}>
+				<EmptyData data={projectList}>
+						<ProjectList projectsList={filterProjectList} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

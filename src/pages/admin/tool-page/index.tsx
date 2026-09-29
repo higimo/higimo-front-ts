@@ -31,15 +31,13 @@ export const ToolPage: FunctionComponent = () => {
 	}, [formData, sendRequest, setResponse])
 
 	return (
-		<Layout title="REPLACE">
-			<div className="tool-page">
-				<Sidebar
-					formData={formData}
-					onFieldChange={updateField}
-					onSubmit={handleSubmit}
-				/>
-				<AdminToolContent response={response} />
-			</div>
+		<Layout title="Tool" className="tool-page">
+			<Sidebar
+				formData={formData}
+				onFieldChange={updateField}
+				onSubmit={handleSubmit}
+			/>
+			<AdminToolContent response={response} />
 		</Layout>
 	)
 }

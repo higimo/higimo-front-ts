@@ -14,14 +14,12 @@ export const ObuchenieListPage: FunctionComponent = () => {
 	const [ lectionList ] = useApi<LectionType[]>(API_ROUTE.lection)
 
 	return (
-		<Layout title="Обучение">
-			<div className="obuchenie-page">
-				<LoadSuspense data={lectionList}>
-					<EmptyData data={lectionList}>
-						<ObuchenieList lections={lectionList.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+		<Layout title="Обучение" className="obuchenie-page">
+			<LoadSuspense data={lectionList}>
+				<EmptyData data={lectionList}>
+					<ObuchenieList lections={lectionList.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

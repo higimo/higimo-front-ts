@@ -1,4 +1,4 @@
-import { Fragment, FunctionComponent } from 'preact'
+import { FunctionComponent } from 'preact'
 
 import { useApi } from 'hook/fetch/use-api'
 
@@ -16,17 +16,15 @@ export const GamePage: FunctionComponent = () => {
 
 	return (
 		<Layout title="Настольные игры">
-			<Fragment>
-				<TextContainer>
-					<h1>У меня есть такие настольные игры</h1>
-				</TextContainer>
+			<TextContainer>
+				<h1>У меня есть такие настольные игры</h1>
+			</TextContainer>
 
-				<LoadSuspense data={games}>
-					<EmptyData data={games}>
-						<TableGame games={games.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</Fragment>
+			<LoadSuspense data={games}>
+				<EmptyData data={games}>
+					<TableGame games={games.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

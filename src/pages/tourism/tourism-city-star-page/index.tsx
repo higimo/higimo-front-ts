@@ -19,26 +19,24 @@ export const TourismCityStarPage: FunctionComponent = () => {
 	const [ cityList ] = useJsonApi<CityStarsType[]>('/json/city.json')
 
 	return (
-		<Layout title="Оценки городов">
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Оценки городов" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>Оценки городов</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>Оценки городов</TourismHeader>
+			</TextContainer>
 
-				<TourismCityStarForm />
+			<TourismCityStarForm />
 
-				<LoadSuspense data={cityList}>
-					<EmptyData data={cityList}>
-						<CityStars cityList={cityList.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={cityList}>
+				<EmptyData data={cityList}>
+					<CityStars cityList={cityList.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

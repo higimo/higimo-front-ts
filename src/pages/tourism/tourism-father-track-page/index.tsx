@@ -41,37 +41,35 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 		.concat(data.data.rostovNaDonuPolygon!)
 
 	return (
-		<Layout title="Путешествие с отцом">
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Путешествие с отцом" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>Путешествие с отцом</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>Путешествие с отцом</TourismHeader>
+			</TextContainer>
 
-				<TextContainer className="car-list">
-					<LoadSuspense data={data}>
-						<EmptyData data={data}>
-							{data.data.roadmap!.blocks.map((child, idx) => (
-								<BlockRenderer key={idx} block={child} />
-							))}
-						</EmptyData>
-					</LoadSuspense>
-				</TextContainer>
-
+			<TextContainer className="car-list">
 				<LoadSuspense data={data}>
 					<EmptyData data={data}>
-						<TourismMapGeo<PovType, Coord>
-							lines={lines}
-							items={modCities}
-						/>
+						{data.data.roadmap!.blocks.map((child, idx) => (
+							<BlockRenderer key={idx} block={child} />
+						))}
 					</EmptyData>
 				</LoadSuspense>
-			</div>
+			</TextContainer>
+
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					<TourismMapGeo<PovType, Coord>
+						lines={lines}
+						items={modCities}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

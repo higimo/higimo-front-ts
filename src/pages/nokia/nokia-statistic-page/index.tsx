@@ -17,20 +17,18 @@ export const NokiaStatisticPage: FunctionComponent = () => {
 	const [meetingStatistic] = useApi<NokiaMeetingStatisticType[]>(API_ROUTE.nokiaStatistic)
 
 	return (
-		<Layout title="Нокиа сервис">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Нокиа сервис" className="nokia">
+			<NokiaMenu />
 
-				<div className="nokia__content">
-					<h1>Статистика</h1>
-				</div>
-
-				<LoadSuspense data={meetingStatistic}>
-					<EmptyData data={meetingStatistic}>
-						<NokiaStatistic meetingStatistic={meetingStatistic.data} />
-					</EmptyData>
-				</LoadSuspense>
+			<div className="nokia__content">
+				<h1>Статистика</h1>
 			</div>
+
+			<LoadSuspense data={meetingStatistic}>
+				<EmptyData data={meetingStatistic}>
+					<NokiaStatistic meetingStatistic={meetingStatistic.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

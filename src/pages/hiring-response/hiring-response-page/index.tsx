@@ -32,49 +32,49 @@ export const HiringResponsePage: FunctionComponent = () => {
 	})
 
 	return (
-		<Layout title="Мои отклики">
-			<div className="hiring-response-page">
-				<TextContainer>
-					<Breadcrumps />
+		<Layout title="Мои отклики" className="hiring-response-page">
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-					<h1>Мои отклики</h1>
-				</TextContainer>
+			<TextContainer>
+				<h1>Мои отклики</h1>
+			</TextContainer>
 
-				<TextContainer>
-					<LoadSuspense data={pasteTodo}>
-						<EmptyData data={pasteTodo}>
-							<HiringResponseTodoController todo={pasteTodo.data} />
-						</EmptyData>
-					</LoadSuspense>
-					<HiringResponseLinks />
-
-					<LoadSuspense data={pasteData}>
-						<EmptyData data={pasteData}>
-							<HiringResponseCounter data={pasteData.data} />
-						</EmptyData>
-					</LoadSuspense>
-
-					<h2>График откликов</h2>
-					<LoadSuspense data={pasteData}>
-						<EmptyData data={pasteData}>
-							<HiringResponseDiagram data={statistic.data} />
-						</EmptyData>
-					</LoadSuspense>
-				</TextContainer>
-
-				<TextContainer>
-					<h2>Карточки откликов</h2>
-				</TextContainer>
+			<TextContainer>
+				<LoadSuspense data={pasteTodo}>
+					<EmptyData data={pasteTodo}>
+						<HiringResponseTodoController todo={pasteTodo.data} />
+					</EmptyData>
+				</LoadSuspense>
+				<HiringResponseLinks />
 
 				<LoadSuspense data={pasteData}>
 					<EmptyData data={pasteData}>
-						<HiringResponseCardsGallery
-							cards={pasteData.data}
-							fetchUpdate={fetchUpdate}
-						/>
+						<HiringResponseCounter data={pasteData.data} />
 					</EmptyData>
 				</LoadSuspense>
-			</div>
+
+				<h2>График откликов</h2>
+				<LoadSuspense data={pasteData}>
+					<EmptyData data={pasteData}>
+						<HiringResponseDiagram data={statistic.data} />
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
+
+			<TextContainer>
+				<h2>Карточки откликов</h2>
+			</TextContainer>
+
+			<LoadSuspense data={pasteData}>
+				<EmptyData data={pasteData}>
+					<HiringResponseCardsGallery
+						cards={pasteData.data}
+						fetchUpdate={fetchUpdate}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

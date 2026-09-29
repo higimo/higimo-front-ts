@@ -18,25 +18,23 @@ export const PaymentOfertaPage: FunctionComponent = () => {
 	const [ data ] = useJsonApi<PageJSONData>('/json/merchant/merchant-oferta.json')
 
 	return (
-		<Layout title="Оферта">
-			<div className="merchant-text-page">
-				<TextContainer>
-					<Breadcrumps />
-					<MerchantPolicyNavigation />
-				</TextContainer>
+		<Layout title="Оферта" className="merchant-text-page">
+			<TextContainer>
+				<Breadcrumps />
+				<MerchantPolicyNavigation />
+			</TextContainer>
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.blocks.map((block, idx) => (
-							<BlockRenderer key={idx} block={block} />
-						))}
-					</EmptyData>
-				</LoadSuspense>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					{data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))}
+				</EmptyData>
+			</LoadSuspense>
 
-				<TextContainer>
-					<MerchantCredits />
-				</TextContainer>
-			</div>
+			<TextContainer>
+				<MerchantCredits />
+			</TextContainer>
 		</Layout>
 	)
 }

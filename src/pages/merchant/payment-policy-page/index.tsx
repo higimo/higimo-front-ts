@@ -17,21 +17,19 @@ export const PaymentPolicyPage: FunctionComponent = () => {
 	const [ data ] = useJsonApi<PageJSONData>('/json/merchant/payment-personal.json')
 
 	return (
-		<Layout title="Порядок оплаты">
-			<div className="merchant-text-page">
-				<TextContainer>
-					<Breadcrumps />
-					<MerchantPolicyNavigation />
-				</TextContainer>
+		<Layout title="Порядок оплаты" className="merchant-text-page">
+			<TextContainer>
+				<Breadcrumps />
+				<MerchantPolicyNavigation />
+			</TextContainer>
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.blocks.map((block, idx) => (
-							<BlockRenderer key={idx} block={block} />
-						))}
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					{data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))}
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

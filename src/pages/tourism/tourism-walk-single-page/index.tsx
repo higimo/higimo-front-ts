@@ -25,35 +25,33 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 	const element = yamapList.data.find(item => item.code === idcode)
 
 	return (
-		<Layout title={element?.name || 'Карта прогулки'}>
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title={element?.name || 'Карта прогулки'} className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>
-						{element?.name}
-					</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>
+					{element?.name}
+				</TourismHeader>
+			</TextContainer>
 
-				<TourismWalkItem map={element?.map || ''} />
+			<TourismWalkItem map={element?.map || ''} />
 
-				<TextContainer>
-					<TourismHeader secondary>
-						Другие карты
-					</TourismHeader>
-					<LoadSuspense data={yamapList}>
-						<EmptyData data={yamapList}>
-							<TourismWalkGallery
-								yamapList={yamapList.data}
-							/>
-						</EmptyData>
-					</LoadSuspense>
-				</TextContainer>
-			</div>
+			<TextContainer>
+				<TourismHeader secondary>
+					Другие карты
+				</TourismHeader>
+				<LoadSuspense data={yamapList}>
+					<EmptyData data={yamapList}>
+						<TourismWalkGallery
+							yamapList={yamapList.data}
+						/>
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
 		</Layout>
 	)
 }

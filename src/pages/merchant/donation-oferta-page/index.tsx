@@ -18,25 +18,23 @@ export const DonationOfertaPage: FunctionComponent = () => {
 	const [ data ] = useJsonApi<PageJSONData>('/json/merchant/donation-policy.json')
 
 	return (
-		<Layout title="Донатная оферта">
-			<div className="merchant-text-page">
-				<TextContainer>
-					<Breadcrumps />
-					<MerchantPolicyNavigation />
-				</TextContainer>
+		<Layout title="Донатная оферта" className="merchant-text-page">
+			<TextContainer>
+				<Breadcrumps />
+				<MerchantPolicyNavigation />
+			</TextContainer>
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.blocks.map((block, idx) => (
-							<BlockRenderer key={idx} block={block} />
-						))}
-					</EmptyData>
-				</LoadSuspense>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					{data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))}
+				</EmptyData>
+			</LoadSuspense>
 
-				<TextContainer>
-					<MerchantCredits />
-				</TextContainer>
-			</div>
+			<TextContainer>
+				<MerchantCredits />
+			</TextContainer>
 		</Layout>
 	)
 }

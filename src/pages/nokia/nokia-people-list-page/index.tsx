@@ -30,33 +30,31 @@ export const NokiaPeopleListPage: FunctionComponent = () => {
 	const updateFilter = (tag: NokiaTagType['id']) => () => setFilter(filter === tag ? null : tag)
 
 	return (
-		<Layout title="Нокиа сервис">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Нокиа сервис" className="nokia">
+			<NokiaMenu />
 
-				<div className="nokia__content">
-					<h1>Все люди</h1>
+			<div className="nokia__content">
+				<h1>Все люди</h1>
 
-					<LoadSuspense data={[tagGroups, tags]}>
-						<EmptyData data={[tagGroups, tags]}>
-							<NokiaTagsGallery
-								tagGroups={tagGroups.data}
-								tags={tags.data}
-								filter={filter}
-								updateFilter={updateFilter}
-							/>
-						</EmptyData>
-					</LoadSuspense>
+				<LoadSuspense data={[tagGroups, tags]}>
+					<EmptyData data={[tagGroups, tags]}>
+						<NokiaTagsGallery
+							tagGroups={tagGroups.data}
+							tags={tags.data}
+							filter={filter}
+							updateFilter={updateFilter}
+						/>
+					</EmptyData>
+				</LoadSuspense>
 
-					<LoadSuspense data={persons}>
-						<EmptyData data={persons}>
-							<NokiaPeopleList
-								persons={persons.data}
-								filter={filter}
-							/>
-						</EmptyData>
-					</LoadSuspense>
-				</div>
+				<LoadSuspense data={persons}>
+					<EmptyData data={persons}>
+						<NokiaPeopleList
+							persons={persons.data}
+							filter={filter}
+						/>
+					</EmptyData>
+				</LoadSuspense>
 			</div>
 		</Layout>
 	)

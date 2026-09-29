@@ -21,36 +21,34 @@ export const TourismMapsPage: FunctionComponent = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 
 	return (
-		<Layout title="Карты путешествий">
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Карты путешествий" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>
-						Карты путешествий
-					</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>
+					Карты путешествий
+				</TourismHeader>
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader secondary>Эксперименты в Я.Картах</TourismHeader>
-					<TourismExperimentMaps />
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader secondary>Эксперименты в Я.Картах</TourismHeader>
+				<TourismExperimentMaps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader secondary>Конструктор карт</TourismHeader>
-					<LoadSuspense data={yamapList}>
-						<EmptyData data={yamapList}>
-							<TourismWalkGallery
-								yamapList={yamapList.data}
-							/>
-						</EmptyData>
-					</LoadSuspense>
-				</TextContainer>
-			</div>
+			<TextContainer>
+				<TourismHeader secondary>Конструктор карт</TourismHeader>
+				<LoadSuspense data={yamapList}>
+					<EmptyData data={yamapList}>
+						<TourismWalkGallery
+							yamapList={yamapList.data}
+						/>
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
 		</Layout>
 	)
 }

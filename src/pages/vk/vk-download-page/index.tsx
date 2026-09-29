@@ -22,38 +22,36 @@ export const VkDownloadPage: FunctionComponent = () => {
 	} = useVkDownload()
 
 	return (
-		<Layout title="Скачать свои альбомы">
-			<div className="vk-identity-page download-page">
-				<VkSdkLoader />
+		<Layout title="Скачать свои альбомы" className="vk-identity-page download-page">
+			<VkSdkLoader />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<VkHeading>Скачать свои альбомы</VkHeading>
-					<VkParagraph>
-						Введите ид альбома, скопируйте результат и бахните его в wget
-					</VkParagraph>
-					<VkParagraph>
-						Загрузит фотки из первых попавшихся {ALBUM_MAX_COUNT} твоих альбомов. Таймаут загрузки {QUEUE_TIMER / 1000}, чтобы не дудосить серваки ВК.
-					</VkParagraph>
-				</TextContainer>
+			<TextContainer>
+				<VkHeading>Скачать свои альбомы</VkHeading>
+				<VkParagraph>
+					Введите ид альбома, скопируйте результат и бахните его в wget
+				</VkParagraph>
+				<VkParagraph>
+					Загрузит фотки из первых попавшихся {ALBUM_MAX_COUNT} твоих альбомов. Таймаут загрузки {QUEUE_TIMER / 1000}, чтобы не дудосить серваки ВК.
+				</VkParagraph>
+			</TextContainer>
 
-				<TextContainer>
-					<VkDownloadForm
-						onSubmit={onSubmit}
-					/>
-				</TextContainer>
+			<TextContainer>
+				<VkDownloadForm
+					onSubmit={onSubmit}
+				/>
+			</TextContainer>
 
-				<TextContainer>
-					<VkHeading level={2}>Результат</VkHeading>
-				</TextContainer>
+			<TextContainer>
+				<VkHeading level={2}>Результат</VkHeading>
+			</TextContainer>
 
-				<textarea className="download-page__pre">
-					{JSON.stringify(photos, null, '\t')}
-				</textarea>
-			</div>
+			<textarea className="download-page__pre">
+				{JSON.stringify(photos, null, '\t')}
+			</textarea>
 		</Layout>
 	)
 }

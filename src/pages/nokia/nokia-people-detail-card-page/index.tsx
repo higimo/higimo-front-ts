@@ -20,19 +20,17 @@ export const NokiaPeopleDetailCardPage: FunctionComponent = () => {
 	const [personSingle] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
 	return (
-		<Layout title="Нокиа сервис">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Нокиа сервис" className="nokia">
+			<NokiaMenu />
 
-				<div className="nokia__content">
-					<h1>Профиль</h1>
+			<div className="nokia__content">
+				<h1>Профиль</h1>
 
-					<LoadSuspense data={personSingle}>
-						<EmptyData data={personSingle}>
-							<NokiaPeopleDetailCardItem person={personSingle.data} />
-						</EmptyData>
-					</LoadSuspense>
-				</div>
+				<LoadSuspense data={personSingle}>
+					<EmptyData data={personSingle}>
+						<NokiaPeopleDetailCardItem person={personSingle.data} />
+					</EmptyData>
+				</LoadSuspense>
 			</div>
 		</Layout>
 	)

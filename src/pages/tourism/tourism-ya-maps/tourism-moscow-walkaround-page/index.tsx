@@ -29,29 +29,26 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 	})
 
 	return (
-		<Layout title="Обхожу Москву">
-			{/* TODO: [LIGHT] наверно, div нужно туда занести, ради className */}
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Обхожу Москву" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>Обхожу Москву</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>Обхожу Москву</TourismHeader>
+			</TextContainer>
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						<TourismMoscowWalkaround
-							moscowPovPoints={data.data.moscowPovPoints!}
-							stateYear2021={data.data.stateYear2021!}
-							stateYear2024={data.data.stateYear2024!}
-						/>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					<TourismMoscowWalkaround
+						moscowPovPoints={data.data.moscowPovPoints!}
+						stateYear2021={data.data.stateYear2021!}
+						stateYear2024={data.data.stateYear2024!}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

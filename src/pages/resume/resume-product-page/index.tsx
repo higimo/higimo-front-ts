@@ -16,18 +16,16 @@ export const ResumeProductPage: FunctionComponent = () => {
 	const [ data ] = useJsonApi<PageJSONData>('/json/resume/resume-product-page.json')
 
 	return (
-		<Layout title="Дмитрий Уткин, Senior Product Manager">
-			<div className="resume-product-sss-page resume-page">
-				<Breadcrumps />
+		<Layout title="Дмитрий Уткин, Senior Product Manager" className="resume-product-sss-page resume-page">
+			<Breadcrumps />
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.blocks.map((block, idx) => (
-							<BlockRenderer key={idx} block={block} />
-						))}
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					{data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))}
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

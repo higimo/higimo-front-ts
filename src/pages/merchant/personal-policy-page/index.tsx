@@ -28,21 +28,19 @@ export const PersonalPolicyPage: FunctionComponent = () => {
 	const [ data ] = useJsonApi<PageJSONData>('/json/merchant/privacy-policy.json')
 
 	return (
-		<Layout title="Политика обработки ПД">
-			<div className="merchant-text-page">
-				<TextContainer>
-					<Breadcrumps />
-					<MerchantPolicyNavigation />
-				</TextContainer>
+		<Layout title="Политика обработки ПД" className="merchant-text-page">
+			<TextContainer>
+				<Breadcrumps />
+				<MerchantPolicyNavigation />
+			</TextContainer>
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.blocks.map((block, idx) => (
-							<BlockRenderer key={idx} block={block} />
-						))}
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					{data.data.blocks.map((block, idx) => (
+						<BlockRenderer key={idx} block={block} />
+					))}
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

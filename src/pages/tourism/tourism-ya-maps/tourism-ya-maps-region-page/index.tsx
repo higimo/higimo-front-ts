@@ -14,28 +14,26 @@ import '../../tourism-style.css'
 import '../yandex-map.css'
 
 export const TourismYaMapsRegionPage: FunctionComponent = () => (
-	<Layout title="Карта регионов России">
-		<div className="tourism-identy-page">
-			<TourismMainMenu />
+	<Layout title="Карта регионов России" className="tourism-identy-page">
+		<TourismMainMenu />
 
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+		<TextContainer>
+			<Breadcrumps />
+		</TextContainer>
 
-			<TextContainer>
-				<TourismHeader main>Карта регионов России</TourismHeader>
-			</TextContainer>
+		<TextContainer>
+			<TourismHeader main>Карта регионов России</TourismHeader>
+		</TextContainer>
 
-			<TextContainer>
-				<TourismSecondary>
-					<a href={EXTERNAL_LINKS.wikiIso3166}>ISO 3166-2:RU</a>
-				</TourismSecondary>
-				<TourismSecondary>
-					Синеньким то, куда хочется сгонять
-				</TourismSecondary>
-			</TextContainer>
+		<TextContainer>
+			<TourismSecondary>
+				<a href={EXTERNAL_LINKS.wikiIso3166}>ISO 3166-2:RU</a>
+			</TourismSecondary>
+			<TourismSecondary>
+				Синеньким то, куда хочется сгонять
+			</TourismSecondary>
+		</TextContainer>
 
-			<TourismMapsRegion />
-		</div>
+		<TourismMapsRegion />
 	</Layout>
 )

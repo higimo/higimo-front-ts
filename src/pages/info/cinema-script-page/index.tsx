@@ -15,18 +15,16 @@ export const CinemaScriptPage: FunctionComponent = () => {
 	const [ cinema ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
 
 	return (
-		<Layout title="Кино">
-			<div className="cinema-page">
-				<TextContainer>
-					<h1>Коллекция сценариев</h1>
-				</TextContainer>
+		<Layout title="Кино" className="cinema-page">
+			<TextContainer>
+				<h1>Коллекция сценариев</h1>
+			</TextContainer>
 
-				<LoadSuspense data={cinema}>
-					<EmptyData data={cinema}>
-						<CinemaScriptList scripts={cinema.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={cinema}>
+				<EmptyData data={cinema}>
+					<CinemaScriptList scripts={cinema.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

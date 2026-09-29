@@ -37,23 +37,21 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 		: undefined
 
 	return (
-		<Layout title="Редактирование и создание встречи // Нокиа">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Редактирование и создание встречи // Нокиа" className="nokia">
+			<NokiaMenu />
 
-				<div className="nokia__content">
-					<LoadSuspense data={[singleMeeting, persons, topPersons]}>
-						<EmptyData data={[singleMeeting, persons, topPersons]} skipEmpty>
-							<NokiaMeetingFormContainer
-								initialMeeting={meeting}
-								initialPersons={meetingPersons}
-								peoplesSuggest={peoplesSuggest}
-								topPersons={topPersons.data}
-								persons={persons.data}
-							/>
-						</EmptyData>
-					</LoadSuspense>
-				</div>
+			<div className="nokia__content">
+				<LoadSuspense data={[singleMeeting, persons, topPersons]}>
+					<EmptyData data={[singleMeeting, persons, topPersons]} skipEmpty>
+						<NokiaMeetingFormContainer
+							initialMeeting={meeting}
+							initialPersons={meetingPersons}
+							peoplesSuggest={peoplesSuggest}
+							topPersons={topPersons.data}
+							persons={persons.data}
+						/>
+					</EmptyData>
+				</LoadSuspense>
 			</div>
 		</Layout>
 	)

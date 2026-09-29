@@ -22,26 +22,24 @@ export const ListListFormPage: FunctionComponent = () => {
 	const values = !!idcode.length ? data.data[0] : undefined
 
 	return (
-		<Layout title="Список списков">
-			<div className="list-list">
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						<TextContainer>
-							{!!values?.parent ? (
-								<a href={ROUTE_LINKS.listListDetail({ idcode: values?.parent?.id })}>
-									{values?.parent.title}
-								</a>
-							) : (
-								<a href={ROUTE_LINKS.listListMain}>
-									В начало
-								</a>
-							)}
-						</TextContainer>
+		<Layout title="Список списков" className="list-list">
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					<TextContainer>
+						{!!values?.parent ? (
+							<a href={ROUTE_LINKS.listListDetail({ idcode: values?.parent?.id })}>
+								{values?.parent.title}
+							</a>
+						) : (
+							<a href={ROUTE_LINKS.listListMain}>
+								В начало
+							</a>
+						)}
+					</TextContainer>
 
-						<NestedListForm values={values} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+					<NestedListForm values={values} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

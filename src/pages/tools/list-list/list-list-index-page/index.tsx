@@ -30,16 +30,14 @@ export const ListListIndexPage: FunctionComponent = () => {
 	})
 
 	return (
-		<Layout title="Список списков">
-			<div className="list-list-identity-page">
-				<LoadSuspense data={nestedListItems}>
-					<EmptyData data={nestedListItems}>
-						<NestedList
-							nestedList={nestedListItems.data}
-						/>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+		<Layout title="Список списков" className="list-list-identity-page">
+			<LoadSuspense data={nestedListItems}>
+				<EmptyData data={nestedListItems}>
+					<NestedList
+						nestedList={nestedListItems.data}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

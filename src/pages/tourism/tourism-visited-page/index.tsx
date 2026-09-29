@@ -58,25 +58,23 @@ export const TourismVisitedPage: FunctionComponent = () => {
 		.concat(data.data.town || [])
 
 	return (
-		<Layout title="Результаты путешествий">
-			<div className="tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title="Результаты путешествий" className="tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<TextContainer>
-					<TourismHeader main>Результаты путешествий</TourismHeader>
-				</TextContainer>
+			<TextContainer>
+				<TourismHeader main>Результаты путешествий</TourismHeader>
+			</TextContainer>
 
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						<TourismMainStatistic totalStatistic={povList} />
-						<TourismStatisticVisualizer pov={povList} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={data}>
+				<EmptyData data={data}>
+					<TourismMainStatistic totalStatistic={povList} />
+					<TourismStatisticVisualizer pov={povList} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

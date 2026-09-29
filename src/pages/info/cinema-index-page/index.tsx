@@ -17,27 +17,25 @@ export const CinemaIndexPage: FunctionComponent = () => {
 	const [ cinema ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
 
 	return (
-		<Layout title="Кино">
-			<div className="cinema-page">
-				<TextContainer>
-					<h1>Я и фильмы</h1>
-				</TextContainer>
+		<Layout title="Кино" className="cinema-page">
+			<TextContainer>
+				<h1>Я и фильмы</h1>
+			</TextContainer>
 
-				<TextContainer>
-					<h2><a href={ROUTE_LINKS.cinemaScriptIndex}>Сценарии</a></h2>
-				</TextContainer>
+			<TextContainer>
+				<h2><a href={ROUTE_LINKS.cinemaScriptIndex}>Сценарии</a></h2>
+			</TextContainer>
 
-				<LoadSuspense data={cinema}>
-					<EmptyData data={cinema}>
-						<CinemaScriptList scripts={cinema.data} />
-					</EmptyData>
-				</LoadSuspense>
+			<LoadSuspense data={cinema}>
+				<EmptyData data={cinema}>
+					<CinemaScriptList scripts={cinema.data} />
+				</EmptyData>
+			</LoadSuspense>
 
-				<TextContainer>
-					{/* TODO: [BACKEND] показать оценки фильмов и аниме */}
-					Однажды, я выведу здесь оценки фильмов
-				</TextContainer>
-			</div>
+			<TextContainer>
+				{/* TODO: [BACKEND] показать оценки фильмов и аниме */}
+				Однажды, я выведу здесь оценки фильмов
+			</TextContainer>
 		</Layout>
 	)
 }

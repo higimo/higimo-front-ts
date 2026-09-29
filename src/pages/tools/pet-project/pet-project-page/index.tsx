@@ -41,26 +41,24 @@ export const PetProjectPage: FunctionComponent = () => {
 	}, [unsortProjectList.data, data.data.textProjects])
 
 	return (
-		<Layout title="Пробби">
-			<div className="pet-project">
-				<TextContainer>
-					<h1>Пробби</h1>
-					<OnlyAdmin>
-						<div>
-							<a href={ROUTE_LINKS.petProjectCreate}>Добавить</a>
-						</div>
-					</OnlyAdmin>
-				</TextContainer>
+		<Layout title="Пробби" className="pet-project">
+			<TextContainer>
+				<h1>Пробби</h1>
+				<OnlyAdmin>
+					<div>
+						<a href={ROUTE_LINKS.petProjectCreate}>Добавить</a>
+					</div>
+				</OnlyAdmin>
+			</TextContainer>
 
-				<LoadSuspense data={[unsortProjectList, data]}>
-					<EmptyData data={[unsortProjectList, data]}>
-						<PetProject
-							petprojects={projects}
-							gradients={data.data.gradients!}
-						/>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={[unsortProjectList, data]}>
+				<EmptyData data={[unsortProjectList, data]}>
+					<PetProject
+						petprojects={projects}
+						gradients={data.data.gradients!}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

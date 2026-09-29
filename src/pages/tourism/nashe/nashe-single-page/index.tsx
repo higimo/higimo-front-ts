@@ -30,31 +30,29 @@ export const NasheSinglePage: FunctionComponent = () => {
 	const { mainScene, secondScene } = useScenesData(filteredData)
 
 	return (
-		<Layout title={`Нашествие ${curYear}`}>
-			<div className="nashe-single-page tourism-identy-page">
-				<TourismMainMenu />
+		<Layout title={`Нашествие ${curYear}`} className="nashe-single-page tourism-identy-page">
+			<TourismMainMenu />
 
-				<TextContainer>
-					<Breadcrumps />
-				</TextContainer>
+			<TextContainer>
+				<Breadcrumps />
+			</TextContainer>
 
-				<LoadSuspense data={nasheFullData}>
-					<EmptyData data={nasheFullData}>
-						<NasheLineupItem
-							curYear={curYear}
-							mainScene={mainScene}
-							secondScene={secondScene}
-						/>
-					</EmptyData>
-				</LoadSuspense>
+			<LoadSuspense data={nasheFullData}>
+				<EmptyData data={nasheFullData}>
+					<NasheLineupItem
+						curYear={curYear}
+						mainScene={mainScene}
+						secondScene={secondScene}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 
 
-				<TextContainer>
-					<TourismHeader secondary>Другие лайнапы</TourismHeader>
+			<TextContainer>
+				<TourismHeader secondary>Другие лайнапы</TourismHeader>
 
-					<NasheLineupGallery />
-				</TextContainer>
-			</div>
+				<NasheLineupGallery />
+			</TextContainer>
 		</Layout>
 	)
 }

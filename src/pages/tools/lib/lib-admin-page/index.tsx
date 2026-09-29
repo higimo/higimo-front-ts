@@ -12,11 +12,9 @@ export const LibAdminPage: FunctionComponent = () => {
 	// const[ librarySingle ] = useApi<LibraryType | EmptyObject>(API_ROUTE.libSingle({ id }))
 
 	return (
-		<Layout title="Библиотека">
-			<div className="lib-page">
-				<LibraryHeader />
-				<LibraryAdmin />
-			</div>
+		<Layout title="Библиотека" className="lib-page">
+			<LibraryHeader />
+			<LibraryAdmin />
 		</Layout>
 	)
 }

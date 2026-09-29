@@ -42,25 +42,23 @@ export const NokiaIndexPage: FunctionComponent = () => {
 	}, [richMeetings.data, selectedTags])
 
 	return (
-		<Layout title="Нокиа сервис">
-			<div className="nokia">
-				<NokiaMenu />
+		<Layout title="Нокиа сервис" className="nokia">
+			<NokiaMenu />
 
-				<div className="nokia__content">
-					<h1>Встречи</h1>
+			<div className="nokia__content">
+				<h1>Встречи</h1>
 
-					<LoadSuspense data={richMeetings}>
-						<EmptyData data={richMeetings}>
-							<MeetingTags
-								tags={meetingTags}
-								selectedTags={selectedTags}
-								onClick={handleTagClick}
-							/>
+				<LoadSuspense data={richMeetings}>
+					<EmptyData data={richMeetings}>
+						<MeetingTags
+							tags={meetingTags}
+							selectedTags={selectedTags}
+							onClick={handleTagClick}
+						/>
 
-							<NokiaMeetingGallery meetings={filtredMeetings} />
-						</EmptyData>
-					</LoadSuspense>
-				</div>
+						<NokiaMeetingGallery meetings={filtredMeetings} />
+					</EmptyData>
+				</LoadSuspense>
 			</div>
 		</Layout>
 	)

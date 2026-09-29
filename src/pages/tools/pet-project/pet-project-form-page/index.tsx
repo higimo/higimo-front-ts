@@ -23,20 +23,18 @@ export const PetProjectFormPage: FunctionComponent = () => {
 	const[ probbiSingle ] = useApi<PetProjectType | EmptyObject>(API_ROUTE.probbiSingle({ projectId }))
 
 	return (
-		<Layout title="Пэт-проекта">
-			<div className="pet-project">
-				<TextContainer>
-					<h1>Редактирование пэт-проекта</h1>
-				</TextContainer>
+		<Layout title="Пэт-проекта" className="pet-project">
+			<TextContainer>
+				<h1>Редактирование пэт-проекта</h1>
+			</TextContainer>
 
-				<LoadSuspense data={probbiSingle}>
-					<EmptyData data={probbiSingle}>
-						<PetProjectForm
-							{...probbiSingle.data}
-						/>
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+			<LoadSuspense data={probbiSingle}>
+				<EmptyData data={probbiSingle}>
+					<PetProjectForm
+						{...probbiSingle.data}
+					/>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

@@ -17,14 +17,12 @@ export const ObuchenieSinglePage: FunctionComponent = () => {
 	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode: idcode || '' }))
 
 	return (
-		<Layout title={lectionDetail.data.name || 'Обучение'}>
-			<div className="obuchenie-page">
-				<LoadSuspense data={lectionDetail}>
-					<EmptyData data={lectionDetail}>
-						<ObuchenieSingle lection={lectionDetail.data} />
-					</EmptyData>
-				</LoadSuspense>
-			</div>
+		<Layout title={lectionDetail.data.name || 'Обучение'} className="obuchenie-page">
+			<LoadSuspense data={lectionDetail}>
+				<EmptyData data={lectionDetail}>
+					<ObuchenieSingle lection={lectionDetail.data} />
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

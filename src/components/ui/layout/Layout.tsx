@@ -10,5 +10,9 @@ type LayoutPropsType = ClassNameType & {
 export const Layout: FunctionComponent<LayoutPropsType> = (props) => {
 	usePageTitle(props.title || '')
 
-	return props.children
+	return (
+		<div className={props.className}>
+			{props.children}
+		</div>
+	)
 }

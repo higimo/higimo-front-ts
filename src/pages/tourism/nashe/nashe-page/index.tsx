@@ -13,33 +13,31 @@ import '../../tourism-style.css'
 import './style.css'
 
 export const NasheIndexPage: FunctionComponent = () => (
-	<Layout title="Нашествие">
-		<div className="nashe-index-page tourism-identy-page">
-			<TourismMainMenu />
+	<Layout title="Нашествие" className="nashe-index-page tourism-identy-page">
+		<TourismMainMenu />
 
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+		<TextContainer>
+			<Breadcrumps />
+		</TextContainer>
 
-			<TextContainer>
-				<TourismHeader main>Нашествие</TourismHeader>
-				<TourismSecondary>
-					Я дважды был на Нашествии. В 2017 и 2018 годах.
-				</TourismSecondary>
-			</TextContainer>
+		<TextContainer>
+			<TourismHeader main>Нашествие</TourismHeader>
+			<TourismSecondary>
+				Я дважды был на Нашествии. В 2017 и 2018 годах.
+			</TourismSecondary>
+		</TextContainer>
 
-			<TextContainer>
-				<TourismHeader secondary>Лайнапы Нашествия</TourismHeader>
-				<TourismSecondary>
-					С подсветами того, что посетил.
-				</TourismSecondary>
-				<NasheLineupGallery />
-			</TextContainer>
+		<TextContainer>
+			<TourismHeader secondary>Лайнапы Нашествия</TourismHeader>
+			<TourismSecondary>
+				С подсветами того, что посетил.
+			</TourismSecondary>
+			<NasheLineupGallery />
+		</TextContainer>
 
-			<TextContainer>
-				<TourismHeader secondary>Фотоотчёты Нашествия во ВКонтакте</TourismHeader>
-				<NasheAlbums />
-			</TextContainer>
-		</div>
+		<TextContainer>
+			<TourismHeader secondary>Фотоотчёты Нашествия во ВКонтакте</TourismHeader>
+			<NasheAlbums />
+		</TextContainer>
 	</Layout>
 )
