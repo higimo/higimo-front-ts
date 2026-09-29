@@ -36,7 +36,7 @@ export const useMeetingForm = ({
 	const { path } = useRoute()
 	const formMethods = useForm<MeetingFormValues>({
 		defaultValues: {
-			// TODO: [LIGHT] переделать типы
+			// TODO: [BACKEND] переделать типы
 			date: createDateOnly(new Date()) as unknown as ISOString
 		}
 	})
