@@ -1,4 +1,11 @@
-// TODO: [LIGHT] написать тесты и JSDoc, имя сменить
+/**
+ * Извлекает «превью» текста, первое содержимое внутри `<p>...</p>`
+ *
+ * @example
+ * // Первый абзац
+ * getTextPreview('<p>Первый</p><p>Второй</p>')
+ * // → 'Первый'
+ */
 export const getText = (str?: string): string => {
 	let result = str || ''
 	if (result.indexOf('</p>') > 0) {

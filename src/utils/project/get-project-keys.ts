@@ -1,4 +1,19 @@
-// TODO: [LIGHT] написать тесты и JSDoc, имя сменить
+/**
+ * возвращает ключи объектка сортированные для отображения в порядке приоритета
+ *
+ * @example
+ * const user = { id: 1, name: 'Ann', age: 30, email: 'a@b.c' }
+ * getProjectKeys(user, ['id', 'email'])
+ * // → ['id', 'email', 'age', 'name']
+ *
+ * @example
+ * getProjectKeys({ a: 1, b: 2 }, ['z', 'a'])
+ * // → ['a', 'b']
+ *
+ * @example
+ * getProjectKeys({ c: 1, a: 2, b: 3 })
+ * // → ['a', 'b', 'c']
+ */
 export const getProjectKeys = <T extends object>(
 	data: T,
 	priorityKeys: string[] = []

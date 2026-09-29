@@ -1,13 +1,11 @@
 import { linkify } from 'utils/text/linkify'
 
-// TODO: [LIGHT] написать тесты и JSDoc
-
 /**
- * Пет проектам описание подготавливается
- * http обрамляет в ссылки
- * Сокращает описание до 320 символов
+ * Готовит описание пет-проекта к отображению в карточке/списке,
+ * превращая URL-адрес в HTML-ссылку и обрезает строку до 320 символов
  *
- * @param str Описание пет-проекта
- * @returns string
+ * @example
+ * getShortDescription('Проект на https://example.com — быстрый и удобный')
+ * // → 'Проект на <a href="https://example.com">https://example.com</a> — быстрый и удобный'
  */
 export const getShortDescription = (str?: string) => linkify((str || '')).substring(0, 320)

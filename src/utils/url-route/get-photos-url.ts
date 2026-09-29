@@ -1,10 +1,24 @@
 import { VkPhotoType } from 'api-types/vk.types'
 
-// TODO: [LIGHT] написать тесты, документировать JSDoc
+/**
+ * Возвращает URL фотографии ВКонтакте, выбирая самый крупный размер `x`/`r`
+ *
+ * @param sizes - Массив фотографий из VK API
+ * @returns URL подходящего размера или `''`
+ *
+ * @example
+ * getVkPhotoUrl([
+ *   { type: 'm', url: 'small.jpg' },
+ *   { type: 'x', url: 'big.jpg' },
+ *   { type: 'r', url: 'huge.jpg' },
+ * ])
+ * // → 'huge.jpg' (первым найден 'r')
+ *
+ * // Нет подходящего размера
+ * getVkPhotoUrl([{ type: 's', url: 'tiny.jpg' }])
+ * // → ''
+ */
 export const getVkPhotosUrl = (sizes: VkPhotoType['sizes']): string => {
-	const finded = sizes.find(item => item.type === 'r' || item.type === 'x')
-	if (finded) {
-		return finded.url
-	}
-	return ''
+	const byType = (t: string) => sizes.find(s => s.type === t)?.url
+	return byType('r') || byType('x') || ''
 }

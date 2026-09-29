@@ -149,3 +149,9 @@ export type VkPhotosContentType = {
 	title: VKAlbumType['title']
 	photos: VkPhotoType['orig_photo']['url'][]
 }
+
+export type VkAuthResultType = {
+	status: string
+	session: VkSessionType | null
+}
+
