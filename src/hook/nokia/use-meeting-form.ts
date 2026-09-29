@@ -66,9 +66,7 @@ export const useMeetingForm = ({
 					description: values.description,
 					type: values.type,
 				})
-				// TODO: [LIGHT] написать guard type функцию, после которой точно задаётся существование сущности в переменно
 				if (!backendEntity) {
-					console.log('backendEntity', backendEntity)
 					throw new ApiError('Бекенд не создал', 400)
 				}
 				toast.success(`[${backendEntity.id}] встреча создана`)
@@ -82,8 +80,6 @@ export const useMeetingForm = ({
 				resultPerson = await meetingApi.syncPerson(meetingId, values.persons)
 			}
 
-			formMethods.setValue('id', meetingId)
-			// TODO: [LIGHT] добавить
 			formMethods.reset({
 				...(backendEntity || {}),
 				persons: resultPerson
