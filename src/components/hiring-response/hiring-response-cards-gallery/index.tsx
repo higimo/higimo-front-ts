@@ -5,7 +5,6 @@ import { useHiringResponseCardForm } from './useHiringResponseCardForm'
 
 import { HiringResponseCard } from 'components/hiring-response/hiring-response-card'
 import { HiringResponseCardForm } from 'components/hiring-response/hiring-response-card-form'
-import { HiringResponseCardsEmpty } from 'components/hiring-response/hiring-response-cards-empty'
 import { OnlyAdmin } from 'components/util/only-admin'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
@@ -36,18 +35,14 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 	return (
 		<div>
 			<div className="hiring-cards">
-				{cards.length === 0 ? (
-					<HiringResponseCardsEmpty />
-				) : (
-					cards.map(card => (
-						<HiringResponseCard
-							{...card}
-							key={card.id.toString()}
-							onEdit={handleSelect(card.id)}
-							onDelete={handleDelete(card.id)}
-						/>
-					))
-				)}
+				{cards.map(card => (
+					<HiringResponseCard
+						{...card}
+						key={card.id.toString()}
+						onEdit={handleSelect(card.id)}
+						onDelete={handleDelete(card.id)}
+					/>
+				))}
 			</div>
 			<div id={ANCHOR_LINKS.hiringResponseForm}>
 				<OnlyAdmin>
