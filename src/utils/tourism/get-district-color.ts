@@ -1,7 +1,8 @@
 import { districtVacant } from 'data/tourism/district-vacant'
 import { districtVisited } from 'data/tourism/district-visited'
 
-// TODO: [LIGHT] вынести цвета в конфиг
+import { MAP_DISTRICT_VISITED, MAP_DISTRICT_VACANT, MAP_DISTRICT_DEFAULT } from 'config/MAP-DISTRICT-COLORS'
+
 export const getDistrictColor = (iso: any) =>
-	districtVisited.includes(iso) ? '#ff4aff' :
-		(districtVacant.includes(iso) ? '#5a7bc3' : '#b7b7b7')
+	districtVisited.includes(iso) ? MAP_DISTRICT_VISITED :
+		(districtVacant.includes(iso) ? MAP_DISTRICT_VACANT : MAP_DISTRICT_DEFAULT)
