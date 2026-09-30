@@ -1,8 +1,7 @@
-import { TagCategory } from 'types';
-import { totalTags } from '../../dic/accord/tags';
+import { TagCategory } from 'types'
+import { totalTags } from 'dic/accord/tags'
 
-
-export const ACCORD_TAG_CATEGORY: TagCategory[] = [
+export const ACCORD_TAG_CATEGORY = [
 	{
 		group: {
 			id: 1,
@@ -13,4 +12,5 @@ export const ACCORD_TAG_CATEGORY: TagCategory[] = [
 			title: tagName
 		}))
 	},
-];
+] as const satisfies readonly TagCategory[]
+

@@ -37,12 +37,14 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 		setShowSuggestion(false)
 
 		const mention = getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
-		const resultValue = [
-			refTextarea.current.value.substring(0, mention.start),
-			`@{${targetMention.display.replace(' ', '_')}}`,
-			refTextarea.current.value.substring(mention.end),
-		].join('')
-		setInputValue(resultValue)
+		if (mention) {
+			const resultValue = [
+				refTextarea.current.value.substring(0, mention.start),
+				`@{${targetMention.display.replace(' ', '_')}}`,
+				refTextarea.current.value.substring(mention.end),
+			].join('')
+			setInputValue(resultValue)
+		}
 
 		setTimeout(handleMentionValidation, 0)
 	}, [setShowSuggestion, setInputValue, refTextarea])
@@ -94,10 +96,11 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 		setInputValue
 	])
 
-	const filterSuggestion = useCallback((filter: MetionSelector) => {
-		if (!!filter) {
-			setFiltredSuggestList(props.suggestList)
+	const filterSuggestion = useCallback((filter: MetionSelector | null) => {
+		if (!filter) {
+			return undefined
 		}
+		setFiltredSuggestList(props.suggestList)
 		const regex = new RegExp(filter.text.split('').join('.*'), 'i')
 		const newList = props.suggestList.filter(item => regex.test(item.display))
 		setFiltredSuggestList(
