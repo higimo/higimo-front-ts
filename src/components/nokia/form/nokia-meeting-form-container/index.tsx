@@ -36,7 +36,6 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 
 	const { handleSubmit, formState: { isSubmitting, isDirty }, reset } = formMethods
 
-	// TODO: [HARD] идеально, бы сделать функцию/хук, которая заполняет любые формы
 	useEffect(() => {
 		if (!initialMeeting && !initialPersons) {
 			return
