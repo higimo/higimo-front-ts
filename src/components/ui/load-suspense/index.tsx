@@ -12,11 +12,11 @@ export const LoadSuspense: FunctionComponent<LoadSuspensePropsType> = ({
 	data = [],
 	loaderComponent = <Loading />, children,
 }) => {
-	const isLoading = (Array.isArray(data)
-		? data.some(i => i.status === 'LOADING')
-		: data.status === 'LOADING'
-	)
-	if (isLoading) {
+	const dataArr = (Array.isArray(data) ? data : [data])
+
+	const isInit = dataArr.some(i => i.status === 'INIT')
+	const isLoading = dataArr.some(i => i.status === 'LOADING')
+	if (isInit || isLoading) {
 		return loaderComponent
 	}
 

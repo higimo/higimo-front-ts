@@ -19,21 +19,17 @@ export const EmptyData: FunctionComponent<EmptyDataPropsType> = ({
 	children,
 	skipEmpty = false,
 }) => {
-	const isError = (Array.isArray(data)
-		? data.some(i => i.status === 'ERROR')
-		: data.status === 'ERROR'
-	)
+	const dataArr = (Array.isArray(data) ? data : [data])
+	const isError = dataArr.some(i => i.status === 'ERROR')
 	if (isError) {
 		return errorComponent
 	}
 
-	const isEmpty = !skipEmpty && (Array.isArray(data)
-		? data.some(i => i.status === 'LOADED' && checkEmpty(i.data))
-		: data.status === 'LOADED' && checkEmpty(data.data)
-	)
+	const isEmpty = !skipEmpty && dataArr.some(i => i.status === 'LOADED' && checkEmpty(i.data))
 	if (isEmpty) {
 		return emptyComponent
 	}
+	console.log(dataArr)
 
 	return children
 }
