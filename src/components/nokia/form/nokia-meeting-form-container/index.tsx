@@ -48,7 +48,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 			const { date, ...rest } = initialMeeting
 
 			if (date) {
-				// TODO: [MIDDLE] переделать типы
+				// TODO: [BACKEND] переделать типы
 				values.date = createDateOnly(new Date()) as unknown as ISOString
 			}
 			if (!initialMeeting.type) {

@@ -74,8 +74,6 @@ TODO: [MIDDLE] Добавить аналитику поблочную
 
 TODO: [CONTENT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
 
-TODO: [MIDDLE] интересный код событий для форм https://doka.guide/js/queuemicrotask/
-
 ## VK и прочие собственные разработки
 
 TODO: [MIDDLE]
