@@ -5,6 +5,8 @@ import { useMemo } from 'preact/hooks'
 
 import { PinarikElement } from 'components/pinarik/pinarik-element'
 
+import { groupBy } from 'utils/group-by'
+
 type PinarikCalendarPropsType = {
 	pinarik: PinarikType[]
 	onClickPreviewId: (id: PinarikType['id']) => () => void
@@ -18,14 +20,10 @@ export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
 		if (!Object.keys(pinarik).length) {
 			return {}
 		}
-		let treeYear: PinarikTreeYearType = {}
-		for (const item of pinarik) {
-			const year = item.date.substring(0, 4)
-			if (!treeYear[year]) {
-				treeYear[year] = []
-			}
-			treeYear[year].push(item)
-		}
+		const treeYear: PinarikTreeYearType = groupBy(
+			pinarik,
+			(item) => item.date.substring(0, 4)
+		)
 		return treeYear
 	}, [pinarik])
 

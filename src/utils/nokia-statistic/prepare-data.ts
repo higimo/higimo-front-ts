@@ -2,9 +2,9 @@ import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 
 import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
+import { getOrInsert } from 'utils/get-or-insert'
 import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
 
-// TODO: [MIDDLE] в ES2026 появились функции группировки и добавления в объект, даже если ключа нет, код сильно упростится
 export const prepareData = (
 	meetings: NokiaMeetingStatisticType[],
 	selectedYearTag: number[],
@@ -32,14 +32,8 @@ export const prepareData = (
 		}
 
 		const keyMonth = `${yearNumber}-${monthNumber}-01`
-		if (!resultDataset[keyMonth]) {
-			resultDataset[keyMonth] = {}
-		}
-		if (!resultDataset[keyMonth][curMeeting.type]) {
-			resultDataset[keyMonth][curMeeting.type] = 0
-		}
-		meetingTypeDic[curMeeting.type] = 1
-		resultDataset[keyMonth][curMeeting.type]! += 1
+		const bucket = getOrInsert(resultDataset, keyMonth, {})
+		bucket[curMeeting.type] = (bucket[curMeeting.type] ?? 0) + 1
 	}
 
 	const dataset = Object.keys(resultDataset).map((key) => ({
