@@ -11,13 +11,15 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+import '../faq-style.css'
+
 export const FaqSinglePage: FunctionComponent = () => {
 	const { params: { idcode = ''} } = useRoute()
 
 	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
 
 	return (
-		<Layout title={faqDetail.data?.name || 'FAQ'} className="faq-page">
+		<Layout title={faqDetail.data?.name || 'FAQ'} className="faq-identity-page">
 			<LoadSuspense data={faqDetail}>
 				<EmptyData data={faqDetail}>
 					<FaqSingle faq={faqDetail.data} />

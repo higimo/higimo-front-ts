@@ -1,0 +1,29 @@
+.faq-identity-page {
+	background:
+		linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0)    0%,
+			rgba(255, 255, 255, 0.01) 75%,
+			rgba(255, 255, 255, 0.1)  77%,
+			rgba(255, 255, 255, 0.35) 83%,
+			rgba(255, 255, 255, 0.5)  85%,
+			rgba(255, 255, 255, 0.75) 90%,
+			rgba(255, 255, 255, 0.95) 96%,
+			rgba(255, 255, 255, 0.98) 98%,
+			rgba(255, 255, 255, 1.0)  100%
+		)
+		, radial-gradient(ellipse farthest-corner at 0% 0%,
+			rgba(0, 255, 234, 0.25) 0%,
+			transparent 100%
+		)
+		, radial-gradient(ellipse farthest-corner at 100% 50%,
+			rgba(162, 255, 0, 0.25) 0%,
+			transparent 100%
+		)
+		, #fff
+	;
+	padding: 32px calc((100% - 45rem) / 2);
+	color: #000000c9;
+	font-family: 'Alegreya Sans';
+	font-size: 18px;
+}

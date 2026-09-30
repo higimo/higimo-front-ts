@@ -10,11 +10,14 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+import '../faq-style.css'
+
+// TODO: добавить форму добавления, как у /lib/
 export const FaqListPage: FunctionComponent = () => {
 	const [ faqList ] = useApi<FaqType[]>(API_ROUTE.faq)
 
 	return (
-		<Layout title="Статьи" className="faq-page">
+		<Layout title="Статьи FAQ" className="faq-identity-page">
 			<LoadSuspense data={faqList}>
 				<EmptyData data={faqList}>
 					<FaqList faqs={faqList.data} />
