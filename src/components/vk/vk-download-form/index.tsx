@@ -16,6 +16,7 @@ type VkDownloadFormContainerPropsType = {
 export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType> = ({
 	onSubmit
 }) => {
+	// TODO: [FORM] тут форма
 	const {
 		register,
 		handleSubmit,
@@ -39,6 +40,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 		}
 	}, [watch, handleSubmit])
 
+	// TODO: [FORM] тут форма
 	return (
 		<div className="download-page__input">
 			<form

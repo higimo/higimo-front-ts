@@ -7,6 +7,8 @@ import './style.css'
 type MerchantPaymentFormPropsType = {
 	register: UseFormRegister<FormValues>
 }
+
+// TODO: [FORM] тут форма
 export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType> = ({ register }) => (
 	<div className="checkout-form">
 		<div className="checkout-form__line">

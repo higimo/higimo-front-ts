@@ -31,6 +31,7 @@ type PinarikFormPropsType = {
 }
 
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
+	// TODO: [FORM] тут форма
 	const formMethods = useForm<FormValues>({
 		defaultValues: DEFAULT_VALUE,
 	})
@@ -44,6 +45,7 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 		reset
 	} = formMethods
 
+	// TODO: [FORM] тут форма
 	return (
 		<FormProvider {...formMethods}>
 			<form className="container nokia-form pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit)}>

@@ -29,6 +29,7 @@ export const NokiaMeetingPersonFields: FunctionComponent<NokiaMeetingPersonField
 
 	const selectedPersonIds = selectedPersons.map(i => i.id)
 
+	// TODO: [FORM] тут форма
 	return (
 		<Fragment>
 			<div className="form-row">

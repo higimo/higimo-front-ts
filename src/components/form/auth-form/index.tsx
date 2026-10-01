@@ -39,8 +39,10 @@ const handleLogin = async (data: FormValues) => {
 
 // TODO: [HARD] пора сделать компоненты формы?
 export const AuthForm: FunctionComponent = () => {
+	// TODO: [FORM] тут форма
 	const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValues>({})
 
+	// TODO: [FORM] тут форма
 	return (
 		<form className="container" onSubmit={handleSubmit(handleLogin)}>
 			<label htmlFor="email">email</label>

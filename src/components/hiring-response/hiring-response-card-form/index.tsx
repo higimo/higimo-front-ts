@@ -10,6 +10,8 @@ type HiringResponseCardFormPropsType = {
 	onSubmitCard: () => void
 	onReset: () => void
 }
+
+// TODO: [FORM] тут форма
 export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPropsType> = ({
 	selectedCard,
 	onUpdate,

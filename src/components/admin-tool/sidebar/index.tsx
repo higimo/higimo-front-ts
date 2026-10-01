@@ -4,6 +4,7 @@ import { FormField } from 'components/admin-tool/form-field'
 
 import { DEFAULT_STATE } from 'hook/useToolForm'
 
+// TODO: [FORM] тут форма
 export const Sidebar: FunctionComponent<{
 	formData: typeof DEFAULT_STATE
 	onFieldChange: (name: string, value: string) => void

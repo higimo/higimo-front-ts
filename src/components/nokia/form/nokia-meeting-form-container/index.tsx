@@ -25,6 +25,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 	topPersons,
 	persons,
 }) => {
+	// TODO: [FORM] тут форма
 	const {
 		formMethods,
 		handleMeetingSubmit,
@@ -40,6 +41,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		if (!initialMeeting && !initialPersons) {
 			return
 		}
+		// TODO: попробуй без ифов это сделать
 		let values: Partial<MeetingFormValues> = {
 			persons: initialPersons ?? [],
 		}
@@ -59,6 +61,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		reset(values, { keepDefaultValues: true })
 	}, [initialMeeting, initialPersons, reset])
 
+	// TODO: [FORM] тут форма
 	return (
 		<form className="container nokia-form" onSubmit={handleSubmit(handleMeetingSubmit)}>
 			{!!initialMeeting?.id && (

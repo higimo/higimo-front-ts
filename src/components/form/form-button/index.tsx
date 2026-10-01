@@ -3,6 +3,7 @@ import { FunctionComponent } from 'preact'
 import { useFormContext } from 'react-hook-form'
 
 export const FormButton: FunctionComponent = props => {
+	// TODO: [FORM] тут форма
 	const { formState } = useFormContext()
 
 	return (

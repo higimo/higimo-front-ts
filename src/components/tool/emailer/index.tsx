@@ -2,6 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import './style.css'
 
+// TODO: [FORM] тут форма
 export const Emailer: FunctionComponent = () => (
 	<div className="emailer-tool">
 		<ul className="main-menu">

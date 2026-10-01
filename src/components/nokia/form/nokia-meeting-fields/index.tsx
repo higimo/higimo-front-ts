@@ -11,6 +11,7 @@ interface PersonMeetingFieldsProps {
 	handleTextAssign: (newMentionList: MentionSuggest[]) => void
 }
 
+// TODO: [FORM] тут форма
 export const NokiaMeetingFields: FunctionComponent<PersonMeetingFieldsProps> = ({
 	formMethods: { register },
 	peoplesSuggest,

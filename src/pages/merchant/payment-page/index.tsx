@@ -30,6 +30,7 @@ export const PaymentPage: FunctionComponent = () => {
 	// TODO: [MIDDLE] надо, кжтс, хук, который получает по id нужный товар
 	const currentProduct = products.find(product => product.id === id)
 
+	// TODO: [FORM] тут форма
 	const { register, getValues } = useForm<FormValues>({
 		defaultValues: {
 			email: '',

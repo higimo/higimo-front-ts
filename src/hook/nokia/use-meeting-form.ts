@@ -34,6 +34,7 @@ export const useMeetingForm = ({
 	persons,
 }: UseMeetingFormProps): UseMeetingFormReturn => {
 	const { path } = useRoute()
+	// TODO: [FORM] тут форма
 	const formMethods = useForm<MeetingFormValues>({
 		defaultValues: {
 			// TODO: [BACKEND] переделать типы

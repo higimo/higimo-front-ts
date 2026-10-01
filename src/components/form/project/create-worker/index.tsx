@@ -18,6 +18,7 @@ type CreateWorkerPropsType = {
 }
 // TODO: [HARD] сейчас не сообщает, если какое-то поле забуду
 export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
+	// TODO: [FORM] тут форма
 	const {
 		register,
 		handleSubmit,
@@ -40,6 +41,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 		}
 	}
 
+	// TODO: [FORM] тут форма
 	return (
 		<div>
 			<CollapseSection fold={true} header="Добавить человека">

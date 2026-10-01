@@ -26,6 +26,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 }) => {
 	const { path } = useRoute()
 
+	// TODO: [FORM] тут форма
 	const formMethods = useForm<NokiaPersonSimpleType>({})
 
 	const {
@@ -43,6 +44,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 		}
 	}, [initialData, path, reset])
 
+	// TODO: [FORM] тут форма
 	return (
 		<form className="container nokia-form" onSubmit={handleSubmit(handlePersonSubmit)}>
 			<NokiaPersonFormFields formMethods={formMethods} />

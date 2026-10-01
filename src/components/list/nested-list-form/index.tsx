@@ -45,6 +45,7 @@ type NestedListFormPropsType = {
 }
 
 export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ values }) => {
+	// TODO: [FORM] тут форма
 	const {
 		register,
 		handleSubmit,
@@ -54,6 +55,7 @@ export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ val
 		defaultValues: values,
 	})
 
+	// TODO: [FORM] тут форма
 	return (
 		<div className="form-container">
 			<form className="container" onSubmit={handleSubmit(handleListListSubmit)}>

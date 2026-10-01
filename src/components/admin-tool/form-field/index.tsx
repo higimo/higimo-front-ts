@@ -9,6 +9,8 @@ interface FormFieldProps {
 	onChange: (name: string, value: string) => void
 	type?: 'text' | 'password' | 'textarea'
 }
+
+// TODO: [FORM] тут форма
 export const FormField: FunctionComponent<FormFieldProps> = ({
 	label, name, value, onChange, type = 'text'
 }) => {

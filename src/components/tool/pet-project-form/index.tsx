@@ -25,6 +25,7 @@ type PetProjectFormPropsType = Partial<PetProjectType>
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
 export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = (probbi) => {
+	// TODO: [FORM] тут форма
 	const {
 		register,
 		handleSubmit,
@@ -38,6 +39,7 @@ export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = (probb
 		}
 	}, [probbi])
 
+	// TODO: [FORM] тут форма
 	return (
 		<div className="pet-project">
 			<form className="container" onSubmit={handleSubmit(handlePetprojectSubmit)}>

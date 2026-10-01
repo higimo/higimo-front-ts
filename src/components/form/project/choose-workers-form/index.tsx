@@ -49,14 +49,17 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 	onRemoveWorker,
 	onSubmit,
 }) => {
+	// TODO: [FORM] тут форма
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isSubmitting },
 		reset,
 	} = useForm<FormValues>()
+	// TODO: [LIGHT] это больше не требуется
 	const [error, setError] = useState<null | string>(null)
 
+	// TODO: [FORM] тут форма
 	return (
 		<form onSubmit={handleSubmit(handleChooseWorkerSubmit(onSubmit, reset, setError))} className="workers-form">
 			<h3>Добавляемые работники</h3>
