@@ -1,0 +1,193 @@
+:root {
+	--spacing: 8px;
+}
+
+.fullpage-form-container {
+	max-width: 650px;
+	margin: 0 auto;
+	padding: 16px;
+}
+
+.inner-from-container {
+	padding: 16px;
+}
+
+.inner-from-container form,
+.fullpage-form-container form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.field-group {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.my-button {
+	background: rgb(0 120 255);
+	border: 1px solid #0080ff36;
+	border-radius: 8px;
+	padding: 8px 16px;
+	cursor: pointer;
+	color: #fff;
+	transition: all 150ms ease;
+}
+
+.my-button:hover {
+	background-color: rgb(0 100 255);
+	z-index: 1;
+}
+.my-button:active {
+	transform: scale(1.02) translateY(1px);
+}
+
+.my-button--secondary {
+	background: #f3f3f3;
+	border-color: #e3e3e3;
+	color: #333;
+}
+.my-button--secondary:hover {
+	background-color: #ebebeb;
+}
+
+.my-button--outline {
+	background: transparent;
+	border-color: #e3e3e3;
+	color: #222;
+}
+.my-button--outline:hover {
+	background: transparent;
+	border-color: #9c9c9c;
+}
+
+.my-button--ghost {
+	background: transparent;
+	border-color: transparent;
+	color: #222;
+}
+.my-button--ghost:hover {
+	background-color: #f0f0f0;
+}
+
+.my-button--destructive {
+	background: #e5484d;
+	border-color: #e5484d;
+	color: #fff;
+}
+.my-button--destructive:hover {
+	background-color: #d93d42;
+	border-color: #d93d42;
+}
+
+.button-group {
+	display: flex;
+	width: fit-content;
+	align-items: stretch;
+}
+
+.button-group:has(>[class*="button-group"]) {
+	gap: calc(var(--spacing) * 2);
+	flex-wrap: wrap;
+	row-gap: 8px;
+}
+
+.button-group > .my-button:not(:last-child):not(:only-child) {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.button-group > .my-button:not(:first-child):not(:only-child) {
+	margin-left: -1px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+
+
+.field__container {
+	padding: 4px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 4px;
+}
+
+.field__label-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	line-height: 1;
+	word-wrap: break-word;
+}
+
+.field__label {
+	padding: 0px 0;
+	font-size: 18px;
+	line-height: 1.2;
+}
+
+.field__label-bottom {
+	font-size: 85%;
+	opacity: .6;
+}
+
+.field__input-container {
+	width: 100%;
+	min-width: 440px;
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	gap: 6px;
+}
+
+.field__content {
+}
+
+.field__main {
+}
+
+.field__input {
+	font-size: 18px;
+	border: 1px solid #ddd !important;
+}
+textarea.field__input {
+	resize: none;
+	overflow: hidden;
+	padding: 8px;
+	height: 100%;
+	min-height: 80px;
+	field-sizing: content;
+	width: 100%;
+	min-width: 400px;
+	max-width: 560px;
+	word-break: break-word;
+}
+
+.field__input[readonly] {
+	border: none !important;
+	padding: 8px 0;
+	border-bottom: 1px solid #555 !important;
+	border-radius: 0;
+	color: #555;
+}
+
+.field__input--error {
+	border: 1px solid rgb(166, 0, 6) !important;
+}
+
+.field__error {
+	font-size: 85%;
+	color: rgb(166, 0, 6);
+}
+
+.field__description {
+	font-size: 85%;
+	opacity: .6;
+}
+
+.field__right-support {
+	padding: 8px 0;
+	font-size: 85%;
+	opacity: .6;
+}

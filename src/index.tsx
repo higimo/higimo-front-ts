@@ -90,7 +90,7 @@ import { HiringResponsePage } from 'pages/hiring-response/hiring-response-page'
 
 import { AdminPage }     from 'pages/admin/admin-page'
 import { LoginPage }     from 'pages/auth/login-page'
-import { TestPage }      from 'pages/admin/test-page'
+import { TypoPage }      from 'pages/admin/typo-page'
 import { ToolPage }      from 'pages/admin/tool-page'
 
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
@@ -130,10 +130,10 @@ export function App() {
 						<Route path={ROUTE_LINKS.login} component={LoginPage} />
 						<PrivateRoute path={ROUTE_LINKS.adminIndex} component={AdminPage} />
 						<PrivateRoute path="/admin/tool/:path?/:subpath?/:subsubpath?" component={ToolPage} />
-						<PrivateRoute path={ROUTE_LINKS.typo} component={TestPage} />
 
 						{/* Секретные разработки не для продакшена */}
 						{import.meta.env.DEV ? [
+							<Route path={ROUTE_LINKS.typo} component={TypoPage} />,
 							<Route path={ROUTE_LINKS.projectTypography} component={ProjectTypographyPage} />,
 							<Route path={ROUTE_LINKS.projectSandbox} component={PortfolioSandboxPage} />,
 							<PrivateRoute path={ROUTE_LINKS.projectTable} component={ProjectTablePage} />,
