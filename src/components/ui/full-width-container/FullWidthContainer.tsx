@@ -5,10 +5,12 @@ import cs from 'classnames'
 
 import './style.css'
 
-type FullWidthContainerPropsType = ClassNameType
+type FullWidthContainerPropsType = ClassNameType & {
+	style?: any
+}
 
 export const FullWidthContainer: FunctionComponent<FullWidthContainerPropsType> = props => (
-	<div className={cs('full-width-container', props.className)}>
+	<div className={cs('full-width-container', props.className)} style={props.style}>
 		{props.children}
 	</div>
 )
