@@ -29,6 +29,7 @@
 - **HTTP-клиент**: клиентская оболочка `sendRequest` поверх `XMLHttpRequest`
 - **Тестирование**: Vitest + JSDOM + `@testing-library/preact`
 - **Стилизация**: обычные CSS-файлы (без CSS-in-JS)
+- **Формы**: react-hook-from
 
 ## Технический стек (ключевые зависимости)
 
