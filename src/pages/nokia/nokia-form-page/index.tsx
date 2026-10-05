@@ -14,12 +14,12 @@ import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { getUserSuggestions } from 'utils/get-user-suggestions'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { DEFAULT_MEETING_ID } from 'config/DEFAULT-MEETING-ID'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../nokia-style.css'
 
 export const NokiaMeetingFormPage: FunctionComponent = () => {
-	const { params: { meetingId = DEFAULT_MEETING_ID } } = useRoute()
+	const { params: { meetingId = DEFAULT_ID } } = useRoute()
 
 	const [ singleMeeting ] = useApi<NokiaMeetingFullType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
 	// TODO: [BACKEND] на беке получать сортируя по популярности
