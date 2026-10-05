@@ -12,7 +12,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 import '../faq-style.css'
 
-// TODO: добавить форму добавления, как у /lib/
+// TODO: [LIGHT] добавить форму добавления, как у /lib/
 export const FaqListPage: FunctionComponent = () => {
 	const [ faqList ] = useApi<FaqType[]>(API_ROUTE.faq)
 

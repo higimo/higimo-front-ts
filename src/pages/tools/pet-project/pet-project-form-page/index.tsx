@@ -29,7 +29,7 @@ export const PetProjectFormPage: FunctionComponent = () => {
 
 			<LoadSuspense data={probbiSingle}>
 				<EmptyData data={probbiSingle} skipEmpty>
-					{/* TODO: здесь правильное обновление формы на создание и редактирование */}
+					{/* TODO: [LIGHT] здесь правильное обновление формы на создание и редактирование */}
 					<PetProjectForm
 						key={probbiSingle.data.id ?? DEFAULT_ID}
 						initialData={probbiSingle.data}

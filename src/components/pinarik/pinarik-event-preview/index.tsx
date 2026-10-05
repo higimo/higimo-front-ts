@@ -3,7 +3,7 @@ import { FunctionComponent } from "preact"
 
 type PinarikEventPreviewPropsType = {
 	id: PinarikType['id']
-	// TODO: хорошо бы сюда один только скидывать
+	// TODO: [LIGHT] хорошо бы сюда один только скидывать
 	pinarik: PinarikType[]
 }
 

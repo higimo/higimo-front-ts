@@ -4,7 +4,7 @@ import { NestedListItemType } from 'api-types/listlist.types'
 
 export type FormValues = NestedListItemType
 
-// TODO: распространить
+// TODO: [MIDDLE] распространить
 type FormScheme<T extends string> = {
 	code: T
 	type: FiledFormPropsType['type']

@@ -56,7 +56,7 @@ export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, an
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 
 	const fetchData = useCallback(async () => {
-		// TODO: кажется, надо добавить let cancelled = false
+		// TODO: [MIDDLE] кажется, надо добавить let cancelled = false
 		try {
 			dispatch({ type: API_STATUS.LOADING })
 			if (isDefaultSkipUrl(url)) {

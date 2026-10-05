@@ -186,7 +186,7 @@ textarea.field__input {
 }
 
 .field__input--error {
-	/* TODO: сравнить с ff4444 */
+	/* TODO: [LIGHT] сравнить с ff4444 */
 	border: 1px solid rgb(166, 0, 6) !important;
 }
 

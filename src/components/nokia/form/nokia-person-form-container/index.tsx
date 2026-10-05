@@ -51,7 +51,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 					onSubmit={formMethods.handleSubmit(handlePersonSubmit)}
 					autocomplete="off"
 				>
-					{/* TODO: type="number" */}
+					{/* TODO: [LIGHT] type="number" */}
 					{!!initialData?.id && (
 						<FiledForm name="id" label="ID" readonly />
 					)}

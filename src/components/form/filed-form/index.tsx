@@ -20,7 +20,7 @@ export type FiledFormPropsType = {
 	autofocus?: boolean
 }
 
-// TODO: поставить автокомплит по умолчанию выключенным, чтоб только руками включать, нпрмр, на логине
+// TODO: [LIGHT] поставить автокомплит по умолчанию выключенным, чтоб только руками включать, нпрмр, на логине
 export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 	label,
 	labelDescription,

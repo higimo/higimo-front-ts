@@ -11,7 +11,7 @@ import { EmptyObject } from 'utils.type'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { EmptyData } from 'components/ui/empty-data'
 
-// TODO: вынести в общую константу, в конфиг
+// TODO: [LIGHT] вынести в общую константу, в конфиг
 const DEFAULT_ID = '-1'
 
 export const LibAdminPage: FunctionComponent = () => {

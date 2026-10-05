@@ -7,7 +7,7 @@ import { formatResponse } from 'utils/format-response'
 import { HEADERS } from 'config/HEADERS'
 
 export const useApiRequest = () => {
-	// TODO: бля это чо такое?
+	// TODO: [MIDDLE] бля это чо такое?
 	const sendRequest = useCallback((
 		method: string,
 		uri: string,

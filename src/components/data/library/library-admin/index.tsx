@@ -32,7 +32,7 @@ type LibraryAdminPropsType = Partial<LibraryType>
 // TODO: [LIGHT] переименовать LibraryForm, сменить URL
 // TODO: [LIGHT] rename initialData => initialData
 export const LibraryAdmin: FunctionComponent<LibraryAdminPropsType> = (defaultValues) => {
-	// TODO: не устанавливается defaultValues
+	// TODO: [LIGHT] не устанавливается defaultValues
 	const formMethods = useForm<FormValues>()
 
 	const handleSubmit = async (values: FormValues) => {

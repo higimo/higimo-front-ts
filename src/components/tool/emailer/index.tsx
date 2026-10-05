@@ -14,7 +14,7 @@ type FormValues = {
 	url: string
 }
 
-// TODO: а внешняя ссылка есть вообще?
+// TODO: [LIGHT] а внешняя ссылка есть вообще?
 export const Emailer: FunctionComponent = () => {
 	const formMethods = useForm<FormValues>()
 

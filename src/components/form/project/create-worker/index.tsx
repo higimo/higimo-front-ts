@@ -47,13 +47,13 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 						onSubmit={formMethods.handleSubmit(handleFormSubmit)}
 						autocomplete="off"
 					>
-						<FiledForm name="full_name" label="Имя" />{/* TODO: required */}
+						<FiledForm name="full_name" label="Имя" />{/* TODO: [LIGHT] required */}
 						<FiledForm name="image" label="Ссылка на фотку" />
 						<FiledForm name="login" label="Ник" />
 						<FiledForm name="company" label="Где работал" />
 						<FiledForm name="role" label="Роль" />
 						<FiledForm name="link" label="Ссылка на хомяк" />
-						{/* TODO: пробрасывать в register */}
+						{/* TODO: [MIDDLE] пробрасывать в register */}
 						{/* pattern: {
 							value: /^(https?:\/\/).+$/i,
 							message: 'Должна быть валидная ссылка'
