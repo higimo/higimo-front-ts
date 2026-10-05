@@ -1,9 +1,15 @@
+import { toast } from "toast"
+
+/**
+ * Получает текст и копирует его в буфер обмена
+ * @param str Текст для копирования
+ */
 export const copyToClipboard = (str: string) => {
 	navigator.clipboard.writeText(str)
 		.then(() => {
-			console.log('Скопировано')
+			toast.success('Скопировано')
 		})
 		.catch(error => {
-			console.error(`Текст не скопирован ${error}`)
+			toast.error(`Текст не скопирован ${error}`)
 		})
 }
