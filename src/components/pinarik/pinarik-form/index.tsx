@@ -46,7 +46,7 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 					onSubmit={formMethods.handleSubmit(handlePinarikSubmit)}
 					autocomplete="off"
 				>
-					<FiledForm name="date" label="Дата" type="date" />
+					<FiledForm name="date" label="Дата" type="date" required />
 					<label htmlFor="score">Оценка</label>
 					<TrafficLight<FormValues> name="score" />
 					<FiledForm name="description" label="Описание" type="textarea" />

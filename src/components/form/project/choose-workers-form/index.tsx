@@ -55,6 +55,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 										name={`roles.${worker.id}`}
 										label="Роль в проекте"
 										placeholder="Введите роль"
+										required
 									/>
 									<ButtonGroup variant="gap">
 										<FormButton

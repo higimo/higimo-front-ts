@@ -51,8 +51,8 @@ export const AuthForm: FunctionComponent = () => {
 		<InnerFromContainer>
 			<FormProvider {...formMethods}>
 				<form onSubmit={formMethods.handleSubmit(handleLogin)}>
-					<FiledForm name="email" label="Электопочта" autocomplete />
-					<FiledForm name="pass" type="password" label="Пароль" autocomplete />
+					<FiledForm name="email" label="Электопочта" autocomplete required />
+					<FiledForm name="pass" type="password" label="Пароль" autocomplete required />
 					<ButtonGroup>
 						<FormButton
 							type="submit"

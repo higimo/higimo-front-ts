@@ -53,8 +53,8 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 				>
 					<div className="hiring-response-form__meta">
 						<FiledForm name="id" label="id" type="number" readonly />
-						<FiledForm name="key" label="key" readonly />
-						<FiledForm name="date" label="date" />
+						<FiledForm name="key" label="key" readonly required />
+						<FiledForm name="date" label="date" required />
 					</div>
 					<FiledForm
 						type="textarea"

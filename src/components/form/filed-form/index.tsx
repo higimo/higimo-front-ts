@@ -18,6 +18,7 @@ export type FiledFormPropsType = {
 	readonly?: boolean
 	autocomplete?: boolean
 	autofocus?: boolean
+	required?: boolean
 }
 
 // TODO: [LIGHT] поставить автокомплит по умолчанию выключенным, чтоб только руками включать, нпрмр, на логине
@@ -32,10 +33,13 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 	placeholder,
 	support,
 	autofocus,
+	required,
 }) => {
 	const id = useId()
 	const { register, formState: { errors } } = useFormContext()
 	const error = errors[name]?.message as string | undefined
+
+	const registerOptions = { required: required ? 'Обязательно' : undefined }
 
 	return (
 		<div className="field__container">
@@ -49,6 +53,7 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 			)}
 			<div className="field__input-container">
 				<div className="field__content">
+					{/* TODO: [MIDDLE] сократить бы. через мапу? */}
 					<div className="field__main">
 						{type === 'text' && (
 							<input
@@ -59,7 +64,7 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 								placeholder={placeholder}
 								autofocus={autofocus}
 								autocomplete={autocomplete ? 'on' : undefined}
-								{...register(name)}
+								{...register(name, registerOptions)}
 							/>
 						)}
 						{type === 'date' && (
@@ -67,7 +72,7 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 								className={cs('field__input', { 'field__input--error': error })}
 								id={id}
 								type="date"
-								{...register(name)}
+								{...register(name, registerOptions)}
 							/>
 						)}
 						{type === 'datetime-local' && (
@@ -75,7 +80,7 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 								className={cs('field__input', { 'field__input--error': error })}
 								id={id}
 								type="datetime-local"
-								{...register(name)}
+								{...register(name, registerOptions)}
 							/>
 						)}
 						{type === 'number' && (
@@ -83,7 +88,7 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 								className={cs('field__input', { 'field__input--error': error })}
 								id={id}
 								type="number"
-								{...register(name)}
+								{...register(name, registerOptions)}
 							/>
 						)}
 						{type === 'password' && (
@@ -95,7 +100,7 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 								placeholder={placeholder}
 								autocomplete={autocomplete ? 'on' : undefined}
 								autofocus={autofocus}
-								{...register(name)}
+								{...register(name, registerOptions)}
 							/>
 						)}
 						{type === 'textarea' && (

@@ -47,7 +47,7 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 						onSubmit={formMethods.handleSubmit(handleFormSubmit)}
 						autocomplete="off"
 					>
-						<FiledForm name="full_name" label="Имя" />{/* TODO: [LIGHT] required */}
+						<FiledForm name="full_name" label="Имя" required />
 						<FiledForm name="image" label="Ссылка на фотку" />
 						<FiledForm name="login" label="Ник" />
 						<FiledForm name="company" label="Где работал" />

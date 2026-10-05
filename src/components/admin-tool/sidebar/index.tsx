@@ -42,7 +42,7 @@ export const Sidebar: FunctionComponent<SidebarPropsType> = ({ onSubmit }) => {
 						<option value="PUT">PUT</option>
 						<option value="DELETE">DELETE</option>
 					</select>
-					<FiledForm name="uri" label="URI" />
+					<FiledForm name="uri" label="URI" required />
 					<FiledForm name="options" label="options" type="textarea" />
 					<ButtonGroup variant="gap">
 						<FormButton

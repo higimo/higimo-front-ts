@@ -56,7 +56,7 @@ export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 						{!!initialData?.id && (
 							<FiledForm name="id" label="Идентификатор" type="number" readonly />
 						)}
-						<FiledForm name="name" label="Название" />
+						<FiledForm name="name" label="Название" required />
 						<FiledForm name="description" label="Описание" type="textarea" />
 						<ButtonGroup variant="gap">
 							<FormButton

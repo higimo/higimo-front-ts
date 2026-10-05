@@ -54,7 +54,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 					{!!initialData?.id && (
 						<FiledForm name="id" label="ID" type="number" readonly />
 					)}
-					<FiledForm name="name" label="Имя" />
+					<FiledForm name="name" label="Имя" required />
 					<FiledForm name="alias" label="Псевдоним" />
 					<FiledForm name="nick" label="Никнейм" />
 					<FiledForm

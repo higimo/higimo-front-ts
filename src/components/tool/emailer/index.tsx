@@ -14,7 +14,6 @@ type FormValues = {
 	url: string
 }
 
-// TODO: [LIGHT] а внешняя ссылка есть вообще?
 export const Emailer: FunctionComponent = () => {
 	const formMethods = useForm<FormValues>()
 
@@ -32,7 +31,7 @@ export const Emailer: FunctionComponent = () => {
 						onSubmit={formMethods.handleSubmit(handleSubmit)}
 						autocomplete="off"
 					>
-						<FiledForm name="url" label="Статью по ссылке на почту" autofocus />
+						<FiledForm name="url" label="Статью по ссылке на почту" autofocus required />
 						<ButtonGroup variant="gap">
 							<FormButton
 								type="submit"

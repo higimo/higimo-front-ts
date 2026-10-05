@@ -30,6 +30,7 @@ type FormValues = Partial<LibraryType>
 type LibraryAdminPropsType = Partial<LibraryType>
 
 export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialData) => {
+	// TODO: [LIGHT] не устанавливается initialData
 	const formMethods = useForm<FormValues>()
 
 	const handleSubmit = async (values: FormValues) => {
@@ -62,8 +63,8 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialDat
 					{!!initialData?.id && (
 						<FiledForm name="id" label="Идентификатор" type="number" readonly />
 					)}
-					<FiledForm name="author" label="Автор" />
-					<FiledForm name="name" label="Название" />
+					<FiledForm name="author" label="Автор" required />
+					<FiledForm name="name" label="Название" required />
 					<FiledForm name="addon" label="Допназвание" />
 					<FiledForm name="isbn" label="ISBN" />
 					<FiledForm name="img" label="Картинка" />
