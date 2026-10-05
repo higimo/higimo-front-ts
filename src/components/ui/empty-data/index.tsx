@@ -29,7 +29,6 @@ export const EmptyData: FunctionComponent<EmptyDataPropsType> = ({
 	if (isEmpty) {
 		return emptyComponent
 	}
-	console.log(dataArr)
 
 	return children
 }
