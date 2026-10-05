@@ -29,10 +29,7 @@ type FormValues = Partial<LibraryType>
 
 type LibraryAdminPropsType = Partial<LibraryType>
 
-// TODO: [LIGHT] переименовать LibraryForm, сменить URL
-// TODO: [LIGHT] rename initialData => initialData
-export const LibraryAdmin: FunctionComponent<LibraryAdminPropsType> = (defaultValues) => {
-	// TODO: [LIGHT] не устанавливается defaultValues
+export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialData) => {
 	const formMethods = useForm<FormValues>()
 
 	const handleSubmit = async (values: FormValues) => {
@@ -62,8 +59,8 @@ export const LibraryAdmin: FunctionComponent<LibraryAdminPropsType> = (defaultVa
 					onSubmit={formMethods.handleSubmit(handleSubmit)}
 					autocomplete="off"
 				>
-					{!!defaultValues?.id && (
-						<FiledForm name="id" label="Идентификатор" readonly />
+					{!!initialData?.id && (
+						<FiledForm name="id" label="Идентификатор" type="number" readonly />
 					)}
 					<FiledForm name="author" label="Автор" />
 					<FiledForm name="name" label="Название" />
@@ -82,16 +79,16 @@ export const LibraryAdmin: FunctionComponent<LibraryAdminPropsType> = (defaultVa
 						{formMethods.formState.isDirty && (
 							<FormButton
 								type="button"
-								onClick={() => formMethods.reset(getResetValues(defaultValues, true))}
+								onClick={() => formMethods.reset(getResetValues(initialData, true))}
 								variant="outline"
 							>
 								Очистить
 							</FormButton>
 						)}
-						{!!defaultValues?.id && (
+						{!!initialData?.id && (
 							<FormButton
 								type="button"
-								onClick={handleRemove(defaultValues.id)}
+								onClick={handleRemove(initialData.id)}
 								variant="outline"
 							>
 								Удалить

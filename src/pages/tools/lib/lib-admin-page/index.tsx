@@ -6,7 +6,7 @@ import { useRoute } from 'preact-iso'
 
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
-import { LibraryAdmin } from 'components/data/library/library-admin'
+import { LibraryForm } from 'components/data/library/library-admin'
 import { LibraryHeader } from 'components/data/library/library-header'
 import { LibraryType } from 'api-types/library.types'
 import { LoadSuspense } from 'components/ui/load-suspense'
@@ -24,7 +24,7 @@ export const LibAdminPage: FunctionComponent = () => {
 			<LibraryHeader />
 			<LoadSuspense data={librarySingle}>
 				<EmptyData data={librarySingle} skipEmpty>
-					<LibraryAdmin {...librarySingle.data} />
+					<LibraryForm {...librarySingle.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>
