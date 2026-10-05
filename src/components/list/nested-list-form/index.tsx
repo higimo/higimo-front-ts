@@ -1,8 +1,14 @@
 import { FormValues, formScheme } from 'components/list/nested-list-form/FormValues'
-import { FunctionComponent, h } from 'preact'
+import { FunctionComponent } from 'preact'
 import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
+
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
 import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { toast } from 'toast'
@@ -45,45 +51,36 @@ type NestedListFormPropsType = {
 }
 
 export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ values }) => {
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { isSubmitting, isDirty },
-	} = useForm<FormValues>({
+	const formMethods = useForm<FormValues>({
 		defaultValues: values,
 	})
 
 	return (
-		<div className="form-container">
-			<form className="container" onSubmit={handleSubmit(handleListListSubmit)}>
-				{formScheme.map(schemeElement => [
-					<label htmlFor={schemeElement.code}>{schemeElement.title}</label>,
-					h(
-						schemeElement.input,
-						{
-							...register(schemeElement.code),
-							name: schemeElement.code,
-							defaultValue: (values && values[schemeElement.code]) || '',
-							className: schemeElement.input,
-						}
-					),
-					!!schemeElement.description && (
-						<div className="form__description">
-							{schemeElement.description}
-						</div>
-					)
-				])}
-				<div className="form__button">
-					<button type="submit" className="default-form__submit" disabled={isSubmitting}>
-						{isSubmitting ? 'Сохранение…' : 'Сохранить'}
-					</button>
-					{isDirty && (
-						<button type="reset" onClick={() => reset(values)}>Очистить форму</button>
-					)}
-				</div>
-			</form>
-		</div>
-
+		<FullpageFormContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(handleListListSubmit)}
+					autocomplete="off"
+				>
+					{formScheme.map(schemeElement => (
+						<FiledForm
+							name={schemeElement.code}
+							type={schemeElement.type}
+							label={schemeElement.title}
+							desciption={schemeElement.description}
+						/>
+					))}
+					<ButtonGroup variant="gap">
+						<FormButton
+							type="submit"
+							variant="default"
+							disabled={formMethods.formState.isSubmitting}
+						>
+							{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
+						</FormButton>
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</FullpageFormContainer>
 	)
 }

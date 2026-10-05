@@ -1,9 +1,13 @@
 import { FunctionComponent } from 'preact'
 import { PinarikType } from 'api-types/pinarik.types'
 
-import { FormProvider, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 import { TrafficLight } from 'components/pinarik/traffic-light'
 
 import { createDateOnly } from 'utils/date/create-date-only'
@@ -35,49 +39,37 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 		defaultValues: DEFAULT_VALUE,
 	})
 
-	const {
-		register,
-		handleSubmit,
-		formState: {
-			isDirty,
-		},
-		reset
-	} = formMethods
-
 	return (
-		<FormProvider {...formMethods}>
-			<form className="container nokia-form pinarik-form" onSubmit={handleSubmit(handlePinarikSubmit)}>
-				<div className="form-row">
-					<div>
-						<label htmlFor="date">Дата</label>
-					</div>
-					<div>
-						<input {...register('date')} name="date" type="date" />
-					</div>
-				</div>
-				<div className="form-row">
-					<div>
-						<label htmlFor="score">Оценка</label>
-					</div>
-					<div>
-						<TrafficLight<FormValues> name="score" />
-					</div>
-				</div>
-				<div className="form-row">
-					<div>
-						<label htmlFor="description">Описание</label>
-					</div>
-					<div>
-						<textarea {...register('description')} name="description" />
-					</div>
-				</div>
-				<div className="form__button">
-					<FormButton>Записать</FormButton>
-					{isDirty && (
-						<button type="reset" onClick={() => reset(DEFAULT_VALUE)}>Очистить</button>
-					)}
-				</div>
-			</form>
-		</FormProvider>
+		<FullpageFormContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(handlePinarikSubmit)}
+					autocomplete="off"
+				>
+					<FiledForm name="date" label="Дата" type="date" />
+					<label htmlFor="score">Оценка</label>
+					<TrafficLight<FormValues> name="score" />
+					<FiledForm name="description" label="Описание" type="textarea" />
+					<ButtonGroup variant="gap">
+						<FormButton
+							type="submit"
+							variant="default"
+							disabled={formMethods.formState.isSubmitting}
+						>
+							{formMethods.formState.isSubmitting ? 'Сохраняю…' : 'Сохранить'}
+						</FormButton>
+						{formMethods.formState.isDirty && (
+							<FormButton
+								type="button"
+								onClick={() => formMethods.reset(DEFAULT_VALUE)}
+								variant="outline"
+							>
+								Очистить
+							</FormButton>
+						)}
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</FullpageFormContainer>
 	)
 }

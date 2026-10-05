@@ -3,11 +3,14 @@ import { HigimoServerResponse } from 'api-types/server-response.types'
 
 import { Message } from 'components/ui/message'
 
+import '../form-style.css'
+
 type ShowFormResultPropsType = {
 	status: HigimoServerResponse
 	reset: () => void
 	children?: ComponentChildren
 }
+
 export const ShowFormResult: FunctionComponent<ShowFormResultPropsType> = (props) => (
 	<div className="show-form-result">
 		<Message result text={<>Результат: <pre>{JSON.stringify(props.status, null, '\t')}</pre></>} />

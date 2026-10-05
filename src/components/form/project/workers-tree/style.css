@@ -5,44 +5,50 @@
 	border: 1px solid #eee;
 	border-radius: 8px;
 }
+.workers-tree h3 {
+	margin: 0;
+}
 
 .company-groups {
-	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
 .company-group {
-	margin-bottom: 25px;
+	display: flex;
+	flex-direction: column;
 }
 
 .company-name {
-	font-size: 1.2rem;
-	font-weight: bold;
-	margin-bottom: 10px;
-	padding-bottom: 5px;
-	border-bottom: 2px solid #f0f0f0;
+	font-weight: 800;
 }
 
 .role-groups {
-	margin-left: 15px;
+	margin-left: 16px;
 }
 
 .role-group {
-	margin-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
 }
 
 .role-name {
-	font-weight: 500;
-	margin-bottom: 8px;
 	color: #555;
 }
 
 .worker-tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: 2px;
 }
 
 .worker-tag {
+	margin: 0;
+}
+
+/* .worker-tag {
 	cursor: pointer;
 	background-color: #f5f5f5;
 	padding: 6px 12px;
@@ -52,4 +58,4 @@
 
 .worker-tag:hover {
 	background-color: #e0e0e0;
-}
+} */

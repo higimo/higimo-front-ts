@@ -281,6 +281,10 @@ form.container .single-row textarea {
 	}
 }
 
+.nokia .text-container {
+	width: 100%;
+}
+
 .nokia__content {
 	width: 100%;
 	max-width: 100%;
@@ -359,4 +363,24 @@ form.container.nokia-form .single-row:nth-child(2n-1) {
 
 .nokia-form .nokia-form__delete:hover {
 	background: #e8e8e8;
+}
+
+.pinarik-preview {
+	min-height: 120px;
+	padding: 16px;
+	background-color: #fff;
+	color: #555;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+}
+
+.pinarik-preview__content {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.pinarik-preview__date {
+	opacity: .6;
+	font-size: 75%;
 }

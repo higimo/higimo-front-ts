@@ -1,4 +1,3 @@
-import { EmptyObject } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { PetProjectType } from 'api-types/petproject.types'
 
@@ -20,18 +19,20 @@ const DEFAULT_ID = '-1'
 export const PetProjectFormPage: FunctionComponent = () => {
 	const { params: { projectId = DEFAULT_ID } } = useRoute()
 
-	const[ probbiSingle ] = useApi<PetProjectType | EmptyObject>(API_ROUTE.probbiSingle({ projectId }))
+	const[ probbiSingle ] = useApi<Partial<PetProjectType>>(API_ROUTE.probbiSingle({ projectId }))
 
 	return (
 		<Layout title="Пэт-проекта" className="pet-project">
 			<TextContainer>
-				<h1>Редактирование пэт-проекта</h1>
+				<h1>Редактирование и создание пэт-проекта</h1>
 			</TextContainer>
 
 			<LoadSuspense data={probbiSingle}>
-				<EmptyData data={probbiSingle}>
+				<EmptyData data={probbiSingle} skipEmpty>
+					{/* TODO: здесь правильное обновление формы на создание и редактирование */}
 					<PetProjectForm
-						{...probbiSingle.data}
+						key={probbiSingle.data.id ?? DEFAULT_ID}
+						initialData={probbiSingle.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>

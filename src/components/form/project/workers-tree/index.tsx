@@ -1,5 +1,5 @@
-import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { FunctionComponent } from 'preact'
+import { PortfolioWorkerType } from 'api-types/portfolio.types'
 
 import { useMemo } from 'preact/hooks'
 
@@ -42,37 +42,33 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 	return (
 		<div className="workers-tree">
 			<h3>Выбрать человека</h3>
-			{workerTree.length === 0 ? (
-				<p>Нет доступных работников</p>
-			) : (
-				<div className="company-groups">
-					{workerTree.map((companyGroup, companyIndex) => (
-						<div key={`company-${companyIndex}`} className="company-group">
-							<div className="company-name">{companyGroup.company}</div>
+			<div className="company-groups">
+				{workerTree.map((companyGroup, companyIndex) => (
+					<div key={`company-${companyIndex}`} className="company-group">
+						<div className="company-name">{companyGroup.company}</div>
 
-							<div className="role-groups">
-								{companyGroup.roles.map((roleGroup, roleIndex) => (
-									<div key={`role-${companyIndex}-${roleIndex}`} className="role-group">
-										<div className="role-name">{roleGroup.role}</div>
+						<div className="role-groups">
+							{companyGroup.roles.map((roleGroup, roleIndex) => (
+								<div key={`role-${companyIndex}-${roleIndex}`} className="role-group">
+									<div className="role-name">{roleGroup.role}</div>
 
-										<div className="worker-tags">
-											{roleGroup.workers.map(worker => (
-												<Tag
-													key={`worker-${worker.id}`}
-													className="worker-tag"
-													onClick={() => handleClickWorker(worker)}
-												>
-													{[worker.full_name, worker.login].filter(Boolean).join(' ')}
-												</Tag>
-											))}
-										</div>
+									<div className="worker-tags">
+										{roleGroup.workers.map(worker => (
+											<Tag
+												key={`worker-${worker.id}`}
+												className="worker-tag"
+												onClick={() => handleClickWorker(worker)}
+											>
+												{[worker.full_name, worker.login].filter(Boolean).join(' ')}
+											</Tag>
+										))}
 									</div>
-								))}
-							</div>
+								</div>
+							))}
 						</div>
-					))}
-				</div>
-			)}
+					</div>
+				))}
+			</div>
 		</div>
 	)
 }

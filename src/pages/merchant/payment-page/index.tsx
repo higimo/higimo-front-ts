@@ -1,8 +1,5 @@
-import { FormValues } from 'components/merchant/merchant-payment-form/types'
 import { FunctionComponent } from 'preact'
 
-import { useForm } from 'react-hook-form'
-import { useLayoutEffect } from 'preact/hooks'
 import { useLocation } from 'preact-iso'
 import { useMerchant } from 'hook/data/use-merchant'
 
@@ -16,8 +13,6 @@ import { MerchantProductFeature } from 'components/merchant/merchant-product-fea
 import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
 
-import { initPayment } from 'utils/merchant/init-payment'
-
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../merchant-style.css'
@@ -29,24 +24,6 @@ export const PaymentPage: FunctionComponent = () => {
 
 	// TODO: [MIDDLE] надо, кжтс, хук, который получает по id нужный товар
 	const currentProduct = products.find(product => product.id === id)
-
-	const { register, getValues } = useForm<FormValues>({
-		defaultValues: {
-			email: '',
-			comment: ''
-		}
-	})
-
-	useLayoutEffect(() => {
-		if (!currentProduct) {
-			return
-		}
-
-		initPayment(() => ({
-			currentProduct,
-			getValues
-		})).then().catch()
-	}, [currentProduct])
 
 	if (!isProductLoaded) {
 		<Loading />
@@ -66,7 +43,7 @@ export const PaymentPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<MerchantPaymentForm register={register} />
+				<MerchantPaymentForm product={currentProduct} />
 			</TextContainer>
 
 			<MerchantProductBenefits product={currentProduct} />

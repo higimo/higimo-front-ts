@@ -11,7 +11,7 @@ class LibApiRepository {
 	}
 
 	async create(
-		values: Omit<LibraryType, 'id'>
+		values: Partial<Omit<LibraryType, 'id'>>
 	): Promise<LibraryType | null> {
 		const data = await sendRequest<LibraryType>(API_ROUTE.lib, {
 			method: 'POST',

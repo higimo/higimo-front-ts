@@ -4,7 +4,13 @@ import { PetProjectType } from 'api-types/petproject.types'
 import { useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
-import { isDefined } from 'utils/types/is-defined'
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+
+import { getResetValues } from 'components/form/EMPTY_FORM'
 import { probbiApi } from 'repositories/probbi-api.repository'
 
 import './style.css'
@@ -19,59 +25,69 @@ const handlePetprojectSubmit = async (values: FormValues) => {
 	}
 }
 
-type PetProjectFormPropsType = Partial<PetProjectType>
+type PetProjectFormPropsType = {
+	initialData?: Partial<PetProjectType>
+}
 
 // Запоминать ник автора
 // Запрашивать проекты, учитывая ник
 // Ис админ заменить на разграничения прав
-export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = (probbi) => {
-	const {
-		register,
-		handleSubmit,
-		formState,
-		reset
-	} = useForm<FormValues>()
+export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
+	initialData
+}) => {
+	const formMethods = useForm<FormValues>()
 
 	useEffect(() => {
-		if (isDefined(probbi.id)) {
-			reset(probbi)
-		}
-	}, [probbi])
+		formMethods.reset(initialData)
+	}, [initialData, formMethods.reset])
+
+	const handleRemove = (id: PetProjectType['id']) => () => {
+		console.log(`Хочу удалить ${id}`)
+	}
 
 	return (
 		<div className="pet-project">
-			<form className="container" onSubmit={handleSubmit(handlePetprojectSubmit)}>
-				<div>
-					<label htmlFor="id">id</label>
-				</div>
-				<div>
-					<input {...register('id')} readOnly />
-				</div>
-				<div>
-					<label htmlFor="name">name</label>
-				</div>
-				<div>
-					<input {...register('name')} />
-				</div>
-				<div>
-					<label htmlFor="description">description</label>
-				</div>
-				<div>
-					<textarea {...register('description')} />
-				</div>
-				<div className="test">
-					<button
-						type="submit"
-						className="default-form__submit"
-						disabled={formState.isSubmitted || formState.isSubmitting}
+			<FullpageFormContainer>
+				<FormProvider {...formMethods}>
+					<form
+						onSubmit={formMethods.handleSubmit(handlePetprojectSubmit)}
+						autocomplete="off"
 					>
-						{formState.isSubmitting ? 'Сохранение…' : 'Сохранить'}
-					</button>
-					{formState.isDirty && (
-						<button type="reset" onClick={() => reset()}></button>
-					)}
-				</div>
-			</form>
+						{!!initialData?.id && (
+							<FiledForm name="id" label="Идентификатор" readonly />
+						)}
+						<FiledForm name="name" label="Название" />
+						<FiledForm name="description" label="Описание" type="textarea" />
+						<ButtonGroup variant="gap">
+							<FormButton
+								type="submit"
+								variant="default"
+								disabled={formMethods.formState.isSubmitting}
+							>
+								{formMethods.formState.isSubmitting ? 'Сохранение…' : 'Сохранить'}
+							</FormButton>
+							{formMethods.formState.isDirty && (
+								<FormButton
+									type="button"
+									onClick={() => formMethods.reset(getResetValues(initialData, true))}
+									variant="outline"
+								>
+									Очистить
+								</FormButton>
+							)}
+							{!!initialData?.id && (
+								<FormButton
+									type="button"
+									onClick={handleRemove(initialData.id)}
+									variant="outline"
+								>
+									Удалить
+								</FormButton>
+							)}
+						</ButtonGroup>
+					</form>
+				</FormProvider>
+			</FullpageFormContainer>
 		</div>
 	)
 }

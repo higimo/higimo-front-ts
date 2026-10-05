@@ -3,6 +3,12 @@ import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
 
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { InnerFromContainer } from 'components/form/inner-from-container'
+
 import { getBackPath } from 'utils/url-route/get-back-path'
 import { isValidAuth } from 'utils/api/is-valid-auth'
 import { sendRequest } from 'utils/api/send-request'
@@ -17,51 +23,47 @@ type FormValues = {
 	pass: string
 }
 
-const handleLogin = async (data: FormValues) => {
-	const { email, pass } = data
-
-	try {
-		const { data: authData } = await sendRequest(API_ROUTE.login, {
-			method: 'POST',
-			values: { email, pass }
-		})
-
-		if (!isValidAuth(authData)) {
-			return toast.error('Неверный формат ответа сервера')
-		}
-
-		window.location.href = getBackPath()
-	} catch (error) {
-		const apiError = error as ApiError
-		toast.error(apiError.message || 'Ошибка при входе в систему')
-	}
-}
-
-// TODO: [HARD] пора сделать компоненты формы?
 export const AuthForm: FunctionComponent = () => {
-	const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormValues>({})
+	const formMethods = useForm<FormValues>({})
+
+	const handleLogin = async (data: FormValues) => {
+		const { email, pass } = data
+
+		try {
+			// TOOD: добавить в репозиторий
+			const { data: authData } = await sendRequest(API_ROUTE.login, {
+				method: 'POST',
+				values: { email, pass }
+			})
+
+			if (!isValidAuth(authData)) {
+				return toast.error('Неверный формат ответа сервера')
+			}
+
+			window.location.href = getBackPath()
+		} catch (error) {
+			const apiError = error as ApiError
+			toast.error(apiError.message || 'Ошибка при входе в систему')
+		}
+	}
 
 	return (
-		<form className="container" onSubmit={handleSubmit(handleLogin)}>
-			<label htmlFor="email">email</label>
-			<input
-				{...register('email')}
-				name="email"
-				placeholder="example@gmail.com"
-				disabled={isSubmitting}
-			/>
-			<label htmlFor="pass">Пароль</label>
-			<input
-				{...register('pass')}
-				name="pass"
-				type="password"
-				disabled={isSubmitting}
-			/>
-			<div className="form__button">
-				<button type="submit" className="default-form__submit" disabled={isSubmitting}>
-					{isSubmitting ? 'Проникновение…' : 'Войти'}
-				</button>
-			</div>
-		</form>
+		<InnerFromContainer>
+			<FormProvider {...formMethods}>
+				<form onSubmit={formMethods.handleSubmit(handleLogin)}>
+					<FiledForm name="email" label="Электопочта" autocomplete />
+					<FiledForm name="pass" type="password" label="Пароль" autocomplete />
+					<ButtonGroup>
+						<FormButton
+							type="submit"
+							variant="default"
+							disabled={formMethods.formState.isSubmitting}
+						>
+							{formMethods.formState.isSubmitting ? 'Проникновение…' : 'Войти'}
+						</FormButton>
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</InnerFromContainer>
 	)
 }

@@ -15,7 +15,7 @@ import { AnchorLinksType } from 'dic/ANCHOR_LINKS'
  * <button onClick={smoothScroll('contacts')}>К контактам</button>
  * ```
  */
-export const smoothScroll = (href: AnchorLinksType) => (event: TargetedMouseEvent<HTMLButtonElement>) => {
+export const smoothScroll = (href: AnchorLinksType) => (event?: TargetedMouseEvent<HTMLButtonElement>) => {
 	if (event) {
 		event.preventDefault()
 	}

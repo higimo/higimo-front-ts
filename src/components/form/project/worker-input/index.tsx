@@ -32,66 +32,71 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 	const [ workers, fetchWorkers ] = useApi<PortfolioWorkerType[]>(API_ROUTE.projectWorker)
 	const [ chooseWorker, setChooseWorker ] = useState<PortfolioWorkerType[]>([])
 
-	const handleClickChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.concat([worker]))
-	const handleRemoveChose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
+	const handleClickChoose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.concat([worker]))
+	const handleRemoveChoose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.filter(i => i.id !== worker.id))
+
+	const handleSubmitAddWorker = async (data: Record<PortfolioWorkerType['id'], string>) => {
+		try {
+			const sendings = Object.entries(data).map(async ([workerId, role]) => {
+				return await sendRequest(API_ROUTE.attachAuthor_BAD_WAY, {
+					method: 'POST',
+					values: {
+						project: projectId,
+						worker: workerId,
+						role: role,
+					}
+				})
+			})
+			const promisesAll = await Promise.all(sendings)
+			const results = promisesAll.reduce((acc, singleRes) => acc && singleRes.data > 0, true)
+			if (!results) {
+				toast.error('Неверный формат ответа сервера')
+				setChooseWorker([])
+			}
+			return results
+		} catch (error) {
+			const apiError = error as ApiError
+			toast.error(apiError.message || 'Не получилось прикрепить автора ')
+			return false
+		}
+	}
+
+	const handleSubmitCreateWorker = async (data: PortfolioWorkerType) => {
+		try {
+			const { data: result } = await sendRequest(API_ROUTE.attachAuthor, {
+				method: 'POST',
+				values: data
+			})
+			if (result > 0) {
+				fetchWorkers()
+				return true
+			}
+			toast.error('Неверный формат ответа сервера')
+			return false
+		} catch (error) {
+			const apiError = error as ApiError
+			toast.error(apiError.message || 'Ошибка при создании пользователя')
+			return false
+		}
+	}
 
 	return (
 		<div className="worker-input">
 			<LoadSuspense data={workers}>
 				<EmptyData data={workers}>
-					<CollapseSection fold={true} header="Добавить участников анонса">
+
+					<CollapseSection fold={!true} header="Добавить участников анонса">
 						<WorkersTree
 							workers={workers.data}
-							onWorkerSelect={handleClickChose}
+							onWorkerSelect={handleClickChoose}
 						/>
 						<ChooseWorkersForm
 							workers={chooseWorker}
-							onRemoveWorker={handleRemoveChose}
-							onSubmit={async (data) => {
-								try {
-									const sendings = Object.entries(data).map(async ([workerId, role]) => {
-										return await sendRequest(API_ROUTE.attachAuthor_BAD_WAY, {
-											method: 'POST',
-											values: {
-												project: projectId,
-												worker: workerId,
-												role: role,
-											}
-										})
-									})
-									const promisesAll = await Promise.all(sendings)
-									const results = promisesAll.reduce((acc, singleRes) => acc && singleRes.data > 0, true)
-									if (results) {
-										toast.error('Неверный формат ответа сервера')
-										setChooseWorker([])
-									}
-									return results
-								} catch (error) {
-									const apiError = error as ApiError
-									toast.error(apiError.message || 'Не получилось прикрепить автора ')
-									return false
-								}
-							}}
+							onRemoveWorker={handleRemoveChoose}
+							onSubmit={handleSubmitAddWorker}
 						/>
 						<CreateWorker
-							onSubmit={async (data) => {
-								try {
-									const { data: result } = await sendRequest(API_ROUTE.attachAuthor, {
-										method: 'POST',
-										values: data
-									})
-									if (result > 0) {
-										fetchWorkers()
-										return true
-									}
-									toast.error('Неверный формат ответа сервера')
-									return false
-								} catch (error) {
-									const apiError = error as ApiError
-									toast.error(apiError.message || 'Ошибка при создании пользователя')
-									return false
-								}
-							}}
+							onSubmit={handleSubmitCreateWorker}
 						/>
 					</CollapseSection>
 				</EmptyData>

@@ -1,7 +1,8 @@
+import { ChangeEvent, KeyDownEvent } from 'utils.type'
 import { FunctionComponent } from 'preact'
-import { KeyDownEvent } from 'utils.type'
 
-import { useCallback, useRef, useState } from 'preact/hooks'
+import { useFormContext } from 'react-hook-form'
+import { useRef, useState } from 'preact/hooks'
 
 import { MentionList } from 'components/mention-textarea/mention-list'
 import { MentionSuggest, MetionSelector } from 'components/mention-textarea/types'
@@ -14,22 +15,27 @@ import { getWrittenMention } from 'components/mention-textarea/utils/get-written
 import { isMention } from 'components/mention-textarea/utils/is-mention'
 import { normalizeMentionList } from 'components/mention-textarea/utils/normalize-mention-list'
 
+import cs from 'classnames'
+
 import '../style.css'
 
 type MentionsInputPropsType = {
 	suggestList: MentionSuggest[]
 	onMention: (mentionList: MentionSuggest[]) => void
-	register: any // name, onChange, onBlur, ref
 }
 
 export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) => {
-	const [ inputValue, setInputValue ] = useState<string>('')
 	const [ showSuggestion, setShowSuggestion ] = useState<boolean>(false)
 	const [ selectedSuggest, setSelectedSuggest ] = useState<number>(0)
 	const [ filtredSuggestList, setFiltredSuggestList ] = useState<MentionSuggest[]>(props.suggestList)
 	const refTextarea = useRef<HTMLTextAreaElement>(null)
+	const { register, formState: { errors }, setValue } = useFormContext()
 
-	const handleMentionSelect = useCallback((targetMention: MentionSuggest) => {
+	const name = 'description'
+
+	const error = errors[name]?.message as string | undefined
+
+	const handleMentionSelect = (targetMention: MentionSuggest) => {
 		if (!refTextarea.current) {
 			return undefined
 		}
@@ -43,13 +49,13 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 				`@{${targetMention.display.replace(' ', '_')}}`,
 				refTextarea.current.value.substring(mention.end),
 			].join('')
-			setInputValue(resultValue)
+			setValue('description', resultValue)
 		}
 
 		setTimeout(handleMentionValidation, 0)
-	}, [setShowSuggestion, setInputValue, refTextarea])
+	}
 
-	const handleMentionValidation = useCallback(() => {
+	const handleMentionValidation = () => {
 		if (!refTextarea.current) {
 			return undefined
 		}
@@ -59,9 +65,9 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 			filtredSuggestList
 		)
 		props.onMention(mentionList)
-	}, [props.onMention, refTextarea, filtredSuggestList])
+	}
 
-	const handleKeyDown = useCallback((event: KeyDownEvent) => {
+	const handleKeyDown = (event: KeyDownEvent) => {
 		if (!showSuggestion) {
 			return undefined
 		}
@@ -87,16 +93,9 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 			}
 			handleMentionSelect(targetMention)
 		}
-	}, [
-		showSuggestion,
-		selectedSuggest,
-		setSelectedSuggest,
-		setShowSuggestion,
-		filtredSuggestList,
-		setInputValue
-	])
+	}
 
-	const filterSuggestion = useCallback((filter: MetionSelector | null) => {
+	const filterSuggestion = (filter: MetionSelector | null) => {
 		if (!filter) {
 			return undefined
 		}
@@ -107,34 +106,28 @@ export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) 
 			newList
 		)
 		setSelectedSuggest(0)
-	}, [])
+	}
 
-	const handleChange = useCallback(() => {
-		if (!refTextarea.current) {
-			return undefined
-		}
-
-		if (isMention(refTextarea.current.value, refTextarea.current.selectionStart)) {
+	const handleChange = (event: ChangeEvent) => {
+		if (isMention(event.currentTarget.value, event.currentTarget.selectionStart || 0)) {
 			setShowSuggestion(true)
 			filterSuggestion(
-				getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
+				getWrittenMention(event.currentTarget.value, event.currentTarget.selectionStart || 0)
 			)
 		}
-		setInputValue(refTextarea.current.value)
+		setValue('description', event.currentTarget.value)
 		setTimeout(handleMentionValidation, 0)
-	}, [setInputValue, setShowSuggestion, filterSuggestion])
+	}
 
-	const handleBlur = useCallback(() => {
+	const handleBlur = () => {
 		setTimeout(() => setShowSuggestion(false), 200)
-	}, [setShowSuggestion])
+	}
 
 	return (
 		<div className="mentions-input">
 			<textarea
-				{...props.register}
-				ref={refTextarea}
-				className="mentions-input__field"
-				value={inputValue}
+				{...register(name)}
+				className={cs('mentions-input__field', { 'field__input--error': error })}
 				onChange={handleChange}
 				onKeyDown={handleKeyDown}
 				onBlur={handleBlur}

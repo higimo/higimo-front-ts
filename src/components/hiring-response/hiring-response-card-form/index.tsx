@@ -1,42 +1,74 @@
-import { DateOnlyString } from 'utils.type'
-import { FunctionComponent, TargetedEvent } from 'preact'
+import { FunctionComponent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
+
+import { useEffect } from 'preact/hooks'
+import { useForm } from 'react-hook-form'
+
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { InnerFromContainer } from 'components/form/inner-from-container'
+
+import { pasteApi } from 'repositories/paste-api.repository'
+import { smoothScroll } from 'utils/browser/smooth-scroll'
+
+import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'
 
+type FormValues = Partial<PasteApiType>
+
 type HiringResponseCardFormPropsType = {
-	selectedCard: PasteApiType
-	onUpdate: (newValue: Partial<PasteApiType>) => void
-	onSubmitCard: () => void
-	onReset: () => void
+	initialData: Partial<PasteApiType>
+	fetchUpdate: () => void
 }
+
 export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPropsType> = ({
-	selectedCard,
-	onUpdate,
-	onSubmitCard,
-	onReset,
-}) => (
-	<form className="hiring-response-card-form" onSubmit={(event) => event.preventDefault()}>
-		<input type="id" value={selectedCard.id} readOnly={true} />
-		<input type="key" value={selectedCard.key} readOnly={true} />
-		<input
-			type="date"
-			value={selectedCard.date}
-			onChange={(event: TargetedEvent<HTMLInputElement>) => onUpdate({ date: event.currentTarget.value as DateOnlyString })}
-			aria-label="Дата"
-		/>
-		<textarea
-			placeholder="Содержание карточки…"
-			value={selectedCard.content}
-			onChange={event => onUpdate({ content: event.currentTarget.value})}
-			rows={20}
-			aria-label="Содержание"
-		/>
-		<button type="submit" className="hiring-response-card-form__submit" onClick={onSubmitCard}>
-			Сохранить
-		</button>
-		<button className="btn-reset" onClick={onReset}>
-			Сбросить
-		</button>
-	</form>
-)
+	initialData,
+	fetchUpdate,
+}) => {
+	const formMethods = useForm<FormValues>()
+
+	useEffect(() => {
+		formMethods.reset(initialData)
+	}, [initialData, formMethods.reset])
+
+	const handleSubmit = async (values: FormValues) => {
+		if ('id' in values) {
+			await pasteApi.edit(values)
+		} else {
+			await pasteApi.create(values)
+		}
+		await fetchUpdate()
+		smoothScroll(ANCHOR_LINKS.hiringResponseGallery)()
+	}
+
+	return (
+		<InnerFromContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(handleSubmit)}
+					autocomplete="off"
+				>
+					<div className="hiring-response-form__meta">
+						<FiledForm name="id" label="id" readonly />
+						<FiledForm name="key" label="key" readonly />
+						<FiledForm name="date" label="date" />
+					</div>
+					<FiledForm
+						type="textarea"
+						name="content"
+						label="Содержание"
+						placeholder="Содержание карточки…"
+					/>
+					<ButtonGroup variant="gap">
+						<FormButton type="submit" variant="default">
+							Сохранить
+						</FormButton>
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</InnerFromContainer>
+	)
+}

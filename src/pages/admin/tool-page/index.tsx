@@ -2,42 +2,44 @@
 import { FunctionComponent } from 'preact'
 
 import { useApiRequest } from 'hook/useApiRequest'
-import { useCallback } from 'preact/hooks'
-import { useToolForm } from 'hook/useToolForm'
+import { useCallback, useState } from 'preact/hooks'
 
 import { AdminToolContent } from 'components/admin-tool/admin-tool-content'
 import { Layout } from 'components/ui/layout/Layout'
-import { Sidebar } from 'components/admin-tool/sidebar'
+import { FormValues, Sidebar } from 'components/admin-tool/sidebar'
 
 import { parseJsonWithFallback } from 'utils/parse-json-with-fallback'
+
+import { toast } from 'toast'
 
 import './style.css'
 
 export const ToolPage: FunctionComponent = () => {
-	const { formData, response, updateField, setResponse } = useToolForm()
+	const [response, setResponse] = useState('')
 	const { sendRequest } = useApiRequest()
 
-	const handleSubmit = useCallback(async () => {
-		const { method, uri, options: optionsStr } = formData
-
-		const parsedOptions = parseJsonWithFallback(optionsStr)
-
+	const handleSubmit = useCallback(async (values: FormValues) => {
 		try {
-			const result = await sendRequest(method, uri, parsedOptions)
+			// TODO: [LIGHT] где-то в sendRequest есть хорошая функция такая же
+			const parsedOptions = parseJsonWithFallback(values.options)
+
+			const result = await sendRequest(values.method, values.uri, parsedOptions)
 			setResponse(result)
 		} catch (error) {
-			setResponse(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
+			toast.warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
 		}
-	}, [formData, sendRequest, setResponse])
+	}, [sendRequest, setResponse])
 
 	return (
 		<Layout title="Tool" className="tool-page">
-			<Sidebar
-				formData={formData}
-				onFieldChange={updateField}
-				onSubmit={handleSubmit}
+			<div className="tool-page__sidebar">
+				<Sidebar
+					onSubmit={handleSubmit}
+				/>
+			</div>
+			<AdminToolContent
+				response={response}
 			/>
-			<AdminToolContent response={response} />
 		</Layout>
 	)
 }

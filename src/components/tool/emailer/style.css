@@ -1,50 +1,68 @@
 .emailer-tool {
-	align-items: center;
-	background: #42a5f5;
+	background:
+	radial-gradient(ellipse at 20% 30%, #64ff242e, transparent),
+	radial-gradient(ellipse at 90% 80%, #ff3aaf42, transparent),
+	#003149
+	;
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
-	font: 400 1rem/1.4 PT Sans, Tahoma, Sans-Serif;
-	height: 100vh;
+	align-items: center;
 	justify-content: center;
-	margin: 0 auto;
-	padding: 0;
-	text-align: center;
-	text-align: left;
+	font: 400 21px/1.3 Alegreya sans, PT Sans, Tahoma, Sans-Serif;
+	height: 100vh;
+	color: #fff;
 }
 
-.emailer-tool form {
-	min-height: 7em;
+.emailer-tool .inner-from-container {
 	width: 100%;
 	max-width: 55rem;
+}
+
+.emailer-tool .inner-from-container form {
+	width: 100%;
 	display: flex;
 	align-items: center;
+	flex-direction: row;
+	gap: 0;
 }
-
-.emailer-tool input {
-	height: 2em;
-	width: calc(90% - 100px);
-	padding: .2em 1em;
-	box-sizing: border-box;
-	background: #64B5F6;
-	color: #fff;
-	border: 0;
-	outline: 0;
+.emailer-tool .field__container {
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+	flex: 1 0 50%;
 }
-
-.emailer-tool button {
-	width: 100px;
-	height: 2em;
-	box-sizing: border-box;
-	background: #64B5F6;
-	color: #fff;
-	border: 0;
+.emailer-tool .field__label-container {
+	flex: 0 0 140px;
 }
-
-.emailer-tool label {
-	display: block;
+.emailer-tool .field__content {
+	flex: 1;
+}
+.emailer-tool .field__input {
+	width: 100%;
+	background: #ffffff12;
+	border: 1px solid #dddddd30;
+	padding: 8px;
 	color: #fff;
-	margin: 1em 0;
+	font-size: 18px;
+	font-family: 'Alegreya Sans';
+	border-width: 1px 0 1px 1px;
+	border-radius: 4px 0 0 4px;
+}
+.emailer-tool .my-button {
+	margin-left: -1px;
+	border-radius: 0px 8px 8px 0;
+}
+.emailer-tool .my-button {
+	margin-left: 0;
+	border-radius: 0px 8px 8px 0;
+	background: #ffffff12;
+    border: 1px solid #dddddd30;
+	border-width: 1px 1px 1px 0;
+	padding: 11px 16px;
+}
+.emailer-tool .my-button:hover {
+	background: #ffffff20;
 }
 
 .emailer-tool .main-menu {
@@ -94,20 +112,3 @@
 	opacity: .8;
 }
 
-.emailer-tool .email {
-	width: 80%;
-	left: 10%;
-}
-
-.emailer-tool .email label {
-	display: inline-block;
-	width: 20%;
-}
-
-.emailer-tool .email input {
-	width: 69%;
-}
-
-.emailer-tool .email button {
-	width: 10%;
-}

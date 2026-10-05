@@ -1,29 +1,82 @@
-import { FunctionComponent } from 'preact'
-import { UseFormRegister } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import { FormValues } from './types'
+import { FunctionComponent } from 'preact'
+import { MerchantProductType } from 'api-types/merchant.types'
+
+import { useLayoutEffect } from 'preact/hooks'
+
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+
+import { initPayment } from 'utils/merchant/init-payment'
 
 import './style.css'
 
 type MerchantPaymentFormPropsType = {
-	register: UseFormRegister<FormValues>
+	product: MerchantProductType
 }
-export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType> = ({ register }) => (
-	<div className="checkout-form">
-		<div className="checkout-form__line">
-			<div className="checkout-form__label">
-				Электропочта
+
+export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType> = ({
+	product,
+}) => {
+	const formMethods = useForm<FormValues>({
+		defaultValues: {
+			email: '',
+			comment: ''
+		}
+	})
+
+	useLayoutEffect(() => {
+		if (!product) {
+			return
+		}
+
+		// TODO: [HARD] надо исправить это как у VK
+		initPayment(() => ({
+			currentProduct: product,
+			getValues: formMethods.getValues
+		})).then().catch()
+	}, [product])
+
+	return (
+		<div className="checkout-form">
+			<FullpageFormContainer>
+				<FormProvider {...formMethods}>
+					<form
+						autocomplete="off"
+					>
+						<FiledForm name="email" label="Электропочта" />
+						<FiledForm name="comment" label="Комментарий к заказу" />
+						<ButtonGroup variant="gap">
+							<FormButton
+								type="submit"
+								variant="default"
+								disabled={formMethods.formState.isSubmitting}
+							>
+								{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
+							</FormButton>
+						</ButtonGroup>
+					</form>
+				</FormProvider>
+			</FullpageFormContainer>
+			<div className="checkout-form__line">
+				<div className="checkout-form__label">
+					Электропочта
+				</div>
+				<div className="checkout-form__field">
+					<input {...formMethods.register('email')} type="text" name="email" />
+				</div>
 			</div>
-			<div className="checkout-form__field">
-				<input {...register('email')} type="text" name="email" />
+			<div className="checkout-form__line">
+				<div className="checkout-form__label">
+					Комментарий к заказу
+				</div>
+				<div className="checkout-form__field">
+					<textarea {...formMethods.register('comment')} name="comment" />
+				</div>
 			</div>
 		</div>
-		<div className="checkout-form__line">
-			<div className="checkout-form__label">
-				Комментарий к заказу
-			</div>
-			<div className="checkout-form__field">
-				<textarea {...register('comment')} name="comment" />
-			</div>
-		</div>
-	</div>
-)
+	)
+}

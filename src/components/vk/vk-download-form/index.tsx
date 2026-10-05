@@ -1,13 +1,19 @@
 import { FunctionComponent } from 'preact'
+import { VkDownloadFormValuesType } from 'components/vk/vk-download-form/types'
 
 import { useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { InnerFromContainer } from 'components/form/inner-from-container'
 import { VkButton } from 'components/vk/vk-button'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 
-import { VkDownloadFormValuesType } from 'components/vk/vk-download-form/types'
 import { debounce } from '@github/mini-throttle'
+import { vkSession } from 'context/vk'
 
 type VkDownloadFormContainerPropsType = {
 	onSubmit: (values: VkDownloadFormValuesType) => void
@@ -16,20 +22,17 @@ type VkDownloadFormContainerPropsType = {
 export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType> = ({
 	onSubmit
 }) => {
-	const {
-		register,
-		handleSubmit,
-		watch,
-	} = useForm<VkDownloadFormValuesType>({
+	const { session } = vkSession.value
+	const formMethods = useForm<VkDownloadFormValuesType>({
 		mode: 'onChange',
 	})
 
 	useEffect(() => {
 		const debouncedSubmit = debounce(() => {
-			handleSubmit(onSubmit)()
+			formMethods.handleSubmit(onSubmit)()
 		}, 500)
 
-		const subscription = watch(() => {
+		const subscription = formMethods.watch(() => {
 			debouncedSubmit()
 		})
 
@@ -37,21 +40,44 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 			subscription.unsubscribe()
 			debouncedSubmit.cancel()
 		}
-	}, [watch, handleSubmit])
+	}, [formMethods.watch, formMethods.handleSubmit])
+
+	const handlerDownloadSelf = () => {
+		if (session?.user.id) {
+			formMethods.setValue('userId', session?.user.id)
+		}
+	}
 
 	return (
 		<div className="download-page__input">
+			<InnerFromContainer>
+				<FormProvider {...formMethods}>
+					<form
+						onSubmit={formMethods.handleSubmit(onSubmit)}
+						autocomplete="off"
+					>
+						<FiledForm name="groupId" label="Ид группы" placeholder="120" />
+						<FiledForm name="userId" label="Ид пользователя" placeholder="510" />
+						{/* TODO: [MIDDLE] в идеале поставить сдева кнопку */}
+						<ButtonGroup variant="gap">
+							<FormButton type="button" variant="outline" onClick={handlerDownloadSelf}>
+								Подставить свой ид
+							</FormButton>
+						</ButtonGroup>
+					</form>
+				</FormProvider>
+			</InnerFromContainer>
 			<form
 				autocomplete="off"
-				onSubmit={handleSubmit(onSubmit)}
+				onSubmit={formMethods.handleSubmit(onSubmit)}
 			>
 				<div>
 					<VkParagraph variant="caption">Ид группы</VkParagraph>
-					<input type="number" {...register('groupId')} placeholder="120" />
+					<input type="number" {...formMethods.register('groupId')}  />
 				</div>
 				<div>
 					<VkParagraph variant="caption">Ид пользователя</VkParagraph>
-					<input type="number" {...register('userId')} placeholder="510" />
+					<input type="number" {...formMethods.register('userId')}  />
 					{' '}
 					<VkButton variant="tertiary" type="submit">
 						Скачать свои

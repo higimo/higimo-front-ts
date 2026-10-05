@@ -3,6 +3,7 @@ import { FunctionComponent } from "preact"
 
 type PinarikEventPreviewPropsType = {
 	id: PinarikType['id']
+	// TODO: хорошо бы сюда один только скидывать
 	pinarik: PinarikType[]
 }
 
@@ -13,15 +14,22 @@ export const PinarikEventPreview: FunctionComponent<PinarikEventPreviewPropsType
 	const data = pinarik.filter(i => i.id == id) || [{ description: 'data' }]
 
 	return (
-		<div className="test">
+		<div className="pinarik-preview">
 			{!data.length && (
-				<div className="test">выбери что-нибудь</div>
+				<div className="pinarik-preview__empty">
+					Выбери что-то в пинарике внизу,<br />
+					здесь появится описание дня
+				</div>
 			)}
 			{data.map(item => {
 				return (
-					<div className="test">
-						<div className="test">{(new Date(item.date)).toLocaleDateString()}</div>
-						<div className="test">{item.description}</div>
+					<div className="pinarik-preview__content">
+						<div className="pinarik-preview__date">
+							{(new Date(item.date)).toLocaleDateString()}
+						</div>
+						<div className="pinarik-preview__description">
+							{item.description}
+						</div>
 					</div>
 				)
 			})}

@@ -4,92 +4,102 @@ import { LibraryType } from 'api-types/library.types'
 
 import { useForm } from 'react-hook-form'
 
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+
+import { getResetValues } from 'components/form/EMPTY_FORM'
 import { libApi } from 'repositories/lib-api.repository'
 import { toast } from 'toast'
 
 import './style.css'
 
-type FormValues = Omit<LibraryType, 'id'>
-
-const handleLibSubmit = async (values: FormValues) => {
-	try {
-		const book = await libApi.create(values)
-		if (!book) {
-
-		}
-	} catch (error) {
-		const apiError = error as ApiError
-		toast.error(apiError.message || 'Не получилось добавить пинарик')
+// TODO: [MIDDLE] <T>(v: unknown, fileds) is T foreach filed in v
+const isLibraryType = (values: unknown): values is LibraryType => {
+	if (typeof values !== 'object' || values === null) {
+		return false
 	}
+	const v = values as Partial<LibraryType>
+	return Boolean(v.id) && Boolean(v.author)
 }
 
-export const LibraryAdmin: FunctionComponent = () => {
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { isSubmitting, isDirty },
-	} = useForm<FormValues>()
+type FormValues = Partial<LibraryType>
+
+type LibraryAdminPropsType = Partial<LibraryType>
+
+// TODO: [LIGHT] переименовать LibraryForm, сменить URL
+// TODO: [LIGHT] rename initialData => initialData
+export const LibraryAdmin: FunctionComponent<LibraryAdminPropsType> = (defaultValues) => {
+	// TODO: не устанавливается defaultValues
+	const formMethods = useForm<FormValues>()
+
+	const handleSubmit = async (values: FormValues) => {
+		try {
+			let book = null
+			if (isLibraryType(values)) {
+				book = await libApi.edit(values)
+			} else {
+				book = await libApi.create(values)
+			}
+			if (!book) {
+			}
+		} catch (error) {
+			const apiError = error as ApiError
+			toast.error(apiError.message || 'Не получилось сохранить')
+		}
+	}
+
+	const handleRemove = (id: LibraryType['id']) => async () => {
+		libApi.delete(id)
+	}
 
 	return (
-		<form
-			className="library-admin"
-			onSubmit={handleSubmit(handleLibSubmit)}
-			autocomplete="off"
-		>
-			{/* TODO: [MEDIUM] генерировать форму */}
-			<div className="library-admin__row">
-				<div className="library-admin__label">Автор</div>
-				<div className="library-admin__input">
-					<input {...register('author')} name="author" />
-				</div>
-			</div>
-			<div className="library-admin__row">
-				<div className="library-admin__label">Название</div>
-				<div className="library-admin__input">
-					<input {...register('name')} name="name" />
-				</div>
-			</div>
-			<div className="library-admin__row">
-				<div className="library-admin__label">Допназвание</div>
-				<div className="library-admin__input">
-					<input {...register('addon')} name="addon" />
-				</div>
-			</div>
-			<div className="library-admin__row">
-				<div className="library-admin__label">ISBN</div>
-				<div className="library-admin__input">
-					<input {...register('isbn')} name="isbn" />
-				</div>
-			</div>
-			<div className="library-admin__row">
-				<div className="library-admin__label">Картинка</div>
-				<div className="library-admin__input">
-					<input {...register('img')} name="img" />
-				</div>
-				<p>
-					Прям ссылку на файл
-				</p>
-			</div>
-			<div className="library-admin__row">
-				<div className="library-admin__label">Описание</div>
-				<div className="library-admin__input">
-					<textarea {...register('anons')} name="anons" />
-				</div>
-			</div>
-			<div className="library-admin__row">
-				<button type="submit" className="library-admin__button" disabled={isSubmitting}>
-					{isSubmitting ? 'Добавление…' : 'Добавить'}
-				</button>
-			</div>
-			{isDirty && (
-				<button
-					className="library-admin__button"
-					onClick={() => reset()}
+		<FullpageFormContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(handleSubmit)}
+					autocomplete="off"
 				>
-					Сбросить
-				</button>
-			)}
-		</form>
+					{!!defaultValues?.id && (
+						<FiledForm name="id" label="Идентификатор" readonly />
+					)}
+					<FiledForm name="author" label="Автор" />
+					<FiledForm name="name" label="Название" />
+					<FiledForm name="addon" label="Допназвание" />
+					<FiledForm name="isbn" label="ISBN" />
+					<FiledForm name="img" label="Картинка" />
+					<FiledForm name="anons" type="textarea" label="Описание" />
+					<ButtonGroup variant="gap">
+						<FormButton
+							type="submit"
+							variant="default"
+							disabled={formMethods.formState.isSubmitting}
+						>
+							{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
+						</FormButton>
+						{formMethods.formState.isDirty && (
+							<FormButton
+								type="button"
+								onClick={() => formMethods.reset(getResetValues(defaultValues, true))}
+								variant="outline"
+							>
+								Очистить
+							</FormButton>
+						)}
+						{!!defaultValues?.id && (
+							<FormButton
+								type="button"
+								onClick={handleRemove(defaultValues.id)}
+								variant="outline"
+							>
+								Удалить
+							</FormButton>
+						)}
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</FullpageFormContainer>
 	)
 }

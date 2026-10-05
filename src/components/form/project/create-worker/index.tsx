@@ -4,8 +4,12 @@ import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
 
+import { ButtonGroup } from 'components/form/button-group'
 import { CollapseSection } from 'components/ui/collapse-section'
-import { ShowError } from 'components/ui/show-error'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
 import { toast } from 'toast'
 
@@ -18,19 +22,14 @@ type CreateWorkerPropsType = {
 }
 // TODO: [HARD] сейчас не сообщает, если какое-то поле забуду
 export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors, isSubmitting },
-		reset,
-	} = useForm<FormValues>()
+	const formMethods = useForm<FormValues>()
 
 	const handleFormSubmit = async (data: PortfolioWorkerType) => {
 		try {
 			const res = await onSubmit(data)
 			if (res) {
 				toast.show('Сохранено')
-				reset()
+				formMethods.reset()
 			} else {
 				toast.error('При отправке произошла ошибка')
 			}
@@ -41,85 +40,36 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 	}
 
 	return (
-		<div>
-			<CollapseSection fold={true} header="Добавить человека">
-				<form onSubmit={handleSubmit(handleFormSubmit)} className="person-form" autocomplete="off">
-					<div className="form-group">
-						<label htmlFor="name">Имя:</label>
-						<input
-							autocomplete="higimo"
-							type="text"
-							{...register('full_name', { required: 'Обязательное поле' })}
-							className={errors.full_name ? 'error' : ''}
-						/>
-						<ShowError error={errors.full_name} />
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="family">Фамилия:</label>
-						{/* <input
-							autocomplete="higimo"
-							type="text"
-							{...register('family', { required: 'Обязательное поле' })}
-							className={errors.family ? 'error' : ''}
-						/>
-						<ShowError error={errors.family} /> */}
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="image">Ссылка на фотку:</label>
-						<input type="text" {...register('image')} />
-						<ShowError error={errors.image} />
-						{errors.image && <span className="error-message">{errors.image.message}</span>}
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="login">Ник:</label>
-						<input
-							autocomplete="higimo"
-							type="text"
-							{...register('login', { required: 'Обязательное поле' })}
-							className={errors.login ? 'error' : ''}
-						/>
-						<ShowError error={errors.login} />
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="company">Где работал:</label>
-						<input type="text" {...register('company')} />
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="role">Роль:</label>
-						<input type="text" {...register('role')} />
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="link">Ссылка на хомяк:</label>
-						<input
-							type="text"
-							{...register('link', {
-								pattern: {
-									value: /^(https?:\/\/).+$/i,
-									message: 'Должна быть валидная ссылка'
-								}
-							})}
-							className={errors.link ? 'error' : ''}
-						/>
-						<ShowError error={errors.link} />
-					</div>
-
-					<ShowError error={errors.company} />
-
-					<button
-						type="submit"
-						className="submit-button"
-						disabled={isSubmitting}
+		<CollapseSection fold={!true} header="Добавить человека">
+			<FullpageFormContainer>
+				<FormProvider {...formMethods}>
+					<form
+						onSubmit={formMethods.handleSubmit(handleFormSubmit)}
+						autocomplete="off"
 					>
-						{isSubmitting ? 'Добавление…' : 'Добавить автора'}
-					</button>
-				</form>
-			</CollapseSection>
-		</div>
+						<FiledForm name="full_name" label="Имя" />{/* TODO: required */}
+						<FiledForm name="image" label="Ссылка на фотку" />
+						<FiledForm name="login" label="Ник" />
+						<FiledForm name="company" label="Где работал" />
+						<FiledForm name="role" label="Роль" />
+						<FiledForm name="link" label="Ссылка на хомяк" />
+						{/* TODO: пробрасывать в register */}
+						{/* pattern: {
+							value: /^(https?:\/\/).+$/i,
+							message: 'Должна быть валидная ссылка'
+						} */}
+						<ButtonGroup variant="gap">
+							<FormButton
+								type="submit"
+								variant="default"
+								disabled={formMethods.formState.isSubmitting}
+							>
+								{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
+							</FormButton>
+						</ButtonGroup>
+					</form>
+				</FormProvider>
+			</FullpageFormContainer>
+		</CollapseSection>
 	)
 }

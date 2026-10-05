@@ -22,9 +22,6 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 }) => {
 	const {
 		selectedCard,
-		handleUpdate,
-		handleSubmit,
-		handleReset,
 		handleSelect,
 		handleDelete,
 	} = useHiringResponseCardForm({
@@ -34,8 +31,16 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 
 	return (
 		<div>
-			<div className="hiring-cards">
-				{cards.map(card => (
+			<div id={ANCHOR_LINKS.hiringResponseForm}>
+				<OnlyAdmin>
+					<HiringResponseCardForm
+						initialData={selectedCard}
+						fetchUpdate={fetchUpdate}
+					/>
+				</OnlyAdmin>
+			</div>
+			<div className="hiring-cards" id={ANCHOR_LINKS.hiringResponseGallery}>
+				{cards.slice(0, 2).map(card => (
 					<HiringResponseCard
 						{...card}
 						key={card.id.toString()}
@@ -43,16 +48,6 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 						onDelete={handleDelete(card.id)}
 					/>
 				))}
-			</div>
-			<div id={ANCHOR_LINKS.hiringResponseForm}>
-				<OnlyAdmin>
-					<HiringResponseCardForm
-						selectedCard={selectedCard}
-						onUpdate={handleUpdate}
-						onSubmitCard={handleSubmit}
-						onReset={handleReset}
-					/>
-				</OnlyAdmin>
 			</div>
 		</div>
 	)

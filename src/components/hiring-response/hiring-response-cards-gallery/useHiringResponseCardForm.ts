@@ -23,10 +23,10 @@ type UseHiringResponseCardFormReturnType = {
 	handleSelect: (id: number) => () => void
 	handleDelete: (id: number) => () => void
 	selectedCard: PasteApiType
-	handleUpdate: (newValue: Partial<PasteApiType>) => void
-	handleSubmit: () => void
-	handleReset: () => void
 }
+
+// TODO: [MIDDLE] надо написать хук, который выбирает разные элементы
+// и передаёт состояние выбранности, здесь и для пинарика
 export const useHiringResponseCardForm = ({
 	cards,
 	fetchUpdate,
@@ -34,7 +34,6 @@ export const useHiringResponseCardForm = ({
 	const [selectedCard, setSelectedCard] = useState<PasteApiType>(INIT_CARD)
 
 	const handleSelect = useCallback((id: number) => () => {
-		// @ts-ignore
 		smoothScroll(ANCHOR_LINKS.hiringResponseForm)()
 		const card = cards.find(card => card.id === id)
 		if (card) {
@@ -47,30 +46,9 @@ export const useHiringResponseCardForm = ({
 		await fetchUpdate()
 	}, [fetchUpdate])
 
-	const handleUpdate = useCallback((newValue: Partial<PasteApiType>) => {
-		setSelectedCard(oldValue => ({ ...oldValue, ...newValue }))
-	}, [setSelectedCard])
-
-	const handleSubmit = useCallback(async () => {
-		const isUpdateMode = selectedCard.id > 0
-		if (isUpdateMode) {
-			await pasteApi.edit(selectedCard)
-		} else {
-			await pasteApi.create(selectedCard)
-		}
-		await fetchUpdate()
-	}, [selectedCard, fetchUpdate])
-
-	const handleReset = useCallback(() => {
-		setSelectedCard(INIT_CARD)
-	}, [setSelectedCard])
-
 	return {
 		handleSelect,
 		handleDelete,
 		selectedCard,
-		handleUpdate,
-		handleSubmit,
-		handleReset,
 	}
 }

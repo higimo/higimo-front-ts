@@ -1,14 +1,24 @@
 import { FunctionComponent } from 'preact'
+import { ISOString } from 'utils.type'
+import { MeetingFormValues } from 'hook/nokia/use-meeting-form'
 import { MentionSuggest } from 'components/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
-import { MeetingFormValues, useMeetingForm } from 'hook/nokia/use-meeting-form'
+import { useMeetingForm } from 'hook/nokia/use-meeting-form'
 
-import { NokiaMeetingFields } from 'components/nokia/form/nokia-meeting-fields'
-import { NokiaMeetingPersonFields } from 'components/nokia/form/nokia-meeting-person-fields'
-import { ISOString } from 'utils.type'
+import { ButtonGroup } from 'components/form/button-group'
+import { CollapseSection } from 'components/ui/collapse-section/CollapseSection'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { MentionsInput } from 'components/mention-textarea/mention-input'
+import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
+
 import { createDateOnly } from 'utils/date/create-date-only'
+
+import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
@@ -34,12 +44,11 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		handleRemoveMeeting,
 	} = useMeetingForm({ persons })
 
-	const { handleSubmit, formState: { isSubmitting, isDirty }, reset } = formMethods
-
 	useEffect(() => {
 		if (!initialMeeting && !initialPersons) {
 			return
 		}
+		// TODO: попробуй без ифов это сделать
 		let values: Partial<MeetingFormValues> = {
 			persons: initialPersons ?? [],
 		}
@@ -56,48 +65,138 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 
 			Object.assign(values, rest)
 		}
-		reset(values, { keepDefaultValues: true })
-	}, [initialMeeting, initialPersons, reset])
+		formMethods.reset(values, { keepDefaultValues: true })
+	}, [initialMeeting, initialPersons, formMethods.reset])
+
+	const selectedPersons = formMethods.watch('persons') || []
+
+	const selectedPersonIds = selectedPersons.map(i => i.id)
 
 	return (
-		<form className="container nokia-form" onSubmit={handleSubmit(handleMeetingSubmit)}>
-			{!!initialMeeting?.id && (
-				<div className="nokia-form__action-bar">
-					<button
-						className="nokia-form__delete"
-						type="button"
-						onClick={handleRemoveMeeting(initialMeeting.id)}
-					>
-						Удалить
-					</button>
-				</div>
-			)}
-			<NokiaMeetingFields
-				formMethods={formMethods}
-				peoplesSuggest={peoplesSuggest}
-				handleTextAssign={handleTextAssign}
-			/>
-			<hr />
-			<NokiaMeetingPersonFields
-				formMethods={formMethods}
-				topPersons={topPersons}
-				persons={persons}
-				handleAddPerson={handleAddPerson}
-				handleRemovePerson={handleRemovePerson}
-			/>
-
-			<div className="form__button">
-				<button
-					type="submit"
-					className="default-form__submit"
-					disabled={isSubmitting}
+<>
+		<FullpageFormContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(handleMeetingSubmit)}
+					autocomplete="off"
 				>
-					{isSubmitting ? 'Сохранение…' : 'Сохранить'}
-				</button>
-				{isDirty && (
-					<button type="reset" onClick={() => reset()}>Очистить</button>
-				)}
-			</div>
-		</form>
+					{!!initialMeeting?.id && (
+						<ButtonGroup variant="gap">
+							<FormButton
+								type="button"
+								onClick={handleRemoveMeeting(initialMeeting.id)}
+							>
+								Удалить
+							</FormButton>
+						</ButtonGroup>
+					)}
+					<FiledForm name="id" label="id" readonly />
+					<FiledForm name="date" label="Когда?" type="date" />
+					<FiledForm
+						name="date_start"
+						label="Начало"
+						type="datetime-local"
+						desciption="Можно оставить пустым"
+					/>
+					<FiledForm
+						name="date_end"
+						label="Окончание"
+						type="datetime-local"
+						desciption="Можно оставить пустым, помогает рассчёту потраченного времени"
+					/>
+					<FiledForm
+						name="type"
+						label="Тип встречи"
+						labelDescription="Нпрмр, offline, work, net, tg"
+						desciption="Поможет для построения красивых статистических графиков"
+					/>
+					<label>Как прошло?</label>
+					<MentionsInput
+						suggestList={peoplesSuggest}
+						onMention={handleTextAssign}
+					/>
+					<small>Упоминать персон через @</small>
+					<hr />
+					<a href={ROUTE_LINKS.nokiaPeopleForm}>[Создать персону]</a>
+
+					<label>С кем </label>
+					<div className="single-row">
+						{!!selectedPersons.length && (
+							<div>
+								{selectedPersons.map(person => (
+									<NokiaPersonTag
+										onRemove={handleRemovePerson(person)}
+										person={person}
+									/>
+								))}
+							</div>
+						)}
+					</div>
+					<div className="single-row">
+						Самые частые
+						<br />
+						<small>Можно кликать</small>
+						<div className="person-selector">
+							{topPersons.map(person => {
+								if (selectedPersonIds.includes(person.id)) {
+									return null
+								}
+								return (
+									<NokiaPersonTag
+										onClick={handleAddPerson(person)}
+										person={person}
+									/>
+								)
+							})}
+						</div>
+					</div>
+					<div className="single-row">
+						<CollapseSection fold={true} header="Все подряд">
+							<div className="person-selector">
+								{persons.map(person => {
+									if (selectedPersonIds.includes(person.id)) {
+										return null
+									}
+									return (
+										<NokiaPersonTag
+											onClick={handleAddPerson(person)}
+											person={person}
+										/>
+									)
+								})}
+							</div>
+						</CollapseSection>
+					</div>
+					<ButtonGroup variant="gap">
+						<FormButton
+							type="submit"
+							variant="default"
+							disabled={formMethods.formState.isSubmitting}
+						>
+							{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
+						</FormButton>
+						{/* {formMethods.formState.isDirty && (
+							<FormButton
+								type="button"
+								onClick={() => formMethods.reset(getResetValues(defaultValues, true))}
+								variant="outline"
+							>
+								Очистить
+							</FormButton>
+						)} */}
+						{/* {!!defaultValues?.id && (
+							<FormButton
+								type="button"
+								onClick={handleRemove(defaultValues.id)}
+								variant="outline"
+							>
+								Удалить
+							</FormButton>
+						)} */}
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</FullpageFormContainer>
+</>
 	)
 }
