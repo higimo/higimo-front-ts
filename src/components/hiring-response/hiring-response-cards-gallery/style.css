@@ -11,34 +11,32 @@
 
 @media (min-width: 576px) {
 	.hiring-cards {
-		--grid-count: 2;
+		--grid-count: 1;
 	}
 }
 @media (min-width: 720px) {
 	.hiring-cards {
-		--grid-count: 3;
+		--grid-count: 2;
 	}
 }
 @media (min-width: 1024px) {
 	.hiring-cards {
-		--grid-count: 4;
+		--grid-count: 3;
 	}
 }
 @media (min-width: 1380px) {
 	.hiring-cards {
-		--grid-count: 5;
+		--grid-count: 4;
 	}
 }
 @media (min-width: 1600px) {
 	.hiring-cards {
-		--grid-count: 6;
+		--grid-count: 5;
 	}
 }
 
 .hiring-cards__item {
 	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
-	max-width: 290px;
-
 	background: #f8faff;
 	border-radius: 16px;
 	padding: 16px;
@@ -82,7 +80,7 @@
 	color: #12245a;
 	font-weight: 450;
 	word-break: break-word;
-	max-height: 200px;
+	max-height: 250px;
 	overflow: hidden;
 }
 
