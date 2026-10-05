@@ -10,10 +10,10 @@ import { HiringResponseCounter } from 'components/hiring-response/hiring-respons
 import { HiringResponseDiagram } from 'components/hiring-response/hiring-response-diagram'
 import { HiringResponseLinks } from 'components/hiring-response/hiring-response-links'
 import { HiringResponseTodoController } from 'components/hiring-response/hiring-response-todo'
+import { HiringTemplateAnswer } from 'components/hiring-response/hiring-template-answer'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
-
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
@@ -42,19 +42,34 @@ export const HiringResponsePage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
+				<h2>Задачи</h2>
+				<p>Можно редактировать</p>
 				<LoadSuspense data={pasteTodo}>
 					<EmptyData data={pasteTodo}>
 						<HiringResponseTodoController todo={pasteTodo.data} />
 					</EmptyData>
 				</LoadSuspense>
 				<HiringResponseLinks />
+			</TextContainer>
 
+			<TextContainer>
+				<h3>Откликов</h3>
 				<LoadSuspense data={pasteData}>
 					<EmptyData data={pasteData}>
 						<HiringResponseCounter data={pasteData.data} />
 					</EmptyData>
 				</LoadSuspense>
+			</TextContainer>
 
+			<TextContainer>
+				<LoadSuspense data={pasteData}>
+					<EmptyData data={pasteData}>
+						<HiringTemplateAnswer />
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
+
+			<TextContainer>
 				<h2>График откликов</h2>
 				<LoadSuspense data={pasteData}>
 					<EmptyData data={pasteData}>
@@ -65,6 +80,12 @@ export const HiringResponsePage: FunctionComponent = () => {
 
 			<TextContainer>
 				<h2>Карточки откликов</h2>
+				<span
+					className="pseudo-link"
+					onClick={fetchUpdate}
+				>
+					↺ Обновить
+				</span>
 			</TextContainer>
 
 			<LoadSuspense data={pasteData}>

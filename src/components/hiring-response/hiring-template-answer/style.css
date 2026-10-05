@@ -1,0 +1,9 @@
+.hiring-template-answer {
+	display: flex;
+	gap: 32px;
+}
+
+.hiring-template-answer__column {
+	width: 33%;
+	word-break: break-all;
+}

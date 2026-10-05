@@ -10,6 +10,8 @@ import { OnlyAdmin } from 'components/util/only-admin'
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
 
 import './style.css'
+import { CollapseSection } from 'components/ui/collapse-section/CollapseSection'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 type HiringResponseCardsGalleryPropsType = {
 	cards: PasteApiType[]
@@ -33,14 +35,18 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 		<div>
 			<div id={ANCHOR_LINKS.hiringResponseForm}>
 				<OnlyAdmin>
-					<HiringResponseCardForm
-						initialData={selectedCard}
-						fetchUpdate={fetchUpdate}
-					/>
+					<TextContainer>
+						<CollapseSection header="Форма">
+							<HiringResponseCardForm
+								initialData={selectedCard}
+								fetchUpdate={fetchUpdate}
+							/>
+						</CollapseSection>
+					</TextContainer>
 				</OnlyAdmin>
 			</div>
 			<div className="hiring-cards" id={ANCHOR_LINKS.hiringResponseGallery}>
-				{cards.slice(0, 2).map(card => (
+				{cards.map(card => (
 					<HiringResponseCard
 						{...card}
 						key={card.id.toString()}
