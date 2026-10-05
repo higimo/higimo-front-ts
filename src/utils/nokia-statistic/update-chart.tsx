@@ -87,6 +87,7 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 				// @ts-ignore
 				d3.select(this).style('opacity', 0.8)
 
+				// @ts-ignore
 				tooltip.transition()
 					.style('opacity', 1)
 
@@ -99,6 +100,7 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 			})
 			.on('mouseout', function () {
 				d3.select(this).style('opacity', 1)
+				// @ts-ignore
 				tooltip.transition()
 					.style('opacity', 0)
 			})

@@ -70,6 +70,7 @@ export const AccordIndexPage: FunctionComponent = () => {
 		toggleTag,
 		isSelected,
 	} = useSmartTags({
+		// @ts-ignore
 		categories: ACCORD_TAG_CATEGORY,
 		mode: 'single',
 	})
