@@ -52,7 +52,7 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 					autocomplete="off"
 				>
 					<div className="hiring-response-form__meta">
-						<FiledForm name="id" label="id" readonly />
+						<FiledForm name="id" label="id" type="number" readonly />
 						<FiledForm name="key" label="key" readonly />
 						<FiledForm name="date" label="date" />
 					</div>

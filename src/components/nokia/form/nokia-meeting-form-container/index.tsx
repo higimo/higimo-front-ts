@@ -90,7 +90,7 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 							</FormButton>
 						</ButtonGroup>
 					)}
-					<FiledForm name="id" label="id" readonly />
+					<FiledForm name="id" label="id" type="number" readonly />
 					<FiledForm name="date" label="Когда?" type="date" />
 					<FiledForm
 						name="date_start"

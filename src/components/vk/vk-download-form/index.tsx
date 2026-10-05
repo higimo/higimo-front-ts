@@ -56,8 +56,8 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 						onSubmit={formMethods.handleSubmit(onSubmit)}
 						autocomplete="off"
 					>
-						<FiledForm name="groupId" label="Ид группы" placeholder="120" />
-						<FiledForm name="userId" label="Ид пользователя" placeholder="510" />
+						<FiledForm name="groupId" label="Ид группы" type="number" placeholder="120" />
+						<FiledForm name="userId" label="Ид пользователя" type="number" placeholder="510" />
 						{/* TODO: [MIDDLE] в идеале поставить сдева кнопку */}
 						<ButtonGroup variant="gap">
 							<FormButton type="button" variant="outline" onClick={handlerDownloadSelf}>

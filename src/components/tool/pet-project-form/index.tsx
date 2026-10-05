@@ -54,7 +54,7 @@ export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 						autocomplete="off"
 					>
 						{!!initialData?.id && (
-							<FiledForm name="id" label="Идентификатор" readonly />
+							<FiledForm name="id" label="Идентификатор" type="number" readonly />
 						)}
 						<FiledForm name="name" label="Название" />
 						<FiledForm name="description" label="Описание" type="textarea" />

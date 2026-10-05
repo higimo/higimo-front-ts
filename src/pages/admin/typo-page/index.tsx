@@ -92,7 +92,7 @@ const FormFileds: FunctionComponent<FormFiledsPropsType> = ({
 					</ButtonGroup>
 				</ButtonGroup>
 				<FieldGroup>
-					<FiledForm name="id" label="Идентификатор" readonly />
+					<FiledForm name="id" label="Идентификатор" type="number" readonly />
 					<FiledForm name="title" label="Заголовок" labelDescription='Ты пидор' />
 					<FiledForm name="description" label="Описание" type="textarea" desciption="Помогает анализу проблемы" />
 				</FieldGroup>
