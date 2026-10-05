@@ -1,7 +1,7 @@
 import { ApiRouteType } from 'dic/API_ROUTE'
 import { KeyOf } from 'utils.type'
 
-import { useEffect, useReducer } from 'preact/hooks'
+import { useCallback, useEffect, useReducer } from 'preact/hooks'
 
 import { sendRequest } from 'utils/api/send-request'
 
@@ -32,13 +32,13 @@ const initialState = {
 export const apiReducer = <T, M = Object>(state: ApiState<T, M>, action: ApiAction<T, M>): ApiState<T, M> => {
 	switch (action.type) {
 		case API_STATUS.INIT:
-			return { ...state, status: 'INIT' }
+			return { ...state, status: API_STATUS.INIT }
 		case API_STATUS.LOADING:
-			return { ...state, status: 'LOADING' }
+			return { ...state, status: API_STATUS.LOADING }
 		case API_STATUS.LOADED:
-			return { ...state, status: 'LOADED', data: action.payload, meta: action.meta }
+			return { ...state, status: API_STATUS.LOADED, data: action.payload, meta: action.meta }
 		case API_STATUS.ERROR:
-			return { ...state, status: 'LOADED', error: action.payload, }
+			return { ...state, status: API_STATUS.ERROR, error: action.payload }
 		default:
 			throw new Error('Unknown action type')
 	}
@@ -55,7 +55,8 @@ type ApiUrlType = ApiRouteType
 export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T, M>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 
-	const fetchData = async () => {
+	const fetchData = useCallback(async () => {
+		// TODO: кажется, надо добавить let cancelled = false
 		try {
 			dispatch({ type: API_STATUS.LOADING })
 			if (isDefaultSkipUrl(url)) {
@@ -67,7 +68,7 @@ export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, an
 		} catch (error) {
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })
 		}
-	}
+	}, [url, JSON.stringify(values)])
 
 	useEffect(() => {
 		fetchData()
