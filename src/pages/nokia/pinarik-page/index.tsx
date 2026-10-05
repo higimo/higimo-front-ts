@@ -21,8 +21,8 @@ import './style.css'
 export const PinarikPage: FunctionComponent = () => {
 	const [ pinarikList ] = useApi<PinarikType[]>(API_ROUTE.pinarik)
 
-	const [ previewId, setPreviewId ] = useState<PinarikType['id']>(0 as PinarikType['id'])
-	const handleClickPreviewId = useCallback((id: PinarikType['id']) => () => setPreviewId(id), [setPreviewId])
+	const [ preview, setPreview ] = useState<PinarikType>()
+	const handleClickPreviewId = useCallback((pinarik: PinarikType) => () => setPreview(pinarik), [setPreview])
 
 	return (
 		<Layout title="Пинарик" className="nokia">
@@ -36,8 +36,7 @@ export const PinarikPage: FunctionComponent = () => {
 				<EmptyData data={pinarikList}>
 					<TextContainer>
 						<PinarikEventPreview
-							id={previewId}
-							pinarik={pinarikList.data}
+							pinarik={preview}
 						/>
 					</TextContainer>
 

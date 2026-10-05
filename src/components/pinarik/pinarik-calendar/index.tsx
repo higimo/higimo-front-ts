@@ -9,7 +9,7 @@ import { groupBy } from 'utils/group-by'
 
 type PinarikCalendarPropsType = {
 	pinarik: PinarikType[]
-	onClickPreviewId: (id: PinarikType['id']) => () => void
+	onClickPreviewId: (pinarik: PinarikType) => () => void
 }
 
 export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
@@ -34,7 +34,7 @@ export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
 				{treeYear[year]!.map(day => (
 					<PinarikElement
 						{...day!}
-						onClick={onClickPreviewId(day.id)}
+						onClick={onClickPreviewId(day)}
 					/>
 				))}
 			</div>
