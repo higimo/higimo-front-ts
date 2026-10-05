@@ -54,6 +54,7 @@
 			"repositories/*": ["./src/repositories/*"],
 			"data/*":         ["./src/data/*"],
 			"config/*":       ["./src/config/*"],
+			"routers/*":      ["./src/routers/*"],
 		},
 		"types": [
 			"vitest/globals",

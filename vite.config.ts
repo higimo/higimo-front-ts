@@ -135,6 +135,7 @@ export default defineConfig(
 					'repositories': path.resolve(__dirname, './src/repositories'),
 					'data':       path.resolve(__dirname, './src/data'),
 					'config':     path.resolve(__dirname, './src/config'),
+					'routers':    path.resolve(__dirname, './src/routers'),
 				}
 			},
 		}
