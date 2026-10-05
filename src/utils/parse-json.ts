@@ -1,14 +1,14 @@
-export const parseJsonWithFallback = (jsonString: string): Record<string, any> => {
+export const parseJson = (text: string): Record<string, any> | undefined => {
 	try {
-		return JSON.parse(jsonString)
+		return JSON.parse(text);
 	} catch {
 		try {
 			// Пытаемся исправить невалидный JSON (без кавычек в ключах)
-			const fixed = jsonString.replace(/^(\s*?)(\S*?):/gm, '$1"$2":')
+			const fixed = text.replace(/^(\s*?)(\S*?):/gm, '$1"$2":')
 			return JSON.parse(fixed)
 		} catch {
 			console.error('Failed to parse JSON')
-			return {}
+			return undefined;
 		}
 	}
-}
+};

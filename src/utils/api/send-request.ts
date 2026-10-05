@@ -1,6 +1,7 @@
 import { ApiError } from 'errors/higimo-api-error'
 
 import httpBuildQuery from 'http-build-query'
+import { parseJson } from 'utils/parse-json'
 
 declare global {
 	interface ErrorConstructor {
@@ -19,14 +20,6 @@ export interface ApiResponse<T = any> {
 }
 
 const FREEZE_META = {} as const
-
-const parseJson = (text: string): any => {
-	try {
-		return JSON.parse(text)
-	} catch {
-		return undefined
-	}
-}
 
 export const sendRequest = async <T = any>(
 	url: string,

@@ -8,7 +8,7 @@ import { AdminToolContent } from 'components/admin-tool/admin-tool-content'
 import { Layout } from 'components/ui/layout/Layout'
 import { FormValues, Sidebar } from 'components/admin-tool/sidebar'
 
-import { parseJsonWithFallback } from 'utils/parse-json-with-fallback'
+import { parseJson } from 'utils/parse-json'
 
 import { toast } from 'toast'
 
@@ -20,10 +20,9 @@ export const ToolPage: FunctionComponent = () => {
 
 	const handleSubmit = useCallback(async (values: FormValues) => {
 		try {
-			// TODO: [LIGHT] где-то в sendRequest есть хорошая функция такая же
-			const parsedOptions = parseJsonWithFallback(values.options)
+			const parsedOptions = parseJson(values.options)
 
-			const result = await sendRequest(values.method, values.uri, parsedOptions)
+			const result = await sendRequest(values.method, values.uri, parsedOptions || {})
 			setResponse(result)
 		} catch (error) {
 			toast.warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
