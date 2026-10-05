@@ -10,9 +10,10 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export const CinemaSinglePage: FunctionComponent = () => {
-	const { params: { idcode = '-1' }} = useRoute()
+	const { params: { idcode = DEFAULT_ID }} = useRoute()
 	const [ cinemaDetail ] = useApi<CinemaType>(API_ROUTE.cinemaSingle({ idcode }))
 
 	return (

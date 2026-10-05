@@ -2,14 +2,16 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { useState, useCallback } from 'preact/hooks'
 
+import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
 import { todayStr } from 'utils/date/today-str'
 
 import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
-import { pasteApi } from 'repositories/paste-api.repository'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 const INIT_CARD: PasteApiType = {
-	id: -1,
+	// TODO: [MIDDLE] ну это не годится
+	id: parseInt(DEFAULT_ID, 10),
 	content: '',
 	date: todayStr(),
 	key: 'send-resume'

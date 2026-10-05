@@ -11,10 +11,9 @@ import { PetProjectForm } from 'components/tool/pet-project-form'
 import { TextContainer } from 'components/ui/text-container'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../pet-project.css'
-
-const DEFAULT_ID = '-1'
 
 export const PetProjectFormPage: FunctionComponent = () => {
 	const { params: { projectId = DEFAULT_ID } } = useRoute()

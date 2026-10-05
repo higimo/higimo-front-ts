@@ -11,11 +11,12 @@ import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPeopleDetailCardItem } from 'components/nokia/nokia-people-detail-card-item'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../nokia-style.css'
 
 export const NokiaPeopleDetailCardPage: FunctionComponent = () => {
-	const { params: { personId = '-1'}} = useRoute()
+	const { params: { personId = DEFAULT_ID }} = useRoute()
 
 	const [personSingle] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 

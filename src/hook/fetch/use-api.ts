@@ -6,6 +6,7 @@ import { useCallback, useEffect, useReducer } from 'preact/hooks'
 import { sendRequest } from 'utils/api/send-request'
 
 import { API_STATUS } from 'dic/API_STATUS'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
@@ -44,7 +45,7 @@ export const apiReducer = <T, M = Object>(state: ApiState<T, M>, action: ApiActi
 	}
 }
 
-const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === '-1'
+const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === DEFAULT_ID
 
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })
 // мб, перестало работать

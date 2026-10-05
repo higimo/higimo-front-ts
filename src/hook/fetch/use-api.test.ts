@@ -5,8 +5,9 @@ import { useApi, apiReducer } from 'hook/fetch/use-api'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_STATUS } from 'dic/API_STATUS'
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_STATUS } from 'dic/API_STATUS'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 vi.mock('utils/api/send-request', () => ({
 	sendRequest: vi.fn()
@@ -172,7 +173,7 @@ describe('useApi', () => {
 
 	describe('пропуск запросов', () => {
 		it('должен пропускать запрос если URL заканчивается на "-1"', async () => {
-			const { result } = renderHook(() => useApi(API_ROUTE.accordSingle({ idcode: '-1' })))
+			const { result } = renderHook(() => useApi(API_ROUTE.accordSingle({ idcode: DEFAULT_ID })))
 
 			await waitFor(() => {
 				expect(result.current[0].status).toBe(API_STATUS.LOADED)
@@ -185,7 +186,7 @@ describe('useApi', () => {
 		})
 
 		it('должен возвращать пустой объект при пропуске запроса', async () => {
-			const { result } = renderHook(() => useApi(API_ROUTE.accordSingle({ idcode: '-1' })))
+			const { result } = renderHook(() => useApi(API_ROUTE.accordSingle({ idcode: DEFAULT_ID })))
 
 			await waitFor(() => {
 				expect(result.current[0].status).toBe(API_STATUS.LOADED)
