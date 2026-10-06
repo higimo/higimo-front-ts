@@ -1,5 +1,6 @@
 import { ApiRouteType } from 'dic/API_ROUTE'
 import { KeyOf } from 'utils.type'
+import { MetaApiType } from 'api-types/meta-api.types'
 
 import { useCallback, useEffect, useReducer } from 'preact/hooks'
 
@@ -10,15 +11,14 @@ import { API_STATUS } from 'dic/API_STATUS'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
-// TODO: [LIGHT] M = Record<string, unknown> вынести в отдельный тип, используется ещё в sendReaquest
-export type ApiState<T, M = Record<string, unknown>> = {
+export type ApiState<T, M = MetaApiType> = {
 	status: ApiStatusNameType
 	data: T | null
 	meta?: M
 	error?: Error
 }
 
-type ApiAction<T, M = Record<string, unknown>> =
+type ApiAction<T, M = MetaApiType> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
 	| { type: 'LOADED', payload: T | null, meta?: M }
@@ -33,7 +33,7 @@ const initialState = {
 
 // TODO: [MIDDLE] мб, useState использовать?
 // TODO: [MIDDLE] используется ещё в useJsonApi, useMultiJsonApi
-export const apiReducer = <T, M = Record<string, unknown>>(
+export const apiReducer = <T, M = MetaApiType>(
 	state: ApiState<T, M>,
 	action: ApiAction<T, M>
 ): ApiState<T, M> => {

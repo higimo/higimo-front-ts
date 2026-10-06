@@ -1,3 +1,4 @@
+import { MetaApiType } from 'api-types/meta-api.types'
 
 import httpBuildQuery from 'http-build-query'
 import { parseJson } from 'utils/parse-json'
@@ -15,12 +16,12 @@ export interface SendRequestOptions {
 	values?: Record<string, string | number | null>
 }
 
-export interface ApiResponse<T, M = Record<string, unknown>> {
+export interface ApiResponse<T, M = MetaApiType> {
 	data: T
 	meta?: M
 }
 
-export const sendRequest = async <T = unknown, M = Record<string, unknown>>(
+export const sendRequest = async <T = unknown, M = MetaApiType>(
 	url: string,
 	{
 		method = 'GET',
