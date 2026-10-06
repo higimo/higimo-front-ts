@@ -14,32 +14,32 @@ import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 import { as } from 'utils/types/as'
 import { getResetValues } from 'components/form/EMPTY_FORM'
 import { personApi } from 'repositories/person-api'
+import { toast } from 'toast'
 
 const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {
+	let result: NokiaPersonSimpleType | null
 	if (as<NokiaPersonSimpleType>(data, ['id'])) {
-		await personApi.edit(data)
+		result = await personApi.edit(data)
 	} else {
-		await personApi.create(data)
+		result = await personApi.create(data)
+	}
+	if (result) {
+		toast.success('Схоронил')
+	} else {
+		toast.warning('Не получилось')
 	}
 }
 
 interface NokiaPersonFormContainerProps {
-	initialData: NokiaPersonSimpleType | undefined
+	initialData: NokiaPersonSimpleType | null
 }
 
 export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContainerProps> = ({
 	initialData,
 }) => {
-	const { path } = useRoute()
-
 	const formMethods = useForm<NokiaPersonSimpleType>({
-		defaultValues: initialData
+		defaultValues: initialData || {}
 	})
-
-	useEffect(() => {
-		// TODO: [MIDDLE] разобраться почему сюда при переходе с редактирования на создание пробрасываются старые данные
-		formMethods.reset(initialData ?? {})
-	}, [initialData, path, formMethods.reset])
 
 	const handleRemove = (id: NokiaPersonSimpleType['id']) => async () => {
 		personApi.delete(id)

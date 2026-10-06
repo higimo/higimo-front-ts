@@ -20,10 +20,6 @@ export const NokiaAddPersonPage: FunctionComponent = () => {
 
 	const [ singlePerson ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
-	const isCorrectData = singlePerson.data?.id
-		? String(singlePerson.data.id) === personId
-		: personId === DEFAULT_ID
-
 	return (
 		<Layout title="Редактирование и создание персоны // Нокиа" className="nokia">
 			<NokiaMenu />
@@ -34,8 +30,8 @@ export const NokiaAddPersonPage: FunctionComponent = () => {
 				<LoadSuspense data={singlePerson}>
 					<EmptyData data={singlePerson} skipEmpty>
 						<NokiaPersonFormContainer
-							key={personId}
-							initialData={isCorrectData ? singlePerson.data : undefined}
+							key={singlePerson.data?.id ?? DEFAULT_ID}
+							initialData={singlePerson.data}
 						/>
 					</EmptyData>
 				</LoadSuspense>
