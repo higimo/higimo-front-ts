@@ -26,7 +26,7 @@ const handlePetprojectSubmit = async (values: FormValues) => {
 }
 
 type PetProjectFormPropsType = {
-	initialData?: Partial<PetProjectType>
+	initialData?: Partial<PetProjectType> | null
 }
 
 // Запоминать ник автора
@@ -38,7 +38,7 @@ export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 	const formMethods = useForm<FormValues>()
 
 	useEffect(() => {
-		formMethods.reset(initialData)
+		formMethods.reset(initialData || undefined)
 	}, [initialData, formMethods.reset])
 
 	const handleRemove = (id: PetProjectType['id']) => () => {
