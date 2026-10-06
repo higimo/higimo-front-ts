@@ -6,14 +6,14 @@ import { LibraryBookElement } from 'components/data/library/library-book-element
 import './style.css'
 
 type LibraryGalleryPropsType = {
-	books: LibraryType[]
+	books: LibraryType[] | null
 	onRemove: (id: LibraryType['id']) => () => void
 }
 
 export const LibraryGallery: FunctionComponent<LibraryGalleryPropsType> = ({
 	books,
 	onRemove,
-}) => (
+}) => books && (
 	<div className="library-gallery">
 		{books.map(book => (
 			<LibraryBookElement

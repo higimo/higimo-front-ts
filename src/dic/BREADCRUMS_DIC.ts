@@ -19,7 +19,7 @@ type ExcludeRouteType =
 	| typeof ROUTE_LINKS['tourismNashe_CONST']
 	| typeof ROUTE_LINKS['petProjectEdit'] | typeof ROUTE_LINKS['petProjectEdit_CONST']
 	| typeof ROUTE_LINKS['cinemaScriptDetail'] | typeof ROUTE_LINKS['cinemaScriptDetail_CONST']
-	| typeof ROUTE_LINKS['libraryAdminEdit'] | typeof ROUTE_LINKS['libraryAdminEdit_CONST']
+	| typeof ROUTE_LINKS['libraryFormEdit'] | typeof ROUTE_LINKS['libraryFormEdit_CONST']
 	// Рабочие URI
 	| typeof ROUTE_LINKS['TODO']
 
@@ -103,8 +103,10 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.pron]:         'прон',
 	[ROUTE_LINKS.youtube]:      'Избранное ютуба',
 	[ROUTE_LINKS.links]:        'Избранные ссылки',
+
 	[ROUTE_LINKS.libraryIndex]: 'Домашняя библиотека',
-	[ROUTE_LINKS.libraryAdmin]: 'Админка домашней библиотеки',
+	[ROUTE_LINKS.libraryForm]:  'Админка домашней библиотеки',
+
 	[ROUTE_LINKS.nokiaPinarik]: 'Пинарик',
 
 	[ROUTE_LINKS.merchantIndex]:          'Магазин',

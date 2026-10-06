@@ -59,7 +59,7 @@ export const AdminPage: FunctionComponent = () => {
 					<TextContainer>
 						<h3>Разбирай коллекцию</h3>
 						<br />
-						<a href={ROUTE_LINKS.libraryAdmin}>Библиотека</a>
+						<a href={ROUTE_LINKS.libraryForm}>Библиотека</a>
 					</TextContainer>
 					<TextContainer>
 						Разрабатывай

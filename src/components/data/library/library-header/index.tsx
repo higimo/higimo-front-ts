@@ -13,7 +13,7 @@ export const LibraryHeader: FunctionComponent = () => (
 			<TextContainer>
 				<div className="library-header__list">
 					<a href={ROUTE_LINKS.libraryIndex}>Главная</a>
-					<a href={ROUTE_LINKS.libraryAdmin}>Админка</a>
+					<a href={ROUTE_LINKS.libraryForm}>Админка</a>
 				</div>
 			</TextContainer>
 		</div>

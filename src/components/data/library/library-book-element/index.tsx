@@ -11,7 +11,7 @@ export const LibraryBookElement: FunctionComponent<LibraryBookElementPropsType> 
 	<div className="library-gallery__item">
 		<OnlyAdmin>
 			<div className="library-gallery__action-bar">
-				<a href={ROUTE_LINKS.libraryAdminEdit({ id: book.id })}>
+				<a href={ROUTE_LINKS.libraryFormEdit({ id: book.id })}>
 					✏️
 				</a>
 				<span onClick={book.onRemove(book.id)}>
