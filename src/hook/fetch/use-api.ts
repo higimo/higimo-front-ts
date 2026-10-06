@@ -3,10 +3,10 @@ import { KeyOf } from 'utils.type'
 
 import { useCallback, useEffect, useReducer } from 'preact/hooks'
 
+import { isDefaultSkipUrl } from 'utils/types/is-default-skip-url'
 import { sendRequest } from 'utils/api/send-request'
 
 import { API_STATUS } from 'dic/API_STATUS'
-import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
@@ -51,13 +51,10 @@ export const apiReducer = <T, M = Record<string, unknown>>(
 	}
 }
 
-// TODO: [LIGHT] вынести
-const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === DEFAULT_ID
-
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })
 // мб, перестало работать
 // type ApiUrlType = ValueOf<typeof API_ROUTE>
-type ApiUrlType = ApiRouteType
+export type ApiUrlType = ApiRouteType
 
 // TODO: [HIGH] написать аналог для использования репозиториями
 // TODO: [HIGH] обычно возвращает MyApiType | null, когда пробрасываю дочкам надо проверять на null или EmptyData меня защитит без skipEmpty
