@@ -31,11 +31,13 @@ const formScheme: FormScheme<LibraryType> = {
 }
 
 // TODO: [HARD] вот бы везде передавать через {...}
-type LibraryAdminPropsType = Partial<LibraryType>
+type LibraryAdminPropsType = {
+	initialData: LibraryType | null
+}
 
-export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialData) => {
+export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({ initialData }) => {
 	const formMethods = useForm<FormValues>({
-		defaultValues: initialData
+		defaultValues: initialData || {}
 	})
 
 	const handleSubmit = async (values: FormValues) => {

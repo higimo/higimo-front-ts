@@ -26,7 +26,7 @@ export const LibFromPage: FunctionComponent = () => {
 				<EmptyData data={librarySingle} skipEmpty>
 					<LibraryForm
 						key={librarySingle.data?.id ?? DEFAULT_ID}
-						{...librarySingle.data}
+						initialData={librarySingle.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>
