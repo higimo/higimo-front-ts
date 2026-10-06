@@ -35,12 +35,15 @@ export async function initPayment(getInfo: GetInfoType) {
 					const { email, comment } = getValues()
 
 					try {
-						const { data } = await sendRequest(
+						type PaymentType = {
+							payment_url: string
+						}
+						const { data } = await sendRequest<PaymentType>(
 							'/api/v2/checkout',
 							{
 								method: 'POST',
 								values: {
-									offer_id: currentProduct.offers[0]?.id,
+									offer_id: currentProduct.offers[0]?.id || null,
 									payment_type: paymentType,
 									comment: comment,
 									email: email,
@@ -48,11 +51,11 @@ export async function initPayment(getInfo: GetInfoType) {
 							}
 						)
 
-						if (!data.payment_url) {
-							throw new Error('Бэкенд не вернул payment_url')
+						if ('payment_url' in data) {
+							return data.payment_url
 						}
 
-						return data.payment_url
+						throw new Error('Бэкенд не вернул payment_url')
 					} catch (error) {
 						console.error('Ошибка при инициализации платежа:', error)
 						throw error

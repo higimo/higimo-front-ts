@@ -41,7 +41,7 @@ export const useMerchant = (): UseAuthReturn => {
 			status: API_STATUS.LOADING
 		}
 
-		sendRequest(API_ROUTE.merchantProducts)
+		sendRequest<MerchantProductType[]>(API_ROUTE.merchantProducts)
 			.then((products) => {
 				merchantProductSignal.value = {
 					status: API_STATUS.LOADED,

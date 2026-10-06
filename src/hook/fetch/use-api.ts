@@ -1,6 +1,7 @@
 import { ApiRouteType } from 'dic/API_ROUTE'
 import { KeyOf } from 'utils.type'
 import { MetaApiType } from 'api-types/meta-api.types'
+import { ValuesOptions } from 'api-types/request.type'
 
 import { useCallback, useEffect, useReducer } from 'preact/hooks'
 
@@ -60,7 +61,7 @@ export type ApiUrlType = ApiRouteType
 // TODO: [HIGH] обычно возвращает MyApiType | null, когда пробрасываю дочкам надо проверять на null или EmptyData меня защитит без skipEmpty
 export const useApi = <T, M = Object>(
 	url: ApiUrlType,
-	values: Record<string, string | number | null> = {}
+	values: ValuesOptions = {}
 ): [ApiState<T, M>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 

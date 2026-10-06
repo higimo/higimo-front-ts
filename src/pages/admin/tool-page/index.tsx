@@ -1,7 +1,7 @@
 // TODO: [BACKEND] а как этим пользоваться, лол?
 import { FormValues } from 'components/admin-tool/sidebar'
 import { FunctionComponent } from 'preact'
-import { SendRequestOptions } from 'utils/api/send-request'
+import { SendRequestOptions } from 'api-types/request.type'
 
 import { useCallback, useState } from 'preact/hooks'
 

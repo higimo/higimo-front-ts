@@ -1,4 +1,5 @@
 import { MetaApiType } from 'api-types/meta-api.types'
+import { SendRequestOptions, ApiResponse, ValuesOptions } from 'api-types/request.type'
 
 import httpBuildQuery from 'http-build-query'
 import { parseJson } from 'utils/parse-json'
@@ -9,16 +10,6 @@ declare global {
 	interface ErrorConstructor {
 		captureStackTrace(targetObject: object, constructorOpt?: Function): void
 	}
-}
-
-export interface SendRequestOptions {
-	method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-	values?: Record<string, string | number | null>
-}
-
-export interface ApiResponse<T, M = MetaApiType> {
-	data: T
-	meta?: M
 }
 
 export const sendRequest = async <T = unknown, M = MetaApiType>(
@@ -34,14 +25,15 @@ export const sendRequest = async <T = unknown, M = MetaApiType>(
 
 	// формируем запрос
 	let fullUrl = url
-	let body: string | undefined
+	let body: ValuesOptions
 
 	if (method === 'GET') {
 		if (Object.keys(values).length) {
+			// @ts-ignore он жуёт { filter: { key: 'my' } }, но ругается типом
 			fullUrl = `${url}?${httpBuildQuery(values)}`
 		}
 	} else {
-		body = httpBuildQuery(values)
+		body = values
 	}
 
 	// Отправляем запрос
@@ -53,6 +45,7 @@ export const sendRequest = async <T = unknown, M = MetaApiType>(
 				? 'application/json'
 				: 'application/x-www-form-urlencoded'
 		},
+		// @ts-ignore
 		body,
 	})
 

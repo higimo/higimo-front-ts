@@ -14,6 +14,7 @@ import { WorkersTree } from 'components/form/project/workers-tree'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 
+import { isDefined } from 'utils/types/is-defined'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
@@ -48,7 +49,8 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 				})
 			})
 			const promisesAll = await Promise.all(sendings)
-			const results = promisesAll.reduce((acc, singleRes) => acc && singleRes.data > 0, true)
+			// TODO: [HARD] возможно, сменить на isObject
+			const results = promisesAll.reduce((acc, singleRes) => acc && isDefined(singleRes.data), true)
 			if (!results) {
 				toast.error('Неверный формат ответа сервера')
 				setChooseWorker([])
@@ -63,11 +65,12 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 
 	const handleSubmitCreateWorker = async (data: PortfolioWorkerType) => {
 		try {
-			const { data: result } = await sendRequest(API_ROUTE.attachAuthor, {
+			const { data: result } = await sendRequest<PortfolioWorkerType>(API_ROUTE.attachAuthor, {
 				method: 'POST',
 				values: data
 			})
-			if (result > 0) {
+			// TODO: [HARD] вероятно, сменить на isObject или type guard на PortfolioWorkerType
+			if (isDefined(result)) {
 				fetchWorkers()
 				return true
 			}

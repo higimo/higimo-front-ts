@@ -14,7 +14,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 
 // TODO: [HARD] вынести бы в отдельный метод заполнения и возвращать значение
 class MeetingApiRepository {
-	// TODO: [MIDDLE] решить создавать ли createOrUpdate
+	// TODO: [HARD] решить создавать ли createOrUpdate
 	async create(
 		values: Omit<NokiaMeetingSimpleType, 'id'>
 	): Promise<NokiaMeetingSimpleType | null> {
@@ -66,7 +66,7 @@ class MeetingApiRepository {
 				{
 					method: 'POST',
 					values: {
-						person_ids: persons.map(i => i.id)
+						person_ids: persons.map(i => i.id as unknown as string)
 					}
 				})
 		} catch (error) {

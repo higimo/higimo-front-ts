@@ -1,4 +1,3 @@
-import { EmptyObject } from 'utils.type'
 import { FunctionComponent } from 'preact'
 
 import { useApi } from 'hook/fetch/use-api'

@@ -10,10 +10,13 @@ import { getStartOfWeek } from 'utils/date/get-start-of-week'
 import { getYesterday } from 'utils/date/get-yesterday'
 
 type HiringResponseCounterPropsType = {
-	data: PasteApiType[]
+	data: PasteApiType[] | null
 }
 
 export const HiringResponseCounter: FunctionComponent<HiringResponseCounterPropsType> = ({ data }) => {
+	if (!data) {
+		return null
+	}
 	const startOfLastWeek = createDateOnly(getStartLastWeek(new Date()))
 	const startOfWeek     = createDateOnly(getStartOfWeek(new Date()))
 	const yesterday       = createDateOnly(getYesterday(new Date()))
