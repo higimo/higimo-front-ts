@@ -8,7 +8,7 @@ import { PinarikElement } from 'components/pinarik/pinarik-element'
 import { groupBy } from 'utils/group-by'
 
 type PinarikCalendarPropsType = {
-	pinarik: PinarikType[]
+	pinarik: PinarikType[] | null
 	onClickPreviewId: (pinarik: PinarikType) => () => void
 }
 
@@ -16,6 +16,9 @@ export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
 	pinarik,
 	onClickPreviewId
 }) => {
+	if (!pinarik) {
+		return null
+	}
 	const treeYear: PinarikTreeYearType = useMemo(() => {
 		if (!Object.keys(pinarik).length) {
 			return {}
