@@ -40,6 +40,15 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 
 	const registerOptions = { required: required ? 'Обязательно' : undefined }
 
+	const inputProps = {
+		className: cs('field__input', { 'field__input--error': !!error }),
+		id,
+		readOnly: readonly,
+		placeholder,
+		autofocus,
+		...register(name, registerOptions),
+	}
+
 	return (
 		<div className="field__container">
 			{!!label && (
@@ -52,64 +61,15 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 			)}
 			<div className="field__input-container">
 				<div className="field__content">
-					{/* TODO: [MIDDLE] сократить бы. через мапу? */}
 					<div className="field__main">
-						{type === 'text' && (
+						{type === 'textarea' ? (
+							<textarea {...inputProps} {...register(name, registerOptions)} />
+						) : (
 							<input
-								className={cs('field__input', { 'field__input--error': error })}
-								id={id}
-								type="text"
-								readOnly={readonly}
-								placeholder={placeholder}
-								autofocus={autofocus}
+								{...inputProps}
+								type={type}
 								autocomplete={autocomplete ? 'on' : undefined}
 								{...register(name, registerOptions)}
-							/>
-						)}
-						{type === 'date' && (
-							<input
-								className={cs('field__input', { 'field__input--error': error })}
-								id={id}
-								type="date"
-								{...register(name, registerOptions)}
-							/>
-						)}
-						{type === 'datetime-local' && (
-							<input
-								className={cs('field__input', { 'field__input--error': error })}
-								id={id}
-								type="datetime-local"
-								{...register(name, registerOptions)}
-							/>
-						)}
-						{type === 'number' && (
-							<input
-								className={cs('field__input', { 'field__input--error': error })}
-								id={id}
-								type="number"
-								{...register(name, registerOptions)}
-							/>
-						)}
-						{type === 'password' && (
-							<input
-								className={cs('field__input', { 'field__input--error': error })}
-								id={id}
-								type="password"
-								readOnly={readonly}
-								placeholder={placeholder}
-								autocomplete={autocomplete ? 'on' : undefined}
-								autofocus={autofocus}
-								{...register(name, registerOptions)}
-							/>
-						)}
-						{type === 'textarea' && (
-							<textarea
-								className={cs('field__input', { 'field__input--error': !!error })}
-								id={id}
-								readOnly={readonly}
-								placeholder={placeholder}
-								autofocus={autofocus}
-								{...register(name)}
 							/>
 						)}
 						{!!error && (
