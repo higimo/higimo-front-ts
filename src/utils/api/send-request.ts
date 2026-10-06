@@ -33,7 +33,8 @@ export const sendRequest = async <T = unknown, M = MetaApiType>(
 			fullUrl = `${url}?${httpBuildQuery(values)}`
 		}
 	} else {
-		body = values
+		// @ts-ignore
+		body = httpBuildQuery(values)
 	}
 
 	// Отправляем запрос

@@ -2,8 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act, waitFor } from '@testing-library/preact'
 
 import { useApi } from 'hook/fetch/use-api'
-import { apiReducer } from './api-reducer'
 
+import { apiReducer } from 'utils/api/api-reducer'
 import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/API_ROUTE'

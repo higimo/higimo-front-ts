@@ -1,4 +1,5 @@
 import { ApiError } from 'errors/higimo-api-error'
+import { AuthDataType } from 'api-types/auth.types'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
@@ -26,14 +27,12 @@ type FormValues = {
 export const AuthForm: FunctionComponent = () => {
 	const formMethods = useForm<FormValues>({})
 
-	const handleLogin = async (data: FormValues) => {
-		const { email, pass } = data
-
+	const handleLogin = async (values: FormValues) => {
 		try {
-			// TOOD: добавить в репозиторий
-			const { data: authData } = await sendRequest(API_ROUTE.login, {
+			// TODO: [HARD] добавить в репозиторий (ради одного городить класс?)
+			const { data: authData } = await sendRequest<AuthDataType>(API_ROUTE.login, {
 				method: 'POST',
-				values: { email, pass }
+				values
 			})
 
 			if (!isValidAuth(authData)) {

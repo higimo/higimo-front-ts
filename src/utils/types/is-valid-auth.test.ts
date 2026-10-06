@@ -1,10 +1,11 @@
 import { describe, test, expect } from 'vitest'
 import { isValidAuth } from 'utils/types/is-valid-auth'
+import { MeDataType } from 'api-types/auth.types'
 
 const createAuth = (overrides: Partial<Parameters<typeof isValidAuth>[0]> = {}) => ({
 	access_token: 'some-token',
 	token_type: 'bearer',
-	user: { id: 1 },
+	expires_in: 90,
 	...overrides,
 })
 
@@ -42,8 +43,8 @@ describe('isValidAuth', () => {
 		describe('user.id', () => {
 			test.each([
 				['user отсутствует', { user: undefined }],
-				['id = 0', { user: { id: 0 } }],
-				['id = -5', { user: { id: -5 } }],
+				['id = 0', { user: { id: 0 } as MeDataType }],
+				['id = -5', { user: { id: -5 } as MeDataType }],
 			])('возвращает false при %s', (_, overrides) => {
 				expect(isValidAuth(createAuth(overrides))).toBe(false)
 			})

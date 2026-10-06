@@ -1,4 +1,5 @@
-import { ApiStatusNameType } from 'hook/fetch/use-api'
+import { ApiStatusNameType } from 'api-types/fetch-api.types'
+
 import { API_STATUS } from 'dic/API_STATUS'
 
 const LOADING_STATUS_SET = new Set<ApiStatusNameType>([API_STATUS.INIT, API_STATUS.LOADING])

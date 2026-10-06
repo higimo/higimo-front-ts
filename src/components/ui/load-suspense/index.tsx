@@ -1,11 +1,10 @@
-import { ApiState } from 'hook/fetch/use-api'
-import { JsonApiState } from 'hook/fetch/use-json-api'
+import { ApiState } from 'api-types/fetch-api.types'
 import { VNode, FunctionComponent } from 'preact'
 
 import { Loading } from 'components/ui/loading/Loading'
 
 type LoadSuspensePropsType = {
-	data?: ApiState<any, Object> | ApiState<any, Object>[] | JsonApiState<any> | JsonApiState<any>[]
+	data?: ApiState<any, Object> | ApiState<any, Object>[]
 	loaderComponent?: VNode
 }
 export const LoadSuspense: FunctionComponent<LoadSuspensePropsType> = ({

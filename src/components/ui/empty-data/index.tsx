@@ -1,12 +1,11 @@
-import { ApiState } from 'hook/fetch/use-api'
-import { JsonApiState } from 'hook/fetch/use-json-api'
+import { ApiState } from 'api-types/fetch-api.types'
 import { VNode, FunctionComponent } from 'preact'
 
 import { EmptyState, ErrorState } from 'components/ui/state'
 import { checkEmpty } from 'utils/check-empty'
 
 type EmptyDataPropsType = {
-	data?: ApiState<any, Object> | ApiState<any, Object>[] | JsonApiState<any> | JsonApiState<any>[]
+	data?: ApiState<any, Object> | ApiState<any, Object>[]
 	errorComponent?: VNode
 	emptyComponent?: VNode
 	skipEmpty?: boolean
