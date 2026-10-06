@@ -17,9 +17,9 @@ import { toast } from 'toast'
 import './style.css'
 
 const handleListListSubmit = async (values: FormValues): Promise<void> => {
-	if (values.id) {
+	if (as<NestedListItemType>(values, ['id'])) {
 		const res = await nestedListApi.edit(values)
-		if (!!res) {
+		if (res) {
 			toast.success(`[${values.id}] ${values.title} отредактирован`)
 		}
 		return
@@ -30,8 +30,8 @@ const handleListListSubmit = async (values: FormValues): Promise<void> => {
 		titles.map(async title => {
 			const result = await nestedListApi.create({
 				title,
-				code: values.code,
-				parent_id: values.parent_id,
+				code: values.code || '',
+				parent_id: values.parent_id as NestedListItemType['parent_id'],
 			})
 			if (as<NestedListItemType>(result, ['id'])) {
 				toast.success(`[${result.id}] ${result.title} создан`)
@@ -40,9 +40,11 @@ const handleListListSubmit = async (values: FormValues): Promise<void> => {
 		return
 	}
 
-	const result = await nestedListApi.create(values)
-	if (as<NestedListItemType>(result, ['id'])) {
-		toast.success(`[${result.id}] ${result.title} создан`)
+	if (as<NestedListItemType>(values, ['title', 'parent_id', 'code'])) {
+		const result = await nestedListApi.create(values)
+		if (as<NestedListItemType>(result, ['id'])) {
+			toast.success(`[${result.id}] ${result.title} создан`)
+		}
 	}
 	return
 }
@@ -63,12 +65,13 @@ export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ val
 					onSubmit={formMethods.handleSubmit(handleListListSubmit)}
 					autocomplete="off"
 				>
-					{formScheme.map(schemeElement => (
+					{Object.entries(formScheme).map(([code, scheme]) => (
 						<FiledForm
-							name={schemeElement.code}
-							type={schemeElement.type}
-							label={schemeElement.title}
-							desciption={schemeElement.description}
+							key={code}
+							name={code}
+							type={scheme.type}
+							label={scheme.title}
+							desciption={scheme.description}
 						/>
 					))}
 					<ButtonGroup variant="gap">

@@ -9,6 +9,7 @@ import { HiringResponseCardForm } from 'components/hiring-response/hiring-respon
 import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
+import { as } from 'utils/types/as'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
 import { todayStr } from 'utils/date/today-str'
@@ -24,8 +25,7 @@ type HiringResponseCardsGalleryPropsType = {
 }
 
 const INIT_CARD: PasteApiType = {
-	// TODO: [MIDDLE] ну это не годится
-	id: parseInt(DEFAULT_ID, 10),
+	id: as<PasteApiType['id']>(DEFAULT_ID),
 	content: '',
 	date: todayStr(),
 	key: 'send-resume'

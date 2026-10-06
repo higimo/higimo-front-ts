@@ -1,39 +1,26 @@
-import { FiledFormPropsType } from 'components/form/filed-form'
-import { KeyOf } from 'utils.type'
 import { NestedListItemType } from 'api-types/listlist.types'
+import { FormScheme } from 'api-types/form.types'
 
-export type FormValues = NestedListItemType
+// TODO: [HARD] распространить практиру делать схему формы
+export type FormValues = Partial<NestedListItemType>
 
-// TODO: [MIDDLE] распространить
-type FormScheme<T extends string> = {
-	code: T
-	type: FiledFormPropsType['type']
-	title: string
-	description?: string
-}
-
-// TODO: [HARD] хорошая практика делать фабрику формы
-// TODO: [HARD] но с типами беда — если есть лишний, которого нет — не подсветит
-export const formScheme: FormScheme<KeyOf<NestedListItemType>>[] = [
-	{
-		code: 'id',
+export const formScheme: FormScheme<NestedListItemType> = {
+	id: {
 		type: 'number',
 		title: 'ид',
+		readonly: true,
 	},
-	{
-		code: 'parent_id',
+	parent_id: {
 		type: 'number',
 		title: 'ид родителя',
 	},
-	{
-		code: 'title',
+	title: {
 		type: 'textarea',
 		title: 'Название',
-		description: 'Указав имена с переносом строки, из каждой строки будет создан отдельный айтем'
+		description: 'Указав имена с переносом строки, из каждой строки будет создан отдельный айтем',
 	},
-	{
-		code: 'code',
+	code: {
 		type: 'text',
 		title: 'код',
 	},
-]
+}
