@@ -49,7 +49,6 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 		if (!initialMeeting && !initialPersons) {
 			return
 		}
-		// TODO: [MIDDLE] попробуй без ифов это сделать
 		let values: Partial<MeetingFormValues> = {
 			persons: initialPersons ?? [],
 		}
