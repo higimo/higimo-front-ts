@@ -58,7 +58,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 					>
 						<FiledForm name="groupId" label="Ид группы" type="number" placeholder="120" />
 						<FiledForm name="userId" label="Ид пользователя" type="number" placeholder="510" />
-						{/* TODO: [MIDDLE] в идеале поставить сдева кнопку */}
+						{/* TODO: [MIDDLE] в идеале поставить слева кнопку */}
 						<ButtonGroup variant="gap">
 							<FormButton type="button" variant="outline" onClick={handlerDownloadSelf}>
 								Подставить свой ид

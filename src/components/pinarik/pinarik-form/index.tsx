@@ -38,6 +38,7 @@ type PinarikFormPropsType = {
 }
 
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
+	// Здесь пока редактирование не нужно
 	const formMethods = useForm<FormValues>({
 		defaultValues: DEFAULT_VALUE,
 	})

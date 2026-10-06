@@ -11,20 +11,25 @@ import { NestedListItemFullType } from 'api-types/listlist.types'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const ListListFormPage: FunctionComponent = () => {
-	const { params: { idcode = '' } } = useRoute()
+	const { params: { idcode = DEFAULT_ID } } = useRoute()
 
-	const [ data ] = useApi<NestedListItemFullType[]>(API_ROUTE.listerItemSingle({ id: idcode }))
+	const [ nestedListSingle ] = useApi<NestedListItemFullType[]>(API_ROUTE.listerItemSingle({ id: idcode }))
 
 	// TODO: [BACKEND] пока что присылает по умолчанию главную — это надо исправить на пустоту
-	const values = !!idcode.length ? data.data[0] : undefined
+	const values = (
+		idcode === DEFAULT_ID && nestedListSingle.data
+		? nestedListSingle.data[0] ?? null
+		: null
+	)
 
 	return (
 		<Layout title="Список списков" className="list-list">
-			<LoadSuspense data={data}>
-				<EmptyData data={data}>
+			<LoadSuspense data={nestedListSingle}>
+				<EmptyData data={nestedListSingle}>
 					<TextContainer>
 						{!!values?.parent ? (
 							<a href={ROUTE_LINKS.listListDetail({ idcode: values?.parent?.id })}>
@@ -37,7 +42,10 @@ export const ListListFormPage: FunctionComponent = () => {
 						)}
 					</TextContainer>
 
-					<NestedListForm values={values} />
+					<NestedListForm
+						key={values?.id ?? DEFAULT_ID}
+						initialData={values}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

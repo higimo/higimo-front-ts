@@ -31,6 +31,7 @@ const formScheme: FormScheme<FormValues> = {
 }
 
 export const AuthForm: FunctionComponent = () => {
+	// здесь никогда не понадобятся значения по умолчанию
 	const formMethods = useForm<FormValues>({})
 
 	const handleLogin = async (values: FormValues) => {

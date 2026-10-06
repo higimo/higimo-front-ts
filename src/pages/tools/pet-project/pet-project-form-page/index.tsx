@@ -18,7 +18,7 @@ import '../pet-project.css'
 export const PetProjectFormPage: FunctionComponent = () => {
 	const { params: { projectId = DEFAULT_ID } } = useRoute()
 
-	const[ probbiSingle ] = useApi<Partial<PetProjectType>>(API_ROUTE.probbiSingle({ projectId }))
+	const[ probbiSingle ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
 
 	return (
 		<Layout title="Пэт-проекта" className="pet-project">

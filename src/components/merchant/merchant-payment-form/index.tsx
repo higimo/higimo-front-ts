@@ -21,6 +21,7 @@ type MerchantPaymentFormPropsType = {
 export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType> = ({
 	product,
 }) => {
+	// здесь никогда не потребуются значения по умолчанию
 	const formMethods = useForm<FormValues>({
 		defaultValues: {
 			email: '',
@@ -48,7 +49,7 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 						autocomplete="off"
 					>
 						<FiledForm name="email" label="Электропочта" />
-						<FiledForm name="comment" label="Комментарий к заказу" />
+						<FiledForm name="comment" type="textarea" label="Комментарий к заказу" />
 						<ButtonGroup variant="gap">
 							<FormButton
 								type="submit"

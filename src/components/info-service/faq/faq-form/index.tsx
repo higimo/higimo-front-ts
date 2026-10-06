@@ -26,12 +26,12 @@ const formScheme: FormScheme<FormValues> = {
 }
 
 type FaqSinglePropsType = {
-	initialData: Partial<FaqType> | null
+	initialData: FaqType | null
 }
 
 export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) => {
 	const formMethods = useForm<FormValues>({
-		// TODO: сюда же тоже надо getResetValues
+		// TODO: [HARD] сюда же тоже надо getResetValues
 		defaultValues: initialData || {}
 	})
 

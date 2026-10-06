@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
 
-import { useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
@@ -21,7 +20,7 @@ import './style.css'
 type FormValues = Partial<PasteApiType>
 
 type HiringResponseCardFormPropsType = {
-	initialData: Partial<PasteApiType>
+	initialData: PasteApiType | null
 	fetchUpdate: () => void
 }
 
@@ -29,11 +28,9 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 	initialData,
 	fetchUpdate,
 }) => {
-	const formMethods = useForm<FormValues>()
-
-	useEffect(() => {
-		formMethods.reset(initialData)
-	}, [initialData, formMethods.reset])
+	const formMethods = useForm<FormValues>({
+		defaultValues: initialData || {}
+	})
 
 	const handleSubmit = async (values: FormValues) => {
 		if (as<PasteApiType>(values, ['id'])) {

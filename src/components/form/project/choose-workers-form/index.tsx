@@ -26,6 +26,7 @@ export const ChooseWorkersForm: FunctionComponent<ChooseWorkersFormPropsType> = 
 	onRemoveWorker,
 	onSubmit,
 }) => {
+	// Здесь пока не возомжно редактирование
 	const formMethods = useForm<FormValues>()
 
 	return (

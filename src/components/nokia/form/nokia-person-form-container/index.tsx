@@ -1,9 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import { useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
-import { useRoute } from 'preact-iso'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'

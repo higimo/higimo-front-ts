@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'preact'
 import { PetProjectType } from 'api-types/petproject.types'
 
-import { useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
@@ -27,7 +26,7 @@ const handlePetprojectSubmit = async (values: FormValues) => {
 }
 
 type PetProjectFormPropsType = {
-	initialData?: Partial<PetProjectType> | null
+	initialData: PetProjectType | null
 }
 
 // Запоминать ник автора
@@ -36,11 +35,9 @@ type PetProjectFormPropsType = {
 export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 	initialData
 }) => {
-	const formMethods = useForm<FormValues>()
-
-	useEffect(() => {
-		formMethods.reset(initialData || undefined)
-	}, [initialData, formMethods.reset])
+	const formMethods = useForm<FormValues>({
+		defaultValues: initialData || {}
+	})
 
 	const handleRemove = (id: PetProjectType['id']) => () => {
 		console.log(`Хочу удалить ${id}`)

@@ -33,6 +33,7 @@ type CreateWorkerPropsType = {
 }
 // TODO: [HARD] сейчас не сообщает, если какое-то поле забуду
 export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
+	// Здесь пока не возомжно редактирование
 	const formMethods = useForm<FormValues>()
 
 	const handleFormSubmit = async (data: PortfolioWorkerType) => {

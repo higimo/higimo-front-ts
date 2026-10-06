@@ -50,12 +50,12 @@ const handleListListSubmit = async (values: FormValues): Promise<void> => {
 }
 
 type NestedListFormPropsType = {
-	values: NestedListItemFullType | undefined
+	initialData: NestedListItemFullType | null
 }
 
-export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ values }) => {
+export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ initialData }) => {
 	const formMethods = useForm<FormValues>({
-		defaultValues: values,
+		defaultValues: initialData || {}
 	})
 
 	return (

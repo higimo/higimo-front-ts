@@ -59,6 +59,7 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 					<TextContainer>
 						<CollapseSection header="Форма">
 							<HiringResponseCardForm
+								key={selectedCard.id}
 								initialData={selectedCard}
 								fetchUpdate={fetchUpdate}
 							/>
