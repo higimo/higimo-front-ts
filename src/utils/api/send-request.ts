@@ -1,4 +1,4 @@
-import { MetaApiType } from 'api-types/meta-api.types'
+import { MetaApiType } from 'api-types/fetch-api.types'
 import { SendRequestOptions, ApiResponse, ValuesOptions } from 'api-types/request.type'
 
 import httpBuildQuery from 'http-build-query'

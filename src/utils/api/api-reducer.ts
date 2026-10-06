@@ -1,4 +1,4 @@
-import { MetaApiType } from 'api-types/meta-api.types';
+import { MetaApiType } from 'api-types/fetch-api.types';
 import { API_STATUS } from 'dic/API_STATUS';
 import { ApiState, ApiAction } from './use-api';
 

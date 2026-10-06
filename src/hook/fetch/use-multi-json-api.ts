@@ -1,8 +1,8 @@
-import { ApiAction, ApiState } from './use-api'
+import { ApiAction, ApiState } from 'api-types/fetch-api.types'
 
 import { useCallback, useEffect, useMemo, useReducer } from 'preact/hooks'
 
-import { apiReducer } from './api-reducer'
+import { apiReducer } from 'utils/api/api-reducer'
 
 import { API_STATUS } from 'dic/API_STATUS'
 

@@ -1,30 +1,14 @@
+import { ApiState } from 'api-types/fetch-api.types'
 import { ApiRouteType } from 'dic/API_ROUTE'
-import { KeyOf } from 'utils.type'
-import { MetaApiType } from 'api-types/meta-api.types'
 import { ValuesOptions } from 'api-types/request.type'
 
 import { useCallback, useEffect, useReducer } from 'preact/hooks'
 
+import { apiReducer } from 'utils/api/api-reducer'
 import { isDefaultSkipUrl } from 'utils/types/is-default-skip-url'
 import { sendRequest } from 'utils/api/send-request'
 
 import { API_STATUS } from 'dic/API_STATUS'
-import { apiReducer } from 'hook/fetch/api-reducer'
-
-export type ApiStatusNameType = KeyOf<typeof API_STATUS>
-
-export type ApiState<T, M = MetaApiType> = {
-	status: ApiStatusNameType
-	data: T | null
-	meta?: M
-	error?: Error
-}
-
-export type ApiAction<T, M = MetaApiType> =
-	| { type: 'INIT' }
-	| { type: 'LOADING' }
-	| { type: 'LOADED', payload: T | null, meta?: M }
-	| { type: 'ERROR',  payload: Error }
 
 const initialState = {
 	status: API_STATUS.INIT,

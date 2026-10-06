@@ -1,4 +1,4 @@
-import { MetaApiType } from 'api-types/meta-api.types'
+import { MetaApiType } from 'api-types/fetch-api.types'
 
 // TODO: [HARD] наверно, не в api-types должно лежать
 
