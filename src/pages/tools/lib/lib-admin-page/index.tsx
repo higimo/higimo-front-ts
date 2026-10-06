@@ -17,15 +17,18 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 export const LibAdminPage: FunctionComponent = () => {
 	// TODO: [BACKEND] на бэке пока не реализовано
 	const { params: { id = DEFAULT_ID } } = useRoute()
-	const[ librarySingle ] = useApi<LibraryType | EmptyObject>(API_ROUTE.libSingle({ id }))
 	// TODO: [MIDDLE] пора поменять эти Single в роутах, словарях и переменных
+	const[ librarySingle ] = useApi<LibraryType>(API_ROUTE.libSingle({ id }))
 
 	return (
 		<Layout title="Библиотека" className="lib-page">
 			<LibraryHeader />
 			<LoadSuspense data={librarySingle}>
 				<EmptyData data={librarySingle} skipEmpty>
-					<LibraryForm {...librarySingle.data} />
+					<LibraryForm
+						key={librarySingle.data?.id ?? DEFAULT_ID}
+						{...librarySingle.data}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

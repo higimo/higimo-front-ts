@@ -33,7 +33,9 @@ type LibraryAdminPropsType = Partial<LibraryType>
 
 export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialData) => {
 	// TODO: [LIGHT] не устанавливается initialData
-	const formMethods = useForm<FormValues>()
+	const formMethods = useForm<FormValues>({
+		defaultValues: initialData
+	})
 
 	const handleSubmit = async (values: FormValues) => {
 		try {
