@@ -5,7 +5,7 @@ import { useRoute } from 'preact-iso'
 import { useApi } from 'hook/fetch/use-api'
 
 import { EmptyData } from 'components/ui/empty-data'
-import { FaqSingle } from 'components/info-service/faq/faq-single'
+import { FaqForm } from 'components/info-service/faq/faq-form'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
@@ -14,7 +14,7 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../faq-style.css'
 
-export const FaqSinglePage: FunctionComponent = () => {
+export const FaqFormPage: FunctionComponent = () => {
 	const { params: { idcode = DEFAULT_ID} } = useRoute()
 
 	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
@@ -22,8 +22,11 @@ export const FaqSinglePage: FunctionComponent = () => {
 	return (
 		<Layout title={faqDetail.data?.name || 'FAQ'} className="faq-identity-page">
 			<LoadSuspense data={faqDetail}>
-				<EmptyData data={faqDetail}>
-					<FaqSingle faq={faqDetail.data} />
+				<EmptyData data={faqDetail} skipEmpty>
+					<FaqForm
+						key={faqDetail.data?.id ?? DEFAULT_ID}
+						initialData={faqDetail.data}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

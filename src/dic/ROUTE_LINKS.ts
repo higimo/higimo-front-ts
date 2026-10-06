@@ -140,10 +140,13 @@ const ROUTE_INFO_SERVICE_LINKS = Object.freeze({
 
 	logism:          '/logism/',
 	demagog:         '/demagog/',
-	faqIndex:        '/faq/',
-	faqDetail_CONST: '/faq/:idcode/',
 
-	faqDetail: generateLink('/faq/:idcode/'),
+	faqIndex:          '/faq/',
+	faqDetail_CONST:   '/faq/:idcode/',
+	faqDetail:         generateLink('/faq/:idcode/'),
+	faqForm:           '/faq/form/',
+	faqFormEdit_CONST: '/faq/form/:idcode/',
+	faqFormEdit:       generateLink('/faq/form/:idcode/'),
 })
 
 // Сервисы-развлекухи

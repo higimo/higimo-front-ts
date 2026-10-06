@@ -28,3 +28,20 @@
 .faq-list__link:hover .faq-list__name {
 	border-color: #000000c9;
 }
+
+.faq-list__item {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.faq-list__action {
+	display: flex;
+	gap: 8px;
+	opacity: 0;
+	transition: all 100ms ease-in;
+}
+
+.faq-list__item:hover .faq-list__action {
+	opacity: 1;
+}

@@ -15,6 +15,7 @@ type ExcludeRouteType =
 	| typeof ROUTE_LINKS['toolVkAlbumSingle'] | typeof ROUTE_LINKS['toolVkAlbumSingle_CONST']
 	| typeof ROUTE_LINKS['learningDetail'] | typeof ROUTE_LINKS['learningDetail_CONST']
 	| typeof ROUTE_LINKS['faqDetail'] | typeof ROUTE_LINKS['faqDetail_CONST']
+	| typeof ROUTE_LINKS['faqFormEdit'] | typeof ROUTE_LINKS['faqFormEdit_CONST']
 	| typeof ROUTE_LINKS['tourismNashe_CONST']
 	| typeof ROUTE_LINKS['petProjectEdit'] | typeof ROUTE_LINKS['petProjectEdit_CONST']
 	| typeof ROUTE_LINKS['cinemaScriptDetail'] | typeof ROUTE_LINKS['cinemaScriptDetail_CONST']
@@ -97,6 +98,7 @@ export const BREADCRUMS_DIC: Record<RouteType, string> = {
 	[ROUTE_LINKS.logism]:        'Логизмы',
 	[ROUTE_LINKS.demagog]:       'Сервис Демагог',
 	[ROUTE_LINKS.faqIndex]:      'FAQ',
+	[ROUTE_LINKS.faqForm]:       'Создание FAQ',
 
 	[ROUTE_LINKS.pron]:         'прон',
 	[ROUTE_LINKS.youtube]:      'Избранное ютуба',
