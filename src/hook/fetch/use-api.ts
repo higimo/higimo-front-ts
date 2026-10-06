@@ -10,17 +10,18 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
-export type ApiState<T, M = Object> = {
+// TODO: [LIGHT] M = Record<string, unknown> вынести в отдельный тип, используется ещё в sendReaquest
+export type ApiState<T, M = Record<string, unknown>> = {
 	status: ApiStatusNameType
-	data: T
+	data: T | null
 	meta?: M
 	error?: Error
 }
 
-type ApiAction<T, M = Object> =
+type ApiAction<T, M = Record<string, unknown>> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
-	| { type: 'LOADED', payload: T, meta?: M }
+	| { type: 'LOADED', payload: T | null, meta?: M }
 	| { type: 'ERROR',  payload: Error }
 
 const initialState = {
@@ -30,7 +31,12 @@ const initialState = {
 	error: undefined,
 }
 
-export const apiReducer = <T, M = Object>(state: ApiState<T, M>, action: ApiAction<T, M>): ApiState<T, M> => {
+// TODO: [MIDDLE] мб, useState использовать?
+// TODO: [MIDDLE] используется ещё в useJsonApi, useMultiJsonApi
+export const apiReducer = <T, M = Record<string, unknown>>(
+	state: ApiState<T, M>,
+	action: ApiAction<T, M>
+): ApiState<T, M> => {
 	switch (action.type) {
 		case API_STATUS.INIT:
 			return { ...state, status: API_STATUS.INIT }
@@ -45,6 +51,7 @@ export const apiReducer = <T, M = Object>(state: ApiState<T, M>, action: ApiActi
 	}
 }
 
+// TODO: [LIGHT] вынести
 const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === DEFAULT_ID
 
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })
@@ -53,7 +60,10 @@ const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === DEFA
 type ApiUrlType = ApiRouteType
 
 // TODO: [HIGH] написать аналог для использования репозиториями
-export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, any> = {}): [ApiState<T, M>, () => void] => {
+export const useApi = <T, M = Object>(
+	url: ApiUrlType,
+	values: Record<string, string | number | null> = {}
+): [ApiState<T, M>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 
 	const fetchData = useCallback(async () => {
@@ -61,10 +71,11 @@ export const useApi = <T, M = Object>(url: ApiUrlType, values: Record<string, an
 		try {
 			dispatch({ type: API_STATUS.LOADING })
 			if (isDefaultSkipUrl(url)) {
-				dispatch({ type: API_STATUS.LOADED, payload: ({} as T), meta: undefined })
+				// TOOD: не нравится, что здесь null, надо {}, чтоб меньше кода писать
+				dispatch({ type: API_STATUS.LOADED, payload: null, meta: undefined })
 			} else {
-				const { data, meta } = await sendRequest(url as string, { values })
-				dispatch({ type: API_STATUS.LOADED, payload: data, meta: meta as M | undefined })
+				const { data, meta } = await sendRequest<T, M>(url as string, { values })
+				dispatch({ type: API_STATUS.LOADED, payload: data, meta })
 			}
 		} catch (error) {
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })

@@ -1,4 +1,12 @@
 /**
+ * Типизация ошибок от Laravel
+ */
+export interface LaravelErrorBody {
+	message: string
+	errors?: Record<string, string[]>
+}
+
+/**
  * Ошибка в API бекенда хомяка
  */
 export class ApiError extends Error {
@@ -13,9 +21,14 @@ export class ApiError extends Error {
 	/**
 	 * JSON или текст вернувшиейся из API ошибки
 	 */
-	public response?: any
+	public response?: LaravelErrorBody | string
 
-	constructor(message: string, status: number, url?: string, response?: any) {
+	constructor(
+		message: string,
+		status: number,
+		url?: string,
+		response?: LaravelErrorBody | string
+	) {
 		super(message)
 
 		this.name = 'ApiError'

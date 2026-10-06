@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { ApiError, LaravelErrorBody } from 'errors/higimo-api-error'
 
 import httpBuildQuery from 'http-build-query'
 import { parseJson } from 'utils/parse-json'
@@ -11,32 +11,96 @@ declare global {
 
 export interface SendRequestOptions {
 	method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-	values?: Record<string, any>
+	values?: Record<string, string | number | null>
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T, M = Record<string, unknown>> {
 	data: T
-	meta?: any // или более конкретный тип, если известен
+	meta?: M
 }
 
-const FREEZE_META = {} as const
+// TODO: [LIGHT] вынести в utils/type
+const isObject = (v: unknown): v is Record<string, unknown> =>
+	typeof v === 'object' && v !== null && !Array.isArray(v)
 
-export const sendRequest = async <T = any>(
+const isEnvelope = (v: unknown): v is { data: unknown; meta?: unknown } =>
+	isObject(v) && 'data' in v
+
+const isLaravelErrorBody = (v: unknown): v is LaravelErrorBody =>
+	isObject(v) && typeof v.message === 'string'
+
+
+
+
+
+// TODO: [LIGHT] вынести в utils/fetch
+/**
+ * Достаёт `data` из конверта Laravel `{ data: ... }`.
+ * Если конверта нет — возвращает то, что распарсилось (или сырой текст).
+ */
+const extractEnvelope = <T, M>(
+	parsed: unknown,
+	text: string
+): ApiResponse<T, M> => {
+	if (isEnvelope(parsed)) {
+		const envelope = parsed as { data: T; meta?: M }
+		return envelope.meta !== undefined
+			? { data: envelope.data, meta: envelope.meta }
+			: { data: envelope.data }
+	}
+
+	if (parsed !== undefined) {
+		return { data: parsed as T }
+	}
+
+	return { data: text as unknown as T }
+}
+
+
+// TODO: [LIGHT] вынести в utils/fetch
+const buildApiError = (
+	response: Response,
+	parsed: unknown,
+	text: string,
+	url: string
+): ApiError => {
+	if (isLaravelErrorBody(parsed)) {
+		return new ApiError(parsed.message, response.status, url, parsed)
+	}
+
+	return new ApiError(
+		response.statusText || `HTTP ${response.status}`,
+		response.status,
+		url,
+		text
+	)
+}
+
+
+export const sendRequest = async <T = unknown, M = Record<string, unknown>>(
 	url: string,
 	{
 		method = 'GET',
 		values = {}
 	}: SendRequestOptions = {}
-): Promise<ApiResponse<T>> => {
+): Promise<ApiResponse<T, M>> => {
 	if (typeof window === 'undefined') {
-		throw new Error('sendRequest is only available in browser environment')
+		throw new Error('sendRequest работает только в браузере')
 	}
 
-	const query = httpBuildQuery(values)
-	const fullUrl = method === 'GET' && Object.keys(values).length
-		? `${url}?${query}`
-		: url
+	// формируем запрос
+	let fullUrl = url
+	let body: string | undefined
 
+	if (method === 'GET') {
+		if (Object.keys(values).length) {
+			fullUrl = `${url}?${httpBuildQuery(values)}`
+		}
+	} else {
+		body = httpBuildQuery(values)
+	}
+
+	// Отправляем запрос
 	const response = await fetch(fullUrl, {
 		method,
 		headers: {
@@ -45,39 +109,22 @@ export const sendRequest = async <T = any>(
 				? 'application/json'
 				: 'application/x-www-form-urlencoded'
 		},
-		body: method === 'GET' ? undefined : query
+		body,
 	})
 
+	// Парсим ответ
 	const responseText = await response.text()
 	const parsed = parseJson(responseText)
 
-	if ([200, 201].includes(response.status)) {
-		const json = parsed !== undefined && typeof parsed === 'object' && 'data' in parsed
-			? parsed.data as T
-			: responseText as unknown as T
-		const meta = parsed?.meta || FREEZE_META
 
-		return { data: json, meta }
-	}
-
-	let errorMessage = response.statusText
-	const errorData = parsed !== undefined ? parsed : responseText
-
-	if (parsed?.message) {
-		errorMessage = parsed.message
-	} else if (parsed?.errors) {
-		const errorMessages = Object.values(parsed.errors).flat()
-		errorMessage = errorMessages.join(', ')
+	if (response.ok) {
+		return extractEnvelope<T, M>(parsed, responseText)
 	}
 
 	// TODO: [HARD] мб, разделять типы ошибок:
 	// JsonParse, FetchError (сеть потеряна, таймаут), ServerFail (5**), PolicyFail (4**), ValidationFail (422, 400),
 	// мб их ловить в ErrorBoundary, раз он в роутере всё равно перехватывает их, бизнес-логику обрабатывать в компонентах
-	const error = new ApiError(errorMessage, response.status, url, errorData)
-	console.error(error, {
-		status: response.status,
-		url,
-		errorData
-	})
-	throw error
+
+	// в потребителе ApiError.response для текстов ошибок полей
+	throw buildApiError(response, parsed, responseText, url)
 }
