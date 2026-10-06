@@ -10,7 +10,7 @@ import { FormProvider } from 'react-hook-form'
 import { InnerFromContainer } from 'components/form/inner-from-container'
 
 import { getBackPath } from 'utils/url-route/get-back-path'
-import { isValidAuth } from 'utils/api/is-valid-auth'
+import { isValidAuth } from 'utils/types/is-valid-auth'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 

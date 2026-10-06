@@ -28,6 +28,7 @@ interface NokiaMeetingFormContainerProps {
 	persons: NokiaPersonType[]
 }
 
+// TODO: [MIDDLE] задавать бы ещё значение по умолчанию
 export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContainerProps> = ({
 	initialMeeting,
 	initialPersons,
