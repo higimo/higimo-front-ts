@@ -19,7 +19,6 @@ export type UseVkDownloadType = () => {
 export const useVkDownload: UseVkDownloadType = () => {
 	const { status, session } = vkSession.value
 
-	// TODO: [MIDDLE] надо обобщить и вынести в отдельный хук, который собирает данные очереди
 	const { size, push, pull, view } = useQueue<VkQueueType>()
 	const [ photos, setPhotos ] = useState<VkPhotosContentType[]>([])
 	const [ downloadId, setDownloadId ] = useState<string>('')
