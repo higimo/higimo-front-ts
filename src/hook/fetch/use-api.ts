@@ -9,6 +9,7 @@ import { isDefaultSkipUrl } from 'utils/types/is-default-skip-url'
 import { sendRequest } from 'utils/api/send-request'
 
 import { API_STATUS } from 'dic/API_STATUS'
+import { apiReducer } from 'hook/fetch/api-reducer'
 
 export type ApiStatusNameType = KeyOf<typeof API_STATUS>
 
@@ -19,7 +20,7 @@ export type ApiState<T, M = MetaApiType> = {
 	error?: Error
 }
 
-type ApiAction<T, M = MetaApiType> =
+export type ApiAction<T, M = MetaApiType> =
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
 	| { type: 'LOADED', payload: T | null, meta?: M }
@@ -30,26 +31,6 @@ const initialState = {
 	data: [],
 	meta: undefined,
 	error: undefined,
-}
-
-// TODO: [MIDDLE] мб, useState использовать?
-// TODO: [MIDDLE] используется ещё в useJsonApi, useMultiJsonApi
-export const apiReducer = <T, M = MetaApiType>(
-	state: ApiState<T, M>,
-	action: ApiAction<T, M>
-): ApiState<T, M> => {
-	switch (action.type) {
-		case API_STATUS.INIT:
-			return { ...state, status: API_STATUS.INIT }
-		case API_STATUS.LOADING:
-			return { ...state, status: API_STATUS.LOADING }
-		case API_STATUS.LOADED:
-			return { ...state, status: API_STATUS.LOADED, data: action.payload, meta: action.meta }
-		case API_STATUS.ERROR:
-			return { ...state, status: API_STATUS.ERROR, error: action.payload }
-		default:
-			throw new Error('Unknown action type')
-	}
 }
 
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })

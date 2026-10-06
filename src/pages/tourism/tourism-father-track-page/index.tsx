@@ -20,25 +20,32 @@ import './style.css'
 
 type FatherJsonType = {
 	roadmap: PageJSONData
-	mainTrack: Coord[]
 	cities: PovType[]
 	rostovNaDonuPlace: PovType[]
+	mainTrack: Coord[]
 	rostovNaDonuPolygon: Coord[]
 }
 
 export const TourismFatherTrackPage: FunctionComponent = () => {
-	const [ data ] = useMultiJsonApi<FatherJsonType>({
+	const [ jsonData ] = useMultiJsonApi<FatherJsonType>({
 		roadmap:             '/json/tourism/father-trip-roadmap.json',
-		mainTrack:           '/json/tourism/father-trip-main-track.json',
 		cities:              '/json/tourism/father-trip-cities.json',
 		rostovNaDonuPlace:   '/json/tourism/father-trip-rostov-na-donu-place.json',
+		mainTrack:           '/json/tourism/father-trip-main-track.json',
 		rostovNaDonuPolygon: '/json/tourism/father-trip-rostov-na-donu-polygon.json',
 	})
 
-	const modCities = data.data.cities!
-		.concat(data.data.rostovNaDonuPlace!)
-	const lines = data.data.mainTrack!
-		.concat(data.data.rostovNaDonuPolygon!)
+	const modCities = (jsonData.cities.data || [])
+		.concat(jsonData.rostovNaDonuPlace.data || [])
+	const lines = (jsonData.mainTrack.data || [])
+		.concat(jsonData.rostovNaDonuPolygon.data || [])
+
+	const stateJsonData = [
+		jsonData.mainTrack,
+		jsonData.cities,
+		jsonData.rostovNaDonuPlace,
+		jsonData.rostovNaDonuPolygon,
+	]
 
 	return (
 		<Layout title="Путешествие с отцом" className="tourism-identy-page">
@@ -53,17 +60,17 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer className="car-list">
-				<LoadSuspense data={data}>
-					<EmptyData data={data}>
-						{data.data.roadmap!.blocks.map((child, idx) => (
+				<LoadSuspense data={jsonData.roadmap}>
+					<EmptyData data={jsonData.roadmap}>
+						{jsonData.roadmap.data && jsonData.roadmap.data.blocks.map((child, idx) => (
 							<BlockRenderer key={idx} block={child} />
 						))}
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
 
-			<LoadSuspense data={data}>
-				<EmptyData data={data}>
+			<LoadSuspense data={stateJsonData}>
+				<EmptyData data={stateJsonData}>
 					<TourismMapGeo<PovType, Coord>
 						lines={lines}
 						items={modCities}

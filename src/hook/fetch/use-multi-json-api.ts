@@ -1,89 +1,82 @@
-import { useCallback, useEffect, useReducer } from 'preact/hooks'
+import { ApiAction, ApiState } from './use-api'
+
+import { useCallback, useEffect, useMemo, useReducer } from 'preact/hooks'
+
+import { apiReducer } from './api-reducer'
 
 import { API_STATUS } from 'dic/API_STATUS'
 
-type ApiStatusName = keyof typeof API_STATUS
-
 export type MultiJsonApiUrls<T> = { [K in keyof T]: string }
 
-export type MultiJsonApiState<T> = {
-	/** Агрегированный статус: LOADING пока хоть что-то грузится. */
-	status: ApiStatusName
-	/** Данные, заполняются по мере завершения запросов. */
-	data: Partial<{ [K in keyof T]: T[K] }>
-	/** Ошибки по каждому ключу (если были). */
-	errors: Partial<Record<keyof T, Error>>
-	/** Сколько запросов ещё в полёте. */
-	pending: number
-}
+/**
+ * Состояние по каждому ключу — то же, что в useApi, но в словаре.
+ */
+export type MultiJsonApiState<T> = { [K in keyof T]: ApiState<T[K]> }
 
-type MultiJsonApiAction =
-	| { type: 'INIT' }
-	| { type: 'LOADING', count: number }
-	| { type: 'LOADED', key: string, payload: unknown }
-	| { type: 'ERROR', key: string, payload: Error }
+/**
+ * Экшен верхнего уровня: какой ключ и какой ApiAction к нему применить.
+ */
+export type MultiJsonApiAction<T> = {
+	[K in keyof T]: { key: K, action: ApiAction<T[K]> }
+}[keyof T]
 
-const multiJsonApiReducer = <T,>(
+export const multiJsonApiReducer = <T,>(
 	state: MultiJsonApiState<T>,
-	action: MultiJsonApiAction
-): MultiJsonApiState<T> => {
-	switch (action.type) {
-		case API_STATUS.INIT:
-			return { ...state, status: API_STATUS.INIT }
+	{ key, action }: MultiJsonApiAction<T>,
+): MultiJsonApiState<T> => ({
+	...state,
+	[key]: apiReducer(state[key], action as ApiAction<T[typeof key]>),
+})
 
-		case API_STATUS.LOADING:
-			return {
-				...state,
-				status: API_STATUS.LOADING,
-				errors: {},
-				pending: action.count,
-			}
+const createInitialState = <T extends Record<string, unknown>>(
+	keys: readonly (keyof T & string)[],
+): MultiJsonApiState<T> =>
+	Object.fromEntries(
+		keys.map((key) => [
+			key,
+			{ status: API_STATUS.INIT, data: null, meta: undefined, error: undefined },
+		]),
+	) as MultiJsonApiState<T>
 
-		case API_STATUS.LOADED: {
-			const pending = Math.max(0, state.pending - 1)
-			return {
-				...state,
-				data: { ...state.data, [action.key]: action.payload } as MultiJsonApiState<T>['data'],
-				pending,
-				status: pending === 0 ? API_STATUS.LOADED : API_STATUS.LOADING,
-			}
-		}
-
-		case API_STATUS.ERROR: {
-			const pending = Math.max(0, state.pending - 1)
-			return {
-				...state,
-				errors: { ...state.errors, [action.key]: action.payload },
-				pending,
-				// если больше ничего не грузится и была ошибка — общий статус ERROR
-				status: pending === 0 ? API_STATUS.ERROR : API_STATUS.LOADING,
-			}
-		}
-
-		default:
-			return state
-	}
-}
-
-const multiInitialState = {
-	status: API_STATUS.INIT,
-	data: {},
-	errors: {},
-	pending: 0,
-} as const
-
+/**
+ * Запрашивать из JSON-API данные из нескольких источников,
+ * расставляя их по указанным key.
+ * @param urls объект из key: url
+ *
+ * @example
+ * ```ts
+ * const [ data, refetch ] = useMultiJsonApi<{
+ * 	books: BookApiType[]
+ * 	cinema: CinemaApiType[]
+ * }>({
+ * 	books: '/json/books.json',
+ * 	cinema: '/json/cinema.json',
+ * })
+ *
+ * data.books.status // ApiStatusName
+ * data.books.data   // BookApiType[] | null
+ * data.cinema.error // Error | undefined
+ * ```
+ */
 export const useMultiJsonApi = <T extends Record<string, unknown>>(
 	urls: MultiJsonApiUrls<T>
 ): [MultiJsonApiState<T>, () => Promise<void>] => {
-	const [state, dispatch] = useReducer(
-		multiJsonApiReducer<T>,
-		multiInitialState as unknown as MultiJsonApiState<T>
+
+	const keys = useMemo(
+		() => Object.keys(urls) as (keyof T & string)[],
+		[JSON.stringify(urls)],
 	)
 
-	const keys = Object.keys(urls) as (keyof T & string)[]
+	const [state, dispatch] = useReducer(
+		multiJsonApiReducer<T>,
+		keys,
+		createInitialState<T>,
+	)
 
 	const fetchData = useCallback(async () => {
-		dispatch({ type: API_STATUS.LOADING, count: keys.length })
+		keys.forEach((key) => {
+			dispatch({ key, action: { type: API_STATUS.LOADING } })
+		})
 
 		await Promise.all(
 			keys.map(async (key) => {
@@ -93,14 +86,14 @@ export const useMultiJsonApi = <T extends Record<string, unknown>>(
 					if (!response.ok) {
 						throw new Error(`HTTP error! status: ${response.status} (${uri})`)
 					}
-					const json = await response.json()
-					dispatch({ type: API_STATUS.LOADED, key, payload: json })
+					const json = (await response.json()) as T[typeof key]
+					dispatch({ key, action: { type: API_STATUS.LOADED, payload: json } })
 				} catch (error) {
-					dispatch({ type: API_STATUS.ERROR, key, payload: error as Error })
+					dispatch({ key, action: { type: API_STATUS.ERROR, payload: error as Error } })
 				}
-			})
+			}),
 		)
-	}, [JSON.stringify(urls)])
+	}, [keys, JSON.stringify(urls)])
 
 	useEffect(() => {
 		fetchData()

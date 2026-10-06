@@ -48,14 +48,25 @@ export const TourismVisitedPage: FunctionComponent = () => {
 	})
 
 	const povList: PovType[] = ([] as PovType[])
-		.concat(data.data.admOrkugMoscow || [])
-		.concat(data.data.castle || [])
-		.concat(data.data.country || [])
-		.concat(data.data.districtMoscow || [])
-		.concat(data.data.placefield || [])
-		.concat(data.data.subjectFederation || [])
-		.concat(data.data.townMoscow || [])
-		.concat(data.data.town || [])
+		.concat(data.admOrkugMoscow.data || [])
+		.concat(data.castle.data || [])
+		.concat(data.country.data || [])
+		.concat(data.districtMoscow.data || [])
+		.concat(data.placefield.data || [])
+		.concat(data.subjectFederation.data || [])
+		.concat(data.townMoscow.data || [])
+		.concat(data.town.data || [])
+
+	const jsonDateArr = [
+		data.admOrkugMoscow,
+		data.castle,
+		data.country,
+		data.districtMoscow,
+		data.placefield,
+		data.subjectFederation,
+		data.townMoscow,
+		data.town,
+	]
 
 	return (
 		<Layout title="Результаты путешествий" className="tourism-identy-page">
@@ -69,8 +80,8 @@ export const TourismVisitedPage: FunctionComponent = () => {
 				<TourismHeader main>Результаты путешествий</TourismHeader>
 			</TextContainer>
 
-			<LoadSuspense data={data}>
-				<EmptyData data={data}>
+			<LoadSuspense data={jsonDateArr}>
+				<EmptyData data={jsonDateArr}>
 					<TourismMainStatistic totalStatistic={povList} />
 					<TourismStatisticVisualizer pov={povList} />
 				</EmptyData>

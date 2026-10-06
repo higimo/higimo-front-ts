@@ -1,17 +1,19 @@
-import { FunctionComponent } from 'preact'
+import { ApiError } from 'errors/higimo-api-error'
 import { FaqType } from 'api-types/faq.types'
+import { FunctionComponent } from 'preact'
 
-import { TextContainer } from 'components/ui/text-container'
-import { FormProvider, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+
+import { ButtonGroup } from 'components/form/button-group'
+import { FiledForm } from 'components/form/filed-form'
+import { FormButton } from 'components/form/form-button'
+import { FormProvider } from 'react-hook-form'
+import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+
 import { as } from 'utils/types/as'
 import { faqApi } from 'repositories/faq-api.repository'
-import { ApiError } from 'errors/higimo-api-error'
-import { toast } from 'toast'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
-import { FiledForm } from 'components/form/filed-form'
-import { ButtonGroup } from 'components/form/button-group'
-import { FormButton } from 'components/form/form-button'
 import { getResetValues } from 'components/form/EMPTY_FORM'
+import { toast } from 'toast'
 
 type FormValues = Partial<FaqType>
 

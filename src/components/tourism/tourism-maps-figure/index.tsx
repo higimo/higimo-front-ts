@@ -13,9 +13,9 @@ import { GEO_OBJECT_OPTIONS } from 'config/GEO-OBJECT-OPTIONS'
 import { MAP_MODE } from 'dic/tourism/MAP_MODE'
 
 type TourismMoscowWalkaroundPropsType = {
-	moscowPovPoints: SimpleMapPoint[]
-	stateYear2021: YaMapPolygon[]
-	stateYear2024: YaMapPolygon[]
+	moscowPovPoints: SimpleMapPoint[] | null
+	stateYear2021: YaMapPolygon[] | null
+	stateYear2024: YaMapPolygon[] | null
 }
 
 export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundPropsType> = ({
@@ -23,6 +23,9 @@ export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundP
 	stateYear2021,
 	stateYear2024,
 }) => {
+	if (!moscowPovPoints || !stateYear2021 || !stateYear2024) {
+		return null
+	}
 	const [ isMode, setMode ] = useSwitcher<ValueOf<typeof MAP_MODE>>(MAP_MODE['2024'])
 	const { width } = useWindowSize()
 

@@ -10,10 +10,13 @@ import './style.css'
 
 type PetProject = {
 	petprojects: PetProjectType[]
-	gradients: GradientDicType[]
+	gradients: GradientDicType[] | null
 }
 export const PetProject: FunctionComponent<PetProject> = ({ petprojects, gradients }) => {
 	const goodGradients = useMemo(() => {
+		if (!gradients) {
+			return []
+		}
 		return gradients
 			.concat(gradients.slice(0), gradients.slice(0))
 			.sort(() => 0.5 - Math.random())
