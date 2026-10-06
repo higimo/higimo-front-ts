@@ -94,7 +94,7 @@ const FormFileds: FunctionComponent<FormFiledsPropsType> = ({
 				<FieldGroup>
 					<FiledForm name="id" label="Идентификатор" type="number" readonly />
 					<FiledForm name="title" label="Заголовок" labelDescription="Ты пидор" />
-					<FiledForm name="description" label="Описание" type="textarea" desciption="Помогает анализу проблемы" />
+					<FiledForm name="description" label="Описание" type="textarea" description="Помогает анализу проблемы" />
 				</FieldGroup>
 				<FiledForm name="tags" label="Теги" support="через запятую" />
 				<FiledForm name="priority" label="Приоритет" />

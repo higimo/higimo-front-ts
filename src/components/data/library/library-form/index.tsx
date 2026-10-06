@@ -1,4 +1,5 @@
 import { ApiError } from 'errors/higimo-api-error'
+import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
 
@@ -19,7 +20,17 @@ import './style.css'
 
 type FormValues = Partial<LibraryType>
 
-// TODO: [MIDDLE] вот бы везде передавать через {...}
+const formScheme: FormScheme<LibraryType> = {
+	id:     { title: 'Идентификатор', type: 'number', readonly: true, },
+	author: { title: 'Автор', },
+	name:   { title: 'Название', },
+	addon:  { title: 'Допназвание', },
+	isbn:   { title: 'ISBN', },
+	img:    { title: 'Картинка', },
+	anons:  { title: 'Описание', type: 'textarea', },
+}
+
+// TODO: [HARD] вот бы везде передавать через {...}
 type LibraryAdminPropsType = Partial<LibraryType>
 
 export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialData) => {
@@ -54,15 +65,15 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialDat
 					onSubmit={formMethods.handleSubmit(handleSubmit)}
 					autocomplete="off"
 				>
-					{!!initialData?.id && (
-						<FiledForm name="id" label="Идентификатор" type="number" readonly />
-					)}
-					<FiledForm name="author" label="Автор" required />
-					<FiledForm name="name" label="Название" required />
-					<FiledForm name="addon" label="Допназвание" />
-					<FiledForm name="isbn" label="ISBN" />
-					<FiledForm name="img" label="Картинка" />
-					<FiledForm name="anons" type="textarea" label="Описание" />
+					{Object.entries(formScheme).map(([code, scheme]) => (
+						<FiledForm
+							key={code}
+							name={code}
+							type={scheme.type}
+							readonly={scheme.readonly}
+							label={scheme.title}
+						/>
+					))}
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"

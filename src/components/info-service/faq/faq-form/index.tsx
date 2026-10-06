@@ -1,5 +1,6 @@
 import { ApiError } from 'errors/higimo-api-error'
 import { FaqType } from 'api-types/faq.types'
+import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
@@ -17,6 +18,12 @@ import { toast } from 'toast'
 
 type FormValues = Partial<FaqType>
 
+const formScheme: FormScheme<FormValues> = {
+	id:   { title: 'Идентификатор', readonly: true, type: 'number', },
+	name: { title: 'Название',      required: true, },
+	code: { title: 'Символьный код',required: true, },
+	text: { title: 'Контент',       required: true, type: 'textarea', },
+}
 
 type FaqSinglePropsType = {
 	initialData: Partial<FaqType> | null
@@ -56,12 +63,16 @@ export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) 
 					onSubmit={formMethods.handleSubmit(handleSubmit)}
 					autocomplete="off"
 				>
-					{!!initialData?.id && (
-						<FiledForm name="id" label="Идентификатор" type="number" readonly />
-					)}
-					<FiledForm name="name" label="Название" required />
-					<FiledForm name="code" label="Символьный код" required />
-					<FiledForm name="text" type="textarea" label="Контент" required />
+					{Object.entries(formScheme).map(([code, scheme]) => (
+						<FiledForm
+							key={code}
+							name={code}
+							type={scheme.type}
+							label={scheme.title}
+							readonly={scheme.readonly}
+							required={scheme.required}
+						/>
+					))}
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"

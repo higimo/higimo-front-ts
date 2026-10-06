@@ -1,6 +1,7 @@
 import { ApiError } from 'errors/higimo-api-error'
-import { PortfolioWorkerType } from 'api-types/portfolio.types'
+import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
+import { PortfolioWorkerType } from 'api-types/portfolio.types'
 
 import { useForm } from 'react-hook-form'
 
@@ -16,6 +17,16 @@ import { toast } from 'toast'
 import './style.css'
 
 type FormValues = PortfolioWorkerType
+
+const formScheme: FormScheme<FormValues> = {
+	id:        { title: 'Идентификатор', readonly: true, type: 'number', },
+	full_name: { title: 'Имя',           required: true, },
+	image:     { title: 'Ссылка на фотку', },
+	login:     { title: 'Ник', },
+	company:   { title: 'Где работал', },
+	role:      { title: 'Роль', },
+	link:      { title: 'Ссылка на хомяк', },
+}
 
 type CreateWorkerPropsType = {
 	onSubmit: (roles: PortfolioWorkerType) => Promise<boolean>
@@ -47,12 +58,16 @@ export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmi
 						onSubmit={formMethods.handleSubmit(handleFormSubmit)}
 						autocomplete="off"
 					>
-						<FiledForm name="full_name" label="Имя" required />
-						<FiledForm name="image" label="Ссылка на фотку" />
-						<FiledForm name="login" label="Ник" />
-						<FiledForm name="company" label="Где работал" />
-						<FiledForm name="role" label="Роль" />
-						<FiledForm name="link" label="Ссылка на хомяк" />
+						{Object.entries(formScheme).map(([code, scheme]) => (
+							<FiledForm
+								key={code}
+								name={code}
+								type={scheme.type}
+								label={scheme.title}
+								readonly={scheme.readonly}
+								required={scheme.required}
+							/>
+						))}
 						{/* TODO: [MIDDLE] пробрасывать в register */}
 						{/* pattern: {
 							value: /^(https?:\/\/).+$/i,

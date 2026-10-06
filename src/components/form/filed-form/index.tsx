@@ -7,18 +7,28 @@ import cs from 'classnames'
 
 import '../form-style.css'
 
+type FormFieldType =
+	| 'textarea'
+	| 'text'
+	| 'password'
+	| 'date'
+	| 'number'
+	| 'datetime-local'
+	| 'select'
+
 export type FiledFormPropsType = {
 	label: string
 	name: string
 	labelDescription?: string
-	desciption?: string
+	description?: string
 	support?: string
-	type?: 'textarea' | 'text' | 'password' | 'date' | 'number' | 'datetime-local'
+	type?: FormFieldType
 	placeholder?: string
 	readonly?: boolean
 	autocomplete?: boolean
 	autofocus?: boolean
 	required?: boolean
+	values?: readonly string[]
 }
 
 export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
@@ -28,11 +38,12 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 	name,
 	readonly,
 	autocomplete = false,
-	desciption,
+	description,
 	placeholder,
 	support,
 	autofocus,
 	required,
+	values,
 }) => {
 	const id = useId()
 	const { register, formState: { errors } } = useFormContext()
@@ -64,6 +75,12 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 					<div className="field__main">
 						{type === 'textarea' ? (
 							<textarea {...inputProps} {...register(name, registerOptions)} />
+						) : type === 'select' ? (
+							<select {...inputProps}>
+								{values?.map((value) => (
+									<option key={value} value={value}>{value}</option>
+								))}
+							</select>
 						) : (
 							<input
 								{...inputProps}
@@ -78,9 +95,9 @@ export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 							</div>
 						)}
 					</div>
-					{!!desciption && (
+					{!!description && (
 						<div className="field__description">
-							{desciption}
+							{description}
 						</div>
 					)}
 				</div>

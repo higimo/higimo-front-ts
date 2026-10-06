@@ -1,5 +1,6 @@
 import { ApiError } from 'errors/higimo-api-error'
 import { AuthDataType } from 'api-types/auth.types'
+import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
@@ -22,6 +23,11 @@ import './style.css'
 type FormValues = {
 	email: string
 	pass: string
+}
+
+const formScheme: FormScheme<FormValues> = {
+	email: { title: 'Электопочта',                   autocomplete: true, required: true, },
+	pass:  { title: 'Пароль',      type: 'password', autocomplete: true, required: true, },
 }
 
 export const AuthForm: FunctionComponent = () => {
@@ -50,8 +56,16 @@ export const AuthForm: FunctionComponent = () => {
 		<InnerFromContainer>
 			<FormProvider {...formMethods}>
 				<form onSubmit={formMethods.handleSubmit(handleLogin)}>
-					<FiledForm name="email" label="Электопочта" autocomplete required />
-					<FiledForm name="pass" type="password" label="Пароль" autocomplete required />
+					{Object.entries(formScheme).map(([code, scheme]) => (
+						<FiledForm
+							key={code}
+							name={code}
+							type={scheme.type}
+							label={scheme.title}
+							autocomplete={scheme.autocomplete}
+							required={scheme.required}
+						/>
+					))}
 					<ButtonGroup>
 						<FormButton
 							type="submit"

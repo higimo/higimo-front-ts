@@ -97,19 +97,19 @@ export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContai
 						name="date_start"
 						label="Начало"
 						type="datetime-local"
-						desciption="Можно оставить пустым"
+						description="Можно оставить пустым"
 					/>
 					<FiledForm
 						name="date_end"
 						label="Окончание"
 						type="datetime-local"
-						desciption="Можно оставить пустым, помогает рассчёту потраченного времени"
+						description="Можно оставить пустым, помогает рассчёту потраченного времени"
 					/>
 					<FiledForm
 						name="type"
 						label="Тип встречи"
 						labelDescription="Нпрмр, offline, work, net, tg"
-						desciption="Поможет для построения красивых статистических графиков"
+						description="Поможет для построения красивых статистических графиков"
 					/>
 					<label>Как прошло?</label>
 					<MentionsInput

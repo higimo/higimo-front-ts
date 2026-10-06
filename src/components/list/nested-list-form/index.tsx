@@ -70,8 +70,9 @@ export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ val
 							key={code}
 							name={code}
 							type={scheme.type}
+							readonly={scheme.readonly}
 							label={scheme.title}
-							desciption={scheme.description}
+							description={scheme.description}
 						/>
 					))}
 					<ButtonGroup variant="gap">

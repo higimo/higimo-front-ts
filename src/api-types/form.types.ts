@@ -1,23 +1,34 @@
 import { FiledFormPropsType } from 'components/form/filed-form'
 
 /**
- * Схема одного поля
- * `K` нужен, чтобы включить обязательный `readonly: true` для поля `id`
+ * Вариант схемы для `<select>`: `type: 'select'`, `values` обязателен
  */
-export type FormFieldScheme<K extends PropertyKey> = K extends 'id'
-	? {
-		type: FiledFormPropsType['type']
-		title: string
-		description?: string
-		// Требуем всегда readonly для id
-		readonly: true
-	}
-	: {
-		type: FiledFormPropsType['type']
-		title: string
-		description?: string
-		readonly?: boolean
-	}
+type FormFieldSchemeBase<K extends PropertyKey> = {
+	title: string
+	description?: string
+	autocomplete?: boolean
+	required?: boolean
+} & (K extends 'id' ? { readonly: true } : { readonly?: boolean })
+
+/** Select-вариант: `type: 'select'` обязателен, `values` обязателен. */
+type FormFieldSelectScheme<K extends PropertyKey> = FormFieldSchemeBase<K> & {
+	type: 'select'
+	values: readonly string[]
+}
+
+/**
+ * Input/textarea-вариант.
+ * `type` опционален — если не указан, `FiledForm` подставит `'text'`.
+ * `values` запрещён.
+ */
+type FormFieldInputScheme<K extends PropertyKey> = FormFieldSchemeBase<K> & {
+	type?: Exclude<FiledFormPropsType['type'], 'select'>
+	values?: never
+}
+
+export type FormFieldScheme<K extends PropertyKey> =
+	| FormFieldSelectScheme<K>
+	| FormFieldInputScheme<K>
 
 /**
  * Словарь полей формы, ключи которого обязаны совпадать с ключами `T`.

@@ -1,3 +1,4 @@
+import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
@@ -24,6 +25,22 @@ type SidebarPropsType = {
 	onSubmit: (values: FormValues) => void
 }
 
+const formScheme: FormScheme<FormValues> = {
+	method: {
+		title: 'method',
+		type: 'select',
+		values: [
+			'GET',
+			'POST',
+			'PUT',
+			'DELETE',
+		],
+	},
+	uri: { title: 'URI', },
+	options: { title: 'options', type: 'textarea', },
+}
+
+
 export const Sidebar: FunctionComponent<SidebarPropsType> = ({ onSubmit }) => {
 	const formMethods = useForm<FormValues>({
 		defaultValues: DEFAULT_STATE
@@ -36,14 +53,15 @@ export const Sidebar: FunctionComponent<SidebarPropsType> = ({ onSubmit }) => {
 					onSubmit={formMethods.handleSubmit(onSubmit)}
 					autocomplete="off"
 				>
-					<select {...formMethods.register('method')}>
-						<option value="GET">GET</option>
-						<option value="POST">POST</option>
-						<option value="PUT">PUT</option>
-						<option value="DELETE">DELETE</option>
-					</select>
-					<FiledForm name="uri" label="URI" required />
-					<FiledForm name="options" label="options" type="textarea" />
+					{Object.entries(formScheme).map(([code, scheme]) => (
+						<FiledForm
+							key={code}
+							name={code}
+							type={scheme.type}
+							label={scheme.title}
+							values={scheme.values}
+						/>
+					))}
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"

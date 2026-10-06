@@ -5,22 +5,12 @@ import { FormScheme } from 'api-types/form.types'
 export type FormValues = Partial<NestedListItemType>
 
 export const formScheme: FormScheme<NestedListItemType> = {
-	id: {
-		type: 'number',
-		title: 'ид',
-		readonly: true,
-	},
-	parent_id: {
-		type: 'number',
-		title: 'ид родителя',
-	},
+	id: { type: 'number', title: 'ид', readonly: true, },
+	parent_id: { type: 'number', title: 'ид родителя', },
 	title: {
 		type: 'textarea',
 		title: 'Название',
 		description: 'Указав имена с переносом строки, из каждой строки будет создан отдельный айтем',
 	},
-	code: {
-		type: 'text',
-		title: 'код',
-	},
+	code: { title: 'код', },
 }

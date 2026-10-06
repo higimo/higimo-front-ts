@@ -62,7 +62,7 @@ export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContaine
 						type="textarea"
 						name="description"
 						label="Описание"
-						desciption={
+						description={
 							'Аватарка, заметки про человека, вхождения в круги, знакомства с другими '
 							+ 'людьми, взгляды, аллергии, болезни, контактные данные, социальные сети, '
 							+ 'дата рождения, таланты, увлечения'
