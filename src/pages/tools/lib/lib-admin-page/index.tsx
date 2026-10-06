@@ -18,6 +18,7 @@ export const LibAdminPage: FunctionComponent = () => {
 	// TODO: [BACKEND] на бэке пока не реализовано
 	const { params: { id = DEFAULT_ID } } = useRoute()
 	const[ librarySingle ] = useApi<LibraryType | EmptyObject>(API_ROUTE.libSingle({ id }))
+	// TODO: [MIDDLE] пора поменять эти Single в роутах, словарях и переменных
 
 	return (
 		<Layout title="Библиотека" className="lib-page">

@@ -21,7 +21,6 @@ export type FiledFormPropsType = {
 	required?: boolean
 }
 
-// TODO: [LIGHT] поставить автокомплит по умолчанию выключенным, чтоб только руками включать, нпрмр, на логине
 export const FiledForm: FunctionComponent<FiledFormPropsType> = ({
 	label,
 	labelDescription,

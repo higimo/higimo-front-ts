@@ -27,6 +27,8 @@ const isLibraryType = (values: unknown): values is LibraryType => {
 
 type FormValues = Partial<LibraryType>
 
+
+// TODO: [MIDDLE] вот бы везде передавать через {...}
 type LibraryAdminPropsType = Partial<LibraryType>
 
 export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialData) => {
