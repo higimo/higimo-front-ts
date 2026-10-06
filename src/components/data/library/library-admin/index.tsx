@@ -19,7 +19,6 @@ import './style.css'
 
 type FormValues = Partial<LibraryType>
 
-
 // TODO: [MIDDLE] вот бы везде передавать через {...}
 type LibraryAdminPropsType = Partial<LibraryType>
 
@@ -31,7 +30,7 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialDat
 	const handleSubmit = async (values: FormValues) => {
 		try {
 			let book = null
-			if (as<LibraryType>(values, ['name'])) {
+			if (as<LibraryType>(values, ['id'])) {
 				book = await libApi.edit(values)
 			} else {
 				book = await libApi.create(values)

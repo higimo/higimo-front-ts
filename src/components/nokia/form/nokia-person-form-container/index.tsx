@@ -11,11 +11,12 @@ import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
+import { as } from 'utils/types/as'
 import { getResetValues } from 'components/form/EMPTY_FORM'
 import { personApi } from 'repositories/person-api'
 
 const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {
-	if (data.id) {
+	if (as<NokiaPersonSimpleType>(data, ['id'])) {
 		await personApi.edit(data)
 	} else {
 		await personApi.create(data)

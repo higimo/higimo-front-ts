@@ -10,6 +10,7 @@ import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { InnerFromContainer } from 'components/form/inner-from-container'
 
+import { as } from 'utils/types/as'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
 
@@ -35,7 +36,7 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 	}, [initialData, formMethods.reset])
 
 	const handleSubmit = async (values: FormValues) => {
-		if ('id' in values) {
+		if (as<PasteApiType>(values, ['id'])) {
 			await pasteApi.edit(values)
 		} else {
 			await pasteApi.create(values)

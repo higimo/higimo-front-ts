@@ -7,9 +7,10 @@ import { useCallback, useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 import { useRoute } from 'preact-iso'
 
+import { as } from 'utils/types/as'
+import { createDateOnly } from 'utils/date/create-date-only'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
-import { createDateOnly } from 'utils/date/create-date-only'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -47,7 +48,7 @@ export const useMeetingForm = ({
 
 			const { persons, ...meeting } = values
 
-			if (values.id) {
+			if (as<NokiaMeetingSimpleType>(values, ['id'])) {
 				backendEntity = await meetingApi.edit(meeting)
 			} else {
 				backendEntity = await meetingApi.create(meeting)

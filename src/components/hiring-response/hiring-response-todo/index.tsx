@@ -4,6 +4,7 @@ import { PasteApiType } from 'api-types/paste.types'
 
 import { useCallback } from 'preact/hooks'
 
+import { as } from 'utils/types/as'
 import { debounce } from '@github/mini-throttle'
 import { getSlugTimestamp } from 'utils/url-route/get-slug-timestamp'
 import { pasteApi } from 'repositories/paste-api.repository'
@@ -27,7 +28,7 @@ export const HiringResponseTodoController: FunctionComponent<HiringResponseTodoC
 					key: 'hiring-todo',
 					content,
 				})
-				if (!!result) {
+				if (as<PasteApiType>(result, ['id'])) {
 					toast.success('Сохранилось')
 				}
 			},

@@ -10,6 +10,7 @@ import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
+import { as } from 'utils/types/as'
 import { getResetValues } from 'components/form/EMPTY_FORM'
 import { probbiApi } from 'repositories/probbi-api.repository'
 
@@ -18,7 +19,7 @@ import './style.css'
 type FormValues = PetProjectType
 
 const handlePetprojectSubmit = async (values: FormValues) => {
-	if (values.id) {
+	if (as<PetProjectType>(values, ['id'])) {
 		probbiApi.edit(values)
 	} else {
 		probbiApi.create(values)

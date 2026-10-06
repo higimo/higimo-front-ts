@@ -10,6 +10,7 @@ import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 import { TrafficLight } from 'components/pinarik/traffic-light'
 
+import { as } from 'utils/types/as'
 import { createDateOnly } from 'utils/date/create-date-only'
 import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
@@ -20,7 +21,9 @@ type FormValues = Omit<PinarikType, 'id'>
 
 const handlePinarikSubmit = async (values: FormValues): Promise<void> => {
 	const pinarik = await pinarikApi.create(values)
-	if (!pinarik) {
+	if (as<PinarikType>(pinarik, ['id'])) {
+		toast.success('Добавлено')
+	} else {
 		toast.error('Не получилось добавить пинарик')
 	}
 }
