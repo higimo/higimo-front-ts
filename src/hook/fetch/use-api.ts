@@ -60,6 +60,7 @@ const isDefaultSkipUrl = (url: ApiUrlType) => (url as string).slice(-2) === DEFA
 type ApiUrlType = ApiRouteType
 
 // TODO: [HIGH] написать аналог для использования репозиториями
+// TODO: [HIGH] обычно возвращает MyApiType | null, когда пробрасываю дочкам надо проверять на null или EmptyData меня защитит без skipEmpty
 export const useApi = <T, M = Object>(
 	url: ApiUrlType,
 	values: Record<string, string | number | null> = {}
