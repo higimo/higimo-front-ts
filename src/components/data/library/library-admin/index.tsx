@@ -10,20 +10,12 @@ import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
+import { as } from 'utils/types/as'
 import { getResetValues } from 'components/form/EMPTY_FORM'
 import { libApi } from 'repositories/lib-api.repository'
 import { toast } from 'toast'
 
 import './style.css'
-
-// TODO: [MIDDLE] <T>(v: unknown, fileds) is T foreach filed in v
-const isLibraryType = (values: unknown): values is LibraryType => {
-	if (typeof values !== 'object' || values === null) {
-		return false
-	}
-	const v = values as Partial<LibraryType>
-	return Boolean(v.id) && Boolean(v.author)
-}
 
 type FormValues = Partial<LibraryType>
 
@@ -39,7 +31,7 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = (initialDat
 	const handleSubmit = async (values: FormValues) => {
 		try {
 			let book = null
-			if (isLibraryType(values)) {
+			if (as<LibraryType>(values, ['name'])) {
 				book = await libApi.edit(values)
 			} else {
 				book = await libApi.create(values)
