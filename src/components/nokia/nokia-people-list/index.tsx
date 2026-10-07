@@ -7,13 +7,17 @@ const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | nul
 	person.tags.find(tag => tag.id === filter)
 
 type NokiaPeopleListPropsType = {
-	persons: NokiaPersonType[]
+	persons: NokiaPersonType[] | null
 	filter: NokiaTagType['id'] | null
 }
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = ({
 	persons,
 	filter,
 }) => {
+	if (!persons) {
+		return null
+	}
+
 	const filtredPerson = filter ? persons.filter(person => filterPersons(person, filter)) : persons
 
 	return (

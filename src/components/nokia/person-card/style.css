@@ -1,26 +1,36 @@
 .nokia-people-list {
-	--grid-count: 4;
 	--grid-gap: 8px;
 
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: var(--grid-gap);
-	margin-top: calc(var(--grid-gap) * 3);
+	max-width: 960px;
+	margin: 24px auto;
 }
 
 .person-mini-profile {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	gap: 6px;
-	width: calc((100% - ((var(--grid-count) - 1) * var(--grid-gap))) / var(--grid-count));
-	text-align: center;
 	background-color: #fff;
 	border-radius: 6px;
-	border: 1px solid #e1e1e1;
+	border: 1px solid #38c7fd30;
 	box-shadow: 0 10px 20px -5px #38c7fd30;
-	padding: 12px 4px;
-	position: relative;
+	padding: 16px;
+	display: grid;
+	grid-template-columns: 60px 1fr;
+	column-gap: 16px;
+	row-gap: 2px;
+	transition: all 150ms ease-in;
+}
+
+.nokia-people-list a.person-mini-profile:hover {
+	border-color: #2595bebd;
+	transform: scale(1.03);
+}
+
+.nokia-user-avatar {
+	grid-row: 1 / 5;
+	width: 60px;
+	height: 60px;
 }
 
 .person-mini-profile__edit {
@@ -31,11 +41,27 @@
 }
 
 .person-mini-profile__name {
-	font-size: 85%;
+	color: #003754;
+	grid-row: 1;
 }
 .person-mini-profile__alias {
 	font-size: 85%;
+	grid-row: 2;
 }
 .person-mini-profile__nick {
 	font-size: 85%;
+	grid-row: 3;
+}
+
+.person-mini-profile__tags {
+	grid-row: 5;
+	display: flex;
+	gap: 2px;
+	flex-wrap: wrap;
+	grid-row: 4;
+}
+
+.nokia-people-list .tag__item {
+	font-size: 10px;
+	margin: 0;
 }

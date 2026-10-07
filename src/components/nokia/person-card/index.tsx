@@ -21,15 +21,21 @@ export const PersonCard: FunctionComponent<PersonMiniProfilePropsType> = ({ pers
 		<div className="person-mini-profile__name">
 			{person.name}
 		</div>
-		<div className="person-mini-profile__alias">
-			{person.alias}
-		</div>
-		<div className="person-mini-profile__nick">
-			{person.nick}
-		</div>
-		<div className="person-mini-profile__tags">
-			{person.tags.map(tag => (<NokiaTag tag={tag} />))}
-		</div>
+		{person.alias && (
+			<div className="person-mini-profile__alias">
+				{person.alias}
+			</div>
+		)}
+		{person.nick && (
+			<div className="person-mini-profile__nick">
+				{person.nick}
+			</div>
+		)}
+		{person.tags && (
+			<div className="person-mini-profile__tags">
+				{person.tags.map(tag => (<NokiaTag tag={tag} />))}
+			</div>
+		)}
 		<div className="person-mini-profile__buttons">
 			<div className="person-mini-profile__edit">
 				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id })}>edit</a>
