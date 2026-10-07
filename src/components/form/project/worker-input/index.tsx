@@ -7,7 +7,7 @@ import { useState } from 'preact/hooks'
 
 import { ChooseWorkersForm } from 'components/form/project/choose-workers-form'
 import { CollapseSection } from 'components/ui/collapse-section'
-import { CreateWorker } from 'components/form/project/create-worker'
+import { WorkerForm } from 'components/form/project/worker-form'
 import { EmptyData } from 'components/ui/empty-data'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { WorkersTree } from 'components/form/project/workers-tree'
@@ -87,7 +87,6 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 		<div className="worker-input">
 			<LoadSuspense data={workers}>
 				<EmptyData data={workers}>
-
 					<CollapseSection fold={!true} header="Добавить участников анонса">
 						<WorkersTree
 							workers={workers.data}
@@ -98,7 +97,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 							onRemoveWorker={handleRemoveChoose}
 							onSubmit={handleSubmitAddWorker}
 						/>
-						<CreateWorker
+						<WorkerForm
 							onSubmit={handleSubmitCreateWorker}
 						/>
 					</CollapseSection>

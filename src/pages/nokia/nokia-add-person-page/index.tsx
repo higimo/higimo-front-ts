@@ -8,7 +8,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { EmptyData } from 'components/ui/empty-data'
-import { NokiaPersonFormContainer } from 'components/nokia/form/nokia-person-form-container'
+import { NokiaPersonForm } from 'components/nokia/form/nokia-person-form'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
@@ -29,7 +29,7 @@ export const NokiaAddPersonPage: FunctionComponent = () => {
 
 				<LoadSuspense data={singlePerson}>
 					<EmptyData data={singlePerson} skipEmpty>
-						<NokiaPersonFormContainer
+						<NokiaPersonForm
 							key={singlePerson.data?.id ?? DEFAULT_ID}
 							initialData={singlePerson.data}
 						/>

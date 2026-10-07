@@ -24,18 +24,21 @@ interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
 	initialPersons: NokiaPersonSimpleType[]
 	peoplesSuggest: MentionSuggest[]
-	topPersons: NokiaPersonType[]
-	persons: NokiaPersonType[]
+	topPersons: NokiaPersonType[] | null
+	persons: NokiaPersonType[] | null
 }
 
 // TODO: [MIDDLE] задавать бы ещё значение по умолчанию
-export const NokiaMeetingFormContainer: FunctionComponent<NokiaMeetingFormContainerProps> = ({
+export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps> = ({
 	initialMeeting,
 	initialPersons,
 	peoplesSuggest,
 	topPersons,
 	persons,
 }) => {
+	if (!topPersons || !persons) {
+		return null
+	}
 	const {
 		formMethods,
 		handleMeetingSubmit,

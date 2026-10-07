@@ -32,7 +32,7 @@ type CreateWorkerPropsType = {
 	onSubmit: (roles: PortfolioWorkerType) => Promise<boolean>
 }
 // TODO: [HARD] сейчас не сообщает, если какое-то поле забуду
-export const CreateWorker: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
+export const WorkerForm: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit }) => {
 	// Здесь пока не возомжно редактирование
 	const formMethods = useForm<FormValues>()
 

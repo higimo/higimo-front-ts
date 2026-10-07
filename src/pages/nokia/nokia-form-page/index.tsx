@@ -8,7 +8,7 @@ import { useRoute } from 'preact-iso'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { NokiaMeetingFormContainer } from 'components/nokia/form/nokia-meeting-form-container'
+import { NokiaMeetingForm } from 'components/nokia/form/nokia-meeting-form'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 
 import { getUserSuggestions } from 'utils/get-user-suggestions'
@@ -28,6 +28,9 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 	const [ topPersons ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
 
 	const peoplesSuggest = useMemo(() => {
+		if (!persons.data) {
+			return []
+		}
 		return getUserSuggestions(persons.data)
 	}, [persons.data])
 
@@ -43,7 +46,7 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 			<div className="nokia__content">
 				<LoadSuspense data={[singleMeeting, persons, topPersons]}>
 					<EmptyData data={[singleMeeting, persons, topPersons]} skipEmpty>
-						<NokiaMeetingFormContainer
+						<NokiaMeetingForm
 							initialMeeting={meeting}
 							initialPersons={meetingPersons}
 							peoplesSuggest={peoplesSuggest}

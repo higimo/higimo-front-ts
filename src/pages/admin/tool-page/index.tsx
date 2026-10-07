@@ -1,5 +1,5 @@
 // TODO: [BACKEND] а как этим пользоваться, лол?
-import { FormValues } from 'components/admin-tool/sidebar'
+import { FormValues } from 'components/admin-tool/sidebar-form'
 import { FunctionComponent } from 'preact'
 import { SendRequestOptions } from 'api-types/request.type'
 
@@ -7,7 +7,7 @@ import { useCallback, useState } from 'preact/hooks'
 
 import { AdminToolContent } from 'components/admin-tool/admin-tool-content'
 import { Layout } from 'components/ui/layout/Layout'
-import { Sidebar } from 'components/admin-tool/sidebar'
+import { SidebarForm } from 'components/admin-tool/sidebar-form'
 
 import { parseJson } from 'utils/parse-json'
 import { sendRequest } from 'utils/api/send-request'
@@ -33,7 +33,7 @@ export const ToolPage: FunctionComponent = () => {
 	return (
 		<Layout title="Tool" className="tool-page">
 			<div className="tool-page__sidebar">
-				<Sidebar
+				<SidebarForm
 					onSubmit={handleSubmit}
 				/>
 			</div>

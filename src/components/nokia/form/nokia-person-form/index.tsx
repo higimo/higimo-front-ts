@@ -32,7 +32,7 @@ interface NokiaPersonFormContainerProps {
 	initialData: NokiaPersonSimpleType | null
 }
 
-export const NokiaPersonFormContainer: FunctionComponent<NokiaPersonFormContainerProps> = ({
+export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerProps> = ({
 	initialData,
 }) => {
 	const formMethods = useForm<NokiaPersonSimpleType>({

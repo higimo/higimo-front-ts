@@ -8,11 +8,14 @@ import { Tag } from 'components/ui/tag'
 import './style.css'
 
 type WorkersTreeProps = {
-	workers: PortfolioWorkerType[]
+	workers: PortfolioWorkerType[] | null
 	onWorkerSelect: (worker: PortfolioWorkerType) => void
 }
 
 export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWorkerSelect }) => {
+	if (!workers) {
+		return null
+	}
 	const workerTree = useMemo(() => {
 		const workerCompanies = Array.from(new Set(workers.map(i => i.company)))
 

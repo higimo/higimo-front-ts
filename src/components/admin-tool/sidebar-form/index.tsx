@@ -41,7 +41,7 @@ const formScheme: FormScheme<FormValues> = {
 }
 
 
-export const Sidebar: FunctionComponent<SidebarPropsType> = ({ onSubmit }) => {
+export const SidebarForm: FunctionComponent<SidebarPropsType> = ({ onSubmit }) => {
 	// здесь будут значения по умолчанию всегда
 	const formMethods = useForm<FormValues>({
 		defaultValues: DEFAULT_STATE

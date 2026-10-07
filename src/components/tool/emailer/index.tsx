@@ -14,7 +14,7 @@ type FormValues = {
 	url: string
 }
 
-export const Emailer: FunctionComponent = () => {
+export const EmailerForm: FunctionComponent = () => {
 	const formMethods = useForm<FormValues>()
 
 	const handleSubmit = () => {}
