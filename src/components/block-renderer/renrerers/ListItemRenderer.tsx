@@ -5,7 +5,7 @@ import { ListRenderer } from 'components/block-renderer/renrerers/ListRenderer'
 
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 
-import { variablesRenderBlockSignal } from 'context/render-block-variables-store'
+import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
 
 type ListItemRendererPropsType = {
 	item: ListItemBlock

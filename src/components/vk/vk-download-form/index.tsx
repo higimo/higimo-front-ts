@@ -13,7 +13,7 @@ import { VkButton } from 'components/vk/vk-button'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 
 import { debounce } from '@github/mini-throttle'
-import { vkSession } from 'context/vk'
+import { vkSession } from 'context/vk-signal'
 
 type VkDownloadFormContainerPropsType = {
 	onSubmit: (values: VkDownloadFormValuesType) => void

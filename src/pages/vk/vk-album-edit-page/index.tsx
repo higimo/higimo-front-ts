@@ -13,7 +13,7 @@ import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumEdit } from 'components/vk/vk-photo-album-edit'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
-import { vkSession } from 'context/vk'
+import { vkSession } from 'context/vk-signal'
 
 import { as } from 'utils/types/as'
 import { toast } from 'toast'

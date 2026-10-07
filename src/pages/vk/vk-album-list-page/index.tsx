@@ -11,7 +11,7 @@ import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
-import { vkSession } from 'context/vk'
+import { vkSession } from 'context/vk-signal'
 
 import { toast } from 'toast'
 import { VkApi } from 'repositories/vk-api.repository'

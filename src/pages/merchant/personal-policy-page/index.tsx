@@ -11,7 +11,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { MerchantPolicyNavigation } from 'components/merchant/merchant-policy-navigation'
 import { TextContainer } from 'components/ui/text-container'
 
-import { setRenderBlockVariables } from 'context/render-block-variables-store'
+import { setRenderBlockVariables } from 'context/render-block-variables-signal'
 
 import { ADRESS, BEGET_ADRESS, NAME, PHONE } from 'data/merchant/merchant-contacts'
 

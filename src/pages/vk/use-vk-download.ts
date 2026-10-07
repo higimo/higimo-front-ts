@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from 'preact/hooks'
 
 import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'config/VK-CONST'
 
-import { vkSession } from 'context/vk'
+import { vkSession } from 'context/vk-signal'
 
 import { toast } from 'toast'
 import { VkApi } from 'repositories/vk-api.repository'

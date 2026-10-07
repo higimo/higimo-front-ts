@@ -1,24 +1,13 @@
 import { MerchantProductType } from 'api-types/merchant.types'
-import { ValueOf } from 'utils.type'
 
 import { useEffect } from 'preact/hooks'
 
 import { sendRequest } from 'utils/api/send-request'
-import { signal } from '@preact/signals'
+
+import { merchantProductSignal } from 'context/merchant-signal'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { API_STATUS } from 'dic/API_STATUS'
-
-interface MerchantProductState {
-	status: ValueOf<typeof API_STATUS>
-	products: MerchantProductType[]
-}
-
-// TODO: [MIDDLE] отделить сигнал отдельно
-const merchantProductSignal = signal<MerchantProductState>({
-	status: API_STATUS.INIT,
-	products: [],
-})
 
 // Флаг для предотвращения множественных запросов
 let requestInProgress = false

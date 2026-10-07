@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from 'preact/compat'
 import { VkAuthResultType } from 'api-types/vk.types'
 
-import { setVkError, setVkLoaded, setVkLoading, vkSession } from 'context/vk'
+import { setVkError, setVkLoaded, setVkLoading, vkSession } from 'context/vk-signal'
 
 import { loadOpenApi } from 'utils/load-openapi'
 import { startVkSdk } from 'utils/vk-sdk'

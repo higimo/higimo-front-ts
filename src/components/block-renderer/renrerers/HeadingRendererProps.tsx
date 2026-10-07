@@ -2,7 +2,7 @@ import { FunctionComponent, h } from 'preact'
 
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 
-import { variablesRenderBlockSignal } from 'context/render-block-variables-store'
+import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
 
 type HeadingRendererPropsType = {
 	level: 1 | 2 | 3 | 4 | 5 | 6
