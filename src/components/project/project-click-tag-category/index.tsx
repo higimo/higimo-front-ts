@@ -10,28 +10,28 @@ import { IGRORED_TAG_GROUPS } from 'data/project-ignored-tag-groups'
 import './style.css'
 
 type ProjectClickTagCategoryPropsType = {
-	groupedTags: PortfolioGroupedTagType[]
+	groupedTags: PortfolioGroupedTagType[] | null
 }
 
-export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryPropsType> = ({ groupedTags }) => {
-	return (
-		<TextContainer className="project-tag">
-			{groupedTags.map(({ group, tags }) => {
-				if (IGRORED_TAG_GROUPS.includes(group.title)) {
-					return null
-				}
+export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryPropsType> = ({
+	groupedTags
+}) => groupedTags && (
+	<TextContainer className="project-tag">
+		{groupedTags.map(({ group, tags }) => {
+			if (IGRORED_TAG_GROUPS.includes(group.title)) {
+				return null
+			}
 
-				return (
-					<div className="project-tag__category-group">
-						<div className="project-tag__list">
-							<div className="project-tag__category-name">{group.title}</div>
-							{tags.map(tag => (
-								<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>{tag.title}</ProjectTag>
-							))}
-						</div>
+			return (
+				<div className="project-tag__category-group">
+					<div className="project-tag__list">
+						<div className="project-tag__category-name">{group.title}</div>
+						{tags.map(tag => (
+							<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>{tag.title}</ProjectTag>
+						))}
 					</div>
-				)
-			})}
-		</TextContainer>
-	)
-}
+				</div>
+			)
+		})}
+	</TextContainer>
+)

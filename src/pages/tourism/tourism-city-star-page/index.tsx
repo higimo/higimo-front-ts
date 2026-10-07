@@ -16,7 +16,7 @@ import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import '../tourism-style.css'
 
 export const TourismCityStarPage: FunctionComponent = () => {
-	const [ cityList ] = useJsonApi<CityStarsType[]>('/json/city.json')
+	const [ cityListJsonData ] = useJsonApi<CityStarsType[]>('/json/city.json')
 
 	return (
 		<Layout title="Оценки городов" className="tourism-identy-page">
@@ -32,9 +32,9 @@ export const TourismCityStarPage: FunctionComponent = () => {
 
 			<TourismCityStarForm />
 
-			<LoadSuspense data={cityList}>
-				<EmptyData data={cityList}>
-					<CityStars cityList={cityList.data} />
+			<LoadSuspense data={cityListJsonData}>
+				<EmptyData data={cityListJsonData}>
+					<CityStars cityList={cityListJsonData.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

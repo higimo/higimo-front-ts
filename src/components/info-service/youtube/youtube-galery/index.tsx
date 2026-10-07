@@ -4,12 +4,14 @@ import { YoutubeType } from 'api-types/youtube.types'
 import { YouTubeElement } from 'components/info-service/youtube/youtube-element'
 
 type YoutubeGaleryPropsType = {
-	list: YoutubeType[]
+	youtubeList: YoutubeType[] | null
 }
-export const YoutubeGalery: FunctionComponent<YoutubeGaleryPropsType> = ({ list }) => {
-	return (
-		<div className="gallery-youtube container">
-			{list.map(item => (<YouTubeElement {...item} />))}
-		</div>
-	)
-}
+
+// TODO: [MIDDLE] мб, такие компоненты в родителе писать этот несчастный div?
+export const YoutubeGalery: FunctionComponent<YoutubeGaleryPropsType> = ({
+	youtubeList
+}) => youtubeList && (
+	<div className="gallery-youtube container">
+		{youtubeList.map(item => (<YouTubeElement {...item} />))}
+	</div>
+)

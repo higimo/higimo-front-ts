@@ -30,7 +30,7 @@ type WorkerInputPropsType = {
 }
 
 export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId }) => {
-	const [ workers, fetchWorkers ] = useApi<PortfolioWorkerType[]>(API_ROUTE.projectWorker)
+	const [ workerList, fetchWorkerList ] = useApi<PortfolioWorkerType[]>(API_ROUTE.projectWorker)
 	const [ chooseWorker, setChooseWorker ] = useState<PortfolioWorkerType[]>([])
 
 	const handleClickChoose = (worker: PortfolioWorkerType) => setChooseWorker(prev => prev.concat([worker]))
@@ -71,7 +71,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 			})
 			// TODO: [HARD] вероятно, сменить на isObject или type guard на PortfolioWorkerType
 			if (isDefined(result)) {
-				fetchWorkers()
+				fetchWorkerList()
 				return true
 			}
 			toast.error('Неверный формат ответа сервера')
@@ -85,11 +85,11 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 
 	return (
 		<div className="worker-input">
-			<LoadSuspense data={workers}>
-				<EmptyData data={workers}>
+			<LoadSuspense data={workerList}>
+				<EmptyData data={workerList}>
 					<CollapseSection fold={!true} header="Добавить участников анонса">
 						<WorkersTree
-							workers={workers.data}
+							workers={workerList.data}
 							onWorkerSelect={handleClickChoose}
 						/>
 						<ChooseWorkersForm

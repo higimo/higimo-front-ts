@@ -14,13 +14,13 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 export const ObuchenieSinglePage: FunctionComponent = () => {
 	const { params: { idcode } } = useRoute()
 
-	const [ lectionDetail ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode: idcode || '' }))
+	const [ lectionItem ] = useApi<LectionType>(API_ROUTE.lectionSingle({ idcode: idcode || '' }))
 
 	return (
-		<Layout title={lectionDetail.data.name || 'Обучение'} className="obuchenie-page">
-			<LoadSuspense data={lectionDetail}>
-				<EmptyData data={lectionDetail}>
-					<ObuchenieSingle lection={lectionDetail.data} />
+		<Layout title={lectionItem.data?.name || 'Обучение'} className="obuchenie-page">
+			<LoadSuspense data={lectionItem}>
+				<EmptyData data={lectionItem}>
+					<ObuchenieSingle lectionItem={lectionItem.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

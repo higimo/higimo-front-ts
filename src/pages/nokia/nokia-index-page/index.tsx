@@ -17,29 +17,29 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 import '../nokia-style.css'
 
 export const NokiaIndexPage: FunctionComponent = () => {
-	const [ richMeetings ] = useApi<NokiaRichMeetingType[]>(API_ROUTE.nokiaRichMeeting)
+	const [ richMeetingList ] = useApi<NokiaRichMeetingType[]>(API_ROUTE.nokiaRichMeeting)
 
 	// TODO: [BACKEND] заменить на фильтрацию по тегам в бекенде
 	const meetingTags = useMemo(() => {
-		if (richMeetings.status !== 'LOADED') {
+		if (richMeetingList.status !== 'LOADED' || !richMeetingList.data) {
 			return []
 		}
 
-		return Array.from(new Set(richMeetings.data.map(i => i.type)))
-	}, [richMeetings])
+		return Array.from(new Set(richMeetingList.data.map(i => i.type)))
+	}, [richMeetingList])
 
 	const [ selectedTags, handleTagClick ] = useTags(meetingTags)
 
 	const filtredMeetings = useMemo(() => {
-		if (richMeetings.status !== 'LOADED') {
+		if (richMeetingList.status !== 'LOADED' || !richMeetingList.data) {
 			return []
 		}
 		if (!selectedTags.length) {
-			return richMeetings.data
+			return richMeetingList.data
 		}
 
-		return richMeetings.data.filter(meeting => selectedTags.includes(meeting.type))
-	}, [richMeetings.data, selectedTags])
+		return richMeetingList.data.filter(meeting => selectedTags.includes(meeting.type))
+	}, [richMeetingList.data, selectedTags])
 
 	return (
 		<Layout title="Нокиа сервис" className="nokia">
@@ -48,8 +48,8 @@ export const NokiaIndexPage: FunctionComponent = () => {
 			<div className="nokia__content">
 				<h1>Встречи</h1>
 
-				<LoadSuspense data={richMeetings}>
-					<EmptyData data={richMeetings}>
+				<LoadSuspense data={richMeetingList}>
+					<EmptyData data={richMeetingList}>
 						<MeetingTags
 							tags={meetingTags}
 							selectedTags={selectedTags}

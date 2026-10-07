@@ -14,7 +14,7 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 import '../nokia-style.css'
 
 export const NokiaStatisticPage: FunctionComponent = () => {
-	const [meetingStatistic] = useApi<NokiaMeetingStatisticType[]>(API_ROUTE.nokiaStatistic)
+	const [ meetingStatisticList ] = useApi<NokiaMeetingStatisticType[]>(API_ROUTE.nokiaStatistic)
 
 	return (
 		<Layout title="Нокиа сервис" className="nokia">
@@ -24,9 +24,9 @@ export const NokiaStatisticPage: FunctionComponent = () => {
 				<h1>Статистика</h1>
 			</div>
 
-			<LoadSuspense data={meetingStatistic}>
-				<EmptyData data={meetingStatistic}>
-					<NokiaStatistic meetingStatistic={meetingStatistic.data} />
+			<LoadSuspense data={meetingStatisticList}>
+				<EmptyData data={meetingStatisticList}>
+					<NokiaStatistic meetingStatistic={meetingStatisticList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

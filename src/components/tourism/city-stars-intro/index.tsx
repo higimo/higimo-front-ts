@@ -4,12 +4,16 @@ import { FunctionComponent } from 'preact'
 import { CityStarElement } from 'components/tourism/city-star-element'
 
 type CityStarsIntroPropsType = {
-	cityList: CityStarsType[]
+	cityList: CityStarsType[] | null
 }
 
 export const CityStarsIntro: FunctionComponent<CityStarsIntroPropsType> = ({
 	cityList,
 }) => {
+	if (!cityList) {
+		return null
+	}
+
 	const filtredCityList = cityList.filter(city => city.star.length === 5)
 
 	return (

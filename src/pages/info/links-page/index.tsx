@@ -12,7 +12,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const LinksPage: FunctionComponent = () => {
-	const [ links ] = useApi<LinksType[]>(API_ROUTE.link)
+	const [ linkList ] = useApi<LinksType[]>(API_ROUTE.link)
 
 	return (
 		<Layout title="Избранные ссылки" className="links-page">
@@ -23,9 +23,9 @@ export const LinksPage: FunctionComponent = () => {
 				</p>
 			</TextContainer>
 
-			<LoadSuspense data={links}>
-				<EmptyData data={links}>
-					<LinksList links={links.data} />
+			<LoadSuspense data={linkList}>
+				<EmptyData data={linkList}>
+					<LinksList linkList={linkList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

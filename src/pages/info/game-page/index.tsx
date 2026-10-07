@@ -12,7 +12,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const GamePage: FunctionComponent = () => {
-	const [ games ] = useApi<TableGameType[]>(API_ROUTE.tableGame)
+	const [ gameList ] = useApi<TableGameType[]>(API_ROUTE.tableGame)
 
 	return (
 		<Layout title="Настольные игры">
@@ -20,9 +20,9 @@ export const GamePage: FunctionComponent = () => {
 				<h1>У меня есть такие настольные игры</h1>
 			</TextContainer>
 
-			<LoadSuspense data={games}>
-				<EmptyData data={games}>
-					<TableGame games={games.data} />
+			<LoadSuspense data={gameList}>
+				<EmptyData data={gameList}>
+					<TableGame gameList={gameList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

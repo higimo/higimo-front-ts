@@ -8,7 +8,7 @@ import { updateChart } from 'components/hiring-response/hiring-response-diagram/
 import './style.css'
 
 type HiringResponseDiagramPropsType = {
-	data: PasteStatisticApiType[]
+	data: PasteStatisticApiType[] | null
 	width?: number
 	height?: number
 	padding?: {
@@ -24,6 +24,9 @@ export const HiringResponseDiagram: FunctionComponent<HiringResponseDiagramProps
 	width = 920,
 	height = 270,
 }) => {
+	if (!data) {
+		return null
+	}
 	const svgRef = useRef(null)
 
 	useEffect(() => {

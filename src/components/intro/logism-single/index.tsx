@@ -9,19 +9,19 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import './style.css'
 
 type LogismSinglePropsType = {
-	logism: LogismType
+	logismItem: LogismType | null
 	reload: () => void
 }
 
 export const LogismSingle: FunctionComponent<LogismSinglePropsType> = ({
-	logism,
+	logismItem,
 	reload,
-}) => (
+}) => logismItem && (
 	<PrecentationContainer className="single-logism">
 		<TextContainer>
 			<div
 				className="single-logism__text"
-				dangerouslySetInnerHTML={{__html: logism.text}}
+				dangerouslySetInnerHTML={{__html: logismItem.text}}
 			/>
 		</TextContainer>
 		<TextContainer className="single-logism__navigation">

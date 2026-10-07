@@ -6,11 +6,11 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 import './style.css'
 
 type ObuchenieListPropsType = {
-	lections: LectionType[]
+	lectionList: LectionType[] | null
 }
-export const ObuchenieList: FunctionComponent<ObuchenieListPropsType> = ({ lections }) => (
+export const ObuchenieList: FunctionComponent<ObuchenieListPropsType> = ({ lectionList }) => lectionList && (
 	<div className="obuchenie-list">
-		{lections.map(({ id, name, code }) => (
+		{lectionList.map(({ id, name, code }) => (
 			<a
 				key={id}
 				href={ROUTE_LINKS.learningDetail({ idcode: code })}

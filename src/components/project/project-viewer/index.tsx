@@ -13,28 +13,30 @@ import { getProjectText } from 'utils/project/get-project-text'
 import './style.css'
 
 type ProjectViewerPropsType = {
-	project: PortfolioProjectDetailType
+	projectItem: PortfolioProjectDetailType | null
 }
-export const ProjectViewer: FunctionComponent<ProjectViewerPropsType> = ({ project }) => (
+export const ProjectViewer: FunctionComponent<ProjectViewerPropsType> = ({
+	projectItem
+}) => projectItem && (
 	<div className="project-viewer">
 		<TextContainer className="project-viewer__date">
-			{getHumanDate(project.date)}
+			{getHumanDate(projectItem.date)}
 		</TextContainer>
 		<TextContainer>
-			<h1>{project.name}</h1>
+			<h1>{projectItem.name}</h1>
 		</TextContainer>
 		<div
 			className="content"
 			dangerouslySetInnerHTML={{
-				__html: getProjectText(project.text)
+				__html: getProjectText(projectItem.text)
 			}}
 		/>
 		<OnlyAdmin>
 			<div>
-				<WorkerInput projectId={project.id} />
+				<WorkerInput projectId={projectItem.id} />
 			</div>
 		</OnlyAdmin>
-		<PortfolioCreditsGallery credits={project.credits} />
-		<PortfolioViewerTags tags={project.tags || []} />
+		<PortfolioCreditsGallery credits={projectItem.credits} />
+		<PortfolioViewerTags tags={projectItem.tags || []} />
 	</div>
 )

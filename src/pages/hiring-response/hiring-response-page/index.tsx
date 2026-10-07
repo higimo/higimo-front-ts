@@ -20,12 +20,12 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 import './style.css'
 
 export const HiringResponsePage: FunctionComponent = () => {
-	const [ pasteData, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
+	const [ pasteList, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
 		filter: { key: 'send-resume*' }
 	})
-	const [ statistic ] = useApi<PasteStatisticApiType[]>(API_ROUTE.pasteStatistic, { key: 'send-resume' })
+	const [ statisticList ] = useApi<PasteStatisticApiType[]>(API_ROUTE.pasteStatistic, { key: 'send-resume' })
 
-	const [ pasteTodo ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
+	const [ pasteTodoList ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
 		filter: {
 			key: 'hiring-todo'
 		}
@@ -44,9 +44,9 @@ export const HiringResponsePage: FunctionComponent = () => {
 			<TextContainer>
 				<h2>Задачи</h2>
 				<p>Можно редактировать</p>
-				<LoadSuspense data={pasteTodo}>
-					<EmptyData data={pasteTodo}>
-						<HiringResponseTodoController todo={pasteTodo.data} />
+				<LoadSuspense data={pasteTodoList}>
+					<EmptyData data={pasteTodoList}>
+						<HiringResponseTodoController todo={pasteTodoList.data} />
 					</EmptyData>
 				</LoadSuspense>
 				<HiringResponseLinks />
@@ -54,16 +54,16 @@ export const HiringResponsePage: FunctionComponent = () => {
 
 			<TextContainer>
 				<h3>Откликов</h3>
-				<LoadSuspense data={pasteData}>
-					<EmptyData data={pasteData}>
-						<HiringResponseCounter data={pasteData.data} />
+				<LoadSuspense data={pasteList}>
+					<EmptyData data={pasteList}>
+						<HiringResponseCounter data={pasteList.data} />
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
 
 			<TextContainer>
-				<LoadSuspense data={pasteData}>
-					<EmptyData data={pasteData}>
+				<LoadSuspense data={pasteList}>
+					<EmptyData data={pasteList}>
 						<HiringTemplateAnswer />
 					</EmptyData>
 				</LoadSuspense>
@@ -71,9 +71,9 @@ export const HiringResponsePage: FunctionComponent = () => {
 
 			<TextContainer>
 				<h2>График откликов</h2>
-				<LoadSuspense data={pasteData}>
-					<EmptyData data={pasteData}>
-						<HiringResponseDiagram data={statistic.data} />
+				<LoadSuspense data={pasteList}>
+					<EmptyData data={pasteList}>
+						<HiringResponseDiagram data={statisticList.data} />
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
@@ -88,10 +88,10 @@ export const HiringResponsePage: FunctionComponent = () => {
 				</span>
 			</TextContainer>
 
-			<LoadSuspense data={pasteData}>
-				<EmptyData data={pasteData}>
+			<LoadSuspense data={pasteList}>
+				<EmptyData data={pasteList}>
 					<HiringResponseCardsGallery
-						cards={pasteData.data}
+						cards={pasteList.data}
 						fetchUpdate={fetchUpdate}
 					/>
 				</EmptyData>

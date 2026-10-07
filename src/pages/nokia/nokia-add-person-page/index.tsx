@@ -18,7 +18,7 @@ import '../nokia-style.css'
 export const NokiaAddPersonPage: FunctionComponent = () => {
 	const { params: { personId = DEFAULT_ID } } = useRoute()
 
-	const [ singlePerson ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
+	const [ personItem ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
 	return (
 		<Layout title="Редактирование и создание персоны // Нокиа" className="nokia">
@@ -27,11 +27,11 @@ export const NokiaAddPersonPage: FunctionComponent = () => {
 			<div className="nokia__content">
 				<h1>Редактирование и создание персоны</h1>
 
-				<LoadSuspense data={singlePerson}>
-					<EmptyData data={singlePerson} skipEmpty>
+				<LoadSuspense data={personItem}>
+					<EmptyData data={personItem} skipEmpty>
 						<NokiaPersonForm
-							key={singlePerson.data?.id ?? DEFAULT_ID}
-							initialData={singlePerson.data}
+							key={personItem.data?.id ?? DEFAULT_ID}
+							initialData={personItem.data}
 						/>
 					</EmptyData>
 				</LoadSuspense>

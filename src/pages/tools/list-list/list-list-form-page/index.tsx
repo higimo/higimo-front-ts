@@ -17,19 +17,19 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 export const ListListFormPage: FunctionComponent = () => {
 	const { params: { idcode = DEFAULT_ID } } = useRoute()
 
-	const [ nestedListSingle ] = useApi<NestedListItemFullType[]>(API_ROUTE.listerItemSingle({ id: idcode }))
+	const [ nestedListItem ] = useApi<NestedListItemFullType[]>(API_ROUTE.listerItemSingle({ id: idcode }))
 
 	// TODO: [BACKEND] пока что присылает по умолчанию главную — это надо исправить на пустоту
 	const values = (
-		idcode === DEFAULT_ID && nestedListSingle.data
-		? nestedListSingle.data[0] ?? null
+		idcode === DEFAULT_ID && nestedListItem.data
+		? nestedListItem.data[0] ?? null
 		: null
 	)
 
 	return (
 		<Layout title="Список списков" className="list-list">
-			<LoadSuspense data={nestedListSingle}>
-				<EmptyData data={nestedListSingle}>
+			<LoadSuspense data={nestedListItem}>
+				<EmptyData data={nestedListItem}>
 					<TextContainer>
 						{!!values?.parent ? (
 							<a href={ROUTE_LINKS.listListDetail({ idcode: values?.parent?.id })}>

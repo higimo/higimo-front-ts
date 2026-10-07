@@ -19,24 +19,26 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import './style.css'
 
-type HiringResponseCardsGalleryPropsType = {
-	cards: PasteApiType[]
-	fetchUpdate: () => void
-}
-
 const INIT_CARD: PasteApiType = {
+	// TODO: [MIDDLE] наверно так надо
 	id: as<PasteApiType['id']>(DEFAULT_ID),
 	content: '',
 	date: todayStr(),
 	key: 'send-resume'
 }
 
-
+type HiringResponseCardsGalleryPropsType = {
+	cards: PasteApiType[] | null
+	fetchUpdate: () => void
+}
 
 export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGalleryPropsType> = ({
 	cards,
 	fetchUpdate,
 }) => {
+	if (!cards) {
+		return null
+	}
 	const [selectedCard, setSelectedCard] = useState<PasteApiType>(INIT_CARD)
 
 	const handleSelect = useCallback((id: number) => () => {

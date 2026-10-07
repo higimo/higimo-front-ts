@@ -15,21 +15,23 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export const LibFromPage: FunctionComponent = () => {
 	// TODO: [BACKEND] на бэке пока не реализовано
+	// TODO: проверить где useRoute, что там всегда DEFAULT_ID
 	const { params: { id = DEFAULT_ID } } = useRoute()
-	// TODO: [MIDDLE] пора поменять эти Single в роутах, словарях и переменных
-	const[ librarySingle ] = useApi<LibraryType>(API_ROUTE.libSingle({ id }))
+	// TODO: [HARD] из-за возвращаемого null очень много кода добавилось, бесполезного, это проверяется EmptyData
+	const[ libraryItem ] = useApi<LibraryType>(API_ROUTE.libSingle({ id }))
 
 	return (
 		<Layout title="Библиотека" className="lib-page">
 			<LibraryHeader />
-			<LoadSuspense data={librarySingle}>
-				<EmptyData data={librarySingle} skipEmpty>
+			<LoadSuspense data={libraryItem}>
+				<EmptyData data={libraryItem} skipEmpty>
 					<LibraryForm
-						key={librarySingle.data?.id ?? DEFAULT_ID}
-						initialData={librarySingle.data}
+						key={libraryItem.data?.id ?? DEFAULT_ID}
+						initialData={libraryItem.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>
 	)
 }
+

@@ -22,22 +22,25 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 // советы помечаются идеями, которые в них излагаются. Таким образом, каждый совет
 // получит ссылки на похожие на него советы.
 export const ProjectTablePage: FunctionComponent = () => {
-	const [projects] = useApi<PortfolioProjectTableType[]>(API_ROUTE.projectProjectTable)
-	const [tagList] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
+	const [ projectList ] = useApi<PortfolioProjectTableType[]>(API_ROUTE.projectProjectTable)
+	const [ tagList ] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
 
 	const {
 		selectedTagTitles,
 		isSelected,
 		toggleTag,
 	} = useSmartTags({
-		categories: tagList.data,
+		categories: tagList.data || [],
 	})
 
 	const tableProjects: PortfolioProjectTableFullType[] = useMemo(() => {
-		if (projects.status !== 'LOADED') {
+		if (projectList.status !== 'LOADED') {
 			return []
 		}
-		return projects.data
+		if (!projectList.data) {
+			return []
+		}
+		return projectList.data
 			.filter(project => {
 				for (const selectedTag of Array.from(selectedTagTitles)) {
 					for (const itemTag of project.tags) {
@@ -50,7 +53,7 @@ export const ProjectTablePage: FunctionComponent = () => {
 			})
 			.map(calculateProjectTableList)
 			.sort(sortableProjectByVendor)
-	}, [projects, selectedTagTitles])
+	}, [projectList, selectedTagTitles])
 
 	return (
 		<Layout title="Сделал" className="project-index-page">
@@ -58,8 +61,8 @@ export const ProjectTablePage: FunctionComponent = () => {
 				<h1>Таблица сделанного</h1>
 			</TextContainer>
 
-			<LoadSuspense data={[projects, tagList]}>
-				<EmptyData data={[projects, tagList]}>
+			<LoadSuspense data={[projectList, tagList]}>
+				<EmptyData data={[projectList, tagList]}>
 					<ProjectTagCategory
 						groupedTags={tagList.data}
 						isSelected={isSelected}

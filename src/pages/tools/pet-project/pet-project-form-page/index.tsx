@@ -18,7 +18,7 @@ import '../pet-project.css'
 export const PetProjectFormPage: FunctionComponent = () => {
 	const { params: { projectId = DEFAULT_ID } } = useRoute()
 
-	const[ probbiSingle ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
+	const[ probbiItem ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
 
 	return (
 		<Layout title="Пэт-проекта" className="pet-project">
@@ -26,11 +26,11 @@ export const PetProjectFormPage: FunctionComponent = () => {
 				<h1>Редактирование и создание пэт-проекта</h1>
 			</TextContainer>
 
-			<LoadSuspense data={probbiSingle}>
-				<EmptyData data={probbiSingle} skipEmpty>
+			<LoadSuspense data={probbiItem}>
+				<EmptyData data={probbiItem} skipEmpty>
 					<PetProjectForm
-						key={probbiSingle.data?.id ?? DEFAULT_ID}
-						initialData={probbiSingle.data}
+						key={probbiItem.data?.id ?? DEFAULT_ID}
+						initialData={probbiItem.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>

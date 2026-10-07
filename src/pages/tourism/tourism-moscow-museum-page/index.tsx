@@ -16,7 +16,7 @@ import { TourismSecondary } from 'components/tourism/tourism-paragraph'
 import '../tourism-style.css'
 
 export const TourismMoscowMuseumPage: FunctionComponent = () => {
-	const [ moscowMuseums ] = useJsonApi<MoscowMuseumType[]>('/json/tourism/moscow-museum.json')
+	const [ moscowMuseumListJsonItem ] = useJsonApi<MoscowMuseumType[]>('/json/tourism/moscow-museum.json')
 
 	return (
 		<Layout title="Список музеев Москвы" className="tourism-identy-page">
@@ -34,9 +34,9 @@ export const TourismMoscowMuseumPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<LoadSuspense data={moscowMuseums}>
-					<EmptyData data={moscowMuseums}>
-						<MuseumGallery museums={moscowMuseums.data} />
+				<LoadSuspense data={moscowMuseumListJsonItem}>
+					<EmptyData data={moscowMuseumListJsonItem}>
+						<MuseumGallery moscowMuseumList={moscowMuseumListJsonItem.data} />
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>

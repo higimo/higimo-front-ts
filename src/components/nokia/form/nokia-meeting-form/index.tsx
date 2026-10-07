@@ -23,20 +23,20 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
 	initialPersons: NokiaPersonSimpleType[]
-	peoplesSuggest: MentionSuggest[]
-	topPersons: NokiaPersonType[] | null
-	persons: NokiaPersonType[] | null
+	personSuggestList: MentionSuggest[]
+	topPersonList: NokiaPersonType[] | null
+	personList: NokiaPersonType[] | null
 }
 
 // TODO: [MIDDLE] задавать бы ещё значение по умолчанию
 export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps> = ({
 	initialMeeting,
 	initialPersons,
-	peoplesSuggest,
-	topPersons,
-	persons,
+	personSuggestList,
+	topPersonList,
+	personList,
 }) => {
-	if (!topPersons || !persons) {
+	if (!topPersonList || !personList) {
 		return null
 	}
 	const {
@@ -46,7 +46,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 		handleRemovePerson,
 		handleTextAssign,
 		handleRemoveMeeting,
-	} = useMeetingForm({ persons })
+	} = useMeetingForm({ persons: personList })
 
 	useEffect(() => {
 		if (!initialMeeting && !initialPersons) {
@@ -115,7 +115,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 					/>
 					<label>Как прошло?</label>
 					<MentionsInput
-						suggestList={peoplesSuggest}
+						suggestList={personSuggestList}
 						onMention={handleTextAssign}
 					/>
 					<small>Упоминать персон через @</small>
@@ -140,7 +140,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 						<br />
 						<small>Можно кликать</small>
 						<div className="person-selector">
-							{topPersons.map(person => {
+							{topPersonList.map(person => {
 								if (selectedPersonIds.includes(person.id)) {
 									return null
 								}
@@ -156,7 +156,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 					<div className="single-row">
 						<CollapseSection fold={true} header="Все подряд">
 							<div className="person-selector">
-								{persons.map(person => {
+								{personList.map(person => {
 									if (selectedPersonIds.includes(person.id)) {
 										return null
 									}

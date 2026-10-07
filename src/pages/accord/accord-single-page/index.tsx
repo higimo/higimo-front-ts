@@ -12,6 +12,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
@@ -20,19 +21,19 @@ const ALSO_ELEMENTS = 6
 
 // TODO: [FEATURE] добавить страницу добавления и редактирования аккордов
 export const AccordSinglePage: FunctionComponent = () => {
-	const { params: { idcode = '' } } = useRoute()
+	const { params: { idcode = DEFAULT_ID } } = useRoute()
 
-	const [accords] = useApi<AccordType[]>(API_ROUTE.accord)
-	const [songSingle] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode: idcode }))
+	const [accordList] = useApi<AccordType[]>(API_ROUTE.accord)
+	const [accordItem] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode: idcode }))
 
 	// TODO: [BACKEND] пусть бекенд присылает эти данные
-	const seeAlsoList = useRandomElements(accords.data, ALSO_ELEMENTS)
+	const seeAlsoList = useRandomElements(accordList.data || [], ALSO_ELEMENTS)
 
 	return (
-		<Layout title={songSingle.data?.name || 'Песня'} className="container accord-single-page">
-			<LoadSuspense data={songSingle}>
-				<EmptyData data={songSingle}>
-					<AccordContent song={songSingle.data} />
+		<Layout title={accordItem.data?.name || 'Песня'} className="container accord-single-page">
+			<LoadSuspense data={accordItem}>
+				<EmptyData data={accordItem}>
+					<AccordContent song={accordItem.data} />
 				</EmptyData>
 			</LoadSuspense>
 

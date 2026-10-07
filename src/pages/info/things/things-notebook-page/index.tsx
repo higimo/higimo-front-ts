@@ -9,15 +9,15 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { ThingsNotebook } from 'components/data/things/things-notebook'
 
 export const ThingsNotebookPage: FunctionComponent = () => {
-	const [ data ] = useJsonApi<ThingsApiType[]>('/json/things/things-notebook.json')
+	const [ thingJsonData ] = useJsonApi<ThingsApiType[]>('/json/things/things-notebook.json')
 
 	return (
 		<Layout title="Ноутбук">
-			<LoadSuspense data={data}>
-				<EmptyData data={data}>
+			<LoadSuspense data={thingJsonData}>
+				<EmptyData data={thingJsonData}>
+					<ThingsNotebook thingJsonData={thingJsonData.data} />
 				</EmptyData>
 			</LoadSuspense>
-			<ThingsNotebook data={data.data} />
 		</Layout>
 	)
 }

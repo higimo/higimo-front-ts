@@ -27,7 +27,7 @@ type FatherJsonType = {
 }
 
 export const TourismFatherTrackPage: FunctionComponent = () => {
-	const [ jsonData ] = useMultiJsonApi<FatherJsonType>({
+	const [ jsonCollection ] = useMultiJsonApi<FatherJsonType>({
 		roadmap:             '/json/tourism/father-trip-roadmap.json',
 		cities:              '/json/tourism/father-trip-cities.json',
 		rostovNaDonuPlace:   '/json/tourism/father-trip-rostov-na-donu-place.json',
@@ -35,16 +35,16 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 		rostovNaDonuPolygon: '/json/tourism/father-trip-rostov-na-donu-polygon.json',
 	})
 
-	const modCities = (jsonData.cities.data || [])
-		.concat(jsonData.rostovNaDonuPlace.data || [])
-	const lines = (jsonData.mainTrack.data || [])
-		.concat(jsonData.rostovNaDonuPolygon.data || [])
+	const modCities = (jsonCollection.cities.data || [])
+		.concat(jsonCollection.rostovNaDonuPlace.data || [])
+	const lines = (jsonCollection.mainTrack.data || [])
+		.concat(jsonCollection.rostovNaDonuPolygon.data || [])
 
 	const stateJsonData = [
-		jsonData.mainTrack,
-		jsonData.cities,
-		jsonData.rostovNaDonuPlace,
-		jsonData.rostovNaDonuPolygon,
+		jsonCollection.mainTrack,
+		jsonCollection.cities,
+		jsonCollection.rostovNaDonuPlace,
+		jsonCollection.rostovNaDonuPolygon,
 	]
 
 	return (
@@ -60,9 +60,9 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer className="car-list">
-				<LoadSuspense data={jsonData.roadmap}>
-					<EmptyData data={jsonData.roadmap}>
-						{jsonData.roadmap.data && jsonData.roadmap.data.blocks.map((child, idx) => (
+				<LoadSuspense data={jsonCollection.roadmap}>
+					<EmptyData data={jsonCollection.roadmap}>
+						{jsonCollection.roadmap.data && jsonCollection.roadmap.data.blocks.map((child, idx) => (
 							<BlockRenderer key={idx} block={child} />
 						))}
 					</EmptyData>

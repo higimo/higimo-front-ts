@@ -14,13 +14,13 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export const CinemaSinglePage: FunctionComponent = () => {
 	const { params: { idcode = DEFAULT_ID }} = useRoute()
-	const [ cinemaDetail ] = useApi<CinemaType>(API_ROUTE.cinemaSingle({ idcode }))
+	const [ cinemaItem ] = useApi<CinemaType>(API_ROUTE.cinemaSingle({ idcode }))
 
 	return (
-		<Layout title={cinemaDetail.data.title || 'Кино'} className="cinema-page">
-			<LoadSuspense data={cinemaDetail}>
-				<EmptyData data={cinemaDetail}>
-					<CinemaScriptDetail cinemaScript={cinemaDetail.data} />
+		<Layout title={cinemaItem.data?.title || 'Кино'} className="cinema-page">
+			<LoadSuspense data={cinemaItem}>
+				<EmptyData data={cinemaItem}>
+					<CinemaScriptDetail cinemaItem={cinemaItem.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

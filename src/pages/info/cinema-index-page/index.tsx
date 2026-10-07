@@ -14,7 +14,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 export const CinemaIndexPage: FunctionComponent = () => {
 	// TODO: [BACKEND] перевести на markdown API
-	const [ cinema ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
+	const [ cinemaList ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
 
 	return (
 		<Layout title="Кино" className="cinema-page">
@@ -26,9 +26,9 @@ export const CinemaIndexPage: FunctionComponent = () => {
 				<h2><a href={ROUTE_LINKS.cinemaScriptIndex}>Сценарии</a></h2>
 			</TextContainer>
 
-			<LoadSuspense data={cinema}>
-				<EmptyData data={cinema}>
-					<CinemaScriptList scripts={cinema.data} />
+			<LoadSuspense data={cinemaList}>
+				<EmptyData data={cinemaList}>
+					<CinemaScriptList cinemaList={cinemaList.data} />
 				</EmptyData>
 			</LoadSuspense>
 

@@ -6,9 +6,13 @@ import { TourismBulletListItem } from '../tourism-bullet-list-item'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-export const TourismWalkGallery: FunctionComponent<{ yamapList: YaMapType[] }> = ({
+type TourismWalkGalleryPropsType = {
+	yamapList: YaMapType[] | null
+}
+
+export const TourismWalkGallery: FunctionComponent<TourismWalkGalleryPropsType> = ({
 	yamapList,
-}) => (
+}) => yamapList && (
 	<TourismBulletList>
 		{yamapList.map(item => (
 			<TourismBulletListItem

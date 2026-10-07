@@ -7,13 +7,13 @@ import { ComojiElement } from 'components/tool/comoji-element'
 import './style.css'
 
 type ComojiGalery = {
-	comoji: ComojiType[]
+	comojiList: ComojiType[] | null
 }
 
-export const ComojiGalery: FunctionComponent<ComojiGalery> = ({ comoji }) => (
+export const ComojiGalery: FunctionComponent<ComojiGalery> = ({ comojiList }) => comojiList && (
 	<TextContainer>
 		<div className="gallery-comoji">
-			{comoji.map(item => <ComojiElement {...item} />)}
+			{comojiList.map(item => <ComojiElement {...item} />)}
 		</div>
 	</TextContainer>
 )

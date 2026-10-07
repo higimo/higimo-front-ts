@@ -13,15 +13,15 @@ import '../resume-style.css'
 import './style.css'
 
 export const ResumeProductSmartPage: FunctionComponent = () => {
-	const [ data ] = useJsonApi<PageJSONData>('/json/resume/resume-product-smart-page.json')
+	const [ blockListJsonData ] = useJsonApi<PageJSONData>('/json/resume/resume-product-smart-page.json')
 
 	return (
 		<Layout title="Дмитрий Уткин, Product manager" className="resume-product2-page resume-page">
 			<Breadcrumps />
 
-			<LoadSuspense data={data}>
-				<EmptyData data={data}>
-					{data.data.blocks.map((block, idx) => (
+			<LoadSuspense data={blockListJsonData}>
+				<EmptyData data={blockListJsonData}>
+					{blockListJsonData.data && blockListJsonData.data.blocks.map((block, idx) => (
 						<BlockRenderer key={idx} block={block} />
 					))}
 				</EmptyData>

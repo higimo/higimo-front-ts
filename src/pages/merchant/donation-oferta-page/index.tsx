@@ -15,7 +15,7 @@ import { TextContainer } from 'components/ui/text-container'
 import '../merchant-style.css'
 
 export const DonationOfertaPage: FunctionComponent = () => {
-	const [ data ] = useJsonApi<PageJSONData>('/json/merchant/donation-policy.json')
+	const [ blockListJsonData ] = useJsonApi<PageJSONData>('/json/merchant/donation-policy.json')
 
 	return (
 		<Layout title="Донатная оферта" className="merchant-text-page">
@@ -24,9 +24,9 @@ export const DonationOfertaPage: FunctionComponent = () => {
 				<MerchantPolicyNavigation />
 			</TextContainer>
 
-			<LoadSuspense data={data}>
-				<EmptyData data={data}>
-					{data.data.blocks.map((block, idx) => (
+			<LoadSuspense data={blockListJsonData}>
+				<EmptyData data={blockListJsonData}>
+					{blockListJsonData.data && blockListJsonData.data.blocks.map((block, idx) => (
 						<BlockRenderer key={idx} block={block} />
 					))}
 				</EmptyData>

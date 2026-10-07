@@ -6,25 +6,25 @@ import { NokiaTag } from 'components/nokia/nokia-tag'
 import './style.css'
 
 type NokiaTagsGalleryPropsType = {
-	tagGroups: NokiaTagGroupType[] | null
-	tags: NokiaTagType[] | null
+	tagGroupList: NokiaTagGroupType[] | null
+	tagList: NokiaTagType[] | null
 	filter: NokiaTagType['id'] | null
 	updateFilter: (tag: NokiaTagType["id"]) => () => void
 }
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = ({
-	tagGroups,
-	tags,
+	tagGroupList: tagGroupList,
+	tagList: tagList,
 	filter,
 	updateFilter,
-}) => tagGroups && tags && (
+}) => tagGroupList && tagList && (
 	<div className="nokia-tags-gallery">
-		{tagGroups.map(tagGroup => (
+		{tagGroupList.map(tagGroup => (
 			<div className="nokia-tags-gallery__group">
 				<div className="nokia-tags-gallery__group-name">
 					{tagGroup}
 				</div>
 				<div className="nokia-tags-gallery__group-tags">
-					{tags.filter(i => i.group === tagGroup).map(tag => (
+					{tagList.filter(i => i.group === tagGroup).map(tag => (
 						<NokiaTag
 							tag={tag}
 							onClick={updateFilter(tag.id)}

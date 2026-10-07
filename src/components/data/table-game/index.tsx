@@ -6,12 +6,14 @@ import { TextContainer } from 'components/ui/text-container'
 import './style.css'
 
 type TableGamePropsType = {
-	games: TableGameType[]
+	gameList: TableGameType[] | null
 }
 
-export const TableGame: FunctionComponent<TableGamePropsType> = ({ games }) => (
+export const TableGame: FunctionComponent<TableGamePropsType> = ({
+	gameList
+}) => gameList && (
 	<TextContainer>
-		{games.map(({ id, name, text }) => (
+		{gameList.map(({ id, name, text }) => (
 			<div key={id} className="game-gallery__item">
 				<div className="game-gallery__name">{name}</div>
 				<div className="game-gallery__text" dangerouslySetInnerHTML={{ __html: text}} />

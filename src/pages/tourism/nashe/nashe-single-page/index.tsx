@@ -25,9 +25,9 @@ export const NasheSinglePage: FunctionComponent = () => {
 	const { params: { year } } = useRoute()
 	const curYear = year ? parseInt(year, 10) : 2017
 
-	const [ nasheFullData ] = useApi<NasheType[]>(API_ROUTE.nasheSingle({ year: curYear }))
-	const filteredData = useYearFilter(nasheFullData.data, curYear)
-	const { mainScene, secondScene } = useScenesData(filteredData)
+	const [ nasheList ] = useApi<NasheType[]>(API_ROUTE.nasheSingle({ year: curYear }))
+	const nasheFiltred = useYearFilter(nasheList.data || [], curYear)
+	const { mainScene, secondScene } = useScenesData(nasheFiltred)
 
 	return (
 		<Layout title={`Нашествие ${curYear}`} className="nashe-single-page tourism-identy-page">
@@ -37,8 +37,8 @@ export const NasheSinglePage: FunctionComponent = () => {
 				<Breadcrumps />
 			</TextContainer>
 
-			<LoadSuspense data={nasheFullData}>
-				<EmptyData data={nasheFullData}>
+			<LoadSuspense data={nasheList}>
+				<EmptyData data={nasheList}>
 					<NasheLineupItem
 						curYear={curYear}
 						mainScene={mainScene}

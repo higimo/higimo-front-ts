@@ -15,9 +15,12 @@ import { HEIGHT, WIDTH } from 'config/NOKIA_CHART_CONFIG'
 
 // TODO: [HARD] https://www.npmjs.com/package/@observablehq/plot
 type NokiaStatisticPropsType = {
-	meetingStatistic: NokiaMeetingStatisticType[]
+	meetingStatistic: NokiaMeetingStatisticType[] | null
 }
 export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ meetingStatistic }) => {
+	if (!meetingStatistic) {
+		return null
+	}
 	const viz = useRef<HTMLDivElement>(null)
 
 	// TODO: [USE_TAGS] useSmartTag как бы его внедрить?

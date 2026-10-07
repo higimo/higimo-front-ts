@@ -26,7 +26,7 @@ export const DemagogPage: FunctionComponent = () => {
 
 			<LoadSuspense data={demagogList}>
 				<EmptyData data={demagogList}>
-					<DemagogGalery demagogs={demagogList.data} />
+					<DemagogGalery demagogList={demagogList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

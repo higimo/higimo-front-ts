@@ -24,12 +24,17 @@ import { totalTags } from 'dic/accord/tags'
 import './style.css'
 
 export const AccordIndexPage: FunctionComponent = () => {
-	const [ accordUnsortList ] = useApi<AccordType[]>(API_ROUTE.accord)
+	const [ accordList ] = useApi<AccordType[]>(API_ROUTE.accord)
 
+	// TODO: [BACKEND] это должен бекенд присылать
 	// @ts-ignore
-	const accordList: AccordRealTagType[] = useMemo(() => {
-		const firstTags = accordUnsortList.data.map(item => ({
+	const accordRichList: AccordRealTagType[] = useMemo(() => {
+		if (!accordList.data) {
+			return []
+		}
+		const firstTags = (accordList.data || []).map(item => ({
 				...item,
+				// TODO: [MIDDLE] изменить на concat
 				tags: [ // MAIN
 					...(liric.includes(item.id)     ? [{ id: 1, title: totalTags.liric}] : []),
 					...(scream.includes(item.id)    ? [{ id: 2, title: totalTags.scream} ] : []),
@@ -45,8 +50,8 @@ export const AccordIndexPage: FunctionComponent = () => {
 			}))
 			.sort((a, b) => a.name.localeCompare(b.name))
 
-		const length = accordUnsortList.data.length
-		const minimumViewed = median(accordUnsortList.data.map(i => i.view))
+		const length = accordList.data.length
+		const minimumViewed = median(accordList.data.map(i => i.view))
 
 		return firstTags.map(item => {
 			if (item.tags.length === 0) {
@@ -63,7 +68,7 @@ export const AccordIndexPage: FunctionComponent = () => {
 			}
 			return item
 		})
-	}, [accordUnsortList.data])
+	}, [accordList.data])
 
 	const {
 		selectedTagTitles,
@@ -75,7 +80,7 @@ export const AccordIndexPage: FunctionComponent = () => {
 		mode: 'single',
 	})
 
-	const filtredList = useFilterByTags(accordList, selectedTagTitles)
+	const accordListFiltred = useFilterByTags(accordRichList, selectedTagTitles)
 
 	return (
 		<Layout title="Аккорды">
@@ -87,9 +92,9 @@ export const AccordIndexPage: FunctionComponent = () => {
 				/>
 				<div>
 
-				<LoadSuspense data={accordUnsortList}>
-					<EmptyData data={accordUnsortList}>
-						{filtredList.map(item => (
+				<LoadSuspense data={accordList}>
+					<EmptyData data={accordList}>
+						{accordListFiltred.map(item => (
 							<AccordElement key={item.id} {...item} />
 						))}
 					</EmptyData>

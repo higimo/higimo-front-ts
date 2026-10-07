@@ -13,7 +13,7 @@ export const mainTags: AccordTags = {
 	bard:      'барды',
 } as const
 
-export const extendTags: AccordTags = {
+export const extendTags: AccordTags  = {
 	new:      'нью',
 	pop:      'популярно',
 	nolist:   'Без списков',
@@ -23,6 +23,6 @@ export const extendTags: AccordTags = {
 export const totalTags: AccordTags = {
 	...mainTags,
 	...extendTags,
-}
+} as const satisfies AccordTags
 
 

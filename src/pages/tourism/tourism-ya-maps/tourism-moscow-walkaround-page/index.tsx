@@ -22,13 +22,13 @@ type WalkaroundType = {
 }
 
 export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
-	const [ jsonData ] = useMultiJsonApi<WalkaroundType>({
+	const [ jsonCollection ] = useMultiJsonApi<WalkaroundType>({
 		moscowPovPoints: '/json/tourism/moscow-pov-points.json',
 		stateYear2021: '/json/tourism/walk-moscow-2021.json',
 		stateYear2024: '/json/tourism/walk-moscow-2024.json',
 	})
 
-	const stateArr = [jsonData.moscowPovPoints, jsonData.stateYear2021, jsonData.stateYear2024]
+	const stateArr = [jsonCollection.moscowPovPoints, jsonCollection.stateYear2021, jsonCollection.stateYear2024]
 
 	return (
 		<Layout title="Обхожу Москву" className="tourism-identy-page">
@@ -45,9 +45,9 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 			<LoadSuspense data={stateArr}>
 				<EmptyData data={stateArr}>
 					<TourismMoscowWalkaround
-						moscowPovPoints={jsonData.moscowPovPoints.data}
-						stateYear2021={jsonData.stateYear2021.data}
-						stateYear2024={jsonData.stateYear2024.data}
+						moscowPovPoints={jsonCollection.moscowPovPoints.data}
+						stateYear2021={jsonCollection.stateYear2021.data}
+						stateYear2024={jsonCollection.stateYear2024.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>

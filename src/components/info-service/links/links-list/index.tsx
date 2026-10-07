@@ -5,13 +5,13 @@ import { LinksElement } from 'components/info-service/links/links-element'
 import { TextContainer } from 'components/ui/text-container'
 
 type LinksListPropsType = {
-	links: LinksType[]
+	linkList: LinksType[] | null
 }
 
-export const LinksList: FunctionComponent<LinksListPropsType> = ({ links }) => (
+export const LinksList: FunctionComponent<LinksListPropsType> = ({ linkList }) => linkList && (
 	<TextContainer>
 		<ul>
-			{links.map(item => <LinksElement {...item} />)}
+			{linkList.map(item => <LinksElement {...item} />)}
 		</ul>
 	</TextContainer>
 )

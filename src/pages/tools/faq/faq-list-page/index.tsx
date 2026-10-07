@@ -31,7 +31,7 @@ export const FaqListPage: FunctionComponent = () => {
 			<LoadSuspense data={faqList}>
 				<EmptyData data={faqList}>
 					<FaqList
-						faqs={faqList.data}
+						faqList={faqList.data}
 						onRemove={onRemove}
 					/>
 				</EmptyData>

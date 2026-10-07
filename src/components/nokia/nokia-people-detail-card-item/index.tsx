@@ -8,47 +8,47 @@ import { NokiaNote } from 'components/nokia/nokia-note'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 type NokiaPeopleDetailCardItemPropsType = {
-	person: NokiaPersonFullType
+	personItem: NokiaPersonFullType | null
 }
-export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = ({ person }) => {
-	return (
-		<div className="nokia-people-detail person-full-data">
-			<div className="person-full-data__edit">
-				<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: person.id })}>Редактировать профиль</a>
-			</div>
-			<div className="person-full-data__header">
-				<div className="person-full-data__name">
-					{person.name}
-				</div>
-				<div className="person-full-data__alias">
-					<small>Алиас:</small> {person.alias}
-				</div>
-				<div className="person-full-data__nick">
-					<small>Ник:</small> {person.nick}
-				</div>
-			</div>
-			<h3>Описание</h3>
-			{!!person.description && (
-				<div className="person-full-data__description">{person.description}</div>
-			)}
-			<CollapseSection fold={true} header="Встречи">
-				<div className="person-full-data__meetings">
-					{person.meetings.map((meeting) => {
-						return (
-							<NokiaMeeting meeting={meeting} />
-						)
-					})}
-				</div>
-			</CollapseSection>
-			<CollapseSection fold={true} header="Заметки">
-				<div className="person-full-data__notes">
-					{person.notes.map((note) => {
-						return (
-							<NokiaNote note={note} />
-						)
-					})}
-				</div>
-			</CollapseSection>
+export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = ({
+	personItem
+}) => personItem && (
+	<div className="nokia-people-detail person-full-data">
+		<div className="person-full-data__edit">
+			<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: personItem.id })}>Редактировать профиль</a>
 		</div>
-	)
-}
+		<div className="person-full-data__header">
+			<div className="person-full-data__name">
+				{personItem.name}
+			</div>
+			<div className="person-full-data__alias">
+				<small>Алиас:</small> {personItem.alias}
+			</div>
+			<div className="person-full-data__nick">
+				<small>Ник:</small> {personItem.nick}
+			</div>
+		</div>
+		<h3>Описание</h3>
+		{!!personItem.description && (
+			<div className="person-full-data__description">{personItem.description}</div>
+		)}
+		<CollapseSection fold={true} header="Встречи">
+			<div className="person-full-data__meetings">
+				{personItem.meetings.map((meeting) => {
+					return (
+						<NokiaMeeting meeting={meeting} />
+					)
+				})}
+			</div>
+		</CollapseSection>
+		<CollapseSection fold={true} header="Заметки">
+			<div className="person-full-data__notes">
+				{personItem.notes.map((note) => {
+					return (
+						<NokiaNote note={note} />
+					)
+				})}
+			</div>
+		</CollapseSection>
+	</div>
+)

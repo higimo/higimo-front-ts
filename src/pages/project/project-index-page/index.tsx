@@ -21,10 +21,10 @@ export const ProjectIndexPage: FunctionComponent = () => {
 	const { query } = useRoute()
 
 	const [ projectList ] = useApi<PortfolioProjectFullType[]>(API_ROUTE.projectProject)
-	const [ tagList ] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
+	const [ groupedTagList ] = useApi<PortfolioGroupedTagType[]>(API_ROUTE.projectGroupedTags)
 
 	let filterProjectList = projectList.data
-	if (query[PROJECT_FILTER_DIC.FILTER_TAG] && projectList.status === 'LOADED') {
+	if (query[PROJECT_FILTER_DIC.FILTER_TAG] && projectList.status === 'LOADED' && projectList.data) {
 		filterProjectList = projectList.data.filter(projectItem => {
 			return projectItem.tags.some(tag => tag.title === query[PROJECT_FILTER_DIC.FILTER_TAG])
 		})
@@ -36,15 +36,15 @@ export const ProjectIndexPage: FunctionComponent = () => {
 				<h1>Сделал</h1>
 			</TextContainer>
 
-			<LoadSuspense data={tagList}>
-				<EmptyData data={tagList}>
-					<ProjectClickTagCategory groupedTags={tagList.data} />
+			<LoadSuspense data={groupedTagList}>
+				<EmptyData data={groupedTagList}>
+					<ProjectClickTagCategory groupedTags={groupedTagList.data} />
 				</EmptyData>
 			</LoadSuspense>
 
 			<LoadSuspense data={projectList}>
 				<EmptyData data={projectList}>
-						<ProjectList projectsList={filterProjectList} />
+					<ProjectList projectsList={filterProjectList} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

@@ -12,23 +12,21 @@ import './style.css'
 // Получается, завести избранные из телеги и показывать их на фасад
 
 type LastUpdatesPropsType = {
-	newsList: UpdateNewsType[]
+	newsList: UpdateNewsType[] | null
 }
 
 export const LastUpdates: FunctionComponent<LastUpdatesPropsType> = ({
 	newsList,
-}) => {
-	return (
-		<PrecentationContainer className="last-updates">
-			<TextContainer>
-				<IntroHeader>Недавно опубликовал</IntroHeader>
-			</TextContainer>
+}) => newsList && (
+	<PrecentationContainer className="last-updates">
+		<TextContainer>
+			<IntroHeader>Недавно опубликовал</IntroHeader>
+		</TextContainer>
 
-			<div className="last-updates__gallery">
-				{newsList.map(item => (
-					<BlogItem key={item.id} {...item} />
-				))}
-			</div>
-		</PrecentationContainer>
-	)
-}
+		<div className="last-updates__gallery">
+			{newsList.map(item => (
+				<BlogItem key={item.id} {...item} />
+			))}
+		</div>
+	</PrecentationContainer>
+)

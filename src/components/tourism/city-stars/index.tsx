@@ -7,11 +7,13 @@ import { TextContainer } from 'components/ui/text-container'
 import './style.css'
 
 type CityStarsPropsType = {
-	cityList: CityStarsType[]
+	cityList: CityStarsType[] | null
 }
 
 // TODO: [BACKEND] сделать ссылки на города
-export const CityStars: FunctionComponent<CityStarsPropsType> = ({ cityList }) => (
+export const CityStars: FunctionComponent<CityStarsPropsType> = ({
+	cityList
+}) => cityList && (
 	<div className="city-stars">
 		<TextContainer>
 			<div className="city-stars-gallery">

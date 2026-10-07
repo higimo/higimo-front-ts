@@ -21,22 +21,22 @@ import '../nokia-style.css'
 export const NokiaMeetingFormPage: FunctionComponent = () => {
 	const { params: { meetingId = DEFAULT_ID } } = useRoute()
 
-	const [ singleMeeting ] = useApi<NokiaMeetingFullType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
+	const [ meetingItem ] = useApi<NokiaMeetingFullType>(API_ROUTE.nokiaMeetingSingle({ id: meetingId }))
 	// TODO: [BACKEND] на беке получать сортируя по популярности
-	const [ persons ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaSuggestPerson)
+	const [ personList ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaSuggestPerson)
 	// TODO: [BACKEND] получать самых популярных за последние пол года
-	const [ topPersons ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
+	const [ topPersonList ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaTopPerson)
 
-	const peoplesSuggest = useMemo(() => {
-		if (!persons.data) {
+	const personSuggestList = useMemo(() => {
+		if (!personList.data) {
 			return []
 		}
-		return getUserSuggestions(persons.data)
-	}, [persons.data])
+		return getUserSuggestions(personList.data)
+	}, [personList.data])
 
-	const meetingPersons = singleMeeting.data?.person ?? []
-	const meeting = singleMeeting.data
-		? (({ person: _, ...rest }) => rest)(singleMeeting.data)
+	const meetingPersons = meetingItem.data?.person ?? []
+	const meeting = meetingItem.data
+		? (({ person: _, ...rest }) => rest)(meetingItem.data)
 		: undefined
 
 	return (
@@ -44,14 +44,14 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 			<NokiaMenu />
 
 			<div className="nokia__content">
-				<LoadSuspense data={[singleMeeting, persons, topPersons]}>
-					<EmptyData data={[singleMeeting, persons, topPersons]} skipEmpty>
+				<LoadSuspense data={[meetingItem, personList, topPersonList]}>
+					<EmptyData data={[meetingItem, personList, topPersonList]} skipEmpty>
 						<NokiaMeetingForm
 							initialMeeting={meeting}
 							initialPersons={meetingPersons}
-							peoplesSuggest={peoplesSuggest}
-							topPersons={topPersons.data}
-							persons={persons.data}
+							personSuggestList={personSuggestList}
+							topPersonList={topPersonList.data}
+							personList={personList.data}
 						/>
 					</EmptyData>
 				</LoadSuspense>

@@ -22,7 +22,7 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 	const { params: { idcode = '' } } = useRoute()
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 
-	const element = yamapList.data.find(item => item.code === idcode)
+	const element = (yamapList.data || []).find(item => item.code === idcode)
 
 	return (
 		<Layout title={element?.name || 'Карта прогулки'} className="tourism-identy-page">

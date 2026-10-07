@@ -14,14 +14,14 @@ import { PROJECT_SHORT_TAGS } from 'dic/project/PROJECT_SHORT_TAGS'
 import './style.css'
 
 type ProjectListShortPropsType = {
-	projects: PortfolioProjectFullType[]
+	highlightProjectList: PortfolioProjectFullType[] | null
 	meta?: PortfolioMetaType
 }
 
 export const ProjectListShort: FunctionComponent<ProjectListShortPropsType> = ({
-	projects,
+	highlightProjectList,
 	meta,
-}) => (
+}) => highlightProjectList && (
 	<div className="project-list project-list--short" id={ANCHOR_LINKS.done}>
 		<TextContainer>
 			<IntroHeader>Сделал</IntroHeader>
@@ -33,7 +33,7 @@ export const ProjectListShort: FunctionComponent<ProjectListShortPropsType> = ({
 			))}
 		</TextContainer>
 
-		<ProjectList projectsList={projects} />
+		<ProjectList projectsList={highlightProjectList} />
 		{!!meta ? (
 			<ProjectMore count={meta.totalCount} />
 		) : null}

@@ -10,9 +10,10 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { NestedList } from 'components/list/nested-list'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export const ListListIndexPage: FunctionComponent = () => {
-	const { params: { idcode = '' } } = useRoute()
+	const { params: { idcode = DEFAULT_ID } } = useRoute()
 
 	const filter = (parseInt(idcode, 10) > 0
 		? { id: idcode }
@@ -22,7 +23,8 @@ export const ListListIndexPage: FunctionComponent = () => {
 		)
 	)
 
-	const [ nestedListItems ] = useApi<NestedListItemFullType[]>(API_ROUTE.lister, {
+	const [ nestedListList ] = useApi<NestedListItemFullType[]>(API_ROUTE.lister, {
+		// @ts-ignore
 		filter,
 		withParent: 'true',
 		withChild: 'true',
@@ -31,10 +33,10 @@ export const ListListIndexPage: FunctionComponent = () => {
 
 	return (
 		<Layout title="Список списков" className="list-list-identity-page">
-			<LoadSuspense data={nestedListItems}>
-				<EmptyData data={nestedListItems}>
+			<LoadSuspense data={nestedListList}>
+				<EmptyData data={nestedListList}>
 					<NestedList
-						nestedList={nestedListItems.data}
+						nestedList={nestedListList.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>

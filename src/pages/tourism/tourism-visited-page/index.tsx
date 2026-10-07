@@ -36,7 +36,7 @@ type VisitedDataType = {
 
 export const TourismVisitedPage: FunctionComponent = () => {
 	// TODO: [BACKEND] вынести в бекенд API из JSON
-	const [ data ] = useMultiJsonApi<VisitedDataType>({
+	const [ jsonCollection ] = useMultiJsonApi<VisitedDataType>({
 		admOrkugMoscow:    '/json/tourism/admin-okrug-moscow.json',
 		castle:            '/json/tourism/castle.json',
 		country:           '/json/tourism/country.json',
@@ -48,24 +48,24 @@ export const TourismVisitedPage: FunctionComponent = () => {
 	})
 
 	const povList: PovType[] = ([] as PovType[])
-		.concat(data.admOrkugMoscow.data || [])
-		.concat(data.castle.data || [])
-		.concat(data.country.data || [])
-		.concat(data.districtMoscow.data || [])
-		.concat(data.placefield.data || [])
-		.concat(data.subjectFederation.data || [])
-		.concat(data.townMoscow.data || [])
-		.concat(data.town.data || [])
+		.concat(jsonCollection.admOrkugMoscow.data || [])
+		.concat(jsonCollection.castle.data || [])
+		.concat(jsonCollection.country.data || [])
+		.concat(jsonCollection.districtMoscow.data || [])
+		.concat(jsonCollection.placefield.data || [])
+		.concat(jsonCollection.subjectFederation.data || [])
+		.concat(jsonCollection.townMoscow.data || [])
+		.concat(jsonCollection.town.data || [])
 
 	const jsonDateArr = [
-		data.admOrkugMoscow,
-		data.castle,
-		data.country,
-		data.districtMoscow,
-		data.placefield,
-		data.subjectFederation,
-		data.townMoscow,
-		data.town,
+		jsonCollection.admOrkugMoscow,
+		jsonCollection.castle,
+		jsonCollection.country,
+		jsonCollection.districtMoscow,
+		jsonCollection.placefield,
+		jsonCollection.subjectFederation,
+		jsonCollection.townMoscow,
+		jsonCollection.town,
 	]
 
 	return (

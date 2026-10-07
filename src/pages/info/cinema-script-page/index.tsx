@@ -12,7 +12,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { API_ROUTE } from 'dic/API_ROUTE'
 
 export const CinemaScriptPage: FunctionComponent = () => {
-	const [ cinema ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
+	const [ cinemaList ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)
 
 	return (
 		<Layout title="Кино" className="cinema-page">
@@ -20,9 +20,9 @@ export const CinemaScriptPage: FunctionComponent = () => {
 				<h1>Коллекция сценариев</h1>
 			</TextContainer>
 
-			<LoadSuspense data={cinema}>
-				<EmptyData data={cinema}>
-					<CinemaScriptList scripts={cinema.data} />
+			<LoadSuspense data={cinemaList}>
+				<EmptyData data={cinemaList}>
+					<CinemaScriptList cinemaList={cinemaList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

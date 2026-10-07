@@ -27,17 +27,17 @@ import '../../tourism-style.css'
 import '../yandex-map.css'
 
 export const TourismMoscowBarPage: FunctionComponent = () => {
-	const [ barPovMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
+	const [ barPoiMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
 
 	const normalizedTagsBarPovMoscow = useMemo(
-		() => barPovMoscow.data.map((item: BarPovType): BarPovRealTags => ({
+		() => (barPoiMoscow.data || []).map((item: BarPovType): BarPovRealTags => ({
 			...item,
 			tags: item.tags.map((tagName, index) => ({
 				id: index,
 				title: tagName as string,
 			}))
 		})),
-		[barPovMoscow.data]
+		[barPoiMoscow.data]
 	)
 
 	const tagGroups: TagCategory[] = useMemo(
@@ -88,8 +88,8 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 				<TourismHeader main>Московские бары</TourismHeader>
 			</TextContainer>
 
-			<LoadSuspense data={barPovMoscow}>
-				<EmptyData data={barPovMoscow}>
+			<LoadSuspense data={barPoiMoscow}>
+				<EmptyData data={barPoiMoscow}>
 					<div className="tourism-maps-moscow-bar">
 						<TourismMapGeo<BarPovRealTags, Coord>
 							items={filteredData}

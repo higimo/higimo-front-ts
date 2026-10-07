@@ -6,11 +6,13 @@ import cs from 'classnames'
 import './style.css'
 
 type LogismGalleryPropsType = {
-	logisms: LogismType[]
+	logismList: LogismType[] | null
 }
-export const LogismGallery: FunctionComponent<LogismGalleryPropsType> = ({ logisms }) => (
+export const LogismGallery: FunctionComponent<LogismGalleryPropsType> = ({
+	logismList
+}) => logismList && (
 	<div className="gallery-logism">
-		{logisms.map(({ text }) => (
+		{logismList.map(({ text }) => (
 			<div
 				className={cs('gallery-logism__item', {
 					'gallery-logism__item--long': text.length > 100

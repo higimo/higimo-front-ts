@@ -6,10 +6,10 @@ import { DemagogElement } from 'components/info-service/demagog/demagog-element'
 import './style.css'
 
 type DemagogGaleryPropsType = {
-	demagogs: DemagogType[]
+	demagogList: DemagogType[] | null
 }
-export const DemagogGalery: FunctionComponent<DemagogGaleryPropsType> = ({ demagogs }) => (
+export const DemagogGalery: FunctionComponent<DemagogGaleryPropsType> = ({ demagogList }) => demagogList && (
 	<div className="demagog">
-		{demagogs.map(item => <DemagogElement {...item} />)}
+		{demagogList.map(item => <DemagogElement {...item} />)}
 	</div>
 )

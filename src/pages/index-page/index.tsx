@@ -21,10 +21,10 @@ import { API_ROUTE } from 'dic/API_ROUTE'
 // TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
 export const IndexPage: FunctionComponent = () => {
-	const [ logismDetail, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)
+	const [ logismItem, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)
 	// TODO: [DATA] исправить обложки и размеры, сейчас грандиозные бывают normal
 	// TODO: [BACKEND] присылать определённое количество, чтобы дырка не появлялась
-	const [ highlightProjects ] = useApi<PortfolioProjectFullType[], PortfolioMetaType>(API_ROUTE.projectProject, {
+	const [ highlightProjectList ] = useApi<PortfolioProjectFullType[], PortfolioMetaType>(API_ROUTE.projectProject, {
 		// filter: { cover_size: 'high'},
 		limit: 6
 	})
@@ -35,11 +35,11 @@ export const IndexPage: FunctionComponent = () => {
 
 			<DonatIntro />
 
-			<LoadSuspense data={highlightProjects}>
-				<EmptyData data={highlightProjects}>
+			<LoadSuspense data={highlightProjectList}>
+				<EmptyData data={highlightProjectList}>
 					<ProjectListShort
-						projects={highlightProjects.data}
-						meta={highlightProjects.meta}
+						highlightProjectList={highlightProjectList.data}
+						meta={highlightProjectList.meta}
 					/>
 				</EmptyData>
 			</LoadSuspense>
@@ -50,10 +50,10 @@ export const IndexPage: FunctionComponent = () => {
 
 			<LookedThis />
 
-			<LoadSuspense data={logismDetail}>
-				<EmptyData data={logismDetail}>
+			<LoadSuspense data={logismItem}>
+				<EmptyData data={logismItem}>
 					<LogismSingle
-						logism={logismDetail.data}
+						logismItem={logismItem.data}
 						reload={reload}
 					/>
 				</EmptyData>

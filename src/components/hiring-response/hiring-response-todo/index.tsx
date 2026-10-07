@@ -13,12 +13,15 @@ import { toast } from 'toast'
 import './style.css'
 
 type HiringResponseTodoControllerPropsType = {
-	todo: PasteApiType[]
+	todo: PasteApiType[] | null
 }
 
 export const HiringResponseTodoController: FunctionComponent<HiringResponseTodoControllerPropsType> = ({
 	todo,
 }) => {
+	if (!todo) {
+		return null
+	}
 	const handleChange = useCallback(() => {
 		const debouncedEdit = debounce(
 			async (content: string) => {

@@ -1,10 +1,14 @@
 import { AccordType } from 'api-types/accord.types'
 import { Fragment, FunctionComponent } from 'preact'
 
+type AccordContentPropsType = {
+	song: AccordType | null
+}
+
 /**
  * Показывает аккорды песни и устанавливается title
  */
-export const AccordContent: FunctionComponent<{ song: AccordType }> = ({ song }) => (
+export const AccordContent: FunctionComponent<AccordContentPropsType> = ({ song }) => song && (
 	<Fragment>
 		<div className="accord-title">
 			<strong>{song.name}</strong>

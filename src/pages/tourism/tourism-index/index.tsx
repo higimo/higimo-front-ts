@@ -32,7 +32,7 @@ import './style.css'
 // TODO: [FEATURE] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
-	const [ cityList ] = useJsonApi<CityStarsType[]>('/json/city.json')
+	const [ cityListJsonData ] = useJsonApi<CityStarsType[]>('/json/city.json')
 
 	return (
 		<Layout title="Туризм" className="tourism-identy-page">
@@ -103,9 +103,9 @@ export const TourismIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<TourismHeader secondary>Оценка городов</TourismHeader>
 
-				<LoadSuspense data={cityList}>
-					<EmptyData data={cityList}>
-						<CityStarsIntro cityList={cityList.data} />
+				<LoadSuspense data={cityListJsonData}>
+					<EmptyData data={cityListJsonData}>
+						<CityStarsIntro cityList={cityListJsonData.data} />
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
@@ -118,8 +118,8 @@ export const TourismIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<TourismHeader secondary>Конструктор карт</TourismHeader>
 
-				<LoadSuspense data={cityList}>
-					<EmptyData data={cityList}>
+				<LoadSuspense data={cityListJsonData}>
+					<EmptyData data={cityListJsonData}>
 						<TourismWalkGallery
 							yamapList={yamapList.data}
 						/>

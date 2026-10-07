@@ -12,17 +12,17 @@ var md = new markdownit({
 })
 
 type ObuchenieSinglePropsType = {
-	lection: LectionType
+	lectionItem: LectionType | null
 }
-export const ObuchenieSingle: FunctionComponent<ObuchenieSinglePropsType> = ({ lection }) => (
+export const ObuchenieSingle: FunctionComponent<ObuchenieSinglePropsType> = ({ lectionItem }) => lectionItem && (
 	<div className="test">
 		<TextContainer>
-			<h1>{lection.name}</h1>
+			<h1>{lectionItem.name}</h1>
 		</TextContainer>
 		<TextContainer>
 			<div
 				className="container"
-				dangerouslySetInnerHTML={{__html: md.render(lection.text || '')}}
+				dangerouslySetInnerHTML={{__html: md.render(lectionItem.text || '')}}
 			/>
 		</TextContainer>
 	</div>

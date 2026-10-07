@@ -17,7 +17,7 @@ export const PronPage: FunctionComponent = () => {
 		<Layout title="pron">
 			<LoadSuspense data={pronList}>
 				<EmptyData data={pronList}>
-					<PronIndex prons={pronList.data} />
+					<PronIndex pronList={pronList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

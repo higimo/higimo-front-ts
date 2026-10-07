@@ -25,23 +25,23 @@ type PetProjectDataType = {
 
 export const PetProjectPage: FunctionComponent = () => {
 	const [ unsortProjectList ] = useApi<PetProjectType[]>(API_ROUTE.probbi)
-	const [ jsonData ] = useMultiJsonApi<PetProjectDataType>({
+	const [ jsonCollection ] = useMultiJsonApi<PetProjectDataType>({
 		gradients:    '/json/pet-project/gradient.json',
 		textProjects: '/json/pet-project/projects.json',
 	})
 
 	const projects = useMemo(() => {
-		if (unsortProjectList.status === 'LOADING' || jsonData.textProjects.status === 'LOADING') {
+		if (unsortProjectList.status === 'LOADING' || jsonCollection.textProjects.status === 'LOADING') {
 			return []
 		}
-		if (!unsortProjectList.data || !jsonData.textProjects.data) {
+		if (!unsortProjectList.data || !jsonCollection.textProjects.data) {
 			return []
 		}
 
 		return unsortProjectList.data
-			.concat(jsonData.textProjects.data)
+			.concat(jsonCollection.textProjects.data)
 			.sort((a, b) => a.priority - b.priority)
-	}, [unsortProjectList.data, jsonData.gradients.data, jsonData.textProjects.data])
+	}, [unsortProjectList.data, jsonCollection.gradients.data, jsonCollection.textProjects.data])
 
 	return (
 		<Layout title="Пробби" className="pet-project">
@@ -54,11 +54,11 @@ export const PetProjectPage: FunctionComponent = () => {
 				</OnlyAdmin>
 			</TextContainer>
 
-			<LoadSuspense data={[unsortProjectList, jsonData.gradients, jsonData.textProjects]}>
-				<EmptyData data={[unsortProjectList, jsonData.gradients, jsonData.textProjects]}>
+			<LoadSuspense data={[unsortProjectList, jsonCollection.gradients, jsonCollection.textProjects]}>
+				<EmptyData data={[unsortProjectList, jsonCollection.gradients, jsonCollection.textProjects]}>
 					<PetProject
 						petprojects={projects}
-						gradients={jsonData.gradients.data}
+						gradients={jsonCollection.gradients.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>
