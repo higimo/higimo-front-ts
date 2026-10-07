@@ -18,11 +18,11 @@ export type MeetingFormValues = NokiaMeetingSimpleType & {
 	date_start: DateTimeInputType
 }
 
-export interface UseMeetingFormProps {
+interface UseMeetingFormProps {
 	persons: NokiaPersonSimpleType[]
 }
 
-export interface UseMeetingFormReturn {
+interface UseMeetingFormReturn {
 	formMethods: ReturnType<typeof useForm<MeetingFormValues>>
 	handleMeetingSubmit: (data: MeetingFormValues) => Promise<void>
 	handleAddPerson: (person: NokiaPersonSimpleType) => () => void

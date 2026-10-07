@@ -15,6 +15,7 @@ type MessageContainerPropsType = {
 	autoCloseDelay?: number
 }
 
+// TODO: [MIDDLE] не используется нигде. МБ не надо?
 export const MessageContainer: FunctionComponent<MessageContainerPropsType> = ({ autoCloseDelay = 40 }) => {
 	const [messages, setMessages] = useState<MessageContent[]>([])
 

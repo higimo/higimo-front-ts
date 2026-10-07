@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { useVkDownload } from 'pages/vk/use-vk-download'
+import { useVkDownload } from 'hook/use-vk-download'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Layout } from 'components/ui/layout/Layout'

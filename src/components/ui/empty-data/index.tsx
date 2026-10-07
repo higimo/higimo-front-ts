@@ -2,7 +2,7 @@ import { ApiState } from 'api-types/fetch-api.types'
 import { VNode, FunctionComponent } from 'preact'
 
 import { EmptyState, ErrorState } from 'components/ui/state'
-import { checkEmpty } from 'utils/check-empty'
+import { checkEmpty } from 'utils/types/check-empty'
 
 type EmptyDataPropsType = {
 	data?: ApiState<any, Object> | ApiState<any, Object>[]

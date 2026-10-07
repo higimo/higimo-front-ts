@@ -5,7 +5,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
-// TODO: [FEATURE] опубликовать на IndexPage
+// TODO: [FEATURE] опубликовать на IndexPage, не используется, но пока храню
 // TODO: [FEATURE] плохо выглядит, надо переделать на тайлы
 export const CharityIntro: FunctionComponent = () => (
 	<PrecentationContainer>

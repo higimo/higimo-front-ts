@@ -1,6 +1,5 @@
 import { Brand, Code, DateOnlyString } from 'utils.type'
 
-type PortfolioId              = Brand<number, 'PortfolioId'>
 type PortfolioTagId           = Brand<number, 'PortfolioTagId'>
 type PortfolioTagGroupId      = Brand<number, 'PortfolioTagGroupId'>
 export type PortfolioWorkerId = Brand<number, 'PortfolioWorkerId'>
@@ -8,16 +7,12 @@ type PortfolioVendorId        = Brand<number, 'PortfolioVendorId'>
 export type PortfolioProjectId = Brand<number, 'PortfolioProjectId'>
 
 // TODO: [BACKEND] после передачи количества в count, можно будет избавиться от типа
-export type PortfolioIdsType = {
-	id: PortfolioId
-	vendor: number
-	code: Code
-}
+
 export type PortfolioTag = {
 	id: PortfolioTagId
 	title: string
 }
-export type PortfolioGroupTagType = {
+type PortfolioGroupTagType = {
 	id: PortfolioTagGroupId
 	title: string
 }
@@ -38,13 +33,13 @@ export type PortfolioCreditsType = {
 	role: string
 	worker: PortfolioWorkerType
 }
-export type PortfolioVendorType = {
+type PortfolioVendorType = {
 	id: PortfolioVendorId
 	code: Code
 	title: string
 	description?: string
 }
-export type PortfolioProjectSimpleType = {
+type PortfolioProjectSimpleType = {
 	id: PortfolioProjectId
 	vendor_id: number
 	vendor: PortfolioVendorType

@@ -26,7 +26,7 @@ type FormFieldInputScheme<K extends PropertyKey> = FormFieldSchemeBase<K> & {
 	values?: never
 }
 
-export type FormFieldScheme<K extends PropertyKey> =
+type FormFieldScheme<K extends PropertyKey> =
 	| FormFieldSelectScheme<K>
 	| FormFieldInputScheme<K>
 

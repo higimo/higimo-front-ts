@@ -6,21 +6,21 @@ import { apiReducer } from 'utils/api/api-reducer'
 
 import { API_STATUS } from 'dic/API_STATUS'
 
-export type MultiJsonApiUrls<T> = { [K in keyof T]: string }
+type MultiJsonApiUrls<T> = { [K in keyof T]: string }
 
 /**
  * Состояние по каждому ключу — то же, что в useApi, но в словаре.
  */
-export type MultiJsonApiState<T> = { [K in keyof T]: ApiState<T[K]> }
+type MultiJsonApiState<T> = { [K in keyof T]: ApiState<T[K]> }
 
 /**
  * Экшен верхнего уровня: какой ключ и какой ApiAction к нему применить.
  */
-export type MultiJsonApiAction<T> = {
+type MultiJsonApiAction<T> = {
 	[K in keyof T]: { key: K, action: ApiAction<T[K]> }
 }[keyof T]
 
-export const multiJsonApiReducer = <T,>(
+const multiJsonApiReducer = <T,>(
 	state: MultiJsonApiState<T>,
 	{ key, action }: MultiJsonApiAction<T>,
 ): MultiJsonApiState<T> => ({

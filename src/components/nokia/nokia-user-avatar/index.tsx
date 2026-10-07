@@ -1,5 +1,11 @@
-export const NokiaUserAvatar = props => (
+import { FunctionComponent } from 'preact'
+
+type NokiaUserAvatarPropsType = {
+	name: string
+}
+
+export const NokiaUserAvatar: FunctionComponent<NokiaUserAvatarPropsType> = (props) => (
 	<div className="nokia-user-avatar">
-		{props.name.substr(0, 1).toUpperCase()}
+		{props.name.substring(0, 1).toUpperCase()}
 	</div>
 )

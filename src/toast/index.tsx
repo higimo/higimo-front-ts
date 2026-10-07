@@ -96,6 +96,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = () => {
 	)
 }
 
+// TODO: [LIGHT] кажется, не нужен?
 // Хук для удобного использования тостов
 export const useToast = () => {
 	const [toastContainer, setToastContainer] = useState<React.ReactElement | null>(null)

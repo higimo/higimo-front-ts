@@ -22,20 +22,18 @@ const pagesList = [
 		href: ROUTE_LINKS.toolVkAlbums,
 	}
 ]
-export const VkIndexPage: FunctionComponent = () => {
-	return (
-		<Layout title="VK tool index" className="vk-identity-page vk-photo">
-			<TextContainer>
-				<Breadcrumps />
-			</TextContainer>
+export const VkIndexPage: FunctionComponent = () => (
+	<Layout title="VK tool index" className="vk-identity-page vk-photo">
+		<TextContainer>
+			<Breadcrumps />
+		</TextContainer>
 
-			<TextContainer>
-				<VkHeading>VK tool</VkHeading>
+		<TextContainer>
+			<VkHeading>VK tool</VkHeading>
 
-				<IntroTileGallery
-					list={pagesList}
-				/>
-			</TextContainer>
-		</Layout>
-	)
-}
+			<IntroTileGallery
+				list={pagesList}
+			/>
+		</TextContainer>
+	</Layout>
+)

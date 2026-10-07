@@ -12,6 +12,7 @@ import './style.css'
 type ProjectListPropsType = {
 	projectsList: PortfolioProjectFullType[] | null
 }
+
 export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
 	const packedRows = useMemo(() => packElements(props.projectsList || []), [props.projectsList])
 

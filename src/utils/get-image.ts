@@ -1,4 +1,4 @@
-
+// TODO: [LIGHT] почему это здесь? getBlogImage
 import higimo from '../components/blog/last-updates/img/higimo.png'
 import rak from '../components/blog/last-updates/img/rak.png'
 import screen from '../components/blog/last-updates/img/screen.png'

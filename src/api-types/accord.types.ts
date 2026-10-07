@@ -10,11 +10,6 @@ export type AccordType = {
 	view: number
 }
 
-export type AccordWithTagType = AccordType & {
-	isNew: boolean
-	isMostView: boolean
-}
-
 type AccordTagType = {
 	id: number
 	title: string

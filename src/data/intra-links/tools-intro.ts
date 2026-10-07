@@ -3,7 +3,7 @@ import { IntroLinkDataType } from 'utils.type'
 import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
-export const hardToolList: IntroLinkDataType[] = [
+const hardToolList: IntroLinkDataType[] = [
 	{
 		isAdmin: true,
 		title: 'Пробби',
@@ -73,7 +73,7 @@ export const hardToolList: IntroLinkDataType[] = [
 	},
 ] as const
 
-export const botToolList: IntroLinkDataType[] = [
+const botToolList: IntroLinkDataType[] = [
 	{
 		title: 'Бот упоминаний',
 		href: EXTERNAL_LINKS.botRole,

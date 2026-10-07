@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { Logotype } from 'components/ui/logotype-mini'
+import { Logotype } from 'components/ui/logotype/Logotype'
 import { OnlyAdmin } from 'components/util/only-admin'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
@@ -49,6 +49,7 @@ const secretMenu = [
 ] as const
 
 type HeaderPropsType = {}
+
 export const Header: FunctionComponent<HeaderPropsType> = () => {
 	if (isNotFound.value) {
 		return null

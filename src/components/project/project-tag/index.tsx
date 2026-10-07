@@ -21,6 +21,7 @@ type ProjectTagPropsType = {
 	isSelected?: boolean
 	toggleTag?: () => void
 }
+
 export const ProjectTag: FunctionComponent<ProjectTagPropsType> = ({
 	filterName,
 	children,

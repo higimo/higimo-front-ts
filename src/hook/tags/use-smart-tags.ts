@@ -1,5 +1,6 @@
-import { useState, useCallback, useMemo } from 'preact/hooks'
 import { CategoryName, Tag, TagCategory, TagName } from 'types'
+
+import { useState, useCallback, useMemo } from 'preact/hooks'
 
 type UseSmartTagsProps = {
 	categories: TagCategory[]

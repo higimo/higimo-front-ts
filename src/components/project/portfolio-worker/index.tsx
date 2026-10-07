@@ -7,17 +7,15 @@ type PortfolioWorkerPropsType = {
 	author: PortfolioCreditsType
 }
 
-export const PortfolioWorker: FunctionComponent<PortfolioWorkerPropsType> = ({ author }) => {
-	return (
-		<div className="project-viewer__person portfolio-person">
-			<div className="portfolio-person__name">
-				<MaybeLink isHref={!!author.worker.link?.length} href={author.worker.link}>
-					{author.worker.full_name}
-				</MaybeLink>
-			</div>
-			<div className="portfolio-person__role">
-				{author.role}
-			</div>
+export const PortfolioWorker: FunctionComponent<PortfolioWorkerPropsType> = ({ author }) => (
+	<div className="project-viewer__person portfolio-person">
+		<div className="portfolio-person__name">
+			<MaybeLink isHref={!!author.worker.link?.length} href={author.worker.link}>
+				{author.worker.full_name}
+			</MaybeLink>
 		</div>
-	)
-}
+		<div className="portfolio-person__role">
+			{author.role}
+		</div>
+	</div>
+)

@@ -1,4 +1,6 @@
-import { getRememberedValues } from "./getRememberedValues"
+import { getRememberedValues } from 'components/form/getRememberedValues'
+
+// TODO: [LIGHT] переместить в утилиты
 
 // @ts-ignore
 export const EMPTY_FORM: Partial<FormValues> = {}

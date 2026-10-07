@@ -17,6 +17,7 @@ import { HEIGHT, WIDTH } from 'config/NOKIA_CHART_CONFIG'
 type NokiaStatisticPropsType = {
 	meetingStatistic: NokiaMeetingStatisticType[] | null
 }
+
 export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ meetingStatistic }) => {
 	if (!meetingStatistic) {
 		return null

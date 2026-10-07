@@ -4,10 +4,10 @@ import { formatPrice } from 'utils/formatter/format-price'
 
 import './style.css'
 
-type MerchantProductBenefitsPropsType = {
+type MerchantProductCardPropsType = {
 	product: MerchantProductType
 }
-export const MerchantProductCard: FunctionComponent<MerchantProductBenefitsPropsType> = ({
+export const MerchantProductCard: FunctionComponent<MerchantProductCardPropsType> = ({
 	product
 }) => (
 	<div class="product-card">

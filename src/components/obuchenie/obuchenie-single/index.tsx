@@ -14,6 +14,7 @@ var md = new markdownit({
 type ObuchenieSinglePropsType = {
 	lectionItem: LectionType | null
 }
+
 export const ObuchenieSingle: FunctionComponent<ObuchenieSinglePropsType> = ({ lectionItem }) => lectionItem && (
 	<div className="test">
 		<TextContainer>

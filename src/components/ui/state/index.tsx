@@ -30,28 +30,6 @@ export const EmptyState: FunctionComponent<EmptyStatePropsType> = (props) => (
 	/>
 )
 
-type EmptyCreateStatePropsType = Partial<StatePropsBaseType>
-
-export const EmptyCreateState: FunctionComponent<EmptyCreateStatePropsType> = (props) => (
-	<State
-		title="Данных нет"
-		text="...Самое время это исправить"
-		action={<a className="state__button" href="#">Создать</a>}
-		{...props}
-	/>
-)
-
-type LoadingStatePropsType = Partial<StatePropsBaseType>
-
-export const LoadingState: FunctionComponent<LoadingStatePropsType> = (props) => (
-	<State
-		icon={<div className="state__spinner" />}
-		title="Загрузка"
-		text="Подождите, данные загружаются"
-		{...props}
-	/>
-)
-
 type ErrorStatePropsType = Partial<StatePropsBaseType>
 
 export const ErrorState: FunctionComponent<ErrorStatePropsType> = (props) => (

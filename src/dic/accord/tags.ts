@@ -1,6 +1,6 @@
 import { AccordTags } from 'api-types/accord.types'
 
-export const mainTags: AccordTags = {
+const mainTags: AccordTags = {
 	liric:     'лирика',
 	scream:    'поорать',
 	korol:     'Король и шут',
@@ -13,7 +13,7 @@ export const mainTags: AccordTags = {
 	bard:      'барды',
 } as const
 
-export const extendTags: AccordTags  = {
+const extendTags: AccordTags  = {
 	new:      'нью',
 	pop:      'популярно',
 	nolist:   'Без списков',

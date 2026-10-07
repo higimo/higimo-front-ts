@@ -11,6 +11,8 @@ type GetInfoType = () => {
 	getValues: UseFormGetValues<FormValues>
 }
 
+// TODO: [HARD] надо более одинаковый код с VK сделать
+
 export async function initPayment(getInfo: GetInfoType) {
 	await loadJs('https://integrationjs.tbank.ru/integration.js')
 

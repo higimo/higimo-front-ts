@@ -1,11 +1,5 @@
 Джаваскрипт очень важно https://habr.com/ru/companies/timeweb/articles/1081878/
 
-## Используемость
-
-TODO: [MIDDLE] проверить что хуки и вспомогательные функции до сих пор используются в проекте (почистить неиспользуемое)
-
-TODO: [MIDDLE] Почистить хомяк от неиспользуемых компонентов
-
 ## Сторонние библиотеки
 https://github.com/antfu-collective/taze
 https://github.com/antfu/export-size

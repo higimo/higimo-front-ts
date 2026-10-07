@@ -1,4 +1,4 @@
-export type MerchantBenefitType = {
+type MerchantBenefitType = {
 	title: string
 	description: string
 }
@@ -11,7 +11,7 @@ type MerchantOfferType = {
 	is_active: boolean
 }
 
-export type MerchantFeatureType = {
+type MerchantFeatureType = {
 	title: string
 	value: string
 }

@@ -2,7 +2,7 @@ import { PrivateRoute } from 'components/util/private-route'
 import { Route } from 'preact-iso'
 
 import { AdminPage } from 'pages/admin/admin-page'
-import { LoginPage } from 'pages/auth/login-page'
+import { LoginPage } from 'pages/admin/login-page'
 import { ToolPage } from 'pages/admin/tool-page'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'

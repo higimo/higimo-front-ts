@@ -2,6 +2,7 @@ import { AccordType } from 'api-types/accord.types'
 import { Fragment, FunctionComponent } from 'preact'
 
 type AccordContentPropsType = {
+	// TODO: [LIGHT] переименовать accordItem
 	song: AccordType | null
 }
 

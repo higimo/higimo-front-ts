@@ -1,13 +1,17 @@
+// TODO: [MIDDLE] избавиться от any
 type IframeIntegrationConfig = any
+// TODO: [MIDDLE] избавиться от any
 type OverlayType = any
 type PaymentStartCallback = (paymentType: OverlayType) => Promise<string>
+// TODO: [MIDDLE] избавиться от any
+type AlertInfo = any
 
 
+// TODO: [MIDDLE] проверить, кажется, не используется
 /**
  * Тиньков эквайринг
  * https://developer.tbank.ru/eacq/intro/developer/setup_js/
  */
-
 export interface IntegrationInitConfig {
 	terminalKey: string
 	product: 'eacq'
@@ -30,6 +34,10 @@ export interface IntegrationInitConfig {
 	}
 }
 
+interface PaymentIntegrationStatic {
+	init: (options: InitOptions) => Promise<IntegrationInstance>
+	getUrl: (version?: string) => string
+}
 
 declare global {
 	interface Window {
@@ -39,11 +47,6 @@ declare global {
 	}
 
 	const PaymentIntegration: PaymentIntegrationStatic
-}
-
-export interface PaymentIntegrationStatic {
-	init: (options: InitOptions) => Promise<IntegrationInstance>
-	getUrl: (version?: string) => string
 }
 
 export interface InitOptions {
@@ -68,7 +71,7 @@ export interface IntegrationInstance {
 	off?: (event: string, callback: (data: unknown) => void) => void
 }
 
-export interface PaymentIntegrationConfig {
+interface PaymentIntegrationConfig {
 	/** Настройки терминала */
 	terminalSettings: TerminalSettings
 
@@ -89,9 +92,7 @@ export interface PaymentIntegrationConfig {
 
 	/** URL-ы API */
 	urls: UrlsConfig
-}
 
-export interface PaymentIntegrationConfig {
 	/**
 	 * Срабатывает после загрузки кнопок оплаты (перед отображением)
 	 * Может быть использован для отображения loader в контейнере
@@ -177,7 +178,6 @@ export interface PaymentIntegrationConfig {
 		showAlertCallback?: (alert: AlertInfo) => Promise<void>
 	}
 }
-type AlertInfo = any
 
 export type PaymentIntegrationStatus = 'CANCELED' |
 	'EXPIRED' |
@@ -188,7 +188,7 @@ export type PaymentIntegrationStatus = 'CANCELED' |
 	'REJECTED' |
 	'SUCCESS'
 
-export interface TerminalSettings {
+interface TerminalSettings {
 	/** Включенные платежные методы */
 	payMethods?: PaymentMethod[]
 
@@ -221,7 +221,7 @@ export type PaymentType = 'alfapay' |
 
 
 
-export type PaymentMethod = 'AlfaPay' |
+type PaymentMethod = 'AlfaPay' |
 	'Bnpl' |
 	'cards' |
 	'DigitalRuble' |
@@ -233,7 +233,7 @@ export type PaymentMethod = 'AlfaPay' |
 
 
 
-export interface BucketConfig {
+interface BucketConfig {
 	/** Тип используемого бакета */
 	bucketType?: 'current' | 'next' | 'a' | 'b' | 'c'
 
@@ -247,7 +247,7 @@ export interface BucketConfig {
 	}
 }
 
-export interface UrlsConfig {
+interface UrlsConfig {
 	/** URL для MAPI (Merchant API) */
 	mapi: string
 
@@ -259,7 +259,7 @@ export interface UrlsConfig {
 }
 
 
-export interface PaymentOpenOptions {
+interface PaymentOpenOptions {
 	/** Сумма платежа */
 	amount?: number
 
@@ -281,6 +281,7 @@ export interface PaymentOpenOptions {
 }
 
 
+// TODO: [LIGHT] проверить, кажется не используется
 export interface PaymentSuccessData {
 	/** ID заказа */
 	orderId: string
@@ -305,29 +306,4 @@ export interface PaymentError {
 
 	/** Детали ошибки */
 	details?: Record<string, unknown>
-}
-
-export const isPaymentIntegrationLoaded = (
-	obj: unknown
-): obj is PaymentIntegrationStatic => {
-	return (
-		typeof obj === 'object' &&
-		obj !== null &&
-		'init' in obj &&
-		typeof (obj as any).init === 'function' &&
-		'getUrl' in obj &&
-		typeof (obj as any).getUrl === 'function'
-	)
-}
-
-
-export const isIntegrationInstance = (
-	obj: unknown
-): obj is IntegrationInstance => {
-	return (
-		typeof obj === 'object' &&
-		obj !== null &&
-		'init' in obj &&
-		typeof (obj as any).init === 'function'
-	)
 }

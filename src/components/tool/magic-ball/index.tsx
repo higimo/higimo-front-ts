@@ -4,13 +4,14 @@ import { phrases } from './data'
 
 import './style.css'
 
-const getRandomPhrases = () => phrases[Math.floor(Math.random() * phrases.length)]
+const getRandomPhrases = (): string => phrases[Math.floor(Math.random() * phrases.length)] || ''
 
 export const MagicBall = () => {
 	const [ phrase, setPhrase ] = useState<string>('')
 	const handerMouseenter = () => {
 		setPhrase(getRandomPhrases())
 	}
+
 	return (
 		<div className="magic-ball">
 			<div className="magic-ball__shadow" />

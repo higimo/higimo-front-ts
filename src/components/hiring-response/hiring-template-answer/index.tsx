@@ -25,47 +25,45 @@ type HiringTemplateAnswerPropsType = {
 }
 
 export const HiringTemplateAnswer: FunctionComponent<HiringTemplateAnswerPropsType> = ({
-}) => {
-	return (
-		<CollapseSection header="Шаблоны сообщений">
-			<div className="hiring-template-answer">
-				<div className="hiring-template-answer__column">
-					<h2>Текст отклика</h2>
-					<span
-						className="pseudo-link"
-						onClick={() => copyToClipboard(RESONSE)}
-					>
-						Скопировать
-					</span>
-					<p>
-						{RESONSE}
-					</p>
-				</div>
-				<div className="hiring-template-answer__column">
-					<h2>Про деньги</h2>
-					<span
-						className="pseudo-link"
-						onClick={() => copyToClipboard(MONEY)}
-					>
-						Скопировать
-					</span>
-					<p>
-						{MONEY}
-					</p>
-				</div>
-				<div className="hiring-template-answer__column">
-					<h2>Добавились в друзья</h2>
-					<span
-						className="pseudo-link"
-						onClick={() => copyToClipboard(FRIEND)}
-					>
-						Скопировать
-					</span>
-					<p>
-						{FRIEND}
-					</p>
-				</div>
+}) => (
+	<CollapseSection header="Шаблоны сообщений">
+		<div className="hiring-template-answer">
+			<div className="hiring-template-answer__column">
+				<h2>Текст отклика</h2>
+				<span
+					className="pseudo-link"
+					onClick={() => copyToClipboard(RESONSE)}
+				>
+					Скопировать
+				</span>
+				<p>
+					{RESONSE}
+				</p>
 			</div>
-		</CollapseSection>
-	)
-}
+			<div className="hiring-template-answer__column">
+				<h2>Про деньги</h2>
+				<span
+					className="pseudo-link"
+					onClick={() => copyToClipboard(MONEY)}
+				>
+					Скопировать
+				</span>
+				<p>
+					{MONEY}
+				</p>
+			</div>
+			<div className="hiring-template-answer__column">
+				<h2>Добавились в друзья</h2>
+				<span
+					className="pseudo-link"
+					onClick={() => copyToClipboard(FRIEND)}
+				>
+					Скопировать
+				</span>
+				<p>
+					{FRIEND}
+				</p>
+			</div>
+		</div>
+	</CollapseSection>
+)

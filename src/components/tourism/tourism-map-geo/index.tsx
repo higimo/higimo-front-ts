@@ -17,6 +17,7 @@ type TourismMapGeoPropsType<T extends BasePointType, L extends Coord> = {
 	center?: Coord,
 	cluster?: boolean
 }
+
 export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 	items,
 	lines,

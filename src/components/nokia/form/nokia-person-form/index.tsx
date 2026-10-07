@@ -28,11 +28,11 @@ const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {
 	}
 }
 
-interface NokiaPersonFormContainerProps {
+type NokiaPersonFormContainerPropsType = {
 	initialData: NokiaPersonSimpleType | null
 }
 
-export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerProps> = ({
+export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerPropsType> = ({
 	initialData,
 }) => {
 	const formMethods = useForm<NokiaPersonSimpleType>({

@@ -1,7 +1,7 @@
 import { NestedListItemType } from 'api-types/listlist.types'
 import { FormScheme } from 'api-types/form.types'
 
-// TODO: [HARD] распространить практиру делать схему формы
+// TODO: [LIGHT] перенести к форме, как везде
 export type FormValues = Partial<NestedListItemType>
 
 export const formScheme: FormScheme<NestedListItemType> = {

@@ -1,8 +1,7 @@
 import { MessageContainer } from 'components/ui/message-container'
-
+// TODO: [LIGHT] если мессаги не нужны, то удалить компонент и этот хук
 /**
  * Возвращает контейнер и добавлялку месседжей
- * @returns
  */
 export const useMessage = () => {
 	const showMessage = (message: string) => {

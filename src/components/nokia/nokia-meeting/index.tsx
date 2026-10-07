@@ -8,28 +8,27 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 type NokiaMetingPropsType = {
 	meeting: NokiaMeetingFullType
 }
-export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting }) => {
-	return (
-		<div className="nokia-people-detail-card-item__meeting meeting-gallery">
-			<div className="meeting-gallery__item meeting">
-				<div className="meeting__avatar" />
-				<div className="meeting__description">
-					{meeting.description}
+
+export const NokiaMeeting: FunctionComponent<NokiaMetingPropsType> = ({ meeting }) => (
+	<div className="nokia-people-detail-card-item__meeting meeting-gallery">
+		<div className="meeting-gallery__item meeting">
+			<div className="meeting__avatar" />
+			<div className="meeting__description">
+				{meeting.description}
+			</div>
+			<div className="meeting__information">
+				<div className="meeting__date">
+					{new Date(meeting.date).toLocaleDateString()}
 				</div>
-				<div className="meeting__information">
-					<div className="meeting__date">
-						{new Date(meeting.date).toLocaleDateString()}
-					</div>
-					<div className="meeting__type">
-						<a href={ROUTE_LINKS.nokiaFormEdit({ meetingId: meeting.id })}>{meeting.type}</a>
-					</div>
-				</div>
-				<div className="meeting__persons">
-					{meeting.person.map(person => (
-						<NokiaPersonTag person={person} />
-					))}
+				<div className="meeting__type">
+					<a href={ROUTE_LINKS.nokiaFormEdit({ meetingId: meeting.id })}>{meeting.type}</a>
 				</div>
 			</div>
+			<div className="meeting__persons">
+				{meeting.person.map(person => (
+					<NokiaPersonTag person={person} />
+				))}
+			</div>
 		</div>
-	)
-}
+	</div>
+)

@@ -7,6 +7,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 type ProjectMorePropsType = {
 	count: number
 }
+
 export const ProjectMore: FunctionComponent<ProjectMorePropsType> = ({ count }) => (
 	<div className="project-more">
 		<a href={ROUTE_LINKS.projectIndex} className="project-more__button">

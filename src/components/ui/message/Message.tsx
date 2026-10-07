@@ -11,6 +11,7 @@ type MessagePropsType = {
 	error?: boolean
 	success?: boolean
 }
+
 export const Message: FunctionComponent<MessagePropsType> = ({ text, result, message, error, success }) => (
 	<div className={cs('message', { result, message, error, success })}>
 		{typeof text === 'string' ? (<span dangerouslySetInnerHTML={{ __html: text }} />) : text}

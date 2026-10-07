@@ -6,6 +6,7 @@ import { getBlogImage } from 'utils/get-blog-image'
 import { getText } from 'utils/text/get-text'
 
 type BlogItemPropsType = UpdateNewsType
+
 export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => {
 	return (
 		<a

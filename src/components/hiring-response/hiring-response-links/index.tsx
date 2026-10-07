@@ -5,6 +5,7 @@ import { copyToClipboard } from 'utils/browser/copy-to-clipboard'
 
 import './style.css'
 
+// TODO: [LIGHT] видимо, это останется — унести надо
 const HIRING_LINKS = [
 	{
 		title: 'LinkedIn',

@@ -67,6 +67,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 					</form>
 				</FormProvider>
 			</InnerFromContainer>
+			{/* TODO: [LIGHT] ой, осталось */}
 			<form
 				autocomplete="off"
 				onSubmit={formMethods.handleSubmit(onSubmit)}
@@ -79,6 +80,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 					<VkParagraph variant="caption">Ид пользователя</VkParagraph>
 					<input type="number" {...formMethods.register('userId')}  />
 					{' '}
+					{/* TODO: [LIGHT] ну тогда и удалить компонент */}
 					<VkButton variant="tertiary" type="submit">
 						Скачать свои
 					</VkButton>

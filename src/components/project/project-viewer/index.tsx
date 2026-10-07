@@ -15,6 +15,7 @@ import './style.css'
 type ProjectViewerPropsType = {
 	projectItem: PortfolioProjectDetailType | null
 }
+
 export const ProjectViewer: FunctionComponent<ProjectViewerPropsType> = ({
 	projectItem
 }) => projectItem && (

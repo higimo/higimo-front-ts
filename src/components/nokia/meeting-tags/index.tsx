@@ -1,5 +1,7 @@
-import { Tag } from 'components/ui/tag/Tag'
 import { FunctionComponent } from 'preact'
+
+import { Tag } from 'components/ui/tag/Tag'
+// TODO: [MIDDLE] прям отдельный компонент нужен? Мб, сделать общий с className
 
 type MeetingTagsPropsType = {
 	tags: string[]
@@ -8,7 +10,9 @@ type MeetingTagsPropsType = {
 }
 
 export const MeetingTags: FunctionComponent<MeetingTagsPropsType> = ({
-	tags, selectedTags, onClick,
+	tags,
+	selectedTags,
+	onClick,
 }) => (
 	<div className="nokia__meeting-tags">
 		{tags.map(tag => (

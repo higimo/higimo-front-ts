@@ -69,11 +69,6 @@ interface GlobalAdministrativePosition extends PoiCountry, PoiNearMoscow {
 	okrug?: string
 }
 
-interface RussianAdmPosition {
-	region: string
-	okrug?: string
-}
-
 /*******************************
  * Типы Place Of Interest POI
  *******************************/
@@ -144,30 +139,11 @@ export interface Town extends BasePointType, PoiDescription, PoiColor, PoiVisite
 	type: 'округ Москвы' | 'город' | 'деревня' | 'ЗАТО'
 	population: number
 }
-export interface Teatre extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
-	type: 'театр'
-	population?: never
-}
-export interface Build extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
-	type: 'здание'
-	population?: never
-}
-export interface Landmark extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
-	type: 'достопримечательность'
-	population?: never
-}
-export interface Church extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
-	type: 'церковь'
-	population?: never
-}
-export interface Memorial extends BasePointType, PoiDescription, PoiVisited, PoiCountry, RussianAdmPosition {
-	type: 'памятник'
-	population?: never
-}
 export interface Placefield extends BasePointType, PoiColor, PoiVisited, PoiCountry, PoiNearMoscow {
 	type: 'местечко'
 }
 
+// TODO: rename PoiType
 export type PovType =
 	| Country
 	| SubjectFederation
@@ -176,20 +152,7 @@ export type PovType =
 	| DistrictMoscow
 	| Castle
 	| Town
-	| Teatre
-	| Build
-	| Landmark
-	| Church
-	| Memorial
 	| Placefield
-
-
-
-
-
-
-
-
 
 
 type BarPovTagType = ValueOf<typeof BAR_TAGS_CATEGORY>[number]
@@ -197,6 +160,7 @@ type BarPovTagType = ValueOf<typeof BAR_TAGS_CATEGORY>[number]
 export type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
 export type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>
 
+// TODO: rename BarPoiType
 export type BarPovType = {
 	id: number
 	title: string

@@ -12,6 +12,7 @@ type PetProject = {
 	petprojects: PetProjectType[]
 	gradients: GradientDicType[] | null
 }
+
 export const PetProject: FunctionComponent<PetProject> = ({ petprojects, gradients }) => {
 	const goodGradients = useMemo(() => {
 		if (!gradients) {

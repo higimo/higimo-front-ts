@@ -8,6 +8,7 @@ import './style.css'
 type ObuchenieListPropsType = {
 	lectionList: LectionType[] | null
 }
+
 export const ObuchenieList: FunctionComponent<ObuchenieListPropsType> = ({ lectionList }) => lectionList && (
 	<div className="obuchenie-list">
 		{lectionList.map(({ id, name, code }) => (

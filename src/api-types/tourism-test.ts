@@ -1,17 +1,12 @@
 import { Coord, HexType } from 'utils.type'
 import {
 	AdmOrkugMoscow,
-	Build,
 	Castle,
-	Church,
 	Country,
 	DistrictMoscow,
-	Landmark,
-	Memorial,
 	Placefield,
 	SimpleMapPoint,
 	SubjectFederation,
-	Teatre,
 	Town,
 	TownMoscow,
 	YaMapPolygon,
@@ -195,71 +190,6 @@ const town: Town[] = [
 	}
 ]
 console.log(town)
-
-const teatre: Teatre[] = [
-	{
-		country: 'Россия',
-		type: 'театр',
-		title: 'aaa',
-		coord,
-		description: 'desr',
-		visited: true,
-		region: 'Нижегородская область',
-	}
-]
-console.log(teatre)
-
-const build: Build[] = [
-	{
-		country: 'Россия',
-		type: 'здание',
-		title: 'aaa',
-		coord,
-		description: 'desr',
-		visited: true,
-		region: 'Нижегородская область',
-	}
-]
-console.log(build)
-
-const landmark: Landmark[] = [
-	{
-		country: 'Россия',
-		title: 'aaa',
-		coord,
-		type: 'достопримечательность',
-		description: 'desr',
-		visited: true,
-		region: 'Нижегородская область',
-	}
-]
-console.log(landmark)
-
-const church: Church[] = [
-	{
-		country: 'Россия',
-		type: 'церковь',
-		title: 'aaa',
-		coord,
-		description: 'desr',
-		visited: true,
-		region: 'Нижегородская область',
-	}
-]
-console.log(church)
-
-const memorial: Memorial[] = [
-	{
-		country: 'Россия',
-		type: 'памятник',
-		title: 'aaa',
-		coord,
-		description: 'desr',
-		visited: true,
-		region: 'Нижегородская область',
-	}
-]
-console.log(memorial)
 
 const placefield: Placefield[] = [
 	{

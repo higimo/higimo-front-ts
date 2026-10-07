@@ -73,6 +73,7 @@ export const TourismChecklist = () => (
 				<span
 					className="pseudo-link"
 					onClick={() => {
+						// TODO: [MIDDLE] чет ругается
 						document.querySelectorAll('.organisation-list__item input:checked')
 							.forEach((el: HTMLInputElement) => el.click())
 					}}

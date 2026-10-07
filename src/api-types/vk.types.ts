@@ -2,19 +2,19 @@ import { BooleanNumber, Positive, UnixTimeSecond } from 'utils.type'
 
 export type VkUserId = string
 
-export type VKAlbumSizesType = {
+type VKAlbumSizesType = {
 	type: 'x' | 's'
 	src: string
 }
 
-export type VkPhotoOrigType = {
+type VkPhotoOrigType = {
 	height: number
 	width: number
 	type: 'base'
 	url: string
 }
 
-export type VkPhotoSizesType = {
+type VkPhotoSizesType = {
 	height: number
 	width: number
 	type: 'm' | 'o' | 'p' | 'q' | 'r' | 's' | 'w' | 'x' | 'y' | 'z'
@@ -34,6 +34,7 @@ export type VkPhotoType = {
 	orig_photo: VkPhotoOrigType
 }
 
+// TODO: [LIGHT] объединить с тем что ниже
 export type VKAlbumType = {
 	/** Идентификатор альбома */
 	id: Positive

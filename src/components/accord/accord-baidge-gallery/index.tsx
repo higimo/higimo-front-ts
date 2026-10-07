@@ -9,6 +9,7 @@ type AccordTagGalleryPropsType = {
 	toggleTag: (label: TagName) => () => void
 	isSelected: (label: TagName) => boolean
 }
+
 export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({ toggleTag, isSelected }) => (
 	<div className="accord__tags-gallery">
 		{ACCORD_TAG_CATEGORY[0].tags.map(({ title }, id) => (

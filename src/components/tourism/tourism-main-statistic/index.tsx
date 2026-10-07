@@ -12,6 +12,7 @@ import { TourismStatisticWorld } from 'components/tourism/tourism-statistic-worl
 type TourismMainStatisticPropsType = {
 	totalStatistic: PovType[]
 }
+
 export const TourismMainStatistic: FunctionComponent<TourismMainStatisticPropsType> = ({ totalStatistic }) => (
 	<Fragment>
 		<TextContainer>
