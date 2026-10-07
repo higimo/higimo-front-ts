@@ -1,7 +1,6 @@
 import { ApiAction, ApiState, MetaApiType } from 'api-types/fetch-api.types'
 import { API_STATUS } from 'dic/API_STATUS'
 
-// TODO: [MIDDLE] используется ещё в useJsonApi, useMultiJsonApi
 export const apiReducer = <T, M = MetaApiType>(
 	state: ApiState<T, M>,
 	action: ApiAction<T, M>
