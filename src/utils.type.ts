@@ -155,13 +155,6 @@ export function asPositive(n: number): Positive {
 
 
 /**
- * Белево значение, но в виде числа 1 | 0
- */
-export type BooleanNumber = Brand<number, 'BooleanNumber'>
-
-
-
-/**
  * Просто пустой объект, без подсказок
  *
  * Использовать, например, для useApi, когда передаётся -1 (в этом случае, он возвращает `{}`)

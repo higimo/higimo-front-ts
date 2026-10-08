@@ -1,4 +1,4 @@
-import { BooleanNumber, Positive, UnixTimeSecond } from 'utils.type'
+import { Positive, UnixTimeSecond } from 'utils.type'
 
 export type VkUserId = string
 
@@ -34,19 +34,22 @@ export type VkPhotoType = {
 	orig_photo: VkPhotoOrigType
 }
 
-// TODO: [LIGHT] объединить с тем что ниже
 export type VKAlbumType = {
 	/** Идентификатор альбома */
 	id: Positive
-	/** Идентификатор создателя */
+	/** Идентификатор владельца альбома */
 	owner_id: VkUserId
+	/** Идентификатор фотографии-обложки (0, если обложка отсутствует) */
+	thumb_id: number
+	/** URL обложки альбома (если был указан параметр need_covers) */
+	thumb_src: string
 	/** Видимость */
 	is_locked: boolean
-	/** Название */
+	/** Название альбома */
 	title: string
-	/** Дата создания */
+	/** Дата создания в формате unixtime (не приходит для системных альбомов) */
 	created: UnixTimeSecond
-	/** Дата обновления */
+	/** Дата обновления в формате unixtime (не приходит для системных альбомов) */
 	updated: UnixTimeSecond
 	/** Количество фотографий в альбоме */
 	size: number
@@ -56,58 +59,6 @@ export type VKAlbumType = {
 	sizes: VKAlbumSizesType[]
 	/** Доступ к удалению */
 	can_delete: boolean
-}
-
-export type VkAlbumType = {
-	/** идентификатор альбома */
-	id: Positive
-	/** идентификатор владельца альбома */
-	owner_id: VkUserId
-	/** идентификатор фотографии, которая является обложкой (0, если обложка отсутствует) */
-	thumb_id: number
-	/** ссылка на изображение обложки альбома (если был указан параметр need_covers) */
-	thumb_src: string
-	/** количество фотографий в альбоме */
-	size: number
-	/** название альбома */
-	title: string
-	feed_disabled: BooleanNumber
-	feed_has_pinned: BooleanNumber
-	/** дата создания альбома в формате unixtime (не приходит для системных альбомов) */
-	created: UnixTimeSecond
-	/** дата последнего обновления альбома в формате unixtime (не приходит для системных альбомов) */
-	updated: UnixTimeSecond
-	/** описание альбома (не приходит для системных альбомов) */
-	description: string
-	is_locked: boolean
-	/** настройки приватности для альбома в формате настроек приватности (только для альбома пользователя, не приходит для системных альбомов) */
-	privacy_comment: {
-		category: 'all'
-		lists: {
-			allowed: []
-			excluded: []
-		}
-		owners: {
-			allowed: []
-			excluded: []
-		}
-	}
-	/** настройки приватности для альбома в формате настроек приватности (только для альбома пользователя, не приходит для системных альбомов) */
-	privacy_view: {
-		/** 'only_me' */
-		category: string
-		lists: {
-			allowed: []
-			excluded: []
-		}
-		owners: {
-			allowed: []
-			excluded: []
-		}
-	}
-	sizes: VkPhotoSizesType[]
-	thumb_is_last: BooleanNumber
-
 }
 
 
