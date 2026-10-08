@@ -1,4 +1,4 @@
-import { FormValues, formScheme } from 'components/list/nested-list-form/FormValues'
+import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 import { NestedListItemFullType, NestedListItemType } from 'api-types/listlist.types'
 
@@ -15,6 +15,20 @@ import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { toast } from 'toast'
 
 import './style.css'
+
+export type FormValues = Partial<NestedListItemType>
+
+export const formScheme: FormScheme<NestedListItemType> = {
+	id: { type: 'number', title: 'ид', readonly: true, },
+	parent_id: { type: 'number', title: 'ид родителя', },
+	title: {
+		type: 'textarea',
+		title: 'Название',
+		description: 'Указав имена с переносом строки, из каждой строки будет создан отдельный айтем',
+	},
+	code: { title: 'код', },
+}
+
 
 const handleListListSubmit = async (values: FormValues): Promise<void> => {
 	if (as<NestedListItemType>(values, ['id'])) {

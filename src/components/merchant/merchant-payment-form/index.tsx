@@ -1,5 +1,4 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { FormValues } from './types'
 import { FunctionComponent } from 'preact'
 import { MerchantProductType } from 'api-types/merchant.types'
 
@@ -13,6 +12,11 @@ import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 import { initPayment } from 'utils/merchant/init-payment'
 
 import './style.css'
+
+type FormValues = {
+	email: string
+	comment: string
+}
 
 type MerchantPaymentFormPropsType = {
 	product: MerchantProductType
