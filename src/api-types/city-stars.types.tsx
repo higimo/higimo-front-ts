@@ -1,5 +1,10 @@
-// TODO: [LIGHT] использовать
 export type CityStarsType = {
+	/**
+	 * Название города
+	 */
 	title: string
-	star: string // ★★★
+	/**
+	 * Рейтинг звёзд: ★★★
+	 */
+	star: string
 }

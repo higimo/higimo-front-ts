@@ -280,23 +280,6 @@ interface PaymentOpenOptions {
 	[key: string]: unknown
 }
 
-
-// TODO: [LIGHT] проверить, кажется не используется
-export interface PaymentSuccessData {
-	/** ID заказа */
-	orderId: string
-
-	/** ID платежа */
-	paymentId: string
-
-	/** Статус */
-	status: 'success'
-
-	/** Сумма */
-	amount: number
-}
-
-
 export interface PaymentError {
 	/** Код ошибки */
 	code: string
