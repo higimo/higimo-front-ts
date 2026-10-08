@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { UpdateNewsType } from 'api-types/last-update.types'
 
-import { getDate } from 'utils/date/get-date'
+import { getHumanMonthDate } from 'utils/date/get-date'
 import { getBlogImage } from 'utils/get-blog-image'
 import { getText } from 'utils/text/get-text'
 
@@ -24,7 +24,7 @@ export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => {
 						{post.source}
 					</span>
 				</span>
-				<span className="post__date">{getDate(post.date)}</span>
+				<span className="post__date">{getHumanMonthDate(post.date)}</span>
 			</div>
 			<div className="post__description">
 				{getText(post.text)}

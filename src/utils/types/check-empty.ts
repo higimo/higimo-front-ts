@@ -1,7 +1,6 @@
 import { EmptyObject } from 'utils.type'
 
-// TODO: [LIGHT] rename isEmpty
-export const checkEmpty = (data: unknown): data is EmptyObject => {
+export const isEmpty = (data: unknown): data is EmptyObject => {
 	if (Array.isArray(data)) {
 		return data.length === 0
 	}

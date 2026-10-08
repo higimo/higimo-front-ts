@@ -2,7 +2,7 @@ import { ApiState } from 'api-types/fetch-api.types'
 import { VNode, FunctionComponent } from 'preact'
 
 import { EmptyState, ErrorState } from 'components/ui/state'
-import { checkEmpty } from 'utils/types/check-empty'
+import { isEmpty } from 'utils/types/check-empty'
 
 type EmptyDataPropsType = {
 	data?: ApiState<any, Object> | ApiState<any, Object>[]
@@ -24,8 +24,8 @@ export const EmptyData: FunctionComponent<EmptyDataPropsType> = ({
 		return errorComponent
 	}
 
-	const isEmpty = !skipEmpty && dataArr.some(i => i.status === 'LOADED' && checkEmpty(i.data))
-	if (isEmpty) {
+	const isEmptyData = !skipEmpty && dataArr.some(i => i.status === 'LOADED' && isEmpty(i.data))
+	if (isEmptyData) {
 		return emptyComponent
 	}
 

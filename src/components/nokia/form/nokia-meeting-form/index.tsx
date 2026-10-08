@@ -13,7 +13,7 @@ import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
-import { MentionsInput } from 'components/mention-textarea/mention-input'
+import { MentionTextarea } from 'components/mention-textarea/mention-input'
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
 import { createDateOnly } from 'utils/date/create-date-only'
@@ -113,7 +113,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 						description="Поможет для построения красивых статистических графиков"
 					/>
 					<label>Как прошло?</label>
-					<MentionsInput
+					<MentionTextarea
 						suggestList={personSuggestList}
 						onMention={handleTextAssign}
 					/>

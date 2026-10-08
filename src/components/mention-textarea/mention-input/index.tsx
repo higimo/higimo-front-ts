@@ -24,8 +24,7 @@ type MentionsInputPropsType = {
 	onMention: (mentionList: MentionSuggest[]) => void
 }
 
-// TODO: [LIGHT] переименовать MentionTextarea
-export const MentionsInput: FunctionComponent<MentionsInputPropsType> = (props) => {
+export const MentionTextarea: FunctionComponent<MentionsInputPropsType> = (props) => {
 	const [ showSuggestion, setShowSuggestion ] = useState<boolean>(false)
 	const [ selectedSuggest, setSelectedSuggest ] = useState<number>(0)
 	const [ filtredSuggestList, setFiltredSuggestList ] = useState<MentionSuggest[]>(props.suggestList)
