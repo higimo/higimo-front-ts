@@ -1,4 +1,3 @@
-// TODO: [LIGHT] видимо, это останется — унести надо
 export const HIRING_LINKS = [
 	{
 		title: 'LinkedIn',
