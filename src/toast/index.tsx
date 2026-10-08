@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'preact/hooks'
 
+import { TOAST_COOLDOWN } from 'config/TOAST_COOLDOWN'
+
 import './style.css'
 
 type ToastType = {
@@ -17,7 +19,7 @@ const Toast: React.FC<ToastProps> = ({ id, message, removeToast }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			removeToast(id)
-		}, 8000)
+		}, TOAST_COOLDOWN)
 
 		return () => clearTimeout(timer)
 	}, [id, removeToast])
@@ -94,24 +96,6 @@ export const ToastContainer: React.FC<ToastContainerProps> = () => {
 			))}
 		</div>
 	)
-}
-
-// TODO: [LIGHT] кажется, не нужен?
-// Хук для удобного использования тостов
-export const useToast = () => {
-	const [toastContainer, setToastContainer] = useState<React.ReactElement | null>(null)
-
-	const showToast = (message: string) => {
-		// Если контейнер еще не создан, создаем его
-		if (!toastContainer) {
-			setToastContainer(<ToastContainer />)
-		}
-
-		// Добавляем тост
-		window.dispatchEvent(new CustomEvent('add-toast', { detail: { message } }))
-	}
-
-	return { showToast, ToastContainer: toastContainer }
 }
 
 export const toast = {
