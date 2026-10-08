@@ -16,6 +16,7 @@ interface UseAuthReturn {
 	products: MerchantProductType[]
 	isProductLoaded: boolean
 	isProductEmpty: boolean
+	getProductById: (id: MerchantProductType['id']) => MerchantProductType | undefined
 }
 /**
  * Хук, который однажды загружает данные о товарах магазина и предоставляет их для использования всюду
@@ -50,5 +51,8 @@ export const useMerchant = (): UseAuthReturn => {
 		get products() { return merchantProductSignal.value.products },
 		get isProductLoaded() { return merchantProductSignal.value.status === API_STATUS.LOADED },
 		get isProductEmpty() { return !merchantProductSignal.value.products.length },
+		getProductById(id) {
+			return merchantProductSignal.value.products.find(product => product.id === id)
+		},
 	}
 }

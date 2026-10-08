@@ -19,9 +19,9 @@ export const ProductServerBanner: FunctionComponent<ProductServerBannerPropsType
 	productKey,
 	withBackground,
 }) => {
-	const { products, isProductEmpty, isProductLoaded } = useMerchant()
+	const { isProductEmpty, isProductLoaded, getProductById } = useMerchant()
 	const productId = PRODUCT[productKey].id
-	const currentProduct = products.find(product => product.id === productId)
+	const currentProduct = getProductById(productId)
 
 	if (!isProductLoaded || isProductEmpty || !currentProduct) {
 		return null
@@ -30,6 +30,7 @@ export const ProductServerBanner: FunctionComponent<ProductServerBannerPropsType
 	return (
 		<ProductBanner
 			product={currentProduct}
-			withBackground={withBackground} />
+			withBackground={withBackground}
+		/>
 	)
 }

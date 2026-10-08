@@ -13,17 +13,18 @@ import { MerchantProductFeature } from 'components/merchant/merchant-product-fea
 import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
 
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import '../merchant-style.css'
 import './style.css'
 
 export const PaymentPage: FunctionComponent = () => {
-	const { products, isProductEmpty, isProductLoaded } = useMerchant()
-	const { query: { id = null } } = useLocation()
+	const { isProductEmpty, isProductLoaded, getProductById } = useMerchant()
+	const { query: { id = DEFAULT_ID } } = useLocation()
 
 	// TODO: [MIDDLE] надо, кжтс, хук, который получает по id нужный товар
-	const currentProduct = products.find(product => product.id === id)
+	const currentProduct = getProductById(id)
 
 	if (!isProductLoaded) {
 		<Loading />
