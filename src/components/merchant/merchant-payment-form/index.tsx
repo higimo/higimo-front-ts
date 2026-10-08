@@ -66,22 +66,6 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 					</form>
 				</FormProvider>
 			</FullpageFormContainer>
-			<div className="checkout-form__line">
-				<div className="checkout-form__label">
-					Электропочта
-				</div>
-				<div className="checkout-form__field">
-					<input {...formMethods.register('email')} type="text" name="email" />
-				</div>
-			</div>
-			<div className="checkout-form__line">
-				<div className="checkout-form__label">
-					Комментарий к заказу
-				</div>
-				<div className="checkout-form__field">
-					<textarea {...formMethods.register('comment')} name="comment" />
-				</div>
-			</div>
 		</div>
 	)
 }
