@@ -10,21 +10,21 @@ import sj           from './img/sj.png'
 
 import './style.css'
 
-const logoMap = {
-	SJ: sj,
+const logoMapping = {
+	SJ:            sj,
 	'Афиша Daily': daily,
-	ALS: als,
-	'R-top': rtop,
-	intersection: intersection,
-	kidguru: kidguru,
+	ALS:           als,
+	'R-top':       rtop,
+	intersection:  intersection,
+	kidguru:       kidguru,
 } as const
 
-type NameCompanyType = KeyOf<typeof logoMap>
+type NameCompanyType = KeyOf<typeof logoMapping>
 
 type CompanyLogoType = {
 	name: NameCompanyType
 }
 
 export const CompanyLogo: FunctionComponent<CompanyLogoType> = props => (
-	<img src={logoMap[props.name]} alt={props.name} class="company-logo" />
+	<img src={logoMapping[props.name]} alt={props.name} class="company-logo" />
 )
