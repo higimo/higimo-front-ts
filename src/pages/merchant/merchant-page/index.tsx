@@ -13,7 +13,7 @@ import '../merchant-style.css'
 export const MerchantPage: FunctionComponent = () => {
 	const { products, isProductEmpty, isProductLoaded } = useMerchant()
 
-	// TODO: [LIGHT] поставить компоненты, вместо этого
+	// из-за useMerchant оставляю так
 	if (!isProductLoaded) {
 		return <Loading />
 	}
