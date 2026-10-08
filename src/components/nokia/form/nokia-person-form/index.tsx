@@ -10,7 +10,7 @@ import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
 import { as } from 'utils/types/as'
-import { getResetValues } from 'components/form/EMPTY_FORM'
+import { getResetValues } from 'utils/get-reset-values'
 import { personApi } from 'repositories/person-api'
 import { toast } from 'toast'
 

@@ -13,7 +13,7 @@ import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
 import { as } from 'utils/types/as'
 import { faqApi } from 'repositories/faq-api.repository'
-import { getResetValues } from 'components/form/EMPTY_FORM'
+import { getResetValues } from 'utils/get-reset-values'
 import { toast } from 'toast'
 
 type FormValues = Partial<FaqType>

@@ -12,10 +12,10 @@ import { FullWidthContainer } from 'components/ui/full-width-container/FullWidth
 import { InnerFromContainer } from 'components/form/inner-from-container'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
-import { getResetValues } from 'components/form/EMPTY_FORM'
+import { getResetValues } from 'utils/get-reset-values'
 import { toast } from 'toast'
 
-import { EMPTY_FORM } from 'components/form/EMPTY_FORM'
+import { EMPTY_FORM } from 'utils/get-reset-values'
 
 export type FormValues = {
 	id: number
