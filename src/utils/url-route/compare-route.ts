@@ -1,11 +1,4 @@
-// TODO: [LIGHT] разделить на два файла
-
-/**
- * Нормализует путь, добавляя слеш в конец при необходимости
- * @internal
- */
-const normalizePath = (path: string): string =>
-	path.endsWith('/') ? path : path + '/'
+import { normalizePath } from 'utils/url-route/normalize-path'
 
 /**
  * Сравнивает два маршрута (роута), игнорируя наличие или отсутствие завершающего слеша
