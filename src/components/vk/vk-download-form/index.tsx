@@ -9,8 +9,6 @@ import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { InnerFromContainer } from 'components/form/inner-from-container'
-import { VkButton } from 'components/vk/vk-button'
-import { VkParagraph } from 'components/vk/vk-paragraph'
 
 import { debounce } from '@github/mini-throttle'
 import { vkSession } from 'context/vk-signal'
@@ -67,25 +65,6 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 					</form>
 				</FormProvider>
 			</InnerFromContainer>
-			{/* TODO: [LIGHT] ой, осталось */}
-			<form
-				autocomplete="off"
-				onSubmit={formMethods.handleSubmit(onSubmit)}
-			>
-				<div>
-					<VkParagraph variant="caption">Ид группы</VkParagraph>
-					<input type="number" {...formMethods.register('groupId')}  />
-				</div>
-				<div>
-					<VkParagraph variant="caption">Ид пользователя</VkParagraph>
-					<input type="number" {...formMethods.register('userId')}  />
-					{' '}
-					{/* TODO: [LIGHT] ну тогда и удалить компонент */}
-					<VkButton variant="tertiary" type="submit">
-						Скачать свои
-					</VkButton>
-				</div>
-			</form>
 		</div>
 	)
 
