@@ -20,8 +20,16 @@ const HIRING_LINKS = [
 		href: 'https://hirify.me/?grade=middle,senior,lead,junior,head&sources=telegram,hirify,ru_global&specializations=frontend_dev',
 	},
 	{
+		title: 'hirehi',
+		href: 'https://hirehi.ru/',
+	},
+	{
 		title: 'GetMatch',
-		href: 'https://getmatch.ru/vacancies?p=1&sa=any&pa=all&se=junior&se=middle&se=senior&sp=js_frontend',
+		href: 'https://getmatch.ru/vacancies?p=1&sa=any&pa=all&se=middle&se=senior&sp=js_frontend',
+	},
+	{
+		title: 'Хабра карьера',
+		href: 'https://career.habr.com/vacancies?type=suitable',
 	},
 ] as const
 
@@ -32,6 +40,16 @@ type ResumeLinkType = {
 	pdf?: string
 }
 const RESUME_LINKS: ResumeLinkType[] = [
+	{
+		href: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
+		copy: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
+		title: 'Front HH',
+	},
+	{
+		href: 'https://higimo.ru/utkin-frontend.pdf',
+		copy: 'https://higimo.ru/utkin-frontend.pdf',
+		title: 'Front [PDF]',
+	},
 	{
 		href: ROUTE_LINKS.resumeHowToWork,
 		copy: `https://higimo.ru${ROUTE_LINKS.resumeHowToWork}`,
@@ -56,11 +74,6 @@ const RESUME_LINKS: ResumeLinkType[] = [
 		href: ROUTE_LINKS.resumeProductSmart,
 		copy: `https://higimo.ru${ROUTE_LINKS.resumeProductSmart}`,
 		title: 'Product Smart',
-	},
-	{
-		href: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
-		copy: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
-		title: 'Front HH',
 	},
 	// Frontend
 	// Senior Product [PDF (⧉)]
