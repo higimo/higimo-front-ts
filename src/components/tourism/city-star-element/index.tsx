@@ -1,12 +1,9 @@
+import { CityStarsType } from 'api-types/city-stars.types'
 import { FunctionComponent } from 'preact'
 
-// TODO: [LIGHT] перенести в типы api CityStarsType уже вроде есть
-type CityType = {
-	title: string
-	star: string
-}
+type CityStarElementPropsType = CityStarsType
 
-export const CityStarElement: FunctionComponent<CityType> = (city) => (
+export const CityStarElement: FunctionComponent<CityStarElementPropsType> = (city) => (
 	<div className="tourism-city-star__item">
 		<div className="tourism-city-star__title">
 			{city.title}
