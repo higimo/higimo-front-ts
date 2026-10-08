@@ -36,10 +36,6 @@
 	padding: 0;
 }
 
-.factoid {
-	text-align: center;
-}
-
 .factoid__number {
 	font-size: 40px;
 	font-weight: 700;
