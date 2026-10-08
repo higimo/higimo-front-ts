@@ -13,7 +13,7 @@ import { initPayment } from 'utils/merchant/init-payment'
 
 import './style.css'
 
-type FormValues = {
+export type FormValues = {
 	email: string
 	comment: string
 }

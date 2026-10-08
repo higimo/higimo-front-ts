@@ -1,4 +1,4 @@
-import { MessageApiType } from 'api-types/message.types'
+import { MessageApiType } from 'api-types/fetch-api.types'
 import { NokiaPersonSimpleType, NokiaMeetingSimpleType } from 'api-types/nokia.types'
 
 import { sendRequest } from 'utils/api/send-request'

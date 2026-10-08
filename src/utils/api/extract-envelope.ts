@@ -1,5 +1,5 @@
+import { ApiResponse } from 'api-types/fetch-api.types';
 import { isEnvelope } from 'utils/types/is-envelope'
-import { ApiResponse } from 'api-types/request.type'
 
 /**
  * Достаёт `data` из контракт-конверта Laravel `{ data: ... }`.

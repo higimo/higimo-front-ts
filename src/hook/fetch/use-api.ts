@@ -1,6 +1,5 @@
-import { ApiState } from 'api-types/fetch-api.types'
+import { ApiState, ValuesOptions } from 'api-types/fetch-api.types'
 import { ApiRouteType } from 'dic/API_ROUTE'
-import { ValuesOptions } from 'api-types/request.type'
 
 import { useCallback, useEffect, useReducer } from 'preact/hooks'
 

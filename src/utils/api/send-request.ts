@@ -1,5 +1,4 @@
-import { MetaApiType } from 'api-types/fetch-api.types'
-import { SendRequestOptions, ApiResponse, ValuesOptions } from 'api-types/request.type'
+import { ApiResponse, MetaApiType, SendRequestOptions, ValuesOptions } from 'api-types/fetch-api.types'
 
 import httpBuildQuery from 'http-build-query'
 import { parseJson } from 'utils/parse-json'

@@ -1,4 +1,4 @@
-import { MessageApiType } from 'api-types/message.types'
+import { MessageApiType } from 'api-types/fetch-api.types'
 import { NestedListItemType } from 'api-types/listlist.types'
 
 import { sendRequest } from 'utils/api/send-request'

@@ -1,4 +1,4 @@
-import { FormValues } from 'components/merchant/merchant-payment-form/types'
+import { FormValues } from 'components/merchant/merchant-payment-form'
 import { InitOptions } from 'api-types/tinkoff'
 import { MerchantProductType } from 'api-types/merchant.types'
 import { UseFormGetValues } from 'react-hook-form'
