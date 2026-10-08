@@ -2,18 +2,19 @@ import { AccordType } from 'api-types/accord.types'
 import { Fragment, FunctionComponent } from 'preact'
 
 type AccordContentPropsType = {
-	// TODO: [LIGHT] переименовать accordItem
-	song: AccordType | null
+	accordItem: AccordType | null
 }
 
 /**
  * Показывает аккорды песни и устанавливается title
  */
-export const AccordContent: FunctionComponent<AccordContentPropsType> = ({ song }) => song && (
+export const AccordContent: FunctionComponent<AccordContentPropsType> = ({
+	accordItem
+}) => accordItem && (
 	<Fragment>
 		<div className="accord-title">
-			<strong>{song.name}</strong>
+			<strong>{accordItem.name}</strong>
 		</div>
-		<pre>{song.text}</pre>
+		<pre>{accordItem.text}</pre>
 	</Fragment>
 )

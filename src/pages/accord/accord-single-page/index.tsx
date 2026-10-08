@@ -33,7 +33,7 @@ export const AccordSinglePage: FunctionComponent = () => {
 		<Layout title={accordItem.data?.name || 'Песня'} className="container accord-single-page">
 			<LoadSuspense data={accordItem}>
 				<EmptyData data={accordItem}>
-					<AccordContent song={accordItem.data} />
+					<AccordContent accordItem={accordItem.data} />
 				</EmptyData>
 			</LoadSuspense>
 
