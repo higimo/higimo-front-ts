@@ -16,6 +16,7 @@ type TourismMapGeoPropsType<T extends BasePointType, L extends Coord> = {
 	zoom?: number
 	center?: Coord,
 	cluster?: boolean
+	optionHandler?: (point: T) => Object
 }
 
 export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
@@ -23,7 +24,8 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 	lines,
 	zoom = DEFAULT_ZOOM,
 	center = DEFAULT_CENTER,
-	cluster = true
+	cluster = true,
+	optionHandler,
 }: TourismMapGeoPropsType<T, L>) => {
 	const { width, height } = useWindowSize()
 
@@ -72,6 +74,7 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 										hintContent: point.title,
 										iconCaption: point.title,
 										balloonContentHeader: point.title,
+										// TODO: отнести во вне
 										balloonContentBody: [
 											'type' in point && point.type,
 											[
@@ -90,6 +93,7 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 									options={{
 										iconColor: 'visited' in point && point.visited ? '#344d3d' : '#b3b3b3',
 										iconSize: [15, 15],
+										...(optionHandler && optionHandler(point))
 									}}
 								/>
 							))}

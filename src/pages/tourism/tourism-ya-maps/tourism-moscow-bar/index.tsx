@@ -19,6 +19,8 @@ import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
 import { filterTagAnyStrategy } from 'utils/filter-tag-strategy/filter-tag-any-strategy'
+import { getBarColor } from 'utils/tourism/get-bar-color'
+import { getBarIcon } from 'utils/tourism/get-bar-icon'
 
 import { API_ROUTE } from 'dic/API_ROUTE'
 import { BAR_TAGS_CATEGORY } from 'dic/tourism/BAR_TAGS_CATEGORY'
@@ -96,6 +98,10 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 							zoom={12}
 							center={[55.758772, 37.617933]}
 							cluster={false}
+							optionHandler={(point) => ({
+								preset: getBarIcon(point.icon),
+								iconColor: getBarColor(point.color),
+							})}
 						/>
 						<TagGroupedGallery
 							groups={tagGroups}
