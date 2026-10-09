@@ -51,7 +51,7 @@ http://paperjs.org/tutorials/
 
 TODO: [FEATURE] страницу для итогов года: скрин нокии и скрин обхожу Москву
 
-TODO: [MIDDLE] в портфолио бот Хигимору
+TODO: [PORTFOLIO] в портфолио бот Хигимору
 
 TODO: [BACKEND] Добавить в FAQ
 {/* <h1>Конспект по верстке эмейлов</h1>

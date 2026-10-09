@@ -7,7 +7,7 @@ type YoutubeGaleryPropsType = {
 	youtubeList: YoutubeType[] | null
 }
 
-// TODO: [MIDDLE] мб, такие компоненты в родителе писать этот несчастный div?
+// TODO: [HARD] мб, такие компоненты в родителе писать этот несчастный div?
 export const YoutubeGalery: FunctionComponent<YoutubeGaleryPropsType> = ({
 	youtubeList
 }) => youtubeList && (
