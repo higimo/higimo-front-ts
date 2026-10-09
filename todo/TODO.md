@@ -83,10 +83,6 @@ TODO: [CONFIG] использовать Wouter
 TODO: [FEATURE] Как настроить PWA на этом стеке?
 
 
-## style
-TODO: [MIDDLE] link #2196f3
-#3984d4 -- неплохой синий
-
 ## nokia
 TODO: [NOKIA] Дневник своих маленьких успехов
 
