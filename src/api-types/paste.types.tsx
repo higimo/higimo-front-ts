@@ -1,10 +1,12 @@
-import { DateOnlyString } from 'utils.type'
+import { Brand, DateOnlyString } from 'utils.type'
+
+type PasteId = Brand<number, 'TagId'>
 
 export type PasteApiType = {
-	content: string
-	date: DateOnlyString
-	id: number
+	id: PasteId
 	key: string
+	date: DateOnlyString
+	content: string
 }
 
 export type PasteStatisticApiType = {

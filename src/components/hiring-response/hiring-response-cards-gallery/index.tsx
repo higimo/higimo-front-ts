@@ -9,7 +9,7 @@ import { HiringResponseCardForm } from 'components/hiring-response/hiring-respon
 import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
-import { as } from 'utils/types/as'
+import { parseBrandId } from 'utils/types/parse-brand-id'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
 import { todayStr } from 'utils/date/today-str'
@@ -20,8 +20,7 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import './style.css'
 
 const INIT_CARD: PasteApiType = {
-	// TODO: [MIDDLE] наверно так надо
-	id: as<PasteApiType['id']>(DEFAULT_ID),
+	id: parseBrandId<PasteApiType['id']>(DEFAULT_ID),
 	content: '',
 	date: todayStr(),
 	key: 'send-resume'
@@ -41,7 +40,7 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 	}
 	const [selectedCard, setSelectedCard] = useState<PasteApiType>(INIT_CARD)
 
-	const handleSelect = useCallback((id: number) => () => {
+	const handleSelect = useCallback((id: PasteApiType['id']) => () => {
 		smoothScroll(ANCHOR_LINKS.hiringResponseForm)()
 		const card = cards.find(card => card.id === id)
 		if (card) {
@@ -49,7 +48,7 @@ export const HiringResponseCardsGallery: FunctionComponent<HiringResponseCardsGa
 		}
 	}, [cards])
 
-	const handleDelete = useCallback((id: number) => async () => {
+	const handleDelete = useCallback((id: PasteApiType['id']) => async () => {
 		await pasteApi.delete(id)
 		await fetchUpdate()
 	}, [fetchUpdate])
