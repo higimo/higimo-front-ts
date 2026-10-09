@@ -12,6 +12,7 @@ import { InnerFromContainer } from 'components/form/inner-from-container'
 
 import { debounce } from '@github/mini-throttle'
 import { vkSession } from 'context/vk-signal'
+import { FieldRow } from 'components/form/field-row'
 
 type VkDownloadFormContainerPropsType = {
 	onSubmit: (values: VkDownloadFormValuesType) => void
@@ -55,13 +56,14 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 						autocomplete="off"
 					>
 						<FiledForm name="groupId" label="Ид группы" type="number" placeholder="120" />
-						<FiledForm name="userId" label="Ид пользователя" type="number" placeholder="510" />
-						{/* TODO: [MIDDLE] в идеале поставить слева кнопку */}
-						<ButtonGroup variant="gap">
-							<FormButton type="button" variant="outline" onClick={handlerDownloadSelf}>
-								Подставить свой ид
-							</FormButton>
-						</ButtonGroup>
+						<FieldRow>
+							<FiledForm name="userId" label="Ид пользователя" type="number" placeholder="510" />
+							<ButtonGroup variant="gap">
+								<FormButton type="button" variant="ghost" onClick={handlerDownloadSelf}>
+									Подставить свой ид
+								</FormButton>
+							</ButtonGroup>
+						</FieldRow>
 					</form>
 				</FormProvider>
 			</InnerFromContainer>

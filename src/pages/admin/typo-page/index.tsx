@@ -3,7 +3,6 @@ import { FunctionComponent } from 'preact'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { FieldGroup } from 'components/form/field-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
@@ -91,11 +90,9 @@ const FormFileds: FunctionComponent<FormFiledsPropsType> = ({
 						<FormButton variant="destructive">Удалить</FormButton>
 					</ButtonGroup>
 				</ButtonGroup>
-				<FieldGroup>
-					<FiledForm name="id" label="Идентификатор" type="number" readonly />
-					<FiledForm name="title" label="Заголовок" labelDescription="Ты пидор" />
-					<FiledForm name="description" label="Описание" type="textarea" description="Помогает анализу проблемы" />
-				</FieldGroup>
+				<FiledForm name="id" label="Идентификатор" type="number" readonly />
+				<FiledForm name="title" label="Заголовок" labelDescription="Ты пидор" />
+				<FiledForm name="description" label="Описание" type="textarea" description="Помогает анализу проблемы" />
 				<FiledForm name="tags" label="Теги" support="через запятую" />
 				<FiledForm name="priority" label="Приоритет" />
 				<ButtonGroup>
