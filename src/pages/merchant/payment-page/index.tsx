@@ -23,7 +23,6 @@ export const PaymentPage: FunctionComponent = () => {
 	const { isProductEmpty, isProductLoaded, getProductById } = useMerchant()
 	const { query: { id = DEFAULT_ID } } = useLocation()
 
-	// TODO: [MIDDLE] надо, кжтс, хук, который получает по id нужный товар
 	const currentProduct = getProductById(id)
 
 	if (!isProductLoaded) {
