@@ -1,3 +1,5 @@
+import { mainTags } from "dic/accord/tags"
+
 type TagIds = readonly number[]
 
 // TODO: [BACKEND] унести на бекенд
@@ -37,3 +39,17 @@ export const newschool: TagIds = [
 	216, 221, 222, 225, 233, 234, 248, 249, 250, 254, 255, 256, 257, 258, 259
 ] as const
 export const bard: TagIds = [15, 16, 184] as const
+
+/** Таблица «номер тега → ключ в totalTags → множество id треков». */
+export const ACCORD_TAGS_MAPPING: [number, keyof typeof mainTags, ReadonlySet<number>][] = [
+	[1,  'liric',     new Set(liric)],
+	[2,  'scream',    new Set(scream)],
+	[3,  'korol',     new Set(korol)],
+	[4,  'funny',     new Set(funny)],
+	[5,  'rap',       new Set(rap)],
+	[6,  'old',       new Set(old)],
+	[7,  'ussr',      new Set(ussr)],
+	[8,  'lacky',     new Set(lacky)],
+	[9,  'newschool', new Set(newschool)],
+	[10, 'bard',      new Set(bard)],
+]

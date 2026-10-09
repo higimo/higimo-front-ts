@@ -17,37 +17,31 @@ import { median } from 'utils/math/median'
 
 import { ACCORD_TAG_CATEGORY } from 'data/accord/tags-category'
 import { API_ROUTE } from 'dic/API_ROUTE'
-import { liric, scream, korol, funny, rap, old, ussr, lacky, newschool, bard } from 'data/accord/tags-mapping'
+import { ACCORD_TAGS_MAPPING } from 'data/accord/tags-mapping'
 import { NEWS_ACCORD_LENGTH } from 'config/ACCORD'
 import { totalTags } from 'dic/accord/tags'
 
 import './style.css'
 
+
 export const AccordIndexPage: FunctionComponent = () => {
 	const [ accordList ] = useApi<AccordType[]>(API_ROUTE.accord)
 
 	// TODO: [BACKEND] это должен бекенд присылать
-	// @ts-ignore
 	const accordRichList: AccordRealTagType[] = useMemo(() => {
 		if (!accordList.data) {
 			return []
 		}
-		const firstTags = (accordList.data || []).map(item => ({
-				...item,
-				// TODO: [MIDDLE] изменить на concat
-				tags: [ // MAIN
-					...(liric.includes(item.id)     ? [{ id: 1, title: totalTags.liric}] : []),
-					...(scream.includes(item.id)    ? [{ id: 2, title: totalTags.scream} ] : []),
-					...(korol.includes(item.id)     ? [{ id: 3, title: totalTags.korol} ] : []),
-					...(funny.includes(item.id)     ? [{ id: 4, title: totalTags.funny} ] : []),
-					...(rap.includes(item.id)       ? [{ id: 5, title: totalTags.rap} ] : []),
-					...(old.includes(item.id)       ? [{ id: 6, title: totalTags.old} ] : []),
-					...(ussr.includes(item.id)      ? [{ id: 7, title: totalTags.ussr} ] : []),
-					...(lacky.includes(item.id)     ? [{ id: 8, title: totalTags.lacky} ] : []),
-					...(newschool.includes(item.id) ? [{ id: 9, title: totalTags.newschool} ] : []),
-					...(bard.includes(item.id)      ? [{ id: 10, title: totalTags.bard} ] : []),
-				]
-			}))
+		const firstTags = (accordList.data || [])
+			.map((item) => {
+				const tags: { id: number, title: string }[] = []
+				for (const [id, key, ids] of ACCORD_TAGS_MAPPING) {
+					if (ids.has(item.id)) {
+						tags.push({ id, title: totalTags[key] || '' })
+					}
+				}
+				return { ...item, tags }
+			})
 			.sort((a, b) => a.name.localeCompare(b.name))
 
 		const length = accordList.data.length
@@ -55,16 +49,16 @@ export const AccordIndexPage: FunctionComponent = () => {
 
 		return firstTags.map(item => {
 			if (item.tags.length === 0) {
-				item.tags.push({ id: 11, title: totalTags.nolist})
+				item.tags.push({ id: 11, title: totalTags.nolist || ''})
 			}
 			if (item.tags.length >= 3) {
-				item.tags.push({ id: 12, title: totalTags.manylist})
+				item.tags.push({ id: 12, title: totalTags.manylist || ''})
 			}
 			if (item.id > length - NEWS_ACCORD_LENGTH) {
-				item.tags.push({ id: 13, title: totalTags.new})
+				item.tags.push({ id: 13, title: totalTags.new || ''})
 			}
 			if (item.view > minimumViewed) {
-				item.tags.push({ id: 14, title: totalTags.pop})
+				item.tags.push({ id: 14, title: totalTags.pop || ''})
 			}
 			return item
 		})
