@@ -37,15 +37,16 @@ export type MessageApiType = {
  * Значения параметров запроса к бекенду
  */
 export interface ValuesOptions {
-	[key: string]: string | number | null | ValuesOptions | string[];
+	[key: string]: string | number | null | ValuesOptions | string[]
 }
 
 /**
  * Опции запросов к бекенду
  */
 export interface SendRequestOptions {
-	method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-	values?: ValuesOptions;
+	method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
+	values?: ValuesOptions
+	signal?: AbortSignal
 }
 
 /**
@@ -57,6 +58,6 @@ export type MetaApiType = Record<string, unknown>
  * Ответы бекенда
  */
 export interface ApiResponse<T, M = MetaApiType> {
-	data: T;
-	meta?: M;
+	data: T
+	meta?: M
 }

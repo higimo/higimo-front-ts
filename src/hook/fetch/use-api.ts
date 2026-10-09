@@ -1,7 +1,7 @@
 import { ApiState, ValuesOptions } from 'api-types/fetch-api.types'
 import { ApiRouteType } from 'dic/API_ROUTE'
 
-import { useCallback, useEffect, useReducer } from 'preact/hooks'
+import { useCallback, useEffect, useReducer, useRef } from 'preact/hooks'
 
 import { apiReducer } from 'utils/api/api-reducer'
 import { isDefaultSkipUrl } from 'utils/types/is-default-skip-url'
@@ -17,8 +17,7 @@ const initialState = {
 }
 
 // Раскомментировать, чтоб посмотреть ошибки, должны быть только типа API_ROUTE.probbiSingle({ ... })
-// мб, перестало работать
-// type ApiUrlType = ValueOf<typeof API_ROUTE>
+// export type ApiUrlType = ValueOf<typeof API_ROUTE>
 export type ApiUrlType = ApiRouteType
 
 // TODO: [HIGH] написать аналог для использования репозиториями
@@ -28,25 +27,47 @@ export const useApi = <T, M = Object>(
 	values: ValuesOptions = {}
 ): [ApiState<T, M>, () => void] => {
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
+	const abortRef = useRef<AbortController | null>(null)
 
 	const fetchData = useCallback(async () => {
-		// TODO: [MIDDLE] кажется, надо добавить let cancelled = false
+		// отменяем предыдущий запрос, если он ещё летит
+		abortRef.current?.abort()
+
+		const controller = new AbortController()
+		abortRef.current = controller
+		const { signal } = controller
+
 		try {
 			dispatch({ type: API_STATUS.LOADING })
 			if (isDefaultSkipUrl(url)) {
+				if (signal.aborted) {
+					return
+				}
 				// TOOD: не нравится, что здесь null, надо {}, чтоб меньше кода писать
 				dispatch({ type: API_STATUS.LOADED, payload: null, meta: undefined })
 			} else {
-				const { data, meta } = await sendRequest<T, M>(url as string, { values })
+				const { data, meta } = await sendRequest<T, M>(url as string, { values, signal })
+
+				if (signal.aborted) {
+					return
+				}
 				dispatch({ type: API_STATUS.LOADED, payload: data, meta })
 			}
 		} catch (error) {
+			// отмена — это не ошибка не пишем в стейт
+			if (signal.aborted || (error as Error)?.name === 'AbortError') {
+				return
+			}
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })
 		}
 	}, [url, JSON.stringify(values)])
 
 	useEffect(() => {
 		fetchData()
+		return () => {
+			// при размонтировании (и перед следующим эффектом) — отменяем
+			abortRef.current?.abort()
+		}
 	}, [url, JSON.stringify(values)])
 
 	return [state, fetchData]

@@ -15,7 +15,8 @@ export const sendRequest = async <T = unknown, M = MetaApiType>(
 	url: string,
 	{
 		method = 'GET',
-		values = {}
+		values = {},
+		signal,
 	}: SendRequestOptions = {}
 ): Promise<ApiResponse<T, M>> => {
 	if (typeof window === 'undefined') {
@@ -47,6 +48,7 @@ export const sendRequest = async <T = unknown, M = MetaApiType>(
 		},
 		// @ts-ignore
 		body,
+		signal,
 	})
 
 	// Парсим ответ
