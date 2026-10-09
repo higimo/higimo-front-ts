@@ -69,11 +69,6 @@ export const WorkerForm: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit 
 								required={scheme.required}
 							/>
 						))}
-						{/* TODO: [MIDDLE] пробрасывать в register */}
-						{/* pattern: {
-							value: /^(https?:\/\/).+$/i,
-							message: 'Должна быть валидная ссылка'
-						} */}
 						<ButtonGroup variant="gap">
 							<FormButton
 								type="submit"

@@ -61,20 +61,14 @@ TODO: [BACKEND] Добавить в FAQ
 
 
 ## Разобрать
-TODO: [MIDDLE] https://github.com/welldone-software/react-component-splitter кажется очень удобным
-
-
-TODO: [MIDDLE] Добавить аналитику поблочную
+TODO: [LAST] Добавить аналитику поблочную
 
 TODO: [CONTENT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
 
 ## VK и прочие собственные разработки
 
 TODO: [MIDDLE]
-	https://higimo.ru/vk/
-	https://github.com/higimo/vk-photos-react/blob/master/src/scss/index.scss
 	https://github.com/higimo/analytics
-	https://github.com/higimo/list-new/blob/master/src/routes/list-list-add/index.js
 	https://github.com/higimo/museum
 
 ## config
@@ -655,3 +649,13 @@ const [folded, setFolded] = usePersistedState('collapse-section-meetings', false
 ## Классы Repository
 
 Можно ли как-то проверять, что в тестовом ответе именно такой класс используется и чем он заполняется? Я бы тогда только классы ресурсов тестировал на соответствие ответам
+
+
+
+## Хуки
+- [ ] https://github.com/dgamboa/useapi-hook/blob/main/hooks/useApi.js
+- [ ] https://amberfung.medium.com/react-custom-hooks-2-use-event-listener-hook-04b927c34b13
+- [ ] https://amberfung.medium.com/react-custom-hooks-3-use-util-hook-d06cd2f96151
+
+## Это разъёбные транзишены
+- [ ] https://react.dev/reference/react/ViewTransition
