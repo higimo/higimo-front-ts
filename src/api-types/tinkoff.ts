@@ -1,39 +1,3 @@
-// TODO: [MIDDLE] избавиться от any
-type IframeIntegrationConfig = any
-// TODO: [MIDDLE] избавиться от any
-type OverlayType = any
-type PaymentStartCallback = (paymentType: OverlayType) => Promise<string>
-// TODO: [MIDDLE] избавиться от any
-type AlertInfo = any
-
-
-// TODO: [MIDDLE] проверить, кажется, не используется
-/**
- * Тиньков эквайринг
- * https://developer.tbank.ru/eacq/intro/developer/setup_js/
- */
-export interface IntegrationInitConfig {
-	terminalKey: string
-	product: 'eacq'
-	features: {
-		addcardIframe?: {
-			container?: HTMLElement | null
-			config?: IframeIntegrationConfig
-			paymentStartCallback?: PaymentStartCallback
-		}
-		iframe?: {
-			container?: HTMLElement | null
-			config?: IframeIntegrationConfig
-			paymentStartCallback?: PaymentStartCallback
-		}
-		payment?: {
-			container?: HTMLElement | null
-			config?: PaymentIntegrationConfig
-			paymentStartCallback?: PaymentStartCallback
-		}
-	}
-}
-
 interface PaymentIntegrationStatic {
 	init: (options: InitOptions) => Promise<IntegrationInstance>
 	getUrl: (version?: string) => string
@@ -175,7 +139,7 @@ interface PaymentIntegrationConfig {
 		 * Если ошибок нет, используются стандартные алерты
 		 * @param alert
 		 */
-		showAlertCallback?: (alert: AlertInfo) => Promise<void>
+		showAlertCallback?: (alert: string) => Promise<void>
 	}
 }
 
