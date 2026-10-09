@@ -65,11 +65,10 @@ TODO: [LAST] Добавить аналитику поблочную
 
 TODO: [CONTENT] https://habr.com/ru/articles/673640/ добавить в избранные ссылки
 
-## VK и прочие собственные разработки
+## Cобственные разработки
 
-TODO: [MIDDLE]
-	https://github.com/higimo/analytics
-	https://github.com/higimo/museum
+TODO: [FEATURE] https://github.com/higimo/analytics
+TODO: [FEATURE] https://github.com/higimo/museum
 
 ## config
 TODO: [CONFIG] eslint
