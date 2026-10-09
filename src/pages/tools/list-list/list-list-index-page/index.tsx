@@ -36,6 +36,7 @@ export const ListListIndexPage: FunctionComponent = () => {
 			<LoadSuspense data={nestedListList}>
 				<EmptyData data={nestedListList}>
 					<NestedList
+						key={idcode}
 						nestedList={nestedListList.data}
 					/>
 				</EmptyData>

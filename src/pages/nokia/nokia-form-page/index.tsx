@@ -47,6 +47,7 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 				<LoadSuspense data={[meetingItem, personList, topPersonList]}>
 					<EmptyData data={[meetingItem, personList, topPersonList]} skipEmpty>
 						<NokiaMeetingForm
+							key={meetingItem.data?.id ?? DEFAULT_ID}
 							initialMeeting={meeting}
 							initialPersons={meetingPersons}
 							personSuggestList={personSuggestList}

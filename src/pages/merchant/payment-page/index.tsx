@@ -36,7 +36,10 @@ export const PaymentPage: FunctionComponent = () => {
 	return (
 		<Layout title="Страница оплаты" className="payment-page">
 			<TextContainer>
-				<MerchantProductCard product={currentProduct} />
+				<MerchantProductCard
+					key={id}
+					product={currentProduct}
+				/>
 			</TextContainer>
 
 			<TextContainer>
@@ -44,13 +47,22 @@ export const PaymentPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<MerchantPaymentForm product={currentProduct} />
+				<MerchantPaymentForm
+					key={id}
+					product={currentProduct}
+				/>
 			</TextContainer>
 
-			<MerchantProductBenefits product={currentProduct} />
+			<MerchantProductBenefits
+				key={id}
+				product={currentProduct}
+			/>
 
 			<TextContainer>
-				<MerchantProductFeature product={currentProduct} />
+				<MerchantProductFeature
+					key={id}
+					product={currentProduct}
+				/>
 			</TextContainer>
 
 			{/* TODO: [FEATURE] Пошерить */}

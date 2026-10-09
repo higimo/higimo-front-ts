@@ -23,7 +23,10 @@ export const FaqSinglePage: FunctionComponent = () => {
 		<Layout title={faqItem.data?.name || 'FAQ'} className="faq-identity-page">
 			<LoadSuspense data={faqItem}>
 				<EmptyData data={faqItem}>
-					<FaqSingle faq={faqItem.data} />
+					<FaqSingle
+						key={faqItem.data?.id ?? DEFAULT_ID}
+						faq={faqItem.data}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

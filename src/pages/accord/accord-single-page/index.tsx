@@ -33,7 +33,10 @@ export const AccordSinglePage: FunctionComponent = () => {
 		<Layout title={accordItem.data?.name || 'Песня'} className="container accord-single-page">
 			<LoadSuspense data={accordItem}>
 				<EmptyData data={accordItem}>
-					<AccordContent accordItem={accordItem.data} />
+					<AccordContent
+						key={accordItem.data?.id ?? DEFAULT_ID}
+						accordItem={accordItem.data}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 
@@ -41,7 +44,10 @@ export const AccordSinglePage: FunctionComponent = () => {
 				<a href={ROUTE_LINKS.accordIndex}>← Назад</a>
 			</div>
 
-			<AccordSeeAlso items={seeAlsoList} />
+			<AccordSeeAlso
+				key={accordItem.data?.id ?? DEFAULT_ID}
+				items={seeAlsoList}
+			/>
 		</Layout>
 	)
 }

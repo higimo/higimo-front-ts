@@ -29,7 +29,10 @@ export const NokiaPeopleDetailCardPage: FunctionComponent = () => {
 
 				<LoadSuspense data={personItem}>
 					<EmptyData data={personItem}>
-						<NokiaPeopleDetailCardItem personItem={personItem.data} />
+						<NokiaPeopleDetailCardItem
+							key={personItem.data?.id ?? DEFAULT_ID}
+							personItem={personItem.data}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 			</div>

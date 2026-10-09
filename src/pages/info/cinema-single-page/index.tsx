@@ -20,7 +20,10 @@ export const CinemaSinglePage: FunctionComponent = () => {
 		<Layout title={cinemaItem.data?.title || 'Кино'} className="cinema-page">
 			<LoadSuspense data={cinemaItem}>
 				<EmptyData data={cinemaItem}>
-					<CinemaScriptDetail cinemaItem={cinemaItem.data} />
+					<CinemaScriptDetail
+						key={cinemaItem.data?.id ?? DEFAULT_ID}
+						cinemaItem={cinemaItem.data}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>
