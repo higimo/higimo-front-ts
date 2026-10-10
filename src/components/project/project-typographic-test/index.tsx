@@ -9,7 +9,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			{/* TODO: [LIGHT] надо переделать на className */}
+			{/* TODO: [MIDDLE] надо переделать на className/variant */}
 			<TypographicHeader>Формулировка задачи</TypographicHeader>
 			<div>
 				<div class="task">
