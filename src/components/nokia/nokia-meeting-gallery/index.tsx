@@ -3,6 +3,8 @@ import { NokiaRichMeetingType } from 'api-types/nokia.types'
 
 import { NokiaMeeting } from 'components/nokia/nokia-meeting'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type NokiaMeetingGallery = {
 	meetings: NokiaRichMeetingType[]
 }

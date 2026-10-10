@@ -6,6 +6,8 @@ import { TourismBulletListItem } from '../tourism-bullet-list-item'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type TourismWalkGalleryPropsType = {
 	yamapList: YaMapType[] | null
 }

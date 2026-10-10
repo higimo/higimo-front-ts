@@ -4,6 +4,8 @@ import { FunctionComponent } from 'preact'
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type MuseumGalleryPropsType = {
 	moscowMuseumList: MoscowMuseumType[] | null
 }

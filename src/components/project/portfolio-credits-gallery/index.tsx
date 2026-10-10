@@ -5,6 +5,8 @@ import { PortfolioWorker } from 'components/project/portfolio-worker'
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type PortfolioCreditsGalleryPropsType = {
 	credits: PortfolioCreditsType[]
 }

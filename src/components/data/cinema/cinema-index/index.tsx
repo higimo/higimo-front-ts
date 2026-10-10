@@ -5,6 +5,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type CinemaScriptListPropsType = {
 	cinemaList: CinemaType[] | null
 }

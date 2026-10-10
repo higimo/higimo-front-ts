@@ -3,6 +3,8 @@ import { NestedListItemFullType } from 'api-types/listlist.types'
 
 import { NestedListElement } from 'components/list/nested-list-element'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type NestedListPropType = {
 	nestedList: NestedListItemFullType[] | null
 }

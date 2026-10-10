@@ -3,6 +3,8 @@ import { ThingsApiType } from 'api-types/json-api.types'
 
 import { TextContainer } from 'components/ui/text-container'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type ThingsNotebookPropsType = {
 	thingJsonData: ThingsApiType[] | null
 }

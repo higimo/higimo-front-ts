@@ -134,7 +134,6 @@ export type HexType = `#${string}`
 /**
  * Базовая точка на карте
  * Название и координаты
- * TODO: [HARD]: внедрить во все типы с точками
  */
 export type BasePointType = {
 	title: string

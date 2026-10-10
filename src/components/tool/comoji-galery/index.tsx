@@ -6,6 +6,8 @@ import { ComojiElement } from 'components/tool/comoji-element'
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type ComojiGalery = {
 	comojiList: ComojiType[] | null
 }

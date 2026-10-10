@@ -9,6 +9,8 @@ import { packElements } from 'utils/project/pack-elements'
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type ProjectListPropsType = {
 	projectsList: PortfolioProjectFullType[] | null
 }

@@ -3,6 +3,8 @@ import { MerchantProductType } from 'api-types/merchant.types'
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type MerchantProductBenefitsPropsType = {
 	product: MerchantProductType
 }

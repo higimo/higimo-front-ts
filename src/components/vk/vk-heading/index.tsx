@@ -7,6 +7,8 @@ import './style.css'
 
 type VkHeadingLevel = 1 | 2 | 3 | 4
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type VkHeadingPropsType = ClassNameType & {
 	level?: VkHeadingLevel
 	children: ComponentChildren | string

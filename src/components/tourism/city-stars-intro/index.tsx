@@ -3,6 +3,8 @@ import { FunctionComponent } from 'preact'
 
 import { CityStarElement } from 'components/tourism/city-star-element'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type CityStarsIntroPropsType = {
 	cityList: CityStarsType[] | null
 }

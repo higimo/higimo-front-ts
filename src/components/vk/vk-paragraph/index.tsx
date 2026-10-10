@@ -7,6 +7,8 @@ import './style.css'
 
 type VkParagraphVariant = 'primary' | 'secondary' | 'caption'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type VkParagraphPropsType = ClassNameType & {
 	variant?: VkParagraphVariant
 	children: ComponentChildren | string

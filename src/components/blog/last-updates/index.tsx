@@ -8,6 +8,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 // TODO: [FEATURE] Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
 // Получается, завести избранные из телеги и показывать их на фасад
 

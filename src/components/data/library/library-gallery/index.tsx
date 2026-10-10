@@ -5,6 +5,8 @@ import { LibraryBookElement } from 'components/data/library/library-book-element
 
 import './style.css'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type LibraryGalleryPropsType = {
 	books: LibraryType[] | null
 	onRemove: (id: LibraryType['id']) => () => void

@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'preact'
 
 import { Tag } from 'components/ui/tag/Tag'
-// TODO: [HARD] прям отдельный компонент нужен? Мб, сделать общий с className
+
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
 type MeetingTagsPropsType = {
 	tags: string[]

@@ -3,6 +3,8 @@ import { YoutubeType } from 'api-types/youtube.types'
 
 import { YouTubeElement } from 'components/info-service/youtube/youtube-element'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 type YoutubeGaleryPropsType = {
 	youtubeList: YoutubeType[] | null
 }

@@ -3,6 +3,8 @@ import { AccordRealTagType, AccordType } from 'api-types/accord.types'
 
 import { AccordElement } from 'components/accord/accord-element'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 /**
  * Компонент для See Also секции
  */

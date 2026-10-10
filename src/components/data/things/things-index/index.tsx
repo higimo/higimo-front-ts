@@ -2,6 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
 export const ThingsIndex: FunctionComponent = () => (
 	<div className="content">
 		<ul>
