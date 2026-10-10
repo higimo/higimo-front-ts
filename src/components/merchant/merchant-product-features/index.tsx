@@ -8,6 +8,7 @@ import './style.css'
 type MerchantProductBenefitsPropsType = {
 	product: MerchantProductType
 }
+
 export const MerchantProductFeature: FunctionComponent<MerchantProductBenefitsPropsType> = ({
 	product
 }) => !!product.features.length && (

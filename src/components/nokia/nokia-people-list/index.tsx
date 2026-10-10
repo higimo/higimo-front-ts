@@ -12,6 +12,7 @@ type NokiaPeopleListPropsType = {
 	personList: NokiaPersonType[] | null
 	filter: NokiaTagType['id'] | null
 }
+
 export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = ({
 	personList,
 	filter,

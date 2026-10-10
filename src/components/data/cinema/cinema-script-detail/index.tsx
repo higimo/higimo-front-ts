@@ -8,6 +8,7 @@ import { TextContainer } from 'components/ui/text-container'
 type CinemaScriptDetailPropsType = {
 	cinemaItem: CinemaType | null
 }
+
 export const CinemaScriptDetail: FunctionComponent<CinemaScriptDetailPropsType> = ({
 	cinemaItem
 }) => cinemaItem && (

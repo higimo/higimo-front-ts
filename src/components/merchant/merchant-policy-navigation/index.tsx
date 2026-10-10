@@ -18,8 +18,6 @@ export const MerchantPolicyNavigation = () => {
 					<Tag active={link.href === url}>{link.title}</Tag>
 				</MaybeLink>
 			))}
-
-
 		</TextContainer>
 	)
 }

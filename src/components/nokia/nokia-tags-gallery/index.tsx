@@ -13,6 +13,7 @@ type NokiaTagsGalleryPropsType = {
 	filter: NokiaTagType['id'] | null
 	updateFilter: (tag: NokiaTagType["id"]) => () => void
 }
+
 export const NokiaTagsGallery: FunctionComponent<NokiaTagsGalleryPropsType> = ({
 	tagGroupList: tagGroupList,
 	tagList: tagList,

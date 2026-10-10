@@ -8,8 +8,9 @@ import './style.css'
 type MerchantProductBenefitsPropsType = {
 	product: MerchantProductType
 }
+
 export const MerchantProductBenefits: FunctionComponent<MerchantProductBenefitsPropsType> = ({
-	product
+	product,
 }) => !!product.benefits.length && (
 	<div class="benefit">
 		{product.benefits.map(benefit => (

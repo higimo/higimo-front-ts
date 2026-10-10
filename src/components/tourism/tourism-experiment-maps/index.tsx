@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { tourismExperimentMapsData } from '../../../data/tourism/tourism-experiment-map-data'
+import { tourismExperimentMapsData } from 'data/tourism/tourism-experiment-map-data'
 
 import { TourismBulletList } from 'components/tourism/tourism-bullet-list'
 import { TourismBulletListItem } from 'components/tourism/tourism-bullet-list-item'

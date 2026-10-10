@@ -10,6 +10,7 @@ import './style.css'
 type LogismGalleryPropsType = {
 	logismList: LogismType[] | null
 }
+
 export const LogismGallery: FunctionComponent<LogismGalleryPropsType> = ({
 	logismList
 }) => logismList && (

@@ -10,6 +10,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 type NokiaPeopleDetailCardItemPropsType = {
 	personItem: NokiaPersonFullType | null
 }
+
 export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = ({
 	personItem
 }) => personItem && (

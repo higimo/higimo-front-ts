@@ -75,7 +75,6 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 	const selectedPersonIds = selectedPersons.map(i => i.id)
 
 	return (
-<>
 		<FullpageFormContainer>
 			<FormProvider {...formMethods}>
 				<form
@@ -199,6 +198,5 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 				</form>
 			</FormProvider>
 		</FullpageFormContainer>
-</>
 	)
 }

@@ -7,6 +7,7 @@ import './style.css'
 type MerchantProductCardPropsType = {
 	product: MerchantProductType
 }
+
 export const MerchantProductCard: FunctionComponent<MerchantProductCardPropsType> = ({
 	product
 }) => (
@@ -19,7 +20,7 @@ export const MerchantProductCard: FunctionComponent<MerchantProductCardPropsType
 			/>
 			<div class="price-row">
 				<div class="price-label">Стоимость</div>
-				<div class="price-block">{formatPrice(product.offers[0].price)}</div>
+				<div class="price-block">{formatPrice(product.offers[0]!.price)}</div>
 			</div>
 		</div>
 	</div>
