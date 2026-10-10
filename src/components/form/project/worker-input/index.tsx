@@ -88,18 +88,23 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 			<LoadSuspense data={workerList}>
 				<EmptyData data={workerList}>
 					<CollapseSection fold={!true} header="Добавить участников анонса">
-						<WorkersTree
-							workers={workerList.data}
-							onWorkerSelect={handleClickChoose}
-						/>
+						<div className="workers-tree">
+							<h3>Выбрать человека</h3>
+							<WorkersTree
+								workers={workerList.data}
+								onWorkerSelect={handleClickChoose}
+							/>
+						</div>
 						<ChooseWorkersForm
 							workers={chooseWorker}
 							onRemoveWorker={handleRemoveChoose}
 							onSubmit={handleSubmitAddWorker}
 						/>
-						<WorkerForm
-							onSubmit={handleSubmitCreateWorker}
-						/>
+						<CollapseSection fold={!true} header="Добавить человека">
+							<WorkerForm
+								onSubmit={handleSubmitCreateWorker}
+							/>
+						</CollapseSection>
 					</CollapseSection>
 				</EmptyData>
 			</LoadSuspense>

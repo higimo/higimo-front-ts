@@ -52,35 +52,33 @@ export const WorkerForm: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit 
 	}
 
 	return (
-		<CollapseSection fold={!true} header="Добавить человека">
-			<FullpageFormContainer>
-				<FormProvider {...formMethods}>
-					<form
-						onSubmit={formMethods.handleSubmit(handleFormSubmit)}
-						autocomplete="off"
-					>
-						{Object.entries(formScheme).map(([code, scheme]) => (
-							<FiledForm
-								key={code}
-								name={code}
-								type={scheme.type}
-								label={scheme.title}
-								readonly={scheme.readonly}
-								required={scheme.required}
-							/>
-						))}
-						<ButtonGroup variant="gap">
-							<FormButton
-								type="submit"
-								variant="default"
-								disabled={formMethods.formState.isSubmitting}
-							>
-								{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
-							</FormButton>
-						</ButtonGroup>
-					</form>
-				</FormProvider>
-			</FullpageFormContainer>
-		</CollapseSection>
+		<FullpageFormContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(handleFormSubmit)}
+					autocomplete="off"
+				>
+					{Object.entries(formScheme).map(([code, scheme]) => (
+						<FiledForm
+							key={code}
+							name={code}
+							type={scheme.type}
+							label={scheme.title}
+							readonly={scheme.readonly}
+							required={scheme.required}
+						/>
+					))}
+					<ButtonGroup variant="gap">
+						<FormButton
+							type="submit"
+							variant="default"
+							disabled={formMethods.formState.isSubmitting}
+						>
+							{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
+						</FormButton>
+					</ButtonGroup>
+				</form>
+			</FormProvider>
+		</FullpageFormContainer>
 	)
 }
