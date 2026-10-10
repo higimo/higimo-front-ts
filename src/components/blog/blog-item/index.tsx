@@ -19,6 +19,7 @@ const imgMapping = {
 
 type BlogSource = keyof typeof imgMapping
 
+// Функции останутся здесь
 const isBlogSource = (source: string): source is BlogSource =>
 	Object.prototype.hasOwnProperty.call(imgMapping, source)
 

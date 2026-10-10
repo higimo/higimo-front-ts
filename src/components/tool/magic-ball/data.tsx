@@ -1,3 +1,4 @@
+// TODO: [LIGHT] move to data
 export var phrases = [
 	'Бес&shy;спорно',
 	'Пред&shy;решено',

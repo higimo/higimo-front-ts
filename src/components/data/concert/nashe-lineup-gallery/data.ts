@@ -1,5 +1,6 @@
 import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
+// TODO: [LIGHT] перенести в data
 export const links = [
 	{
 		href: ROUTE_LINKS.tourismNashe2017,

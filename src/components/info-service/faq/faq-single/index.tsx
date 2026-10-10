@@ -9,7 +9,7 @@ import { OnlyAdmin } from 'components/util/only-admin'
 type FaqSinglePropsType = {
 	faq: FaqType | null
 }
-
+// TODO: [MIDDLE] пора консистентно все эти Single назвать
 export const FaqSingle: FunctionComponent<FaqSinglePropsType> = ({ faq }) => faq && (
 	<div className="faq-page">
 		<TextContainer>

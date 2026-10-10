@@ -26,8 +26,8 @@ type FormValues = {
 }
 
 const formScheme: FormScheme<FormValues> = {
-	email: { title: 'Электопочта',                   autocomplete: true, required: true, },
-	pass:  { title: 'Пароль',      type: 'password', autocomplete: true, required: true, },
+	email: { title: 'Электопочта', autocomplete: true, required: true, },
+	pass:  { title: 'Пароль',      autocomplete: true, required: true, type: 'password', },
 }
 
 export const AuthForm: FunctionComponent = () => {

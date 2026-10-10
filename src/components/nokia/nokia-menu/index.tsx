@@ -10,6 +10,7 @@ import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
 
 import './style.css'
 
+// TODO: [LIGHT] move to data
 const menuLinks = [
 	{ href: ROUTE_LINKS.nokiaIndex, title: 'Встречи' },
 	{ href: ROUTE_LINKS.nokiaPeople, title: 'Люди' },

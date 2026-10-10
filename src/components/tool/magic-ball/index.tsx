@@ -4,6 +4,7 @@ import { phrases } from './data'
 
 import './style.css'
 
+// TODO: [LIGHT] move to utils
 const getRandomPhrases = (): string => phrases[Math.floor(Math.random() * phrases.length)] || ''
 
 export const MagicBall = () => {

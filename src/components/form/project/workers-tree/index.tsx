@@ -44,6 +44,7 @@ export const WorkersTree: FunctionComponent<WorkersTreeProps> = ({ workers, onWo
 
 	return (
 		<div className="workers-tree">
+			{/* TODO: [LIGHT] В родителя? */}
 			<h3>Выбрать человека</h3>
 			<div className="company-groups">
 				{workerTree.map((companyGroup, companyIndex) => (
