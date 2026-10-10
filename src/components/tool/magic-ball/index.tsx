@@ -1,11 +1,8 @@
 import { useState } from 'preact/hooks'
 
-import { phrases } from './data'
+import { getRandomPhrases } from 'utils/get-random-phrases'
 
 import './style.css'
-
-// TODO: [LIGHT] move to utils
-const getRandomPhrases = (): string => phrases[Math.floor(Math.random() * phrases.length)] || ''
 
 export const MagicBall = () => {
 	const [ phrase, setPhrase ] = useState<string>('')

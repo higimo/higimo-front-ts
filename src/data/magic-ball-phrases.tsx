@@ -1,5 +1,4 @@
-// TODO: [LIGHT] move to data
-export var phrases = [
+export const magicBallPhrases = [
 	'Бес&shy;спорно',
 	'Пред&shy;решено',
 	'Никаких сомнений',
