@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { FunctionComponent } from 'preact'
 import { PortfolioProjectId, PortfolioWorkerType } from 'api-types/portfolio.types'
 
@@ -12,7 +12,7 @@ import { EmptyData } from 'components/ui/empty-data'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { WorkersTree } from 'components/form/project/workers-tree'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import { isDefined } from 'utils/types/is-defined'
 import { sendRequest } from 'utils/api/send-request'
@@ -57,7 +57,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 			}
 			return results
 		} catch (error) {
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message || 'Не получилось прикрепить автора ')
 			return false
 		}
@@ -77,7 +77,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 			toast.error('Неверный формат ответа сервера')
 			return false
 		} catch (error) {
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message || 'Ошибка при создании пользователя')
 			return false
 		}

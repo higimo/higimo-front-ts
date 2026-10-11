@@ -1,4 +1,4 @@
-import { AnchorLinksType } from 'dic/ANCHOR_LINKS'
+import { AnchorLinksType } from 'dic/route/ANCHOR_LINK'
 import { ClassNameType } from 'utils.type'
 import { FunctionComponent } from 'preact'
 

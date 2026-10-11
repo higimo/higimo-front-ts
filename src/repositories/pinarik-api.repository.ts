@@ -2,7 +2,7 @@ import { PinarikType } from 'api-types/pinarik.types'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 class PinarikApiRepository {
 	async get(

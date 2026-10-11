@@ -3,35 +3,35 @@ import { FunctionComponent } from 'preact'
 import { Logotype } from 'components/ui/logotype/Logotype'
 import { OnlyAdmin } from 'components/util/only-admin'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-import { isNotFound } from 'context/global'
+import { isNotFound } from 'context/not-found-signal'
 
 import './style.css'
 
 const menu = [
 	{
-		href: ROUTE_LINKS.projectIndex,
+		href: ROUTE_LINK.projectIndex,
 		name: 'Сделал',
 	},
 	{
-		href: ROUTE_LINKS.serviceIndex,
+		href: ROUTE_LINK.serviceIndex,
 		name: 'Сервисы',
 	},
 	{
-		href: ROUTE_LINKS.accordIndex,
+		href: ROUTE_LINK.accordIndex,
 		name: 'Аккорды',
 	},
 	{
-		href: ROUTE_LINKS.tourismIndex,
+		href: ROUTE_LINK.tourismIndex,
 		name: 'Путешествую',
 	},
 	{
-		href: ROUTE_LINKS.merchantIndex,
+		href: ROUTE_LINK.merchantIndex,
 		name: 'Магазин',
 	},
 	{
-		href: ROUTE_LINKS.listListMain,
+		href: ROUTE_LINK.listListMain,
 		name: 'Спискота',
 	},
 ] as const
@@ -39,11 +39,11 @@ const menu = [
 const secretMenu = [
 	// TODO: [BACKEND] всё же сделать публичным, но сейчас бэк сломан
 	{
-		href: ROUTE_LINKS.nokiaIndex,
+		href: ROUTE_LINK.nokiaIndex,
 		name: 'Нокиа',
 	},
 	{
-		href: ROUTE_LINKS.adminIndex,
+		href: ROUTE_LINK.adminIndex,
 		name: 'Админ',
 	},
 ] as const

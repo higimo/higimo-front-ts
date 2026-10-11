@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 import { PortfolioWorkerType } from 'api-types/portfolio.types'
@@ -6,7 +6,6 @@ import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { CollapseSection } from 'components/ui/collapse-section'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
@@ -46,7 +45,7 @@ export const WorkerForm: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit 
 				toast.error('При отправке произошла ошибка')
 			}
 		} catch (error) {
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message)
 		}
 	}

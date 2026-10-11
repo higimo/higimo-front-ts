@@ -9,11 +9,11 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
-import { TourismHeader } from 'components/tourism/tourism-header'
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
-import { TourismWalkGallery } from 'components/tourism/tourism-walk-gallery'
+import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
+import { TourismWalkGallery } from 'components/tourism/tourism-ya-constructor/tourism-walk-gallery'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../tourism-style.css'
 

@@ -1,6 +1,6 @@
 import { VkResponseError } from 'vendor/types'
 
-export class VKError extends Error {
+export class VkError extends Error {
 	/** Код ошибки */
 	readonly error_code: number
 	/** Текст ошибки */
@@ -30,6 +30,6 @@ export class VKError extends Error {
 		this.params = context.params
 
 		// чтобы instanceof корректно работал после транспиляции в ES5
-		Object.setPrototypeOf(this, VKError.prototype)
+		Object.setPrototypeOf(this, VkError.prototype)
 	}
 }

@@ -1,6 +1,6 @@
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const getBackPath = (fallbackUrl = ROUTE_LINKS.adminIndex) => {
+export const getBackPath = (fallbackUrl = ROUTE_LINK.adminIndex) => {
 	const searchParams = new URLSearchParams(location.search)
 	return searchParams.get('backpath') || fallbackUrl
 }

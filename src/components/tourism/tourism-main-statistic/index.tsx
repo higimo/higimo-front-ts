@@ -2,12 +2,12 @@ import { PovType } from 'api-types/tourism.types'
 import { Fragment, FunctionComponent } from 'preact'
 
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/tourism-header'
-import { TourismSecondary } from 'components/tourism/tourism-paragraph'
-import { TourismStatisticMoscow } from 'components/tourism/tourism-statistic-moscow'
-import { TourismStatisticMustPov } from 'components/tourism/tourism-statistic-must-pov'
-import { TourismStatisticRussia } from 'components/tourism/tourism-statistic-russia'
-import { TourismStatisticWorld } from 'components/tourism/tourism-statistic-world'
+import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
+import { TourismStatisticMoscow } from 'components/tourism/tourism-statistic/tourism-statistic-moscow'
+import { TourismStatisticMustPov } from 'components/tourism/tourism-statistic/tourism-statistic-must-pov'
+import { TourismStatisticRussia } from 'components/tourism/tourism-statistic/tourism-statistic-russia'
+import { TourismStatisticWorld } from 'components/tourism/tourism-statistic/tourism-statistic-world'
 
 type TourismMainStatisticPropsType = {
 	totalStatistic: PovType[]

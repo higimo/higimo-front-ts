@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { isLaravelErrorBody } from 'utils/types/is-laravel-error-body'
 
 // TODO: [HARD] мб, разделять типы ошибок:
@@ -14,12 +14,12 @@ export const buildApiError = (
 	parsed: unknown,
 	text: string,
 	url: string
-): ApiError => {
+): HigimoApiError => {
 	if (isLaravelErrorBody(parsed)) {
-		return new ApiError(parsed.message, response.status, url, parsed);
+		return new HigimoApiError(parsed.message, response.status, url, parsed);
 	}
 
-	return new ApiError(
+	return new HigimoApiError(
 		response.statusText || `HTTP ${response.status}`,
 		response.status,
 		url,

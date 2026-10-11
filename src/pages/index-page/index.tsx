@@ -4,19 +4,19 @@ import { PortfolioMetaType, PortfolioProjectFullType } from 'api-types/portfolio
 
 import { useApi } from 'hook/fetch/use-api'
 
-import { BlogInvite } from 'components/intro/blog-invite'
-import { ContactList } from 'components/intro/contact-list'
-import { DonatIntro } from 'components/intro/donat-intro'
+import { BlogInvite } from 'components/invite/blog-invite'
+import { ContactListInvite } from 'components/invite/contact-list-invite'
+import { DonatIntroInvite } from 'components/invite/donat-invite'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { LogismSingle } from 'components/intro/logism-single'
-import { LookedThis } from 'components/intro/looked-this'
-import { MainIntro } from 'components/intro/main-intro'
-import { ProjectListShort } from 'components/intro/project-list-short'
-import { TravelInvite } from 'components/intro/travel-invite'
+import { LogismInvite } from 'components/invite/logism-invite'
+import { LookedThisInvite } from 'components/invite/looked-this-invite'
+import { MainInvite } from 'components/invite/main-invite'
+import { ProjectListInvite } from 'components/invite/project-list-invite'
+import { TravelInvite } from 'components/invite/travel-invite'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 // TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
@@ -31,28 +31,28 @@ export const IndexPage: FunctionComponent = () => {
 
 	return (
 		<Layout title="Разработчик и менеджер продукта — higimo">
-			<MainIntro />
+			<MainInvite />
 
-			<DonatIntro />
+			<DonatIntroInvite />
 
 			<LoadSuspense data={highlightProjectList}>
 				<EmptyData data={highlightProjectList}>
-					<ProjectListShort
+					<ProjectListInvite
 						highlightProjectList={highlightProjectList.data}
 						meta={highlightProjectList.meta}
 					/>
 				</EmptyData>
 			</LoadSuspense>
 
-			<ContactList />
+			<ContactListInvite />
 
 			<TravelInvite />
 
-			<LookedThis />
+			<LookedThisInvite />
 
 			<LoadSuspense data={logismItem}>
 				<EmptyData data={logismItem}>
-					<LogismSingle
+					<LogismInvite
 						logismItem={logismItem.data}
 						reload={reload}
 					/>

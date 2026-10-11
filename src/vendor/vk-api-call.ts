@@ -1,6 +1,6 @@
 import { VkResponse } from 'vendor/types'
 
-import { VKError } from '../errors/vk-error'
+import { VkError } from 'errors/vk-error'
 
 export const vkApiCall = async <T,>(
 	method: string,
@@ -12,5 +12,5 @@ export const vkApiCall = async <T,>(
 	if ('response' in response) {
 		return response as T
 	}
-	throw new VKError(response.error, { method, params })
+	throw new VkError(response.error, { method, params })
 }

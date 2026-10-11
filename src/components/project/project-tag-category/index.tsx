@@ -5,7 +5,7 @@ import { TagName } from 'types'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
+import { PROJECT_FILTER } from 'dic/project/PROJECT_FILTER'
 
 import '../project-click-tag-category/style.css'
 
@@ -28,7 +28,7 @@ export const ProjectTagCategory: FunctionComponent<ProjectTagCategoryPropsType> 
 					<div className="project-tag__category-name">{group.title}</div>
 					{tags.map(tag => (
 						<ProjectTag
-							filterName={PROJECT_FILTER_DIC.FILTER_TAG}
+							filterName={PROJECT_FILTER.FILTER_TAG}
 							// isLink={false}
 							isSelected={isSelected(tag.title)}
 							toggleTag={toggleTag(tag.title)}

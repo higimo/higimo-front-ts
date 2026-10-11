@@ -1,0 +1,30 @@
+import { FunctionComponent } from 'preact'
+import { FaqType } from 'api-types/faq.types'
+
+import { TextContainer } from 'components/ui/text-container'
+
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
+import { OnlyAdmin } from 'components/util/only-admin'
+
+type FaqSinglePropsType = {
+	faq: FaqType | null
+}
+// TODO: [MIDDLE] пора консистентно все эти Single назвать
+export const FaqSingle: FunctionComponent<FaqSinglePropsType> = ({ faq }) => faq && (
+	<div className="faq-page">
+		<TextContainer>
+			<h1>{faq.name}</h1>
+			<OnlyAdmin>
+				<a href={ROUTE_LINK.faqFormEdit({ idcode: faq.id })}>
+					✏️
+				</a>
+			</OnlyAdmin>
+		</TextContainer>
+		<TextContainer>
+			<div
+				className="container"
+				dangerouslySetInnerHTML={{__html: faq.text}}
+			/>
+		</TextContainer>
+	</div>
+)

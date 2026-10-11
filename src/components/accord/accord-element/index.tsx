@@ -1,28 +1,29 @@
 import { FunctionComponent } from 'preact'
-import { AccordRealTagType } from 'api-types/accord.types'
+import { AccordRealTagType, AccordType } from 'api-types/accord.types'
 
 import { Tag } from 'components/ui/tag'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 let alf = ''
 
-type AccordElementPropsType = AccordRealTagType & {
+type AccordItemPropsType = (Omit<AccordRealTagType, 'tags'> | AccordType) & {
+	tags?: AccordRealTagType['tags']
 	showAlf?: boolean
 	showBaidge?: boolean
 }
 
-export const AccordElement: FunctionComponent<AccordElementPropsType> = ({
+export const AccordItem: FunctionComponent<AccordItemPropsType> = ({
 	id,
 	name,
-	tags,
+	tags = [],
 	showAlf = true,
 	showBaidge = true
 }) => (
 	<span>
 		{showAlf && name[0] !== alf && <div className="alf">{alf = (name[0] || '')}</div>}
 		<div>
-			<a className="accord__link" href={ROUTE_LINKS.accordDetail({ idcode: id })}>{name}</a>
+			<a className="accord__link" href={ROUTE_LINK.accordDetail({ idcode: id })}>{name}</a>
 			{showBaidge && [
 				' ',
 				tags.map(tag => (<Tag>{tag.title}</Tag>))

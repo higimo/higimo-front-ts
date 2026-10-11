@@ -3,7 +3,7 @@ import { PinarikTreeYearType, PinarikType } from 'api-types/pinarik.types'
 
 import { useMemo } from 'preact/hooks'
 
-import { PinarikElement } from 'components/pinarik/pinarik-element'
+import { PinarikItem } from 'components/pinarik/pinarik-item'
 
 import { groupBy } from 'utils/group-by'
 
@@ -35,7 +35,7 @@ export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
 			<h2>{year}</h2>
 			<div className="pinarik-calendar">
 				{treeYear[year]!.map(day => (
-					<PinarikElement
+					<PinarikItem
 						{...day!}
 						onClick={onClickPreviewId(day)}
 					/>

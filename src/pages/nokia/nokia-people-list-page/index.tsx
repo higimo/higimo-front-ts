@@ -10,9 +10,9 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPeopleList } from 'components/nokia/nokia-people-list'
-import { NokiaTagsGallery } from 'components/nokia/nokia-tags-gallery'
+import { NokiaTagList } from 'components/nokia/nokia-tag-list'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../nokia-style.css'
 
@@ -38,7 +38,7 @@ export const NokiaPeopleListPage: FunctionComponent = () => {
 
 				<LoadSuspense data={[tagGroupList, tagList]}>
 					<EmptyData data={[tagGroupList, tagList]}>
-						<NokiaTagsGallery
+						<NokiaTagList
 							tagGroupList={tagGroupList.data}
 							tagList={tagList.data}
 							filter={filter}

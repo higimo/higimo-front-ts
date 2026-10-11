@@ -11,7 +11,7 @@ import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
 import { as } from 'utils/types/as'
 import { getResetValues } from 'utils/get-reset-values'
-import { personApi } from 'repositories/person-api'
+import { personApi } from 'repositories/person-api.repository'
 import { toast } from 'toast'
 
 const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {

@@ -6,7 +6,7 @@ import { MaybeLink } from 'components/ui/maybe-link'
 
 import { compareRoute } from 'utils/url-route/compare-route'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import avatar from './img/avatar.jpg'
 
@@ -17,7 +17,7 @@ export const Logotype: FunctionComponent = () => {
 
 	return (
 		<div className="logotype-mini">
-			<MaybeLink className="logotype-mini__text" href={ROUTE_LINKS.index} isHref={!compareRoute(ROUTE_LINKS.index, path)}>
+			<MaybeLink className="logotype-mini__text" href={ROUTE_LINK.index} isHref={!compareRoute(ROUTE_LINK.index, path)}>
 				<img className="main-header__avatar" src={avatar} />
 				Хиги́мо
 			</MaybeLink>

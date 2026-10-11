@@ -1,12 +1,12 @@
 import { Route } from 'preact-iso'
 
-import { ProjectIndexPage } from 'pages/project/project-index-page'
-import { ProjectSinglePage } from 'pages/project/project-single-page'
+import { ProjectListPage } from 'pages/project/project-list-page'
+import { ProjectItemPage } from 'pages/project/project-item-page'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 // Портфолио
 export const portfolioPages = [
-	<Route path={ROUTE_LINKS.projectIndex} component={ProjectIndexPage} />,
-	<Route path={ROUTE_LINKS.projectDetail_CONST} component={ProjectSinglePage} />,
+	<Route path={ROUTE_LINK.projectIndex} component={ProjectListPage} />,
+	<Route path={ROUTE_LINK.projectDetail_CONST} component={ProjectItemPage} />,
 ]

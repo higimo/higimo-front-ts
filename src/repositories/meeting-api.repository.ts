@@ -3,7 +3,7 @@ import { NokiaPersonSimpleType, NokiaMeetingSimpleType } from 'api-types/nokia.t
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 // export interface MeetingApi {
 // 	// getAll(): Promise<NokiaRichMeetingType[]>

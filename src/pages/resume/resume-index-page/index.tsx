@@ -5,7 +5,7 @@ import { OnlyAdmin } from 'components/util/only-admin'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../resume-style.css'
 
@@ -15,12 +15,12 @@ export const ResumeIndexPage: FunctionComponent = () => (
 			<TextContainer>
 				<h1>Мои резюме</h1>
 				<ul>
-					<li><a href={ROUTE_LINKS.resumeProduct}>Резюме продакт-менеджера</a></li>
-					<li><a href={ROUTE_LINKS.resumeTechProduct}>Резюме tech продакт-менеджера</a></li>
-					<li><a href={ROUTE_LINKS.resumeLead}>Резюме Product Lead</a></li>
+					<li><a href={ROUTE_LINK.resumeProduct}>Резюме продакт-менеджера</a></li>
+					<li><a href={ROUTE_LINK.resumeTechProduct}>Резюме tech продакт-менеджера</a></li>
+					<li><a href={ROUTE_LINK.resumeLead}>Резюме Product Lead</a></li>
 				</ul>
 				<p>
-					<a href={ROUTE_LINKS.resumeHowToWork}>Как подхожу к работе</a>
+					<a href={ROUTE_LINK.resumeHowToWork}>Как подхожу к работе</a>
 				</p>
 			</TextContainer>
 			<OnlyAdmin>
@@ -28,8 +28,8 @@ export const ResumeIndexPage: FunctionComponent = () => (
 				<TextContainer>
 					<h2>Скрытые резюме</h2>
 					<ul>
-						<li><a href={ROUTE_LINKS.resumeProductSmart}>smart</a></li>
-						<li><a href={ROUTE_LINKS.resumeProductFull}>full value</a></li>
+						<li><a href={ROUTE_LINK.resumeProductSmart}>smart</a></li>
+						<li><a href={ROUTE_LINK.resumeProductFull}>full value</a></li>
 					</ul>
 				</TextContainer>
 			</OnlyAdmin>

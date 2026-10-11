@@ -2,12 +2,12 @@ import { FunctionComponent } from 'preact'
 
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
-import { ThingsVelo } from 'components/data/things/things-velo'
 
 export const ThingsVeloPage: FunctionComponent = () => (
 	<Layout title="Велосипед">
 		<TextContainer>
-			<ThingsVelo />
+			<h1>Велосипед</h1>
+			<p>Forward NEXT 27,5 3.0 disc, 27.5</p>
 		</TextContainer>
 	</Layout>
 )

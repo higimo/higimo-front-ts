@@ -13,7 +13,7 @@ import { PinarikEventPreview } from 'components/pinarik/pinarik-event-preview'
 import { PinarikForm } from 'components/pinarik/pinarik-form'
 import { TextContainer } from 'components/ui/text-container'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../nokia-style.css'
 import './style.css'

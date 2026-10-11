@@ -2,7 +2,7 @@ import { LibraryType } from 'api-types/library.types'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 class LibApiRepository {
 	async getAll(): Promise<LibraryType[] | null> {

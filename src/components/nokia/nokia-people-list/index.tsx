@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NokiaPersonType, NokiaTagType } from 'api-types/nokia.types'
 
-import { PersonCard } from 'components/nokia/person-card'
+import { PersonItem } from 'components/nokia/person-item'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
@@ -28,7 +28,7 @@ export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = ({
 		<div className="content">
 			<div className="nokia-people-list">
 				{filtredPerson.map(person => (
-					<PersonCard person={person} />
+					<PersonItem person={person} />
 				))}
 			</div>
 		</div>

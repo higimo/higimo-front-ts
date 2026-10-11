@@ -3,7 +3,7 @@ import { NestedListItemType } from 'api-types/listlist.types'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 // TODO: [HARD] checkFail(data.data) и кидать HigimoApiError для тостов или guard-type
 // TODO: [HARD] sendRequest сам консолит ошибку

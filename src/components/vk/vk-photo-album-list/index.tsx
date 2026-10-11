@@ -1,7 +1,7 @@
 import { VKAlbumType } from 'api-types/vk.types'
 import { FunctionComponent } from 'preact'
 
-import { VkAlbumElement } from 'components/vk/vk-album-element'
+import { VkPhotoAlbumItem } from 'components/vk/vk-photo-album-item'
 
 import './style.css'
 
@@ -15,7 +15,7 @@ export const VkPhotoAlbumList: FunctionComponent<VkPhotoAlbumListPropsType> = ({
 	<div className="album">
 		<div className="album__list">
 			{albums.map(album => (
-				<VkAlbumElement key={album.id} {...album} />
+				<VkPhotoAlbumItem key={album.id} {...album} />
 			))}
 		</div>
 	</div>

@@ -2,15 +2,15 @@ import { PrivateRoute } from 'components/util/private-route'
 import { Redirect } from 'components/util/redirect'
 import { Route } from 'preact-iso'
 
-import { ListListFormPage } from 'pages/tools/list-list/list-list-form-page'
-import { ListListIndexPage } from 'pages/tools/list-list/list-list-index-page'
+import { NestedListFormPage } from 'pages/tools/nested-list/nested-list-form-page'
+import { NestedListListPage } from 'pages/tools/nested-list/nested-list-list-page'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 // Список списков
 export const nestedListPages = [
-	<PrivateRoute path={ROUTE_LINKS.listListCreate} component={ListListFormPage} />,
-	<PrivateRoute path={ROUTE_LINKS.listListEdit_CONST} component={ListListFormPage} />,
-	<Redirect path={ROUTE_LINKS.listListDefault} to={ROUTE_LINKS.listListMain} />,
-	<Route path={ROUTE_LINKS.listListDetail_CONST} component={ListListIndexPage} />,
+	<PrivateRoute path={ROUTE_LINK.listListCreate} component={NestedListFormPage} />,
+	<PrivateRoute path={ROUTE_LINK.listListEdit_CONST} component={NestedListFormPage} />,
+	<Redirect path={ROUTE_LINK.listListDefault} to={ROUTE_LINK.listListMain} />,
+	<Route path={ROUTE_LINK.listListDetail_CONST} component={NestedListListPage} />,
 ]

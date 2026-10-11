@@ -3,7 +3,7 @@ import { PortfolioProjectFullType } from 'api-types/portfolio.types'
 
 import { useMemo } from 'preact/hooks'
 
-import { ProjectElement } from 'components/project/project-element'
+import { ProjectItem } from 'components/project/project-item'
 
 import { packElements } from 'utils/project/pack-elements'
 
@@ -22,7 +22,7 @@ export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
 		<div className="project__list">
 			{packedRows.map(row => (
 				<div className="project__row">
-					{row.map(item => <ProjectElement key={item.id} {...item} />)}
+					{row.map(item => <ProjectItem key={item.id} {...item} />)}
 				</div>
 			))}
 		</div>

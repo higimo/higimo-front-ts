@@ -1,27 +1,15 @@
 import { FunctionComponent } from 'preact'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { IntroTileGallery } from 'components/intro/intro-tile-gallery'
+import { TileGallery } from 'components/ui/tile-gallery'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { VK_PAGE_LIST } from 'data/vk-page-list'
 
 import '../vk-style.css'
 
-const pagesList = [
-	{
-		title: 'Скачать фотки из альбома',
-		description: 'Инструмент выгрузки ссылок на файлы картинок',
-		href: ROUTE_LINKS.toolVkDownloadAlbum,
-	},
-	{
-		title: 'Редактирование альбомов',
-		description: 'Сортировка и описания фотографий в более удобном для массового редактирования виде',
-		href: ROUTE_LINKS.toolVkAlbums,
-	}
-]
 export const VkIndexPage: FunctionComponent = () => (
 	<Layout title="VK tool index" className="vk-identity-page vk-photo">
 		<TextContainer>
@@ -31,8 +19,8 @@ export const VkIndexPage: FunctionComponent = () => (
 		<TextContainer>
 			<VkHeading>VK tool</VkHeading>
 
-			<IntroTileGallery
-				list={pagesList}
+			<TileGallery
+				list={VK_PAGE_LIST}
 			/>
 		</TextContainer>
 	</Layout>

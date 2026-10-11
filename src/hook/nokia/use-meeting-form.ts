@@ -1,6 +1,6 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { DateTimeInputType, ISOString } from 'utils.type'
-import { MentionSuggest } from 'components/mention-textarea/types'
+import { MentionSuggest } from 'components/form/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useCallback, useEffect } from 'preact/hooks'
@@ -73,7 +73,7 @@ export const useMeetingForm = ({
 			}, { keepDefaultValues: true })
 		} catch (error) {
 			console.log('error', error)
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message)
 		}
 	}, [meetingApi])

@@ -1,12 +1,12 @@
 import { Route } from 'preact-iso'
 
-import { AccordIndexPage } from 'pages/accord/accord-index-page'
-import { AccordSinglePage } from 'pages/accord/accord-single-page'
+import { AccordListPage } from 'pages/accord/accord-list-page'
+import { AccordSinglePage } from 'pages/accord/accord-item-page'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 // Аккорды
 export const accordPages = [
-	<Route path={ROUTE_LINKS.accordIndex} component={AccordIndexPage} />,
-	<Route path={ROUTE_LINKS.accordDetail_CONST} component={AccordSinglePage} />,
+	<Route path={ROUTE_LINK.accordIndex} component={AccordListPage} />,
+	<Route path={ROUTE_LINK.accordDetail_CONST} component={AccordSinglePage} />,
 ]

@@ -1,4 +1,5 @@
-export const PRODUCT = {
+// TODO: [LIGHT] очень тупо используется
+export const MERCHANT_PRODUCT_CACHE = {
 	COFFEE: {
 		id: "019d575b-7efe-7116-b7c7-aa1a13f6f50e",
 		image: '/assert/product/COFFEE.jpg',

@@ -1,0 +1,143 @@
+import { ChangeEvent, KeyDownEvent } from 'utils.type'
+import { FunctionComponent } from 'preact'
+
+import { useFormContext } from 'react-hook-form'
+import { useRef, useState } from 'preact/hooks'
+
+import { MentionList } from 'components/form/mention-textarea/mention-list'
+import { MentionSuggest, MetionSelector } from 'components/form/mention-textarea/types'
+
+import { KEY } from 'components/form/mention-textarea/KEY'
+
+import { getMentionList } from 'components/form/mention-textarea/utils/get-mention-list'
+import { getShiftSuggest } from 'components/form/mention-textarea/utils/get-shift-suggest'
+import { getWrittenMention } from 'components/form/mention-textarea/utils/get-written-mention'
+import { isMention } from 'components/form/mention-textarea/utils/is-mention'
+import { normalizeMentionList } from 'components/form/mention-textarea/utils/normalize-mention-list'
+import cs from 'classnames'
+
+import '../style.css'
+
+type MentionsInputPropsType = {
+	suggestList: MentionSuggest[]
+	onMention: (mentionList: MentionSuggest[]) => void
+}
+
+export const MentionTextarea: FunctionComponent<MentionsInputPropsType> = (props) => {
+	const [ showSuggestion, setShowSuggestion ] = useState<boolean>(false)
+	const [ selectedSuggest, setSelectedSuggest ] = useState<number>(0)
+	const [ filtredSuggestList, setFiltredSuggestList ] = useState<MentionSuggest[]>(props.suggestList)
+	const refTextarea = useRef<HTMLTextAreaElement>(null)
+	const { register, formState: { errors }, setValue } = useFormContext()
+
+	const name = 'description'
+
+	const error = errors[name]?.message as string | undefined
+
+	const handleMentionSelect = (targetMention: MentionSuggest) => {
+		if (!refTextarea.current) {
+			return undefined
+		}
+
+		setShowSuggestion(false)
+
+		const mention = getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
+		if (mention) {
+			const resultValue = [
+				refTextarea.current.value.substring(0, mention.start),
+				`@{${targetMention.display.replace(' ', '_')}}`,
+				refTextarea.current.value.substring(mention.end),
+			].join('')
+			setValue('description', resultValue)
+		}
+
+		setTimeout(handleMentionValidation, 0)
+	}
+
+	const handleMentionValidation = () => {
+		if (!refTextarea.current) {
+			return undefined
+		}
+
+		const mentionList = normalizeMentionList(
+			getMentionList(refTextarea.current.value),
+			filtredSuggestList
+		)
+		props.onMention(mentionList)
+	}
+
+	const handleKeyDown = (event: KeyDownEvent) => {
+		if (!showSuggestion) {
+			return undefined
+		}
+		if (KEY.ESC === event.code) {
+			event.preventDefault()
+			setShowSuggestion(false)
+		}
+		if (KEY.UP === event.code) {
+			event.preventDefault()
+			setSelectedSuggest(getShiftSuggest(selectedSuggest, -1, filtredSuggestList))
+		}
+		if (KEY.DOWN === event.code) {
+			event.preventDefault()
+			setSelectedSuggest(getShiftSuggest(selectedSuggest, 1, filtredSuggestList))
+		}
+		if (KEY.TAB === event.code || (KEY.ENTER === event.code)) {
+			event.preventDefault()
+			const targetMention = filtredSuggestList[selectedSuggest]
+
+			if (!targetMention) {
+				console.warn('targetMention из фильтрованного списка не выбрался')
+				return undefined
+			}
+			handleMentionSelect(targetMention)
+		}
+	}
+
+	const filterSuggestion = (filter: MetionSelector | null) => {
+		if (!filter) {
+			return undefined
+		}
+		setFiltredSuggestList(props.suggestList)
+		const regex = new RegExp(filter.text.split('').join('.*'), 'i')
+		const newList = props.suggestList.filter(item => regex.test(item.display))
+		setFiltredSuggestList(
+			newList
+		)
+		setSelectedSuggest(0)
+	}
+
+	const handleChange = (event: ChangeEvent) => {
+		if (isMention(event.currentTarget.value, event.currentTarget.selectionStart || 0)) {
+			setShowSuggestion(true)
+			filterSuggestion(
+				getWrittenMention(event.currentTarget.value, event.currentTarget.selectionStart || 0)
+			)
+		}
+		setValue('description', event.currentTarget.value)
+		setTimeout(handleMentionValidation, 0)
+	}
+
+	const handleBlur = () => {
+		setTimeout(() => setShowSuggestion(false), 200)
+	}
+
+	return (
+		<div className="mentions-input">
+			<textarea
+				{...register(name)}
+				className={cs('mentions-input__field', { 'field__input--error': error })}
+				onChange={handleChange}
+				onKeyDown={handleKeyDown}
+				onBlur={handleBlur}
+			/>
+			{showSuggestion && (
+				<MentionList
+					suggestList={filtredSuggestList}
+					selectedSuggest={selectedSuggest}
+					onSelect={(value: MentionSuggest) => handleMentionSelect(value)}
+				/>
+			)}
+		</div>
+	)
+}

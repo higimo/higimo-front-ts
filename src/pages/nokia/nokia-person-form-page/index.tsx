@@ -1,0 +1,49 @@
+import { FunctionComponent } from 'preact'
+import { NokiaPersonType } from 'api-types/nokia.types'
+
+import { useApi } from 'hook/fetch/use-api'
+import { useRoute } from 'preact-iso'
+
+import { Layout } from 'components/ui/layout/Layout'
+import { NokiaMenu } from 'components/nokia/nokia-menu'
+import { LoadSuspense } from 'components/ui/load-suspense'
+import { EmptyData } from 'components/ui/empty-data'
+import { NokiaPersonForm } from 'components/nokia/form/nokia-person-form'
+
+import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
+
+import '../nokia-style.css'
+
+export const NokiaPersonFormPage: FunctionComponent = () => {
+	const { params: { personId = DEFAULT_ID } } = useRoute()
+
+	const [ personItem ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
+
+	const title = (
+		personId == DEFAULT_ID
+		? 'Создание персоны'
+		: 'Редактирование персоны'
+	)
+
+	return (
+		<Layout title={`${title} | Нокиа`} className="nokia">
+			<NokiaMenu />
+
+			<div className="nokia__content">
+				<h1>
+					{}
+				</h1>
+
+				<LoadSuspense data={personItem}>
+					<EmptyData data={personItem} skipEmpty>
+						<NokiaPersonForm
+							key={personItem.data?.id ?? DEFAULT_ID}
+							initialData={personItem.data}
+						/>
+					</EmptyData>
+				</LoadSuspense>
+			</div>
+		</Layout>
+	)
+}

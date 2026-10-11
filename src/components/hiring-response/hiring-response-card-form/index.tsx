@@ -13,7 +13,7 @@ import { as } from 'utils/types/as'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
 
-import { ANCHOR_LINKS } from 'dic/ANCHOR_LINKS'
+import { ANCHOR_LINK } from 'dic/route/ANCHOR_LINK'
 
 import './style.css'
 
@@ -39,7 +39,7 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 			await pasteApi.create(values)
 		}
 		await fetchUpdate()
-		smoothScroll(ANCHOR_LINKS.hiringResponseGallery)()
+		smoothScroll(ANCHOR_LINK.hiringResponseGallery)()
 	}
 
 	return (

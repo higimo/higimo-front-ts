@@ -4,8 +4,8 @@ import { PortfolioGroupedTagType } from 'api-types/portfolio.types'
 import { ProjectTag } from 'components/project/project-tag'
 import { TextContainer } from 'components/ui/text-container'
 
-import { PROJECT_FILTER_DIC } from 'dic/project/PROJECT_FILTER_DIC'
-import { IGRORED_TAG_GROUPS } from 'data/project-ignored-tag-groups'
+import { PROJECT_FILTER } from 'dic/project/PROJECT_FILTER'
+import { PROJECT_IGRORED_TAG_GROUP } from 'data/project-ignored-tag-group'
 
 import './style.css'
 
@@ -18,7 +18,7 @@ export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryP
 }) => groupedTags && (
 	<TextContainer className="project-tag">
 		{groupedTags.map(({ group, tags }) => {
-			if (IGRORED_TAG_GROUPS.includes(group.title)) {
+			if (PROJECT_IGRORED_TAG_GROUP.includes(group.title)) {
 				return null
 			}
 
@@ -27,7 +27,7 @@ export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryP
 					<div className="project-tag__list">
 						<div className="project-tag__category-name">{group.title}</div>
 						{tags.map(tag => (
-							<ProjectTag filterName={PROJECT_FILTER_DIC.FILTER_TAG}>{tag.title}</ProjectTag>
+							<ProjectTag filterName={PROJECT_FILTER.FILTER_TAG}>{tag.title}</ProjectTag>
 						))}
 					</div>
 				</div>

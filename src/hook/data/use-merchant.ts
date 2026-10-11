@@ -6,7 +6,7 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { merchantProductSignal } from 'context/merchant-signal'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { API_STATUS } from 'dic/API_STATUS'
 
 // Флаг для предотвращения множественных запросов

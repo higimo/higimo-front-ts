@@ -1,7 +1,7 @@
 import { TargetedEvent } from 'preact'
 
-import { EXTERNAL_LINKS } from 'dic/EXTERNAL_LINKS'
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 /*******************************
 		ValueOf/KeyOf
@@ -176,7 +176,7 @@ export type EmptyObjectBy<T extends PropertyKey> = Record<T, never>
 
 export type InterLinkType = {
 	title: string,
-	href: ValueOf<typeof ROUTE_LINKS>
+	href: ValueOf<typeof ROUTE_LINK>
 }
 
 export type IntroImageMappingType = Record<string, string>
@@ -186,7 +186,7 @@ export type IntroLinkDataType = {
 	isArchive?: boolean
 	isInactive?: boolean
 	title: string
-	href: ValueOf<typeof EXTERNAL_LINKS> | ValueOf<typeof ROUTE_LINKS>
+	href: ValueOf<typeof EXTERNAL_LINK> | ValueOf<typeof ROUTE_LINK>
 	description: string
 	// imgId: 'screen' | 'rak' | 'tech' | 'obuchenie' | 'intersection'
 }

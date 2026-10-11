@@ -1,9 +1,9 @@
 import { PovType } from 'api-types/tourism.types'
 import { ValueOf } from 'utils.type'
 
-import { TAGS_NAME_TO_POI_TYPE_MAPPING } from 'data/tourism/tag-name-to-poi-type-mapping'
+import { TAG_NAME_POI_TYPE_MAPPING } from 'dic/tourism/TAG_NAME_POI_TYPE_MAPPING'
 import { TAGS_NAME } from 'dic/tourism/TAGS_NAME'
-import { SORT_MAP } from 'dic/tourism/SORT_MAP'
+import { TORUSM_SORT_MAP } from 'dic/tourism/TORUSM_SORT_MAP'
 import { VISITED_MAP } from 'dic/tourism/VISITED_MAP'
 
 type HandleFilterMapPointPropsType = {
@@ -37,7 +37,7 @@ export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: Handl
 	}
 
 	for (const selectedTagTitle of selectedIds.values()) {
-		const povTypeArray = TAGS_NAME_TO_POI_TYPE_MAPPING[selectedTagTitle as typeof TAGS_NAME[number]]
+		const povTypeArray = TAG_NAME_POI_TYPE_MAPPING[selectedTagTitle as typeof TAGS_NAME[number]]
 		if (!povTypeArray.includes(item.type)) {
 			return false
 		}
@@ -46,19 +46,19 @@ export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: Handl
 	return true
 }
 
-export const handleSort = (isChooseSortMode: (value: ValueOf<typeof SORT_MAP>) => boolean) => (a: PovType, b: PovType) => {
-	if (isChooseSortMode(SORT_MAP.INIT)) {
+export const handleSort = (isChooseSortMode: (value: ValueOf<typeof TORUSM_SORT_MAP>) => boolean) => (a: PovType, b: PovType) => {
+	if (isChooseSortMode(TORUSM_SORT_MAP.INIT)) {
 		return 0
 	}
-	if (isChooseSortMode(SORT_MAP.VISITED)) {
+	if (isChooseSortMode(TORUSM_SORT_MAP.VISITED)) {
 		// @ts-ignore
 		return b.visited - a.visited
 	}
-	if (isChooseSortMode(SORT_MAP.WANTED)) {
+	if (isChooseSortMode(TORUSM_SORT_MAP.WANTED)) {
 		// @ts-ignore
 		return a.visited - b.visited
 	}
-	if (isChooseSortMode(SORT_MAP.ALPHABET)) {
+	if (isChooseSortMode(TORUSM_SORT_MAP.ALPHABET)) {
 		return a.title.localeCompare(b.title)
 	}
 	return 0

@@ -1,13 +1,13 @@
 import { Route } from 'preact-iso'
 
 import { IndexPage } from 'pages/index-page'
-import { LastUpdatePage } from 'pages/last-update-page'
+import { BlogListPage } from 'pages/blog-list-page'
 import { ServicePage } from 'pages/tools/service-page'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 export const indexPages = [
-	<Route path={ROUTE_LINKS.index} component={IndexPage} />,
-	<Route path={ROUTE_LINKS.serviceIndex} component={ServicePage} />,
-	<Route path={ROUTE_LINKS.higimoBlog} component={LastUpdatePage} />,
+	<Route path={ROUTE_LINK.index} component={IndexPage} />,
+	<Route path={ROUTE_LINK.serviceIndex} component={ServicePage} />,
+	<Route path={ROUTE_LINK.higimoBlog} component={BlogListPage} />,
 ]

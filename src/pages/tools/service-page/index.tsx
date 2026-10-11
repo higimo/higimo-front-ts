@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'preact'
 
-import { AboutInvite } from 'components/intro/about-invite'
-import { FunnyIntro } from 'components/intro/funny-invite'
+import { ShelfInvite } from 'components/invite/shelf-invite'
+import { FunnyInvite } from 'components/invite/funny-invite'
 import { Layout } from 'components/ui/layout/Layout'
-import { ShareKnowledge } from 'components/intro/share-knowledge'
-import { ToolsIntro } from 'components/intro/tools-intro'
+import { KnowledgeInvite } from 'components/invite/knowledge-invite'
+import { ToolsInvite } from 'components/invite/tools-invite'
 
 export const ServicePage: FunctionComponent = () => (
 	<Layout title="Сервисы">
-		<ShareKnowledge />
-		<ToolsIntro />
-		<AboutInvite />
-		<FunnyIntro />
+		<KnowledgeInvite />
+		<ToolsInvite />
+		<ShelfInvite />
+		<FunnyInvite />
 	</Layout>
 )

@@ -4,14 +4,14 @@ import { FunctionComponent } from 'preact'
 import { useJsonApi } from 'hook/fetch/use-json-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { CityStars } from 'components/tourism/city-stars'
+import { CityStarList } from 'components/tourism/city-star/city-star-list'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismCityStarForm } from 'components/tourism/tourism-city-star'
-import { TourismHeader } from 'components/tourism/tourism-header'
-import { TourismMainMenu } from 'components/tourism/tourism-main-menu'
+import { TourismCityStarForm } from 'components/tourism/city-star/tourism-city-star'
+import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 
 import '../tourism-style.css'
 
@@ -34,7 +34,7 @@ export const TourismCityStarPage: FunctionComponent = () => {
 
 			<LoadSuspense data={cityListJsonData}>
 				<EmptyData data={cityListJsonData}>
-					<CityStars cityList={cityListJsonData.data} />
+					<CityStarList cityList={cityListJsonData.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

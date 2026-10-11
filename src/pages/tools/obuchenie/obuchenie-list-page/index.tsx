@@ -8,7 +8,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { ObuchenieList } from 'components/obuchenie/obuchenie-list'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 export const ObuchenieListPage: FunctionComponent = () => {
 	const [ lectionList ] = useApi<LectionType[]>(API_ROUTE.lection)

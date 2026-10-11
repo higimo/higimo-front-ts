@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { ISOString } from 'utils.type'
 import { MeetingFormValues } from 'hook/nokia/use-meeting-form'
-import { MentionSuggest } from 'components/mention-textarea/types'
+import { MentionSuggest } from 'components/form/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
 import { useEffect } from 'preact/hooks'
@@ -13,12 +13,12 @@ import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FullpageFormContainer } from 'components/form/fullpage-form-container'
-import { MentionTextarea } from 'components/mention-textarea/mention-input'
+import { MentionTextarea } from 'components/form/mention-textarea/mention-input'
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
 import { createDateOnly } from 'utils/date/create-date-only'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
@@ -118,7 +118,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 					/>
 					<small>Упоминать персон через @</small>
 					<hr />
-					<a href={ROUTE_LINKS.nokiaPeopleForm}>[Создать персону]</a>
+					<a href={ROUTE_LINK.nokiaPeopleForm}>[Создать персону]</a>
 
 					<label>С кем </label>
 					<div className="single-row">

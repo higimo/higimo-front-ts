@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
 import { OnlyAdmin } from 'components/util/only-admin'
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type LibraryBookElementPropsType = LibraryType & {
 	onRemove: (id: LibraryType['id']) => () => void
@@ -11,7 +11,7 @@ export const LibraryBookElement: FunctionComponent<LibraryBookElementPropsType> 
 	<div className="library-gallery__item">
 		<OnlyAdmin>
 			<div className="library-gallery__action-bar">
-				<a href={ROUTE_LINKS.libraryFormEdit({ id: book.id })}>
+				<a href={ROUTE_LINK.libraryFormEdit({ id: book.id })}>
 					✏️
 				</a>
 				<span onClick={book.onRemove(book.id)}>

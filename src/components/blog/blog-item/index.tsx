@@ -28,28 +28,26 @@ const getBlogImage = (source: string): readonly string[] =>
 
 type BlogItemPropsType = UpdateNewsType
 
-export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => {
-	return (
-		<a
-			className="last-updates__item post"
-			href={post.link}
-		>
-			<div className="post__meta">
-				<span className="post__favicons">
-					{(getBlogImage(post.source)).map(src => (
-						<img key={src} className="post__favicon-image" src={src} alt="" />
-					))}
+export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => (
+	<a
+		className="last-updates__item post"
+		href={post.link}
+	>
+		<div className="post__meta">
+			<span className="post__favicons">
+				{(getBlogImage(post.source)).map(src => (
+					<img key={src} className="post__favicon-image" src={src} alt="" />
+				))}
+			</span>
+			<span className="post__blog-name">
+				<span className="post__blog-title">
+					{post.source}
 				</span>
-				<span className="post__blog-name">
-					<span className="post__blog-title">
-						{post.source}
-					</span>
-				</span>
-				<span className="post__date">{getHumanMonthDate(post.date)}</span>
-			</div>
-			<div className="post__description">
-				{getText(post.text)}
-			</div>
-		</a>
-	)
-}
+			</span>
+			<span className="post__date">{getHumanMonthDate(post.date)}</span>
+		</div>
+		<div className="post__description">
+			{getText(post.text)}
+		</div>
+	</a>
+)

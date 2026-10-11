@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { PasteApiType } from 'api-types/paste.types'
 
-import { FactoidRow } from 'components/ui/factoid-row'
+import { FactoidList } from 'components/ui/factoid-list/FactoidList'
 
 import { createDateOnly } from 'utils/date/create-date-only'
 import { getNowDay } from 'utils/date/get-now-day'
@@ -28,7 +28,7 @@ export const HiringResponseCounter: FunctionComponent<HiringResponseCounterProps
 	const dataNowDay          = data.filter(d => d.date >= day)
 
 	return (
-		<FactoidRow
+		<FactoidList
 			mini
 			countInRow={5}
 			factoids={[

@@ -4,9 +4,9 @@ import { useEffect } from 'preact/hooks'
 
 import { Layout } from 'components/ui/layout/Layout'
 
-import { setIsNotFound } from 'context/global'
+import { setIsNotFound } from 'context/not-found-signal'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
@@ -23,7 +23,7 @@ export const NotFoundPage: FunctionComponent = () => {
 				Неправильно набран адрес, или такой страницы на сайте больше не существует.
 			</p>
 			<p>
-				<a href={ROUTE_LINKS.index}>Главная</a>
+				<a href={ROUTE_LINK.index}>Главная</a>
 			</p>
 		</Layout>
 	)

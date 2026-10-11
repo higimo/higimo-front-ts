@@ -6,7 +6,7 @@ import { useApi } from 'hook/fetch/use-api'
 import { apiReducer } from 'utils/api/api-reducer'
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { API_STATUS } from 'dic/API_STATUS'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 

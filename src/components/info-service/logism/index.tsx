@@ -1,0 +1,27 @@
+import { FunctionComponent } from 'preact'
+import { LogismType } from 'api-types/logism.types'
+
+import cs from 'classnames'
+
+import './style.css'
+
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
+type LogismListPropsType = {
+	logismList: LogismType[] | null
+}
+
+export const LogismList: FunctionComponent<LogismListPropsType> = ({
+	logismList
+}) => logismList && (
+	<div className="gallery-logism">
+		{logismList.map(({ text }) => (
+			<div
+				className={cs('gallery-logism__item', {
+					'gallery-logism__item--long': text.length > 100
+				})}
+				dangerouslySetInnerHTML={{ __html: text.replace(/(https?:\/\/.*)/g, '<a href="$1">источник</a>') }}
+			/>
+		))}
+	</div>
+)

@@ -1,0 +1,13 @@
+import { FunctionComponent } from 'preact'
+
+import { SpanInlineBlock } from 'components/ui/block-renderer/types'
+
+import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
+
+import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
+
+export const InlineSpanRenderer: FunctionComponent<SpanInlineBlock> = ({ className, value }) => (
+	<span className={className || ''}>
+		{replaceRenderBlockVariables(value, variablesRenderBlockSignal.value)}
+	</span>
+)

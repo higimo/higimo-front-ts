@@ -2,14 +2,14 @@ import { FunctionComponent } from 'preact'
 
 import { Layout } from 'components/ui/layout/Layout'
 
-import { iglinksData } from 'data/ig-link-data'
+import { IG_LINK_LIST } from 'data/ig-link-list'
 
 import './style.css'
 
 export const IgLinkPage: FunctionComponent = () => (
 	<Layout title="Ссылки в био инсты" className="ig-link-page">
 		<div className="ig-link-page__content">
-			{iglinksData.map(item => (
+			{IG_LINK_LIST.map(item => (
 				<div className="ig-link-page__item">
 					<div className="ig-link-page__name">
 						<a href={item.href} className="ig-link-page__link">{item.title}</a>

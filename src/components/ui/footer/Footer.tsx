@@ -2,16 +2,16 @@ import { FunctionComponent } from 'preact'
 import { IntroLinkDataType } from 'utils.type'
 
 import { useAuth } from 'hook/fetch/use-auth'
-import { isNotFound } from 'context/global'
+import { isNotFound } from 'context/not-found-signal'
 
-import { aboutInviteList } from 'data/intra-links/about-invite'
-import { blogInviteData } from 'data/intra-links/blog-invite'
-import { contactListData } from 'data/intra-links/contact-list'
-import { funnyList } from 'data/intra-links/funny-invite'
-import { shareKnowledgeData } from 'data/intra-links/share-knowledge'
-import { toolListData } from 'data/intra-links/tools-intro'
+import { ABOUT_INVITE } from 'data/ivite-links/about-invite'
+import { BLOG_INVITE } from 'data/ivite-links/blog-invite'
+import { CONTACT_LIST } from 'data/ivite-links/contact-list'
+import { FUNNY_INVITE } from 'data/ivite-links/funny-invite'
+import { KNOWLEDGE_INVITE } from 'data/ivite-links/knowledge-invite'
+import { toolListData } from 'data/ivite-links/tools-invite'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
@@ -37,23 +37,23 @@ export const Footer: FunctionComponent = () => {
 	return (
 		<footer className="footer">
 			<div className="footer__column">
-				<div className="footer__header"><a href={ROUTE_LINKS.projectIndex}>Сделал</a></div>
+				<div className="footer__header"><a href={ROUTE_LINK.projectIndex}>Сделал</a></div>
 				<div className="footer__header">Связаться</div>
-				{contactListData.map(renderLink(isAuth))}
+				{CONTACT_LIST.map(renderLink(isAuth))}
 				<div className="footer__header">Блоги</div>
-				{blogInviteData.map(renderLink(isAuth))}
+				{BLOG_INVITE.map(renderLink(isAuth))}
 			</div>
 
 			<div className="footer__column">
 				<div className="footer__header">Делюсь знаниями</div>
-				{shareKnowledgeData.map(renderLink(isAuth))}
+				{KNOWLEDGE_INVITE.map(renderLink(isAuth))}
 				<div className="footer__header">Поиграть</div>
-				{funnyList.map(renderLink(isAuth))}
+				{FUNNY_INVITE.map(renderLink(isAuth))}
 			</div>
 
 			<div className="footer__column">
 				<div className="footer__header">Мои полочки</div>
-				{aboutInviteList.map(renderLink(isAuth))}
+				{ABOUT_INVITE.map(renderLink(isAuth))}
 			</div>
 
 			<div className="footer__column">

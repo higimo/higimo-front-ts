@@ -11,10 +11,11 @@ import { OnlyAdmin } from 'components/util/only-admin'
 
 import { faqApi } from 'repositories/faq-api.repository'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../faq-style.css'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 const onRemove = (id: FaqType['id']) => () => {
 	faqApi.delete(id)
@@ -25,17 +26,22 @@ export const FaqListPage: FunctionComponent = () => {
 
 	return (
 		<Layout title="Статьи FAQ" className="faq-identity-page">
-			<OnlyAdmin>
-				<a href={ROUTE_LINKS.faqForm}>Создать</a>
-			</OnlyAdmin>
-			<LoadSuspense data={faqList}>
-				<EmptyData data={faqList}>
-					<FaqList
-						faqList={faqList.data}
-						onRemove={onRemove}
-					/>
-				</EmptyData>
-			</LoadSuspense>
+			<TextContainer>
+				<OnlyAdmin>
+					<a href={ROUTE_LINK.faqForm}>Создать</a>
+				</OnlyAdmin>
+			</TextContainer>
+
+			<TextContainer>
+				<LoadSuspense data={faqList}>
+					<EmptyData data={faqList}>
+						<FaqList
+							faqList={faqList.data}
+							onRemove={onRemove}
+						/>
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
 		</Layout>
 	)
 }

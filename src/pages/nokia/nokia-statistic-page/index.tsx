@@ -9,7 +9,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaStatistic } from 'components/nokia/nokia-statistic'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../nokia-style.css'
 

@@ -2,7 +2,7 @@ import { FaqType } from 'api-types/faq.types'
 
 import { sendRequest } from 'utils/api/send-request'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 class FaqApiRepository {
 	async create(

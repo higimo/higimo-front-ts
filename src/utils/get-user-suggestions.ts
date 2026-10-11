@@ -1,6 +1,6 @@
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import { MentionSuggest } from 'components/mention-textarea/types'
+import { MentionSuggest } from 'components/form/mention-textarea/types'
 
 /**
  * Для Нокии

@@ -1,0 +1,20 @@
+import { FunctionComponent } from 'preact'
+import { ComojiType } from 'api-types/comoji.types'
+
+import { copyToClipboard } from 'utils/browser/copy-to-clipboard'
+import { getRandomColor } from 'utils/get-random-color'
+
+export const ComojiItem: FunctionComponent<ComojiType> = props => (
+	<div className="comoji">
+		<div
+			className="comoji__content"
+			style={{
+				background: `${getRandomColor()}`,
+				backgroundImage: `linear-gradient(to bottom, ${getRandomColor()}, ${getRandomColor()})`
+			}}
+			onClick={() => {copyToClipboard(props.comoji)}}
+		>
+			{props.comoji}
+		</div>
+	</div>
+)

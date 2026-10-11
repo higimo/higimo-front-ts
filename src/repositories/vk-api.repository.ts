@@ -4,7 +4,7 @@ import { VkResponseData } from 'vendor/types'
 import { toast } from 'toast'
 import { vkApiCall } from 'vendor/vk-api-call'
 
-import { VKError } from 'errors/vk-error'
+import { VkError } from 'errors/vk-error'
 
 class VkApiRepository {
 	async getAlbums(
@@ -26,7 +26,7 @@ class VkApiRepository {
 
 			return albums
 		} catch (error) {
-			if (error instanceof VKError) {
+			if (error instanceof VkError) {
 				toast.warning(error.error_msg)
 			} else {
 				console.error(error)
@@ -51,7 +51,7 @@ class VkApiRepository {
 			})
 			return response.response.items
 		} catch (error) {
-			if (error instanceof VKError) {
+			if (error instanceof VkError) {
 				toast.warning(error.error_msg)
 			} else {
 				console.error(error)
@@ -76,7 +76,7 @@ class VkApiRepository {
 			})
 			return response.response
 		} catch (error) {
-			if (error instanceof VKError) {
+			if (error instanceof VkError) {
 				toast.warning(error.error_msg)
 			} else {
 				console.error(error)

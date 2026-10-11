@@ -8,11 +8,11 @@ import { useTags } from 'hook/data/use-tags'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { MeetingTags } from 'components/nokia/meeting-tags'
-import { NokiaMeetingGallery } from 'components/nokia/nokia-meeting-gallery'
+import { MeetingTagList } from 'components/nokia/meeting-tag-list'
+import { NokiaMeetingList } from 'components/nokia/nokia-meeting-list'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../nokia-style.css'
 
@@ -50,13 +50,13 @@ export const NokiaIndexPage: FunctionComponent = () => {
 
 				<LoadSuspense data={richMeetingList}>
 					<EmptyData data={richMeetingList}>
-						<MeetingTags
+						<MeetingTagList
 							tags={meetingTags}
 							selectedTags={selectedTags}
 							onClick={handleTagClick}
 						/>
 
-						<NokiaMeetingGallery meetings={filtredMeetings} />
+						<NokiaMeetingList meetings={filtredMeetings} />
 					</EmptyData>
 				</LoadSuspense>
 			</div>

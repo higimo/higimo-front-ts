@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
@@ -51,7 +51,7 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({ initialD
 			if (!book) {
 			}
 		} catch (error) {
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message || 'Не получилось сохранить')
 		}
 	}

@@ -7,7 +7,7 @@ type PronIndexPropsType = {
 	pronList: PronType[] | null
 }
 
-export const PronIndex: FunctionComponent<PronIndexPropsType> = ({ pronList }) => pronList && (
+export const Pron: FunctionComponent<PronIndexPropsType> = ({ pronList }) => pronList && (
 	<div className="gallery-pron container">
 		<button
 			className="gallery-pron__btn"

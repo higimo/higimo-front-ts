@@ -4,11 +4,11 @@ import { ValueOf } from 'utils.type'
 import { useLocation } from 'preact-iso'
 import { useLayoutEffect } from 'preact/hooks'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type RedirectPropsType =  & {
-	path: ValueOf<typeof ROUTE_LINKS>
-	to: ValueOf<typeof ROUTE_LINKS>
+	path: ValueOf<typeof ROUTE_LINK>
+	to: ValueOf<typeof ROUTE_LINK>
 	replace?: boolean
 }
 

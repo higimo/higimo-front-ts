@@ -2,10 +2,10 @@ import { FunctionComponent } from 'preact'
 import { NokiaPersonFullType } from 'api-types/nokia.types'
 
 import { CollapseSection } from 'components/ui/collapse-section'
-import { NokiaMeeting } from 'components/nokia/nokia-meeting'
+import { NokiaMeetingItem } from 'components/nokia/nokia-meeting-item'
 import { NokiaNote } from 'components/nokia/nokia-note'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type NokiaPeopleDetailCardItemPropsType = {
 	personItem: NokiaPersonFullType | null
@@ -16,7 +16,7 @@ export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardI
 }) => personItem && (
 	<div className="nokia-people-detail person-full-data">
 		<div className="person-full-data__edit">
-			<a href={ROUTE_LINKS.nokiaPeopleEdit({ personId: personItem.id })}>Редактировать профиль</a>
+			<a href={ROUTE_LINK.nokiaPeopleEdit({ personId: personItem.id })}>Редактировать профиль</a>
 		</div>
 		<div className="person-full-data__header">
 			<div className="person-full-data__name">
@@ -37,7 +37,7 @@ export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardI
 			<div className="person-full-data__meetings">
 				{personItem.meetings.map((meeting) => {
 					return (
-						<NokiaMeeting meeting={meeting} />
+						<NokiaMeetingItem meeting={meeting} />
 					)
 				})}
 			</div>

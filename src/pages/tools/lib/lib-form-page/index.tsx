@@ -10,7 +10,7 @@ import { LibraryHeader } from 'components/data/library/library-header'
 import { LibraryType } from 'api-types/library.types'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export const LibFromPage: FunctionComponent = () => {

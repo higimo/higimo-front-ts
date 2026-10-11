@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 import { PortfolioProjectDetailType } from 'api-types/portfolio.types'
 
 import { OnlyAdmin } from 'components/util/only-admin'
-import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
-import { PortfolioViewerTags } from 'components/project/portfolio-viewer-tags'
+import { PortfolioCreditList } from 'components/project/portfolio-credit-list'
+import { PortfolioViewerTagList } from 'components/project/portfolio-viewer-tag-list'
 import { TextContainer } from 'components/ui/text-container'
 import { WorkerInput } from 'components/form/project/worker-input'
 
@@ -37,7 +37,7 @@ export const ProjectViewer: FunctionComponent<ProjectViewerPropsType> = ({
 				<WorkerInput projectId={projectItem.id} />
 			</div>
 		</OnlyAdmin>
-		<PortfolioCreditsGallery credits={projectItem.credits} />
-		<PortfolioViewerTags tags={projectItem.tags || []} />
+		<PortfolioCreditList credits={projectItem.credits} />
+		<PortfolioViewerTagList tags={projectItem.tags || []} />
 	</div>
 )

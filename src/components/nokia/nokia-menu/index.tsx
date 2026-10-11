@@ -5,7 +5,7 @@ import { useRoute } from 'preact-iso'
 import { HorizontalMenu, HorizontalElement } from 'components/ui/horizontal-menu'
 
 import { compareRoute } from 'utils/url-route/compare-route'
-import { nokiaMenuLinks } from './nokiaMenuLinks'
+import { nokiaMenuLinks } from 'components/nokia/nokia-menu/nokia-menu-links'
 
 import './style.css'
 

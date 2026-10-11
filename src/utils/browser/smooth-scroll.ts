@@ -1,6 +1,6 @@
 import { TargetedMouseEvent } from 'preact'
 
-import { AnchorLinksType } from 'dic/ANCHOR_LINKS'
+import { AnchorLinksType } from 'dic/route/ANCHOR_LINK'
 
 /**
  * Плавно прокручивает страницу до якоря (указывается в id)

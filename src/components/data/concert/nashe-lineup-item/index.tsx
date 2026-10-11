@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
-
 import { NasheType } from 'api-types/nashe.types'
-import { ScheduleTable } from 'components/data/concert/schedule-table'
+
+import { NasheScheduleTable } from 'components/data/concert/nashe-schedule-table'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/tourism-header'
-import { TourismSecondary } from 'components/tourism/tourism-paragraph'
+import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
 import './style.css'
 
@@ -35,13 +35,13 @@ export const NasheLineupItem: FunctionComponent<NasheLineupItemPropsType> = ({
 			<TourismHeader secondary>
 				Главная сцена
 			</TourismHeader>
-			<ScheduleTable headers={headers} data={mainScene} />
+			<NasheScheduleTable headers={headers} data={mainScene} />
 		</TextContainer>
 		<TextContainer>
 			<TourismHeader secondary>
 				Сцена 2.0
 			</TourismHeader>
-			<ScheduleTable headers={headers} data={secondScene} />
+			<NasheScheduleTable headers={headers} data={secondScene} />
 		</TextContainer>
 	</div>
 )

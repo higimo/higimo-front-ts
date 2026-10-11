@@ -1,6 +1,6 @@
 import cs from 'classnames'
 
-import { ProjectRoutingFilterNameType } from 'dic/project/PROJECT_FILTER_DIC'
+import { ProjectRoutingFilterNameType } from 'dic/project/PROJECT_FILTER'
 import { FunctionComponent } from 'preact'
 
 import httpBuildQuery from 'http-build-query'
@@ -8,11 +8,11 @@ import httpBuildQuery from 'http-build-query'
 import { useLocation } from 'preact-iso'
 import { useCallback } from 'preact/hooks'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 // TODO: move to utils
 const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}): string => {
-	return `${ROUTE_LINKS.projectIndex}?${httpBuildQuery(params)}`
+	return `${ROUTE_LINK.projectIndex}?${httpBuildQuery(params)}`
 }
 
 type ProjectTagPropsType = {

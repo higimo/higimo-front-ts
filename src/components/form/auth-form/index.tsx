@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { AuthDataType } from 'api-types/auth.types'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
@@ -16,7 +16,7 @@ import { isValidAuth } from 'utils/types/is-valid-auth'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import './style.css'
 
@@ -48,7 +48,7 @@ export const AuthForm: FunctionComponent = () => {
 
 			window.location.href = getBackPath()
 		} catch (error) {
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message || 'Ошибка при входе в систему')
 		}
 	}

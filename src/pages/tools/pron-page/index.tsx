@@ -6,9 +6,9 @@ import { useApi } from 'hook/fetch/use-api'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { PronIndex } from 'components/info-service/pron'
+import { Pron } from 'components/info-service/pron'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 export const PronPage: FunctionComponent = () => {
 	const [ pronList ] = useApi<PronType[]>(API_ROUTE.pron)
@@ -17,7 +17,7 @@ export const PronPage: FunctionComponent = () => {
 		<Layout title="pron">
 			<LoadSuspense data={pronList}>
 				<EmptyData data={pronList}>
-					<PronIndex pronList={pronList.data} />
+					<Pron pronList={pronList.data} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

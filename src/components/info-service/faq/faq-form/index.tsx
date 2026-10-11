@@ -1,4 +1,4 @@
-import { ApiError } from 'errors/higimo-api-error'
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { FaqType } from 'api-types/faq.types'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
@@ -47,7 +47,7 @@ export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) 
 				toast.success('Создано')
 			}
 		} catch (error) {
-			const apiError = error as ApiError
+			const apiError = error as HigimoApiError
 			toast.error(apiError.message || 'Не получилось сохранить')
 		}
 	}

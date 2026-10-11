@@ -6,9 +6,9 @@ import { useLocation } from 'preact-iso'
 import { sendRequest } from 'utils/api/send-request'
 import { signal } from '@preact/signals'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { API_STATUS } from 'dic/API_STATUS'
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 interface AuthState {
 	status: ValueOf<typeof API_STATUS>
@@ -34,7 +34,7 @@ export const useAuth = (): UseAuthReturn => {
 	const { route, path } = useLocation()
 
 	const redirectToLogin = useCallback(() => {
-		route(`${ROUTE_LINKS.login}?backpath=${path}`, true)
+		route(`${ROUTE_LINK.login}?backpath=${path}`, true)
 	}, [path])
 
 	useEffect(() => {

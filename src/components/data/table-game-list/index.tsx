@@ -1,0 +1,25 @@
+import { FunctionComponent } from 'preact'
+import { TableGameType } from 'api-types/table-game.types'
+
+import { TextContainer } from 'components/ui/text-container'
+
+import './style.css'
+
+// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
+
+type TableGameListPropsType = {
+	gameList: TableGameType[] | null
+}
+
+export const TableGameList: FunctionComponent<TableGameListPropsType> = ({
+	gameList
+}) => gameList && (
+	<TextContainer>
+		{gameList.map(({ id, name, text }) => (
+			<div key={id} className="game-gallery__item">
+				<div className="game-gallery__name">{name}</div>
+				<div className="game-gallery__text" dangerouslySetInnerHTML={{ __html: text}} />
+			</div>
+		))}
+	</TextContainer>
+)

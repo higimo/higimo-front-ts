@@ -6,18 +6,28 @@ import { useJsonApi } from 'hook/fetch/use-json-api'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { ThingsNotebook } from 'components/data/things/things-notebook'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 export const ThingsNotebookPage: FunctionComponent = () => {
 	const [ thingJsonData ] = useJsonApi<ThingsApiType[]>('/json/things/things-notebook.json')
 
 	return (
 		<Layout title="Ноутбук">
-			<LoadSuspense data={thingJsonData}>
-				<EmptyData data={thingJsonData}>
-					<ThingsNotebook thingJsonData={thingJsonData.data} />
-				</EmptyData>
-			</LoadSuspense>
+			<TextContainer>
+				<h1>Ноутбук</h1>
+				<p>Ультрабук ASUS ZenBook S UX391UA-ET084T</p>
+				<LoadSuspense data={thingJsonData}>
+					<EmptyData data={thingJsonData}>
+						<table>
+							<tbody>
+								{thingJsonData.data && thingJsonData.data.map(([label, value], i) => (
+									<tr key={i}><td>{label}</td><td>{value}</td></tr>
+								))}
+							</tbody>
+						</table>
+					</EmptyData>
+				</LoadSuspense>
+			</TextContainer>
 		</Layout>
 	)
 }

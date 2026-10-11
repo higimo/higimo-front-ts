@@ -9,7 +9,7 @@ export interface LaravelErrorBody {
 /**
  * Ошибка в API бекенда хомяка
  */
-export class ApiError extends Error {
+export class HigimoApiError extends Error {
 	/**
 	 * Код ошибки
 	 */
@@ -37,7 +37,7 @@ export class ApiError extends Error {
 		this.response = response
 
 		if (Error.captureStackTrace) {
-			Error.captureStackTrace(this, ApiError)
+			Error.captureStackTrace(this, HigimoApiError)
 		}
 	}
 

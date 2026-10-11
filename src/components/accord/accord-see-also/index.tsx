@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { AccordRealTagType, AccordType } from 'api-types/accord.types'
+import { AccordType } from 'api-types/accord.types'
 
-import { AccordElement } from 'components/accord/accord-element'
+import { AccordItem } from 'components/accord/accord-element'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
@@ -11,9 +11,9 @@ import { AccordElement } from 'components/accord/accord-element'
 export const AccordSeeAlso: FunctionComponent<{ items: AccordType[] }> = ({ items }) => (
 	<div className="see-also-list">
 		{items.map(item => (
-			<AccordElement
+			<AccordItem
 				key={item.id}
-				{...item as AccordRealTagType}
+				{...item}
 				showAlf={false}
 				showBaidge={false}
 			/>

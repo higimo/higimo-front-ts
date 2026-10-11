@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { LectionType } from 'api-types/lection.types'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
@@ -16,7 +16,7 @@ export const ObuchenieList: FunctionComponent<ObuchenieListPropsType> = ({ lecti
 		{lectionList.map(({ id, name, code }) => (
 			<a
 				key={id}
-				href={ROUTE_LINKS.learningDetail({ idcode: code })}
+				href={ROUTE_LINK.learningDetail({ idcode: code })}
 				className="obuchenie-list__element"
 			>
 				<div className="obuchenie-list__name">

@@ -1,5 +1,5 @@
 import { MoscowMuseumType } from 'api-types/tourism.types'
-import { TourismSecondary } from 'components/tourism/tourism-paragraph'
+import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 import { FunctionComponent } from 'preact'
 
 import './style.css'

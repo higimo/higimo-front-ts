@@ -3,18 +3,18 @@ import { Route } from 'preact-iso'
 import { DonationOfertaPage } from 'pages/merchant/donation-oferta-page'
 import { MerchantPage } from 'pages/merchant/merchant-page'
 import { PaymentOfertaPage } from 'pages/merchant/payment-oferta-page'
-import { PaymentPage } from 'pages/merchant/payment-page'
+import { PaymentProductPage } from 'pages/merchant/payment-product-page'
 import { PaymentPolicyPage } from 'pages/merchant/payment-policy-page'
 import { PersonalPolicyPage } from 'pages/merchant/personal-policy-page'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 // Магазин
 export const merchantPages = [
-	<Route path={ROUTE_LINKS.merchantIndex} component={MerchantPage} />,
-	<Route path={ROUTE_LINKS.merchantCheckout} component={PaymentPage} />,
-	<Route path={ROUTE_LINKS.merchantPaymentPolicy} component={PaymentPolicyPage} />,
-	<Route path={ROUTE_LINKS.merchantPersonalPolicy} component={PersonalPolicyPage} />,
-	<Route path={ROUTE_LINKS.merchantPaymentOferta} component={PaymentOfertaPage} />,
-	<Route path={ROUTE_LINKS.merchantDonationOferta} component={DonationOfertaPage} />,
+	<Route path={ROUTE_LINK.merchantIndex} component={MerchantPage} />,
+	<Route path={ROUTE_LINK.merchantCheckout} component={PaymentProductPage} />,
+	<Route path={ROUTE_LINK.merchantPaymentPolicy} component={PaymentPolicyPage} />,
+	<Route path={ROUTE_LINK.merchantPersonalPolicy} component={PersonalPolicyPage} />,
+	<Route path={ROUTE_LINK.merchantPaymentOferta} component={PaymentOfertaPage} />,
+	<Route path={ROUTE_LINK.merchantDonationOferta} component={DonationOfertaPage} />,
 ]

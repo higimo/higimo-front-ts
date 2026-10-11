@@ -8,7 +8,7 @@ import { MaybeLink } from 'components/ui/maybe-link'
 import { getPageTitle } from 'utils/browser/get-page-title'
 import { convertPathToUrl } from 'utils/url-route/convert-path-to-url'
 
-import { BREADCRUMS_DIC, isRouteType } from 'dic/BREADCRUMS_DIC'
+import { BREADCRUMS_DIC, isRouteType } from 'dic/route/BREADCRUMS_DIC'
 
 import './style.css'
 

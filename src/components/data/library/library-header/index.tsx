@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container'
 
-import { ROUTE_LINKS } from 'dic/ROUTE_LINKS'
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
@@ -14,8 +14,8 @@ export const LibraryHeader: FunctionComponent = () => (
 		<div className="library-header">
 			<TextContainer>
 				<div className="library-header__list">
-					<a href={ROUTE_LINKS.libraryIndex}>Главная</a>
-					<a href={ROUTE_LINKS.libraryForm}>Админка</a>
+					<a href={ROUTE_LINK.libraryIndex}>Главная</a>
+					<a href={ROUTE_LINK.libraryForm}>Админка</a>
 				</div>
 			</TextContainer>
 		</div>

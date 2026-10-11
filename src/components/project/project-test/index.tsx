@@ -2,8 +2,8 @@ import { FunctionComponent } from 'preact'
 
 import { TextContainer } from 'components/ui/text-container'
 import { ProjectTypographicTest } from 'components/project/project-typographic-test'
-import { PortfolioCreditsGallery } from 'components/project/portfolio-credits-gallery'
-import { PortfolioViewerTags } from 'components/project/portfolio-viewer-tags'
+import { PortfolioCreditList } from 'components/project/portfolio-credit-list'
+import { PortfolioViewerTagList } from 'components/project/portfolio-viewer-tag-list'
 
 import { getHumanDate } from 'utils/date/get-human-date'
 
@@ -24,11 +24,11 @@ export const ProjectTypography: FunctionComponent = () => (
 			<ProjectTypographicTest />
 		</div>
 
-		<PortfolioCreditsGallery credits={credits} />
-		<PortfolioCreditsGallery credits={credits.slice(0, 2)} />
-		<PortfolioCreditsGallery credits={credits.slice(0, 1)} />
+		<PortfolioCreditList credits={credits} />
+		<PortfolioCreditList credits={credits.slice(0, 2)} />
+		<PortfolioCreditList credits={credits.slice(0, 1)} />
 
-		<PortfolioViewerTags tags={tags} />
-		<PortfolioViewerTags tags={tags.slice(-5)} />
+		<PortfolioViewerTagList tags={tags} />
+		<PortfolioViewerTagList tags={tags.slice(-5)} />
 	</div>
 )

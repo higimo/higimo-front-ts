@@ -15,7 +15,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { calculateProjectTableList } from 'utils/project/calculate-project-table-list'
 import { sortableProjectByVendor } from 'utils/project/sortable-project-by-vendor'
 
-import { API_ROUTE } from 'dic/API_ROUTE'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 // Мы потихоньку ведём классификационную работу над советами.
 // Помимо формальных характеристик («диаграмма», «таблица», «сайт», «предмет»)

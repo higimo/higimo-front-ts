@@ -2,7 +2,7 @@ import { BasePointType, Coord, HexType, KeyOf, ValueOf } from 'utils.type'
 
 import { BAR_COLOR_MAPPING } from 'dic/tourism/BAR_COLOR_MAPPING'
 import { BAR_ICON_MAPPING } from 'dic/tourism/BAR_ICON_MAPPING'
-import { BAR_TAGS_CATEGORY } from 'dic/tourism/BAR_TAGS_CATEGORY'
+import { BAR_TAG_CATEGORY } from 'dic/tourism/BAR_TAG_CATEGORY'
 
 // TODO: [HIGH] Добавить типа "Самые красивые дороги России"
 
@@ -155,7 +155,7 @@ export type PovType =
 	| Placefield
 
 
-type BarPovTagType = ValueOf<typeof BAR_TAGS_CATEGORY>[number]
+type BarPovTagType = ValueOf<typeof BAR_TAG_CATEGORY>[number]
 
 export type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
 export type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>

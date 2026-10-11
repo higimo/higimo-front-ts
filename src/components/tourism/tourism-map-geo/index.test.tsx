@@ -3,7 +3,7 @@ import { Coord } from 'utils.type'
 
 import { useWindowSize } from 'hook/browser/use-window-size'
 
-import { TourismMapGeo } from './index'
+import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
 import { render, screen } from '@testing-library/preact'
 import { beforeEach, describe, expect, it, vi } from 'vitest'

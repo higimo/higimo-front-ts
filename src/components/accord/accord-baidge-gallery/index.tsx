@@ -3,7 +3,7 @@ import { TagName } from 'types'
 
 import { Tag } from 'components/ui/tag'
 
-import { ACCORD_TAG_CATEGORY } from 'data/accord/tags-category'
+import { ACCORD_TAG_CATEGORY } from 'dic/accord/ACCORD_TAG_CATEGORY'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
@@ -12,7 +12,10 @@ type AccordTagGalleryPropsType = {
 	isSelected: (label: TagName) => boolean
 }
 
-export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({ toggleTag, isSelected }) => (
+export const AccordTagGallery: FunctionComponent<AccordTagGalleryPropsType> = ({
+	toggleTag,
+	isSelected,
+}) => (
 	<div className="accord__tags-gallery">
 		{ACCORD_TAG_CATEGORY[0].tags.map(({ title }, id) => (
 			<Tag
