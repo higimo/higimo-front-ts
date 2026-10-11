@@ -15,7 +15,7 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-import './style.css'
+import '../accord-style.css'
 
 const ALSO_ELEMENTS = 6
 

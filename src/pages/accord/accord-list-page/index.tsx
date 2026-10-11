@@ -21,7 +21,7 @@ import { ACCORD_TAG_MAPPING } from 'dic/accord/ACCORD_TAG_MAPPING'
 import { NEWS_ACCORD_LENGTH } from 'config/ACCORD'
 import { ACCORD_TOTAL_TAGS } from 'dic/accord/ACCORD_TOTAL_TAGS'
 
-import './style.css'
+import '../accord-style.css'
 
 export const AccordListPage: FunctionComponent = () => {
 	const [ accordList ] = useApi<AccordType[]>(API_ROUTE.accord)
@@ -76,14 +76,14 @@ export const AccordListPage: FunctionComponent = () => {
 	const accordListFiltred = useFilterByTags(accordRichList, selectedTagTitles)
 
 	return (
-		<Layout title="Аккорды">
-			<TextContainer className="accord">
+		<Layout title="Аккорды" className="accord-identity-page">
+			<TextContainer>
 				<h1>Аккорды</h1>
 				<AccordTagGallery
 					toggleTag={toggleTag}
 					isSelected={isSelected}
 				/>
-				<div>
+				<div className="accord-list">
 					<LoadSuspense data={accordList}>
 						<EmptyData data={accordList}>
 							{accordListFiltred.map(item => (

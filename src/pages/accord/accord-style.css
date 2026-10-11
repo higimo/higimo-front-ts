@@ -1,0 +1,74 @@
+.accord-identity-page {
+	font-family: 'Alegreya Sans';
+}
+
+.accord-identity-page h1 {
+	text-align: center;
+	padding: 16px;
+	margin: 0 0 24px 0;
+}
+
+.accord-list {
+	font-size: 21px;
+}
+
+.accord-list .tag {
+	font-size: 12px;
+	vertical-align: super;
+	padding: 4px;
+	line-height: .8;
+}
+
+.alf {
+	margin-top: 20px;
+	font-weight: 600;
+}
+
+.accord__link {
+	text-decoration: none;
+	line-height: 1.6;
+	color: #000;
+	border-bottom: 1px solid #00000039;
+	transition: all 150ms ease-in;
+}
+
+.accord__link:hover {
+	border-bottom: 1px solid #000;
+}
+
+.accord-single-page pre {
+	margin-left: 24px;
+	margin-right: 24px;
+}
+
+@media (max-width: 576px) {
+	.accord-single-page pre {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.see-also-list {
+	margin-top: 24px;
+	margin-left: 24px;
+}
+@media (max-width: 576px) {
+	.see-also-list {
+		margin-left: 0;
+	}
+}
+
+.see-also-list__item {
+	margin-bottom: 24px;
+}
+
+.accord-title {
+	margin: 24px;
+}
+
+@media (max-width: 576px) {
+	.accord-title {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
