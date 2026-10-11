@@ -27,7 +27,6 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../tourism-style.css'
-import './style.css'
 
 // TODO: [FEATURE] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {

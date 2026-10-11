@@ -1,7 +1,3 @@
-.tag {
-	text-align: center;
-}
-
 .tag__item {
 	display: inline-block;
 	cursor: pointer;

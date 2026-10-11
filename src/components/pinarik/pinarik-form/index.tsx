@@ -15,8 +15,6 @@ import { createDateOnly } from 'utils/date/create-date-only'
 import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
 
-import './style.css'
-
 type FormValues = Omit<PinarikType, 'id'>
 
 const handlePinarikSubmit = async (values: FormValues): Promise<void> => {

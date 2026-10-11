@@ -13,8 +13,6 @@ import { FullpageFormContainer } from 'components/form/fullpage-form-container'
 
 import { toast } from 'toast'
 
-import './style.css'
-
 type FormValues = PortfolioWorkerType
 
 const formScheme: FormScheme<FormValues> = {

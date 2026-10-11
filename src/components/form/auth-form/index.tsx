@@ -18,8 +18,6 @@ import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-import './style.css'
-
 type FormValues = {
 	email: string
 	pass: string

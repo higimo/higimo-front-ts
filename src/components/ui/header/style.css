@@ -49,13 +49,6 @@
 	background: rgba(0, 0, 0, .04);
 }
 
-.main-header__link {
-	border: 0;
-	color: #000;
-	display: flex;
-	align-items: center;
-}
-
 .main-header__avatar {
 	max-height: 3rem;
 	padding: 0.3rem 0;

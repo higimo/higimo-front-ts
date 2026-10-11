@@ -28,7 +28,3 @@
 .share-knowledge .intro-tile__item:hover .intro-tile__title {
 	border-color: #fff;
 }
-
-.share-knowledge__element--archive {
-	opacity: .5;
-}

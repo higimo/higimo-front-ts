@@ -80,20 +80,3 @@
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
 }
-
-.vk-photo .download-page__input {
-	display: flex;
-	justify-content: space-between;
-	gap: 31rem;
-}
-
-.vk-photo .download-page__input input {
-	padding: .4rem;
-	width: 100%;
-	margin-right: 1rem;
-	font-size: 1.4rem;
-}
-
-.vk-photo .download-page__input input:last-child {
-	margin: 0;
-}

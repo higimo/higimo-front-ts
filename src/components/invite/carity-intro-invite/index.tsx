@@ -3,8 +3,6 @@ import { FunctionComponent } from 'preact'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
-import './style.css'
-
 // TODO: [FEATURE] опубликовать на IndexPage, не используется, но пока храню
 // TODO: [FEATURE] плохо выглядит, надо переделать на тайлы
 export const CharityIntroInvite: FunctionComponent = () => (

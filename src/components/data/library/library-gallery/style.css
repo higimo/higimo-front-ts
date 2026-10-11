@@ -40,9 +40,6 @@
 	position: relative;
 }
 
-.library-gallery__cover {
-}
-
 .library-gallery__img {
 	max-width: 100%;
 	width: auto;
@@ -70,12 +67,6 @@
 .library-gallery__meta {
 	color: #00000075;
 	font-size: 12px;
-}
-
-.library-gallery__addon {
-}
-
-.library-gallery__isbn {
 }
 
 .library-gallery__anons {

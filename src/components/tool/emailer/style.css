@@ -87,28 +87,3 @@
 	border-color: #ffff;
 	opacity: 1;
 }
-
-.emailer-tool .mayAbout {
-	margin-top: 4em;
-	color: #fff;
-}
-
-.emailer-tool .mayList {
-	text-align: left;
-	-webkit-column-count: 3;
-	-moz-column-count: 3;
-	column-count: 3;
-	list-style-type: none;
-	line-height: 1.7;
-	color: #fff;
-	font-size: 1.2rem;
-}
-
-.emailer-tool .mayAbout a {
-	color: #fff;
-}
-
-.emailer-tool .mayAbout a:hover {
-	opacity: .8;
-}
-

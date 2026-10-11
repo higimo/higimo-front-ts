@@ -14,8 +14,6 @@ import { as } from 'utils/types/as'
 import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { toast } from 'toast'
 
-import './style.css'
-
 export type FormValues = Partial<NestedListItemType>
 
 export const formScheme: FormScheme<NestedListItemType> = {

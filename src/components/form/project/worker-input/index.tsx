@@ -18,8 +18,6 @@ import { isDefined } from 'utils/types/is-defined'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
-import './style.css'
-
 // TODO: [FEATURE] Анонсы. Портфолио таблицей как на хомяке Далера
 // TODO: [FEATURE] Анонсы. Показать людей, с которыми работал
 // TODO: [FEATURE] Анонсы. Взаимосвязи людей на графе

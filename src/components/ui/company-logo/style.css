@@ -5,7 +5,6 @@
 	vertical-align: baseline
 }
 
-
 a:hover > .company-logo {
 	transform: scale(1.05) rotate(5deg);
 }

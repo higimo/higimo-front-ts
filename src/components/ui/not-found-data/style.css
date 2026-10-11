@@ -1,4 +1,4 @@
-.not-found-page {
+.not-found-data {
 	height: 100vh;
 	font: 400 13pt/1.4 PT Sans, Tahoma, Sans-Serif;
 	display: flex;
@@ -10,7 +10,7 @@
 	margin: 0 auto;
 }
 
-.not-found-page>* {
+.not-found-data > * {
 	margin: 0 0 1rem 0;
 	width: 100%;
 }

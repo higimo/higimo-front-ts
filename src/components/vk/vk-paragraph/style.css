@@ -9,13 +9,3 @@
 .vk-paragraph + .vk-paragraph {
 	margin-top: 8px;
 }
-
-.vk-paragraph--secondary {
-	color: #818c99;
-}
-
-.vk-paragraph--caption {
-	font-size: 13px;
-	line-height: 16px;
-	color: #818c99;
-}

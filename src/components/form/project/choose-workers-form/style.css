@@ -23,32 +23,3 @@
 .worker-info {
 	margin-bottom: 10px;
 }
-
-.worker-role label {
-	display: block;
-	margin-bottom: 5px;
-	font-weight: 500;
-}
-
-.worker-role input {
-	padding: 8px 12px;
-	width: 100%;
-	max-width: 300px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-}
-
-.submit-button {
-	margin-top: 20px;
-	padding: 10px 20px;
-	background-color: #4caf50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-.submit-button:hover {
-	background-color: #45a049;
-}

@@ -60,6 +60,14 @@
 	color: #4c6a9e;
 }
 
+@media (max-width: 700px) {
+	.hiring-cards__info {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+	}
+}
+
 .hiring-cards__id {
 	font-weight: 600;
 	color: #1a439b;
@@ -91,6 +99,13 @@
 	flex-wrap: wrap;
 }
 
+@media (max-width: 700px) {
+	.hiring-cards__actions {
+		justify-content: flex-start;
+		margin-top: 4px;
+	}
+}
+
 .hiring-cards__actions button {
 	background: transparent;
 	border: none;
@@ -102,6 +117,13 @@
 	transition: all 150ms ease;
 	color: #1f4a9e;
 	letter-spacing: 0.2px;
+}
+
+@media (max-width: 700px) {
+	.hiring-cards__actions button {
+		padding: 5px 12px;
+		font-size: 13px;
+	}
 }
 
 .hiring-cards__actions button:hover {
@@ -128,37 +150,4 @@
 .hiring-cards__actions .btn-delete:hover {
 	background: #fee9e9;
 	color: #a52222;
-}
-
-.empty-cards {
-	text-align: center;
-	padding: 32px 0 20px;
-	color: #7a8fb0;
-	font-size: 16px;
-}
-
-/* ----- Responsive ----- */
-@media (max-width: 700px) {
-	.card-container {
-		padding: 22px 18px 28px;
-		border-radius: 20px;
-	}
-	.card-item {
-		padding: 16px 18px;
-		flex-direction: column;
-		align-items: stretch;
-	}
-	.hiring-cards__info {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 6px;
-	}
-	.hiring-cards__actions {
-		justify-content: flex-start;
-		margin-top: 4px;
-	}
-	.hiring-cards__actions button {
-		padding: 5px 12px;
-		font-size: 13px;
-	}
 }

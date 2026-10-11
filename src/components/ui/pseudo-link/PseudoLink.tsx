@@ -5,8 +5,6 @@ import { FunctionComponent } from 'preact'
 import cs from 'classnames'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
 
-import './style.css'
-
 type PseudoLinkPropsType = ClassNameType & {
 	href: AnchorLinksType
 }

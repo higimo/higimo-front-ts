@@ -2,6 +2,10 @@ import { TargetedMouseEvent } from 'preact'
 
 import { AnchorLinksType } from 'dic/route/ANCHOR_LINK'
 
+type TargetEvent =
+	| TargetedMouseEvent<HTMLButtonElement>
+	| TargetedMouseEvent<HTMLSpanElement>
+
 /**
  * Плавно прокручивает страницу до якоря (указывается в id)
  *
@@ -15,7 +19,7 @@ import { AnchorLinksType } from 'dic/route/ANCHOR_LINK'
  * <button onClick={smoothScroll('contacts')}>К контактам</button>
  * ```
  */
-export const smoothScroll = (href: AnchorLinksType) => (event?: TargetedMouseEvent<HTMLButtonElement>) => {
+export const smoothScroll = (href: AnchorLinksType) => (event?: TargetEvent) => {
 	if (event) {
 		event.preventDefault()
 	}

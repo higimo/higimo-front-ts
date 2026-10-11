@@ -10,18 +10,6 @@
 	flex-wrap: wrap;
 }
 
-.project-list__filter-item {
-	margin-right: 24px;
-	margin-bottom: 8px;
-	color: #00000080;
-	border-color: #0000002b;
-}
-
-.project-list__filter-item:hover {
-	color: #000;
-	border-color: #00000080;
-}
-
 .project-more {
 	overflow: hidden;
 	padding-bottom: 16px;

@@ -47,10 +47,6 @@
 	transition: all 100ms ease-out;
 }
 
-.element-node__element:hover .element-node__admin-controll {
-	opacity: 1;
-}
-
 
 .element-node__meta a,
 .element-node__meta .pseudo-link {
@@ -75,6 +71,10 @@
 .element-node__admin-controll {
 	display: flex;
 	gap: 8px;
+}
+
+.element-node__element:hover .element-node__admin-controll {
+	opacity: 1;
 }
 
 .element-node__values {

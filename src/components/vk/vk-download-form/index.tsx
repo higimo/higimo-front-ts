@@ -48,26 +48,24 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 	}
 
 	return (
-		<div className="download-page__input">
-			<InnerFromContainer>
-				<FormProvider {...formMethods}>
-					<form
-						onSubmit={formMethods.handleSubmit(onSubmit)}
-						autocomplete="off"
-					>
-						<FiledForm name="groupId" label="Ид группы" type="number" placeholder="120" />
-						<FieldRow>
-							<FiledForm name="userId" label="Ид пользователя" type="number" placeholder="510" />
-							<ButtonGroup variant="gap">
-								<FormButton type="button" variant="ghost" onClick={handlerDownloadSelf}>
-									Подставить свой ид
-								</FormButton>
-							</ButtonGroup>
-						</FieldRow>
-					</form>
-				</FormProvider>
-			</InnerFromContainer>
-		</div>
+		<InnerFromContainer>
+			<FormProvider {...formMethods}>
+				<form
+					onSubmit={formMethods.handleSubmit(onSubmit)}
+					autocomplete="off"
+				>
+					<FiledForm name="groupId" label="Ид группы" type="number" placeholder="120" />
+					<FieldRow>
+						<FiledForm name="userId" label="Ид пользователя" type="number" placeholder="510" />
+						<ButtonGroup variant="gap">
+							<FormButton type="button" variant="ghost" onClick={handlerDownloadSelf}>
+								Подставить свой ид
+							</FormButton>
+						</ButtonGroup>
+					</FieldRow>
+				</form>
+			</FormProvider>
+		</InnerFromContainer>
 	)
 
 }

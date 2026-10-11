@@ -7,27 +7,3 @@
 	justify-content: flex-start;
 	background: #edf2f7;
 }
-
-.pet-project form.container {
-	display: flex;
-	flex-direction: column;
-	grid-gap: 0;
-	width: 100%;
-	max-width: 768px;
-}
-
-.pet-project form.container > div {
-	margin-bottom: 8px;
-}
-
-.pet-project form.container label {
-	display: block;
-	margin-bottom: -8px;
-	font-size: 85%;
-	opacity: .7;
-}
-
-.pet-project textarea {
-	width: 100% !important;
-	min-height: 150px;
-}

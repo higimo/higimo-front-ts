@@ -10,7 +10,6 @@ import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
 import '../../tourism-style.css'
-import './style.css'
 
 export const NasheListPage: FunctionComponent = () => (
 	<Layout title="Нашествие" className="nashe-index-page tourism-identy-page">

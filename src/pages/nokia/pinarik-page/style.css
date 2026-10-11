@@ -5,19 +5,19 @@
 	cursor: pointer;
 }
 
-.pinarik-day--bad {
-	background: #ec371a;
+.pinarik-day--good {
+	background: #33c519;
 }
 
 .pinarik-day--norm {
 	background: #f5e423;
 }
 
+.pinarik-day--bad {
+	background: #ec371a;
+}
+
 .pinarik-calendar {
 	display: flex;
 	flex-wrap: wrap;
-}
-
-.pinarik-day--good {
-	background: #33c519;
 }

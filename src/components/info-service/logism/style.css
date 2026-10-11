@@ -16,16 +16,6 @@
 	}
 }
 
-.logism__container {
-	padding: 4rem .5rem 1rem .5rem;
-}
-
-@media (min-width: 768px) {
-	.logism__container {
-		padding: 0;
-	}
-}
-
 .gallery-logism__item {
 	margin-bottom: 8em;
 	color: #ff5020;

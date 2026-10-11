@@ -55,15 +55,6 @@
 	border-right: none;
 }
 
-.portfolio-table-cell--string {
-	font-size: 12px;
-}
-
-.portfolio-table-cell--key-tags {
-	font-size: 10px;
-	line-height: 1;
-}
-
 .portfolio-table-cell--fail {
 	background-color: #E4717A59;
 }
@@ -72,27 +63,10 @@
 	background-color: #a9e47159;
 }
 
-.portfolio-table-cell--key-name {
-	font-size: 16px;
-	min-width: 220px;
-}
-.portfolio-table-cell--key-tags {
-	min-width: 220px;
-}
-
-.portfolio-table-cell--key-announceText {
-	min-width: 400px;
-}
-.portfolio-table-cell--key-credits {
-	font-size: 10px;
-	min-width: 270px;
-}
-.portfolio-table-cell--key-task {
-	min-width: 200px;
-}
 .portfolio-table-cell--show {
 	background-color: #80e40f8e;
 }
+
 .portfolio-table-cell--hide {
 	background-color: #c20010a2;
 }

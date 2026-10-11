@@ -16,8 +16,6 @@ import { getResetValues } from 'utils/get-reset-values'
 import { libApi } from 'repositories/lib-api.repository'
 import { toast } from 'toast'
 
-import './style.css'
-
 type FormValues = Partial<LibraryType>
 
 const formScheme: FormScheme<LibraryType> = {
