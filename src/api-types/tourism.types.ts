@@ -143,7 +143,7 @@ export interface Placefield extends BasePointType, PoiColor, PoiVisited, PoiCoun
 	type: 'местечко'
 }
 
-// TODO: rename PoiType
+// TODO: [LIGHT] rename PoiType
 export type PovType =
 	| Country
 	| SubjectFederation
@@ -160,7 +160,7 @@ type BarPovTagType = ValueOf<typeof BAR_TAG_CATEGORY>[number]
 export type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
 export type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>
 
-// TODO: rename BarPoiType
+// TODO: [LIGHT] rename BarPoiType
 export type BarPovType = {
 	id: number
 	title: string

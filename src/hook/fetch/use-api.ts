@@ -43,7 +43,7 @@ export const useApi = <T, M = Object>(
 				if (signal.aborted) {
 					return
 				}
-				// TOOD: не нравится, что здесь null, надо {}, чтоб меньше кода писать
+				// TODO: [HARD] не нравится, что здесь null, надо {}, чтоб меньше кода писать
 				dispatch({ type: API_STATUS.LOADED, payload: null, meta: undefined })
 			} else {
 				const { data, meta } = await sendRequest<T, M>(url as string, { values, signal })

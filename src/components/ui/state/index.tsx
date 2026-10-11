@@ -11,7 +11,7 @@ type StatePropsBaseType = {
 }
 type StatePropsType = Partial<StatePropsBaseType>
 
-// TODO: use cs()
+// TODO: [LIGHT] use cs()
 export const State: FunctionComponent<StatePropsType> = ({ title, text, icon, action, variant }) => (
 	<div className={`state${variant === 'error' ? ' state--error' : ''}`}>
 		{icon}

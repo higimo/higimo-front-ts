@@ -1,6 +1,6 @@
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-// TODO: надо сделать base тип
+// TODO: [LIGHT] надо сделать base тип
 export type ResumeLinkType = {
 	href: string
 	title: string

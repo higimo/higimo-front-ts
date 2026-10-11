@@ -11,7 +11,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-// TODO: перенести cinema info -> data
+// TODO: [LIGHT] перенести cinema info -> data
 
 export const CinemaListPage: FunctionComponent = () => {
 	// TODO: [BACKEND] перевести на markdown API

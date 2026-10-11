@@ -21,7 +21,7 @@ export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = ({
 		return null
 	}
 
-	// TODO: перенести бы в родителя
+	// TODO: [LIGHT] перенести бы в родителя
 	const filtredPerson = filter ? personList.filter(person => filterPersons(person, filter)) : personList
 
 	return (

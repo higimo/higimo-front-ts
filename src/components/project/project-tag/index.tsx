@@ -10,7 +10,7 @@ import { useCallback } from 'preact/hooks'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-// TODO: move to utils
+// TODO: [LIGHT] move to utils
 const getProjectUrl = (params: { [key in ProjectRoutingFilterNameType]?: string}): string => {
 	return `${ROUTE_LINK.projectIndex}?${httpBuildQuery(params)}`
 }

@@ -72,7 +72,7 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 									hintContent: point.title,
 									iconCaption: point.title,
 									balloonContentHeader: point.title,
-									// TODO: отнести во вне
+									// TODO: [MIDDLE] отнести во вне
 									balloonContentBody: [
 										'type' in point && point.type,
 										[
