@@ -5,7 +5,8 @@ import { useRoute } from 'preact-iso'
 import { HorizontalMenu, HorizontalElement } from 'components/ui/horizontal-menu'
 
 import { compareRoute } from 'utils/url-route/compare-route'
-import { nokiaMenuLinks } from 'components/nokia/nokia-menu/nokia-menu-links'
+
+import { NOKIA_MENU_LINK } from 'data/nokia-menu-links'
 
 import './style.css'
 
@@ -15,7 +16,7 @@ export const NokiaMenu = () => {
 	return (
 		<div className="nokia__menu">
 			<HorizontalMenu>
-				{nokiaMenuLinks.map(menuLink => (
+				{NOKIA_MENU_LINK.map(menuLink => (
 					<HorizontalElement>
 						<a
 							href={menuLink.href}
