@@ -1,10 +1,10 @@
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 
 import { FactoidList } from 'components/ui/factoid-list/FactoidList'
 import { FunctionComponent } from 'preact'
 
 type TourismStatisticWorldPropsType = {
-	total: PovType[]
+	total: PoiType[]
 }
 
 export const TourismStatisticWorld: FunctionComponent<TourismStatisticWorldPropsType> = ({ total }) => {

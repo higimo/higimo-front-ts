@@ -2,12 +2,12 @@ import cs from 'classnames'
 
 import { FunctionComponent } from 'preact'
 
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 
 import './style.css'
 
 type TourismTableGeoPropsType = {
-	items: PovType[]
+	items: PoiType[]
 }
 export const TourismTableGeo: FunctionComponent<TourismTableGeoPropsType> = ({
 	items

@@ -1,4 +1,4 @@
-import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PovType, SubjectFederation, Town, TownMoscow } from 'api-types/tourism.types'
+import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PoiType, SubjectFederation, Town, TownMoscow } from 'api-types/tourism.types'
 import { FunctionComponent } from 'preact'
 
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
@@ -47,7 +47,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 		town:              '/json/tourism/town.json',
 	})
 
-	const povList: PovType[] = ([] as PovType[])
+	const povList: PoiType[] = ([] as PoiType[])
 		.concat(jsonCollection.admOrkugMoscow.data || [])
 		.concat(jsonCollection.castle.data || [])
 		.concat(jsonCollection.country.data || [])

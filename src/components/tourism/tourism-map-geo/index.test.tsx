@@ -1,4 +1,4 @@
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 import { Coord } from 'utils.type'
 
 import { useWindowSize } from 'hook/browser/use-window-size'
@@ -40,7 +40,7 @@ vi.mock('react-yandex-maps', () => ({
 }))
 
 describe('TourismMapGeo', () => {
-	const mockPoints: PovType[] = [
+	const mockPoints: PoiType[] = [
 		{
 			title: 'Москва',
 			type: 'город федерального значения',

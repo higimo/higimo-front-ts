@@ -1,4 +1,4 @@
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 import { ValueOf } from 'utils.type'
 
 import { TAG_NAME_POI_TYPE_MAPPING } from 'dic/tourism/TAG_NAME_POI_TYPE_MAPPING'
@@ -10,7 +10,7 @@ type HandleFilterMapPointPropsType = {
 	selectedIds: Set<string>
 	isChooseVisitedMode: (val: ValueOf<typeof VISITED_MAP>) => boolean
 }
-export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: HandleFilterMapPointPropsType) => (item: PovType) => {
+export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: HandleFilterMapPointPropsType) => (item: PoiType) => {
 	if (selectedIds.has('Все')) {
 		return true
 	}
@@ -46,7 +46,7 @@ export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: Handl
 	return true
 }
 
-export const handleSort = (isChooseSortMode: (value: ValueOf<typeof TORUSM_SORT_MAP>) => boolean) => (a: PovType, b: PovType) => {
+export const handleSort = (isChooseSortMode: (value: ValueOf<typeof TORUSM_SORT_MAP>) => boolean) => (a: PoiType, b: PoiType) => {
 	if (isChooseSortMode(TORUSM_SORT_MAP.INIT)) {
 		return 0
 	}

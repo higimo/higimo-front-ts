@@ -1,4 +1,4 @@
-import { BarPovType, BarPovRealTags } from 'api-types/tourism.types'
+import { BarPoiType, BarPovRealTags } from 'api-types/tourism.types'
 import { Coord } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { TagCategory } from 'types'
@@ -29,10 +29,10 @@ import '../../tourism-style.css'
 import '../yandex-map.css'
 
 export const TourismMoscowBarPage: FunctionComponent = () => {
-	const [ barPoiMoscow ] = useApi<BarPovType[]>(API_ROUTE.moscowBars)
+	const [ barPoiMoscow ] = useApi<BarPoiType[]>(API_ROUTE.moscowBars)
 
 	const normalizedTagsBarPovMoscow = useMemo(
-		() => (barPoiMoscow.data || []).map((item: BarPovType): BarPovRealTags => ({
+		() => (barPoiMoscow.data || []).map((item: BarPoiType): BarPovRealTags => ({
 			...item,
 			tags: item.tags.map((tagName, index) => ({
 				id: index,

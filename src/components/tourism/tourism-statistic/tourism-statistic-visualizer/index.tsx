@@ -1,5 +1,5 @@
 import { Fragment, FunctionComponent } from 'preact'
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 import { ValueOf } from 'utils.type'
 
 import { useSmartTags } from 'hook/tags/use-smart-tags'
@@ -22,7 +22,7 @@ import { VISITED_MAP } from 'dic/tourism/VISITED_MAP'
 import { VISUALIZATOR_MAP } from 'dic/tourism/VISUALIZATOR_MAP'
 
 type TourismStatisticVisualizerPropsType = {
-	pov: PovType[]
+	pov: PoiType[]
 }
 export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisualizerPropsType> = ({ pov }) => {
 	const {

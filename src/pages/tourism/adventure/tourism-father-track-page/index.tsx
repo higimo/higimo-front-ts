@@ -1,7 +1,7 @@
 import { Coord } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { PageJSONData } from 'components/ui/block-renderer/types'
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
 
@@ -20,8 +20,8 @@ import './style.css'
 
 type FatherJsonType = {
 	roadmap: PageJSONData
-	cities: PovType[]
-	rostovNaDonuPlace: PovType[]
+	cities: PoiType[]
+	rostovNaDonuPlace: PoiType[]
 	mainTrack: Coord[]
 	rostovNaDonuPolygon: Coord[]
 }
@@ -71,7 +71,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 
 			<LoadSuspense data={stateJsonData}>
 				<EmptyData data={stateJsonData}>
-					<TourismMapGeo<PovType, Coord>
+					<TourismMapGeo<PoiType, Coord>
 						lines={lines}
 						items={modCities}
 					/>

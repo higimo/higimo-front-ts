@@ -1,4 +1,4 @@
-import { PovType } from 'api-types/tourism.types'
+import { PoiType } from 'api-types/tourism.types'
 import { Fragment, FunctionComponent } from 'preact'
 
 import { TextContainer } from 'components/ui/text-container'
@@ -10,7 +10,7 @@ import { TourismStatisticRussia } from 'components/tourism/tourism-statistic/tou
 import { TourismStatisticWorld } from 'components/tourism/tourism-statistic/tourism-statistic-world'
 
 type TourismMainStatisticPropsType = {
-	totalStatistic: PovType[]
+	totalStatistic: PoiType[]
 }
 
 export const TourismMainStatistic: FunctionComponent<TourismMainStatisticPropsType> = ({ totalStatistic }) => (
