@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NasheType } from 'api-types/nashe.types'
 
-import { NasheScheduleTable } from 'components/data/concert/nashe-schedule-table'
+import { NasheScheduleTable } from 'components/tourism/concert/nashe-schedule-table'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'

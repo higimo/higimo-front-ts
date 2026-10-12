@@ -11,8 +11,6 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-// TODO: [LIGHT] перенести cinema info -> data
-
 export const CinemaListPage: FunctionComponent = () => {
 	// TODO: [BACKEND] перевести на markdown API
 	const [ cinemaList ] = useApi<CinemaType[]>(API_ROUTE.cinemaShort)

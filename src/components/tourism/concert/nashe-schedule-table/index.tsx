@@ -1,7 +1,7 @@
 import { NasheType } from 'api-types/nashe.types'
 import { FunctionComponent } from 'preact'
 
-import { NasheScheduleTableRow } from 'components/data/concert/nashe-schedule-table-row'
+import { NasheScheduleTableRow } from 'components/tourism/concert/nashe-schedule-table-row'
 
 import { getDateFromTimestamp } from 'utils/date/get-date-from-timestamp'
 
