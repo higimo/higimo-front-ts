@@ -27,6 +27,7 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 		const height = HEIGHT - MARGIN.top - MARGIN.bottom
 
 		var dataset = d3.stack()
+			// @ts-ignore
 			.keys(category)(origDataset)
 			.map(
 				(column) => {
@@ -82,25 +83,20 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 			.attr('y', d => y(d.y))
 			.attr('height', d => y(d.y0) - y(d.y))
 			.on('mouseover', (event: any, d: any) => {
-				// @ts-ignore
-				d3.select(this).style('opacity', 0.8)
+				d3.select(event.currentTarget).style('opacity', 0.8)
 
-				// @ts-ignore
-				tooltip.transition()
+				tooltip
 					.style('opacity', 1)
-
-				tooltip.html(`
-				  <div><strong>${d.key}</strong></div>
-				  <div>${d.value || 0} — ${d3.timeFormat('%d.%m.%Y')(d.x)}</div>
-				`)
+					.html(`
+						<div><strong>${d.key}</strong></div>
+						<div>${d.value || 0} — ${d3.timeFormat('%d.%m.%Y')(d.x)}</div>
+					`)
 					.style('left', (event.pageX + 10) + 'px')
 					.style('top', (event.pageY - 28) + 'px')
 			})
-			.on('mouseout', function () {
-				d3.select(this).style('opacity', 1)
-				// @ts-ignore
-				tooltip.transition()
-					.style('opacity', 0)
+			.on('mouseout', (event: any) => {
+				d3.select(event.currentTarget).style('opacity', 1)
+				tooltip.style('opacity', 0)
 			})
 
 		svg.append('g')

@@ -1,8 +1,6 @@
 import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
-
 import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
-import { getOrInsert } from 'utils/get-or-insert'
 import { getYearFromTimestamp } from 'utils/date/get-year-from-timestamp'
 
 export const prepareData = (
@@ -10,7 +8,7 @@ export const prepareData = (
 	selectedYearTag: number[],
 	selectedTypeTag: string[],
 ): PrepareDataResult => {
-	let meetingTypeDic: { [key: NokiaMeetingStatisticType['type']]: number } = {}
+	let meetingTypeDic = new Set<string>()
 	let resultDataset: {
 		[key: string]: {
 			[key: NokiaMeetingStatisticType['type']]: number
@@ -19,33 +17,35 @@ export const prepareData = (
 
 	for (let curMeeting of meetings) {
 		const date = new Date(curMeeting.date)
-		const monthNumber = ('0' + (date.getMonth() + 1)).slice(-2)
-		const yearNumber = getYearFromTimestamp(date)
+		const month = ('0' + (date.getMonth() + 1)).slice(-2)
+		const year = getYearFromTimestamp(date)
 
-		const isSelectedYear = !selectedYearTag.includes(yearNumber) // Только выбранный год
+		const isSelectedYear = !selectedYearTag.includes(year) // Только выбранный год
 		const isSelectedtype = !selectedTypeTag.includes(curMeeting.type) // Только выбранный год
-		const isFailYear = yearNumber == 1970 // Пропускаем битый год
+		const isFailYear = year == 1970 // Пропускаем битый год
 		const isFailType = !curMeeting.type.length // Пропускаем битые типы
 
 		if (isSelectedYear || isFailYear || isFailType || isSelectedtype) {
 			continue
 		}
 
-		const keyMonth = `${yearNumber}-${monthNumber}-01`
-		const bucket = getOrInsert(resultDataset, keyMonth, {})
-		bucket[curMeeting.type] = (bucket[curMeeting.type] ?? 0) + 1
+		const keyMonth = `${year}-${month}-01`
+		resultDataset[keyMonth] = resultDataset[keyMonth] ?? {}
+		resultDataset[keyMonth][curMeeting.type] = (resultDataset[keyMonth][curMeeting.type] ?? 0) + 1
+
+		meetingTypeDic.add(curMeeting.type)
 	}
 
-	const dataset = Object.keys(resultDataset).map((key) => ({
-		date: new Date(key),
-		...resultDataset[key]
-	}))
+	const dataset = Object.entries(resultDataset)
+		.map(([key, item]) => ({
+			date: new Date(key),
+			...item
+		}))
 
-	const sortedDataset = dataset.concat().sort((a, b) => a.date.getTime() - b.date.getTime())
-	const category = Object.keys(meetingTypeDic).sort((a, b) => a.localeCompare(b))
+	const category = Array.from(meetingTypeDic).sort((a, b) => a.localeCompare(b))
 
 	return [
 		category,
-		sortedDataset,
+		dataset,
 	]
 }
