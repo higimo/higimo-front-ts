@@ -1,26 +1,23 @@
 import { FunctionComponent } from 'preact'
 import { VKAlbumType } from 'api-types/vk.types'
 
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useState, useCallback, useEffect } from 'preact/hooks'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
+import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { VkHeading } from 'components/vk/vk-heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
-import { vkSession } from 'context/vk-signal'
-
 import { toast } from 'toast'
 import { VkApi } from 'repositories/vk-api.repository'
+import { vkSession } from 'context/vk-signal'
 
 import '../vk-style.css'
 
 export const VkAlbumListPage: FunctionComponent = () => {
-	usePageTitle('Список альбомов')
-
 	const { status, session, error } = vkSession.value
 	const [ albums, setAlbums ] = useState<VKAlbumType[]>([])
 
@@ -42,7 +39,7 @@ export const VkAlbumListPage: FunctionComponent = () => {
 	}, [status, session, fetchAlbums])
 
 	return (
-		<div className="vk-identity-page vk-photo">
+		<Layout className="vk-identity-page vk-photo" title="Список альбомов">
 			<VkSdkLoader />
 
 			<TextContainer>
@@ -59,6 +56,6 @@ export const VkAlbumListPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<VkPhotoAlbumList albums={albums} />
-		</div>
+		</Layout>
 	)
 }

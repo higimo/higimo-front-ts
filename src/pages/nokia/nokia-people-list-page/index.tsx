@@ -2,7 +2,6 @@ import { FunctionComponent } from 'preact'
 import { NokiaPersonType, NokiaTagGroupType, NokiaTagType } from 'api-types/nokia.types'
 
 import { useApi } from 'hook/fetch/use-api'
-import { usePageTitle } from 'hook/browser/use-page-title'
 import { useState } from 'preact/hooks'
 
 import { EmptyData } from 'components/ui/empty-data'
@@ -16,7 +15,6 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../nokia-style.css'
 
-	usePageTitle('')
 const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | null) =>
 	person.tags.find(tag => tag.id === filter)
 
