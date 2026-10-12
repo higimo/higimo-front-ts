@@ -5,10 +5,10 @@ import { useMerchant } from 'hook/data/use-merchant'
 
 import { ProductBanner } from 'components/merchant/product-banner'
 
-import { MERCHANT_PRODUCT_CACHE } from 'data/merchant/merchant-product-cache'
+import { MERCHANT_PRODUCT_ID_MAPPING } from 'data/merchant/merchant-product-id-mapping'
 
 type ProductServerBannerPropsType = {
-	productKey: KeyOf<typeof MERCHANT_PRODUCT_CACHE>
+	productKey: KeyOf<typeof MERCHANT_PRODUCT_ID_MAPPING>
 	withBackground?: boolean
 }
 
@@ -20,7 +20,7 @@ export const ProductServerBanner: FunctionComponent<ProductServerBannerPropsType
 	withBackground,
 }) => {
 	const { isProductEmpty, isProductLoaded, getProductById } = useMerchant()
-	const productId = MERCHANT_PRODUCT_CACHE[productKey].id
+	const productId = MERCHANT_PRODUCT_ID_MAPPING[productKey]
 	const currentProduct = getProductById(productId)
 
 	if (!isProductLoaded || isProductEmpty || !currentProduct) {
