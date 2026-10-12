@@ -5,13 +5,17 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #fff;
 }
 
 .mentions-input__field {
-	width: 40rem;
+	width: 100%;
 	height: 300px;
 	border: none;
+	background-color: #fff;
+	color: #3c3c3c;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
 .suggestion-list {

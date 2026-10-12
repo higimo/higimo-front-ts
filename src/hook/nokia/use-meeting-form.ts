@@ -18,7 +18,7 @@ export type MeetingFormValues = NokiaMeetingSimpleType & {
 	date_start: DateTimeInputType
 }
 
-interface UseMeetingFormProps {
+type UseMeetingFormPropsType = {
 	persons: NokiaPersonSimpleType[]
 }
 
@@ -33,7 +33,7 @@ interface UseMeetingFormReturn {
 
 export const useMeetingForm = ({
 	persons,
-}: UseMeetingFormProps): UseMeetingFormReturn => {
+}: UseMeetingFormPropsType): UseMeetingFormReturn => {
 	const { path } = useRoute()
 	const formMethods = useForm<MeetingFormValues>({
 		defaultValues: {

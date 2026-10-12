@@ -8,7 +8,6 @@ import { useEffect } from 'preact/hooks'
 import { useMeetingForm } from 'hook/nokia/use-meeting-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { CollapseSection } from 'components/ui/collapse-section/CollapseSection'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
@@ -113,6 +112,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 					/>
 					<label>Как прошло?</label>
 					<MentionTextarea
+						name="description"
 						suggestList={personSuggestList}
 						onMention={handleTextAssign}
 					/>
@@ -150,23 +150,6 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 								)
 							})}
 						</div>
-					</div>
-					<div className="single-row">
-						<CollapseSection fold={true} header="Все подряд">
-							<div className="person-selector">
-								{personList.map(person => {
-									if (selectedPersonIds.includes(person.id)) {
-										return null
-									}
-									return (
-										<NokiaPersonTag
-											onClick={handleAddPerson(person)}
-											person={person}
-										/>
-									)
-								})}
-							</div>
-						</CollapseSection>
 					</div>
 					<ButtonGroup variant="gap">
 						<FormButton

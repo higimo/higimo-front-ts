@@ -19,6 +19,7 @@ import cs from 'classnames'
 import '../style.css'
 
 type MentionsInputPropsType = {
+	name: string
 	suggestList: MentionSuggest[]
 	onMention: (mentionList: MentionSuggest[]) => void
 }
@@ -30,9 +31,10 @@ export const MentionTextarea: FunctionComponent<MentionsInputPropsType> = (props
 	const refTextarea = useRef<HTMLTextAreaElement>(null)
 	const { register, formState: { errors }, setValue } = useFormContext()
 
-	const name = 'description'
+	// Чтоб работало два рефа из RHF и кастомный
+	const { ref: rhfRef, ...registerRest } = register(props.name)
 
-	const error = errors[name]?.message as string | undefined
+	const error = errors[props.name]?.message as string | undefined
 
 	const handleMentionSelect = (targetMention: MentionSuggest) => {
 		if (!refTextarea.current) {
@@ -125,7 +127,11 @@ export const MentionTextarea: FunctionComponent<MentionsInputPropsType> = (props
 	return (
 		<div className="mentions-input">
 			<textarea
-				{...register(name)}
+				{...registerRest}
+				ref={(el) => {
+					rhfRef(el)
+					refTextarea.current = el
+				}}
 				className={cs('mentions-input__field', { 'field__input--error': error })}
 				onChange={handleChange}
 				onKeyDown={handleKeyDown}
