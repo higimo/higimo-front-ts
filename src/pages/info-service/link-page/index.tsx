@@ -11,8 +11,6 @@ import { TextContainer } from 'components/ui/text-container'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-// TODO: [LIGHT] rename pages/info -> pages/info-service
-
 export const LinkPage: FunctionComponent = () => {
 	const [ linkList ] = useApi<LinksType[]>(API_ROUTE.link)
 

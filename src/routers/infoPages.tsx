@@ -1,12 +1,12 @@
 import { Route } from 'preact-iso'
 
-import { CinemaListPage } from 'pages/info/cinema/cinema-list-page'
-import { CinemaScriptItemPage } from 'pages/info/cinema/cinema-script-item-page'
-import { TableGamePage } from 'pages/info/table-game-page'
-import { IgLinkPage } from 'pages/info/ig-link-page'
-import { ThingsIndexPage } from 'pages/info/things/things-index-page'
-import { ThingsNotebookPage } from 'pages/info/things/things-notebook-page'
-import { ThingsVeloPage } from 'pages/info/things/things-velo-page'
+import { CinemaListPage } from 'pages/info-service/cinema/cinema-list-page'
+import { CinemaScriptItemPage } from 'pages/info-service/cinema/cinema-script-item-page'
+import { TableGamePage } from 'pages/info-service/table-game-page'
+import { IgLinkPage } from 'pages/info-service/ig-link-page'
+import { ThingsIndexPage } from 'pages/info-service/things/things-index-page'
+import { ThingsNotebookPage } from 'pages/info-service/things/things-notebook-page'
+import { ThingsVeloPage } from 'pages/info-service/things/things-velo-page'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 

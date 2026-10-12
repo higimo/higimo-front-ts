@@ -1,8 +1,8 @@
 import { Route } from 'preact-iso'
 
-import { LinkPage } from 'pages/info/link-page'
+import { LinkPage } from 'pages/info-service/link-page'
 import { PronPage } from 'pages/tools/pron-page'
-import { YoutubePage } from 'pages/info/youtube-page'
+import { YoutubePage } from 'pages/info-service/youtube-page'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 

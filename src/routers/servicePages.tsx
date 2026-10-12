@@ -4,7 +4,7 @@ import { DemagogListPage } from 'pages/tools/demagog-list-page'
 import { FaqFormPage } from 'pages/tools/faq/faq-form-page'
 import { FaqListPage } from 'pages/tools/faq/faq-list-page'
 import { FaqItemPage } from 'pages/tools/faq/faq-item-page'
-import { LogismPage } from 'pages/info/logism-page'
+import { LogismPage } from 'pages/info-service/logism-page'
 import { ObuchenieListPage } from 'pages/tools/obuchenie/obuchenie-list-page'
 import { ObuchenieItemPage } from 'pages/tools/obuchenie/obuchenie-item-page'
 
