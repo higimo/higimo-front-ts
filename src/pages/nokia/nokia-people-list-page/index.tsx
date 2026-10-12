@@ -16,9 +16,11 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../nokia-style.css'
 
-export const NokiaPeopleListPage: FunctionComponent = () => {
 	usePageTitle('')
+const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | null) =>
+	person.tags.find(tag => tag.id === filter)
 
+export const NokiaPeopleListPage: FunctionComponent = () => {
 	// TODO: [HARD] как проверять, что есть теги без группы?
 	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
 	const [ tagList ] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
@@ -28,6 +30,13 @@ export const NokiaPeopleListPage: FunctionComponent = () => {
 	// TODO: [USE_TAGS] useTags удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
 	const [filter, setFilter] = useState<NokiaTagType['id'] | null>(null)
 	const updateFilter = (tag: NokiaTagType['id']) => () => setFilter(filter === tag ? null : tag)
+
+	const filtredPerson = (
+		!personList.data ? [] :
+			filter
+			? personList.data.filter(person => filterPersons(person, filter))
+			: personList.data
+	)
 
 	return (
 		<Layout title="Нокиа сервис" className="nokia">
@@ -50,8 +59,7 @@ export const NokiaPeopleListPage: FunctionComponent = () => {
 				<LoadSuspense data={personList}>
 					<EmptyData data={personList}>
 						<NokiaPeopleList
-							personList={personList.data}
-							filter={filter}
+							personList={filtredPerson}
 						/>
 					</EmptyData>
 				</LoadSuspense>
