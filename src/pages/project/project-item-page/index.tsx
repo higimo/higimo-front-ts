@@ -10,9 +10,10 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { ProjectViewer } from 'components/project/project-viewer'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 export const ProjectItemPage: FunctionComponent = () => {
-	const { params: { vendor = '', project = '' } } = useRoute()
+	const { params: { vendor = DEFAULT_ID, project = DEFAULT_ID } } = useRoute()
 
 	const [ projectItem ] = useApi<PortfolioProjectDetailType>(API_ROUTE.projectSingle({
 		vendorCode: vendor,

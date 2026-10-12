@@ -19,12 +19,14 @@ import { as } from 'utils/types/as'
 import { toast } from 'toast'
 import { VkApi } from 'repositories/vk-api.repository'
 
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
+
 import '../vk-style.css'
 
 // TODO: [FEATURE] реализовать сортировку альбома
 export const VkAlbumEditPage: FunctionComponent = () => {
 	const { status, session, error } = vkSession.value
-	const { params: { albumId = '' } } = useRoute()
+	const { params: { albumId = DEFAULT_ID } } = useRoute()
 	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
 
 	const fetchPhotos = useCallback(async (ownerId: string, albumId: Positive) => {

@@ -15,11 +15,12 @@ import { TourismWalkGallery } from 'components/tourism/tourism-ya-constructor/to
 import { TourismWalkItem } from 'components/tourism/tourism-ya-constructor/tourism-walk-item'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../../tourism-style.css'
 
 export const TourismWalkSinglePage: FunctionComponent = () => {
-	const { params: { idcode = '' } } = useRoute()
+	const { params: { idcode = DEFAULT_ID } } = useRoute()
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 
 	const element = (yamapList.data || []).find(item => item.code === idcode)
