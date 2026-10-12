@@ -4,11 +4,12 @@ import { NokiaPersonType } from 'api-types/nokia.types'
 import { useApi } from 'hook/fetch/use-api'
 import { useRoute } from 'preact-iso'
 
-import { Layout } from 'components/ui/layout/Layout'
-import { NokiaMenu } from 'components/nokia/nokia-menu'
-import { LoadSuspense } from 'components/ui/load-suspense'
 import { EmptyData } from 'components/ui/empty-data'
+import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
+import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPersonForm } from 'components/nokia/form/nokia-person-form'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
@@ -30,11 +31,11 @@ export const NokiaPersonFormPage: FunctionComponent = () => {
 		<Layout title={`${title} | Нокиа`} className="nokia">
 			<NokiaMenu />
 
-			<div className="nokia__content">
-				<h1>
-					{}
-				</h1>
+			<TextContainer>
+				<h1>{title}</h1>
+			</TextContainer>
 
+			<TextContainer>
 				<LoadSuspense data={personItem}>
 					<EmptyData data={personItem} skipEmpty>
 						<NokiaPersonForm
@@ -43,7 +44,7 @@ export const NokiaPersonFormPage: FunctionComponent = () => {
 						/>
 					</EmptyData>
 				</LoadSuspense>
-			</div>
+			</TextContainer>
 		</Layout>
 	)
 }

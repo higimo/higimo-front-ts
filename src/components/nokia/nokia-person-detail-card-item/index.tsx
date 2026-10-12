@@ -7,11 +7,11 @@ import { NokiaNote } from 'components/nokia/nokia-note'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-type NokiaPeopleDetailCardItemPropsType = {
+type NokiaPersonDetailCardItemPropsType = {
 	personItem: NokiaPersonFullType | null
 }
 
-export const NokiaPeopleDetailCardItem: FunctionComponent<NokiaPeopleDetailCardItemPropsType> = ({
+export const NokiaPersonDetailCardItem: FunctionComponent<NokiaPersonDetailCardItemPropsType> = ({
 	personItem
 }) => personItem && (
 	<div className="nokia-people-detail person-full-data">

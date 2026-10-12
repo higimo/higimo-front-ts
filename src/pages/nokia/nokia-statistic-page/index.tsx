@@ -8,6 +8,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaStatistic } from 'components/nokia/nokia-statistic'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
@@ -20,9 +21,9 @@ export const NokiaStatisticPage: FunctionComponent = () => {
 		<Layout title="Нокиа сервис" className="nokia">
 			<NokiaMenu />
 
-			<div className="nokia__content">
+			<TextContainer>
 				<h1>Статистика</h1>
-			</div>
+			</TextContainer>
 
 			<LoadSuspense data={meetingStatisticList}>
 				<EmptyData data={meetingStatisticList}>

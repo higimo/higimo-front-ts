@@ -1,28 +1,28 @@
 import { FunctionComponent } from 'preact'
+import { NokiaTagType } from 'api-types/nokia.types'
 
-import { Tag } from 'components/ui/tag/Tag'
+import { NokiaTag } from 'components/nokia/nokia-tag'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
 type MeetingTagListPropsType = {
-	tags: string[]
-	selectedTags: string[]
-	onClick: (newTagsList: string[]) => () => void
+	tags: NokiaTagType[]
+	selectedTag?: NokiaTagType
+	onClick: (tag: NokiaTagType) => () => void
 }
 
 export const MeetingTagList: FunctionComponent<MeetingTagListPropsType> = ({
 	tags,
-	selectedTags,
+	selectedTag,
 	onClick,
 }) => (
 	<div className="nokia__meeting-tags">
 		{tags.map(tag => (
-			<Tag
-				active={selectedTags.includes(tag)}
-				onClick={onClick([tag])}
-			>
-				{tag}
-			</Tag>
+			<NokiaTag
+				tag={tag}
+				isActive={selectedTag && selectedTag.name === tag.name}
+				onClick={onClick(tag)}
+			/>
 		))}
 	</div>
 )

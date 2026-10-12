@@ -1,7 +1,7 @@
 import { NokiaMeetingStatisticType } from 'api-types/nokia.types'
 import { Fragment, FunctionComponent } from 'preact'
 
-import { useTags } from 'hook/data/use-tags'
+import { useNokiaTags } from 'hook/data/use-nokia-tags'
 import { useEffect, useMemo, useRef } from 'preact/hooks'
 
 import { Tag } from 'components/ui/tag'
@@ -25,8 +25,8 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 	const viz = useRef<HTMLDivElement>(null)
 
 	// TODO: [USE_TAGS] useSmartTag как бы его внедрить?
-	const [ selectedYearTag, handleYearTagClick ] = useTags<number>([])
-	const [ selectedTypeTag, handleTypeTagClick ] = useTags<string>([])
+	const [ selectedYearTag, handleYearTagClick ] = useNokiaTags<number>([])
+	const [ selectedTypeTag, handleTypeTagClick ] = useNokiaTags<string>([])
 
 	const yearDataset = useMemo(() => {
 		const dataset = Array.from(
@@ -37,6 +37,7 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 			handleYearTagClick(dataset)()
 		return dataset
 	}, [meetingStatistic])
+
 	const typeDataset = useMemo(() => {
 		const dataset = Array.from(new Set(meetingStatistic.map(item => item.type)))
 		handleTypeTagClick(dataset)()
@@ -45,7 +46,6 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 
 	useEffect(() => {
 		updateChart({
-			// @ts-ignore
 			viz,
 			data: prepareData(meetingStatistic, selectedYearTag, selectedTypeTag),
 		})()

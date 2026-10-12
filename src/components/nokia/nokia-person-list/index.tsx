@@ -5,11 +5,11 @@ import { PersonItem } from 'components/nokia/person-item'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
-type NokiaPeopleListPropsType = {
+type NokiaPersonListPropsType = {
 	personList: NokiaPersonType[]
 }
 
-export const NokiaPeopleList: FunctionComponent<NokiaPeopleListPropsType> = ({
+export const NokiaPersonList: FunctionComponent<NokiaPersonListPropsType> = ({
 	personList,
 }) => (
 	<div className="nokia-people-list">

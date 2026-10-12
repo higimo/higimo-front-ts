@@ -1,4 +1,4 @@
-import { MutableRef } from 'preact/hooks'
+import { RefObject } from 'preact'
 
 import { PrepareDataResult } from 'components/nokia/nokia-statistic/types'
 
@@ -8,11 +8,12 @@ import { COLORS } from 'config/NOKIA-STATISTIC-DIC'
 import { WIDTH, MARGIN, HEIGHT } from 'config/NOKIA_CHART_CONFIG'
 
 type updateChatPropsType = {
-	viz: MutableRef<HTMLDivElement>
+	viz: RefObject<HTMLDivElement>
 	data: PrepareDataResult
 }
 export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
-	const origDataset = data[1]
+	const [ category, origDataset ] = data
+
 	if (!viz.current || !Object.keys(origDataset).length) {
 		return undefined
 	}
@@ -25,10 +26,7 @@ export const updateChart = ({ viz, data }: updateChatPropsType) => async () => {
 		const width = WIDTH - MARGIN.left - MARGIN.right
 		const height = HEIGHT - MARGIN.top - MARGIN.bottom
 
-		const category = data[0]
-
 		var dataset = d3.stack()
-			// @ts-ignore
 			.keys(category)(origDataset)
 			.map(
 				(column) => {

@@ -8,8 +8,9 @@ import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
-import { NokiaPeopleList } from 'components/nokia/nokia-people-list'
+import { NokiaPersonList } from 'components/nokia/nokia-person-list'
 import { NokiaTagList } from 'components/nokia/nokia-tag-list'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
@@ -18,7 +19,7 @@ import '../nokia-style.css'
 const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | null) =>
 	person.tags.find(tag => tag.id === filter)
 
-export const NokiaPeopleListPage: FunctionComponent = () => {
+export const NokiaPersonListPage: FunctionComponent = () => {
 	// TODO: [HARD] как проверять, что есть теги без группы?
 	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
 	const [ tagList ] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
@@ -40,9 +41,11 @@ export const NokiaPeopleListPage: FunctionComponent = () => {
 		<Layout title="Нокиа сервис" className="nokia">
 			<NokiaMenu />
 
-			<div className="nokia__content">
+			<TextContainer>
 				<h1>Все люди</h1>
+			</TextContainer>
 
+			<TextContainer>
 				<LoadSuspense data={[tagGroupList, tagList]}>
 					<EmptyData data={[tagGroupList, tagList]}>
 						<NokiaTagList
@@ -53,15 +56,17 @@ export const NokiaPeopleListPage: FunctionComponent = () => {
 						/>
 					</EmptyData>
 				</LoadSuspense>
+			</TextContainer>
 
+			<TextContainer>
 				<LoadSuspense data={personList}>
 					<EmptyData data={personList}>
-						<NokiaPeopleList
+						<NokiaPersonList
 							personList={filtredPerson}
 						/>
 					</EmptyData>
 				</LoadSuspense>
-			</div>
+			</TextContainer>
 		</Layout>
 	)
 }

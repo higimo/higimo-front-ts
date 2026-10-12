@@ -39,7 +39,7 @@ type UseTagsType = <T,>(initialValue: T[]) => [T[], (newTagsList: T[]) => () => 
  * 3. Если `newTagsList.length > 1` — полностью заменит выбранные теги
  * 4. Если `newTagsList.length === 1` — уже существующий удалит, ещё не добавленный добавит
  */
-export const useTags: UseTagsType = <T,>(initialValue: T[]): [T[], (newTagsList: T[]) => () => void] => {
+export const useNokiaTags: UseTagsType = <T,>(initialValue: T[]): [T[], (newTagsList: T[]) => () => void] => {
 	const [selectedTags, setSelectedTags] = useState<T[]>(initialValue)
 
 	const handleTagClick = useCallback((newTagsList: T[]) => () => {

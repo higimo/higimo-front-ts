@@ -10,6 +10,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NokiaMeetingForm } from 'components/nokia/form/nokia-meeting-form'
 import { NokiaMenu } from 'components/nokia/nokia-menu'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { getUserSuggestions } from 'utils/get-user-suggestions'
 
@@ -49,9 +50,11 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 		<Layout title={`${title} | Нокиа`} className="nokia">
 			<NokiaMenu />
 
-			<div className="nokia__content">
+			<TextContainer>
 				<h1>{title}</h1>
+			</TextContainer>
 
+			<TextContainer>
 				<LoadSuspense data={[meetingItem, personList, topPersonList]}>
 					<EmptyData data={[meetingItem, personList, topPersonList]} skipEmpty>
 						<NokiaMeetingForm
@@ -64,7 +67,7 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 						/>
 					</EmptyData>
 				</LoadSuspense>
-			</div>
+			</TextContainer>
 		</Layout>
 	)
 }
