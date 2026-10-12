@@ -12,23 +12,14 @@ https://unjs.io/packages/citty
 	https://unjs.io/packages/consola
 
 https://unjs.io/packages/destr
-
 https://v1.h3.dev/ — фреймворк для nodeJS вместо экспресса
-
 https://unjs.io/packages/magicast — для переписывания кода, типа codemode, но другое
-
 https://regexp.dev/guide/examples
-
 https://unjs.io/packages/ofetch — sendRequest
-
 https://unjs.io/packages/ufo
-
 https://unjs.io/packages/serve-placeholder — SSR спасение
-
 https://unjs.io/packages/scule
-
 https://unjs.io/packages/unctx — мб, сомнительно
-
 https://unjs.io/packages/unhead
 
 
@@ -658,3 +649,11 @@ const [folded, setFolded] = usePersistedState('collapse-section-meetings', false
 
 ## Это разъёбные транзишены
 - [ ] https://react.dev/reference/react/ViewTransition
+
+
+
+## Получил спасибо
+https://vatrikovsky.ru/thanks
+https://lepekhin.ru/letter/
+https://legostaeff.ru/#projects/ideolog
+https://legostaeff.ru/#books/rakovarnya
