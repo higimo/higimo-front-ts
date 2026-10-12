@@ -8,11 +8,11 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
-type TourismWalkGalleryPropsType = {
+type TourismWalkListPropsType = {
 	yamapList: YaMapType[] | null
 }
 
-export const TourismWalkGallery: FunctionComponent<TourismWalkGalleryPropsType> = ({
+export const TourismWalkList: FunctionComponent<TourismWalkListPropsType> = ({
 	yamapList,
 }) => yamapList && (
 	<TourismBulletList>

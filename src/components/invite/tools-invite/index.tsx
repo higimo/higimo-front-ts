@@ -6,7 +6,7 @@ import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ANCHOR_LINK } from 'dic/route/ANCHOR_LINK'
-import { toolListData } from 'data/ivite-links/tools-invite'
+import { TOOL_LIST_DATA } from 'data/ivite-links/tools-invite'
 
 import './style.css'
 
@@ -18,7 +18,7 @@ export const ToolsInvite: FunctionComponent = () => (
 
 		<TextContainer>
 			<TileGallery
-				list={toolListData}
+				list={TOOL_LIST_DATA}
 			/>
 		</TextContainer>
 	</PrecentationContainer>

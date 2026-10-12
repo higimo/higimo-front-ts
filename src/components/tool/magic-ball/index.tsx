@@ -18,7 +18,10 @@ export const MagicBall = () => {
 					<div className="magic-ball__illuminator">
 						<div>
 							<div className="magic-ball__triangle"></div>
-							  <div className="magic-ball__textbox" dangerouslySetInnerHTML={{__html: phrase}} />
+							<div
+								className="magic-ball__textbox"
+								dangerouslySetInnerHTML={{__html: phrase}}
+							/>
 						</div>
 					</div>
 				</div>

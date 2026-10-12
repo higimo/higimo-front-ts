@@ -1,10 +1,10 @@
 import { FunctionComponent, Fragment } from 'preact'
-import { ResumeLinkType } from 'data/resume-link'
+import { LinkDataType } from 'utils.type'
 
 import { copyToClipboard } from 'utils/browser/copy-to-clipboard'
 
 
-type HiringResponseResumeLinkItemPropsType = ResumeLinkType
+type HiringResponseResumeLinkItemPropsType = LinkDataType
 
 export const HiringResponseResumeLinkItem: FunctionComponent<HiringResponseResumeLinkItemPropsType> = ({
 	title,
@@ -13,12 +13,14 @@ export const HiringResponseResumeLinkItem: FunctionComponent<HiringResponseResum
 	pdf,
 }) => {
 	const handleCopyClick = () => {
-		copyToClipboard(copy)
+		// TODO: [LIGHT] прокинуть тип, чтоб избавить от as string
+		copyToClipboard(copy as string)
 	}
 
 	return (
 		<Fragment>
-			<a href={href} className="nowrap">{title}</a>
+			{/* TODO: [LIGHT] добавить в глобальный интрисинк этот тип и избавиться от as string */}
+			<a href={href as string} className="nowrap">{title}</a>
 			{pdf && (
 				<a href={pdf}>{' '}[PDF]</a>
 			)}

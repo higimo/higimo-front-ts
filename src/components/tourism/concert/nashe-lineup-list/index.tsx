@@ -11,7 +11,7 @@ export const NasheLineupList: FunctionComponent = () => (
 	<TourismCustomList className="nashe-other-lineup">
 		{NASHE_LINK.map(nasheLink =>
 			<TourismCustomListItem
-				href={nasheLink.href}
+				href={nasheLink.href as string}
 				bullit={nasheLink.title}
 				value="Лайнап"
 			/>

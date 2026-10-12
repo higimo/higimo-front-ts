@@ -5,7 +5,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 // TODO: [FEATURE] опубликовать на IndexPage, не используется, но пока храню
 // TODO: [FEATURE] плохо выглядит, надо переделать на тайлы
-export const CharityIntroInvite: FunctionComponent = () => (
+export const CharityInvite: FunctionComponent = () => (
 	<PrecentationContainer>
 		<TextContainer>
 			<div className="charity-intro">

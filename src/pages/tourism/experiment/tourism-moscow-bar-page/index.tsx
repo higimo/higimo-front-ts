@@ -11,7 +11,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { TagGroupedGallery } from 'components/tourism/tag-grouped-gallery'
+import { TagGroupedList } from 'components/tourism/tag-grouped-list'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
@@ -103,7 +103,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 								iconColor: getBarColor(point.color),
 							})}
 						/>
-						<TagGroupedGallery
+						<TagGroupedList
 							groups={tagGroups}
 							isSelected={isSelected}
 							toggleTag={toggleTag}

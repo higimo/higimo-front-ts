@@ -12,7 +12,7 @@ export const IgLinkPage: FunctionComponent = () => (
 			{IG_LINK_LIST.map(item => (
 				<div className="ig-link-page__item">
 					<div className="ig-link-page__name">
-						<a href={item.href} className="ig-link-page__link">{item.title}</a>
+						<a href={item.href as string} className="ig-link-page__link">{item.title}</a>
 					</div>
 					<div className="ig-link-page__description">
 						{item.description}

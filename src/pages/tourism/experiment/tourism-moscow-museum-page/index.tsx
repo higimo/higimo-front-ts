@@ -7,7 +7,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { MuseumGallery } from 'components/tourism/museum-gallery'
+import { MuseumList } from 'components/tourism/museum-list'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
@@ -36,7 +36,7 @@ export const TourismMoscowMuseumPage: FunctionComponent = () => {
 			<TextContainer>
 				<LoadSuspense data={moscowMuseumListJsonItem}>
 					<EmptyData data={moscowMuseumListJsonItem}>
-						<MuseumGallery moscowMuseumList={moscowMuseumListJsonItem.data} />
+						<MuseumList moscowMuseumList={moscowMuseumListJsonItem.data} />
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>

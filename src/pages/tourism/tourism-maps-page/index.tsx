@@ -11,7 +11,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
-import { TourismWalkGallery } from 'components/tourism/tourism-ya-constructor/tourism-walk-gallery'
+import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
@@ -43,7 +43,7 @@ export const TourismMapsPage: FunctionComponent = () => {
 				<TourismHeader secondary>Конструктор карт</TourismHeader>
 				<LoadSuspense data={yamapList}>
 					<EmptyData data={yamapList}>
-						<TourismWalkGallery
+						<TourismWalkList
 							yamapList={yamapList.data}
 						/>
 					</EmptyData>

@@ -6,7 +6,7 @@ import { useFilterByTags } from 'hook/tags/use-filter-by-tags'
 import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'
 
-import { AccordItem } from 'components/accord/accord-element'
+import { AccordItem } from 'components/accord/accord-item'
 import { AccordTagGallery } from 'components/accord/accord-baidge-gallery'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'

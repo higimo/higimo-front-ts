@@ -21,7 +21,7 @@ export const TravelInvite: FunctionComponent = () => (
 			<div className="tourism-links">
 				{TOURISM_MENU_LINK.map(tourismMenu => (
 					<div className="tourism-links__item">
-						<a href={tourismMenu.href}>{tourismMenu.title}</a>
+						<a href={tourismMenu.href as string}>{tourismMenu.title}</a>
 					</div>
 				))}
 			</div>

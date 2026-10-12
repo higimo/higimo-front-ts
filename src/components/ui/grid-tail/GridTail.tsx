@@ -8,7 +8,7 @@ type GridTailPropsType = {
 	title: ComponentChildren
 	href: string
 	isArhive?: boolean
-	description: string
+	description?: string
 }
 
 export const GridTail: FunctionComponent<GridTailPropsType> = ({
@@ -28,9 +28,12 @@ export const GridTail: FunctionComponent<GridTailPropsType> = ({
 			<div className="grid-tile__title">
 				{title}
 			</div>
-			<div
-				className="grid-tile__description"
-				dangerouslySetInnerHTML={{ __html: description }} />
+			{description && (
+				<div
+					className="grid-tile__description"
+					dangerouslySetInnerHTML={{ __html: description }}
+				/>
+			)}
 		</a>
 	)
 }

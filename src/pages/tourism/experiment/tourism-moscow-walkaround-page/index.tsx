@@ -10,7 +10,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
-import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps/tourism-maps-figure'
+import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps/tourism-moscow-walkaround'
 
 import '../../tourism-style.css'
 import '../yandex-map.css'

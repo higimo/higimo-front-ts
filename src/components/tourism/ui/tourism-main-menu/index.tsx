@@ -11,7 +11,7 @@ export const TourismMainMenu: FunctionComponent = () => (
 		<HorizontalMenu>
 			{TOURISM_MENU_LINK.map(tourismMenu => (
 				<HorizontalElement>
-					<a href={tourismMenu.href}>{tourismMenu.title}</a>
+					<a href={tourismMenu.href as string}>{tourismMenu.title}</a>
 				</HorizontalElement>
 			))}
 		</HorizontalMenu>

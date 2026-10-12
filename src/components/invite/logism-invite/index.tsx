@@ -8,12 +8,12 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
-type LogismSinglePropsType = {
+type LogismInvitePropsType = {
 	logismItem: LogismType | null
 	reload: () => void
 }
 
-export const LogismInvite: FunctionComponent<LogismSinglePropsType> = ({
+export const LogismInvite: FunctionComponent<LogismInvitePropsType> = ({
 	logismItem,
 	reload,
 }) => logismItem && (

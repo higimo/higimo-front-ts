@@ -68,10 +68,6 @@ export function getValueOrDefault<T extends Record<string, any>, K extends keyof
 
 export type Brand<T, B extends string> = T & { readonly __brand: B }
 
-// TODO: [MIDDLE] написать функцию, которая принудительно задаёт бренд для id
-// <BrandId>(v) is BrandId => v
-// см. assertISOString
-
 /*******************************
 		Расширение примитивов
 ********************************/

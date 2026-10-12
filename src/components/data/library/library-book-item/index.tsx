@@ -3,11 +3,11 @@ import { LibraryType } from 'api-types/library.types'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-type LibraryBookElementPropsType = LibraryType & {
+type LibraryBookItemPropsType = LibraryType & {
 	onRemove: (id: LibraryType['id']) => () => void
 }
 
-export const LibraryBookElement: FunctionComponent<LibraryBookElementPropsType> = (book) => (
+export const LibraryBookItem: FunctionComponent<LibraryBookItemPropsType> = (book) => (
 	<div className="library-gallery__item">
 		<OnlyAdmin>
 			<div className="library-gallery__action-bar">

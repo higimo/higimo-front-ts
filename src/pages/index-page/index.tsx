@@ -6,7 +6,7 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { BlogInvite } from 'components/invite/blog-invite'
 import { ContactListInvite } from 'components/invite/contact-list-invite'
-import { DonatIntroInvite } from 'components/invite/donat-invite'
+import { DonatInvite } from 'components/invite/donat-invite'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
@@ -33,7 +33,7 @@ export const IndexPage: FunctionComponent = () => {
 		<Layout title="Разработчик и менеджер продукта — higimo">
 			<MainInvite />
 
-			<DonatIntroInvite />
+			<DonatInvite />
 
 			<LoadSuspense data={highlightProjectList}>
 				<EmptyData data={highlightProjectList}>

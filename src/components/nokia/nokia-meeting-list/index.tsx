@@ -9,7 +9,9 @@ type NokiaMeetingListPropsType = {
 	meetings: NokiaRichMeetingType[]
 }
 
-export const NokiaMeetingList: FunctionComponent<NokiaMeetingListPropsType> = ({ meetings }) => (
+export const NokiaMeetingList: FunctionComponent<NokiaMeetingListPropsType> = ({
+	meetings,
+}) => (
 	<div className="meeting-gallery">
 		{meetings.map(meeting => (
 			<NokiaMeetingItem meeting={meeting} />

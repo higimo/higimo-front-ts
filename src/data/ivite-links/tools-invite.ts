@@ -86,6 +86,6 @@ const botToolList: LinkDataType[] = [
 	},
 ] as const
 
-export const toolListData: LinkDataType[] = ([] as LinkDataType[])
+export const TOOL_LIST_DATA: LinkDataType[] = ([] as LinkDataType[])
 	.concat(botToolList)
 	.concat(TOOL_INVITE)

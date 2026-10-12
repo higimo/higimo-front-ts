@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'preact'
 import { FaqType } from 'api-types/faq.types'
 
+import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
-import { OnlyAdmin } from 'components/util/only-admin'
 
-type FaqSinglePropsType = {
+type FaqItemPropsType = {
 	faq: FaqType | null
 }
 // TODO: [MIDDLE] пора консистентно все эти Single назвать
-export const FaqSingle: FunctionComponent<FaqSinglePropsType> = ({ faq }) => faq && (
+export const FaqItem: FunctionComponent<FaqItemPropsType> = ({ faq }) => faq && (
 	<div className="faq-page">
 		<TextContainer>
 			<h1>{faq.name}</h1>

@@ -6,7 +6,7 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
-type TagGroupedGalleryProps = {
+type TagGroupedListPropsType = {
 	groups: TagCategory[]
 	isSelected: (tagName: string) => boolean
 	toggleTag: (tagName: string) => () => void
@@ -18,7 +18,7 @@ type TagGroupedGalleryProps = {
  * Кэшировать groups надо на уровне выше в useMemo
  * Теги должны быть строго в tags, даже если есть соседнее поле, дублирующее эту информацию
  */
-export const TagGroupedGallery: FunctionComponent<TagGroupedGalleryProps> = ({
+export const TagGroupedList: FunctionComponent<TagGroupedListPropsType> = ({
 	groups,
 	isSelected,
 	toggleTag,

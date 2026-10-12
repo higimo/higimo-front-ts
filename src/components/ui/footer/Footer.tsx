@@ -9,7 +9,7 @@ import { BLOG_INVITE } from 'data/ivite-links/blog-invite'
 import { CONTACT_LIST } from 'data/ivite-links/contact-list'
 import { FUNNY_INVITE } from 'data/ivite-links/funny-invite'
 import { KNOWLEDGE_INVITE } from 'data/ivite-links/knowledge-invite'
-import { toolListData } from 'data/ivite-links/tools-invite'
+import { TOOL_LIST_DATA } from 'data/ivite-links/tools-invite'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
@@ -58,7 +58,7 @@ export const Footer: FunctionComponent = () => {
 
 			<div className="footer__column">
 				<div className="footer__header">Сделал сервисов</div>
-				{toolListData.map(renderLink(isAuth))}
+				{TOOL_LIST_DATA.map(renderLink(isAuth))}
 			</div>
 			<div className="footer__copyright">
 				<span className="nowrap">

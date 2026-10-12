@@ -6,11 +6,11 @@ import './style.css'
 
 // TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
 
-type MuseumGalleryPropsType = {
+type MuseumListPropsType = {
 	moscowMuseumList: MoscowMuseumType[] | null
 }
 
-export const MuseumGallery: FunctionComponent<MuseumGalleryPropsType> = ({
+export const MuseumList: FunctionComponent<MuseumListPropsType> = ({
 	moscowMuseumList
 }) => moscowMuseumList && (
 	<div className="museum-gallery">

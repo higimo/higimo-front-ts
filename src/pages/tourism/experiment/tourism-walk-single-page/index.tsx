@@ -11,7 +11,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
-import { TourismWalkGallery } from 'components/tourism/tourism-ya-constructor/tourism-walk-gallery'
+import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 import { TourismWalkItem } from 'components/tourism/tourism-ya-constructor/tourism-walk-item'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
@@ -47,7 +47,7 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 				</TourismHeader>
 				<LoadSuspense data={yamapList}>
 					<EmptyData data={yamapList}>
-						<TourismWalkGallery
+						<TourismWalkList
 							yamapList={yamapList.data}
 						/>
 					</EmptyData>

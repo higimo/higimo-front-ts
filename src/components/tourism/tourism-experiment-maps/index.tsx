@@ -12,7 +12,7 @@ export const TourismExperimentMaps: FunctionComponent = () => (
 		{TOURISM_EXPERIMENT_MAP_LIST.map(item => (
 			<TourismBulletListItem
 				className="tourism-walk-gallery__item"
-				href={item.href}
+				href={item.href as string}
 				title={item.title}
 			/>
 		))}

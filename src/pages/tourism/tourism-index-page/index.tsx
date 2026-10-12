@@ -20,7 +20,7 @@ import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismRow } from 'components/tourism/ui/tourism-row'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
-import { TourismWalkGallery } from 'components/tourism/tourism-ya-constructor/tourism-walk-gallery'
+import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 
 import { ADVENTURE } from 'data/tourism/adventure'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
@@ -119,7 +119,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 
 				<LoadSuspense data={cityListJsonData}>
 					<EmptyData data={cityListJsonData}>
-						<TourismWalkGallery
+						<TourismWalkList
 							yamapList={yamapList.data}
 						/>
 					</EmptyData>

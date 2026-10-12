@@ -5,7 +5,7 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
-import { LibraryGallery } from 'components/data/library/library-gallery'
+import { LibraryList } from 'components/data/library/library-list'
 import { LibraryHeader } from 'components/data/library/library-header'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
@@ -26,7 +26,7 @@ export const LibListPage: FunctionComponent = () => {
 
 			<LoadSuspense data={bookList}>
 				<EmptyData data={bookList}>
-					<LibraryGallery
+					<LibraryList
 						books={bookList.data}
 						onRemove={onRemove}
 					/>

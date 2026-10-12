@@ -14,7 +14,7 @@ export const HiringResponseLinkList: FunctionComponent = () => (
 			{HIRING_LINK.map((item, index) => (
 				<Fragment>
 					{index > 0 && ' • '}
-					<a href={item.href} className="nowrap">{item.title}</a>
+					<a href={item.href as string} className="nowrap">{item.title}</a>
 				</Fragment>
 			))}
 		</div>
