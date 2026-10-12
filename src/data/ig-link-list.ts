@@ -1,12 +1,8 @@
+import { LinkDataType } from 'utils.type'
+
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 
-type LinkType = {
-	href: string
-	title: string
-	description: string
-}
-
-export const IG_LINK_LIST: LinkType[] = [
+export const IG_LINK_LIST: LinkDataType[] = [
 	{
 		href: EXTERNAL_LINK.homePage,
 		title: 'Хомяк',

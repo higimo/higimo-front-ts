@@ -1,6 +1,8 @@
+import { LinkDataType } from 'utils.type'
+
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const TOURISM_EXPERIMENT_MAP_LIST = [
+export const TOURISM_EXPERIMENT_MAP_LIST: LinkDataType[] = [
 	{
 		title: 'Проект обхожу Москву',
 		href: ROUTE_LINK.tourismMapsMoscowWalkaround,

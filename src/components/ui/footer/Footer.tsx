@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'preact'
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { useAuth } from 'hook/fetch/use-auth'
 import { isNotFound } from 'context/not-found-signal'
@@ -17,7 +17,7 @@ import './style.css'
 
 import rfFlag from 'components/ui/footer/img/rf-flag.svg'
 
-const renderLink = (isAuth: boolean) => (toolElement: IntroLinkDataType) => {
+const renderLink = (isAuth: boolean) => (toolElement: LinkDataType) => {
 	if (!!toolElement.isAdmin && !isAuth || !!toolElement.isArchive) {
 		return null
 	}

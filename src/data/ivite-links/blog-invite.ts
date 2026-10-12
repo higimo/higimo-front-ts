@@ -1,9 +1,9 @@
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const BLOG_INVITE: IntroLinkDataType[] = [
+export const BLOG_INVITE: LinkDataType[] = [
 	{
 		title: 'Личный блог Хигимо',
 		href: EXTERNAL_LINK.socialTg,

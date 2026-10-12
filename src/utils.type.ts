@@ -181,14 +181,15 @@ export type InterLinkType = {
 
 export type IntroImageMappingType = Record<string, string>
 
-export type IntroLinkDataType = {
+export type LinkDataType = {
 	isAdmin?: boolean,
 	isArchive?: boolean
 	isInactive?: boolean
 	title: string
-	href: ValueOf<typeof EXTERNAL_LINK> | ValueOf<typeof ROUTE_LINK>
-	description: string
-	// imgId: 'screen' | 'rak' | 'tech' | 'obuchenie' | 'intersection'
+	href: ValueOf<typeof EXTERNAL_LINK> | ValueOf<typeof ROUTE_LINK> | `https://${string}`
+	description?: string
+	copy?: string
+	pdf?: string
 }
 	& ({ imgId: string } | { imgId?: undefined })
 	& ({ img: string } | { img?: undefined })

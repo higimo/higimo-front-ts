@@ -1,8 +1,8 @@
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
-export const FUNNY_INVITE: IntroLinkDataType[] = [
+export const FUNNY_INVITE: LinkDataType[] = [
 	{
 		title: 'Комоджи (⌐■_■)',
 		href: ROUTE_LINK.comoji,

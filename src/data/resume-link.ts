@@ -1,14 +1,8 @@
+import { LinkDataType } from 'utils.type'
+
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-// TODO: [LIGHT] надо сделать base тип
-export type ResumeLinkType = {
-	href: string
-	title: string
-	copy: string
-	pdf?: string
-}
-
-export const RESUME_LINK: ResumeLinkType[] = [
+export const RESUME_LINK: LinkDataType[] = [
 	{
 		href: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
 		copy: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',

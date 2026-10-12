@@ -1,9 +1,9 @@
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const KNOWLEDGE_INVITE: IntroLinkDataType[] = [
+export const KNOWLEDGE_INVITE: LinkDataType[] = [
 	{
 		imgId: 'intersection',
 		title: 'Пересечения',

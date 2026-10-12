@@ -1,9 +1,9 @@
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const LOOKED_THIS_INVITE: IntroLinkDataType[] = [
+export const LOOKED_THIS_INVITE: LinkDataType[] = [
 	{
 		title: 'Сериалы',
 		href: EXTERNAL_LINK.aboutMyshows,

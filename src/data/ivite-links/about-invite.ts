@@ -1,9 +1,9 @@
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const ABOUT_INVITE: IntroLinkDataType[] = [
+export const ABOUT_INVITE: LinkDataType[] = [
 	{
 		title: '☝ Логизмы',
 		href: ROUTE_LINK.logism,

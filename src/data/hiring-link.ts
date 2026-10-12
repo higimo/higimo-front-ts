@@ -1,4 +1,6 @@
-export const HIRING_LINK = [
+import { LinkDataType } from "utils.type"
+
+export const HIRING_LINK: LinkDataType[] = [
 	{
 		title: 'LinkedIn',
 		href: 'https://www.linkedin.com/feed/',
@@ -23,4 +25,4 @@ export const HIRING_LINK = [
 		title: 'Хабра карьера',
 		href: 'https://career.habr.com/vacancies?type=suitable',
 	},
-] as const;
+] as const

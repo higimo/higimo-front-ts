@@ -1,9 +1,9 @@
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-const TOOL_INVITE: IntroLinkDataType[] = [
+const TOOL_INVITE: LinkDataType[] = [
 	{
 		isAdmin: true,
 		title: 'Пробби',
@@ -73,7 +73,7 @@ const TOOL_INVITE: IntroLinkDataType[] = [
 	},
 ] as const
 
-const botToolList: IntroLinkDataType[] = [
+const botToolList: LinkDataType[] = [
 	{
 		title: 'Бот упоминаний',
 		href: EXTERNAL_LINK.botRole,
@@ -86,6 +86,6 @@ const botToolList: IntroLinkDataType[] = [
 	},
 ] as const
 
-export const toolListData: IntroLinkDataType[] = ([] as IntroLinkDataType[])
+export const toolListData: LinkDataType[] = ([] as LinkDataType[])
 	.concat(botToolList)
 	.concat(TOOL_INVITE)

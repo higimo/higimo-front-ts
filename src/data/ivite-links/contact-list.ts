@@ -1,4 +1,4 @@
-import { IntroLinkDataType } from 'utils.type'
+import { LinkDataType } from 'utils.type'
 
 import { EXTERNAL_LINK } from 'dic/route/EXTERNAL_LINK'
 
@@ -7,7 +7,7 @@ import gmail from '../../components/invite/contact-list-invite/img/gmail.svg'
 import tg from '../../components/invite/contact-list-invite/img/telegram.svg'
 import vk from '../../components/invite/contact-list-invite/img/vk.svg'
 
-export const CONTACT_LIST: IntroLinkDataType[] = [
+export const CONTACT_LIST: LinkDataType[] = [
 	{
 		img: gmail,
 		title: 'Электропочта',
