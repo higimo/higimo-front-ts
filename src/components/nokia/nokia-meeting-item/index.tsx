@@ -3,6 +3,8 @@ import { NokiaMeetingFullType } from 'api-types/nokia.types'
 
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
+import { getHumanDate } from 'utils/date/get-human-date'
+
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type NokiaMeetingItemPropsType = {
@@ -20,8 +22,7 @@ export const NokiaMeetingItem: FunctionComponent<NokiaMeetingItemPropsType> = ({
 			</div>
 			<div className="meeting__information">
 				<div className="meeting__date">
-					{/* TODO: [LIGHT] есть функция же */}
-					{new Date(meeting.date).toLocaleDateString()}
+					{getHumanDate(meeting.date)}
 				</div>
 				<div className="meeting__type">
 					<a href={ROUTE_LINK.nokiaFormEdit({ meetingId: meeting.id })}>{meeting.type}</a>

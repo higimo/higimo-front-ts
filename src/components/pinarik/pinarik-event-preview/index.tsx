@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { PinarikType } from 'api-types/pinarik.types'
 
+import { getHumanDate } from 'utils/date/get-human-date'
 import { isDefined } from 'utils/types/is-defined'
 
 type PinarikEventPreviewPropsType = {
@@ -20,7 +21,7 @@ export const PinarikEventPreview: FunctionComponent<PinarikEventPreviewPropsType
 		{isDefined(pinarik) && (
 			<div className="pinarik-preview__content">
 				<div className="pinarik-preview__date">
-					{(new Date(pinarik.date)).toLocaleDateString()}
+					{getHumanDate(pinarik.date)}
 				</div>
 				<div className="pinarik-preview__description">
 					{pinarik.description}
