@@ -9,7 +9,7 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 type FaqItemPropsType = {
 	faq: FaqType | null
 }
-// TODO: [MIDDLE] пора консистентно все эти Single назвать
+
 export const FaqItem: FunctionComponent<FaqItemPropsType> = ({ faq }) => faq && (
 	<div className="faq-page">
 		<TextContainer>
