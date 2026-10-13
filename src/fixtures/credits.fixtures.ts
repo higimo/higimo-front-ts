@@ -2,7 +2,7 @@ import { PortfolioCreditsType, PortfolioWorkerId } from 'api-types/portfolio.typ
 
 const portfolioWorkerId = 1 as PortfolioWorkerId
 
-export const credits: PortfolioCreditsType[] = [
+export const credits: PortfolioCreditsType[] = ([
 	['Артемий Лебедев',      'худрук'],
 	['Павел Герасимчук',     'арт-директор и дизайнер'],
 	['Эркен Кагаров',        'тайный советник'],
@@ -20,12 +20,16 @@ export const credits: PortfolioCreditsType[] = [
 	['Дмитрий Муратов',      'бета-тестер'],
 	['Станислав Щербаков',   'фотограф'],
 	['Игорь Фаткин',         'фотограф'],
-]
-	.map(item => {
-		return {
-			role: item[1] as string,
-			worker: {
-				id: portfolioWorkerId, full_name: item[0] as string, company: '', image: null, login: 'login', role: 'few', link: '/',
-			},
-		}
-	})
+] as const)
+	.map(([full_name, role]) => ({
+		role,
+		worker: {
+			id: portfolioWorkerId,
+			full_name,
+			company: '',
+			image: null,
+			login: 'login',
+			role: 'few',
+			link: '/',
+		},
+	}))

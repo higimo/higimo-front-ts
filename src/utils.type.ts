@@ -174,6 +174,7 @@ export type LinkDataType = {
 	isArchive?: boolean
 	isInactive?: boolean
 	title: string
+	// TODO: [MIDDLE] надо просто те ссылки в словари добавить, убрать тип, ТС сам заругает
 	href: ValueOf<typeof EXTERNAL_LINK> | ValueOf<typeof ROUTE_LINK> | `https://${string}`
 	description?: string
 	copy?: string

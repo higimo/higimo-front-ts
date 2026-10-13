@@ -22,7 +22,9 @@ const renderLink = (isAuth: boolean) => (toolElement: LinkDataType) => {
 		return null
 	}
 	return (
-		<div className="footer__link"><a href={toolElement.href as string}>{toolElement.title}</a></div>
+		<div className="footer__link">
+			<a href={toolElement.href as string}>{toolElement.title}</a>
+		</div>
 	)
 }
 

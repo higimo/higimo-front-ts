@@ -2,7 +2,7 @@ import { LinkDataType } from 'utils.type'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-export const RESUME_LINK: LinkDataType[] = [
+export const RESUME_LINK: (LinkDataType & { copy: string })[] = [
 	{
 		href: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
 		copy: 'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',

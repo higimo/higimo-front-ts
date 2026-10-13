@@ -23,7 +23,6 @@ export const Redirect: FunctionComponent<RedirectPropsType> = ({ to, replace = t
 	const { route } = useLocation()
 
 	useLayoutEffect(() => {
-		console.log('redirect')
 		route(to as string, replace)
 	}, [to, replace])
 

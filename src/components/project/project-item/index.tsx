@@ -11,7 +11,7 @@ import './style.css'
 
 export const ProjectItem: FunctionComponent<PortfolioProjectFullType> = props => {
 	const link = props.isLink ? props.link : ROUTE_LINK.projectDetail({
-		vendor: (props.vendor.code as unknown as string),
+		vendor: props.vendor.code,
 		project: props.code
 	})
 	const tags = props.tags || []
