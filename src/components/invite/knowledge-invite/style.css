@@ -10,14 +10,15 @@
 .share-knowledge .intro-tile__item {
 	color: #fff;
 	background: #ffffff0d;
-	box-shadow:
-		0 4px 5px rgba(0, 49, 94, .06),
-		0 4px 15px rgba(0, 57, 109, .07),
-		0 4px 35px rgba(0, 85, 164, .08);
+	transition: all 200ms ease-in;
+	background:
+		radial-gradient(ellipse 70% 100% at -10% 50%, rgb(0 37 66 / 63%), transparent);
+    background-repeat: no-repeat;
+    background-position-x: -250px;
 }
 
 .share-knowledge .intro-tile__item:hover {
-	box-shadow: inset -50px 0px 85px -40px #8db8ff87, 0 0 0 1px #d3d3d354;
+    background-position-x: 0;
 	border-color: #3984d4;
 }
 
