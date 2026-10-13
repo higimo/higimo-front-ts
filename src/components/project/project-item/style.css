@@ -81,15 +81,17 @@ a.project__title {
 	bottom: 0;
 	background: #d7d7d740;
 	backdrop-filter: blur(15px);
-	padding: 8px 6px 6px;
+	padding: 16px 8px 8px;
 	width: 100%;
 	border-radius: 6px 6px 0 0;
 	pointer-events: none;
 	opacity: 0;
+	transform: translateY(36px);
 }
 
 .project__item:hover .project__tags {
 	opacity: 1;
+	transform: none;
 }
 
 .project__tag {
