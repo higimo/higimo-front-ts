@@ -10,35 +10,38 @@ type HandleFilterMapPointPropsType = {
 	selectedIds: Set<string>
 	isChooseVisitedMode: (val: ValueOf<typeof VISITED_MAP>) => boolean
 }
+
 export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: HandleFilterMapPointPropsType) => (item: PoiType) => {
-	if (selectedIds.has('Все')) {
-		return true
-	}
+	const visited = 'visited' in item && item.visited
 
-	if (isChooseVisitedMode(VISITED_MAP.VISITED) && 'visited' in item && !item.visited) {
+	if (isChooseVisitedMode(VISITED_MAP.VISITED) && !visited) {
 		return false
 	}
-	if (isChooseVisitedMode(VISITED_MAP.WANTED) && 'visited' in item && !item.visited) {
+	if (isChooseVisitedMode(VISITED_MAP.WANTED) && visited) {
 		return false
 	}
 
-	if (selectedIds.has('Россия') || selectedIds.has('Иностранное')) {
-		if ('country' in item) {
-			if (selectedIds.has('Россия') && item.country !== 'Россия') {
-				return false
-			} else if (selectedIds.has('Иностранное') && item.country === 'Россия') {
-				return false
-			} else {
-				return true
-			}
-		} else {
-			return false
+	for (const id of selectedIds) {
+		if (id === 'Все') {
+			continue
 		}
-	}
 
-	for (const selectedTagTitle of selectedIds.values()) {
-		const povTypeArray = TAG_NAME_POI_TYPE_MAPPING[selectedTagTitle as typeof TAGS_NAME[number]]
-		if (!povTypeArray.includes(item.type)) {
+		if (id === 'Россия') {
+			if (!('country' in item) || item.country !== 'Россия') {
+				return false
+			}
+			continue
+		}
+
+		if (id === 'Иностранное') {
+			if (!('country' in item) || item.country === 'Россия') {
+				return false
+			}
+			continue
+		}
+
+		const types = TAG_NAME_POI_TYPE_MAPPING[id as typeof TAGS_NAME[number]]
+		if (!types?.includes(item.type)) {
 			return false
 		}
 	}
