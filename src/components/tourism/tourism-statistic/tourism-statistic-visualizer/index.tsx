@@ -81,9 +81,40 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 					]}
 				/>
 			</FullWidthContainer>
-			{isChooseVisualizator(VISUALIZATOR_MAP.TABLE) && <TourismTableGeo items={filtredRussiaCity} />}
-			{isChooseVisualizator(VISUALIZATOR_MAP.MAP)   && <TourismMapGeo items={filtredRussiaCity} />}
-			{isChooseVisualizator(VISUALIZATOR_MAP.CARD)  && <TourismCardGeo items={filtredRussiaCity} />}
+			{isChooseVisualizator(VISUALIZATOR_MAP.TABLE) && (
+				<TourismTableGeo items={filtredRussiaCity} />
+			)}
+			{isChooseVisualizator(VISUALIZATOR_MAP.MAP)   && (
+				<TourismMapGeo
+					items={filtredRussiaCity}
+					propertyHandler={(point) => ({
+						hintContent: point.title,
+						iconCaption: point.title,
+						balloonContentHeader: point.title,
+						balloonContentBody: [
+							'type' in point && point.type,
+							[
+								'okrug' in point && point.okrug,
+								'region' in point && point.region,
+								'country' in point ? point.country : 'Россия',
+							].filter(Boolean).join(', '),
+							'description' in point && point.description,
+						].filter(Boolean).join('<br />'),
+						balloonContentFooter: [
+							'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
+							'population' in point ? `Население: ${point.population} К` : false,
+							point.coord.join(', '),
+						].filter(Boolean).join(' | '),
+					})}
+					optionHandler={(point) => ({
+						iconColor: 'visited' in point && point.visited ? '#344d3d' : '#b3b3b3',
+						iconSize: [15, 15],
+					})}
+				/>
+			)}
+			{isChooseVisualizator(VISUALIZATOR_MAP.CARD)  && (
+				<TourismCardGeo items={filtredRussiaCity} />
+			)}
 		</Fragment>
 	)
 }

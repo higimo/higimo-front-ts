@@ -1,13 +1,15 @@
 import { BasePointType, Coord } from 'utils.type'
+import { YaMapOptionType, YaMapPropertyType } from 'api-types/yamap.types'
 
 import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { Clusterer, FullscreenControl, Map, Placemark, Polyline, YMaps } from 'react-yandex-maps'
 
 // TODO: [FEATURE] посещение рек РФ
+// TODO: [FEATURE] мб, переехать на API3 https://yandex.ru/maps-api/docs/js-api/index.html
 
 const DEFAULT_ZOOM = 8
-const DEFAULT_CENTER = [55.73, 37.75] as Coord// Москва
+const DEFAULT_CENTER = [55.73, 37.75] as Coord // Москва
 
 type TourismMapGeoPropsType<T extends BasePointType, L extends Coord> = {
 	items?: T[]
@@ -15,7 +17,14 @@ type TourismMapGeoPropsType<T extends BasePointType, L extends Coord> = {
 	zoom?: number
 	center?: Coord,
 	cluster?: boolean
-	optionHandler?: (point: T) => Object
+	/**
+	 * Обработчик параметров точки (Placemark)
+	 */
+	propertyHandler?: (point: T) => YaMapPropertyType
+	/**
+	 * Обработчик опций точки (Placemark)
+	 */
+	optionHandler?: (point: T) => YaMapOptionType
 }
 
 export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
@@ -24,6 +33,7 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 	zoom = DEFAULT_ZOOM,
 	center = DEFAULT_CENTER,
 	cluster = true,
+	propertyHandler,
 	optionHandler,
 }: TourismMapGeoPropsType<T, L>) => {
 	const { width, height } = useWindowSize()
@@ -40,14 +50,16 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 					}}
 				>
 					<FullscreenControl />
-					{lines && <Polyline
-						geometry={lines}
-						options={{
-							strokeColor: '#000',
-							strokeWidth: 4,
-							strokeOpacity: 0.5
-						}}
-					/>}
+					{lines && (
+						<Polyline
+							geometry={lines}
+							options={{
+								strokeColor: '#000',
+								strokeWidth: 4,
+								strokeOpacity: 0.5
+							}}
+						/>
+					)}
 					<Clusterer
 						options={{
 							groupByCoordinates: !cluster,
@@ -68,31 +80,8 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 							<Placemark
 								modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
 								geometry={point.coord}
-								properties={{
-									hintContent: point.title,
-									iconCaption: point.title,
-									balloonContentHeader: point.title,
-									// TODO: [MIDDLE] отнести во вне
-									balloonContentBody: [
-										'type' in point && point.type,
-										[
-											'okrug' in point && point.okrug,
-											'region' in point && point.region,
-											'country' in point ? point.country : 'Россия',
-										].filter(Boolean).join(', '),
-										'description' in point && point.description,
-									].filter(Boolean).join('<br />'),
-									balloonContentFooter: [
-										'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
-										'population' in point ? `Население: ${point.population} К` : false,
-										point.coord.join(', '),
-									].filter(Boolean).join(' | '),
-								}}
-								options={{
-									iconColor: 'visited' in point && point.visited ? '#344d3d' : '#b3b3b3',
-									iconSize: [15, 15],
-									...(optionHandler && optionHandler(point))
-								}}
+								properties={propertyHandler && propertyHandler(point)}
+								options={optionHandler && optionHandler(point)}
 							/>
 						))}
 					</Clusterer>
