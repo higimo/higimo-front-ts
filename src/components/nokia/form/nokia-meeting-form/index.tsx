@@ -18,6 +18,8 @@ import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 import { createDateOnly } from 'utils/date/create-date-only'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
+import { meetingApi } from 'repositories/meeting-api.repository'
+import { toast } from 'toast'
 
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
@@ -25,6 +27,15 @@ interface NokiaMeetingFormContainerProps {
 	personSuggestList: MentionSuggest[]
 	topPersonList: NokiaPersonType[] | null
 	personList: NokiaPersonType[] | null
+}
+
+
+
+const handleRemove = (id: NokiaMeetingSimpleType['id']) => () => {
+	// TODO: [BACKEND] чо придёт?
+	meetingApi.delete(id)
+	toast.success('Удалено')
+	// TODO: [BACKEND] после удаления перекидывать в список встреч
 }
 
 export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps> = ({
@@ -160,24 +171,25 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 						>
 							{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
 						</FormButton>
-						{/* {formMethods.formState.isDirty && (
+						{formMethods.formState.isDirty && (
 							<FormButton
 								type="button"
-								onClick={() => formMethods.reset(getResetValues(defaultValues, true))}
+								// onClick={() => formMethods.reset(getResetValues(defaultValues, true))}
+								onClick={() => formMethods.reset()}
 								variant="outline"
 							>
 								Очистить
 							</FormButton>
-						)} */}
-						{/* {!!defaultValues?.id && (
+						)}
+						{!!initialMeeting?.id && (
 							<FormButton
 								type="button"
-								onClick={handleRemove(defaultValues.id)}
+								onClick={handleRemove(initialMeeting.id)}
 								variant="outline"
 							>
 								Удалить
 							</FormButton>
-						)} */}
+						)}
 					</ButtonGroup>
 				</form>
 			</FormProvider>
