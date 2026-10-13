@@ -18,7 +18,7 @@
  * @constant
  * @type {RegExp}
  */
-const HASH_TAG_REGEXP = /(?:^|[^\S])@\{([a-zа-яёË0-9_\-  ]{1,25})\}/gmi
+const HASH_TAG_REGEXP = /(?:^|[^\S])@\{([\p{L}\p{M}\p{N}_\-.()|@  ]{1,50})\}/gmu
 
 /**
  * Извлекает список уникальных упоминаний из текста
@@ -38,17 +38,17 @@ const HASH_TAG_REGEXP = /(?:^|[^\S])@\{([a-zа-яёË0-9_\-  ]{1,25})\}/gmi
  * ```
  *
  * @example
+ * ```ts
  * // Удаление дубликатов
- * const text = "@{admin} и @{admin} и @{moderator}"
+ * const text = "\@{admin} и \@{admin} и @{moderator}"
  * getMentionList(text) // → ["admin", "moderator"]
  *
- * @example
  * // Пустой результат
  * getMentionList("Нет упоминаний") // → []
  *
- * @example
  * // Невалидные форматы игнорируются
  * getMentionList("@username @{user}") // → ["user"] // только второй формат
+ * ```
  */
 export const getMentionList = (text: string): string[] => {
 	const matches = text.matchAll(HASH_TAG_REGEXP)

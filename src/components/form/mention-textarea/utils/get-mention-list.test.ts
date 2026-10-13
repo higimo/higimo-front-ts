@@ -51,8 +51,8 @@ describe('getMentionList', () => {
 			expect(result).toEqual([longName])
 		})
 
-		it('игнорирует упоминания длиннее 25 символов', () => {
-			const longName = 'a'.repeat(26)
+		it('игнорирует упоминания длиннее 50 символов', () => {
+			const longName = 'a'.repeat(51)
 			const result = getMentionList(`@{${longName}}`)
 			expect(result).toEqual([])
 		})
@@ -146,5 +146,35 @@ describe('getMentionList', () => {
 			const result = getMentionList('@{UserName} @{USERNAME} @{username}')
 			expect(result).toEqual(['UserName', 'USERNAME', 'username'])
 		})
+	})
+
+	it('Проверка на реальных данных', () => {
+		const result = getMentionList(
+			'@{HR_Ламода} '
+			+ '@{HR_Золотого_яблока} '
+			+ '@{HR_Золотого_яблока (2)} '
+			+ '@{(Девушка_Твердова_из_РЕН_ТВ)} '
+			+ '@{(Девушка_Твердова_из_РЕН_ТВ)} '
+			+ '@{CTO_Таймпада} '
+			+ '@{CPO_главной_Т-Банка} '
+			+ '@{CTO_Таймпада} '
+			+ '@{SEO_№_2_ОД} '
+			+ '@{HR_СБЕР_|_QuipKatya} '
+			+ '@{dimboxer@gmail.com} '
+			+ '@{id_ivbrv99} '
+			+ '@{Даниил_Гаве́нко_Ден_Дэн_(друг_Ватриковского)} '
+		)
+		expect(result).toEqual([
+			'HR_Ламода',
+			'HR_Золотого_яблока',
+			'HR_Золотого_яблока (2)',
+			'(Девушка_Твердова_из_РЕН_ТВ)',
+			'CTO_Таймпада',
+			'CPO_главной_Т-Банка',
+			'HR_СБЕР_|_QuipKatya',
+			'dimboxer@gmail.com',
+			'id_ivbrv99',
+			'Даниил_Гаве́нко_Ден_Дэн_(друг_Ватриковского)',
+		])
 	})
 })

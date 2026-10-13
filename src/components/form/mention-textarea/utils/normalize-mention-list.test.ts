@@ -20,64 +20,31 @@ const makeMentionSuggest = ({ id = 1, display = 'username' }): MentionSuggest =>
 
 describe('normalizeMentionList', () => {
 	describe('очистка формата упоминаний', () => {
-		it('удаляет фигурные скобки из упоминания', () => {
-			const list = ['@{username}']
+		it('Игнорирует не буквы и не числа при сравнении', () => {
+			const list = [
+				'@{username}',
+				'john_doe',
+				'john_doe_smith',
+				'Dr._John_Doe',
+			]
 			const filtredSuggestList: MentionSuggest[] = [
-				makeMentionSuggest({})
+				makeMentionSuggest({ display: 'username' }),
+				makeMentionSuggest({ display: 'john doe' }),
+				makeMentionSuggest({ display: 'john doe smith' }),
+				makeMentionSuggest({ display: 'Dr. John Doe' }),
 			]
 
 			const result = normalizeMentionList(list, filtredSuggestList)
 
-			expect(result[0]?.display).toBe('username')
-		})
-
-		it('заменяет символ подчеркивания на пробел', () => {
-			const list = ['@{john_doe}']
-			const filtredSuggestList: MentionSuggest[] = [
-				makeMentionSuggest({ display: 'john doe' })
-			]
-
-			const result = normalizeMentionList(list, filtredSuggestList)
-
-			expect(result[0]?.display).toBe('john doe')
-		})
-
-		it('обрабатывает несколько подчеркиваний', () => {
-			const list = ['@{john_doe_smith}']
-			const filtredSuggestList: MentionSuggest[] = [
-				makeMentionSuggest({ display: 'john doe smith' })
-			]
-
-			const result = normalizeMentionList(list, filtredSuggestList)
-
-			expect(result[0]?.display).toBe('john doe smith')
-		})
-
-		it('обрабатывает упоминания без подчеркиваний', () => {
-			const list = ['@{username}']
-			const filtredSuggestList: MentionSuggest[] = [
-				makeMentionSuggest({})
-			]
-
-			const result = normalizeMentionList(list, filtredSuggestList)
-
-			expect(result[0]?.display).toBe('username')
-		})
-
-		it('обрабатывает сложные имена с пробелами', () => {
-			const list = ['@{Dr._John_Doe}']
-			const filtredSuggestList: MentionSuggest[] = [
-				makeMentionSuggest({ display: 'Dr. John Doe' })
-			]
-
-			const result = normalizeMentionList(list, filtredSuggestList)
-
-			expect(result[0]?.display).toBe('Dr. John Doe')
+			expect(result[0]).toBe(filtredSuggestList[0])
+			expect(result[1]).toBe(filtredSuggestList[1])
+			expect(result[2]).toBe(filtredSuggestList[2])
+			expect(result[3]).toBe(filtredSuggestList[3])
 		})
 	})
 
 	describe('поиск соответствий', () => {
-		it('учитывает регистр', () => {
+		it('игнорирует регистр', () => {
 			const list = ['@{USERNAME}']
 			const filtredSuggestList: MentionSuggest[] = [
 				makeMentionSuggest({ display: 'username' })
@@ -85,11 +52,15 @@ describe('normalizeMentionList', () => {
 
 			const result = normalizeMentionList(list, filtredSuggestList)
 
-			expect(result).toHaveLength(0)
+			expect(result[0]).toBe(filtredSuggestList[0])
 		})
 
 		it('игнорирует упоминания, которых нет в списке предложений', () => {
-			const list = ['@{unknown_user}', '@@{invalid}', '@{nonexistent}']
+			const list = [
+				'@{unknown_user}',
+				'@@{invalid}',
+				'@{nonexistent}'
+			]
 			const filtredSuggestList: MentionSuggest[] = [
 				makeMentionSuggest({ display: 'existing user' })
 			]
@@ -164,22 +135,6 @@ describe('normalizeMentionList', () => {
 			expect(result[0]).toEqual(filtredSuggestList[0])
 		})
 
-		it('возвращает несколько найденных упоминаний', () => {
-			const list = ['@{john_doe}', '@{jane_smith}', '@{bob_wilson}']
-			const filtredSuggestList: MentionSuggest[] = [
-				makeMentionSuggest({ display: 'john doe' }),
-				makeMentionSuggest({ display: 'jane smith' }),
-				makeMentionSuggest({ display: 'bob wilson' }),
-			]
-
-			const result = normalizeMentionList(list, filtredSuggestList)
-
-			expect(result).toHaveLength(3)
-			expect(result[0]?.display).toBe('john doe')
-			expect(result[1]?.display).toBe('jane smith')
-			expect(result[2]?.display).toBe('bob wilson')
-		})
-
 		it('обрабатывает пустые строки в списке', () => {
 			const list = ['', '@{user1}', '']
 			const filtredSuggestList: MentionSuggest[] = [
@@ -193,11 +148,11 @@ describe('normalizeMentionList', () => {
 		})
 
 		it('обрабатывает специальные символы в упоминаниях', () => {
-			const list = ['@{user@name.ru}', '@{user#name}', '@{user$name}']
+			const list = ['@{user@name.ru}', '@{user#name}', '@{name$family}']
 			const filtredSuggestList: MentionSuggest[] = [
 				makeMentionSuggest({ display: 'user@name.ru' }),
 				makeMentionSuggest({ display: 'user#name' }),
-				makeMentionSuggest({ display: 'user$name' }),
+				makeMentionSuggest({ display: 'name$family' }),
 			]
 
 			const result = normalizeMentionList(list, filtredSuggestList)
@@ -205,7 +160,21 @@ describe('normalizeMentionList', () => {
 			expect(result).toHaveLength(3)
 			expect(result[0]?.display).toBe('user@name.ru')
 			expect(result[1]?.display).toBe('user#name')
-			expect(result[2]?.display).toBe('user$name')
+			expect(result[2]?.display).toBe('name$family')
+		})
+
+		it('Путается в одинаковых именах', () => {
+			const list = ['Виктор Петров']
+			const filtredSuggestList: MentionSuggest[] = [
+				makeMentionSuggest({ id: 1, display: 'Виктор Петров' }),
+				makeMentionSuggest({ id: 2, display: 'Виктор Петров' }),
+			]
+
+			const result = normalizeMentionList(list, filtredSuggestList)
+
+			expect(result).toHaveLength(2)
+			expect(result[0]).toEqual(filtredSuggestList[0])
+			expect(result[1]).toEqual(filtredSuggestList[1])
 		})
 
 		it('обрабатывает очень длинные упоминания', () => {
@@ -247,5 +216,30 @@ describe('normalizeMentionList', () => {
 
 			expect(result[0]).toEqual(filtredSuggestList[0])
 		})
+	})
+
+	it('Проверка на реальных данных', () => {
+		const list = [
+			'id_ivbrv99',
+			'CTO_Таймпада',
+			'HR_СБЕР_|_QuipKatya',
+			'dimboxer@gmail.com',
+			'HR_Тбанка_|_hr_tbank',
+		]
+		const filtredSuggestList: MentionSuggest[] = [
+			makeMentionSuggest({ display: 'id_ivbrv99' }),
+			makeMentionSuggest({ display: 'CTO Таймпада' }),
+			makeMentionSuggest({ display: 'HR СБЕР | QuipKatya' }),
+			makeMentionSuggest({ display: 'dimboxer@gmail.com' }),
+			makeMentionSuggest({ display: 'HR Тбанка | HR tbank' }),
+		]
+
+		const result = normalizeMentionList(list, filtredSuggestList)
+
+		expect(result[0]).toEqual(filtredSuggestList[0])
+		expect(result[1]).toEqual(filtredSuggestList[1])
+		expect(result[2]).toEqual(filtredSuggestList[2])
+		expect(result[3]).toEqual(filtredSuggestList[3])
+		expect(result[4]).toEqual(filtredSuggestList[4])
 	})
 })

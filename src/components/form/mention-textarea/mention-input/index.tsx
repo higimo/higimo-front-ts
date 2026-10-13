@@ -43,11 +43,12 @@ export const MentionTextarea: FunctionComponent<MentionsInputPropsType> = (props
 
 		setShowSuggestion(false)
 
+		// Это вставляет в позицию выбранное упоминание
 		const mention = getWrittenMention(refTextarea.current.value, refTextarea.current.selectionStart)
 		if (mention) {
 			const resultValue = [
 				refTextarea.current.value.substring(0, mention.start),
-				`@{${targetMention.display.replace(' ', '_')}}`,
+				`@{${targetMention.display.replace(/ /g, '_')}}`,
 				refTextarea.current.value.substring(mention.end),
 			].join('')
 			setValue('description', resultValue)
@@ -61,9 +62,10 @@ export const MentionTextarea: FunctionComponent<MentionsInputPropsType> = (props
 			return undefined
 		}
 
+		// Это передаёт упоминание родителю
 		const mentionList = normalizeMentionList(
 			getMentionList(refTextarea.current.value),
-			filtredSuggestList
+			props.suggestList
 		)
 		props.onMention(mentionList)
 	}

@@ -110,18 +110,15 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 						labelDescription="Нпрмр, offline, work, net, tg"
 						description="Поможет для построения красивых статистических графиков"
 					/>
-					<label>Как прошло?</label>
+					<label className="field__label">Как прошло?</label>
 					<MentionTextarea
 						name="description"
 						suggestList={personSuggestList}
 						onMention={handleTextAssign}
 					/>
-					<small>Упоминать персон через @</small>
-					<hr />
-					<a href={ROUTE_LINK.nokiaPeopleForm}>[Создать персону]</a>
-
-					<label>С кем </label>
-					<div className="single-row">
+					<div className="field__description">Упоминать персон через @</div>
+					<label className="field__label">С кем </label>
+					<div className="nokia-with-person">
 						{!!selectedPersons.length && (
 							<div>
 								{selectedPersons.map(person => (
@@ -134,9 +131,10 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 						)}
 					</div>
 					<div className="single-row">
-						Самые частые
-						<br />
-						<small>Можно кликать</small>
+						<div className="field__label">
+							Самые частые
+							{' | '}<a href={ROUTE_LINK.nokiaPeopleForm}>Создать персону</a>
+						</div>
 						<div className="person-selector">
 							{topPersonList.map(person => {
 								if (selectedPersonIds.includes(person.id)) {
@@ -149,6 +147,9 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 									/>
 								)
 							})}
+						</div>
+						<div className="field__description">
+							Можно кликать
 						</div>
 					</div>
 					<ButtonGroup variant="gap">
