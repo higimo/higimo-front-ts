@@ -9,10 +9,15 @@ import cs from 'classnames'
 import './style.css'
 
 type CollapseSectionPropsType = {
-	header: ComponentChild
+	title: ComponentChild
 	fold?: boolean
 }
-export const CollapseSection: FunctionComponent<CollapseSectionPropsType> = ({ header, children, fold = true }) => {
+
+export const CollapseSection: FunctionComponent<CollapseSectionPropsType> = ({
+	title,
+	children,
+	fold = true
+}) => {
 	const [ folded, foldedToggle ] = useToggle(!fold)
 
 	return (
@@ -21,7 +26,7 @@ export const CollapseSection: FunctionComponent<CollapseSectionPropsType> = ({ h
 				onClick={foldedToggle}
 				className="collapse-section__header"
 			>
-				{typeof header === 'string' ? <h3>{header}</h3> : header}
+				{typeof title === 'string' ? <h3>{title}</h3> : title}
 			</div>
 			<Collapse isOpened={folded}>
 				{children}

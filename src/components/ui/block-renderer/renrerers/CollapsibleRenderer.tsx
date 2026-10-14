@@ -14,7 +14,7 @@ export const CollapsibleRenderer: FunctionComponent<CollapsibleRendererPropsType
 	children,
 	defaultOpen = true
 }) => (
-	<CollapseSection header={<h3>{header}</h3>} fold={!defaultOpen}>
+	<CollapseSection title={<h3>{header}</h3>} fold={!defaultOpen}>
 		{children.map((child, idx) => (
 			<BlockRenderer key={idx} block={child} />
 		))}

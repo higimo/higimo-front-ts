@@ -26,7 +26,7 @@ type HiringTemplateAnswerPropsType = {
 
 export const HiringTemplateAnswer: FunctionComponent<HiringTemplateAnswerPropsType> = ({
 }) => (
-	<CollapseSection header="Шаблоны сообщений">
+	<CollapseSection title="Шаблоны сообщений">
 		<div className="hiring-template-answer">
 			<div className="hiring-template-answer__column">
 				<h2>Текст отклика</h2>
