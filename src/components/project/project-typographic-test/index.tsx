@@ -10,7 +10,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			{/* TODO: [MIDDLE] надо переделать на className/variant */}
 			<Heading variant="typographic" level={2}>Формулировка задачи</Heading>
 			<div>
 				<div class="task">
@@ -34,7 +33,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Ссылка на сайт</Heading>
 			<div>
 				<div class="site-link">
@@ -44,7 +42,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					<a href="http://kcznn.ru/">kcznn.ru</a> (наполняется заказчиком)
 				</div>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Куски кода</Heading>
@@ -77,7 +74,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					</div>
 				</pre>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Обычные тексты</Heading>
@@ -127,7 +123,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Оформление текста</Heading>
 			<div class="announce__text">
 				<p>
@@ -143,7 +138,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Ссылки</Heading>
 			<div class="announce__text">
 				<h3>В заголовке <a href="https://superjob.ru">SuperJob</a></h3>
@@ -154,7 +148,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					<li>Внутри <a href="https://productcamppodcast.mave.digital/ep-2">списка</a></li>
 				</ol>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Списки</Heading>
@@ -194,7 +187,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					</li>
 				</ul>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Фактоиды</Heading>
@@ -238,7 +230,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Громкие слова</Heading>
 			<div>
 				<TextContainer>
@@ -264,7 +255,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 				</TextContainer>
 				<div class="word-of-the-year">Татьяна</div>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Оформление блоков</Heading>
@@ -335,7 +325,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Артефакты</Heading>
 			<div>
 				<TextContainer>
@@ -396,7 +385,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					</table>
 				</div>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Скриншоты сайта</Heading>
@@ -483,7 +471,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Горизонтальная галерея</Heading>
 			<div class="announce__horizontal horizontal-pic-gallery">
 				<div class="horizontal-pic-gallery__content">
@@ -521,7 +508,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					</div>
 				</div>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Кино года</Heading>
@@ -592,7 +578,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Лейауты</Heading>
 			<div>
 				<TextContainer>
@@ -643,7 +628,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					</div>
 				</div>
 			</div>
-
 
 
 			<Heading variant="typographic" level={2}>Лейауты + картинки + описание</Heading>
@@ -887,7 +871,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 			</div>
 
 
-
 			<Heading variant="typographic" level={2}>Сектора для итогов года</Heading>
 			<div>
 				<TextContainer>
@@ -933,7 +916,6 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 					</div>
 				</div>
 			</div>
-
 
 
 
