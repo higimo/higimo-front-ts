@@ -13,12 +13,12 @@ export interface BaseBlock {
 interface ContactListBlock extends BaseBlock {
 	type: 'contactList'
 }
-interface HeadingBlock extends BaseBlock {
+export interface HeadingBlock extends BaseBlock {
 	type: 'heading'
 	level: 1 | 2 | 3 | 4 | 5 | 6
 	text: string
 }
-interface ParagraphBlock extends BaseBlock {
+export interface ParagraphBlock extends BaseBlock {
 	type: 'paragraph'
 	/** массив текстовых узлов, ссылок, strong и т.д. */
 	children: InlineBlock[]
@@ -29,7 +29,7 @@ export interface ListBlock extends BaseBlock {
 	ordered: boolean
 	items: string[] | ListItemBlock[]
 }
-interface CollapsibleBlock extends BaseBlock {
+export interface CollapsibleBlock extends BaseBlock {
 	type: 'collapsible'
 	/** заголовок (только текст, без HTML) */
 	header: string
@@ -38,7 +38,7 @@ interface CollapsibleBlock extends BaseBlock {
 	/** внутри могут быть параграфы, списки */
 	children: ContentBlock[]
 }
-interface SlideBlock extends BaseBlock {
+export interface SlideBlock extends BaseBlock {
 	type: 'slide'
 	/** slide или resume-hero */
 	className?: string
@@ -65,7 +65,7 @@ interface TextInlineBlock extends BaseBlock {
 	type: 'text'
 	value: string
 }
-interface LinkInlineBlock extends BaseBlock {
+export interface LinkInlineBlock extends BaseBlock {
 	type: 'link'
 	href: string
 	text: string

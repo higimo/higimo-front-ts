@@ -1,14 +1,11 @@
 import { FunctionComponent } from 'preact'
+import { StrongInlineBlock } from 'components/ui/block-renderer/types'
 
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 
 import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
 
-type InlineStrongRendererPropsType = {
-	value: string
-}
-
-export const InlineStrongRenderer: FunctionComponent<InlineStrongRendererPropsType> = ({
+export const InlineStrongRenderer: FunctionComponent<StrongInlineBlock> = ({
 	value,
 }) => (
 	<strong>{replaceRenderBlockVariables(value, variablesRenderBlockSignal.value)}</strong>

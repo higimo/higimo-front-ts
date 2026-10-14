@@ -1,15 +1,11 @@
 import { FunctionComponent } from 'preact'
+import { LinkInlineBlock } from 'components/ui/block-renderer/types'
 
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 
 import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
 
-type InlineLinkRendererPropsType = {
-	href: string
-	text: string
-}
-
-export const InlineLinkRenderer: FunctionComponent<InlineLinkRendererPropsType> = ({
+export const InlineLinkRenderer: FunctionComponent<LinkInlineBlock> = ({
 	href,
 	text,
 }) => (

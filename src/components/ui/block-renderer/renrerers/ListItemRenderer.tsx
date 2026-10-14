@@ -7,6 +7,7 @@ import { replaceRenderBlockVariables } from 'utils/replace-render-block-variable
 
 import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
 
+// Это могло быть ListItemBlock, но не смогло
 type ListItemRendererPropsType = {
 	item: ListItemBlock
 }

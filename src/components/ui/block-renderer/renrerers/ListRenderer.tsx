@@ -7,9 +7,7 @@ import { ListItemRenderer } from 'components/ui/block-renderer/renrerers/ListIte
 
 import { isListItem } from 'utils/types/is-list-item'
 
-type ListRendererPropsType = ListBlock
-
-export const ListRenderer: FunctionComponent<ListRendererPropsType> = ({ ordered, items }) => {
+export const ListRenderer: FunctionComponent<ListBlock> = ({ ordered, items }) => {
 	if (items.length === 0) {
 		return null
 	}

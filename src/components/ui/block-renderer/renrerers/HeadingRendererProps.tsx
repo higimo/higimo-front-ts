@@ -1,23 +1,15 @@
 import { FunctionComponent, h } from 'preact'
+import { HeadingBlock } from 'components/ui/block-renderer/types'
 
 import { replaceRenderBlockVariables } from 'utils/replace-render-block-variables'
 
 import { variablesRenderBlockSignal } from 'context/render-block-variables-signal'
 
-type HeadingRendererPropsType = {
-	level: 1 | 2 | 3 | 4 | 5 | 6
-	text: string
-}
-
-export const HeadingRenderer: FunctionComponent<HeadingRendererPropsType> = ({
+export const HeadingRenderer: FunctionComponent<HeadingBlock> = ({
 	level,
 	text,
-}) => {
-	const Tag = `h${level}`
-
-	return h(
-		Tag,
-		null,
-		replaceRenderBlockVariables(text, variablesRenderBlockSignal.value)
-	)
-}
+}) => h(
+	`h${level}`,
+	null,
+	replaceRenderBlockVariables(text, variablesRenderBlockSignal.value)
+)

@@ -1,15 +1,10 @@
+import { CollapsibleBlock } from 'components/ui/block-renderer/types'
 import { FunctionComponent } from 'preact'
 
 import { BlockRenderer } from 'components/ui/block-renderer/BlockRenderer'
 import { CollapseSection } from 'components/ui/collapse-section'
 
-type CollapsibleRendererPropsType = {
-	header: string
-	children: any[]
-	defaultOpen?: boolean
-}
-
-export const CollapsibleRenderer: FunctionComponent<CollapsibleRendererPropsType> = ({
+export const CollapsibleRenderer: FunctionComponent<CollapsibleBlock> = ({
 	header,
 	children,
 	defaultOpen = true
