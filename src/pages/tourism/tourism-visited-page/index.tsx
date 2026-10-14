@@ -1,17 +1,45 @@
-import { AdmOrkugMoscow, Castle, Country, DistrictMoscow, Placefield, PoiType, SubjectFederation, Town, TownMoscow } from 'api-types/tourism.types'
+import {
+	AdmOrkugMoscow,
+	Castle,
+	Country,
+	DistrictMoscow,
+	Placefield,
+	PoiType,
+	SubjectFederation,
+	Town,
+	TownMoscow,
+} from 'api-types/tourism.types'
 import { FunctionComponent } from 'preact'
+import { ValueOf } from 'utils.type'
 
+import { useMemo } from 'preact/hooks'
 import { useMultiJsonApi } from 'hook/fetch/use-multi-json-api'
+import { useSmartTags } from 'hook/tags/use-smart-tags'
+import { useSwitcher } from 'hook/use-switcher'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { EmptyData } from 'components/ui/empty-data'
+import { FullWidthContainer } from 'components/ui/full-width-container/FullWidthContainer'
 import { Layout } from 'components/ui/layout/Layout'
-import { LoadSuspense } from 'components/ui/load-suspense'
+import { Switcher } from 'components/ui/switcher/Switcher'
+import { Tag } from 'components/ui/tag/Tag'
 import { TextContainer } from 'components/ui/text-container'
+import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
-import { TourismMainStatistic } from 'components/tourism/tourism-main-statistic'
-import { TourismStatisticVisualizer } from 'components/tourism/tourism-statistic/tourism-statistic-visualizer'
+import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
+import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
+import { TourismStatisticMoscow } from 'components/tourism/tourism-statistic/tourism-statistic-moscow'
+import { TourismStatisticMustPoi } from 'components/tourism/tourism-statistic/tourism-statistic-must-poi'
+import { TourismStatisticRussia } from 'components/tourism/tourism-statistic/tourism-statistic-russia'
+import { TourismStatisticWorld } from 'components/tourism/tourism-statistic/tourism-statistic-world'
+import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
+
+import { handleFilterMapPoint, handleSort } from 'utils/tourism/handle-filter-map-point'
+
+import { TORUSM_SORT_MAP } from 'dic/tourism/TORUSM_SORT_MAP'
+import { TOURISM_VISITED_TAG_CATEGORY } from 'dic/tourism/TOURISM_VISITED_TAG_CATEGORY'
+import { VISITED_MAP } from 'dic/tourism/VISITED_MAP'
+import { VISUALIZATOR_MAP } from 'dic/tourism/VISUALIZATOR_MAP'
 
 import '../tourism-style.css'
 import './style.css'
@@ -34,6 +62,29 @@ type VisitedDataType = {
 	town: Town[]
 }
 
+const placemarkPropertyStyle = (point: PoiType): { hintContent: string; iconCaption: string; balloonContentHeader: string; balloonContentBody: string; balloonContentFooter: string } => ({
+	hintContent: point.title,
+	iconCaption: point.title,
+	balloonContentHeader: point.title,
+	balloonContentBody: [
+		'type' in point && point.type,
+		[
+			'okrug' in point && point.okrug,
+			'region' in point && point.region,
+			'country' in point ? point.country : 'Россия',
+		].filter(Boolean).join(', '),
+		'description' in point && point.description,
+	].filter(Boolean).join('<br />'),
+	balloonContentFooter: [
+		'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
+		'population' in point ? `Население: ${point.population} К` : false,
+		point.coord.join(', '),
+	].filter(Boolean).join(' | '),
+})
+const placemarkOptionStyle = (point: PoiType): { iconColor: "#344d3d" | "#b3b3b3"; iconSize: [number, number] } => ({
+	iconColor: 'visited' in point && point.visited ? '#344d3d' : '#b3b3b3',
+	iconSize: [15, 15],
+})
 export const TourismVisitedPage: FunctionComponent = () => {
 	// TODO: [BACKEND] вынести в бекенд API из JSON
 	const [ jsonCollection ] = useMultiJsonApi<VisitedDataType>({
@@ -57,16 +108,27 @@ export const TourismVisitedPage: FunctionComponent = () => {
 		.concat(jsonCollection.townMoscow.data || [])
 		.concat(jsonCollection.town.data || [])
 
-	const jsonDateArr = [
-		jsonCollection.admOrkugMoscow,
-		jsonCollection.castle,
-		jsonCollection.country,
-		jsonCollection.districtMoscow,
-		jsonCollection.placefield,
-		jsonCollection.subjectFederation,
-		jsonCollection.townMoscow,
-		jsonCollection.town,
-	]
+	const {
+		selectedTagTitles, toggleTag, isSelected,
+	} = useSmartTags({
+		categories: TOURISM_VISITED_TAG_CATEGORY,
+		mode: 'single',
+		initialSelected: ['Все']
+	})
+
+	const [isChooseVisualizator, setVizualizator] = useSwitcher<ValueOf<typeof VISUALIZATOR_MAP>>(VISUALIZATOR_MAP.CARD)
+	const [isChooseSortMode, setSortMode] = useSwitcher<ValueOf<typeof TORUSM_SORT_MAP>>(TORUSM_SORT_MAP.INIT)
+	const [isChooseVisitedMode, setVisitedMode] = useSwitcher<ValueOf<typeof VISITED_MAP>>(VISITED_MAP.INIT)
+
+	const filtredRussiaCity = useMemo(
+		() => poiList
+			.filter(handleFilterMapPoint({
+				selectedIds: selectedTagTitles,
+				isChooseVisitedMode,
+			}))
+			.sort(handleSort(isChooseSortMode)),
+		[poiList, selectedTagTitles, isChooseVisitedMode, isChooseSortMode]
+	)
 
 	return (
 		<Layout title="Результаты путешествий" className="tourism-identy-page">
@@ -80,12 +142,99 @@ export const TourismVisitedPage: FunctionComponent = () => {
 				<TourismHeader main>Результаты путешествий</TourismHeader>
 			</TextContainer>
 
-			<LoadSuspense data={jsonDateArr}>
-				<EmptyData data={jsonDateArr}>
-					<TourismMainStatistic totalStatistic={poiList} />
-					<TourismStatisticVisualizer poi={poiList} />
-				</EmptyData>
-			</LoadSuspense>
+			<TextContainer>
+				<TourismSecondary main>
+					Я путешествую по спискам, где бы хотел побывать. Там города и отдельные места, например, Байкал и озеро Рица, парк Кудыкина гора. В России я бы хотел побывать во всех регионах и значимых городах. Ещё я хочу побывать во всех русских крепостях: кремли и замки вроде Изборска — они прекрасны.
+				</TourismSecondary>
+				<TourismSecondary main>
+					Под статистикой можно ознакомиться, где я ещё не был и вписаться со мной в путешествие)
+				</TourismSecondary>
+			</TextContainer>
+
+			<TextContainer>
+				<TourismHeader secondary>Статистика по миру</TourismHeader>
+				<TourismSecondary>
+					Сколько мест посетил из намеченного списка. И как называется список.
+				</TourismSecondary>
+			</TextContainer>
+			<TourismStatisticWorld total={poiList} />
+
+			<TextContainer>
+				<TourismHeader secondary>По России</TourismHeader>
+			</TextContainer>
+			<TourismStatisticRussia total={poiList} />
+
+			<TextContainer>
+				<TourismHeader secondary>Впечатляющие места</TourismHeader>
+				<TourismSecondary>
+					Здесь нет городов, где живут люди. Только точки интереса на карте, куда мне интересно попасть
+				</TourismSecondary>
+			</TextContainer>
+			<TourismStatisticMustPoi total={poiList} />
+
+			<TextContainer>
+				<TourismHeader secondary>По Москве</TourismHeader>
+				<TourismSecondary>
+					Я очень люблю Москву. Она — Русское поле экспериментов. Например, в Курьяново построили двухэтажные домики, которые стали прообразом для застройки моей родной Шахуньи. Поэтому, мне важно побывать во всех округах и районах Москвы, на всех станциях метро. А ещё я хочу обойти кажду улицу внутри МКАД.
+				</TourismSecondary>
+			</TextContainer>
+			<TourismStatisticMoscow total={poiList} />
+
+			<TextContainer>
+				<TourismHeader secondary>Список для путешествий</TourismHeader>
+				<TourismSecondary>
+					Можно отобразить таблицей, карточками и посмотреть на карте. С белой подложкой то, где я уже был. Где не был — можно вписаться в путешествие)
+				</TourismSecondary>
+			</TextContainer>
+
+			<TextContainer>
+				{TOURISM_VISITED_TAG_CATEGORY[0]?.tags.map((tag) => (
+					<Tag key={tag.id} active={isSelected(tag.title)} onClick={toggleTag(tag.title)}>
+						{tag.title}
+					</Tag>
+				))}
+			</TextContainer>
+
+			<FullWidthContainer className="tourism-visualizer-switcher">
+				<Switcher
+					options={[
+						{ title: 'Карточками', active: isChooseVisualizator(VISUALIZATOR_MAP.CARD),  onClick: setVizualizator(VISUALIZATOR_MAP.CARD) },
+						{ title: 'Таблицей',   active: isChooseVisualizator(VISUALIZATOR_MAP.TABLE), onClick: setVizualizator(VISUALIZATOR_MAP.TABLE) },
+						{ title: 'Картой',     active: isChooseVisualizator(VISUALIZATOR_MAP.MAP),   onClick: setVizualizator(VISUALIZATOR_MAP.MAP) },
+					]} />
+			</FullWidthContainer>
+
+			<FullWidthContainer className="tourism-sort-filter">
+				<Switcher
+					options={[
+						{ title: 'Без сортировки',       active: isChooseSortMode(TORUSM_SORT_MAP.INIT),     onClick: setSortMode(TORUSM_SORT_MAP.INIT) },
+						{ title: 'Сначала посещённые',   active: isChooseSortMode(TORUSM_SORT_MAP.VISITED),  onClick: setSortMode(TORUSM_SORT_MAP.VISITED) },
+						{ title: 'Сначала непосещённые', active: isChooseSortMode(TORUSM_SORT_MAP.WANTED),   onClick: setSortMode(TORUSM_SORT_MAP.WANTED) },
+						{ title: 'По алфавиту',          active: isChooseSortMode(TORUSM_SORT_MAP.ALPHABET), onClick: setSortMode(TORUSM_SORT_MAP.ALPHABET) },
+					]}
+				/>
+				<Switcher
+					options={[
+						{ title: 'Все',                 active: isChooseVisitedMode(VISITED_MAP.INIT),    onClick: setVisitedMode(VISITED_MAP.INIT), },
+						{ title: 'Только посещённые',   active: isChooseVisitedMode(VISITED_MAP.VISITED), onClick: setVisitedMode(VISITED_MAP.VISITED), },
+						{ title: 'Только непосещённые', active: isChooseVisitedMode(VISITED_MAP.WANTED),  onClick: setVisitedMode(VISITED_MAP.WANTED), },
+					]}
+				/>
+			</FullWidthContainer>
+
+			{isChooseVisualizator(VISUALIZATOR_MAP.TABLE) && (
+				<TourismTableGeo items={filtredRussiaCity} />
+			)}
+			{isChooseVisualizator(VISUALIZATOR_MAP.MAP)   && (
+				<TourismMapGeo
+					items={filtredRussiaCity}
+					propertyHandler={placemarkPropertyStyle}
+					optionHandler={placemarkOptionStyle}
+				/>
+			)}
+			{isChooseVisualizator(VISUALIZATOR_MAP.CARD)  && (
+				<TourismCardGeo items={filtredRussiaCity} />
+			)}
 		</Layout>
 	)
 }
