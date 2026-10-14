@@ -1,7 +1,8 @@
 import { Fragment } from 'preact/jsx-runtime'
+
 import { CheckboxWithLocalStorage } from 'components/form/checkbox-with-local-storage'
+import { Heading } from 'components/ui/heading'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
 import './style.css'
@@ -83,7 +84,7 @@ export const TourismChecklist = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Организация</TourismHeader>
+			<Heading variant="tourism" level={2}>Организация</Heading>
 			<ul className="organisation-list">
 				{organizeListData.map(item => (
 					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
@@ -92,7 +93,7 @@ export const TourismChecklist = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Еда</TourismHeader>
+			<Heading variant="tourism" level={2}>Еда</Heading>
 			<ul className="organisation-list">
 				{foodListData.map(item => (
 					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
@@ -101,7 +102,7 @@ export const TourismChecklist = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Фотоаппарат</TourismHeader>
+			<Heading variant="tourism" level={2}>Фотоаппарат</Heading>
 			<ul className="organisation-list">
 				{photoListData.map(item => (
 					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
@@ -110,7 +111,7 @@ export const TourismChecklist = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Обязательные вещи</TourismHeader>
+			<Heading variant="tourism" level={2}>Обязательные вещи</Heading>
 			<ul className="organisation-list">
 				{thingListData.map(item => (
 					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
@@ -119,7 +120,7 @@ export const TourismChecklist = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Походные вещи</TourismHeader>
+			<Heading variant="tourism" level={2}>Походные вещи</Heading>
 			<ul className="organisation-list">
 				{tourismThingListData.map(item => (
 					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
@@ -128,7 +129,7 @@ export const TourismChecklist = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Аптечка</TourismHeader>
+			<Heading variant="tourism" level={2}>Аптечка</Heading>
 			<ul className="organisation-list">
 				{farmListData.map(item => (
 					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>

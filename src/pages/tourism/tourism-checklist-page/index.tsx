@@ -4,7 +4,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismChecklist } from 'components/tourism/ui/tourism-checklist'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
@@ -19,9 +19,7 @@ export const TourismChecklistPage: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader main>
-				Чек-лист туриста
-			</TourismHeader>
+			<Heading variant="tourism">Чек-лист туриста</Heading>
 		</TextContainer>
 
 		<TextContainer>

@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapsRegion } from 'components/tourism/tourism-maps/tourism-maps-region'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
@@ -22,7 +22,7 @@ export const TourismYaMapsRegionPage: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader main>Карта регионов России</TourismHeader>
+			<Heading variant="tourism">Карта регионов России</Heading>
 		</TextContainer>
 
 		<TextContainer>

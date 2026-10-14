@@ -1,7 +1,7 @@
 import { render } from 'preact'
 
 import { Footer } from 'components/ui/footer'
-import { Header } from 'components/ui/header'
+import { MainHeader } from 'components/ui/main-header'
 import { LocationProvider, Router, Route, ErrorBoundary } from 'preact-iso'
 import { ToastContainer } from 'toast'
 
@@ -29,7 +29,7 @@ export function App() {
 	return (
 		<LocationProvider>
 			<ErrorBoundary onError={(e) => console.log(e)}>
-				<Header />
+				<MainHeader />
 				<main>
 					<Router>
 						{indexPages}

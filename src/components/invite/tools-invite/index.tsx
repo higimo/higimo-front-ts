@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'preact'
 
-import { IntroHeader } from 'components/ui/intro-header'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { Heading } from 'components/ui/heading/Heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+import { TileGallery } from 'components/ui/tile-gallery'
 
 import { ANCHOR_LINK } from 'dic/route/ANCHOR_LINK'
 import { TOOL_LIST_DATA } from 'data/ivite-links/tools-invite'
@@ -13,7 +13,7 @@ import './style.css'
 export const ToolsInvite: FunctionComponent = () => (
 	<PrecentationContainer className="tools-intro" id={ANCHOR_LINK.service}>
 		<TextContainer>
-			<IntroHeader>Сделал сервисов</IntroHeader>
+			<Heading variant="intro" level={2}>Сделал сервисов</Heading>
 		</TextContainer>
 
 		<TextContainer>

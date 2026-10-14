@@ -9,7 +9,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { MuseumList } from 'components/tourism/museum-list'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
@@ -27,7 +27,7 @@ export const TourismMoscowMuseumPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Список музеев Москвы</TourismHeader>
+				<Heading variant="tourism">Список музеев Москвы</Heading>
 				<TourismSecondary>
 					Список музеев Москвы для посещения
 				</TourismSecondary>

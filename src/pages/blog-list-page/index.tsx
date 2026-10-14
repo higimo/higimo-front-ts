@@ -5,7 +5,7 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { BlogList } from 'components/blog/blog-list'
 import { EmptyData } from 'components/ui/empty-data'
-import { IntroHeader } from 'components/ui/intro-header'
+import { Heading } from 'components/ui/heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { PrecentationContainer } from 'components/ui/precentation-container/PrecentationContainer'
@@ -20,7 +20,7 @@ export const BlogListPage: FunctionComponent = () => {
 		<Layout title="Последние сообщения в блоге">
 			<PrecentationContainer className="last-updates">
 				<TextContainer>
-					<IntroHeader>Недавно опубликовал</IntroHeader>
+					<Heading variant="intro" level={2}>Недавно опубликовал</Heading>
 				</TextContainer>
 
 				<LoadSuspense data={newsList}>

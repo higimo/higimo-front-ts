@@ -8,7 +8,7 @@ import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps/tourism-moscow-walkaround'
 
@@ -39,7 +39,7 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Обхожу Москву</TourismHeader>
+				<Heading variant="tourism">Обхожу Москву</Heading>
 			</TextContainer>
 
 			<LoadSuspense data={stateArr}>

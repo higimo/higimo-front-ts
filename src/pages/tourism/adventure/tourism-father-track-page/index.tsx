@@ -11,7 +11,7 @@ import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
@@ -56,7 +56,7 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Путешествие с отцом</TourismHeader>
+				<Heading variant="tourism">Путешествие с отцом</Heading>
 			</TextContainer>
 
 			<TextContainer className="car-list">

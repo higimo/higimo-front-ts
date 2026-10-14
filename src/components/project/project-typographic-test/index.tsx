@@ -1,7 +1,8 @@
-import { TextContainer } from 'components/ui/text-container'
-import { FunctionComponent } from 'preact'
 import { Fragment } from 'preact/jsx-runtime'
-import { TypographicHeader } from 'components/ui/typographic-header'
+import { FunctionComponent } from 'preact'
+
+import { Heading } from 'components/ui/heading'
+import { TextContainer } from 'components/ui/text-container'
 
 export const ProjectTypographicTest: FunctionComponent = () => {
 	return (
@@ -10,7 +11,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 			{/* TODO: [MIDDLE] надо переделать на className/variant */}
-			<TypographicHeader>Формулировка задачи</TypographicHeader>
+			<Heading variant="typographic" level={2}>Формулировка задачи</Heading>
 			<div>
 				<div class="task">
 					<div class="task__text">
@@ -34,7 +35,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Ссылка на сайт</TypographicHeader>
+			<Heading variant="typographic" level={2}>Ссылка на сайт</Heading>
 			<div>
 				<div class="site-link">
 					<a href="http://kcznn.ru/">kcznn.ru</a>
@@ -46,7 +47,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Куски кода</TypographicHeader>
+			<Heading variant="typographic" level={2}>Куски кода</Heading>
 			<div>
 				<pre>
 					<div class="announce__text">
@@ -79,7 +80,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Обычные тексты</TypographicHeader>
+			<Heading variant="typographic" level={2}>Обычные тексты</Heading>
 			<div>
 				<TextContainer>
 					<h3>Три абзаца</h3>
@@ -127,7 +128,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Оформление текста</TypographicHeader>
+			<Heading variant="typographic" level={2}>Оформление текста</Heading>
 			<div class="announce__text">
 				<p>
 					В начале года <strong>по результатам Стратсессии</strong>
@@ -143,7 +144,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Ссылки</TypographicHeader>
+			<Heading variant="typographic" level={2}>Ссылки</Heading>
 			<div class="announce__text">
 				<h3>В заголовке <a href="https://superjob.ru">SuperJob</a></h3>
 				<p>
@@ -156,7 +157,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Списки</TypographicHeader>
+			<Heading variant="typographic" level={2}>Списки</Heading>
 			<div class="announce__text">
 				<ol>
 					<li>Первое</li>
@@ -196,7 +197,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Фактоиды</TypographicHeader>
+			<Heading variant="typographic" level={2}>Фактоиды</Heading>
 			<div>
 				<div class="factoid-gallery">
 					<div class="factoid-gallery__item">
@@ -238,7 +239,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Громкие слова</TypographicHeader>
+			<Heading variant="typographic" level={2}>Громкие слова</Heading>
 			<div>
 				<TextContainer>
 					<h3>Единица смысла</h3>
@@ -266,7 +267,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Оформление блоков</TypographicHeader>
+			<Heading variant="typographic" level={2}>Оформление блоков</Heading>
 			<div>
 				<TextContainer>
 					<h3>Письмо</h3>
@@ -335,7 +336,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Артефакты</TypographicHeader>
+			<Heading variant="typographic" level={2}>Артефакты</Heading>
 			<div>
 				<TextContainer>
 					<h3>Таблица на гридах</h3>
@@ -398,7 +399,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Скриншоты сайта</TypographicHeader>
+			<Heading variant="typographic" level={2}>Скриншоты сайта</Heading>
 			<div>
 				<TextContainer>
 					<p>Полная ссылка с подписью</p>
@@ -483,7 +484,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Горизонтальная галерея</TypographicHeader>
+			<Heading variant="typographic" level={2}>Горизонтальная галерея</Heading>
 			<div class="announce__horizontal horizontal-pic-gallery">
 				<div class="horizontal-pic-gallery__content">
 					<div class="horizontal-item">
@@ -523,7 +524,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Кино года</TypographicHeader>
+			<Heading variant="typographic" level={2}>Кино года</Heading>
 			<div>
 				<table class="announce__card-table">
 					<tbody>
@@ -592,7 +593,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Лейауты</TypographicHeader>
+			<Heading variant="typographic" level={2}>Лейауты</Heading>
 			<div>
 				<TextContainer>
 					<p>30% × 3</p>
@@ -645,7 +646,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Лейауты + картинки + описание</TypographicHeader>
+			<Heading variant="typographic" level={2}>Лейауты + картинки + описание</Heading>
 			<div>
 				<TextContainer>
 					<p>30% × 3</p>
@@ -887,7 +888,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>Сектора для итогов года</TypographicHeader>
+			<Heading variant="typographic" level={2}>Сектора для итогов года</Heading>
 			<div>
 				<TextContainer>
 					<p>Только сектор</p>
@@ -936,7 +937,7 @@ export const ProjectTypographicTest: FunctionComponent = () => {
 
 
 
-			<TypographicHeader>ТГ чаты</TypographicHeader>
+			<Heading variant="typographic" level={2}>ТГ чаты</Heading>
 			<div className="tg-chat">
 				<div className="tg-message tg-message--left">
 					Привет! Я администратор. Выберите опцию из меню ниже 👇

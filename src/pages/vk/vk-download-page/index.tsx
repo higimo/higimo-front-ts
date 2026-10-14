@@ -6,7 +6,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { VkDownloadForm } from 'components/vk/vk-download-form'
-import { VkHeading } from 'components/vk/vk-heading'
+import { Heading } from 'components/ui/heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
@@ -30,7 +30,7 @@ export const VkDownloadPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<VkHeading>Скачать свои альбомы</VkHeading>
+				<Heading variant="vk">Скачать свои альбомы</Heading>
 				<VkParagraph>
 					Введите ид альбома, скопируйте результат и бахните его в wget
 				</VkParagraph>
@@ -46,7 +46,7 @@ export const VkDownloadPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<VkHeading level={2}>Результат</VkHeading>
+				<Heading variant="vk" level={2}>Результат</Heading>
 			</TextContainer>
 
 			<textarea className="download-page__pre">

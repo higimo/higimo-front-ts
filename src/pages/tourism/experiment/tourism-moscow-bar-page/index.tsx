@@ -14,7 +14,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { TagGroupedList } from 'components/tourism/tag-grouped-list'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
@@ -87,7 +87,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Московские бары</TourismHeader>
+				<Heading variant="tourism">Московские бары</Heading>
 			</TextContainer>
 
 			<LoadSuspense data={barPoiMoscow}>

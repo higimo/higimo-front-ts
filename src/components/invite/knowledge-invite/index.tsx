@@ -1,9 +1,9 @@
 import { IntroImageMappingType } from 'utils.type'
 
-import { IntroHeader } from 'components/ui/intro-header'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { Heading } from 'components/ui/heading/Heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
+import { TileGallery } from 'components/ui/tile-gallery'
 
 import intersection from './img/intersection.svg'
 import obuchenie    from './img/obuchenie.png'
@@ -28,7 +28,7 @@ const imageMapping: IntroImageMappingType = {
 export const KnowledgeInvite = () => (
 	<PrecentationContainer className="share-knowledge">
 		<TextContainer>
-			<IntroHeader>Делюсь знаниями</IntroHeader>
+			<Heading variant="intro" level={2}>Делюсь знаниями</Heading>
 		</TextContainer>
 
 		<TextContainer>

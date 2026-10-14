@@ -6,7 +6,7 @@ import { useState, useCallback, useEffect } from 'preact/hooks'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
-import { VkHeading } from 'components/vk/vk-heading'
+import { Heading } from 'components/ui/heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
@@ -47,7 +47,7 @@ export const VkAlbumListPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<VkHeading>Список альбомов</VkHeading>
+				<Heading variant="vk">Список альбомов</Heading>
 				<VkParagraph>
 					Альбомов: {albums.length} {' | '}
 					Публичных: {albums.filter(i => !i.is_locked).length} {' | '}

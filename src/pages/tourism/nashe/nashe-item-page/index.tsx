@@ -13,7 +13,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { NasheLineupList } from 'components/tourism/concert/nashe-lineup-list'
 import { NasheLineupItem } from 'components/tourism/concert/nashe-lineup-item'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
@@ -49,7 +49,7 @@ export const NasheItemPage: FunctionComponent = () => {
 
 
 			<TextContainer>
-				<TourismHeader secondary>Другие лайнапы</TourismHeader>
+				<Heading variant="tourism" level={2}>Другие лайнапы</Heading>
 
 				<NasheLineupList />
 			</TextContainer>

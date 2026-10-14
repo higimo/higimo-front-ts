@@ -16,7 +16,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { TourismAdventure } from 'components/tourism/adventure/tourism-adventure'
 import { TourismAdventureEmpty } from 'components/tourism/adventure/tourism-adventure-empty'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismRow } from 'components/tourism/ui/tourism-row'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
@@ -42,14 +42,14 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Мои приключения</TourismHeader>
+				<Heading variant="tourism">Мои приключения</Heading>
 				<TourismSecondary>
 					Планирование путешествий, статистика, отчёты с впечатлениями, памятки
 				</TourismSecondary>
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Билеты в приключения</TourismHeader>
+				<Heading variant="tourism" level={2}>Билеты в приключения</Heading>
 				<TourismRow>
 					<TourismAdventure adventure={ADVENTURE[0]!} />
 					<TourismAdventureEmpty />
@@ -57,9 +57,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>
-					Списки посещения и статистика
-				</TourismHeader>
+				<Heading variant="tourism" level={2}>Списки посещения и статистика</Heading>
 				<FactoidList
 					mini
 					countInRow={6}
@@ -100,7 +98,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Оценка городов</TourismHeader>
+				<Heading variant="tourism" level={2}>Оценка городов</Heading>
 
 				<LoadSuspense data={cityListJsonData}>
 					<EmptyData data={cityListJsonData}>
@@ -110,12 +108,12 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Эксперименты в Я.Картах</TourismHeader>
+				<Heading variant="tourism" level={2}>Эксперименты в Я.Картах</Heading>
 				<TourismExperimentMaps />
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Конструктор карт</TourismHeader>
+				<Heading variant="tourism" level={2}>Конструктор карт</Heading>
 
 				<LoadSuspense data={cityListJsonData}>
 					<EmptyData data={cityListJsonData}>
@@ -127,7 +125,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Нашествие</TourismHeader>
+				<Heading variant="tourism" level={2}>Нашествие</Heading>
 				<TourismSecondary>
 					Путешествия — не только города, но и фестивали радости.
 				</TourismSecondary>

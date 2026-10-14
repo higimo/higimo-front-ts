@@ -5,7 +5,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { NasheAlbumList } from 'components/tourism/concert/nashe-album-list'
 import { NasheLineupList } from 'components/tourism/concert/nashe-lineup-list'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
@@ -20,14 +20,14 @@ export const NasheListPage: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader main>Нашествие</TourismHeader>
+			<Heading variant="tourism">Нашествие</Heading>
 			<TourismSecondary>
 				Я дважды был на Нашествии. В 2017 и 2018 годах.
 			</TourismSecondary>
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Лайнапы Нашествия</TourismHeader>
+			<Heading variant="tourism" level={2}>Лайнапы Нашествия</Heading>
 			<TourismSecondary>
 				С подсветами того, что посетил.
 			</TourismSecondary>
@@ -35,7 +35,7 @@ export const NasheListPage: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TourismHeader secondary>Фотоотчёты Нашествия во ВКонтакте</TourismHeader>
+			<Heading variant="tourism" level={2}>Фотоотчёты Нашествия во ВКонтакте</Heading>
 			<NasheAlbumList />
 		</TextContainer>
 	</Layout>

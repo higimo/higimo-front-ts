@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { TripDay } from 'components/ui/block-renderer/types'
 
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 
 import cs from 'classnames'
@@ -11,7 +11,7 @@ export const TripDayRenderer: FunctionComponent<TripDay> = ({
 	events,
 }) => (
 	<div className="trip-day">
-		<TourismHeader secondary>{title}</TourismHeader>
+		<Heading variant="tourism" level={2}>{title}</Heading>
 		<div className="trip-day__events">
 			{events.map((event, index) => (
 				<div key={index} className="trip-day__event">

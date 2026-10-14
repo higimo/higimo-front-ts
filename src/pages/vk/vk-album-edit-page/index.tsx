@@ -8,7 +8,7 @@ import { useState, useCallback, useEffect } from 'preact/hooks'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
-import { VkHeading } from 'components/vk/vk-heading'
+import { Heading } from 'components/ui/heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumEdit } from 'components/vk/vk-photo-album-edit'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
@@ -59,7 +59,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<VkHeading>Редактирование описаний альбома</VkHeading>
+				<Heading variant="vk">Редактирование описаний альбома</Heading>
 				<VkParagraph>
 					Всего фотографий: {photos.length}
 					<br />

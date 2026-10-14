@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'preact'
 
-import { IntroHeader } from 'components/ui/intro-header'
+import { Heading } from 'components/ui/heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -11,7 +11,7 @@ import './style.css'
 export const LookedThisInvite: FunctionComponent = () => (
 	<PrecentationContainer className="looked-this">
 		<TextContainer>
-			<IntroHeader>Смотрю и читаю</IntroHeader>
+			<Heading variant="intro" level={2}>Смотрю и читаю</Heading>
 		</TextContainer>
 
 		<TextContainer>

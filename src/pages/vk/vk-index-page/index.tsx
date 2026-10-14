@@ -4,7 +4,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { TileGallery } from 'components/ui/tile-gallery'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
-import { VkHeading } from 'components/vk/vk-heading'
+import { Heading } from 'components/ui/heading'
 
 import { VK_PAGE_LIST } from 'data/vk-page-list'
 
@@ -17,7 +17,7 @@ export const VkIndexPage: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<VkHeading>VK tool</VkHeading>
+			<Heading variant="vk">VK tool</Heading>
 
 			<TileGallery
 				list={VK_PAGE_LIST}

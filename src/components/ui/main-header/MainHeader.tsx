@@ -50,7 +50,7 @@ const secretMenu = [
 
 type HeaderPropsType = {}
 
-export const Header: FunctionComponent<HeaderPropsType> = () => {
+export const MainHeader: FunctionComponent<HeaderPropsType> = () => {
 	if (isNotFound.value) {
 		return null
 	}

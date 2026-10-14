@@ -10,7 +10,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismCityStarForm } from 'components/tourism/city-star/tourism-city-star'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 
 import '../tourism-style.css'
@@ -27,7 +27,7 @@ export const TourismCityStarPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Оценки городов</TourismHeader>
+				<Heading variant="tourism">Оценки городов</Heading>
 			</TextContainer>
 
 			<TourismCityStarForm />

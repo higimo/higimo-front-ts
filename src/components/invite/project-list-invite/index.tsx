@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { PortfolioMetaType, PortfolioProjectFullType } from 'api-types/portfolio.types'
 
-import { IntroHeader } from 'components/ui/intro-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { ProjectList } from 'components/project/project-list'
 import { ProjectMore } from 'components/project/project-more'
 import { ProjectTag } from 'components/project/project-tag'
@@ -24,7 +24,7 @@ export const ProjectListInvite: FunctionComponent<ProjectListInvitePropsType> = 
 }) => highlightProjectList && (
 	<div className="project-list project-list--short" id={ANCHOR_LINK.done}>
 		<TextContainer>
-			<IntroHeader>Сделал</IntroHeader>
+			<Heading variant="intro" level={2}>Сделал</Heading>
 		</TextContainer>
 
 		<TextContainer className="project-list__filter">

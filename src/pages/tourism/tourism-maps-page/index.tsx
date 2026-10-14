@@ -9,7 +9,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
+import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 
@@ -29,18 +29,16 @@ export const TourismMapsPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>
-					Карты путешествий
-				</TourismHeader>
+				<Heading variant="tourism">Карты путешествий</Heading>
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Эксперименты в Я.Картах</TourismHeader>
+				<Heading variant="tourism" level={2}>Эксперименты в Я.Картах</Heading>
 				<TourismExperimentMaps />
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Конструктор карт</TourismHeader>
+				<Heading variant="tourism" level={2}>Конструктор карт</Heading>
 				<LoadSuspense data={yamapList}>
 					<EmptyData data={yamapList}>
 						<TourismWalkList

@@ -19,12 +19,12 @@ import { useSwitcher } from 'hook/use-switcher'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { FullWidthContainer } from 'components/ui/full-width-container/FullWidthContainer'
+import { Heading } from 'components/ui/heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { Switcher } from 'components/ui/switcher/Switcher'
 import { Tag } from 'components/ui/tag/Tag'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
-import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
@@ -139,7 +139,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader main>Результаты путешествий</TourismHeader>
+				<Heading variant="tourism" level={1}>Результаты путешествий</Heading>
 			</TextContainer>
 
 			<TextContainer>
@@ -152,7 +152,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			</TextContainer>
 
 			<TextContainer>
-				<TourismHeader secondary>Статистика по миру</TourismHeader>
+				<Heading variant="tourism" level={1}>Статистика по миру</Heading>
 				<TourismSecondary>
 					Сколько мест посетил из намеченного списка. И как называется список.
 				</TourismSecondary>
@@ -160,12 +160,12 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			<TourismStatisticWorld total={poiList} />
 
 			<TextContainer>
-				<TourismHeader secondary>По России</TourismHeader>
+				<Heading variant="tourism" level={1}>По России</Heading>
 			</TextContainer>
 			<TourismStatisticRussia total={poiList} />
 
 			<TextContainer>
-				<TourismHeader secondary>Впечатляющие места</TourismHeader>
+				<Heading variant="tourism" level={1}>Впечатляющие места</Heading>
 				<TourismSecondary>
 					Здесь нет городов, где живут люди. Только точки интереса на карте, куда мне интересно попасть
 				</TourismSecondary>
@@ -173,7 +173,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			<TourismStatisticMustPoi total={poiList} />
 
 			<TextContainer>
-				<TourismHeader secondary>По Москве</TourismHeader>
+				<Heading variant="tourism" level={1}>По Москве</Heading>
 				<TourismSecondary>
 					Я очень люблю Москву. Она — Русское поле экспериментов. Например, в Курьяново построили двухэтажные домики, которые стали прообразом для застройки моей родной Шахуньи. Поэтому, мне важно побывать во всех округах и районах Москвы, на всех станциях метро. А ещё я хочу обойти кажду улицу внутри МКАД.
 				</TourismSecondary>
@@ -181,7 +181,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			<TourismStatisticMoscow total={poiList} />
 
 			<TextContainer>
-				<TourismHeader secondary>Список для путешествий</TourismHeader>
+				<Heading variant="tourism" level={1}>Список для путешествий</Heading>
 				<TourismSecondary>
 					Можно отобразить таблицей, карточками и посмотреть на карте. С белой подложкой то, где я уже был. Где не был — можно вписаться в путешествие)
 				</TourismSecondary>
