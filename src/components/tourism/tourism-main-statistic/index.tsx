@@ -5,7 +5,7 @@ import { TextContainer } from 'components/ui/text-container'
 import { TourismHeader } from 'components/tourism/ui/tourism-header'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
 import { TourismStatisticMoscow } from 'components/tourism/tourism-statistic/tourism-statistic-moscow'
-import { TourismStatisticMustPov } from 'components/tourism/tourism-statistic/tourism-statistic-must-pov'
+import { TourismStatisticMustPoi } from 'components/tourism/tourism-statistic/tourism-statistic-must-poi'
 import { TourismStatisticRussia } from 'components/tourism/tourism-statistic/tourism-statistic-russia'
 import { TourismStatisticWorld } from 'components/tourism/tourism-statistic/tourism-statistic-world'
 
@@ -45,7 +45,7 @@ export const TourismMainStatistic: FunctionComponent<TourismMainStatisticPropsTy
 				Здесь нет городов, где живут люди. Только точки интереса на карте, куда мне интересно попасть
 			</TourismSecondary>
 		</TextContainer>
-		<TourismStatisticMustPov total={totalStatistic} />
+		<TourismStatisticMustPoi total={totalStatistic} />
 		<br /><br />
 
 		<TextContainer>

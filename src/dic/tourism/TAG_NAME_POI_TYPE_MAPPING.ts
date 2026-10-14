@@ -1,4 +1,4 @@
-import { subjectPederationTypes, onlyPovTypes } from 'api-types/tourism.types'
+import { subjectPederationTypes, onlyPoiTypes } from 'api-types/tourism.types'
 import { TAGS_NAME } from 'dic/tourism/TAGS_NAME'
 
 export const TAG_NAME_POI_TYPE_MAPPING: Record<(typeof TAGS_NAME)[number], readonly any[]> = {
@@ -19,7 +19,7 @@ export const TAG_NAME_POI_TYPE_MAPPING: Record<(typeof TAGS_NAME)[number], reado
 	'Районы Москвы': ['район Москвы'],
 	'Станции метро Москвы': ['метро Москвы'],
 
-	'Точки интереса': onlyPovTypes,
+	'Точки интереса': onlyPoiTypes,
 	'Вымершие города': ['вымерший город'],
 	'Крепости': ['крепость'],
 	'Каньоны': ['каньон'],

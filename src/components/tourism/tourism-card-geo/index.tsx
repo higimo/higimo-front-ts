@@ -11,40 +11,40 @@ type TourismCardGeoPropsType = {
 export const TourismCardGeo: FunctionComponent<TourismCardGeoPropsType> = ({ items }) => {
 	return (
 		<div className="tourism-card-geo">
-			{items.map(povItem => (
+			{items.map(poiItem => (
 				<div
 					className={cs(
 						'tourism-card-geo__item',
 						{
-							'tourism-card-geo__item--visited': 'visited' in povItem && povItem.visited
+							'tourism-card-geo__item--visited': 'visited' in poiItem && poiItem.visited
 						}
 					)}
 				>
 					<div className="tourism-card-geo__title">
-						{povItem.title}
+						{poiItem.title}
 					</div>
 					<div className="tourism-card-geo__coord">
-						{povItem.coord.join(', ')}
+						{poiItem.coord.join(', ')}
 					</div>
 					<div className="tourism-card-geo__country">
 						{[
-							'okrug' in povItem && povItem.okrug,
-							'region' in povItem && povItem.region,
-							'country' in povItem ? povItem.country : 'Россия',
+							'okrug' in poiItem && poiItem.okrug,
+							'region' in poiItem && poiItem.region,
+							'country' in poiItem ? poiItem.country : 'Россия',
 						].filter(Boolean).join(', ')}
 					</div>
-					{'description' in povItem && (
+					{'description' in poiItem && (
 						<div className="tourism-card-geo__description">
-							{povItem.description}
+							{poiItem.description}
 						</div>
 					)}
-					{'population' in povItem && (
+					{'population' in poiItem && (
 						<div className="tourism-card-geo__population">
-							Население: {povItem.population} К
+							Население: {poiItem.population} К
 						</div>
 					)}
 					<div className="tourism-card-geo__type">
-						{povItem.type}
+						{poiItem.type}
 					</div>
 				</div>
 			))}

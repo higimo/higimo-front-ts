@@ -16,19 +16,19 @@ import '../../tourism-style.css'
 import '../yandex-map.css'
 
 type WalkaroundType = {
-	moscowPovPoints: SimpleMapPoint[]
+	moscowPoiPoints: SimpleMapPoint[]
 	stateYear2021: YaMapPolygon[]
 	stateYear2024: YaMapPolygon[]
 }
 
 export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 	const [ jsonCollection ] = useMultiJsonApi<WalkaroundType>({
-		moscowPovPoints: '/json/tourism/moscow-pov-points.json',
+		moscowPoiPoints: '/json/tourism/moscow-pov-points.json',
 		stateYear2021: '/json/tourism/walk-moscow-2021.json',
 		stateYear2024: '/json/tourism/walk-moscow-2024.json',
 	})
 
-	const stateArr = [jsonCollection.moscowPovPoints, jsonCollection.stateYear2021, jsonCollection.stateYear2024]
+	const stateArr = [jsonCollection.moscowPoiPoints, jsonCollection.stateYear2021, jsonCollection.stateYear2024]
 
 	return (
 		<Layout title="Обхожу Москву" className="tourism-identy-page">
@@ -45,7 +45,7 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 			<LoadSuspense data={stateArr}>
 				<EmptyData data={stateArr}>
 					<TourismMoscowWalkaround
-						moscowPovPoints={jsonCollection.moscowPovPoints.data}
+						moscowPoiPoints={jsonCollection.moscowPoiPoints.data}
 						stateYear2021={jsonCollection.stateYear2021.data}
 						stateYear2024={jsonCollection.stateYear2024.data}
 					/>

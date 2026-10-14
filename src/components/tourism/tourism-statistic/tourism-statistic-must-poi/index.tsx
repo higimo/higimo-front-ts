@@ -1,21 +1,21 @@
 import { FunctionComponent } from 'preact'
-import { onlyPovTypes } from 'api-types/tourism.types'
+import { onlyPoiTypes } from 'api-types/tourism.types'
 import { PoiType } from 'api-types/tourism.types'
 
 import { FactoidList } from 'components/ui/factoid-list/FactoidList'
 
-type TourismStatisticMustPovPropsType = {
+type TourismStatisticMustPoiPropsType = {
 	total: PoiType[]
 }
 
-export const TourismStatisticMustPov: FunctionComponent<TourismStatisticMustPovPropsType> = ({ total }) => {
-	const russianPov = total.filter(item => item.country === 'Россия')
-	const onlyPov = russianPov.filter(item => onlyPovTypes.includes(item.type as any))
-	const castle = russianPov.filter(item => item.type === 'крепость')
-	const deadTown = russianPov.filter(item => item.type === 'вымерший город')
-	const quarrie = russianPov.filter(item => item.type === 'каменоломни')
-	const park = russianPov.filter(item => item.type === 'парк')
-	const monastery = russianPov.filter(item => item.type === 'монастырь')
+export const TourismStatisticMustPoi: FunctionComponent<TourismStatisticMustPoiPropsType> = ({ total }) => {
+	const russianPoi = total.filter(item => item.country === 'Россия')
+	const onlyPoi = russianPoi.filter(item => onlyPoiTypes.includes(item.type as any))
+	const castle = russianPoi.filter(item => item.type === 'крепость')
+	const deadTown = russianPoi.filter(item => item.type === 'вымерший город')
+	const quarrie = russianPoi.filter(item => item.type === 'каменоломни')
+	const park = russianPoi.filter(item => item.type === 'парк')
+	const monastery = russianPoi.filter(item => item.type === 'монастырь')
 
 	return (
 		<FactoidList
@@ -23,8 +23,8 @@ export const TourismStatisticMustPov: FunctionComponent<TourismStatisticMustPovP
 			factoids={[
 				{
 					description: 'впечатляющие места',
-					digit: onlyPov.filter(i => i.visited).length,
-					digitFrom: `из ${onlyPov.length}`,
+					digit: onlyPoi.filter(i => i.visited).length,
+					digitFrom: `из ${onlyPoi.length}`,
 				},
 				{
 					description: 'крепости',

@@ -31,36 +31,36 @@ export const TourismTableGeo: FunctionComponent<TourismTableGeoPropsType> = ({
 					население
 				</div>
 			</div>
-			{items.map(povItem => (
+			{items.map(poiItem => (
 				<div
 					className={cs(
 						'table-geo__item table-geo-row',
 						{
-							'table-geo-row--visited': 'visited' in povItem && povItem.visited
+							'table-geo-row--visited': 'visited' in poiItem && poiItem.visited
 						}
 					)}
 				>
 					<div className="table-geo-row__title">
-						{povItem.title}
+						{poiItem.title}
 						<div className="table-geo-row__coord">
-							{povItem.coord.join(', ')}
+							{poiItem.coord.join(', ')}
 						</div>
 					</div>
 					<div className="table-geo-row__country">
-						{'country' in povItem ? povItem.country : 'Россия'}
+						{'country' in poiItem ? poiItem.country : 'Россия'}
 					</div>
-					{'description' in povItem && (
+					{'description' in poiItem && (
 						<div className="table-geo-row__description">
-							{povItem.description}
+							{poiItem.description}
 						</div>
 					)}
-					{'population' in povItem && (
+					{'population' in poiItem && (
 						<div className="table-geo-row__population">
-							{povItem.population}
+							{poiItem.population}
 						</div>
 					)}
 					<div className="table-geo-row__type">
-						{povItem.type}
+						{poiItem.type}
 					</div>
 				</div>
 			))}

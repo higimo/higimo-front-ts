@@ -13,17 +13,17 @@ import { GEO_OBJECT_OPTIONS } from 'config/GEO-OBJECT-OPTIONS'
 import { TORUSM_MAP_MODE } from 'dic/tourism/TORUSM_MAP_MODE'
 
 type TourismMoscowWalkaroundPropsType = {
-	moscowPovPoints: SimpleMapPoint[] | null
+	moscowPoiPoints: SimpleMapPoint[] | null
 	stateYear2021: YaMapPolygon[] | null
 	stateYear2024: YaMapPolygon[] | null
 }
 
 export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundPropsType> = ({
-	moscowPovPoints,
+	moscowPoiPoints,
 	stateYear2021,
 	stateYear2024,
 }) => {
-	if (!moscowPovPoints || !stateYear2021 || !stateYear2024) {
+	if (!moscowPoiPoints || !stateYear2021 || !stateYear2024) {
 		return null
 	}
 	const [ isMode, setMode ] = useSwitcher<ValueOf<typeof TORUSM_MAP_MODE>>(TORUSM_MAP_MODE['2024'])
@@ -49,9 +49,9 @@ export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundP
 					<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
 				)))
 		}
-		if (isMode(TORUSM_MAP_MODE['POV'])) {
-			return moscowPovPoints.map((pov) => (
-				<Placemark geometry={pov.coord} properties={{ hintContent: pov.title }} />
+		if (isMode(TORUSM_MAP_MODE['POI'])) {
+			return moscowPoiPoints.map((poi) => (
+				<Placemark geometry={poi.coord} properties={{ hintContent: poi.title }} />
 			))
 		}
 		return null
@@ -65,7 +65,7 @@ export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundP
 						{ active: isMode(TORUSM_MAP_MODE[2024]), onClick: setMode(TORUSM_MAP_MODE[2024]), title: '2024 год'},
 						{ active: isMode(TORUSM_MAP_MODE[2021]), onClick: setMode(TORUSM_MAP_MODE[2021]), title: '2021 год'},
 						{ active: isMode(TORUSM_MAP_MODE['21vs24']), onClick: setMode(TORUSM_MAP_MODE['21vs24']), title: 'Сравнение 2021 и 2024'},
-						{ active: isMode(TORUSM_MAP_MODE['POV']), onClick: setMode(TORUSM_MAP_MODE['POV']), title: 'Точки интереса'},
+						{ active: isMode(TORUSM_MAP_MODE['POI']), onClick: setMode(TORUSM_MAP_MODE['POI']), title: 'Точки интереса'},
 					]}
 				/>
 			</TextContainer>

@@ -22,9 +22,12 @@ import { VISITED_MAP } from 'dic/tourism/VISITED_MAP'
 import { VISUALIZATOR_MAP } from 'dic/tourism/VISUALIZATOR_MAP'
 
 type TourismStatisticVisualizerPropsType = {
-	pov: PoiType[]
+	poi: PoiType[]
 }
-export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisualizerPropsType> = ({ pov }) => {
+
+export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisualizerPropsType> = ({
+	poi
+}) => {
 	const {
 		selectedTagTitles, toggleTag, isSelected,
 	} = useSmartTags({
@@ -38,13 +41,13 @@ export const TourismStatisticVisualizer: FunctionComponent<TourismStatisticVisua
 	const [isChooseVisitedMode, setVisitedMode] = useSwitcher<ValueOf<typeof VISITED_MAP>>(VISITED_MAP.INIT)
 
 	const filtredRussiaCity = useMemo(
-		() => pov
+		() => poi
 			.filter(handleFilterMapPoint({
 				selectedIds: selectedTagTitles,
 				isChooseVisitedMode,
 			}))
 			.sort(handleSort(isChooseSortMode)),
-		[pov, selectedTagTitles, isChooseVisitedMode, isChooseSortMode]
+		[poi, selectedTagTitles, isChooseVisitedMode, isChooseSortMode]
 	)
 
 	return (

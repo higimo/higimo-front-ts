@@ -154,7 +154,7 @@ export type PoiType =
 	| Placefield
 
 
-type BarPovTagType = ValueOf<typeof BAR_TAG_CATEGORY>[number]
+type BarPoiTagType = ValueOf<typeof BAR_TAG_CATEGORY>[number]
 
 export type BarIconDictType = KeyOf<typeof BAR_ICON_MAPPING>
 export type BarIconColorType = ValueOf<typeof BAR_ICON_MAPPING>
@@ -170,20 +170,20 @@ export type BarPoiType = {
 	rating?: string
 	adress?: string
 	description?: string
-	tags: BarPovTagType[]
+	tags: BarPoiTagType[]
 }
 
-type BarPovRealTagType = {
+type BarPoiRealTagType = {
 	id: number
 	title: string
 }
 
-export type BarPovRealTags = Omit<BarPoiType, 'tags'> & {
-	tags: BarPovRealTagType[]
+export type BarPoiRealTags = Omit<BarPoiType, 'tags'> & {
+	tags: BarPoiRealTagType[]
 }
 
 export const cityTypes = ['вымерший город', 'округ Москвы', 'город-спутник', 'город', 'деревня', 'ЗАТО'] as const
-export const onlyPovTypes = ['крепость', 'каньон', 'парк', 'монастырь', 'каменоломни'] as const
+export const onlyPoiTypes = ['крепость', 'каньон', 'парк', 'монастырь', 'каменоломни'] as const
 export const subjectPederationTypes = ['республика', 'край', 'область', 'город федерального значения', 'автономный область', 'автономный округ'] as const
 
 export type MoscowMuseumType = {

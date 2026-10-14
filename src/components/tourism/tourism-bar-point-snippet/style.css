@@ -1,4 +1,4 @@
-.bar-pov__gallery {
+.bar-poi__gallery {
 	--grid-count: 1;
 	--grid-gap: 8px;
 
@@ -16,24 +16,24 @@
 }
 
 @media (min-width: 576px) {
-	.bar-pov__gallery {
+	.bar-poi__gallery {
 		--grid-count: 2;
 	}
 }
 
 @media (min-width: 960px) {
-	.bar-pov__gallery {
+	.bar-poi__gallery {
 		--grid-count: 3;
 	}
 }
 
 @media (min-width: 1280px) {
-	.bar-pov__gallery {
+	.bar-poi__gallery {
 		--grid-count: 4;
 	}
 }
 
-.bar-pov__snippet {
+.bar-poi__snippet {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
@@ -42,12 +42,12 @@
 }
 
 @media (min-width: 960px) {
-	.bar-pov__snippet {
+	.bar-poi__snippet {
 		flex-direction: row;
 	}
 }
 
-.bar-pov__info {
+.bar-poi__info {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
@@ -57,14 +57,14 @@
 }
 
 @media (min-width: 960px) {
-	.bar-pov__info {
+	.bar-poi__info {
 		text-align: right;
 		width: 30%;
 		max-width: 300px;
 	}
 }
 
-.bar-pov__content {
+.bar-poi__content {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
@@ -76,20 +76,20 @@
 }
 
 
-.bar-pov__snippet--visited .bar-pov__content {
+.bar-poi__snippet--visited .bar-poi__content {
 	background: rgb(37, 61, 46, .7);
 	color: #fff;
 	border-style: solid;
 	border-color: rgba(255, 255, 255, .2);
 }
 
-.bar-pov__title {
+.bar-poi__title {
 	font-size: 24px;
 	font-weight: 500;
 	line-height: 1.2;
 }
 
-.bar-pov__meta {
+.bar-poi__meta {
 	display: flex;
 	flex-direction: row;
 	gap: 16px;
@@ -98,7 +98,7 @@
 }
 
 @media (min-width: 960px) {
-	.bar-pov__meta {
+	.bar-poi__meta {
 		display: flex;
 		flex-direction: column;
 		gap: 0px;
@@ -106,6 +106,6 @@
 	}
 }
 
-.bar-pov__description {
+.bar-poi__description {
 	font-size: 16px;
 }

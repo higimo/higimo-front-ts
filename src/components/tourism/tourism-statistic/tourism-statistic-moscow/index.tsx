@@ -8,10 +8,10 @@ type TourismStatisticMoscowPropsType = {
 }
 
 export const TourismStatisticMoscow: FunctionComponent<TourismStatisticMoscowPropsType> = ({ total }) => {
-	const russianPov = total.filter(item => 'country' in item && item.country === 'Россия')
-	const moscowAdmOkrug = russianPov.filter(item => item.type === 'административный округ Москвы')
-	const moscowTowns = russianPov.filter(item => item.type === 'поселение Москвы')
-	const moscowDistrict = russianPov.filter(item => item.type === 'район Москвы')
+	const russianPoi = total.filter(item => 'country' in item && item.country === 'Россия')
+	const moscowAdmOkrug = russianPoi.filter(item => item.type === 'административный округ Москвы')
+	const moscowTowns = russianPoi.filter(item => item.type === 'поселение Москвы')
+	const moscowDistrict = russianPoi.filter(item => item.type === 'район Москвы')
 
 	return (
 		<FactoidList

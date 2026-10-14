@@ -47,7 +47,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 		town:              '/json/tourism/town.json',
 	})
 
-	const povList: PoiType[] = ([] as PoiType[])
+	const poiList: PoiType[] = ([] as PoiType[])
 		.concat(jsonCollection.admOrkugMoscow.data || [])
 		.concat(jsonCollection.castle.data || [])
 		.concat(jsonCollection.country.data || [])
@@ -82,8 +82,8 @@ export const TourismVisitedPage: FunctionComponent = () => {
 
 			<LoadSuspense data={jsonDateArr}>
 				<EmptyData data={jsonDateArr}>
-					<TourismMainStatistic totalStatistic={povList} />
-					<TourismStatisticVisualizer pov={povList} />
+					<TourismMainStatistic totalStatistic={poiList} />
+					<TourismStatisticVisualizer poi={poiList} />
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

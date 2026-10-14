@@ -8,7 +8,7 @@ type TourismStatisticWorldPropsType = {
 }
 
 export const TourismStatisticWorld: FunctionComponent<TourismStatisticWorldPropsType> = ({ total }) => {
-	const russianPov = total.filter(item => item.country === 'Россия')
+	const russianPoi = total.filter(item => item.country === 'Россия')
 	const aroundRussia = total.filter(item => item.country !== 'Россия')
 
 	return (
@@ -22,8 +22,8 @@ export const TourismStatisticWorld: FunctionComponent<TourismStatisticWorldProps
 				},
 				{
 					description: 'всего посетил в России',
-					digit: russianPov.filter(i => i.visited).length,
-					digitFrom: `из ${russianPov.length}`,
+					digit: russianPoi.filter(i => i.visited).length,
+					digitFrom: `из ${russianPoi.length}`,
 				},
 				{
 					description: 'посетил вне РФ',

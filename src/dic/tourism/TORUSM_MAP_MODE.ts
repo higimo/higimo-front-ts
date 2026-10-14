@@ -3,5 +3,5 @@ export const TORUSM_MAP_MODE = {
 	'2024':   '2024',
 	'2021':   '2021',
 	'21vs24': '21vs24',
-	'POV':    'POV',
+	'POI':    'POI',
 } as const

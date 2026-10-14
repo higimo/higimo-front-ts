@@ -1,4 +1,4 @@
-import { BarPoiType, BarPovRealTags } from 'api-types/tourism.types'
+import { BarPoiType, BarPoiRealTags } from 'api-types/tourism.types'
 import { Coord } from 'utils.type'
 import { FunctionComponent } from 'preact'
 import { TagCategory } from 'types'
@@ -31,8 +31,8 @@ import '../yandex-map.css'
 export const TourismMoscowBarPage: FunctionComponent = () => {
 	const [ barPoiMoscow ] = useApi<BarPoiType[]>(API_ROUTE.moscowBars)
 
-	const normalizedTagsBarPovMoscow = useMemo(
-		() => (barPoiMoscow.data || []).map((item: BarPoiType): BarPovRealTags => ({
+	const normalizedTagsBarPoiMoscow = useMemo(
+		() => (barPoiMoscow.data || []).map((item: BarPoiType): BarPoiRealTags => ({
 			...item,
 			tags: item.tags.map((tagName, index) => ({
 				id: index,
@@ -73,9 +73,9 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 	// TODO: [USE_TAGS] есть же хук useYearFilter(AND_GROUP_STRATEGY)
 	const filteredData = useMemo(
 		() => {
-			return filterTagAnyStrategy(normalizedTagsBarPovMoscow, { all: selectedTagTitles })
+			return filterTagAnyStrategy(normalizedTagsBarPoiMoscow, { all: selectedTagTitles })
 		},
-		[normalizedTagsBarPovMoscow, selectedTagTitles]
+		[normalizedTagsBarPoiMoscow, selectedTagTitles]
 	)
 
 	return (
@@ -93,7 +93,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 			<LoadSuspense data={barPoiMoscow}>
 				<EmptyData data={barPoiMoscow}>
 					<div className="tourism-maps-moscow-bar">
-						<TourismMapGeo<BarPovRealTags, Coord>
+						<TourismMapGeo<BarPoiRealTags, Coord>
 							items={filteredData}
 							zoom={12}
 							center={[55.758772, 37.617933]}
@@ -111,8 +111,8 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 							toggleAllInCategory={toggleAllInCategory}
 						/>
 						{filteredData && (
-							<div className="bar-pov__gallery">
-								{filteredData.map((mapPoint: BarPovRealTags) => (
+							<div className="bar-poi__gallery">
+								{filteredData.map((mapPoint: BarPoiRealTags) => (
 									<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
 								))}
 							</div>
