@@ -8,7 +8,6 @@ type MaybeLinkPropsType = ClassNameType & {
 	isHref?: boolean
 }
 
-// TODO: [MIDDLE] мб, здесь делать проверку isHref={!compareRoute(href, path)}, исследовать как используется
 export const MaybeLink: FunctionComponent<MaybeLinkPropsType> = ({
 	href,
 	isHref = true,
