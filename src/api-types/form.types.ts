@@ -36,5 +36,5 @@ type FormFieldScheme<K extends PropertyKey> =
  * Если добавишь лишний ключ — тоже ошибка.
  */
 export type FormScheme<T> = {
-	[K in keyof T]: FormFieldScheme<K>
+	[K in keyof T]-?: FormFieldScheme<K>
 }
