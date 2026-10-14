@@ -4,15 +4,14 @@ import { LinkDataType } from 'utils.type'
 import { copyToClipboard } from 'utils/browser/copy-to-clipboard'
 
 
-type HiringResponseResumeLinkItemPropsType = LinkDataType & { copy: string }
+type HiringResponseResumeLinkItemPropsType = LinkDataType
 
 export const HiringResponseResumeLinkItem: FunctionComponent<HiringResponseResumeLinkItemPropsType> = ({
 	title,
 	href,
-	copy,
 	pdf,
 }) => {
-	const handleCopyClick = () => copyToClipboard(copy)
+	const handleCopyClick = () => copyToClipboard(href as string)
 
 	return (
 		<span>
@@ -20,9 +19,7 @@ export const HiringResponseResumeLinkItem: FunctionComponent<HiringResponseResum
 			{pdf && (
 				<a href={pdf}>{' '}[PDF]</a>
 			)}
-			{copy && (
-				<span onClick={handleCopyClick}>{' '}(⧉)</span>
-			)}
+			<span onClick={handleCopyClick}>{' '}(⧉)</span>
 		</span>
 	)
 }

@@ -1,28 +1,30 @@
 import { LinkDataType } from "utils.type"
 
+import { EXTERNAL_LINK } from "dic/route/EXTERNAL_LINK"
+
 export const HIRING_LINK: LinkDataType[] = [
 	{
 		title: 'LinkedIn',
-		href: 'https://www.linkedin.com/feed/',
+		href: EXTERNAL_LINK.linkedin,
 	},
 	{
 		title: 'hh',
-		href: 'https://hh.ru/search/vacancy?resume=52d43beeff10b0af7c0039ed1f623763446351&from=resumelist&hhtmFrom=applicant_profile',
+		href: EXTERNAL_LINK.hh,
 	},
 	{
 		title: 'hirify',
-		href: 'https://hirify.me/?grade=middle,senior,lead,junior,head&sources=telegram,hirify,ru_global&specializations=frontend_dev',
+		href: EXTERNAL_LINK.hirify,
 	},
 	{
 		title: 'hirehi',
-		href: 'https://hirehi.ru/',
+		href: EXTERNAL_LINK.hirehi,
 	},
 	{
 		title: 'GetMatch',
-		href: 'https://getmatch.ru/vacancies?p=1&sa=any&pa=all&se=middle&se=senior&sp=js_frontend',
+		href: EXTERNAL_LINK.getmatch,
 	},
 	{
 		title: 'Хабра карьера',
-		href: 'https://career.habr.com/vacancies?type=suitable',
+		href: EXTERNAL_LINK.habr,
 	},
 ] as const

@@ -1,3 +1,5 @@
+import { ROUTE_LINK } from "./ROUTE_LINK";
+
 export const EXTERNAL_LINK = {
 	wikiIso3166: 'https://ru.wikipedia.org/wiki/ISO_3166-2:RU',
 
@@ -75,4 +77,22 @@ export const EXTERNAL_LINK = {
 	superjob:    'https://superjob.ru/',
 
 	reactJs:     'https://reactjs.org/',
+
+	// Поиск работы
+	linkedin: 'https://www.linkedin.com/feed/',
+	hh:       'https://hh.ru/search/vacancy?resume=52d43beeff10b0af7c0039ed1f623763446351&from=resumelist&hhtmFrom=applicant_profile',
+	hirify:   'https://hirify.me/?grade=middle,senior,lead,head&sources=telegram,hirify,ru_global&specializations=frontend_dev',
+	hirehi:   'https://hirehi.ru/',
+	getmatch: 'https://getmatch.ru/vacancies?p=1&sa=any&pa=all&se=middle&se=senior&sp=js_frontend',
+	habr:     'https://career.habr.com/vacancies?type=suitable',
+
+
+	// Мои резюме
+	hhResume:           'https://hh.ru/resume/52d43beeff10b0af7c0039ed1f623763446351',
+	pdfResume:          'https://higimo.ru/utkin-frontend.pdf',
+	resumeHowToWork:    `https://higimo.ru${ROUTE_LINK.resumeHowToWork}`,
+	resumeProduct:      `https://higimo.ru${ROUTE_LINK.resumeProduct}`,
+	resumeTechProduct:  `https://higimo.ru${ROUTE_LINK.resumeTechProduct}`,
+	resumeLead:         `https://higimo.ru${ROUTE_LINK.resumeLead}`,
+	resumeProductSmart: `https://higimo.ru${ROUTE_LINK.resumeProductSmart}`
 } as const
