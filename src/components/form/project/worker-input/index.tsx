@@ -17,6 +17,8 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { isDefined } from 'utils/types/is-defined'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
+import { isObject } from 'utils/types/is-object'
+import { as } from 'utils/types/as'
 
 // TODO: [FEATURE] Анонсы. Портфолио таблицей как на хомяке Далера
 // TODO: [FEATURE] Анонсы. Показать людей, с которыми работал
@@ -47,8 +49,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 				})
 			})
 			const promisesAll = await Promise.all(sendings)
-			// TODO: [HARD] возможно, сменить на isObject
-			const results = promisesAll.reduce((acc, singleRes) => acc && isDefined(singleRes.data), true)
+			const results = promisesAll.reduce((acc, singleRes) => acc && isObject(singleRes.data), true)
 			if (!results) {
 				toast.error('Неверный формат ответа сервера')
 				setChooseWorker([])
@@ -67,8 +68,7 @@ export const WorkerInput: FunctionComponent<WorkerInputPropsType> = ({ projectId
 				method: 'POST',
 				values: data
 			})
-			// TODO: [HARD] вероятно, сменить на isObject или type guard на PortfolioWorkerType
-			if (isDefined(result)) {
+			if (as<PortfolioWorkerType>(result, ['id', 'full_name', 'login'])) {
 				fetchWorkerList()
 				return true
 			}
