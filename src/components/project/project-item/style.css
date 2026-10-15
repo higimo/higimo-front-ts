@@ -27,7 +27,7 @@
 
 .project__image {
 	display: flex;
-	height: 100%;
+	/* height: 100%; */
 	position: relative;
 	pointer-events: all;
 	border: 0;
@@ -35,17 +35,18 @@
 }
 
 .project__image-anons {
-	transition: all 75ms ease-in-out;
-	transform: scale(0.975);
-	object-fit: contain;
+	transition: all 205ms ease-in-out;
+	transform: scale(1);
+	/* object-fit: contain; */
 	width: 100%;
-	height: 100%;
-	max-height: var(--project-image-max-heigth);
+	/* height: 100%; */
+	/* max-height: var(--project-image-max-heigth); */
 	border-radius: var(--project-border-radius);
 }
 
 .project__item:hover .project__image-anons {
-	transform: scale(1);
+	transform: scale(1.025);
+	perspective: 10px;
 }
 
 .project__name {
