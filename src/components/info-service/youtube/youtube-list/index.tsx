@@ -9,6 +9,8 @@ type YoutubeListPropsType = {
 	youtubeList: YoutubeType[] | null
 }
 
+// TODO: [HARD] проставить key и youtubeList?.length && () во всех подобных случаях
+// TODO: [HARD] ниже — НЕ ДЕЛАТЬ, найти по ONE_CLASS_COMPONENT и сделать что выше на строчку
 // TODO: [HARD] мб, такие компоненты в родителе писать этот несчастный div?
 export const YoutubeList: FunctionComponent<YoutubeListPropsType> = ({
 	youtubeList
