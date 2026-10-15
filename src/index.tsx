@@ -1,8 +1,9 @@
 import { render } from 'preact'
 
 import { Footer } from 'components/ui/footer'
-import { MainHeader } from 'components/ui/main-header'
+import { GridOverlay } from 'components/ui/grid-overlay/GridOverlay'
 import { LocationProvider, Router, Route, ErrorBoundary } from 'preact-iso'
+import { MainHeader } from 'components/ui/main-header'
 import { ToastContainer } from 'toast'
 
 import { NotFoundPage } from 'pages/not-found-page'
@@ -30,6 +31,7 @@ export function App() {
 		<LocationProvider>
 			<ErrorBoundary onError={(e) => console.log(e)}>
 				<MainHeader />
+				<GridOverlay />
 				<main>
 					<Router>
 						{indexPages}
