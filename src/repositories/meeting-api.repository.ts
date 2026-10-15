@@ -5,16 +5,7 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-// export interface MeetingApi {
-// 	// getAll(): Promise<NokiaRichMeetingType[]>
-// 	// getById(id: string): Promise<NokiaRichMeetingType>
-// 	createOrUpdate(meeting: Partial<NokiaRichMeetingType>): Promise<any>
-// 	syncPerson(meetingId: number, persons: NokiaPersonSimpleType[]): Promise<any>
-// }
-
-// TODO: [HARD] вынести бы в отдельный метод заполнения и возвращать значение
 class MeetingApiRepository {
-	// TODO: [HARD] решить создавать ли createOrUpdate
 	async create(
 		values: Omit<NokiaMeetingSimpleType, 'id'>
 	): Promise<NokiaMeetingSimpleType | null> {

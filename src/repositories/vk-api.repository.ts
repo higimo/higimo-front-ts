@@ -21,6 +21,7 @@ class VkApiRepository {
 			const albums = response.response.items
 			if (!albums) {
 				// TODO: [HARD] Использовать VKError надо фабричные методы написать
+				// Уже есть buildApiError
 				throw new Error('Альбомы не загрузились')
 			}
 
