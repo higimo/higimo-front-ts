@@ -1,5 +1,5 @@
 import { HigimoApiError } from 'errors/higimo-api-error'
-import { AuthDataType } from 'api-types/auth.types'
+import { AuthDataType, LoginResponseType } from 'api-types/auth.types'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
@@ -17,11 +17,9 @@ import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { authApi } from 'repositories/auth-api.repository'
 
-type FormValues = {
-	email: string
-	pass: string
-}
+type FormValues = LoginResponseType
 
 const formScheme: FormScheme<FormValues> = {
 	email: { title: 'Электопочта', autocomplete: true, required: true, },
@@ -34,13 +32,8 @@ export const AuthForm: FunctionComponent = () => {
 
 	const handleLogin = async (values: FormValues) => {
 		try {
-			// TODO: [HARD] добавить в репозиторий (ради одного городить класс?)
-			const { data: authData } = await sendRequest<AuthDataType>(API_ROUTE.login, {
-				method: 'POST',
-				values
-			})
-
-			if (!isValidAuth(authData)) {
+			const data = await authApi.login(values)
+			if (!isValidAuth(data ?? {})) {
 				return toast.error('Неверный формат ответа сервера')
 			}
 

@@ -2,6 +2,11 @@ import { Brand, ISOString } from 'utils.type'
 
 type MeIdType = Brand<number, 'id'>
 
+export type LoginResponseType = {
+	email: string
+	pass: string
+}
+
 export type MeDataType = {
 	id: MeIdType
 	name: string
