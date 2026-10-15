@@ -1,6 +1,5 @@
 import { PortfolioProjectFullType } from 'api-types/portfolio.types'
 
-// TODO: [HARD] На широких экранах 5 в ряд делать? Одновременно в коде и css надо
 const convertCoverSizeToWidth = (coverSize: PortfolioProjectFullType['cover_size']): number => {
 	if (coverSize === 'high') {
 		return 4

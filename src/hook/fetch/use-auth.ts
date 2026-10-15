@@ -29,7 +29,6 @@ interface UseAuthReturn {
 	redirectToLogin: () => void
 	routeTo: (url: string, replace?: boolean) => void
 }
-// TODO: [HARD] при авторизации может потребоваться перезагрузить данные — надо прокидывать ручку для этого отсюда
 export const useAuth = (): UseAuthReturn => {
 	const { route, path } = useLocation()
 
