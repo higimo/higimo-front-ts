@@ -7,7 +7,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { InnerFromContainer } from 'components/form/inner-from-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
 import { pasteApi } from 'repositories/paste-api.repository'
@@ -43,7 +43,7 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 	}
 
 	return (
-		<InnerFromContainer>
+		<FromContainer variant="inner">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(handleSubmit)}
@@ -67,6 +67,6 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</InnerFromContainer>
+		</FromContainer>
 	)
 }

@@ -7,7 +7,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { InnerFromContainer } from 'components/form/inner-from-container'
+import { FromContainer } from 'components/form/form-container'
 
 export type FormValues = {
 	method: 'GET' | 'POST' | 'PUT' | 'DELETE'
@@ -48,7 +48,7 @@ export const SidebarForm: FunctionComponent<SidebarPropsType> = ({ onSubmit }) =
 	})
 
 	return (
-		<InnerFromContainer>
+		<FromContainer variant="inner">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(onSubmit)}
@@ -74,6 +74,6 @@ export const SidebarForm: FunctionComponent<SidebarPropsType> = ({ onSubmit }) =
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</InnerFromContainer>
+		</FromContainer>
 	)
 }

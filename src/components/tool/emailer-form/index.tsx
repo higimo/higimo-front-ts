@@ -6,7 +6,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { InnerFromContainer } from 'components/form/inner-from-container'
+import { FromContainer } from 'components/form/form-container'
 
 import './style.css'
 
@@ -25,7 +25,7 @@ export const EmailerForm: FunctionComponent = () => {
 				<li><a href="./?email">Сменить электропочту</a></li>
 				<li><a href="./?may">Поддерживаемые сайты</a></li>
 			</ul>
-			<InnerFromContainer>
+			<FromContainer variant="inner">
 				<FormProvider {...formMethods}>
 					<form
 						onSubmit={formMethods.handleSubmit(handleSubmit)}
@@ -43,7 +43,7 @@ export const EmailerForm: FunctionComponent = () => {
 						</ButtonGroup>
 					</form>
 				</FormProvider>
-			</InnerFromContainer>
+			</FromContainer>
 		</div>
 	)
 }

@@ -11,7 +11,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 import { MentionTextarea } from 'components/form/mention-textarea/mention-input'
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
@@ -83,7 +83,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 	const selectedPersonIds = selectedPersons.map(i => i.id)
 
 	return (
-		<FullpageFormContainer>
+		<FromContainer variant="full">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(handleMeetingSubmit)}
@@ -193,6 +193,6 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</FullpageFormContainer>
+		</FromContainer>
 	)
 }

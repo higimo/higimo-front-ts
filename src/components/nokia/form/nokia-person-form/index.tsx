@@ -7,7 +7,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
 import { getResetValues } from 'utils/get-reset-values'
@@ -44,7 +44,7 @@ export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerPropsTyp
 	}
 
 	return (
-		<FullpageFormContainer>
+		<FromContainer variant="full">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(handlePersonSubmit)}
@@ -95,6 +95,6 @@ export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerPropsTyp
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</FullpageFormContainer>
+		</FromContainer>
 	)
 }

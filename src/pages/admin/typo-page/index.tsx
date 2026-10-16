@@ -6,9 +6,8 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 import { FullWidthContainer } from 'components/ui/full-width-container/FullWidthContainer'
-import { InnerFromContainer } from 'components/form/inner-from-container'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { getResetValues } from 'utils/get-reset-values'
@@ -36,6 +35,7 @@ const LaravelError = {
 type FormFiledsPropsType = {
 	defaultValues?: Partial<FormValues>
 }
+
 const FormFileds: FunctionComponent<FormFiledsPropsType> = ({
 	defaultValues = EMPTY_FORM
 }) => {
@@ -118,14 +118,14 @@ const DAFAULT_VALUE: Partial<FormValues> = { id: 99, title: 'default value' }
 
 export const TypoPage: FunctionComponent = () => (
 	<div className="page">
-		<FullpageFormContainer>
+		<FromContainer variant="full">
 			<FormFileds />
-		</FullpageFormContainer>
+		</FromContainer>
 		<FullWidthContainer style={{background: '#f8fae1'}}>
 			<TextContainer>
-				<InnerFromContainer>
+				<FromContainer variant="inner">
 					<FormFileds defaultValues={DAFAULT_VALUE} />
-				</InnerFromContainer>
+				</FromContainer>
 			</TextContainer>
 		</FullWidthContainer>
 	</div>

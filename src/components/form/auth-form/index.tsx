@@ -9,7 +9,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { InnerFromContainer } from 'components/form/inner-from-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { getBackPath } from 'utils/url-route/get-back-path'
 import { isValidAuth } from 'utils/types/is-valid-auth'
@@ -43,7 +43,7 @@ export const AuthForm: FunctionComponent = () => {
 	}
 
 	return (
-		<InnerFromContainer>
+		<FromContainer variant="inner">
 			<FormProvider {...formMethods}>
 				<form onSubmit={formMethods.handleSubmit(handleLogin)}>
 					{/* TODO: [MIDDLE] пора в отдельный компонент вынести, дублируется код же */}
@@ -68,6 +68,6 @@ export const AuthForm: FunctionComponent = () => {
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</InnerFromContainer>
+		</FromContainer>
 	)
 }

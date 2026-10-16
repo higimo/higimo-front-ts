@@ -8,7 +8,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { InnerFromContainer } from 'components/form/inner-from-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { debounce } from '@github/mini-throttle'
 import { vkSession } from 'context/vk-signal'
@@ -48,7 +48,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 	}
 
 	return (
-		<InnerFromContainer>
+		<FromContainer variant="inner">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(onSubmit)}
@@ -65,7 +65,7 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 					</FieldRow>
 				</form>
 			</FormProvider>
-		</InnerFromContainer>
+		</FromContainer>
 	)
 
 }

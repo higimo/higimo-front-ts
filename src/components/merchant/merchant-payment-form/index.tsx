@@ -7,7 +7,7 @@ import { useLayoutEffect } from 'preact/hooks'
 import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { initPayment } from 'utils/merchant/init-payment'
 
@@ -47,7 +47,7 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 
 	return (
 		<div className="checkout-form">
-			<FullpageFormContainer>
+			<FromContainer variant="full">
 				<FormProvider {...formMethods}>
 					<form
 						autocomplete="off"
@@ -65,7 +65,7 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 						</ButtonGroup>
 					</form>
 				</FormProvider>
-			</FullpageFormContainer>
+			</FromContainer>
 		</div>
 	)
 }

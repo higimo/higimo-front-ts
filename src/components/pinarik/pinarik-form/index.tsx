@@ -7,7 +7,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 import { TrafficLight } from 'components/pinarik/traffic-light'
 
 import { as } from 'utils/types/as'
@@ -42,7 +42,7 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 	})
 
 	return (
-		<FullpageFormContainer>
+		<FromContainer variant="full">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(handlePinarikSubmit)}
@@ -72,6 +72,6 @@ export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</FullpageFormContainer>
+		</FromContainer>
 	)
 }

@@ -8,7 +8,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
 import { nestedListApi } from 'repositories/nested-list-api.repository'
@@ -71,7 +71,7 @@ export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ ini
 	})
 
 	return (
-		<FullpageFormContainer>
+		<FromContainer variant="full">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(handleListListSubmit)}
@@ -98,6 +98,6 @@ export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ ini
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</FullpageFormContainer>
+		</FromContainer>
 	)
 }

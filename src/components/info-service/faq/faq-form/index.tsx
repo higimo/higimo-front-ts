@@ -9,7 +9,7 @@ import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
-import { FullpageFormContainer } from 'components/form/fullpage-form-container'
+import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
 import { faqApi } from 'repositories/faq-api.repository'
@@ -57,7 +57,7 @@ export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) 
 	}
 
 	return (
-		<FullpageFormContainer>
+		<FromContainer variant="full">
 			<FormProvider {...formMethods}>
 				<form
 					onSubmit={formMethods.handleSubmit(handleSubmit)}
@@ -102,6 +102,6 @@ export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) 
 					</ButtonGroup>
 				</form>
 			</FormProvider>
-		</FullpageFormContainer>
+		</FromContainer>
 	)
 }
