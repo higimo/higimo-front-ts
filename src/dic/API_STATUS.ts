@@ -3,4 +3,5 @@ export const API_STATUS = {
 	LOADING: 'LOADING',
 	LOADED: 'LOADED',
 	ERROR: 'ERROR',
+	REVALIDATE: 'REVALIDATE',
 } as const

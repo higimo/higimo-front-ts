@@ -1,5 +1,5 @@
 import { HigimoApiError } from 'errors/higimo-api-error'
-import { AuthDataType, LoginResponseType } from 'api-types/auth.types'
+import { LoginResponseType } from 'api-types/auth.types'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
@@ -13,10 +13,8 @@ import { InnerFromContainer } from 'components/form/inner-from-container'
 
 import { getBackPath } from 'utils/url-route/get-back-path'
 import { isValidAuth } from 'utils/types/is-valid-auth'
-import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 
-import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { authApi } from 'repositories/auth-api.repository'
 
 type FormValues = LoginResponseType

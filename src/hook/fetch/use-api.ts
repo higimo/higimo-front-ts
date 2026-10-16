@@ -29,6 +29,15 @@ export const useApi = <T, M = Object>(
 	const [state, dispatch] = useReducer(apiReducer<T, M>, initialState as ApiState<T, M>)
 	const abortRef = useRef<AbortController | null>(null)
 
+	// ключ идентичности запроса: сменился — значит это другой ресурс,
+	// stale от прошлого показывать нельзя
+	const requestKey = `${url}|${JSON.stringify(values)}`
+	const prevKeyRef = useRef<string | null>(null)
+
+	// помнит, что по текущему ключу данные уже успешно грузились.
+	// при смене ключа сбрасывается
+	const hasLoadedRef = useRef(false)
+
 	const fetchData = useCallback(async () => {
 		// отменяем предыдущий запрос, если он ещё летит
 		abortRef.current?.abort()
@@ -37,12 +46,15 @@ export const useApi = <T, M = Object>(
 		abortRef.current = controller
 		const { signal } = controller
 
+		// если данные уже были — ревалидируем, не сбрасывая контент
+		dispatch({ type: hasLoadedRef.current ? 'REVALIDATE' : 'LOADING' })
+
 		try {
-			dispatch({ type: API_STATUS.LOADING })
 			if (isDefaultSkipUrl(url)) {
 				if (signal.aborted) {
 					return
 				}
+				hasLoadedRef.current = true
 				// TODO: [HARD] не нравится, что здесь null, надо {}, чтоб меньше кода писать
 				dispatch({ type: API_STATUS.LOADED, payload: null, meta: undefined })
 			} else {
@@ -51,6 +63,7 @@ export const useApi = <T, M = Object>(
 				if (signal.aborted) {
 					return
 				}
+				hasLoadedRef.current = true
 				dispatch({ type: API_STATUS.LOADED, payload: data, meta })
 			}
 		} catch (error) {
@@ -60,15 +73,24 @@ export const useApi = <T, M = Object>(
 			}
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })
 		}
-	}, [url, JSON.stringify(values)])
+	}, [url, requestKey])
 
 	useEffect(() => {
+		const isNewResource = prevKeyRef.current !== null && prevKeyRef.current !== requestKey
+		prevKeyRef.current = requestKey
+
+		if (isNewResource) {
+			// сбрасываем и данные, и маркер stale — это другой ресурс
+			hasLoadedRef.current = false
+			dispatch({ type: 'INIT' })
+		}
+
 		fetchData()
 		return () => {
 			// при размонтировании (и перед следующим эффектом) — отменяем
 			abortRef.current?.abort()
 		}
-	}, [url, JSON.stringify(values)])
+	}, [url, requestKey])
 
 	return [state, fetchData]
 }

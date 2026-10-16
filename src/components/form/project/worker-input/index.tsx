@@ -14,7 +14,6 @@ import { WorkersTree } from 'components/form/project/workers-tree'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-import { isDefined } from 'utils/types/is-defined'
 import { sendRequest } from 'utils/api/send-request'
 import { toast } from 'toast'
 import { isObject } from 'utils/types/is-object'

@@ -15,14 +15,21 @@ export type ApiState<T, M = MetaApiType> = {
 	data: T | null
 	meta?: M
 	error?: Error
+	/**
+	 * true, пока идёт фоновая перезагрузка при уже имеющихся данных (stale-while-revalidate)
+	 */
+	isRevalidating?: boolean
 }
 
 /**
  * Экшены обновления стейта запросов к бекенду
  */
 export type ApiAction<T, M = MetaApiType> =
+	/** полный сброс — используется в т.ч. при смене url/values */
 	| { type: 'INIT' }
 	| { type: 'LOADING' }
+	/** Перезагрузка данных, чтобы продолжать показывать старое, а не мерцать экраном */
+	| { type: 'REVALIDATE' }
 	| { type: 'LOADED', payload: T | null, meta?: M }
 	| { type: 'ERROR',  payload: Error }
 
