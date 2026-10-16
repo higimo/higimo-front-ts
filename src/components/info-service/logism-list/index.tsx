@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { LogismType } from 'api-types/logism.types'
 
+import { linkify } from 'utils/text/linkify'
 import cs from 'classnames'
 
 import './style.css'
@@ -19,8 +20,7 @@ export const LogismList: FunctionComponent<LogismListPropsType> = ({
 				className={cs('gallery-logism__item', {
 					'gallery-logism__item--long': logism.text.length > 100
 				})}
-				// TODO: [LIGHT] linkify?
-				dangerouslySetInnerHTML={{ __html: logism.text.replace(/(https?:\/\/.*)/g, '<a href="$1">источник</a>') }}
+				dangerouslySetInnerHTML={{ __html: linkify(logism.text) }}
 			/>
 		))}
 	</div>
