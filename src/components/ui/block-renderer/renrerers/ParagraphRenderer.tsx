@@ -7,8 +7,8 @@ export const ParagraphRenderer: FunctionComponent<ParagraphBlock> = ({
 	children
 }) => (
 	<p>
-		{children.map((child, index) => (
-			<BlockRenderer key={index} block={child} />
+		{children.map((child, key) => (
+			<BlockRenderer key={key} block={child} />
 		))}
 	</p>
 )

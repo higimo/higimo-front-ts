@@ -19,8 +19,8 @@ export const ListItemRenderer: FunctionComponent<ListItemRendererPropsType> = ({
 				__html: replaceRenderBlockVariables(item.text, variablesRenderBlockSignal.value)
 			}}
 		/>
-		{item.children && item.children.map((child, idx) => (
-			<ListRenderer key={idx} {...child} />
+		{item.children && item.children.map((child, key) => (
+			<ListRenderer key={key} {...child} />
 		))}
 	</li>
 )

@@ -13,6 +13,7 @@ export const Switcher = ({ options }: SwitcherProps) => {
 		<div className="switcher-container">
 			{options.map((option) => (
 				<button
+					key={option.title}
 					className={`switcher-button ${option.active ? 'active' : ''}`}
 					onClick={option.onClick}
 					type="button"

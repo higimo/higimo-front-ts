@@ -5,8 +5,6 @@ import cs from 'classnames'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type TourismSecondaryPropsType = ClassNameType & {
 	main?: boolean
 }

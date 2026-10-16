@@ -13,8 +13,8 @@ export const TripDayRenderer: FunctionComponent<TripDay> = ({
 	<div className="trip-day">
 		<Heading variant="tourism" level={2}>{title}</Heading>
 		<div className="trip-day__events">
-			{events.map((event, index) => (
-				<div key={index} className="trip-day__event">
+			{events.map((event, key) => (
+				<div key={key} className="trip-day__event">
 					{!!event.left && (
 						<TourismSecondary
 							main

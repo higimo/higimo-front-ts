@@ -4,8 +4,6 @@ import { FunctionComponent } from 'preact'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type MuseumListPropsType = {
 	moscowMuseumList: MoscowMuseumType[] | null
 }
@@ -15,7 +13,7 @@ export const MuseumList: FunctionComponent<MuseumListPropsType> = ({
 }) => moscowMuseumList && (
 	<div className="museum-gallery">
 		{moscowMuseumList.map(museum => (
-			<div className="museum-gallery__item">
+			<div key={museum.name} className="museum-gallery__item">
 				<TourismSecondary main className="museum-gallery__name">
 					{museum.name}
 				</TourismSecondary>

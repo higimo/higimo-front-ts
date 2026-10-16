@@ -11,8 +11,9 @@ type TourismCardGeoPropsType = {
 export const TourismCardGeo: FunctionComponent<TourismCardGeoPropsType> = ({ items }) => {
 	return (
 		<div className="tourism-card-geo">
-			{items.map(poiItem => (
+			{items.map((poiItem, key) => (
 				<div
+					key={key}
 					className={cs(
 						'tourism-card-geo__item',
 						{

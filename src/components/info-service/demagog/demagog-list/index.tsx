@@ -5,14 +5,12 @@ import { DemagogItem } from 'components/info-service/demagog/demagog-item'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type DemagogListPropsType = {
 	demagogList: DemagogType[] | null
 }
 
 export const DemagogList: FunctionComponent<DemagogListPropsType> = ({ demagogList }) => demagogList && (
 	<div className="demagog">
-		{demagogList.map(item => <DemagogItem {...item} />)}
+		{demagogList.map(item => <DemagogItem key={item.id} {...item} />)}
 	</div>
 )

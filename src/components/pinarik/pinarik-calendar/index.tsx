@@ -31,11 +31,12 @@ export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
 	}, [pinarik])
 
 	return Object.keys(treeYear).map(year => (
-		<div className="pinarik-year">
+		<div key={year} className="pinarik-year">
 			<h2>{year}</h2>
 			<div className="pinarik-calendar">
 				{treeYear[year]!.map(day => (
 					<PinarikItem
+						key={day.id}
 						{...day!}
 						onClick={onClickPreviewId(day)}
 					/>

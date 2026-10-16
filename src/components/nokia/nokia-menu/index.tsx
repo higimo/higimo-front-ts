@@ -17,7 +17,7 @@ export const NokiaMenu = () => {
 		<div className="nokia__menu">
 			<HorizontalMenu>
 				{NOKIA_MENU_LINK.map(menuLink => (
-					<HorizontalElement>
+					<HorizontalElement key={menuLink.href}>
 						<a
 							href={menuLink.href as string}
 							className={cs('menu__item', {

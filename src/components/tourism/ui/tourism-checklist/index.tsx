@@ -87,7 +87,9 @@ export const TourismChecklist = () => (
 			<Heading variant="tourism" level={2}>Организация</Heading>
 			<ul className="organisation-list">
 				{organizeListData.map(item => (
-					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+					<li key={item} className="organisation-list__item">
+						{CheckboxWithLocalStorage({ text: item })}
+					</li>
 				))}
 			</ul>
 		</TextContainer>
@@ -96,7 +98,9 @@ export const TourismChecklist = () => (
 			<Heading variant="tourism" level={2}>Еда</Heading>
 			<ul className="organisation-list">
 				{foodListData.map(item => (
-					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+					<li key={item} className="organisation-list__item">
+						{CheckboxWithLocalStorage({ text: item })}
+					</li>
 				))}
 			</ul>
 		</TextContainer>
@@ -105,7 +109,9 @@ export const TourismChecklist = () => (
 			<Heading variant="tourism" level={2}>Фотоаппарат</Heading>
 			<ul className="organisation-list">
 				{photoListData.map(item => (
-					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+					<li key={item} className="organisation-list__item">
+						{CheckboxWithLocalStorage({ text: item })}
+					</li>
 				))}
 			</ul>
 		</TextContainer>
@@ -114,7 +120,9 @@ export const TourismChecklist = () => (
 			<Heading variant="tourism" level={2}>Обязательные вещи</Heading>
 			<ul className="organisation-list">
 				{thingListData.map(item => (
-					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+					<li key={item} className="organisation-list__item">
+						{CheckboxWithLocalStorage({ text: item })}
+					</li>
 				))}
 			</ul>
 		</TextContainer>
@@ -123,7 +131,9 @@ export const TourismChecklist = () => (
 			<Heading variant="tourism" level={2}>Походные вещи</Heading>
 			<ul className="organisation-list">
 				{tourismThingListData.map(item => (
-					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+					<li key={item} className="organisation-list__item">
+						{CheckboxWithLocalStorage({ text: item })}
+					</li>
 				))}
 			</ul>
 		</TextContainer>
@@ -132,7 +142,9 @@ export const TourismChecklist = () => (
 			<Heading variant="tourism" level={2}>Аптечка</Heading>
 			<ul className="organisation-list">
 				{farmListData.map(item => (
-					<li className="organisation-list__item">{CheckboxWithLocalStorage({ text: item })}</li>
+					<li key={item} className="organisation-list__item">
+						{CheckboxWithLocalStorage({ text: item })}
+					</li>
 				))}
 			</ul>
 		</TextContainer>

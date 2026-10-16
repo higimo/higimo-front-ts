@@ -21,8 +21,8 @@ export const ResumeProductSmartPage: FunctionComponent = () => {
 
 			<LoadSuspense data={blockListJsonData}>
 				<EmptyData data={blockListJsonData}>
-					{blockListJsonData.data && blockListJsonData.data.blocks.map((block, idx) => (
-						<BlockRenderer key={idx} block={block} />
+					{blockListJsonData.data && blockListJsonData.data.blocks.map((block, key) => (
+						<BlockRenderer key={key} block={block} />
 					))}
 				</EmptyData>
 			</LoadSuspense>

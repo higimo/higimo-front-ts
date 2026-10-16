@@ -34,7 +34,7 @@ export const Breadcrumps: FunctionComponent = () => {
 	return (
 		<div className="breadcrumbs">
 			{breadcrumbs.map((breadcrumb) => (
-				<div className="breadcrumbs__item">
+				<div key={breadcrumb.href} className="breadcrumbs__item">
 					<MaybeLink
 						href={breadcrumb.href}
 						isHref={!breadcrumb.isLastChild}

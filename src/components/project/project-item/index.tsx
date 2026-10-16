@@ -32,7 +32,7 @@ export const ProjectItem: FunctionComponent<PortfolioProjectFullType> = props =>
 				{!!tags.length && (
 					<div className="project__tags">
 						{tags.map(tag => (
-							<span className="project__tag">{tag.title}</span>
+							<span key={tag.id} className="project__tag">{tag.title}</span>
 						))}
 					</div>
 				)}

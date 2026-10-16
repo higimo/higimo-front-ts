@@ -61,6 +61,7 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 				>Всё</Tag>
 				{yearDataset.map(year => (
 					<Tag
+						key={year}
 						active={selectedYearTag.includes(year)}
 						onClick={handleYearTagClick([year])}
 					>{year}</Tag>
@@ -74,6 +75,7 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 				>Всё</Tag>
 				{typeDataset.map(typeMeeting => (
 					<Tag
+						key={typeMeeting}
 						active={selectedTypeTag.includes(typeMeeting)}
 						onClick={handleTypeTagClick([typeMeeting])}
 					>{typeMeeting}</Tag>

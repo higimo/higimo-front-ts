@@ -6,8 +6,6 @@ import { TextContainer } from 'components/ui/text-container'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type CityStarListPropsType = {
 	cityList: CityStarsType[] | null
 }
@@ -20,7 +18,11 @@ export const CityStarList: FunctionComponent<CityStarListPropsType> = ({
 		<TextContainer>
 			<div className="city-stars-gallery">
 				{cityList.map(city => (
-					<CityStarItem title={city.title} star={city.star} />
+					<CityStarItem
+						key={city.title}
+						title={city.title}
+						star={city.star}
+					/>
 				))}
 			</div>
 		</TextContainer>

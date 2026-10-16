@@ -11,6 +11,7 @@ type MentionListPropsType = {
 	suggestList: MentionSuggest[]
 	selectedSuggest: number
 }
+
 export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 	const listRef = createRef()
 	const handleClick = useCallback((value: MentionSuggest) => () => props.onSelect(value), [props.onSelect])
@@ -52,6 +53,7 @@ export const MentionList: FunctionComponent<MentionListPropsType> = (props) => {
 		<div className="suggestion-list" ref={listRef}>
 			{props.suggestList.map((item, index) => (
 				<div
+					key={item.id}
 					onClick={handleClick(item)}
 					className={cs('suggestion-list__item', {
 						'suggestion-list__item--active': index === props.selectedSuggest

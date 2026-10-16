@@ -9,8 +9,6 @@ import { packElements } from 'utils/project/pack-elements'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type ProjectListPropsType = {
 	projectsList: PortfolioProjectFullType[] | null
 }
@@ -20,8 +18,8 @@ export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
 
 	return (
 		<div className="project__list">
-			{packedRows.map(row => (
-				<div className="project__row">
+			{packedRows.map((row, key) => (
+				<div key={key} className="project__row">
 					{row.map(item => <ProjectItem key={item.id} {...item} />)}
 				</div>
 			))}

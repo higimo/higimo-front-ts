@@ -14,7 +14,7 @@ export const MerchantPolicyNavigation = () => {
 	return (
 		<TextContainer className="merchant-policy-navigation">
 			{MERCHANT_LINK.map(link => (
-				<MaybeLink isHref={link.href !== url} href={link.href as string}>
+				<MaybeLink key={link.href} isHref={link.href !== url} href={link.href as string}>
 					<Tag active={link.href === url}>{link.title}</Tag>
 				</MaybeLink>
 			))}

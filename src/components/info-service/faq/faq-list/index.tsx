@@ -7,8 +7,6 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type FaqListPropsType = {
 	faqList: FaqType[] | null
 	onRemove: (id: FaqType['id']) => () => void
@@ -17,7 +15,7 @@ type FaqListPropsType = {
 export const FaqList: FunctionComponent<FaqListPropsType> = ({ faqList, onRemove }) => faqList && (
 	<div className="faq-list">
 		{faqList.map(({ id, name, code }) => (
-			<div className="faq-list__item">
+			<div key={id} className="faq-list__item">
 				<a href={ROUTE_LINK.faqDetail({ idcode: code })} className="faq-list__link" key={id}>
 					<div className="faq-list__name">{name}</div>
 				</a>

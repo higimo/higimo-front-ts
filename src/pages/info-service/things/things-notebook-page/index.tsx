@@ -20,8 +20,8 @@ export const ThingsNotebookPage: FunctionComponent = () => {
 					<EmptyData data={thingJsonData}>
 						<table>
 							<tbody>
-								{thingJsonData.data && thingJsonData.data.map(([label, value], i) => (
-									<tr key={i}><td>{label}</td><td>{value}</td></tr>
+								{thingJsonData.data && thingJsonData.data.map(([label, value], key) => (
+									<tr key={key}><td>{label}</td><td>{value}</td></tr>
 								))}
 							</tbody>
 						</table>

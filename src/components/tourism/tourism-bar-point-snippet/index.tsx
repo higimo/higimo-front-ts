@@ -26,7 +26,9 @@ export const TourismBarPointSnippet: FunctionComponent<BarPoiRealTags> = (mapPoi
 			{!!mapPoint?.description?.length && (
 				<div className="bar-poi__description">{mapPoint.description}</div>
 			)}
-			<div className="bar-poi__tags">{mapPoint.tags.map(item => (<Tag>{item.title}</Tag>))}</div>
+			<div className="bar-poi__tags">{mapPoint.tags.map(item => (
+				<Tag key={item.id}>{item.title}</Tag>
+			))}</div>
 		</div>
 	</div>
 )

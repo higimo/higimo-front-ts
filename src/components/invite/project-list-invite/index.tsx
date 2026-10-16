@@ -29,7 +29,7 @@ export const ProjectListInvite: FunctionComponent<ProjectListInvitePropsType> = 
 
 		<TextContainer className="project-list__filter">
 			{PROJECT_SHORT_TAG.map(tagName => (
-				<ProjectTag filterName={PROJECT_FILTER.FILTER_TAG}>{tagName}</ProjectTag>
+				<ProjectTag key={tagName} filterName={PROJECT_FILTER.FILTER_TAG}>{tagName}</ProjectTag>
 			))}
 		</TextContainer>
 

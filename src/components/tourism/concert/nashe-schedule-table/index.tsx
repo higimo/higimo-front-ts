@@ -22,7 +22,7 @@ export const NasheScheduleTable: FunctionComponent<NasheScheduleTablePropsType> 
 	<table className="line-up">
 		{headers ? (
 			<thead>
-				{headers.map(header => <th>{header}</th>)}
+				{headers.map(header => <th key={header}>{header}</th>)}
 			</thead>
 		) : null}
 		<tbody>

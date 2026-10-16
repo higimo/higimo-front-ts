@@ -5,8 +5,6 @@ import { Tag } from 'components/ui/tag'
 
 import { ACCORD_TAG_CATEGORY } from 'dic/accord/ACCORD_TAG_CATEGORY'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type AccordTagGalleryPropsType = {
 	toggleTag: (label: TagName) => () => void
 	isSelected: (label: TagName) => boolean

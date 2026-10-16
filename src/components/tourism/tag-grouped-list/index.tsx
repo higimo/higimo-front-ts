@@ -33,7 +33,7 @@ export const TagGroupedList: FunctionComponent<TagGroupedListPropsType> = ({
 				// const realTags = tags.filter(t => t !== TAG_GROUP_ALL_DISABLE && t !== TAG_GROUP_ALL_ENABLE)
 
 				return (
-					<div className="tag-tree__category" key={group.title}>
+					<div key={group.title} className="tag-tree__category">
 						<div className="tag-tree__name">
 							{group.title}
 							{'   '}
@@ -42,17 +42,15 @@ export const TagGroupedList: FunctionComponent<TagGroupedListPropsType> = ({
 							</Tag>
 						</div>
 						<div className="tag-tree__tags">
-							{tags.map(tag => {
-								return (
-									<Tag
-										key={tag.id}
-										active={isSelected(tag.title)}
-										onClick={toggleTag(tag.title)}
-									>
-										{tag.title}
-									</Tag>
-								)
-							})}
+							{tags.map(tag => (
+								<Tag
+									key={tag.id}
+									active={isSelected(tag.title)}
+									onClick={toggleTag(tag.title)}
+								>
+									{tag.title}
+								</Tag>
+							))}
 						</div>
 					</div>
 				)

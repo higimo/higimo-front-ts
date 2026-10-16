@@ -3,8 +3,6 @@ import { CinemaType } from 'api-types/cinema.types'
 
 import { TextContainer } from 'components/ui/text-container'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type CinemaScriptItemPropsType = {
 	cinemaItem: CinemaType | null
 }

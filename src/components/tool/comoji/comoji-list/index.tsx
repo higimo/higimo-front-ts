@@ -6,8 +6,6 @@ import { ComojiItem } from 'components/tool/comoji/comoji-item'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type ComojiListPropsType = {
 	comojiList: ComojiType[] | null
 }
@@ -15,7 +13,9 @@ type ComojiListPropsType = {
 export const ComojiList: FunctionComponent<ComojiListPropsType> = ({ comojiList }) => comojiList && (
 	<TextContainer>
 		<div className="gallery-comoji">
-			{comojiList.map(item => <ComojiItem {...item} />)}
+			{comojiList.map(item => (
+				<ComojiItem key={item.id} {...item} />
+			))}
 		</div>
 	</TextContainer>
 )

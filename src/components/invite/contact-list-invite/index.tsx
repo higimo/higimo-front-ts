@@ -17,7 +17,7 @@ export const ContactListInvite: FunctionComponent = () => (
 		<TextContainer>
 			<div className="contact-list__gallery">
 				{CONTACT_LIST.map(item => (
-					<a className="contact-list__link" href={item.href as string}>
+					<a key={item.href} className="contact-list__link" href={item.href as string}>
 						<img className="contact-list__img" src={item.img} />
 					</a>
 				))}

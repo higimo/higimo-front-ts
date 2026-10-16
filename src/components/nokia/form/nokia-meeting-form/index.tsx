@@ -29,8 +29,6 @@ interface NokiaMeetingFormContainerProps {
 	personList: NokiaPersonType[] | null
 }
 
-
-
 const handleRemove = (id: NokiaMeetingSimpleType['id']) => () => {
 	// TODO: [BACKEND] чо придёт?
 	meetingApi.delete(id)
@@ -134,6 +132,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 							<div>
 								{selectedPersons.map(person => (
 									<NokiaPersonTag
+										key={person.id}
 										onRemove={handleRemovePerson(person)}
 										person={person}
 									/>
@@ -153,6 +152,7 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 								}
 								return (
 									<NokiaPersonTag
+										key={person.id}
 										onClick={handleAddPerson(person)}
 										person={person}
 									/>

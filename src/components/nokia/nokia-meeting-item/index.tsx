@@ -26,7 +26,7 @@ export const NokiaMeetingItem: FunctionComponent<NokiaMeetingItemPropsType> = ({
 		<div className="meeting__content">
 			<div className="meeting__persons">
 				{meeting.person.map(person => (
-					<NokiaPersonTag person={person} />
+					<NokiaPersonTag key={person.id} person={person} />
 				))}
 			</div>
 			<div className="meeting__description">

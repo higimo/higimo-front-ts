@@ -10,7 +10,7 @@ export const TourismMainMenu: FunctionComponent = () => (
 	<div className="tourism-main-menu">
 		<HorizontalMenu>
 			{TOURISM_MENU_LINK.map(tourismMenu => (
-				<HorizontalElement>
+				<HorizontalElement key={tourismMenu.href}>
 					<a href={tourismMenu.href as string}>{tourismMenu.title}</a>
 				</HorizontalElement>
 			))}

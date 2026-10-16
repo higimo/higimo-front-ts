@@ -113,7 +113,10 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 						{filteredData && (
 							<div className="bar-poi__gallery">
 								{filteredData.map((mapPoint: BarPoiRealTags) => (
-									<TourismBarPointSnippet key={mapPoint.id} {...mapPoint} />
+									<TourismBarPointSnippet
+										key={mapPoint.id}
+										{...mapPoint}
+									/>
 								))}
 							</div>
 						)}

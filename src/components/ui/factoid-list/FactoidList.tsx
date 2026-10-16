@@ -19,6 +19,8 @@ export const FactoidList: FunctionComponent<FactoidListPropsType> = ({ countInRo
 		})}
 		style={{ '--grid-count': countInRow }}
 	>
-		{factoids.map(factoidProps => <Factoid {...factoidProps} />)}
+		{factoids.map(factoidProps => (
+			<Factoid key={factoidProps.description} {...factoidProps} />
+		))}
 	</div>
 )

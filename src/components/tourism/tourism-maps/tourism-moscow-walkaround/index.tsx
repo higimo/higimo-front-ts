@@ -31,27 +31,27 @@ export const TourismMoscowWalkaround: FunctionComponent<TourismMoscowWalkaroundP
 
 	const renderByMode = () => {
 		if (isMode(TORUSM_MAP_MODE['2021'])) {
-			return stateYear2021.map((item: any) => (
-				<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
+			return stateYear2021.map((item, key) => (
+				<GeoObject key={key} geometry={item} options={GEO_OBJECT_OPTIONS} />
 			))
 		}
 		if (isMode(TORUSM_MAP_MODE['2024'])) {
-			return stateYear2024.map((item: any) => (
-				<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
+			return stateYear2024.map((item, key) => (
+				<GeoObject key={key} geometry={item} options={GEO_OBJECT_OPTIONS} />
 			))
 		}
 		if (isMode(TORUSM_MAP_MODE['21vs24'])) {
 			return ([] as VNode[])
-				.concat(stateYear2021.map((item: any) => (
-					<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
+				.concat(stateYear2021.map((item, key) => (
+					<GeoObject key={key} geometry={item} options={GEO_OBJECT_OPTIONS} />
 				)))
-				.concat(stateYear2024.map((item: any) => (
-					<GeoObject geometry={item} options={GEO_OBJECT_OPTIONS} />
+				.concat(stateYear2024.map((item, key) => (
+					<GeoObject key={key} geometry={item} options={GEO_OBJECT_OPTIONS} />
 				)))
 		}
 		if (isMode(TORUSM_MAP_MODE['POI'])) {
-			return moscowPoiPoints.map((poi) => (
-				<Placemark geometry={poi.coord} properties={{ hintContent: poi.title }} />
+			return moscowPoiPoints.map((poi, key) => (
+				<Placemark key={key} geometry={poi.coord} properties={{ hintContent: poi.title }} />
 			))
 		}
 		return null

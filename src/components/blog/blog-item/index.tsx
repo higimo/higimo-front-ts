@@ -35,8 +35,8 @@ export const BlogItem: FunctionComponent<BlogItemPropsType> = (post) => (
 	>
 		<div className="post__meta">
 			<span className="post__favicons">
-				{(getBlogImage(post.source)).map(src => (
-					<img key={src} className="post__favicon-image" src={src} alt="" />
+				{(getBlogImage(post.source)).map((src, key) => (
+					<img key={key} className="post__favicon-image" src={src} alt="" />
 				))}
 			</span>
 			<span className="post__blog-name">

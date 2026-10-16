@@ -3,8 +3,6 @@ import { FunctionComponent } from 'preact'
 
 import { CityStarItem } from 'components/tourism/city-star/city-star-item'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type CityStarsIntroPropsType = {
 	cityList: CityStarsType[] | null
 }
@@ -21,7 +19,11 @@ export const CityStarIntro: FunctionComponent<CityStarsIntroPropsType> = ({
 	return (
 		<div className="tourism-city-star">
 			{filtredCityList.map(city => (
-				<CityStarItem title={city.title} star={city.star} />
+				<CityStarItem
+					key={city.title}
+					title={city.title}
+					star={city.star}
+				/>
 			))}
 		</div>
 	)

@@ -24,8 +24,8 @@ export const ListRenderer: FunctionComponent<ListBlock> = ({ ordered, items }) =
 	return h(
 		ordered ? 'ol' : 'ul',
 		null,
-		listItems.map((item, index) =>
-			<ListItemRenderer key={index} item={item} />
+		listItems.map((item, key) =>
+			<ListItemRenderer key={key} item={item} />
 		)
 	)
 }

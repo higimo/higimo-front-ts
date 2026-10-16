@@ -1,14 +1,15 @@
 import { FunctionComponent } from 'preact'
 
+const ADVENTURE_OPTIONS = [
+	{ title: 'участников', value: 'двое' },
+	{ title: 'транспорт', value: 'Портальная пушка' },
+	{ title: 'назначение', value: 'Огурчик Рик' },
+]
 export const TourismAdventureEmpty: FunctionComponent = () => (
 	<div className="tourism-adventure tourism-adventure--future">
 		<div className="tourism-adventure__options">
-			{[
-				{ title: 'участников', value: 'двое' },
-				{ title: 'транспорт', value: 'Портальная пушка' },
-				{ title: 'назначение', value: 'Огурчик Рик' },
-			].map(option => (
-				<div className="tourism-adventure__option-item">
+			{ADVENTURE_OPTIONS.map(option => (
+				<div key={option.title} className="tourism-adventure__option-item">
 					<div className="tourism-adventure-option__title">
 						{option.title}
 					</div>

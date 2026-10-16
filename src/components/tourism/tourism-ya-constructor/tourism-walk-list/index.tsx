@@ -6,8 +6,6 @@ import { TourismBulletListItem } from 'components/tourism/ui/tourism-bullet-list
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type TourismWalkListPropsType = {
 	yamapList: YaMapType[] | null
 }
@@ -18,6 +16,7 @@ export const TourismWalkList: FunctionComponent<TourismWalkListPropsType> = ({
 	<TourismBulletList>
 		{yamapList.map(item => (
 			<TourismBulletListItem
+				key={item.id}
 				className="tourism-walk-gallery__item"
 				href={ROUTE_LINK.tourismWalkDetail({ idcode: item.code })}
 				title={item.name}

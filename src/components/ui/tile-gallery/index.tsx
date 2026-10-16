@@ -20,6 +20,7 @@ export const TileGallery: FunctionComponent<TileGalleryPropsType> = ({
 	<div className={cs('intro-tile', className)}>
 		{list.map(item => (
 			<IntoTile
+				key={item.title}
 				{...item}
 				imageMapping={imageMapping}
 			/>

@@ -6,8 +6,8 @@ import { TextContainer } from 'components/ui/text-container'
 
 export const TextContainerRenderer: FunctionComponent<TextContainerBlock> = ({ children }) => (
 	<TextContainer>
-		{children.map((child, idx) => (
-			<BlockRenderer key={idx} block={child} />
+		{children.map((child, key) => (
+			<BlockRenderer key={key} block={child} />
 		))}
 	</TextContainer>
 )

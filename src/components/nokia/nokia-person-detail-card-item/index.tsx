@@ -35,20 +35,16 @@ export const NokiaPersonDetailCardItem: FunctionComponent<NokiaPersonDetailCardI
 		)}
 		<CollapseSection fold={true} title="Встречи">
 			<div className="person-full-data__meetings">
-				{personItem.meetings.map((meeting) => {
-					return (
-						<NokiaMeetingItem meeting={meeting} />
-					)
-				})}
+				{personItem.meetings.map((meeting) => (
+					<NokiaMeetingItem key={meeting.id} meeting={meeting} />
+				))}
 			</div>
 		</CollapseSection>
 		<CollapseSection fold={true} title="Заметки">
 			<div className="person-full-data__notes">
-				{personItem.notes.map((note) => {
-					return (
-						<NokiaNote note={note} />
-					)
-				})}
+				{personItem.notes.map((note) => (
+					<NokiaNote key={note.id} note={note} />
+				))}
 			</div>
 		</CollapseSection>
 	</div>

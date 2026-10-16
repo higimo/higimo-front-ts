@@ -5,8 +5,6 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type ObuchenieListPropsType = {
 	lectionList: LectionType[] | null
 }

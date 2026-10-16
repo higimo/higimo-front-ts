@@ -1,8 +1,6 @@
 import { AccordType } from 'api-types/accord.types'
 import { Fragment, FunctionComponent } from 'preact'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type AccordContentPropsType = {
 	accordItem: AccordType | null
 }

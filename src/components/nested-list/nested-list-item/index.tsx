@@ -82,7 +82,7 @@ export const NestedListItem: FunctionComponent<NestedListItemPropsType> = ({
 			{!!nestedListItem.values?.length && (
 				<div className="element-node__values">
 					{nestedListItem.values.map(value => (
-						<div className="element-node__value">
+						<div key={value.id} className="element-node__value">
 							<div className="element-node__value-group">
 								{value.property.name}
 							</div>
@@ -94,8 +94,8 @@ export const NestedListItem: FunctionComponent<NestedListItemPropsType> = ({
 				</div>
 			)}
 
-			{!!nestedListItem.children && nestedListItem.children.map((item, iter) => (
-				<NestedListItem key={iter} nestedListItem={item} />
+			{!!nestedListItem.children && nestedListItem.children.map((item, key) => (
+				<NestedListItem key={key} nestedListItem={item} />
 			))}
 		</div>
 	)

@@ -31,8 +31,9 @@ export const TourismTableGeo: FunctionComponent<TourismTableGeoPropsType> = ({
 					население
 				</div>
 			</div>
-			{items.map(poiItem => (
+			{items.map((poiItem, key) => (
 				<div
+					key={key}
 					className={cs(
 						'table-geo__item table-geo-row',
 						{

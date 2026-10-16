@@ -60,9 +60,13 @@ export const MainHeader: FunctionComponent<HeaderPropsType> = () => {
 			<div className="main-header__container">
 				<Logotype />
 				<div className="main-header__menu">
-					{menu.map(i => <a href={i.href} key={i.href}>{i.name}</a>)}
+					{menu.map(i => (
+						<a key={i.href} href={i.href}>{i.name}</a>
+					))}
 					<OnlyAdmin>
-						{secretMenu.map(i => <a href={i.href} key={i.href}>{i.name}</a>)}
+						{secretMenu.map(i => (
+							<a key={i.href} href={i.href}>{i.name}</a>
+						))}
 					</OnlyAdmin>
 				</div>
 			</div>

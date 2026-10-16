@@ -7,8 +7,8 @@ export const AboutRenderer: FunctionComponent<AboutBlock> = ({ title, paragraphs
 	<div className="about">
 		<div className="about__header">{title}</div>
 		<div className="about__description">
-			{paragraphs.map((para, idx) => (
-				<BlockRenderer key={idx} block={para} />
+			{paragraphs.map((para, key) => (
+				<BlockRenderer key={key} block={para} />
 			))}
 		</div>
 	</div>

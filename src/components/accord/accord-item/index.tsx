@@ -26,7 +26,7 @@ export const AccordItem: FunctionComponent<AccordItemPropsType> = ({
 			<a className="accord__link" href={ROUTE_LINK.accordDetail({ idcode: id })}>{name}</a>
 			{showBaidge && [
 				' ',
-				tags.map(tag => (<Tag>{tag.title}</Tag>))
+				tags.map(tag => (<Tag key={tag.id}>{tag.title}</Tag>))
 			]}
 		</div>
 	</span>

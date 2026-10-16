@@ -28,8 +28,8 @@ export const ExperienceItemRenderer: FunctionComponent<ExperienceItemBlock> = ({
 		</div>
 		{description && description.length > 0 && (
 			<div className="company__description">
-				{description.map((para, idx) => (
-					<BlockRenderer key={idx} block={para} />
+				{description.map((para, key) => (
+					<BlockRenderer key={key} block={para} />
 				))}
 			</div>
 		)}

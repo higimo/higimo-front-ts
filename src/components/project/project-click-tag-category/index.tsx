@@ -27,7 +27,9 @@ export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryP
 					<div className="project-tag__list">
 						<div className="project-tag__category-name">{group.title}</div>
 						{tags.map(tag => (
-							<ProjectTag filterName={PROJECT_FILTER.FILTER_TAG}>{tag.title}</ProjectTag>
+							<ProjectTag key={tag.id} filterName={PROJECT_FILTER.FILTER_TAG}>
+								{tag.title}
+							</ProjectTag>
 						))}
 					</div>
 				</div>

@@ -189,7 +189,11 @@ export const TourismVisitedPage: FunctionComponent = () => {
 
 			<TextContainer>
 				{TOURISM_VISITED_TAG_CATEGORY[0]?.tags.map((tag) => (
-					<Tag key={tag.id} active={isSelected(tag.title)} onClick={toggleTag(tag.title)}>
+					<Tag
+						key={tag.id}
+						active={isSelected(tag.title)}
+						onClick={toggleTag(tag.title)}
+					>
 						{tag.title}
 					</Tag>
 				))}
@@ -225,14 +229,14 @@ export const TourismVisitedPage: FunctionComponent = () => {
 			{isChooseVisualizator(VISUALIZATOR_MAP.TABLE) && (
 				<TourismTableGeo items={filtredRussiaCity} />
 			)}
-			{isChooseVisualizator(VISUALIZATOR_MAP.MAP)   && (
+			{isChooseVisualizator(VISUALIZATOR_MAP.MAP) && (
 				<TourismMapGeo
 					items={filtredRussiaCity}
 					propertyHandler={placemarkPropertyStyle}
 					optionHandler={placemarkOptionStyle}
 				/>
 			)}
-			{isChooseVisualizator(VISUALIZATOR_MAP.CARD)  && (
+			{isChooseVisualizator(VISUALIZATOR_MAP.CARD) && (
 				<TourismCardGeo items={filtredRussiaCity} />
 			)}
 		</Layout>

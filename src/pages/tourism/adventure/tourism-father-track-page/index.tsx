@@ -62,8 +62,8 @@ export const TourismFatherTrackPage: FunctionComponent = () => {
 			<TextContainer className="car-list">
 				<LoadSuspense data={jsonCollection.roadmap}>
 					<EmptyData data={jsonCollection.roadmap}>
-						{jsonCollection.roadmap.data && jsonCollection.roadmap.data.blocks.map((child, idx) => (
-							<BlockRenderer key={idx} block={child} />
+						{jsonCollection.roadmap.data && jsonCollection.roadmap.data.blocks.map((child, key) => (
+							<BlockRenderer key={key} block={child} />
 						))}
 					</EmptyData>
 				</LoadSuspense>

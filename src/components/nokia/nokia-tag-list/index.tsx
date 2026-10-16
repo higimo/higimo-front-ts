@@ -5,8 +5,6 @@ import { NokiaTag } from 'components/nokia/nokia-tag'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type NokiaTagListPropsType = {
 	tagGroupList: NokiaTagGroupType[] | null
 	tagList: NokiaTagType[] | null
@@ -21,14 +19,15 @@ export const NokiaTagList: FunctionComponent<NokiaTagListPropsType> = ({
 	updateFilter,
 }) => tagGroupList && tagList && (
 	<div className="nokia-tags-gallery">
-		{tagGroupList.map(tagGroup => (
-			<div className="nokia-tags-gallery__group">
+		{tagGroupList.map((tagGroup, key) => (
+			<div key={key} className="nokia-tags-gallery__group">
 				<div className="nokia-tags-gallery__group-name">
 					{tagGroup}
 				</div>
 				<div className="nokia-tags-gallery__group-tags">
 					{tagList.filter(i => i.group === tagGroup).map(tag => (
 						<NokiaTag
+							key={tag.id}
 							tag={tag}
 							onClick={updateFilter(tag.id)}
 							isActive={tag.id === filter}

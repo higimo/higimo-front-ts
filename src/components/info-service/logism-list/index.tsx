@@ -5,8 +5,6 @@ import cs from 'classnames'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type LogismListPropsType = {
 	logismList: LogismType[] | null
 }
@@ -15,12 +13,14 @@ export const LogismList: FunctionComponent<LogismListPropsType> = ({
 	logismList
 }) => logismList && (
 	<div className="gallery-logism">
-		{logismList.map(({ text }) => (
+		{logismList.map((logism) => (
 			<div
+				key={logism.id}
 				className={cs('gallery-logism__item', {
-					'gallery-logism__item--long': text.length > 100
+					'gallery-logism__item--long': logism.text.length > 100
 				})}
-				dangerouslySetInnerHTML={{ __html: text.replace(/(https?:\/\/.*)/g, '<a href="$1">источник</a>') }}
+				// TODO: [LIGHT] linkify?
+				dangerouslySetInnerHTML={{ __html: logism.text.replace(/(https?:\/\/.*)/g, '<a href="$1">источник</a>') }}
 			/>
 		))}
 	</div>

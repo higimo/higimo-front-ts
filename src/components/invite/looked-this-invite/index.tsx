@@ -17,7 +17,7 @@ export const LookedThisInvite: FunctionComponent = () => (
 		<TextContainer>
 			<ul className="looked-this__lists">
 				{LOOKED_THIS_INVITE.map(item => (
-					<li className="looked-this__item">
+					<li key={item.href} className="looked-this__item">
 						<a
 							className="looked-this__link"
 							target="_blank"

@@ -46,6 +46,7 @@ export const AuthForm: FunctionComponent = () => {
 		<InnerFromContainer>
 			<FormProvider {...formMethods}>
 				<form onSubmit={formMethods.handleSubmit(handleLogin)}>
+					{/* TODO: [MIDDLE] пора в отдельный компонент вынести, дублируется код же */}
 					{Object.entries(formScheme).map(([code, scheme]) => (
 						<FiledForm
 							key={code}

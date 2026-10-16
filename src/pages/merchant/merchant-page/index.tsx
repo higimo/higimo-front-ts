@@ -30,6 +30,7 @@ export const MerchantPage: FunctionComponent = () => {
 
 				{products.map(product => (
 					<ProductBanner
+						key={product.id}
 						product={product}
 						withBackground={true}
 					/>

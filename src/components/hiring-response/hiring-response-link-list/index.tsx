@@ -12,7 +12,7 @@ export const HiringResponseLinkList: FunctionComponent = () => (
 		<div className="hiring-response-links__column">
 			<h2>Искать работу</h2>
 			{HIRING_LINK.map((item, index) => (
-				<Fragment>
+				<Fragment key={index}>
 					{index > 0 && ' • '}
 					<a href={item.href as string} className="nowrap">{item.title}</a>
 				</Fragment>
@@ -21,7 +21,7 @@ export const HiringResponseLinkList: FunctionComponent = () => (
 		<div className="hiring-response-links__column">
 			<h2>Резюме</h2>
 			{RESUME_LINK.map((item, index) => (
-				<Fragment>
+				<Fragment key={item.href}>
 					{index > 0 && ' • '}
 					<HiringResponseResumeLinkItem {...item} />
 				</Fragment>

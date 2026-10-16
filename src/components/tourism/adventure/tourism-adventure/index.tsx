@@ -11,8 +11,8 @@ export const TourismAdventure: FunctionComponent<TourismAdventurePropsType> = ({
 }) => (
 	<a className="tourism-adventure" href={adventure?.href}>
 		<div className="tourism-adventure__options">
-			{adventure?.options.map(option => (
-				<div className="tourism-adventure__option-item">
+			{adventure?.options.map((option, key) => (
+				<div key={key} className="tourism-adventure__option-item">
 					<div className="tourism-adventure-option__title">
 						{option.title}
 					</div>

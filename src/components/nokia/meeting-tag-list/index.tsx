@@ -3,8 +3,6 @@ import { NokiaTagType } from 'api-types/nokia.types'
 
 import { NokiaTag } from 'components/nokia/nokia-tag'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type MeetingTagListPropsType = {
 	tags: NokiaTagType[]
 	selectedTag?: NokiaTagType
@@ -19,6 +17,7 @@ export const MeetingTagList: FunctionComponent<MeetingTagListPropsType> = ({
 	<div className="nokia__meeting-tags">
 		{tags.map(tag => (
 			<NokiaTag
+				key={tag.id}
 				tag={tag}
 				isActive={selectedTag && selectedTag.name === tag.name}
 				onClick={onClick(tag)}

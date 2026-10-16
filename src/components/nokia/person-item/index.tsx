@@ -33,7 +33,7 @@ export const PersonItem: FunctionComponent<PersonItemPropsType> = ({ person }) =
 		)}
 		{person.tags && (
 			<div className="person-mini-profile__tags">
-				{person.tags.map(tag => (<NokiaTag tag={tag} />))}
+				{person.tags.map(tag => (<NokiaTag key={tag.id} tag={tag} />))}
 			</div>
 		)}
 		<div className="person-mini-profile__buttons">

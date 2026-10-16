@@ -78,6 +78,7 @@ export const TourismMapGeo = <T extends BasePointType, L extends Coord>({
 					>
 						{!!items && items.map((point) => (
 							<Placemark
+								key={point.title}
 								modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
 								geometry={point.coord}
 								properties={propertyHandler && propertyHandler(point)}

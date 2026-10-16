@@ -23,11 +23,12 @@ export const ProjectTagCategory: FunctionComponent<ProjectTagCategoryPropsType> 
 }) => groupedTags && (
 	<TextContainer className="project-tag">
 		{groupedTags.map(({ group, tags }) => (
-			<div className="project-tag__category-group">
+			<div key={group.id} className="project-tag__category-group">
 				<div className="project-tag__list">
 					<div className="project-tag__category-name">{group.title}</div>
 					{tags.map(tag => (
 						<ProjectTag
+							key={tag.id}
 							filterName={PROJECT_FILTER.FILTER_TAG}
 							// isLink={false}
 							isSelected={isSelected(tag.title)}

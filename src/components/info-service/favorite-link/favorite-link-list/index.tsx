@@ -4,16 +4,15 @@ import { LinksType } from 'api-types/links.types'
 import { FavoriteLinkItem } from 'components/info-service/favorite-link/favorite-link-item'
 import { TextContainer } from 'components/ui/text-container'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type FavoriteLinkListPropsType = {
 	linkList: LinksType[] | null
 }
 
+// TODO: перенести TextContainer в родителя
 export const FavoriteLinkList: FunctionComponent<FavoriteLinkListPropsType> = ({ linkList }) => linkList && (
 	<TextContainer>
 		<ul>
-			{linkList.map(item => <FavoriteLinkItem {...item} />)}
+			{linkList.map(item => <FavoriteLinkItem key={item.id} {...item} />)}
 		</ul>
 	</TextContainer>
 )

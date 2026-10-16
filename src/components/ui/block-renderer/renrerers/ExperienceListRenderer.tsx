@@ -7,8 +7,8 @@ export const ExperienceListRenderer: FunctionComponent<ExperienceListBlock> = ({
 	items,
 }) => (
 	<div className="expirience">
-		{items.map((item, idx) => (
-			<ExperienceItemRenderer key={idx} {...item} />
+		{items.map((item, key) => (
+			<ExperienceItemRenderer key={key} {...item} />
 		))}
 	</div>
 )

@@ -5,8 +5,6 @@ import { VkPhotoAlbumItem } from 'components/vk/vk-photo-album-item'
 
 import './style.css'
 
-// TODO: [ONE_CLASS_COMPONENT] прям отдельный компонент нужен? Мб, сделать общий с className
-
 type VkPhotoAlbumListPropsType = {
 	albums: VKAlbumType[]
 }

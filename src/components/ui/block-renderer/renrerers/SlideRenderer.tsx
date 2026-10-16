@@ -11,8 +11,8 @@ export const SlideRenderer: FunctionComponent<SlideBlock> = ({
 }) => (
 	<PrecentationContainer className={className}>
 		<TextContainer>
-			{children.map((child, idx) => (
-				<BlockRenderer key={idx} block={child} />
+			{children.map((child, key) => (
+				<BlockRenderer key={key} block={child} />
 			))}
 		</TextContainer>
 	</PrecentationContainer>
