@@ -21,7 +21,7 @@ export const NestedListFormPage: FunctionComponent = () => {
 
 	// TODO: [BACKEND] пока что присылает по умолчанию главную — это надо исправить на пустоту
 	const values = (
-		idcode === DEFAULT_ID && nestedListItem.data
+		idcode !== DEFAULT_ID && nestedListItem.data
 		? nestedListItem.data[0] ?? null
 		: null
 	)

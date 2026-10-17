@@ -6,10 +6,10 @@ import { FunctionComponent } from 'preact'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
+import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { getBackPath } from 'utils/url-route/get-back-path'
 import { isValidAuth } from 'utils/types/is-valid-auth'
@@ -46,17 +46,7 @@ export const AuthForm: FunctionComponent = () => {
 		<FromContainer variant="inner">
 			<FormProvider {...formMethods}>
 				<form onSubmit={formMethods.handleSubmit(handleLogin)}>
-					{/* TODO: [MIDDLE] пора в отдельный компонент вынести, дублируется код же */}
-					{Object.entries(formScheme).map(([code, scheme]) => (
-						<FiledForm
-							key={code}
-							name={code}
-							type={scheme.type}
-							label={scheme.title}
-							autocomplete={scheme.autocomplete}
-							required={scheme.required}
-						/>
-					))}
+					<RenderFormScheme<FormValues> formScheme={formScheme} />
 					<ButtonGroup>
 						<FormButton
 							type="submit"

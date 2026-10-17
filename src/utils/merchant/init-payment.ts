@@ -14,6 +14,7 @@ type GetInfoType = () => {
 // TODO: [HARD] надо более одинаковый код с VK сделать
 
 export async function initPayment(getInfo: GetInfoType) {
+	// TODO: [LIGHT] вынести в конфиг константу
 	await loadJs('https://integrationjs.tbank.ru/integration.js')
 
 	const initConfig: InitOptions = {

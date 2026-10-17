@@ -4,10 +4,10 @@ import { FunctionComponent } from 'preact'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
+import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 export type FormValues = {
 	method: 'GET' | 'POST' | 'PUT' | 'DELETE'
@@ -54,15 +54,7 @@ export const SidebarForm: FunctionComponent<SidebarPropsType> = ({ onSubmit }) =
 					onSubmit={formMethods.handleSubmit(onSubmit)}
 					autocomplete="off"
 				>
-					{Object.entries(formScheme).map(([code, scheme]) => (
-						<FiledForm
-							key={code}
-							name={code}
-							type={scheme.type}
-							label={scheme.title}
-							values={scheme.values}
-						/>
-					))}
+					<RenderFormScheme<FormValues> formScheme={formScheme} />
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"

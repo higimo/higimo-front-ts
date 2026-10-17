@@ -6,10 +6,10 @@ import { LibraryType } from 'api-types/library.types'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
+import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { as } from 'utils/types/as'
 import { getResetValues } from 'utils/get-reset-values'
@@ -65,15 +65,7 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({ initialD
 					onSubmit={formMethods.handleSubmit(handleSubmit)}
 					autocomplete="off"
 				>
-					{Object.entries(formScheme).map(([code, scheme]) => (
-						<FiledForm
-							key={code}
-							name={code}
-							type={scheme.type}
-							readonly={scheme.readonly}
-							label={scheme.title}
-						/>
-					))}
+					<RenderFormScheme<FormValues> formScheme={formScheme} />
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"

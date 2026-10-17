@@ -6,10 +6,10 @@ import { PortfolioWorkerType } from 'api-types/portfolio.types'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
+import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { toast } from 'toast'
 
@@ -55,16 +55,7 @@ export const WorkerForm: FunctionComponent<CreateWorkerPropsType> = ({ onSubmit 
 					onSubmit={formMethods.handleSubmit(handleFormSubmit)}
 					autocomplete="off"
 				>
-					{Object.entries(formScheme).map(([code, scheme]) => (
-						<FiledForm
-							key={code}
-							name={code}
-							type={scheme.type}
-							label={scheme.title}
-							readonly={scheme.readonly}
-							required={scheme.required}
-						/>
-					))}
+					<RenderFormScheme<FormValues> formScheme={formScheme} />
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"

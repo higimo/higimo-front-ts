@@ -28,7 +28,7 @@ export type FiledFormPropsType = {
 	autocomplete?: boolean
 	autofocus?: boolean
 	required?: boolean
-	values?: readonly string[]
+	values?: string[]
 }
 
 export const FiledForm: FunctionComponent<FiledFormPropsType> = ({

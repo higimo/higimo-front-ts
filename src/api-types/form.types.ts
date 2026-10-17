@@ -13,7 +13,7 @@ type FormFieldSchemeBase<K extends PropertyKey> = {
 /** Select-вариант: `type: 'select'` обязателен, `values` обязателен. */
 type FormFieldSelectScheme<K extends PropertyKey> = FormFieldSchemeBase<K> & {
 	type: 'select'
-	values: readonly string[]
+	values: string[]
 }
 
 /**
@@ -26,7 +26,7 @@ type FormFieldInputScheme<K extends PropertyKey> = FormFieldSchemeBase<K> & {
 	values?: never
 }
 
-type FormFieldScheme<K extends PropertyKey> =
+export type FormFieldScheme<K extends PropertyKey> =
 	| FormFieldSelectScheme<K>
 	| FormFieldInputScheme<K>
 

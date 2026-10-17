@@ -16,15 +16,15 @@ import { toast } from 'toast'
 import './style.css'
 
 export const ToolPage: FunctionComponent = () => {
-	const [response, setResponse] = useState('')
+	const [response, setResponse] = useState<Object>()
 
 	const handleSubmit = useCallback(async (values: FormValues) => {
 		try {
 			let parsedOptions = parseJson(values.options) as SendRequestOptions
 			const options: SendRequestOptions = { ...parsedOptions, method: values.method }
 
-			const result = await sendRequest(values.uri, options)
-			setResponse(JSON.stringify(result))
+			const result = await sendRequest(`/api/v2/${values.uri}`, options)
+			setResponse(result)
 		} catch (error) {
 			toast.warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
 		}

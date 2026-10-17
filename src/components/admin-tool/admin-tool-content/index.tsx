@@ -1,9 +1,11 @@
 import { FunctionComponent } from 'preact'
 
-export const AdminToolContent: FunctionComponent<{ response: string }> = ({ response }) => (
+export const AdminToolContent: FunctionComponent<{ response: Object | undefined }> = ({
+	response,
+}) => (
 	<div className="tool-page__content">
-		<pre
-			dangerouslySetInnerHTML={{ __html: response }}
-		/>
+		<pre>
+			{response && JSON.stringify(response, null, '\t')}
+		</pre>
 	</div>
 )

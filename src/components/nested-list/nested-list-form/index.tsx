@@ -5,10 +5,10 @@ import { NestedListItemFullType, NestedListItemType } from 'api-types/listlist.t
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
-import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
+import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { as } from 'utils/types/as'
 import { nestedListApi } from 'repositories/nested-list-api.repository'
@@ -26,7 +26,6 @@ export const formScheme: FormScheme<NestedListItemType> = {
 	},
 	code: { title: 'код', },
 }
-
 
 const handleListListSubmit = async (values: FormValues): Promise<void> => {
 	if (as<NestedListItemType>(values, ['id'])) {
@@ -77,16 +76,7 @@ export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ ini
 					onSubmit={formMethods.handleSubmit(handleListListSubmit)}
 					autocomplete="off"
 				>
-					{Object.entries(formScheme).map(([code, scheme]) => (
-						<FiledForm
-							key={code}
-							name={code}
-							type={scheme.type}
-							readonly={scheme.readonly}
-							label={scheme.title}
-							description={scheme.description}
-						/>
-					))}
+					<RenderFormScheme<FormValues> formScheme={formScheme} />
 					<ButtonGroup variant="gap">
 						<FormButton
 							type="submit"
