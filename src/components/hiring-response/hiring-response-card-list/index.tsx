@@ -58,7 +58,7 @@ export const HiringResponseCardList: FunctionComponent<HiringResponseCardListPro
 			<div id={ANCHOR_LINK.hiringResponseForm}>
 				<OnlyAdmin>
 					<TextContainer>
-						<CollapseSection title="Форма">
+						<CollapseSection title="Форма" fold={false}>
 							<HiringResponseCardForm
 								key={selectedCard.id}
 								initialData={selectedCard}
