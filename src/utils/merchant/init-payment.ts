@@ -6,6 +6,8 @@ import { UseFormGetValues } from 'react-hook-form'
 import { loadJs } from 'utils/merchant/load-js'
 import { sendRequest } from 'utils/api/send-request'
 
+import { TBANK_SCRIPT_SRC } from 'config/TBANK-SCRIPT-SRC'
+
 type GetInfoType = () => {
 	currentProduct: MerchantProductType
 	getValues: UseFormGetValues<FormValues>
@@ -14,8 +16,7 @@ type GetInfoType = () => {
 // TODO: [HARD] надо более одинаковый код с VK сделать
 
 export async function initPayment(getInfo: GetInfoType) {
-	// TODO: [LIGHT] вынести в конфиг константу
-	await loadJs('https://integrationjs.tbank.ru/integration.js')
+	await loadJs(TBANK_SCRIPT_SRC)
 
 	const initConfig: InitOptions = {
 		terminalKey: '25872718',
