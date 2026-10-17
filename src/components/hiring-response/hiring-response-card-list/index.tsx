@@ -69,7 +69,7 @@ export const HiringResponseCardList: FunctionComponent<HiringResponseCardListPro
 				</OnlyAdmin>
 			</div>
 			<div className="hiring-cards" id={ANCHOR_LINK.hiringResponseGallery}>
-				{cards.map(card => (
+				{cards.slice(0, 36).map(card => (
 					<HiringResponseCard
 						{...card}
 						key={card.id.toString()}
