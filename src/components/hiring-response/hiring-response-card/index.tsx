@@ -41,7 +41,7 @@ export const HiringResponseCard: FunctionComponent<HiringResponseCardPropsType> 
 			<div
 				className="hiring-cards__content"
 				onClick={toggleShowFull}
-				dangerouslySetInnerHTML={{ __html: linkify(getHr(getBr(content))) }}
+				dangerouslySetInnerHTML={{ __html: linkify(getHr(getBr(content))).replace(/<br \/><hr \/><br \/>/g, '<hr>') }}
 				style={(showFull
 					? { maxHeight: '100%' }
 					: {}

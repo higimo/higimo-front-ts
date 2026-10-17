@@ -10,3 +10,10 @@
 .hiring-response-page .factoid {
 	color: #1a439b;
 }
+
+.hiring-response-page hr {
+	color: #ff0000;
+	border: none;
+	border-top: 1px solid #0003;
+	margin: 4px 0;
+}
