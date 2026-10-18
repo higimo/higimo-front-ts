@@ -2,9 +2,10 @@ import { VKAlbumType, VkPhotoType } from 'api-types/vk.types'
 import { VkResponseData } from 'vendor/types'
 
 import { toast } from 'toast'
-import { vkApiCall } from 'vendor/vk-api-call'
+import { vkApiCall } from 'utils/api/vk-api-call'
 
 import { VkError } from 'errors/vk-error'
+import { handleVkError } from 'utils/api/handle-errors/handle-vk-error'
 
 class VkApiRepository {
 	async getAlbums(
@@ -20,16 +21,20 @@ class VkApiRepository {
 
 			const albums = response.response.items
 			if (!albums) {
-				// TODO: [HARD] Использовать VKError надо фабричные методы написать
-				// Уже есть buildApiError
-				throw new Error('Альбомы не загрузились')
+				throw new VkError(
+					{
+						error_code: -1,
+						error_msg: 'Альбомы не загрузились',
+						request_params: {},
+					},
+					{ method: 'photos.getAlbums', params: { owner_id: userId } }
+				)
 			}
 
 			return albums
 		} catch (error) {
-			if (error instanceof VkError) {
-				toast.warning(error.error_msg)
-			} else {
+			// TODO: [LAST] нврн, это в catch надо унести
+			if (!handleVkError(error)) {
 				console.error(error)
 			}
 			return null
@@ -51,10 +56,23 @@ class VkApiRepository {
 				v: '5.199',
 			})
 			return response.response.items
+
+			const albums = response.response.items
+			if (!albums) {
+				throw new VkError(
+					{
+						error_code: -1,
+						error_msg: 'Альбомы не загрузились',
+						request_params: {},
+					},
+					{ method: 'photos.getAlbums', params: { owner_id: userId } }
+				)
+			}
+
+			return albums
 		} catch (error) {
-			if (error instanceof VkError) {
-				toast.warning(error.error_msg)
-			} else {
+			// TODO: [LAST] нврн, это в catch надо унести
+			if (!handleVkError(error)) {
 				console.error(error)
 			}
 			return null
@@ -75,11 +93,23 @@ class VkApiRepository {
 
 				v: '5.199',
 			})
-			return response.response
+
+			const result = response.response
+			if (!result) {
+				throw new VkError(
+					{
+						error_code: -1,
+						error_msg: 'Альбомы не загрузились',
+						request_params: {},
+					},
+					{ method: 'photos.getAlbums', params: { owner_id: userId } }
+				)
+			}
+
+			return result
 		} catch (error) {
-			if (error instanceof VkError) {
-				toast.warning(error.error_msg)
-			} else {
+			// TODO: [LAST] нврн, это в catch надо унести
+			if (!handleVkError(error)) {
 				console.error(error)
 			}
 			return false

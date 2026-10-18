@@ -4,7 +4,7 @@ import { ServerFailError } from 'errors/server-fail-error'
 import { ValidationFailError } from 'errors/validation-fail-error'
 import { isLaravelErrorBody } from 'utils/types/is-laravel-error-body'
 
-// мб их ловить в ErrorBoundary, раз он в роутере всё равно перехватывает их,
+// [LAST] мб их ловить в ErrorBoundary, раз он в роутере всё равно перехватывает их,
 // бизнес-логику обрабатывать в компонентах
 // через .catch — так вроде приятнее выглядит, чем try {} catch {}
 
