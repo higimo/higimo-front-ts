@@ -17,7 +17,7 @@ import { vkSession } from 'context/vk-signal'
 
 import { as } from 'utils/types/as'
 import { toast } from 'toast'
-import { VkApi } from 'repositories/vk-api.repository'
+import { vkApi } from 'repositories/vk-api.repository'
 
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
@@ -25,7 +25,7 @@ import '../vk-style.css'
 
 // TODO: [FEATURE] реализовать сортировку альбома
 export const VkAlbumEditPage: FunctionComponent = () => {
-	const { status, session, error } = vkSession.value
+	const { status, data, error } = vkSession.value
 	const { params: { albumId = DEFAULT_ID } } = useRoute()
 	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
 
@@ -34,7 +34,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			return undefined
 		}
 
-		const loadedPhotos = await VkApi.getPhotos(ownerId, albumId)
+		const loadedPhotos = await vkApi.getPhotos(ownerId, albumId)
 		if (!loadedPhotos) {
 			return undefined
 		}
@@ -44,11 +44,11 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 
 	useEffect(() => {
 		if (status === 'LOADED') {
-			fetchPhotos(session.user.id, as<Positive>(albumId))
+			fetchPhotos(data.user.id, as<Positive>(albumId))
 		} else if (status === 'ERROR') {
 			toast.error(error.message)
 		}
-	}, [status, error, session, fetchPhotos, albumId])
+	}, [status, error, data, fetchPhotos, albumId])
 
 	return (
 		<Layout title="Просмотр альбома" className="vk-identity-page vk-photo">

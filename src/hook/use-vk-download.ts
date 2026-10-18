@@ -9,7 +9,7 @@ import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'config/VK-CONST'
 import { vkSession } from 'context/vk-signal'
 
 import { toast } from 'toast'
-import { VkApi } from 'repositories/vk-api.repository'
+import { vkApi } from 'repositories/vk-api.repository'
 
 export type UseVkDownloadType = () => {
 	onSubmit: (data: VkDownloadFormValuesType) => undefined
@@ -17,7 +17,7 @@ export type UseVkDownloadType = () => {
 }
 
 export const useVkDownload: UseVkDownloadType = () => {
-	const { status, session } = vkSession.value
+	const { status, data } = vkSession.value
 
 	const { size, push, pull, view } = useQueue<VkQueueType>()
 	const [ photos, setPhotos ] = useState<VkPhotosContentType[]>([])
@@ -32,7 +32,7 @@ export const useVkDownload: UseVkDownloadType = () => {
 			if (!downloadId) {
 				return undefined
 			}
-			const albums = await VkApi.getAlbums(downloadId)
+			const albums = await vkApi.getAlbums(downloadId)
 			if (!albums) {
 				return undefined
 			}
@@ -44,7 +44,7 @@ export const useVkDownload: UseVkDownloadType = () => {
 				})
 			})
 		})()
-	}, [status, session, downloadId, push])
+	}, [status, data, downloadId, push])
 
 	// получаем из альбомов уже фотки
 	useEffect(() => {
@@ -54,7 +54,7 @@ export const useVkDownload: UseVkDownloadType = () => {
 			toast.info(`Осталось скачать ${size} альбома`);
 
 			(async () => {
-				const albumPhotos = await VkApi.getPhotos(downloadId, headQueue.id)
+				const albumPhotos = await vkApi.getPhotos(downloadId, headQueue.id)
 				if (!albumPhotos) return
 				setPhotos(prev => [
 					...prev,
@@ -68,19 +68,19 @@ export const useVkDownload: UseVkDownloadType = () => {
 		setTimeout(() => pull(), QUEUE_TIMER)
 	}, [downloadId, size, view, pull])
 
-	const onSubmit = useCallback((data: VkDownloadFormValuesType) => {
+	const onSubmit = useCallback((values: VkDownloadFormValuesType) => {
 		if (status !== 'LOADED') {
 			return undefined
 		}
 		setPhotos([])
-		if (data.groupId !== '') {
-			setDownloadId('-' + data.groupId)
-		} else if (data.userId !== '') {
-			setDownloadId(data.userId)
+		if (values.groupId !== '') {
+			setDownloadId('-' + values.groupId)
+		} else if (values.userId !== '') {
+			setDownloadId(values.userId)
 		} else {
-			setDownloadId(session.user.id)
+			setDownloadId(data.user.id)
 		}
-	}, [setPhotos, setDownloadId, session])
+	}, [setPhotos, setDownloadId, data])
 
 	return {
 		onSubmit,

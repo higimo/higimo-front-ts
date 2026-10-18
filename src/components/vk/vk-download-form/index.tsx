@@ -5,6 +5,7 @@ import { useEffect } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
 
 import { ButtonGroup } from 'components/form/button-group'
+import { FieldRow } from 'components/form/field-row'
 import { FiledForm } from 'components/form/filed-form'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
@@ -12,7 +13,6 @@ import { FromContainer } from 'components/form/form-container'
 
 import { debounce } from '@github/mini-throttle'
 import { vkSession } from 'context/vk-signal'
-import { FieldRow } from 'components/form/field-row'
 
 type VkDownloadFormContainerPropsType = {
 	onSubmit: (values: VkDownloadFormValuesType) => void
@@ -21,7 +21,7 @@ type VkDownloadFormContainerPropsType = {
 export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType> = ({
 	onSubmit
 }) => {
-	const { session } = vkSession.value
+	const { data, status } = vkSession.value
 	const formMethods = useForm<VkDownloadFormValuesType>({
 		mode: 'onChange',
 	})
@@ -42,8 +42,8 @@ export const VkDownloadForm: FunctionComponent<VkDownloadFormContainerPropsType>
 	}, [formMethods.watch, formMethods.handleSubmit])
 
 	const handlerDownloadSelf = () => {
-		if (session?.user.id) {
-			formMethods.setValue('userId', session?.user.id)
+		if (status === 'LOADED' && data.user.id) {
+			formMethods.setValue('userId', data.user.id)
 		}
 	}
 

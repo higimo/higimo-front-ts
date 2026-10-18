@@ -1,49 +1,48 @@
-import { FunctionComponent, useEffect } from 'preact/compat'
-import { VkAuthResultType } from 'api-types/vk.types'
+import { FunctionComponent } from 'preact'
+import { VkAuthResultType, VkSessionType } from 'api-types/vk.types'
+
+import { useSdkLoader } from 'hook/use-sdk-loader'
+
+import { injectScript } from 'utils/sdk/inject-script'
 
 import { setVkError, setVkLoaded, setVkLoading, vkSession } from 'context/vk-signal'
 
-import { loadOpenApi } from 'utils/load-openapi'
-import { startVkSdk } from 'utils/vk-sdk'
+import { VK_API_ID, VK_API_VERSION, VK_SCOPE } from 'config/VK-API-ID'
+import { VK_SCRIPT_SRC } from 'config/VK-SCRIPT-SRC'
 
 export const VkSdkLoader: FunctionComponent = () => {
-	useEffect(() => {
-		if (window.VK && vkSession.value.status === 'LOADED') {
-			return undefined
-		}
-
-		const handleAuth = ({ status, session }: VkAuthResultType): void => {
-			if (status === 'connected' && session) {
-				setVkLoaded(session)
-				return
+	useSdkLoader<VkSessionType>({
+		ready: () => {
+			if (window.VK && vkSession.value.status === 'LOADED') {
+				return { ready: true, data: vkSession.value.data }
 			}
-
-			setVkError(new Error(`VK auth status: ${status}`))
-		}
-
-		const boot = (): void => {
-			try {
-				setVkLoading()
-				// TODO: [LAST] пора переходить на VK ID, чтобы каждый раз не открывался попап авторизации
-				startVkSdk(handleAuth)
-			} catch (err) {
-				setVkError(err instanceof Error ? err : new Error('VK init failed'))
+			return { ready: false }
+		},
+		load: () => {
+			const container = document.getElementById('vk_api_transport')
+			if (!container) {
+				throw new Error('#vk_api_transport not found')
 			}
-		}
-
-		if (window.VK) {
-			boot()
-			return undefined
-		}
-
-		const container = document.getElementById('vk_api_transport')
-		if (!container) {
-			setVkError(new Error('#vk_api_transport not found'))
-			return undefined
-		}
-
-		return loadOpenApi({ container, onReady: boot, onLoadError: setVkError })
-	}, [])
+			return injectScript(VK_SCRIPT_SRC, {
+				container,
+				readyCallback: 'vkAsyncInit',
+			})
+		},
+		init: () => new Promise<VkSessionType>((resolve, reject) => {
+			// TODO: [LAST] пора переходить на VK ID, чтобы каждый раз не открывался попап авторизации
+			VK.init({ apiId: VK_API_ID, apiVersion: VK_API_VERSION })
+			VK.Auth.login(({ status, session }: VkAuthResultType) => {
+				if (status === 'connected' && session) {
+					resolve(session)
+					return
+				}
+				reject(new Error(`VK auth status: ${status}`))
+			}, VK_SCOPE)
+		}),
+		onLoading: setVkLoading,
+		onLoaded: setVkLoaded,
+		onError: setVkError,
+	})
 
 	return null
 }

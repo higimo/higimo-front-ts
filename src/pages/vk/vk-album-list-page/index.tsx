@@ -12,17 +12,17 @@ import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { toast } from 'toast'
-import { VkApi } from 'repositories/vk-api.repository'
+import { vkApi } from 'repositories/vk-api.repository'
 import { vkSession } from 'context/vk-signal'
 
 import '../vk-style.css'
 
 export const VkAlbumListPage: FunctionComponent = () => {
-	const { status, session, error } = vkSession.value
+	const { status, data, error } = vkSession.value
 	const [ albums, setAlbums ] = useState<VKAlbumType[]>([])
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
-		const albums = await VkApi.getAlbums(ownerId)
+		const albums = await vkApi.getAlbums(ownerId)
 		if (!albums) {
 			return undefined
 		}
@@ -32,11 +32,11 @@ export const VkAlbumListPage: FunctionComponent = () => {
 
 	useEffect(() => {
 		if (status === 'LOADED') {
-			fetchAlbums(session.user.id)
+			fetchAlbums(data.user.id)
 		} else if (status === 'ERROR') {
 			toast.error(error.message)
 		}
-	}, [status, session, fetchAlbums])
+	}, [status, data, fetchAlbums])
 
 	return (
 		<Layout className="vk-identity-page vk-photo" title="Список альбомов">

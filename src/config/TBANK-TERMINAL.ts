@@ -1,0 +1,1 @@
+export const TBANK_TERMINAL_KEY = '25872718'

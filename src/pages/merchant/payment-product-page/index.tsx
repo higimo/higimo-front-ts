@@ -5,11 +5,10 @@ import { useMerchant } from 'hook/data/use-merchant'
 
 import { Layout } from 'components/ui/layout/Layout'
 import { Loading } from 'components/ui/loading'
-import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
 import { MerchantPaymentForm } from 'components/merchant/merchant-payment-form'
 import { MerchantProductBenefitList } from 'components/merchant/merchant-product-benefit-list'
-import { MerchantProductItem } from 'components/merchant/merchant-product-item'
 import { MerchantProductFeatureList } from 'components/merchant/merchant-product-feature-list'
+import { MerchantProductItem } from 'components/merchant/merchant-product-item'
 import { NotFoundData } from 'components/ui/not-found-data'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -39,10 +38,6 @@ export const PaymentProductPage: FunctionComponent = () => {
 					key={id}
 					product={currentProduct}
 				/>
-			</TextContainer>
-
-			<TextContainer>
-				<MerchantPayBlock />
 			</TextContainer>
 
 			<TextContainer>

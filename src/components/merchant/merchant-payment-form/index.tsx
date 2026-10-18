@@ -2,14 +2,10 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FunctionComponent } from 'preact'
 import { MerchantProductType } from 'api-types/merchant.types'
 
-import { useLayoutEffect } from 'preact/hooks'
-
-import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
-import { FormButton } from 'components/form/form-button'
 import { FromContainer } from 'components/form/form-container'
-
-import { initPayment } from 'utils/merchant/init-payment'
+import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
+import { TbankSdkLoader } from 'components/merchant/tbank-sdk-loader'
 
 import './style.css'
 
@@ -33,36 +29,20 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 		}
 	})
 
-	useLayoutEffect(() => {
-		if (!product) {
-			return
-		}
-
-		// TODO: [HARD] надо исправить это как у VK
-		initPayment(() => ({
-			currentProduct: product,
-			getValues: formMethods.getValues
-		})).then().catch()
-	}, [product])
-
 	return (
 		<div className="checkout-form">
-			<FromContainer variant="full">
+			<FromContainer variant="inner">
 				<FormProvider {...formMethods}>
 					<form
 						autocomplete="off"
 					>
+						<TbankSdkLoader
+							currentProduct={product}
+							getValues={formMethods.getValues}
+						/>
 						<FiledForm name="email" label="Электропочта" />
 						<FiledForm name="comment" type="textarea" label="Комментарий к заказу" />
-						<ButtonGroup variant="gap">
-							<FormButton
-								type="submit"
-								variant="default"
-								disabled={formMethods.formState.isSubmitting}
-							>
-								{formMethods.formState.isSubmitting ? 'Добавление…' : 'Добавить'}
-							</FormButton>
-						</ButtonGroup>
+						<MerchantPayBlock />
 					</form>
 				</FormProvider>
 			</FromContainer>

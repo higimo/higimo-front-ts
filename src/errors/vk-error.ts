@@ -1,4 +1,4 @@
-import { VkResponseError } from 'vendor/types'
+import { VkResponseError } from 'api-types/vk.types'
 
 export class VkError extends Error {
 	/** Код ошибки */

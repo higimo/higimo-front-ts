@@ -1,11 +1,9 @@
 import { VKAlbumType, VkPhotoType } from 'api-types/vk.types'
-import { VkResponseData } from 'vendor/types'
-
-import { toast } from 'toast'
-import { vkApiCall } from 'utils/api/vk-api-call'
-
 import { VkError } from 'errors/vk-error'
+import { VkResponseData } from 'api-types/vk.types'
+
 import { handleVkError } from 'utils/api/handle-errors/handle-vk-error'
+import { vkApiCall } from 'utils/api/vk-api-call'
 
 class VkApiRepository {
 	async getAlbums(
@@ -117,4 +115,4 @@ class VkApiRepository {
 	}
 }
 
-export const VkApi = new VkApiRepository()
+export const vkApi = new VkApiRepository()

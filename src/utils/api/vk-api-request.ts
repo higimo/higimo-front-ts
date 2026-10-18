@@ -1,4 +1,4 @@
-import { VkResponseError } from 'vendor/types'
+import { VkResponseError } from 'api-types/vk.types'
 
 import { vkApiCall } from 'utils/api/vk-api-call'
 import { buildVkApiError } from 'utils/api/build-vk-api-error'
