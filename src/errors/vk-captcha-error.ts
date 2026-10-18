@@ -11,7 +11,13 @@ export class VkCaptchaError extends VkError {
 	/** SID капчи для последующего ввода */
 	readonly captcha_sid?: string
 
-	constructor(payload: VkResponseError['error'], context: { method: string; params: Record<string, unknown> }) {
+	constructor(
+		payload: VkResponseError['error'],
+		context: {
+			method: string
+			params: Record<string, unknown>
+		},
+	) {
 		super(payload, context)
 		this.name = 'VkCaptchaError'
 		const raw = payload as unknown as Record<string, unknown>

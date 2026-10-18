@@ -8,7 +8,7 @@ export class PolicyFailError extends HigimoApiError {
 		message: string,
 		status: number,
 		url: string,
-		response?: LaravelErrorBody | string
+		response?: LaravelErrorBody | string,
 	) {
 		super(message, status, url, response)
 		this.name = 'PolicyFailError'

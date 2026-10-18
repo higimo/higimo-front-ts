@@ -9,7 +9,11 @@ export class FetchError extends HigimoApiError {
 	 */
 	public readonly cause?: unknown
 
-	constructor(message: string, url?: string, cause?: unknown) {
+	constructor(
+		message: string,
+		url?: string,
+		cause?: unknown,
+	) {
 		super(message, 0, url)
 		this.name = 'FetchError'
 		this.cause = cause

@@ -17,7 +17,7 @@ export class VkError extends Error {
 		context: {
 			method: string
 			params: Record<string, unknown>
-		}
+		},
 	) {
 		super(payload.error_msg)
 

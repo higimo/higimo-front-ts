@@ -9,7 +9,12 @@ export class JsonParseError extends HigimoApiError {
 	 */
 	public readonly rawBody: string
 
-	constructor(message: string, status: number, url: string, rawBody: string) {
+	constructor(
+		message: string,
+		status: number,
+		url: string,
+		rawBody: string,
+	) {
 		super(message, status, url, rawBody)
 		this.name = 'JsonParseError'
 		this.rawBody = rawBody

@@ -27,7 +27,7 @@ export class HigimoApiError extends Error {
 		message: string,
 		status: number,
 		url?: string,
-		response?: LaravelErrorBody | string
+		response?: LaravelErrorBody | string,
 	) {
 		super(message)
 

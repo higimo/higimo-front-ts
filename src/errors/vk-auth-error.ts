@@ -12,7 +12,7 @@ export class VkAuthError extends VkError {
 		context: {
 			method: string
 			params: Record<string, unknown>
-		}
+		},
 	) {
 		super(payload, context)
 		this.name = 'VkAuthError'
