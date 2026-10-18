@@ -24,7 +24,7 @@ export const VkSdkLoader: FunctionComponent = () => {
 		const boot = (): void => {
 			try {
 				setVkLoading()
-				// TODO: [HARD] пора переходить на VK ID, чтобы каждый раз не открывался попап авторизации
+				// TODO: [LAST] пора переходить на VK ID, чтобы каждый раз не открывался попап авторизации
 				startVkSdk(handleAuth)
 			} catch (err) {
 				setVkError(err instanceof Error ? err : new Error('VK init failed'))

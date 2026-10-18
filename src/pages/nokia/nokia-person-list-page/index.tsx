@@ -20,13 +20,10 @@ const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | nul
 	person.tags.find(tag => tag.id === filter)
 
 export const NokiaPersonListPage: FunctionComponent = () => {
-	// TODO: [HARD] как проверять, что есть теги без группы?
-	// Надо, нврн, загружать группы, но чтобы внутри уже были теги, зачем эта ебля?
 	const [ tagList ] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
 	const [ tagGroupList ] = useApi<NokiaTagGroupType[]>(API_ROUTE.nokiaTagGroup)
 	const [ personList ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaPerson)
 
-	// TODO: [USE_TAGS] useTags удобные теги, кажись, может их в портфолио и списке людей нокии использовать?
 	const [filter, setFilter] = useState<NokiaTagType['id'] | null>(null)
 	const updateFilter = (tag: NokiaTagType['id']) => () => setFilter(filter === tag ? null : tag)
 

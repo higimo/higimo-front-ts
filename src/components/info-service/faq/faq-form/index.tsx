@@ -31,7 +31,7 @@ type FaqSinglePropsType = {
 
 export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) => {
 	const formMethods = useForm<FormValues>({
-		// TODO: [HARD] сюда же тоже надо getResetValues
+		// TODO: [LAST] сюда же тоже надо getResetValues
 		defaultValues: initialData || {}
 	})
 
