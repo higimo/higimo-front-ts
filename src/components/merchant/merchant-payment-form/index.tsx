@@ -5,7 +5,7 @@ import { MerchantProductType } from 'api-types/merchant.types'
 import { FiledForm } from 'components/form/filed-form'
 import { FromContainer } from 'components/form/form-container'
 import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
-import { TbankSdkLoader } from 'components/merchant/tbank-sdk-loader'
+import { MerchantTbankSdkLoader } from 'components/merchant/merchant-tbank-sdk-loader'
 
 import './style.css'
 
@@ -36,7 +36,7 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 					<form
 						autocomplete="off"
 					>
-						<TbankSdkLoader
+						<MerchantTbankSdkLoader
 							currentProduct={product}
 							getValues={formMethods.getValues}
 						/>

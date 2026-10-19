@@ -1,9 +1,7 @@
 import { FaqType } from 'api-types/faq.types'
 import { FunctionComponent } from 'preact'
 
-import { OnlyAdmin } from 'components/util/only-admin'
-
-import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
+import { FaqItem } from 'components/info-service/faq/faq-item'
 
 import './style.css'
 
@@ -12,24 +10,17 @@ type FaqListPropsType = {
 	onRemove: (id: FaqType['id']) => () => void
 }
 
-export const FaqList: FunctionComponent<FaqListPropsType> = ({ faqList, onRemove }) => (
+export const FaqList: FunctionComponent<FaqListPropsType> = ({
+	faqList,
+	onRemove
+}) => (
 	<div className="faq-list">
-		{faqList.map(({ id, name, code }) => (
-			<div key={id} className="faq-list__item">
-				<a href={ROUTE_LINK.faqDetail({ idcode: code })} className="faq-list__link" key={id}>
-					<div className="faq-list__name">{name}</div>
-				</a>
-				<OnlyAdmin>
-					<div className="faq-list__action">
-						<a href={ROUTE_LINK.faqFormEdit({ idcode: id })}>
-							✏️
-						</a>
-						<span onClick={onRemove(id)}>
-							❌
-						</span>
-					</div>
-				</OnlyAdmin>
-			</div>
+		{faqList.map((item) => (
+			<FaqItem
+				key={item.id}
+				{...item}
+				onRemove={onRemove}
+			/>
 		))}
 	</div>
 )

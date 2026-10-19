@@ -1,9 +1,10 @@
+import { FunctionComponent } from 'preact'
 import { IntroImageMappingType } from 'utils.type'
 
 import { Heading } from 'components/ui/heading/Heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { TileList } from 'components/ui/tile-list'
 
 import intersection from './img/intersection.svg'
 import obuchenie    from './img/obuchenie.png'
@@ -25,14 +26,14 @@ const imageMapping: IntroImageMappingType = {
 	faq,
 }
 
-export const KnowledgeInvite = () => (
+export const KnowledgeInvite: FunctionComponent = () => (
 	<PrecentationContainer className="share-knowledge">
 		<TextContainer>
 			<Heading variant="intro" level={2}>Делюсь знаниями</Heading>
 		</TextContainer>
 
 		<TextContainer>
-			<TileGallery
+			<TileList
 				list={KNOWLEDGE_INVITE}
 				imageMapping={imageMapping}
 			/>

@@ -6,7 +6,7 @@ import { useApi } from 'hook/fetch/use-api'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { PronList } from 'components/info-service/pron'
+import { PronList } from 'components/info-service/pron-list'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 

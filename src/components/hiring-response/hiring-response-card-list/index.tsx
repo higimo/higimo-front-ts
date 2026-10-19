@@ -4,7 +4,7 @@ import { PasteApiType } from 'api-types/paste.types'
 import { useCallback, useState } from 'preact/hooks'
 
 import { CollapseSection } from 'components/ui/collapse-section/CollapseSection'
-import { HiringResponseCard } from 'components/hiring-response/hiring-response-card'
+import { HiringResponseCardDetail } from 'components/hiring-response/hiring-response-card-detail'
 import { HiringResponseCardForm } from 'components/hiring-response/hiring-response-card-form'
 import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
@@ -67,7 +67,7 @@ export const HiringResponseCardList: FunctionComponent<HiringResponseCardListPro
 			</div>
 			<div className="hiring-cards" id={ANCHOR_LINK.hiringResponseGallery}>
 				{cards.slice(0, 36).map(card => (
-					<HiringResponseCard
+					<HiringResponseCardDetail
 						{...card}
 						key={card.id.toString()}
 						onEdit={handleSelect(card.id)}

@@ -13,7 +13,7 @@ import { EmptyData } from 'components/ui/empty-data'
 import { Heading } from 'components/ui/heading/Heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { TagGroupedList } from 'components/tourism/tag-grouped-list'
+import { TourismTagList } from 'components/tourism/tourism-tag-list'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
@@ -103,7 +103,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 								iconColor: getBarColor(point.color),
 							})}
 						/>
-						<TagGroupedList
+						<TourismTagList
 							groups={tagGroups}
 							isSelected={isSelected}
 							toggleTag={toggleTag}

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 
-import { ProductServerBanner } from 'components/merchant/product-server-banner'
+import { MerchantProductServerBanner } from 'components/merchant/merchant-product-server-banner'
 
 export const DonatInvite: FunctionComponent = () => (
-	<ProductServerBanner productKey="COFFEE" />
+	<MerchantProductServerBanner productKey="COFFEE" />
 )

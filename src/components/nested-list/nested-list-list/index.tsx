@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NestedListItemFullType } from 'api-types/listlist.types'
 
-import { NestedListItem } from 'components/nested-list/nested-list-item'
+import { NestedListDetail } from 'components/nested-list/nested-list-detail'
 
 type NestedListListPropType = {
 	nestedList: NestedListItemFullType[]
@@ -12,7 +12,7 @@ export const NestedListList: FunctionComponent<NestedListListPropType> = ({
 }) => (
 	<div className="list-list">
 		{nestedList.map((item, key) => (
-			<NestedListItem key={key} nestedListItem={item} />
+			<NestedListDetail key={key} nestedListItem={item} />
 		))}
 	</div>
 )

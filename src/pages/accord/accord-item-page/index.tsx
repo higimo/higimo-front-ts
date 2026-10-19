@@ -5,7 +5,7 @@ import { useApi } from 'hook/fetch/use-api'
 import { useRandomElements } from 'hook/utils/use-random-elements'
 import { useRoute } from 'preact-iso'
 
-import { AccordContent } from 'components/accord/accord-content'
+import { AccordDetail } from 'components/accord/accord-content'
 import { AccordSeeAlso } from 'components/accord/accord-see-also'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
@@ -32,7 +32,7 @@ export const AccordSinglePage: FunctionComponent = () => {
 		<Layout title={accordItem.data?.name || 'Песня'} className="container accord-single-page">
 			<LoadSuspense data={accordItem}>
 				<EmptyData data={accordItem}>
-					<AccordContent
+					<AccordDetail
 						key={accordItem.data?.id ?? DEFAULT_ID}
 						accordItem={accordItem.data}
 					/>

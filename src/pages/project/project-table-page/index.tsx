@@ -9,7 +9,7 @@ import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { PortfolioProjectTable } from 'components/project/portfolio-project-table'
-import { ProjectTagCategory } from 'components/project/project-tag-category'
+import { ProjectTagList } from 'components/project/project-tag-list'
 import { TextContainer } from 'components/ui/text-container'
 
 import { calculateProjectTableList } from 'utils/project/calculate-project-table-list'
@@ -63,7 +63,7 @@ export const ProjectTablePage: FunctionComponent = () => {
 
 			<LoadSuspense data={[projectList, tagList]}>
 				<EmptyData data={[projectList, tagList]}>
-					<ProjectTagCategory
+					<ProjectTagList
 						groupedTags={tagList.data || []}
 						isSelected={isSelected}
 						toggleTag={toggleTag}

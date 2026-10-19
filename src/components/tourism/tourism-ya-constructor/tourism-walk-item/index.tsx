@@ -5,7 +5,7 @@ type TourismWalkItemPropsType = {
 	map: YaMapType['map']
 }
 
-export const TourismWalkItem: FunctionComponent<TourismWalkItemPropsType> = ({ map }) => (
+export const TourismWalkDetail: FunctionComponent<TourismWalkItemPropsType> = ({ map }) => (
 	<div className="walk">
 		<iframe
 			src={`https://yandex.ru/map-widget/v1/?um=${map}`}

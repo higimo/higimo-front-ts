@@ -24,7 +24,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { Switcher } from 'components/ui/switcher/Switcher'
 import { Tag } from 'components/ui/tag/Tag'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismCardGeo } from 'components/tourism/tourism-card-geo'
+import { TourismCardGeoList } from 'components/tourism/tourism-card-geo-list'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
@@ -217,7 +217,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 				/>
 			)}
 			{isChooseVisualizator(VISUALIZATOR_MAP.CARD) && (
-				<TourismCardGeo items={filtredRussiaCity} />
+				<TourismCardGeoList items={filtredRussiaCity} />
 			)}
 		</Layout>
 	)

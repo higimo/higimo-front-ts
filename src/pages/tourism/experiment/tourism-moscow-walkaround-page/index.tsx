@@ -10,7 +10,7 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
-import { TourismMoscowWalkaround } from 'components/tourism/tourism-maps/tourism-moscow-walkaround'
+import { TourismMoscowWalkaroundDetail } from 'components/tourism/tourism-maps/tourism-moscow-walkaround-detail'
 
 import '../../tourism-style.css'
 import '../yandex-map.css'
@@ -44,7 +44,7 @@ export const TourismMoscowWalkaroundPage: FunctionComponent = () => {
 
 			<LoadSuspense data={stateArr}>
 				<EmptyData data={stateArr}>
-					<TourismMoscowWalkaround
+					<TourismMoscowWalkaroundDetail
 						moscowPoiPoints={jsonCollection.moscowPoiPoints.data}
 						stateYear2021={jsonCollection.stateYear2021.data}
 						stateYear2024={jsonCollection.stateYear2024.data}

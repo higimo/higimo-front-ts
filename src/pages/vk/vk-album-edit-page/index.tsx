@@ -10,7 +10,7 @@ import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
 import { Heading } from 'components/ui/heading'
 import { VkParagraph } from 'components/vk/vk-paragraph'
-import { VkPhotoAlbumEdit } from 'components/vk/vk-photo-album-edit'
+import { VkPhotoAlbumListEdit } from 'components/vk/vk-photo-album-edit'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
 import { vkSession } from 'context/vk-signal'
@@ -67,7 +67,7 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 				</VkParagraph>
 			</TextContainer>
 
-			<VkPhotoAlbumEdit
+			<VkPhotoAlbumListEdit
 				photoList={photoList}
 			/>
 		</Layout>

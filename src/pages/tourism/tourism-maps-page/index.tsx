@@ -9,7 +9,7 @@ import { Heading } from 'components/ui/heading/Heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
+import { TourismExperimentMapList } from 'components/tourism/tourism-experiment-maps'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 
@@ -17,7 +17,7 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import '../tourism-style.css'
 
-export const TourismMapsPage: FunctionComponent = () => {
+export const TourismMapListPage: FunctionComponent = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 
 	return (
@@ -34,7 +34,7 @@ export const TourismMapsPage: FunctionComponent = () => {
 
 			<TextContainer>
 				<Heading variant="tourism" level={2}>Эксперименты в Я.Картах</Heading>
-				<TourismExperimentMaps />
+				<TourismExperimentMapList />
 			</TextContainer>
 
 			<TextContainer>

@@ -2,6 +2,7 @@ import { FunctionComponent } from 'preact'
 
 import './style.css'
 
+// TODO: [LIGHT] объединить с формой
 export const MerchantPayBlock: FunctionComponent = () => (
 	<div className="checkout-button">
 		<div id="paymentContainer" />

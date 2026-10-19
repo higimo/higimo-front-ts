@@ -1,0 +1,44 @@
+import { FunctionComponent } from 'preact'
+import { PortfolioGroupedTagType } from 'api-types/portfolio.types'
+import { TagName } from 'types'
+
+import { ProjectTag } from 'components/project/project-tag'
+import { TextContainer } from 'components/ui/text-container'
+
+import { PROJECT_FILTER } from 'dic/project/PROJECT_FILTER'
+
+import '../project-click-tag-category/style.css'
+
+type ProjectTagCategoryPropsType = {
+	groupedTags: PortfolioGroupedTagType[]
+	isSelected: (tagName: TagName) => boolean
+	toggleTag: (tagName: TagName) => () => void
+}
+
+// TODO: [HIGH] почти то же, что ProjectClickTagCategory
+export const ProjectTagList: FunctionComponent<ProjectTagCategoryPropsType> = ({
+	groupedTags,
+	isSelected,
+	toggleTag,
+}) => (
+	<TextContainer className="project-tag">
+		{groupedTags.map(({ group, tags }) => (
+			<div key={group.id} className="project-tag__category-group">
+				<div className="project-tag__list">
+					<div className="project-tag__category-name">{group.title}</div>
+					{tags.map(tag => (
+						<ProjectTag
+							key={tag.id}
+							filterName={PROJECT_FILTER.FILTER_TAG}
+							// isLink={false}
+							isSelected={isSelected(tag.title)}
+							toggleTag={toggleTag(tag.title)}
+						>
+							{tag.title}
+						</ProjectTag>
+					))}
+				</div>
+			</div>
+		))}
+	</TextContainer>
+)

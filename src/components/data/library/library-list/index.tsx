@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
 
-import { LibraryBookItem } from 'components/data/library/library-book-item'
+import { LibraryItem } from 'components/data/library/library-item'
 
 import './style.css'
 
@@ -16,7 +16,7 @@ export const LibraryList: FunctionComponent<LibraryListPropsType> = ({
 }) => (
 	<div className="library-gallery">
 		{books.map(book => (
-			<LibraryBookItem
+			<LibraryItem
 				key={book.id}
 				onRemove={onRemove}
 				{...book}

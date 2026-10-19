@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { Heading } from 'components/ui/heading/Heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { TileList } from 'components/ui/tile-list'
 
 import { FUNNY_INVITE } from 'data/ivite-links/funny-invite'
 
@@ -16,7 +16,7 @@ export const FunnyInvite: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TileGallery
+			<TileList
 				list={FUNNY_INVITE}
 			/>
 		</TextContainer>

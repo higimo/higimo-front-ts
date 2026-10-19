@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { Heading } from 'components/ui/heading/Heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { TileList } from 'components/ui/tile-list'
 
 import { ANCHOR_LINK } from 'dic/route/ANCHOR_LINK'
 import { TOOL_LIST_DATA } from 'data/ivite-links/tools-invite'
@@ -17,7 +17,7 @@ export const ToolsInvite: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TileGallery
+			<TileList
 				list={TOOL_LIST_DATA}
 			/>
 		</TextContainer>

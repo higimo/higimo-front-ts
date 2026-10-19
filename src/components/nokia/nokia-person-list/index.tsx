@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { NokiaPersonType } from 'api-types/nokia.types'
 
-import { PersonItem } from 'components/nokia/person-item'
+import { NokiaPersonItem } from 'components/nokia/nokia-person-item'
 
 type NokiaPersonListPropsType = {
 	personList: NokiaPersonType[]
@@ -12,7 +12,7 @@ export const NokiaPersonList: FunctionComponent<NokiaPersonListPropsType> = ({
 }) => (
 	<div className="nokia-people-list">
 		{personList.map(person => (
-			<PersonItem key={person.id} person={person} />
+			<NokiaPersonItem key={person.id} person={person} />
 		))}
 	</div>
 )

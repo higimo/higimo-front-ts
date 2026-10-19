@@ -7,7 +7,7 @@ import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'
 
 import { AccordList } from 'components/accord/accord-list'
-import { AccordTagGallery } from 'components/accord/accord-baidge-gallery'
+import { AccordTagList } from 'components/accord/accord-tag-list'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
@@ -79,7 +79,7 @@ export const AccordListPage: FunctionComponent = () => {
 		<Layout title="Аккорды" className="accord-identity-page">
 			<TextContainer>
 				<h1>Аккорды</h1>
-				<AccordTagGallery
+				<AccordTagList
 					toggleTag={toggleTag}
 					isSelected={isSelected}
 				/>

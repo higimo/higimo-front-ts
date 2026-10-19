@@ -14,9 +14,9 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NasheLineupList } from 'components/tourism/concert/nashe-lineup-list'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismAdventure } from 'components/tourism/adventure/tourism-adventure'
+import { TourismAdventureItem } from 'components/tourism/adventure/tourism-adventure-item'
 import { TourismAdventureEmpty } from 'components/tourism/adventure/tourism-adventure-empty'
-import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
+import { TourismExperimentMapList } from 'components/tourism/tourism-experiment-maps'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismRow } from 'components/tourism/ui/tourism-row'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
@@ -51,7 +51,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 			<TextContainer>
 				<Heading variant="tourism" level={2}>Билеты в приключения</Heading>
 				<TourismRow>
-					<TourismAdventure adventure={ADVENTURE[0]!} />
+					<TourismAdventureItem adventure={ADVENTURE[0]!} />
 					<TourismAdventureEmpty />
 				</TourismRow>
 			</TextContainer>
@@ -111,7 +111,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 
 			<TextContainer>
 				<Heading variant="tourism" level={2}>Эксперименты в Я.Картах</Heading>
-				<TourismExperimentMaps />
+				<TourismExperimentMapList />
 			</TextContainer>
 
 			<TextContainer>

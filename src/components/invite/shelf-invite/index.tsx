@@ -3,7 +3,7 @@ import { FunctionComponent } from 'preact'
 import { Heading } from 'components/ui/heading/Heading'
 import { PrecentationContainer } from 'components/ui/precentation-container'
 import { TextContainer } from 'components/ui/text-container'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { TileList } from 'components/ui/tile-list'
 
 import { ABOUT_INVITE } from 'data/ivite-links/about-invite'
 
@@ -16,7 +16,7 @@ export const ShelfInvite: FunctionComponent = () => (
 		</TextContainer>
 
 		<TextContainer>
-			<TileGallery
+			<TileList
 				list={ABOUT_INVITE}
 			/>
 		</TextContainer>

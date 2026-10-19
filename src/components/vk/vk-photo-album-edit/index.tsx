@@ -17,7 +17,7 @@ type VkPhotoAlbumEditPropsType = {
 	photoList: VkPhotoType[]
 }
 
-export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({
+export const VkPhotoAlbumListEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({
 	photoList,
 }) => {
 	// Каждое изменение отправляем в ВК, но дебаунсим, чтоб не ддосить сервера
