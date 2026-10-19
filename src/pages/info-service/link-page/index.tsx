@@ -25,7 +25,9 @@ export const LinkPage: FunctionComponent = () => {
 
 			<LoadSuspense data={linkList}>
 				<EmptyData data={linkList}>
-					<FavoriteLinkList linkList={linkList.data} />
+					<TextContainer>
+						<FavoriteLinkList linkList={linkList.data} />
+					</TextContainer>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>
