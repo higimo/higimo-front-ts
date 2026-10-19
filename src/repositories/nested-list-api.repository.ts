@@ -5,8 +5,8 @@ import { sendRequest } from 'utils/api/send-request'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-// TODO: [HARD] checkFail(data.data) и кидать HigimoApiError для тостов или guard-type
-// TODO: [HARD] Надо научиться работать с ошибками, здесь или в каждом компоненте
+// TODO: [HIGH] checkFail(data.data) и кидать HigimoApiError для тостов или guard-type
+// TODO: [HIGH] Надо научиться работать с ошибками, здесь или в каждом компоненте
 class NestedListApiRepository {
 	async create(
 		values: Omit<NestedListItemType, 'id'>

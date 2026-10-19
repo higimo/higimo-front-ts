@@ -15,7 +15,7 @@ type ProjectTagCategoryPropsType = {
 	toggleTag: (tagName: TagName) => () => void
 }
 
-// TODO: [HARD] почти то же, что ProjectClickTagCategory
+// TODO: [HIGH] почти то же, что ProjectClickTagCategory
 export const ProjectTagCategory: FunctionComponent<ProjectTagCategoryPropsType> = ({
 	groupedTags,
 	isSelected,

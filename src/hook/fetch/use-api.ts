@@ -55,7 +55,7 @@ export const useApi = <T, M = Object>(
 					return
 				}
 				hasLoadedRef.current = true
-				// TODO: [HARD] не нравится, что здесь null, надо {}, чтоб меньше кода писать
+				// TODO: [HIGH] не нравится, что здесь null, надо {}, чтоб меньше кода писать
 				dispatch({ type: API_STATUS.LOADED, payload: null, meta: undefined })
 			} else {
 				const { data, meta } = await sendRequest<T, M>(url as string, { values, signal })

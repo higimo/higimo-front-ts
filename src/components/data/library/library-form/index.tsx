@@ -28,7 +28,7 @@ const formScheme: FormScheme<LibraryType> = {
 	anons:  { title: 'Описание', type: 'textarea', },
 }
 
-// TODO: [HARD] вот бы везде передавать через {...}
+// TODO: [HIGH] вот бы везде передавать через {...}
 type LibraryAdminPropsType = {
 	initialData: LibraryType | null
 }

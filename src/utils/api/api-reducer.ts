@@ -1,7 +1,8 @@
 import { ApiAction, ApiState, MetaApiType } from 'api-types/fetch-api.types'
+
 import { API_STATUS } from 'dic/API_STATUS'
 
-// TODO: а можно без isRevalidating повсюду?
+// TODO: [MIDDLE] а можно без isRevalidating повсюду?
 export const apiReducer = <T, M = MetaApiType>(
 	state: ApiState<T, M>,
 	action: ApiAction<T, M>

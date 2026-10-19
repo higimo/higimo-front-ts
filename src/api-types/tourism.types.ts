@@ -4,7 +4,7 @@ import { BAR_COLOR_MAPPING } from 'dic/tourism/BAR_COLOR_MAPPING'
 import { BAR_ICON_MAPPING } from 'dic/tourism/BAR_ICON_MAPPING'
 import { BAR_TAG_CATEGORY } from 'dic/tourism/BAR_TAG_CATEGORY'
 
-// TODO: [HIGH] Добавить типа "Самые красивые дороги России"
+// TODO: [BACKEND] Добавить типа "Самые красивые дороги России"
 
 /*******************************
  * Словари
