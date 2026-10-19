@@ -15,8 +15,10 @@ type ObuchenieItemPropsType = {
 	lectionItem: LectionType | null
 }
 
-export const ObuchenieItem: FunctionComponent<ObuchenieItemPropsType> = ({ lectionItem }) => lectionItem && (
-	<div className="test">
+export const ObuchenieItem: FunctionComponent<ObuchenieItemPropsType> = ({
+	lectionItem
+}) => lectionItem && (
+	<div className="lection-item">
 		<TextContainer>
 			<h1>{lectionItem.name}</h1>
 		</TextContainer>

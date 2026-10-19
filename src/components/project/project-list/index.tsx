@@ -10,11 +10,11 @@ import { packElements } from 'utils/project/pack-elements'
 import './style.css'
 
 type ProjectListPropsType = {
-	projectsList: PortfolioProjectFullType[] | null
+	projectsList: PortfolioProjectFullType[]
 }
 
 export const ProjectList: FunctionComponent<ProjectListPropsType> = (props) => {
-	const packedRows = useMemo(() => packElements(props.projectsList || []), [props.projectsList])
+	const packedRows = useMemo(() => packElements(props.projectsList), [props.projectsList])
 
 	return (
 		<div className="project__list">

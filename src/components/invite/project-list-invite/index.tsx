@@ -14,14 +14,14 @@ import { PROJECT_SHORT_TAG } from 'dic/project/PROJECT_SHORT_TAG'
 import './style.css'
 
 type ProjectListInvitePropsType = {
-	highlightProjectList: PortfolioProjectFullType[] | null
+	highlightProjectList: PortfolioProjectFullType[]
 	meta?: PortfolioMetaType
 }
 
 export const ProjectListInvite: FunctionComponent<ProjectListInvitePropsType> = ({
 	highlightProjectList,
 	meta,
-}) => highlightProjectList && (
+}) => (
 	<div className="project-list project-list--short" id={ANCHOR_LINK.done}>
 		<TextContainer>
 			<Heading variant="intro" level={2}>Сделал</Heading>

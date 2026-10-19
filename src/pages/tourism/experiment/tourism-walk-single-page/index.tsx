@@ -6,13 +6,13 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { EmptyData } from 'components/ui/empty-data'
+import { Heading } from 'components/ui/heading/Heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
-import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
-import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 import { TourismWalkItem } from 'components/tourism/tourism-ya-constructor/tourism-walk-item'
+import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
@@ -44,7 +44,7 @@ export const TourismWalkSinglePage: FunctionComponent = () => {
 				<LoadSuspense data={yamapList}>
 					<EmptyData data={yamapList}>
 						<TourismWalkList
-							yamapList={yamapList.data}
+							yamapList={yamapList.data ?? []}
 						/>
 					</EmptyData>
 				</LoadSuspense>

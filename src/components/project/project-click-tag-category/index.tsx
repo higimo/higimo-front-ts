@@ -10,12 +10,12 @@ import { PROJECT_IGRORED_TAG_GROUP } from 'data/project-ignored-tag-group'
 import './style.css'
 
 type ProjectClickTagCategoryPropsType = {
-	groupedTags: PortfolioGroupedTagType[] | null
+	groupedTags: PortfolioGroupedTagType[]
 }
 
 export const ProjectClickTagCategory: FunctionComponent<ProjectClickTagCategoryPropsType> = ({
-	groupedTags
-}) => groupedTags && (
+	groupedTags,
+}) => (
 	<TextContainer className="project-tag">
 		{groupedTags.map(({ group, tags }) => {
 			if (PROJECT_IGRORED_TAG_GROUP.includes(group.title)) {

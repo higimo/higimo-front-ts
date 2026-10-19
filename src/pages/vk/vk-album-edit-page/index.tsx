@@ -27,10 +27,10 @@ import '../vk-style.css'
 export const VkAlbumEditPage: FunctionComponent = () => {
 	const { status, data, error } = vkSession.value
 	const { params: { albumId = DEFAULT_ID } } = useRoute()
-	const [ photos, setPhotos ] = useState<VkPhotoType[]>([])
+	const [ photoList, setPhotoList ] = useState<VkPhotoType[]>([])
 
 	const fetchPhotos = useCallback(async (ownerId: string, albumId: Positive) => {
-		if (photos.length) {
+		if (photoList.length) {
 			return undefined
 		}
 
@@ -39,8 +39,8 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			return undefined
 		}
 
-		setPhotos(loadedPhotos)
-	}, [photos])
+		setPhotoList(loadedPhotos)
+	}, [photoList])
 
 	useEffect(() => {
 		if (status === 'LOADED') {
@@ -61,14 +61,14 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			<TextContainer>
 				<Heading variant="vk">Редактирование описаний альбома</Heading>
 				<VkParagraph>
-					Всего фотографий: {photos.length}
+					Всего фотографий: {photoList.length}
 					<br />
-					С комментариями: {photos.filter(i => !!i.text).length}
+					С комментариями: {photoList.filter(i => !!i.text).length}
 				</VkParagraph>
 			</TextContainer>
 
 			<VkPhotoAlbumEdit
-				photos={photos}
+				photoList={photoList}
 			/>
 		</Layout>
 	)

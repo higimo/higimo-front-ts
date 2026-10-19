@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'preact'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { TileGallery } from 'components/ui/tile-gallery'
+import { Heading } from 'components/ui/heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { TextContainer } from 'components/ui/text-container'
-import { Heading } from 'components/ui/heading'
+import { TileGallery } from 'components/ui/tile-gallery'
 
 import { VK_PAGE_LIST } from 'data/vk-page-list'
 

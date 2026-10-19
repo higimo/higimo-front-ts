@@ -17,6 +17,7 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../accord-style.css'
 
+// TODO: [LIGHT] вынести в config
 const ALSO_ELEMENTS = 6
 
 // TODO: [FEATURE] добавить страницу добавления и редактирования аккордов
@@ -46,7 +47,7 @@ export const AccordSinglePage: FunctionComponent = () => {
 
 			<AccordSeeAlso
 				key={accordItem.data?.id ?? DEFAULT_ID}
-				items={seeAlsoList}
+				accordList={seeAlsoList}
 			/>
 		</Layout>
 	)

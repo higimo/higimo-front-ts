@@ -46,7 +46,9 @@ export const HiringResponsePage: FunctionComponent = () => {
 				<p>Можно редактировать</p>
 				<LoadSuspense data={pasteTodoList}>
 					<EmptyData data={pasteTodoList}>
-						<HiringResponseTodoController todo={pasteTodoList.data} />
+						<HiringResponseTodoController
+							todo={pasteTodoList.data}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 				<HiringResponseLinkList />
@@ -56,7 +58,9 @@ export const HiringResponsePage: FunctionComponent = () => {
 				<h3>Откликов</h3>
 				<LoadSuspense data={pasteList}>
 					<EmptyData data={pasteList}>
-						<HiringResponseCounter data={pasteList.data} />
+						<HiringResponseCounter
+							data={pasteList.data}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
@@ -73,7 +77,9 @@ export const HiringResponsePage: FunctionComponent = () => {
 				<h2>График откликов</h2>
 				<LoadSuspense data={pasteList}>
 					<EmptyData data={pasteList}>
-						<HiringResponseDiagram data={statisticList.data} />
+						<HiringResponseDiagram
+							data={statisticList.data}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
@@ -91,7 +97,7 @@ export const HiringResponsePage: FunctionComponent = () => {
 			<LoadSuspense data={pasteList}>
 				<EmptyData data={pasteList}>
 					<HiringResponseCardList
-						cards={pasteList.data}
+						cards={pasteList.data || []}
 						fetchUpdate={fetchUpdate}
 					/>
 				</EmptyData>

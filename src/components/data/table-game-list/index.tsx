@@ -6,12 +6,12 @@ import { TextContainer } from 'components/ui/text-container'
 import './style.css'
 
 type TableGameListPropsType = {
-	gameList: TableGameType[] | null
+	gameList: TableGameType[]
 }
 
 export const TableGameList: FunctionComponent<TableGameListPropsType> = ({
-	gameList
-}) => gameList && (
+	gameList,
+}) => (
 	<TextContainer>
 		{gameList.map(({ id, name, text }) => (
 			<div key={id} className="game-gallery__item">

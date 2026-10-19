@@ -4,12 +4,12 @@ import { FunctionComponent } from 'preact'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type CinemaScriptListPropsType = {
-	cinemaList: CinemaType[] | null
+	cinemaList: CinemaType[]
 }
 
 export const CinemaScriptList: FunctionComponent<CinemaScriptListPropsType> = ({
-	cinemaList
-}) => cinemaList && (
+	cinemaList,
+}) => (
 	<ul>
 		{cinemaList.map(item => (
 			<li key={item.id}>

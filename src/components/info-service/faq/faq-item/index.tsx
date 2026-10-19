@@ -7,15 +7,17 @@ import { TextContainer } from 'components/ui/text-container'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type FaqItemPropsType = {
-	faq: FaqType | null
+	faqItem: FaqType | null
 }
 
-export const FaqItem: FunctionComponent<FaqItemPropsType> = ({ faq }) => faq && (
+export const FaqItem: FunctionComponent<FaqItemPropsType> = ({
+	faqItem,
+}) => faqItem && (
 	<div className="faq-page">
 		<TextContainer>
-			<h1>{faq.name}</h1>
+			<h1>{faqItem.name}</h1>
 			<OnlyAdmin>
-				<a href={ROUTE_LINK.faqFormEdit({ idcode: faq.id })}>
+				<a href={ROUTE_LINK.faqFormEdit({ idcode: faqItem.id })}>
 					✏️
 				</a>
 			</OnlyAdmin>
@@ -23,7 +25,7 @@ export const FaqItem: FunctionComponent<FaqItemPropsType> = ({ faq }) => faq && 
 		<TextContainer>
 			<div
 				className="container"
-				dangerouslySetInnerHTML={{__html: faq.text}}
+				dangerouslySetInnerHTML={{__html: faqItem.text}}
 			/>
 		</TextContainer>
 	</div>

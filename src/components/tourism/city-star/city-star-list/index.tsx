@@ -7,13 +7,13 @@ import { TextContainer } from 'components/ui/text-container'
 import './style.css'
 
 type CityStarListPropsType = {
-	cityList: CityStarsType[] | null
+	cityList: CityStarsType[]
 }
 
 // TODO: [BACKEND] сделать ссылки на города
 export const CityStarList: FunctionComponent<CityStarListPropsType> = ({
-	cityList
-}) => cityList && (
+	cityList,
+}) => (
 	<div className="city-stars">
 		<TextContainer>
 			<div className="city-stars-gallery">

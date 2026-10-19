@@ -27,7 +27,9 @@ export const NokiaStatisticPage: FunctionComponent = () => {
 
 			<LoadSuspense data={meetingStatisticList}>
 				<EmptyData data={meetingStatisticList}>
-					<NokiaStatistic meetingStatistic={meetingStatisticList.data} />
+					<NokiaStatistic
+						meetingStatistic={meetingStatisticList.data || []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

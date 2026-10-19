@@ -4,10 +4,12 @@ import { LinksType } from 'api-types/links.types'
 import { FavoriteLinkItem } from 'components/info-service/favorite-link/favorite-link-item'
 
 type FavoriteLinkListPropsType = {
-	linkList: LinksType[] | null
+	linkList: LinksType[]
 }
 
-export const FavoriteLinkList: FunctionComponent<FavoriteLinkListPropsType> = ({ linkList }) => linkList && (
+export const FavoriteLinkList: FunctionComponent<FavoriteLinkListPropsType> = ({
+	linkList,
+}) => (
 	<ul>
 		{linkList.map(item => (
 			<FavoriteLinkItem

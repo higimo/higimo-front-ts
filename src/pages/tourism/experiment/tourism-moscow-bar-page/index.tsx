@@ -112,6 +112,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 						/>
 						{filteredData && (
 							<div className="bar-poi__gallery">
+								{/* TODO: [LIGHT] вынести в отдельный компонент List */}
 								{filteredData.map((mapPoint: BarPoiRealTags) => (
 									<TourismBarPointSnippet
 										key={mapPoint.id}

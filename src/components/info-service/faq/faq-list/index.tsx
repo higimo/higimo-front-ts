@@ -8,11 +8,11 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 import './style.css'
 
 type FaqListPropsType = {
-	faqList: FaqType[] | null
+	faqList: FaqType[]
 	onRemove: (id: FaqType['id']) => () => void
 }
 
-export const FaqList: FunctionComponent<FaqListPropsType> = ({ faqList, onRemove }) => faqList && (
+export const FaqList: FunctionComponent<FaqListPropsType> = ({ faqList, onRemove }) => (
 	<div className="faq-list">
 		{faqList.map(({ id, name, code }) => (
 			<div key={id} className="faq-list__item">

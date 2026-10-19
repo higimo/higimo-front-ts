@@ -38,7 +38,7 @@ export const IndexPage: FunctionComponent = () => {
 			<LoadSuspense data={highlightProjectList}>
 				<EmptyData data={highlightProjectList}>
 					<ProjectListInvite
-						highlightProjectList={highlightProjectList.data}
+						highlightProjectList={highlightProjectList.data ?? []}
 						meta={highlightProjectList.meta}
 					/>
 				</EmptyData>

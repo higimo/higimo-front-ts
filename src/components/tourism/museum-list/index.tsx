@@ -5,12 +5,12 @@ import { FunctionComponent } from 'preact'
 import './style.css'
 
 type MuseumListPropsType = {
-	moscowMuseumList: MoscowMuseumType[] | null
+	moscowMuseumList: MoscowMuseumType[]
 }
 
 export const MuseumList: FunctionComponent<MuseumListPropsType> = ({
-	moscowMuseumList
-}) => moscowMuseumList && (
+	moscowMuseumList,
+}) => (
 	<div className="museum-gallery">
 		{moscowMuseumList.map(museum => (
 			<div key={museum.name} className="museum-gallery__item">

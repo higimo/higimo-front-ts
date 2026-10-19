@@ -17,7 +17,9 @@ export const LogismPage: FunctionComponent = () => {
 		<Layout title="Логизмы">
 			<LoadSuspense data={logismList}>
 				<EmptyData data={logismList}>
-					<LogismList logismList={logismList.data} />
+					<LogismList
+						logismList={logismList.data ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

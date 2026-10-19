@@ -37,7 +37,7 @@ export const NestedListListPage: FunctionComponent = () => {
 				<EmptyData data={nestedListList}>
 					<NestedListList
 						key={idcode}
-						nestedList={nestedListList.data}
+						nestedList={nestedListList.data ?? []}
 					/>
 				</EmptyData>
 			</LoadSuspense>

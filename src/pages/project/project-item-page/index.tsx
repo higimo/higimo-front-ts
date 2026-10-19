@@ -24,7 +24,9 @@ export const ProjectItemPage: FunctionComponent = () => {
 		<Layout title={projectItem.data?.name ? `${projectItem.data.name} | Проект Хигимо` : 'Проект Хигимо'}>
 			<LoadSuspense data={projectItem}>
 				<EmptyData data={projectItem}>
-					<ProjectViewer projectItem={projectItem.data} />
+					<ProjectViewer
+						projectItem={projectItem.data}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

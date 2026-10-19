@@ -19,7 +19,7 @@ import '../vk-style.css'
 
 export const VkAlbumListPage: FunctionComponent = () => {
 	const { status, data, error } = vkSession.value
-	const [ albums, setAlbums ] = useState<VKAlbumType[]>([])
+	const [ albumList, setAlbumList ] = useState<VKAlbumType[]>([])
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
 		const albums = await vkApi.getAlbums(ownerId)
@@ -27,8 +27,8 @@ export const VkAlbumListPage: FunctionComponent = () => {
 			return undefined
 		}
 
-		setAlbums(albums)
-	}, [setAlbums])
+		setAlbumList(albums)
+	}, [setAlbumList])
 
 	useEffect(() => {
 		if (status === 'LOADED') {
@@ -49,13 +49,15 @@ export const VkAlbumListPage: FunctionComponent = () => {
 			<TextContainer>
 				<Heading variant="vk">Список альбомов</Heading>
 				<VkParagraph>
-					Альбомов: {albums.length} {' | '}
-					Публичных: {albums.filter(i => !i.is_locked).length} {' | '}
-					Фотографий всего: {albums.reduce((acc, i) => acc + i.size, 0)}
+					Альбомов: {albumList.length} {' | '}
+					Публичных: {albumList.filter(i => !i.is_locked).length} {' | '}
+					Фотографий всего: {albumList.reduce((acc, i) => acc + i.size, 0)}
 				</VkParagraph>
 			</TextContainer>
 
-			<VkPhotoAlbumList albums={albums} />
+			<VkPhotoAlbumList
+				albumList={albumList}
+			/>
 		</Layout>
 	)
 }

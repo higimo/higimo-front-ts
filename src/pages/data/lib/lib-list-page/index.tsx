@@ -27,7 +27,7 @@ export const LibListPage: FunctionComponent = () => {
 			<LoadSuspense data={bookList}>
 				<EmptyData data={bookList}>
 					<LibraryList
-						books={bookList.data}
+						books={bookList.data ?? []}
 						onRemove={onRemove}
 					/>
 				</EmptyData>

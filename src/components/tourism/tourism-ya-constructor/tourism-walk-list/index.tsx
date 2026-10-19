@@ -7,12 +7,12 @@ import { TourismBulletListItem } from 'components/tourism/ui/tourism-bullet-list
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 type TourismWalkListPropsType = {
-	yamapList: YaMapType[] | null
+	yamapList: YaMapType[]
 }
 
 export const TourismWalkList: FunctionComponent<TourismWalkListPropsType> = ({
 	yamapList,
-}) => yamapList && (
+}) => (
 	<TourismBulletList>
 		{yamapList.map(item => (
 			<TourismBulletListItem

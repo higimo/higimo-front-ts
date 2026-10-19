@@ -8,27 +8,24 @@ import { PinarikItem } from 'components/pinarik/pinarik-item'
 import { groupBy } from 'utils/group-by'
 
 type PinarikCalendarPropsType = {
-	pinarik: PinarikType[] | null
+	pinarikList: PinarikType[]
 	onClickPreviewId: (pinarik: PinarikType) => () => void
 }
 
 export const PinarikCalendar: FunctionComponent<PinarikCalendarPropsType> = ({
-	pinarik,
+	pinarikList,
 	onClickPreviewId
 }) => {
-	if (!pinarik) {
-		return null
-	}
 	const treeYear: PinarikTreeYearType = useMemo(() => {
-		if (!Object.keys(pinarik).length) {
+		if (!Object.keys(pinarikList).length) {
 			return {}
 		}
 		const treeYear: PinarikTreeYearType = groupBy(
-			pinarik,
+			pinarikList,
 			(item) => item.date.substring(0, 4)
 		)
 		return treeYear
-	}, [pinarik])
+	}, [pinarikList])
 
 	return Object.keys(treeYear).map(year => (
 		<div key={year} className="pinarik-year">

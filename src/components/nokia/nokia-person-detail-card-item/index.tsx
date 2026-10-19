@@ -12,7 +12,7 @@ type NokiaPersonDetailCardItemPropsType = {
 }
 
 export const NokiaPersonDetailCardItem: FunctionComponent<NokiaPersonDetailCardItemPropsType> = ({
-	personItem
+	personItem,
 }) => personItem && (
 	<div className="nokia-people-detail person-full-data">
 		<div className="person-full-data__edit">

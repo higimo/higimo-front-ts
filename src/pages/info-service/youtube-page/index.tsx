@@ -17,7 +17,9 @@ export const YoutubePage: FunctionComponent = () => {
 		<Layout title="Избранные видосы">
 			<LoadSuspense data={youtubeList}>
 				<EmptyData data={youtubeList}>
-					<YoutubeList youtubeList={youtubeList.data} />
+					<YoutubeList
+						youtubeList={youtubeList.data ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

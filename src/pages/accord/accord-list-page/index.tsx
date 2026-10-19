@@ -6,7 +6,7 @@ import { useFilterByTags } from 'hook/tags/use-filter-by-tags'
 import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'
 
-import { AccordItem } from 'components/accord/accord-item'
+import { AccordList } from 'components/accord/accord-list'
 import { AccordTagGallery } from 'components/accord/accord-baidge-gallery'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
@@ -16,10 +16,10 @@ import { TextContainer } from 'components/ui/text-container'
 import { median } from 'utils/math/median'
 
 import { ACCORD_TAG_CATEGORY } from 'dic/accord/ACCORD_TAG_CATEGORY'
-import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { ACCORD_TAG_MAPPING } from 'dic/accord/ACCORD_TAG_MAPPING'
-import { NEWS_ACCORD_LENGTH } from 'config/ACCORD'
 import { ACCORD_TOTAL_TAGS } from 'dic/accord/ACCORD_TOTAL_TAGS'
+import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { NEWS_ACCORD_LENGTH } from 'config/ACCORD'
 
 import '../accord-style.css'
 
@@ -86,9 +86,9 @@ export const AccordListPage: FunctionComponent = () => {
 				<div className="accord-list">
 					<LoadSuspense data={accordList}>
 						<EmptyData data={accordList}>
-							{accordListFiltred.map(item => (
-								<AccordItem key={item.id} {...item} />
-							))}
+							<AccordList
+								accordList={accordListFiltred}
+							/>
 						</EmptyData>
 					</LoadSuspense>
 				</div>

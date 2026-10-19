@@ -25,7 +25,9 @@ export const ComojiListPage: FunctionComponent = () => {
 
 			<LoadSuspense data={comojiList}>
 				<EmptyData data={comojiList}>
-					<ComojiList comojiList={comojiList.data} />
+					<ComojiList
+						comojiList={comojiList.data ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

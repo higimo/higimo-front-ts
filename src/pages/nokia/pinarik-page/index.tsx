@@ -42,7 +42,7 @@ export const PinarikPage: FunctionComponent = () => {
 
 					<TextContainer>
 						<PinarikCalendar
-							pinarik={pinarikList.data}
+							pinarikList={pinarikList.data || []}
 							onClickPreviewId={handleClickPreviewId}
 						/>
 					</TextContainer>

@@ -38,13 +38,17 @@ export const ProjectListPage: FunctionComponent = () => {
 
 			<LoadSuspense data={groupedTagList}>
 				<EmptyData data={groupedTagList}>
-					<ProjectClickTagCategory groupedTags={groupedTagList.data} />
+					<ProjectClickTagCategory
+						groupedTags={groupedTagList.data ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 
 			<LoadSuspense data={projectList}>
 				<EmptyData data={projectList}>
-					<ProjectList projectsList={filterProjectList} />
+					<ProjectList
+						projectsList={filterProjectList ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

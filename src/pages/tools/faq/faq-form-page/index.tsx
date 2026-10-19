@@ -17,15 +17,15 @@ import '../faq-style.css'
 export const FaqFormPage: FunctionComponent = () => {
 	const { params: { idcode = DEFAULT_ID} } = useRoute()
 
-	const [ faqDetail ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
+	const [ faqItem ] = useApi<FaqType>(API_ROUTE.faqSingle({ idcode }))
 
 	return (
-		<Layout title={faqDetail.data?.name || 'FAQ'} className="faq-identity-page">
-			<LoadSuspense data={faqDetail}>
-				<EmptyData data={faqDetail} skipEmpty>
+		<Layout title={faqItem.data?.name || 'FAQ'} className="faq-identity-page">
+			<LoadSuspense data={faqItem}>
+				<EmptyData data={faqItem} skipEmpty>
 					<FaqForm
-						key={faqDetail.data?.id ?? DEFAULT_ID}
-						initialData={faqDetail.data}
+						key={faqItem.data?.id ?? DEFAULT_ID}
+						initialData={faqItem.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>

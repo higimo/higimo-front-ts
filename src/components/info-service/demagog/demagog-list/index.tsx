@@ -6,11 +6,18 @@ import { DemagogItem } from 'components/info-service/demagog/demagog-item'
 import './style.css'
 
 type DemagogListPropsType = {
-	demagogList: DemagogType[] | null
+	demagogList: DemagogType[]
 }
 
-export const DemagogList: FunctionComponent<DemagogListPropsType> = ({ demagogList }) => demagogList && (
+export const DemagogList: FunctionComponent<DemagogListPropsType> = ({
+	demagogList,
+}) => (
 	<div className="demagog">
-		{demagogList.map(item => <DemagogItem key={item.id} {...item} />)}
+		{demagogList.map(item => (
+			<DemagogItem
+				key={item.id}
+				{...item}
+			/>
+		))}
 	</div>
 )

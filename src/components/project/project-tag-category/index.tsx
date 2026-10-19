@@ -10,7 +10,7 @@ import { PROJECT_FILTER } from 'dic/project/PROJECT_FILTER'
 import '../project-click-tag-category/style.css'
 
 type ProjectTagCategoryPropsType = {
-	groupedTags: PortfolioGroupedTagType[] | null
+	groupedTags: PortfolioGroupedTagType[]
 	isSelected: (tagName: TagName) => boolean
 	toggleTag: (tagName: TagName) => () => void
 }
@@ -20,7 +20,7 @@ export const ProjectTagCategory: FunctionComponent<ProjectTagCategoryPropsType> 
 	groupedTags,
 	isSelected,
 	toggleTag,
-}) => groupedTags && (
+}) => (
 	<TextContainer className="project-tag">
 		{groupedTags.map(({ group, tags }) => (
 			<div key={group.id} className="project-tag__category-group">

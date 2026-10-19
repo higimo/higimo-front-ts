@@ -25,7 +25,7 @@ export const FaqItemPage: FunctionComponent = () => {
 				<EmptyData data={faqItem}>
 					<FaqItem
 						key={faqItem.data?.id ?? DEFAULT_ID}
-						faq={faqItem.data}
+						faqItem={faqItem.data}
 					/>
 				</EmptyData>
 			</LoadSuspense>

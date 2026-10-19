@@ -32,7 +32,9 @@ export const CinemaListPage: FunctionComponent = () => {
 				</p>
 				<LoadSuspense data={cinemaList}>
 					<EmptyData data={cinemaList}>
-						<CinemaScriptList cinemaList={cinemaList.data} />
+						<CinemaScriptList
+							cinemaList={cinemaList.data ?? []}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>

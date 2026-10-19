@@ -46,8 +46,8 @@ export const NokiaPersonListPage: FunctionComponent = () => {
 				<LoadSuspense data={[tagGroupList, tagList]}>
 					<EmptyData data={[tagGroupList, tagList]}>
 						<NokiaTagList
-							tagGroupList={tagGroupList.data}
-							tagList={tagList.data}
+							tagGroupList={tagGroupList.data ?? []}
+							tagList={tagList.data ?? []}
 							filter={filter}
 							updateFilter={updateFilter}
 						/>

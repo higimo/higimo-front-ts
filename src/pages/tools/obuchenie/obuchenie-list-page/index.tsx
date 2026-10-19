@@ -17,7 +17,9 @@ export const ObuchenieListPage: FunctionComponent = () => {
 		<Layout title="Обучение" className="obuchenie-page">
 			<LoadSuspense data={lectionList}>
 				<EmptyData data={lectionList}>
-					<ObuchenieList lectionList={lectionList.data} />
+					<ObuchenieList
+						lectionList={lectionList.data ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

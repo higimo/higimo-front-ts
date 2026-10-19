@@ -22,7 +22,9 @@ export const TableGamePage: FunctionComponent = () => {
 
 			<LoadSuspense data={gameList}>
 				<EmptyData data={gameList}>
-					<TableGameList gameList={gameList.data} />
+					<TableGameList
+						gameList={gameList.data ?? []}
+					/>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>

@@ -9,6 +9,7 @@ import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStarIntro } from 'components/tourism/city-star/city-star-intro'
 import { EmptyData } from 'components/ui/empty-data'
 import { FactoidList } from 'components/ui/factoid-list/FactoidList'
+import { Heading } from 'components/ui/heading/Heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NasheLineupList } from 'components/tourism/concert/nashe-lineup-list'
@@ -16,7 +17,6 @@ import { TextContainer } from 'components/ui/text-container'
 import { TourismAdventure } from 'components/tourism/adventure/tourism-adventure'
 import { TourismAdventureEmpty } from 'components/tourism/adventure/tourism-adventure-empty'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
-import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismRow } from 'components/tourism/ui/tourism-row'
 import { TourismSecondary } from 'components/tourism/ui/tourism-paragraph'
@@ -102,7 +102,9 @@ export const TourismIndexPage: FunctionComponent = () => {
 
 				<LoadSuspense data={cityListJsonData}>
 					<EmptyData data={cityListJsonData}>
-						<CityStarIntro cityList={cityListJsonData.data} />
+						<CityStarIntro
+							cityList={cityListJsonData.data ?? []}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>
@@ -118,7 +120,7 @@ export const TourismIndexPage: FunctionComponent = () => {
 				<LoadSuspense data={cityListJsonData}>
 					<EmptyData data={cityListJsonData}>
 						<TourismWalkList
-							yamapList={yamapList.data}
+							yamapList={yamapList.data ?? []}
 						/>
 					</EmptyData>
 				</LoadSuspense>

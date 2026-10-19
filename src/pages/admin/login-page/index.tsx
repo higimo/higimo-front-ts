@@ -28,6 +28,9 @@ export const LoginPage: FunctionComponent = () => {
 		<Layout title="Вход">
 			<TextContainer>
 				<h1>Вход</h1>
+			</TextContainer>
+
+			<TextContainer>
 				<AuthForm />
 			</TextContainer>
 		</Layout>

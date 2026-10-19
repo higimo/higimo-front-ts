@@ -5,11 +5,11 @@ import { useApi } from 'hook/fetch/use-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { EmptyData } from 'components/ui/empty-data'
+import { Heading } from 'components/ui/heading/Heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TextContainer } from 'components/ui/text-container'
 import { TourismExperimentMaps } from 'components/tourism/tourism-experiment-maps'
-import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismWalkList } from 'components/tourism/tourism-ya-constructor/tourism-walk-list'
 
@@ -42,7 +42,7 @@ export const TourismMapsPage: FunctionComponent = () => {
 				<LoadSuspense data={yamapList}>
 					<EmptyData data={yamapList}>
 						<TourismWalkList
-							yamapList={yamapList.data}
+							yamapList={yamapList.data ?? []}
 						/>
 					</EmptyData>
 				</LoadSuspense>

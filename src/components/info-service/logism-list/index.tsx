@@ -7,12 +7,12 @@ import cs from 'classnames'
 import './style.css'
 
 type LogismListPropsType = {
-	logismList: LogismType[] | null
+	logismList: LogismType[]
 }
 
 export const LogismList: FunctionComponent<LogismListPropsType> = ({
-	logismList
-}) => logismList && (
+	logismList,
+}) =>(
 	<div className="gallery-logism">
 		{logismList.map((logism) => (
 			<div

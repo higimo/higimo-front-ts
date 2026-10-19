@@ -3,11 +3,11 @@ import { PronType } from 'api-types/pron.types'
 
 import './style.css'
 
-type PronIndexPropsType = {
-	pronList: PronType[] | null
+type PronListPropsType = {
+	pronList: PronType[]
 }
 
-export const Pron: FunctionComponent<PronIndexPropsType> = ({ pronList }) => pronList && (
+export const PronList: FunctionComponent<PronListPropsType> = ({ pronList }) => (
 	<div className="gallery-pron container">
 		<button
 			className="gallery-pron__btn"

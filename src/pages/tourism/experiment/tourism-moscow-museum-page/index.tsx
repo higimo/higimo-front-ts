@@ -36,7 +36,9 @@ export const TourismMoscowMuseumPage: FunctionComponent = () => {
 			<TextContainer>
 				<LoadSuspense data={moscowMuseumListJsonItem}>
 					<EmptyData data={moscowMuseumListJsonItem}>
-						<MuseumList moscowMuseumList={moscowMuseumListJsonItem.data} />
+						<MuseumList
+							moscowMuseumList={moscowMuseumListJsonItem.data ?? []}
+						/>
 					</EmptyData>
 				</LoadSuspense>
 			</TextContainer>

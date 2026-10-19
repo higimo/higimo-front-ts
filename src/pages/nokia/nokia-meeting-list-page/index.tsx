@@ -60,19 +60,23 @@ export const NokiaMeetingListPage: FunctionComponent = () => {
 				<h1>Встречи</h1>
 			</TextContainer>
 
-			<TextContainer>
-				<LoadSuspense data={richMeetingList}>
-					<EmptyData data={richMeetingList}>
+			<LoadSuspense data={richMeetingList}>
+				<EmptyData data={richMeetingList}>
+					<TextContainer>
 						<MeetingTagList
 							tags={meetingTags}
 							selectedTag={selectedTag}
 							onClick={handleToggleTagClick}
 						/>
+					</TextContainer>
 
-						<NokiaMeetingList meetings={filtredMeetings} />
-					</EmptyData>
-				</LoadSuspense>
-			</TextContainer>
+					<TextContainer>
+						<NokiaMeetingList
+							meetings={filtredMeetings}
+						/>
+					</TextContainer>
+				</EmptyData>
+			</LoadSuspense>
 		</Layout>
 	)
 }

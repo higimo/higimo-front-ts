@@ -27,7 +27,7 @@ const INIT_CARD: PasteApiType = {
 }
 
 type HiringResponseCardListPropsType = {
-	cards: PasteApiType[] | null
+	cards: PasteApiType[]
 	fetchUpdate: () => void
 }
 
@@ -35,9 +35,6 @@ export const HiringResponseCardList: FunctionComponent<HiringResponseCardListPro
 	cards,
 	fetchUpdate,
 }) => {
-	if (!cards) {
-		return null
-	}
 	const [selectedCard, setSelectedCard] = useState<PasteApiType>(INIT_CARD)
 
 	const handleSelect = useCallback((id: PasteApiType['id']) => () => {

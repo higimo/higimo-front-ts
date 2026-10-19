@@ -26,7 +26,7 @@ export const BlogListPage: FunctionComponent = () => {
 				<LoadSuspense data={newsList}>
 					<EmptyData data={newsList}>
 						<BlogList
-							newsList={newsList.data}
+							newsList={newsList.data ?? []}
 						/>
 					</EmptyData>
 				</LoadSuspense>

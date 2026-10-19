@@ -4,16 +4,13 @@ import { FunctionComponent } from 'preact'
 import { CityStarItem } from 'components/tourism/city-star/city-star-item'
 
 type CityStarsIntroPropsType = {
-	cityList: CityStarsType[] | null
+	cityList: CityStarsType[]
 }
 
 export const CityStarIntro: FunctionComponent<CityStarsIntroPropsType> = ({
 	cityList,
 }) => {
-	if (!cityList) {
-		return null
-	}
-
+	// TODO: [MIDDLE] фильтровать бы в родителе, а показывать через List обычный, или хотя бы здесь его вызывать
 	const filtredCityList = cityList.filter(city => city.star.length === 5)
 
 	return (

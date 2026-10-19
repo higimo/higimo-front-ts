@@ -6,13 +6,15 @@ import { VkPhotoAlbumItem } from 'components/vk/vk-photo-album-item'
 import './style.css'
 
 type VkPhotoAlbumListPropsType = {
-	albums: VKAlbumType[]
+	albumList: VKAlbumType[]
 }
 
-export const VkPhotoAlbumList: FunctionComponent<VkPhotoAlbumListPropsType> = ({ albums }) => (
+export const VkPhotoAlbumList: FunctionComponent<VkPhotoAlbumListPropsType> = ({
+	albumList,
+}) => (
 	<div className="album">
 		<div className="album__list">
-			{albums.map(album => (
+			{albumList.map(album => (
 				<VkPhotoAlbumItem key={album.id} {...album} />
 			))}
 		</div>

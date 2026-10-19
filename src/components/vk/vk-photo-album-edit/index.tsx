@@ -12,10 +12,12 @@ import { vkApi } from 'repositories/vk-api.repository'
 import './style.css'
 
 type VkPhotoAlbumEditPropsType = {
-	photos: VkPhotoType[]
+	photoList: VkPhotoType[]
 }
 
-export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({ photos }) => {
+export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({
+	photoList,
+}) => {
 	// Каждое изменение отправляем в ВК, но дебаунсим, чтоб не ддосить сервера
 	const handleChange = useCallback((
 		userId: VkPhotoType['owner_id'],
@@ -40,7 +42,7 @@ export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({
 
 	return (
 		<div className="vk-photos">
-			{photos.map(photo => (
+			{photoList.map(photo => (
 				<div key={photo.id} className="vk-photos__element">
 					<img
 						src={getVkPhotosUrl(photo.sizes)}
