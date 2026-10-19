@@ -9,6 +9,8 @@ import { getVkPhotosUrl } from 'utils/url-route/get-photos-url'
 import { toast } from 'toast'
 import { vkApi } from 'repositories/vk-api.repository'
 
+import { VK_DEBOUNCE_TIMEOUT_LOADING } from 'config/VK_DEBOUNCE_TIMEOUT_LOADING'
+
 import './style.css'
 
 type VkPhotoAlbumEditPropsType = {
@@ -32,7 +34,7 @@ export const VkPhotoAlbumEdit: FunctionComponent<VkPhotoAlbumEditPropsType> = ({
 					}
 				}
 			},
-			1500 // 1,5 секунды
+			VK_DEBOUNCE_TIMEOUT_LOADING
 		)
 
 		return (event: ChangeEvent) => {

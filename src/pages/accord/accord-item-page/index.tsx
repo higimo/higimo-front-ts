@@ -11,14 +11,12 @@ import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
+import { ACCORD_ALSO_ELEMENTS } from 'config/ACCORD-ALSO-ELEMENTS'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../accord-style.css'
-
-// TODO: [LIGHT] вынести в config
-const ALSO_ELEMENTS = 6
 
 // TODO: [FEATURE] добавить страницу добавления и редактирования аккордов
 export const AccordSinglePage: FunctionComponent = () => {
@@ -28,7 +26,7 @@ export const AccordSinglePage: FunctionComponent = () => {
 	const [accordItem] = useApi<AccordType>(API_ROUTE.accordSingle({ idcode: idcode }))
 
 	// TODO: [BACKEND] пусть бекенд присылает эти данные
-	const seeAlsoList = useRandomElements(accordList.data || [], ALSO_ELEMENTS)
+	const seeAlsoList = useRandomElements(accordList.data || [], ACCORD_ALSO_ELEMENTS)
 
 	return (
 		<Layout title={accordItem.data?.name || 'Песня'} className="container accord-single-page">
