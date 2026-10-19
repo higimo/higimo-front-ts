@@ -7,6 +7,7 @@ type AccordListPropsType = {
 	accordList: AccordRealTagType[]
 }
 
+// TODO: [MIDDLE] мб, сюда этот alf перевести из AccordItem
 export const AccordList: FunctionComponent<AccordListPropsType> = ({
 	accordList,
 }) => (

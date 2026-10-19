@@ -1,3 +1,22 @@
 .checkout-form {
 	max-width: max-content;
 }
+
+.checkout-button {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 48px;
+}
+
+.checkout-button__secure {
+	display: flex;
+	font-size: 12px;
+	opacity: .5;
+	padding-top: 12px;
+}
+
+.checkout-button__thanks {
+	font-size: 12px;
+	opacity: .8;
+	margin-top: 8px;
+}

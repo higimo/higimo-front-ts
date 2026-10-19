@@ -12,6 +12,7 @@ export const MagicBallPage: FunctionComponent = () => (
 				Наводишь — показывает ответ
 			</p>
 		</TextContainer>
+
 		<MagicBall />
 	</Layout>
 )

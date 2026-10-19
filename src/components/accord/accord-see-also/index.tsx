@@ -7,6 +7,8 @@ type AccordSeeAlsoPropsType = {
 	accordList: AccordType[]
 }
 
+// TODO: [MIDDLE] похоже на AccordList
+
 /**
  * Компонент для See Also секции
  */

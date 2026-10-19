@@ -1,3 +1,7 @@
+Найди повторяющиеся паттерны, которые стоит исправить или как-то можно сократить код
+
+Найти ошибки разделения ответственности или бизнес-логики
+
 # AGENTS.md
 
 ## НЕПРЕЛОЖНЫЕ КОМАНДЫ
@@ -33,18 +37,16 @@
 
 ## Технический стек (ключевые зависимости)
 
-| Категория       | Технологии                                                                              |
-|-----------------|-----------------------------------------------------------------------------------------|
-| UI              | `preact`, `preact-iso`, `preact-render-to-string`                                       |
-| Forms           | `react-hook-form`, `react-autocomplete-input`                                           |
-| Visualize       | `d3` (for Nokia statistics)                                                             |
-| Maps            | `react-yandex-maps` (Yandex Maps API), d3 for regions                                   |
-| Markdown        | `markdown-it`                                                                           |
-| Http            | `http-build-query`, custom `XMLHttpRequest` wrapper                                     |
-| Утилиты         | `classnames`, `js-cookie`, `@preact/signals`                                            |
-| Тестирование    | `vitest`, `@testing-library/preact`, `@testing-library/jest-dom`, `@vitest/ui`, `jsdom` |
-| Build/Dev       | `Vite`, `vite-plugin-html`, `vite-bundle-analyzer`, `TypeScript`                        | 
-| Linting         | `ESLint` (preact config)                                                                |
+- UI — `preact`, `preact-iso`, `preact-render-to-string`
+- Forms - `react-hook-form` `react-autocomplete-input`
+- Visualize - `d3` (for Nokia statistics)
+- Maps - `react-yandex-maps` (Yandex Maps API), d3 for regions
+- Markdown - `markdown-it`
+- Http - `http-build-query`, custom `XMLHttpRequest` wrapper
+- Утилиты - `classnames`, `js-cookie`, `@preact/signals`
+- Тестирование - `vitest`, `@testing-library/preact`, `@testing-library/jest-dom`, `@vitest/ui`, `jsdom`
+- Build/Dev - `Vite`, `vite-plugin-html`, `vite-bundle-analyzer`, `TypeScript`
+- Linting - `ESLint` (preact config)
 
 ## Структура проекта
 

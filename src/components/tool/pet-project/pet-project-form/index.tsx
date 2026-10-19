@@ -29,9 +29,9 @@ type PetProjectFormPropsType = {
 	initialData: PetProjectType | null
 }
 
-// Запоминать ник автора
-// Запрашивать проекты, учитывая ник
-// Ис админ заменить на разграничения прав
+// TODO: [HIGH] Запоминать ник автора
+// TODO: [HIGH] Запрашивать проекты, учитывая ник
+// TODO: [HIGH] Ис админ заменить на разграничения прав
 export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 	initialData
 }) => {

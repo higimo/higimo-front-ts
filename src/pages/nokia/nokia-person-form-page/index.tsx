@@ -21,6 +21,7 @@ export const NokiaPersonFormPage: FunctionComponent = () => {
 
 	const [ personItem ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
+	// TODO: [MIDDLE] проверить, что везде внедрено
 	const title = (
 		personId == DEFAULT_ID
 		? 'Создание персоны'

@@ -9,6 +9,8 @@ import { merchantProductSignal } from 'context/merchant-signal'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { API_STATUS } from 'dic/API_STATUS'
 
+// TODO: [HIGH] переписать бы на стандартный API_STATE
+
 // Флаг для предотвращения множественных запросов
 let requestInProgress = false
 
