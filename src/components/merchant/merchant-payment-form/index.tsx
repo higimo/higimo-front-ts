@@ -4,7 +4,6 @@ import { MerchantProductType } from 'api-types/merchant.types'
 
 import { FiledForm } from 'components/form/filed-form'
 import { FromContainer } from 'components/form/form-container'
-import { MerchantPayBlock } from 'components/merchant/merchant-pay-block'
 import { MerchantTbankSdkLoader } from 'components/merchant/merchant-tbank-sdk-loader'
 
 import './style.css'
@@ -42,7 +41,15 @@ export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType
 						/>
 						<FiledForm name="email" label="Электропочта" />
 						<FiledForm name="comment" type="textarea" label="Комментарий к заказу" />
-						<MerchantPayBlock />
+						<div className="checkout-button">
+							<div id="paymentContainer" />
+							<div class="checkout-button__secure">
+								Безопасная оплата через банковский сайт через чудесный Мир
+							</div>
+							<div class="checkout-button__thanks">
+								💛 Спасибо, что заботитесь о проекте
+							</div>
+						</div>
 					</form>
 				</FormProvider>
 			</FromContainer>
