@@ -15,10 +15,6 @@ export type ApiState<T, M = MetaApiType> = {
 	data: T | null
 	meta?: M
 	error?: Error
-	/**
-	 * true, пока идёт фоновая перезагрузка при уже имеющихся данных (stale-while-revalidate)
-	 */
-	isRevalidating?: boolean
 }
 
 /**
