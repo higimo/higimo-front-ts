@@ -1,32 +1,31 @@
-import { FunctionComponent } from 'preact'
-import { FaqType } from 'api-types/faq.types'
+import { FaqType } from 'api-types/faq.types';
+import { OnlyAdmin } from 'components/util/only-admin';
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK';
+import { FunctionComponent } from 'preact';
 
-import { OnlyAdmin } from 'components/util/only-admin'
-import { TextContainer } from 'components/ui/text-container'
-
-import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
-
-type FaqItemPropsType = {
-	faqItem: FaqType | null
-}
-
+type FaqItemPropsType = FaqType & {
+	onRemove: (id: FaqType['id']) => () => void;
+};
 export const FaqItem: FunctionComponent<FaqItemPropsType> = ({
-	faqItem,
-}) => faqItem && (
-	<div className="faq-page">
-		<TextContainer>
-			<h1>{faqItem.name}</h1>
-			<OnlyAdmin>
-				<a href={ROUTE_LINK.faqFormEdit({ idcode: faqItem.id })}>
+	id, name, code, onRemove,
+}) => (
+	<div className="faq-list__item">
+		{/* TODO: [MIDDLE] отделить в отдельный компонент */}
+		<a
+			href={ROUTE_LINK.faqDetail({ idcode: code })}
+			className="faq-list__link"
+		>
+			<div className="faq-list__name">{name}</div>
+		</a>
+		<OnlyAdmin>
+			<div className="faq-list__action">
+				<a href={ROUTE_LINK.faqFormEdit({ idcode: id })}>
 					✏️
 				</a>
-			</OnlyAdmin>
-		</TextContainer>
-		<TextContainer>
-			<div
-				className="container"
-				dangerouslySetInnerHTML={{__html: faqItem.text}}
-			/>
-		</TextContainer>
+				<span onClick={onRemove(id)}>
+					❌
+				</span>
+			</div>
+		</OnlyAdmin>
 	</div>
-)
+);

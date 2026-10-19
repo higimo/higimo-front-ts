@@ -5,7 +5,7 @@ import { useRoute } from 'preact-iso'
 import { useApi } from 'hook/fetch/use-api'
 
 import { EmptyData } from 'components/ui/empty-data'
-import { FaqItem } from 'components/info-service/faq/faq-item'
+import { FaqDetail } from 'components/info-service/faq/faq-detail'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
@@ -23,7 +23,7 @@ export const FaqItemPage: FunctionComponent = () => {
 		<Layout title={faqItem.data?.name || 'FAQ'} className="faq-identity-page">
 			<LoadSuspense data={faqItem}>
 				<EmptyData data={faqItem}>
-					<FaqItem
+					<FaqDetail
 						key={faqItem.data?.id ?? DEFAULT_ID}
 						faqItem={faqItem.data}
 					/>

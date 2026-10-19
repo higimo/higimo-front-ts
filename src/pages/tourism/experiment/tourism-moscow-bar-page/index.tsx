@@ -7,14 +7,14 @@ import { useApi } from 'hook/fetch/use-api'
 import { useMemo } from 'preact/hooks'
 import { useSmartTags } from 'hook/tags/use-smart-tags'
 
+import { BarPoiList } from 'components/tourism/tourism-bar-poi-list'
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { EmptyData } from 'components/ui/empty-data'
+import { Heading } from 'components/ui/heading/Heading'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { TagGroupedList } from 'components/tourism/tag-grouped-list'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismBarPointSnippet } from 'components/tourism/tourism-bar-point-snippet'
-import { Heading } from 'components/ui/heading/Heading'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismMapGeo } from 'components/tourism/tourism-map-geo'
 
@@ -110,17 +110,9 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 							isCategoryAllSelected={isCategoryAllSelected}
 							toggleAllInCategory={toggleAllInCategory}
 						/>
-						{filteredData && (
-							<div className="bar-poi__gallery">
-								{/* TODO: [LIGHT] вынести в отдельный компонент List */}
-								{filteredData.map((mapPoint: BarPoiRealTags) => (
-									<TourismBarPointSnippet
-										key={mapPoint.id}
-										{...mapPoint}
-									/>
-								))}
-							</div>
-						)}
+						<BarPoiList
+							barPoiList={filteredData || []}
+						/>
 					</div>
 				</EmptyData>
 			</LoadSuspense>
