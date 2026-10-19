@@ -3,7 +3,6 @@ import { ValueOf } from 'utils.type'
 
 import { TAG_NAME_POI_TYPE_MAPPING } from 'dic/tourism/TAG_NAME_POI_TYPE_MAPPING'
 import { TAGS_NAME } from 'dic/tourism/TAGS_NAME'
-import { TORUSM_SORT_MAP } from 'dic/tourism/TORUSM_SORT_MAP'
 import { VISITED_MAP } from 'dic/tourism/VISITED_MAP'
 
 type HandleFilterMapPointPropsType = {
@@ -47,22 +46,4 @@ export const handleFilterMapPoint = ({ selectedIds, isChooseVisitedMode }: Handl
 	}
 
 	return true
-}
-
-export const handleSort = (isChooseSortMode: (value: ValueOf<typeof TORUSM_SORT_MAP>) => boolean) => (a: PoiType, b: PoiType) => {
-	if (isChooseSortMode(TORUSM_SORT_MAP.INIT)) {
-		return 0
-	}
-	if (isChooseSortMode(TORUSM_SORT_MAP.VISITED)) {
-		// @ts-ignore
-		return b.visited - a.visited
-	}
-	if (isChooseSortMode(TORUSM_SORT_MAP.WANTED)) {
-		// @ts-ignore
-		return a.visited - b.visited
-	}
-	if (isChooseSortMode(TORUSM_SORT_MAP.ALPHABET)) {
-		return a.title.localeCompare(b.title)
-	}
-	return 0
 }

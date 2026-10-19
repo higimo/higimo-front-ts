@@ -34,7 +34,10 @@ import { TourismStatisticRussia } from 'components/tourism/tourism-statistic/tou
 import { TourismStatisticWorld } from 'components/tourism/tourism-statistic/tourism-statistic-world'
 import { TourismTableGeo } from 'components/tourism/tourism-table-geo'
 
-import { handleFilterMapPoint, handleSort } from 'utils/tourism/handle-filter-map-point'
+import { handleFilterMapPoint } from 'utils/tourism/handle-filter-map-point'
+import { handleMapSort } from 'utils/tourism/handle-map-sort'
+import { placemarkOptionStyle } from 'utils/tourism/placemark-option-style'
+import { placemarkPropertyStyle } from 'utils/tourism/placemark-property-style'
 
 import { TORUSM_SORT_MAP } from 'dic/tourism/TORUSM_SORT_MAP'
 import { TOURISM_VISITED_TAG_CATEGORY } from 'dic/tourism/TOURISM_VISITED_TAG_CATEGORY'
@@ -62,29 +65,6 @@ type VisitedDataType = {
 	town: Town[]
 }
 
-const placemarkPropertyStyle = (point: PoiType): { hintContent: string; iconCaption: string; balloonContentHeader: string; balloonContentBody: string; balloonContentFooter: string } => ({
-	hintContent: point.title,
-	iconCaption: point.title,
-	balloonContentHeader: point.title,
-	balloonContentBody: [
-		'type' in point && point.type,
-		[
-			'okrug' in point && point.okrug,
-			'region' in point && point.region,
-			'country' in point ? point.country : 'Россия',
-		].filter(Boolean).join(', '),
-		'description' in point && point.description,
-	].filter(Boolean).join('<br />'),
-	balloonContentFooter: [
-		'visited' in point && point.visited ? 'Посетил' : 'Не посетил',
-		'population' in point ? `Население: ${point.population} К` : false,
-		point.coord.join(', '),
-	].filter(Boolean).join(' | '),
-})
-const placemarkOptionStyle = (point: PoiType): { iconColor: "#344d3d" | "#b3b3b3"; iconSize: [number, number] } => ({
-	iconColor: 'visited' in point && point.visited ? '#344d3d' : '#b3b3b3',
-	iconSize: [15, 15],
-})
 export const TourismVisitedPage: FunctionComponent = () => {
 	// TODO: [BACKEND] вынести в бекенд API из JSON
 	const [ jsonCollection ] = useMultiJsonApi<VisitedDataType>({
@@ -126,7 +106,7 @@ export const TourismVisitedPage: FunctionComponent = () => {
 				selectedIds: selectedTagTitles,
 				isChooseVisitedMode,
 			}))
-			.sort(handleSort(isChooseSortMode)),
+			.sort(handleMapSort(isChooseSortMode)),
 		[poiList, selectedTagTitles, isChooseVisitedMode, isChooseSortMode]
 	)
 
