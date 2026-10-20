@@ -37,9 +37,6 @@ export const IndexPage: FunctionComponent = () => {
 
 			<LoadSuspense data={highlightProjectList}>
 				<EmptyData data={highlightProjectList}>
-					{/* TODO: [MIDDLE] мб, показывать обычный ProjectList,
-					но «остальные» отдельным компонентом?
-					Или хотя бы внутри переиспользовать ProjectList? */}
 					<ProjectListInvite
 						highlightProjectList={highlightProjectList.data ?? []}
 						meta={highlightProjectList.meta}
