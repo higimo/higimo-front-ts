@@ -21,13 +21,14 @@ export const NokiaPersonDetailPage: FunctionComponent = () => {
 
 	const [ personItem ] = useApi<NokiaPersonFullType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
+	const title = personItem.data?.name ?? 'Профиль'
+
 	return (
-		<Layout title="Нокиа сервис" className="nokia">
+		<Layout title={title} className="nokia">
 			<NokiaMenu />
 
 			<TextContainer>
-				{/* TODO: [MIDDLE] мб, прописывать имя здесь? */}
-				<h1>Профиль</h1>
+				<h1>{title}</h1>
 			</TextContainer>
 
 			<TextContainer>
