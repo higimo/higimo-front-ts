@@ -11,13 +11,12 @@ import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { NokiaPersonForm } from 'components/nokia/form/nokia-person-form'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
+import { ifTitle } from 'utils/if-title'
+
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../nokia-style.css'
-
-export const ifTitle = (value: string, success: string, fallback: string): string =>
-	value == DEFAULT_ID ? success : fallback
 
 export const NokiaPersonFormPage: FunctionComponent = () => {
 	const { params: { personId = DEFAULT_ID } } = useRoute()

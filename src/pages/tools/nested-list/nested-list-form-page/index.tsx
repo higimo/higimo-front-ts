@@ -10,6 +10,8 @@ import { NestedListForm } from 'components/nested-list/nested-list-form'
 import { NestedListItemFullType } from 'api-types/listlist.types'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
+import { ifTitle } from 'utils/if-title'
+
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
@@ -26,8 +28,10 @@ export const NestedListFormPage: FunctionComponent = () => {
 		: null
 	)
 
+	const title = ifTitle(idcode, 'Создание пэт-проекта', 'Редактирование пэт-проекта')
+
 	return (
-		<Layout title="Список списков" className="list-list">
+		<Layout title={`${title} | Список списков`} className="list-list">
 			<LoadSuspense data={nestedListItem}>
 				<EmptyData data={nestedListItem}>
 					<TextContainer>
@@ -41,6 +45,8 @@ export const NestedListFormPage: FunctionComponent = () => {
 							</a>
 						)}
 					</TextContainer>
+
+					<h1>{title}</h1>
 
 					<NestedListForm
 						key={values?.id ?? DEFAULT_ID}

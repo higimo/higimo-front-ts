@@ -13,6 +13,7 @@ import { NokiaMenu } from 'components/nokia/nokia-menu'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { getUserSuggestions } from 'utils/get-user-suggestions'
+import { ifTitle } from 'utils/if-title'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
@@ -40,11 +41,7 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 		? (({ person: _, ...rest }) => rest)(meetingItem.data)
 		: undefined
 
-	const title = (
-		meetingId == DEFAULT_ID
-		? 'Создание встречи'
-		: 'Редактирование встречи'
-	)
+	const title = ifTitle(meetingId, 'Создание встречи', 'Редактирование встречи')
 
 	return (
 		<Layout title={`${title} | Нокиа`} className="nokia">

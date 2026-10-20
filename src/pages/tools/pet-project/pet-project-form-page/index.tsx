@@ -10,6 +10,8 @@ import { LoadSuspense } from 'components/ui/load-suspense'
 import { PetProjectForm } from 'components/tool/pet-project/pet-project-form'
 import { TextContainer } from 'components/ui/text-container'
 
+import { ifTitle } from 'utils/if-title'
+
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
@@ -20,10 +22,12 @@ export const PetProjectFormPage: FunctionComponent = () => {
 
 	const[ probbiItem ] = useApi<PetProjectType>(API_ROUTE.probbiSingle({ projectId }))
 
+	const title = ifTitle(projectId, 'Создание пэт-проекта', 'Редактирование пэт-проекта')
+
 	return (
-		<Layout title="Пэт-проекта" className="pet-project">
+		<Layout title={`${title} | Пэт-проект`} className="pet-project">
 			<TextContainer>
-				<h1>Редактирование и создание пэт-проекта</h1>
+				<h1>{title}</h1>
 			</TextContainer>
 
 			<LoadSuspense data={probbiItem}>
