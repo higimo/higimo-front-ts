@@ -10,7 +10,7 @@ import { getHumanDate } from 'utils/date/get-human-date'
 import { credits } from 'fixtures/credits.fixtures'
 import { tags } from 'fixtures/tags.fixtures'
 
-import '../project-viewer/style.css'
+import '../project-detail/style.css'
 
 export const ProjectTypography: FunctionComponent = () => (
 	<div className="project-viewer">
