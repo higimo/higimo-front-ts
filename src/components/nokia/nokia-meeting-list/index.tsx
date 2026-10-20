@@ -1,17 +1,17 @@
 import { FunctionComponent } from 'preact'
-import { NokiaRichMeetingType } from 'api-types/nokia.types'
+import { NokiaMeetingFullType } from 'api-types/nokia.types'
 
 import { NokiaMeetingItem } from 'components/nokia/nokia-meeting-item'
 
 type NokiaMeetingListPropsType = {
-	meetings: NokiaRichMeetingType[]
+	meetingList: NokiaMeetingFullType[]
 }
 
 export const NokiaMeetingList: FunctionComponent<NokiaMeetingListPropsType> = ({
-	meetings,
+	meetingList,
 }) => (
 	<div className="meeting-gallery">
-		{meetings.map(meeting => (
+		{meetingList.map(meeting => (
 			<NokiaMeetingItem key={meeting.id} meeting={meeting} />
 		))}
 	</div>

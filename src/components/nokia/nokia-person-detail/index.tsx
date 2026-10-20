@@ -2,7 +2,7 @@ import { FunctionComponent } from 'preact'
 import { NokiaPersonFullType } from 'api-types/nokia.types'
 
 import { CollapseSection } from 'components/ui/collapse-section'
-import { NokiaMeetingItem } from 'components/nokia/nokia-meeting-item'
+import { NokiaMeetingList } from 'components/nokia/nokia-meeting-list'
 import { NokiaNote } from 'components/nokia/nokia-note'
 
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
@@ -11,7 +11,6 @@ type NokiaPersonDetailCardItemPropsType = {
 	personItem: NokiaPersonFullType | null
 }
 
-// TODO: [HIGH] мб, на странице разместить по секциям?
 export const NokiaPersonDetail: FunctionComponent<NokiaPersonDetailCardItemPropsType> = ({
 	personItem,
 }) => personItem && (
@@ -19,6 +18,7 @@ export const NokiaPersonDetail: FunctionComponent<NokiaPersonDetailCardItemProps
 		<div className="person-full-data__edit">
 			<a href={ROUTE_LINK.nokiaPeopleEdit({ personId: personItem.id })}>Редактировать профиль</a>
 		</div>
+
 		<div className="person-full-data__header">
 			<div className="person-full-data__name">
 				{personItem.name}
@@ -30,18 +30,19 @@ export const NokiaPersonDetail: FunctionComponent<NokiaPersonDetailCardItemProps
 				<small>Ник:</small> {personItem.nick}
 			</div>
 		</div>
-		<h3>Описание</h3>
+
+		<h2>Описание</h2>
 		{!!personItem.description && (
 			<div className="person-full-data__description">{personItem.description}</div>
 		)}
-		<CollapseSection fold={true} title="Встречи">
+
+		<CollapseSection fold={false} title="Встречи">
 			<div className="person-full-data__meetings">
-				{personItem.meetings.map((meeting) => (
-					<NokiaMeetingItem key={meeting.id} meeting={meeting} />
-				))}
+				<NokiaMeetingList meetingList={personItem.meetings} />
 			</div>
 		</CollapseSection>
-		<CollapseSection fold={true} title="Заметки">
+
+		<CollapseSection fold={false} title="Заметки">
 			<div className="person-full-data__notes">
 				{personItem.notes.map((note) => (
 					<NokiaNote key={note.id} note={note} />

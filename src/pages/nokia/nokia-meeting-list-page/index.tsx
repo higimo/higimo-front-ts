@@ -72,7 +72,7 @@ export const NokiaMeetingListPage: FunctionComponent = () => {
 
 					<TextContainer>
 						<NokiaMeetingList
-							meetings={filtredMeetings}
+							meetingList={filtredMeetings}
 						/>
 					</TextContainer>
 				</EmptyData>
