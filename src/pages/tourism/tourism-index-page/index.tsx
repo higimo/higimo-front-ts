@@ -6,7 +6,7 @@ import { useApi } from 'hook/fetch/use-api'
 import { useJsonApi } from 'hook/fetch/use-json-api'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
-import { CityStarIntro } from 'components/tourism/city-star/city-star-intro'
+import { CityStarList } from 'components/tourism/city-star/city-star-list'
 import { EmptyData } from 'components/ui/empty-data'
 import { FactoidList } from 'components/ui/factoid-list/FactoidList'
 import { Heading } from 'components/ui/heading/Heading'
@@ -14,8 +14,8 @@ import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { NasheLineupList } from 'components/tourism/concert/nashe-lineup-list'
 import { TextContainer } from 'components/ui/text-container'
-import { TourismAdventureItem } from 'components/tourism/adventure/tourism-adventure-item'
 import { TourismAdventureEmpty } from 'components/tourism/adventure/tourism-adventure-empty'
+import { TourismAdventureItem } from 'components/tourism/adventure/tourism-adventure-item'
 import { TourismExperimentMapList } from 'components/tourism/tourism-experiment-maps'
 import { TourismMainMenu } from 'components/tourism/ui/tourism-main-menu'
 import { TourismRow } from 'components/tourism/ui/tourism-row'
@@ -27,11 +27,16 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../tourism-style.css'
+import { useMemo } from 'preact/hooks'
 
 // TODO: [FEATURE] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 	const [ cityListJsonData ] = useJsonApi<CityStarsType[]>('/json/city.json')
+
+	const filtredCityList = useMemo(
+		() => (cityListJsonData.data || []).filter(city => city.star.length === 5),
+	[cityListJsonData.status])
 
 	return (
 		<Layout title="Туризм" className="tourism-identy-page">
@@ -102,8 +107,9 @@ export const TourismIndexPage: FunctionComponent = () => {
 
 				<LoadSuspense data={cityListJsonData}>
 					<EmptyData data={cityListJsonData}>
-						<CityStarIntro
-							cityList={cityListJsonData.data ?? []}
+						<CityStarList
+							variant="horizontal"
+							cityList={filtredCityList}
 						/>
 					</EmptyData>
 				</LoadSuspense>

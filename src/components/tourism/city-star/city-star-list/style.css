@@ -1,4 +1,10 @@
-.tourism-city-star {
+.city-star-list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.city-star-list--horizontal {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -6,27 +12,22 @@
 	padding: 16px 0;
 }
 
-.tourism-city-star__item {
+.city-star-list__item {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 8px;
 }
 
-.tourism-city-star__title {
+.city-star-list__title {
 	border-bottom: 1px solid rgba(255, 255, 255, .35);
 }
-.tourism-city-star__title:hover {
+.city-star-list__title:hover {
 	cursor: pointer;
 	border-bottom-color: #fff;
 }
 
-.tourism-city-star__star {
+.city-star-list__star {
 	color: var(--color-accent);
-}
-
-.city-stars-gallery {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+	letter-spacing: .1em;
 }

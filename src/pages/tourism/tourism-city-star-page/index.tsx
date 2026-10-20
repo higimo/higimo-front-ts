@@ -34,9 +34,11 @@ export const TourismCityStarPage: FunctionComponent = () => {
 
 			<LoadSuspense data={cityListJsonData}>
 				<EmptyData data={cityListJsonData}>
-					<CityStarList
-						cityList={cityListJsonData.data ?? []}
-					/>
+					<TextContainer>
+						<CityStarList
+							cityList={cityListJsonData.data ?? []}
+						/>
+					</TextContainer>
 				</EmptyData>
 			</LoadSuspense>
 		</Layout>
