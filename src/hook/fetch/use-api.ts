@@ -21,7 +21,6 @@ const initialState = {
 export type ApiUrlType = ApiRouteType
 
 // TODO: [HIGH] написать аналог для использования репозиториями
-// TODO: [HIGH] обычно возвращает MyApiType | null, когда пробрасываю дочкам надо проверять на null или EmptyData меня защитит без skipEmpty
 export const useApi = <T, M = Object>(
 	url: ApiUrlType,
 	values: ValuesOptions = {}
@@ -55,7 +54,6 @@ export const useApi = <T, M = Object>(
 					return
 				}
 				hasLoadedRef.current = true
-				// TODO: [HIGH] не нравится, что здесь null, надо {}, чтоб меньше кода писать
 				dispatch({ type: API_STATUS.LOADED, payload: null, meta: undefined })
 			} else {
 				const { data, meta } = await sendRequest<T, M>(url as string, { values, signal })

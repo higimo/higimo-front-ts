@@ -16,7 +16,6 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 export const LibFromPage: FunctionComponent = () => {
 	// TODO: [BACKEND] на бэке пока не реализовано
 	const { params: { id = DEFAULT_ID } } = useRoute()
-	// TODO: [HIGH] из-за возвращаемого null очень много кода добавилось, бесполезного, это проверяется EmptyData
 	const[ libraryItem ] = useApi<LibraryType>(API_ROUTE.libSingle({ id }))
 
 	return (
