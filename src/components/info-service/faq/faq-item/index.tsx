@@ -10,7 +10,6 @@ export const FaqItem: FunctionComponent<FaqItemPropsType> = ({
 	id, name, code, onRemove,
 }) => (
 	<div className="faq-list__item">
-		{/* TODO: [MIDDLE] отделить в отдельный компонент */}
 		<a
 			href={ROUTE_LINK.faqDetail({ idcode: code })}
 			className="faq-list__link"

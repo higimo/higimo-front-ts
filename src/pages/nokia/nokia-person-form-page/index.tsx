@@ -16,17 +16,15 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../nokia-style.css'
 
+export const ifTitle = (value: string, success: string, fallback: string): string =>
+	value == DEFAULT_ID ? success : fallback
+
 export const NokiaPersonFormPage: FunctionComponent = () => {
 	const { params: { personId = DEFAULT_ID } } = useRoute()
 
 	const [ personItem ] = useApi<NokiaPersonType>(API_ROUTE.nokiaPersonSingle({ id: personId }))
 
-	// TODO: [MIDDLE] проверить, что везде внедрено
-	const title = (
-		personId == DEFAULT_ID
-		? 'Создание персоны'
-		: 'Редактирование персоны'
-	)
+	const title = ifTitle(personId, 'Создание персоны', 'Редактирование персоны')
 
 	return (
 		<Layout title={`${title} | Нокиа`} className="nokia">
