@@ -9,7 +9,6 @@ import cs from 'classnames'
 
 type ProjectTagPropsType = {
 	filterName: ProjectRoutingFilterNameType
-	children: string
 	isLink?: boolean
 	isSelected?: boolean
 	toggleTag?: () => void

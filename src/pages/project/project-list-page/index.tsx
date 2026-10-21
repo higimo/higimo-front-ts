@@ -7,7 +7,7 @@ import { useRoute } from 'preact-iso'
 import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
-import { ProjectClickTagCategory } from 'components/project/project-tag-list-click'
+import { ProjectTagList } from 'components/project/project-tag-list'
 import { ProjectList } from 'components/project/project-list'
 import { TextContainer } from 'components/ui/text-container'
 
@@ -38,7 +38,8 @@ export const ProjectListPage: FunctionComponent = () => {
 
 			<LoadSuspense data={groupedTagList}>
 				<EmptyData data={groupedTagList}>
-					<ProjectClickTagCategory
+					<ProjectTagList
+						variant="link"
 						groupedTags={groupedTagList.data ?? []}
 					/>
 				</EmptyData>

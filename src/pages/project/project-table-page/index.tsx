@@ -64,6 +64,7 @@ export const ProjectTablePage: FunctionComponent = () => {
 			<LoadSuspense data={[projectList, tagList]}>
 				<EmptyData data={[projectList, tagList]}>
 					<ProjectTagList
+						variant="select"
 						groupedTags={tagList.data || []}
 						isSelected={isSelected}
 						toggleTag={toggleTag}
