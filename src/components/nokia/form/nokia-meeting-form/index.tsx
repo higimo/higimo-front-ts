@@ -1,10 +1,7 @@
 import { FunctionComponent } from 'preact'
-import { ISOString } from 'utils.type'
-import { MeetingFormValues } from 'hook/nokia/use-meeting-form'
 import { MentionSuggest } from 'components/form/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType, NokiaPersonType } from 'api-types/nokia.types'
 
-import { useEffect } from 'preact/hooks'
 import { useMeetingForm } from 'hook/nokia/use-meeting-form'
 
 import { ButtonGroup } from 'components/form/button-group'
@@ -15,15 +12,14 @@ import { FromContainer } from 'components/form/form-container'
 import { MentionTextarea } from 'components/form/mention-textarea/mention-input'
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
-import { createDateOnly } from 'utils/date/create-date-only'
-
-import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
 
+import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
+
 interface NokiaMeetingFormContainerProps {
 	initialMeeting: NokiaMeetingSimpleType | undefined
-	initialPersons: NokiaPersonSimpleType[]
+	initialPersonList: NokiaPersonSimpleType[]
 	personSuggestList: MentionSuggest[]
 	topPersonList: NokiaPersonType[] | null
 	personList: NokiaPersonType[] | null
@@ -38,7 +34,7 @@ const handleRemove = (id: NokiaMeetingSimpleType['id']) => () => {
 
 export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps> = ({
 	initialMeeting,
-	initialPersons,
+	initialPersonList,
 	personSuggestList,
 	topPersonList,
 	personList,
@@ -53,30 +49,11 @@ export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps>
 		handleRemovePerson,
 		handleTextAssign,
 		handleRemoveMeeting,
-	} = useMeetingForm({ persons: personList })
-
-	useEffect(() => {
-		if (!initialMeeting && !initialPersons) {
-			return
-		}
-		let values: Partial<MeetingFormValues> = {
-			persons: initialPersons ?? [],
-		}
-		if (initialMeeting) {
-			const { date, ...rest } = initialMeeting
-
-			if (date) {
-				// TODO: [BACKEND] переделать типы
-				values.date = createDateOnly(new Date()) as unknown as ISOString
-			}
-			if (!initialMeeting.type) {
-				values.type = 'offline'
-			}
-
-			Object.assign(values, rest)
-		}
-		formMethods.reset(values, { keepDefaultValues: true })
-	}, [initialMeeting, initialPersons, formMethods.reset])
+	} = useMeetingForm({
+		persons: personList,
+		initialMeeting,
+		initialPersonList,
+	})
 
 	const selectedPersons = formMethods.watch('persons') || []
 

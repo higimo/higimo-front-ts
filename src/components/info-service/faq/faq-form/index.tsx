@@ -4,6 +4,7 @@ import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FormButton } from 'components/form/form-button'
@@ -13,7 +14,7 @@ import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { as } from 'utils/types/as'
 import { faqApi } from 'repositories/faq-api.repository'
-import { getResetValues } from 'utils/get-reset-values'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 import { toast } from 'toast'
 
 type FormValues = Partial<FaqType>
@@ -30,10 +31,11 @@ type FaqSinglePropsType = {
 }
 
 export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) => {
+	const uri = getDefaultUri()
 	const formMethods = useForm<FormValues>({
-		// TODO: [LAST] сюда же тоже надо getResetValues
-		defaultValues: initialData || {}
+		defaultValues: getPersistValue<Partial<FormValues>>(uri, initialData, {}),
 	})
+	useFormPersist(uri, formMethods)
 
 	const handleSubmit = async (values: FormValues) => {
 		try {
@@ -75,7 +77,7 @@ export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) 
 						{formMethods.formState.isDirty && (
 							<FormButton
 								type="button"
-								onClick={() => formMethods.reset(getResetValues(initialData, true))}
+								onClick={() => formMethods.reset(initialData ?? undefined)}
 								variant="outline"
 							>
 								Очистить

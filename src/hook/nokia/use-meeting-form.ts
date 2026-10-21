@@ -3,14 +3,15 @@ import { DateTimeInputType, ISOString } from 'utils.type'
 import { MentionSuggest } from 'components/form/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
-import { useCallback, useEffect } from 'preact/hooks'
+import { useCallback } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
-import { useRoute } from 'preact-iso'
 
 import { as } from 'utils/types/as'
 import { createDateOnly } from 'utils/date/create-date-only'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
+import { useFormPersist } from 'from-persist/use-form-persist'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -20,9 +21,11 @@ export type MeetingFormValues = NokiaMeetingSimpleType & {
 
 type UseMeetingFormPropsType = {
 	persons: NokiaPersonSimpleType[]
+	initialMeeting: NokiaMeetingSimpleType | undefined
+	initialPersonList: NokiaPersonSimpleType[]
 }
 
-interface UseMeetingFormReturn {
+type UseMeetingFormReturn = {
 	formMethods: ReturnType<typeof useForm<MeetingFormValues>>
 	handleMeetingSubmit: (data: MeetingFormValues) => Promise<void>
 	handleAddPerson: (person: NokiaPersonSimpleType) => () => void
@@ -33,14 +36,27 @@ interface UseMeetingFormReturn {
 
 export const useMeetingForm = ({
 	persons,
+	initialMeeting,
+	initialPersonList,
 }: UseMeetingFormPropsType): UseMeetingFormReturn => {
-	const { path } = useRoute()
+	const uri = getDefaultUri()
+	const defaultValues = {
+		// TODO: [BACKEND] переделать типы
+		date:    createDateOnly(new Date()) as unknown as ISOString,
+		persons: [],
+		type:    'offline'
+	}
+	console.log(Object.assign(initialMeeting ?? {}, { persons: initialPersonList ?? [] }))
 	const formMethods = useForm<MeetingFormValues>({
-		defaultValues: {
-			// TODO: [BACKEND] переделать типы
-			date: createDateOnly(new Date()) as unknown as ISOString
-		}
+		defaultValues: getPersistValue<Partial<MeetingFormValues>>(
+			uri,
+			initialMeeting
+				? Object.assign(initialMeeting ?? {}, { persons: initialPersonList ?? [] })
+				: undefined,
+			defaultValues
+		),
 	})
+	useFormPersist(uri, formMethods)
 
 	const handleMeetingSubmit = useCallback(async (values: MeetingFormValues) => {
 		try {
@@ -116,7 +132,7 @@ export const useMeetingForm = ({
 		meetingApi.delete(id)
 	}, [])
 
-	useEffect(() => formMethods.reset(), [path, formMethods.reset])
+	// useEffect(() => formMethods.reset(), [path, formMethods.reset])
 
 	return {
 		formMethods,

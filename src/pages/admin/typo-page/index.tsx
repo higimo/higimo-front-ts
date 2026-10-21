@@ -10,10 +10,7 @@ import { FromContainer } from 'components/form/form-container'
 import { FullWidthContainer } from 'components/ui/full-width-container/FullWidthContainer'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
-import { getResetValues } from 'utils/get-reset-values'
 import { toast } from 'toast'
-
-import { EMPTY_FORM } from 'utils/get-reset-values'
 
 export type FormValues = {
 	id: number
@@ -37,10 +34,10 @@ type FormFiledsPropsType = {
 }
 
 const FormFileds: FunctionComponent<FormFiledsPropsType> = ({
-	defaultValues = EMPTY_FORM
+	defaultValues = {}
 }) => {
 	const formMethods = useForm<FormValues>({
-		defaultValues: getResetValues(defaultValues)
+		defaultValues: defaultValues
 	})
 
 	const handleSubmit = async (values: FormValues) => {
@@ -102,7 +99,7 @@ const FormFileds: FunctionComponent<FormFiledsPropsType> = ({
 					<ButtonGroup>
 						<FormButton
 							type="button"
-							onClick={() => formMethods.reset(getResetValues(defaultValues, true))}
+							onClick={() => formMethods.reset(defaultValues ?? undefined)}
 							variant="outline"
 						>
 							Очистить

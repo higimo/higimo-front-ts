@@ -4,6 +4,7 @@ import { Footer } from 'components/ui/footer'
 import { GridOverlay } from 'components/ui/grid-overlay/GridOverlay'
 import { LocationProvider, Router, Route, ErrorBoundary } from 'preact-iso'
 import { MainHeader } from 'components/ui/main-header'
+import { PersistCleanupFrom } from 'from-persist/persist-cleanup-from'
 import { ToastContainer } from 'toast'
 
 import { NotFoundPage } from 'pages/not-found-page'
@@ -55,6 +56,7 @@ export function App() {
 				</main>
 				<div id="vk_api_transport" />
 				<ToastContainer />
+				<PersistCleanupFrom />
 				<Footer />
 			</ErrorBoundary>
 		</LocationProvider>

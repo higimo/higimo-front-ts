@@ -2,6 +2,7 @@ import { FunctionComponent } from 'preact'
 import { PinarikType } from 'api-types/pinarik.types'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
@@ -12,6 +13,7 @@ import { TrafficLight } from 'components/pinarik/traffic-light'
 
 import { as } from 'utils/types/as'
 import { createDateOnly } from 'utils/date/create-date-only'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 import { pinarikApi } from 'repositories/pinarik-api.repository'
 import { toast } from 'toast'
 
@@ -36,10 +38,12 @@ type PinarikFormPropsType = {
 }
 
 export const PinarikForm: FunctionComponent<PinarikFormPropsType> = () => {
+	const uri = getDefaultUri()
 	// Здесь пока редактирование не нужно
 	const formMethods = useForm<FormValues>({
-		defaultValues: DEFAULT_VALUE,
+		defaultValues: getPersistValue<Partial<FormValues>>(uri, undefined, DEFAULT_VALUE),
 	})
+	useFormPersist(uri, formMethods)
 
 	return (
 		<FromContainer variant="full">

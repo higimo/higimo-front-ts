@@ -57,7 +57,7 @@ export const NokiaMeetingFormPage: FunctionComponent = () => {
 						<NokiaMeetingForm
 							key={meetingItem.data?.id ?? DEFAULT_ID}
 							initialMeeting={meeting}
-							initialPersons={meetingPersons}
+							initialPersonList={meetingPersons}
 							personSuggestList={personSuggestList}
 							topPersonList={topPersonList.data}
 							personList={personList.data}

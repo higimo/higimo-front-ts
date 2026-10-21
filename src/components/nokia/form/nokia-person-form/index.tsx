@@ -2,6 +2,7 @@ import { FunctionComponent } from 'preact'
 import { NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
@@ -10,7 +11,7 @@ import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
-import { getResetValues } from 'utils/get-reset-values'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 import { personApi } from 'repositories/person-api.repository'
 import { toast } from 'toast'
 
@@ -35,9 +36,11 @@ type NokiaPersonFormContainerPropsType = {
 export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerPropsType> = ({
 	initialData,
 }) => {
+	const uri = getDefaultUri()
 	const formMethods = useForm<NokiaPersonSimpleType>({
-		defaultValues: initialData || {}
+		defaultValues: getPersistValue<Partial<NokiaPersonSimpleType>>(uri, initialData, {}),
 	})
+	useFormPersist(uri, formMethods)
 
 	const handleRemove = (id: NokiaPersonSimpleType['id']) => async () => {
 		personApi.delete(id)
@@ -77,7 +80,7 @@ export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerPropsTyp
 						{formMethods.formState.isDirty && (
 							<FormButton
 								type="button"
-								onClick={() => formMethods.reset(getResetValues(initialData, true))}
+								onClick={() => formMethods.reset(initialData ?? undefined)}
 								variant="outline"
 							>
 								Очистить

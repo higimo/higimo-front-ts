@@ -30,6 +30,7 @@ export default defineConfig({
 			'data':       path.resolve(__dirname, './src/data'),
 			'config':     path.resolve(__dirname, './src/config'),
 			'routers':    path.resolve(__dirname, './src/routers'),
+			'from-persist': path.resolve(__dirname, './src/from-persist'),
 		}
 	},
 })

@@ -7,6 +7,8 @@ type CinemaScriptItemPropsType = {
 	cinemaItem: CinemaType | null
 }
 
+// TODO: [LIGHT] вынести контейнер в page, если не всё
+// TODO: [LIGHT] rename Datail
 export const CinemaScriptItem: FunctionComponent<CinemaScriptItemPropsType> = ({
 	cinemaItem
 }) => cinemaItem && (

@@ -55,6 +55,7 @@
 			"data/*":         ["./src/data/*"],
 			"config/*":       ["./src/config/*"],
 			"routers/*":      ["./src/routers/*"],
+			"from-persist/*": ["./src/from-persist/*"],
 		},
 		"types": [
 			"vitest/globals",

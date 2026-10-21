@@ -2,12 +2,15 @@ import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FormButton } from 'components/form/form-button'
 import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
 import { RenderFormScheme } from 'components/form/render-form-scheme'
+
+import { getPersistValue, getDefaultUri } from 'from-persist/index'
 
 export type FormValues = {
 	method: 'GET' | 'POST' | 'PUT' | 'DELETE'
@@ -40,12 +43,13 @@ const formScheme: FormScheme<FormValues> = {
 	options: { title: 'options', type: 'textarea', },
 }
 
-
 export const SidebarForm: FunctionComponent<SidebarPropsType> = ({ onSubmit }) => {
+	const uri = getDefaultUri()
 	// здесь будут значения по умолчанию всегда
 	const formMethods = useForm<FormValues>({
-		defaultValues: DEFAULT_STATE
+		defaultValues: getPersistValue<Partial<FormValues>>(uri, undefined, DEFAULT_STATE),
 	})
+	useFormPersist(uri, formMethods)
 
 	return (
 		<FromContainer variant="inner">

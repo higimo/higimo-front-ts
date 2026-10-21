@@ -2,6 +2,7 @@ import { FunctionComponent } from 'preact'
 import { PetProjectType } from 'api-types/petproject.types'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FiledForm } from 'components/form/filed-form'
@@ -10,7 +11,7 @@ import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
-import { getResetValues } from 'utils/get-reset-values'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 import { probbiApi } from 'repositories/probbi-api.repository'
 
 import './style.css'
@@ -29,15 +30,16 @@ type PetProjectFormPropsType = {
 	initialData: PetProjectType | null
 }
 
-// TODO: [HIGH] Запоминать ник автора
-// TODO: [HIGH] Запрашивать проекты, учитывая ник
-// TODO: [HIGH] Ис админ заменить на разграничения прав
+// TODO: [BACKEND] Запоминать ник автора
+// TODO: [BACKEND] Запрашивать проекты, учитывая ник
 export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 	initialData
 }) => {
+	const uri = getDefaultUri()
 	const formMethods = useForm<FormValues>({
-		defaultValues: initialData || {}
+		defaultValues: getPersistValue<Partial<FormValues>>(uri, initialData, {}),
 	})
+	useFormPersist(uri, formMethods)
 
 	const handleRemove = (id: PetProjectType['id']) => () => {
 		console.log(`Хочу удалить ${id}`)
@@ -67,7 +69,7 @@ export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 							{formMethods.formState.isDirty && (
 								<FormButton
 									type="button"
-									onClick={() => formMethods.reset(getResetValues(initialData, true))}
+									onClick={() => formMethods.reset(initialData ?? undefined)}
 									variant="outline"
 								>
 									Очистить

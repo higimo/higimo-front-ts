@@ -4,6 +4,7 @@ import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FormButton } from 'components/form/form-button'
@@ -12,7 +13,7 @@ import { FromContainer } from 'components/form/form-container'
 import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { as } from 'utils/types/as'
-import { getResetValues } from 'utils/get-reset-values'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 import { libApi } from 'repositories/lib-api.repository'
 import { toast } from 'toast'
 
@@ -32,10 +33,14 @@ type LibraryAdminPropsType = {
 	initialData: LibraryType | null
 }
 
-export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({ initialData }) => {
+export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({
+	initialData,
+}) => {
+	const uri = getDefaultUri()
 	const formMethods = useForm<FormValues>({
-		defaultValues: initialData || {}
+		defaultValues: getPersistValue<Partial<FormValues>>(uri, initialData, {}),
 	})
+	useFormPersist(uri, formMethods)
 
 	const handleSubmit = async (values: FormValues) => {
 		try {
@@ -48,8 +53,7 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({ initialD
 			if (!book) {
 			}
 		} catch (error) {
-			const apiError = error as HigimoApiError
-			toast.error(apiError.message || 'Не получилось сохранить')
+			toast.error((error as HigimoApiError).message || 'Не получилось сохранить')
 		}
 	}
 
@@ -76,7 +80,7 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({ initialD
 						{formMethods.formState.isDirty && (
 							<FormButton
 								type="button"
-								onClick={() => formMethods.reset(getResetValues(initialData, true))}
+								onClick={() => formMethods.reset(initialData ?? undefined)}
 								variant="outline"
 							>
 								Очистить

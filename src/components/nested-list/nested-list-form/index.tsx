@@ -3,6 +3,7 @@ import { FunctionComponent } from 'preact'
 import { NestedListItemFullType, NestedListItemType } from 'api-types/listlist.types'
 
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { ButtonGroup } from 'components/form/button-group'
 import { FormButton } from 'components/form/form-button'
@@ -11,6 +12,7 @@ import { FromContainer } from 'components/form/form-container'
 import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { as } from 'utils/types/as'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
 import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { toast } from 'toast'
 
@@ -64,10 +66,15 @@ type NestedListFormPropsType = {
 	initialData: NestedListItemFullType | null
 }
 
-export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({ initialData }) => {
+export const NestedListForm: FunctionComponent<NestedListFormPropsType> = ({
+	initialData,
+}) => {
+	const uri = getDefaultUri()
+	console.log(getPersistValue<Partial<FormValues>>(uri, initialData, {}))
 	const formMethods = useForm<FormValues>({
-		defaultValues: initialData || {}
+		defaultValues: getPersistValue<Partial<FormValues>>(uri, initialData, {}),
 	})
+	useFormPersist(uri, formMethods)
 
 	return (
 		<FromContainer variant="full">
