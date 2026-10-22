@@ -5,12 +5,12 @@ import { formatPrice } from 'utils/formatter/format-price'
 import './style.css'
 
 type MerchantProductItemPropsType = {
-	product: MerchantProductType
+	product: MerchantProductType | null
 }
 
 export const MerchantProductItem: FunctionComponent<MerchantProductItemPropsType> = ({
 	product
-}) => (
+}) => product && (
 	<div class="product-card">
 		<div class="product-title">{product.title}</div>
 		<div class="product-content">

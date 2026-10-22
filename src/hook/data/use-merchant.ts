@@ -1,60 +1,37 @@
+import { setMerchantError } from 'context/merchant-signal'
 import { MerchantProductType } from 'api-types/merchant.types'
 
 import { useEffect } from 'preact/hooks'
 
 import { sendRequest } from 'utils/api/send-request'
+import { setMerchantLoaded, setMerchantLoading } from 'context/merchant-signal'
 
 import { merchantProductSignal } from 'context/merchant-signal'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { API_STATUS } from 'dic/API_STATUS'
+import { ApiState } from 'api-types/fetch-api.types'
 
-// TODO: [HIGH] переписать бы на стандартный API_STATE
-
-// Флаг для предотвращения множественных запросов
-let requestInProgress = false
-
-interface UseAuthReturn {
-	products: MerchantProductType[]
-	isProductLoaded: boolean
-	isProductEmpty: boolean
-	getProductById: (id: MerchantProductType['id']) => MerchantProductType | undefined
-}
 /**
- * Хук, который однажды загружает данные о товарах магазина и предоставляет их для использования всюду
+ * Загружает товары магазина
+ * При повторном монтировании данные не перезагружает
  */
-export const useMerchant = (): UseAuthReturn => {
+export const useMerchant = (): ApiState<MerchantProductType[], Object> => {
 	useEffect(() => {
-		if (merchantProductSignal.value.status !== API_STATUS.INIT || requestInProgress) return
-
-		requestInProgress = true
-		merchantProductSignal.value = {
-			...merchantProductSignal.value,
-			status: API_STATUS.LOADING
+		if (merchantProductSignal.value.status !== API_STATUS.INIT) {
+			return
 		}
 
+		setMerchantLoading()
+
 		sendRequest<MerchantProductType[]>(API_ROUTE.merchantProducts)
-			.then((products) => {
-				merchantProductSignal.value = {
-					status: API_STATUS.LOADED,
-					products: products.data,
-				}
+			.then(({ data }) => {
+				setMerchantLoaded(data)
 			})
-			.catch(() => {
-				requestInProgress = false
-				merchantProductSignal.value = {
-					status: API_STATUS.LOADED,
-					products: [],
-				}
+			.catch((error: Error) => {
+				setMerchantError(error)
 			})
 	}, [])
 
-	return {
-		get products() { return merchantProductSignal.value.products },
-		get isProductLoaded() { return merchantProductSignal.value.status === API_STATUS.LOADED },
-		get isProductEmpty() { return !merchantProductSignal.value.products.length },
-		getProductById(id) {
-			return merchantProductSignal.value.products.find(product => product.id === id)
-		},
-	}
+	return merchantProductSignal.value
 }

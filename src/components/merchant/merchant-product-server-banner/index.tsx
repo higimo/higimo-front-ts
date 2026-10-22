@@ -3,7 +3,11 @@ import { KeyOf } from 'utils.type'
 
 import { useMerchant } from 'hook/data/use-merchant'
 
+import { EmptyData } from 'components/ui/empty-data'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { MerchantProductBanner } from 'components/merchant/merchant-product-banner'
+
+import { getMerchantProductById } from 'context/merchant-signal'
 
 import { MERCHANT_PRODUCT_ID_MAPPING } from 'data/merchant/merchant-product-id-mapping'
 
@@ -19,18 +23,18 @@ export const MerchantProductServerBanner: FunctionComponent<MerchantProductServe
 	productKey,
 	withBackground,
 }) => {
-	const { isProductEmpty, isProductLoaded, getProductById } = useMerchant()
+	const state = useMerchant()
 	const productId = MERCHANT_PRODUCT_ID_MAPPING[productKey]
-	const currentProduct = getProductById(productId)
-
-	if (!isProductLoaded || isProductEmpty || !currentProduct) {
-		return null
-	}
+	const currentProduct = getMerchantProductById(productId)
 
 	return (
-		<MerchantProductBanner
-			product={currentProduct}
-			withBackground={withBackground}
-		/>
+		<LoadSuspense data={state}>
+			<EmptyData data={state}>
+				<MerchantProductBanner
+					product={currentProduct}
+					withBackground={withBackground}
+				/>
+			</EmptyData>
+		</LoadSuspense>
 	)
 }

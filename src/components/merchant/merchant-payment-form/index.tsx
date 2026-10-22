@@ -14,12 +14,15 @@ export type FormValues = {
 }
 
 type MerchantPaymentFormPropsType = {
-	product: MerchantProductType
+	product: MerchantProductType | null
 }
 
 export const MerchantPaymentForm: FunctionComponent<MerchantPaymentFormPropsType> = ({
 	product,
 }) => {
+	if (!product) {
+		return null
+	}
 	// здесь никогда не потребуются значения по умолчанию
 	const formMethods = useForm<FormValues>({
 		defaultValues: {

@@ -4,12 +4,12 @@ import { MerchantProductType } from 'api-types/merchant.types'
 import './style.css'
 
 type MerchantProductFeatureListPropsType = {
-	product: MerchantProductType
+	product: MerchantProductType | null
 }
 
 export const MerchantProductFeatureList: FunctionComponent<MerchantProductFeatureListPropsType> = ({
 	product
-}) => !!product.features.length && (
+}) => product && product.features && (
 	<Fragment>
 		<h2>Характеристики товара</h2>
 		<div className="feature">
