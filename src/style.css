@@ -42,6 +42,9 @@ body {
 /* TODO: [FEATURE] #0d44a0 ховер #c00 визитед #0d44a0 */
 a {
 	color: #3984d4;
+	color: #0d44a0;
+	color: #c00;
+	color: #0d44a0;
 	text-decoration: none;
 	border-bottom: 1px solid #3984d459;
 }

@@ -10,12 +10,12 @@ type FavoriteLinkListPropsType = {
 export const FavoriteLinkList: FunctionComponent<FavoriteLinkListPropsType> = ({
 	linkList,
 }) => (
-	<ul>
+	<div className="best-link">
 		{linkList.map(item => (
 			<FavoriteLinkItem
 				key={item.id}
 				{...item}
 			/>
 		))}
-	</ul>
+	</div>
 )

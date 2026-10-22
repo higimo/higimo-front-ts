@@ -4,12 +4,12 @@ import { LinksType } from 'api-types/links.types'
 import './style.css'
 
 export const FavoriteLinkItem: FunctionComponent<LinksType> = ({ url, description }) => (
-	<a className="best-link" href={url}>
+	<a className="best-link__link" href={url}>
 		<div
 			className="best-link__description"
 			dangerouslySetInnerHTML={{__html: description}}
 		/>
-		<div className="best-link__link">
+		<div className="best-link__href">
 			{url}
 		</div>
 	</a>
