@@ -47,7 +47,6 @@ export const useMeetingForm = ({
 		persons: [],
 		type:    'offline'
 	}
-	console.log(Object.assign(initialMeeting ?? {}, { persons: initialPersonList ?? [] }))
 	const formMethods = useForm<MeetingFormValues>({
 		defaultValues: getPersistValue<Partial<MeetingFormValues>>(
 			uri,
@@ -84,7 +83,6 @@ export const useMeetingForm = ({
 				resultPerson = await meetingApi.syncPerson(meetingId, values.persons)
 			}
 
-			// TODO: [MIDDLE] что-то тут не так
 			formMethods.reset({
 				...(backendEntity || {}),
 				persons: resultPerson
