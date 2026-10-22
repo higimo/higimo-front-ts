@@ -8,6 +8,7 @@ import { isDefaultSkipUrl } from 'utils/types/is-default-skip-url'
 import { sendRequest } from 'utils/api/send-request'
 
 import { API_STATUS } from 'dic/API_STATUS'
+import { isAbortError } from 'utils/types/is-abort-error'
 
 const initialState = {
 	status: API_STATUS.INIT,
@@ -66,7 +67,7 @@ export const useApi = <T, M = Object>(
 			}
 		} catch (error) {
 			// отмена — это не ошибка не пишем в стейт
-			if (signal.aborted || (error as Error)?.name === 'AbortError') {
+			if (signal.aborted || isAbortError(error)) {
 				return
 			}
 			dispatch({ type: API_STATUS.ERROR, payload: error as Error })

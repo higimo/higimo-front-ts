@@ -7,6 +7,7 @@ import { useCallback } from 'preact/hooks'
 import { as } from 'utils/types/as'
 import { debounce } from '@github/mini-throttle'
 import { getSlugTimestamp } from 'utils/url-route/get-slug-timestamp'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { toast } from 'toast'
 
@@ -22,17 +23,22 @@ export const HiringResponseTodoController: FunctionComponent<HiringResponseTodoC
 	if (!todo) {
 		return null
 	}
+
 	const handleChange = useCallback(() => {
 		const debouncedEdit = debounce(
 			async (content: string) => {
-				await pasteApi.create({ key: `hiring-todo/${getSlugTimestamp()}`, content })
-				const result = await pasteApi.edit({
-					id: todo[0]?.id,
-					key: 'hiring-todo',
-					content,
-				})
-				if (as<PasteApiType>(result, ['id'])) {
-					toast.success('Сохранилось')
+				try {
+					await pasteApi.create({ key: `hiring-todo/${getSlugTimestamp()}`, content })
+					const result = await pasteApi.edit({
+						id: todo[0]?.id,
+						key: 'hiring-todo',
+						content,
+					})
+					if (as<PasteApiType>(result, ['id'])) {
+						toast.success('Сохранилось')
+					}
+				} catch (error) {
+					handleApiError(error)
 				}
 			},
 			1500 // 1,5 секунды

@@ -1,4 +1,3 @@
-import { HigimoApiError } from 'errors/higimo-api-error'
 import { FaqType } from 'api-types/faq.types'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
@@ -15,6 +14,8 @@ import { RenderFormScheme } from 'components/form/render-form-scheme'
 import { as } from 'utils/types/as'
 import { faqApi } from 'repositories/faq-api.repository'
 import { getDefaultUri, getPersistValue } from 'from-persist/index'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { handleFormError } from 'utils/api/handle-errors/handle-form-error'
 import { toast } from 'toast'
 
 type FormValues = Partial<FaqType>
@@ -49,13 +50,20 @@ export const FaqForm: FunctionComponent<FaqSinglePropsType> = ({ initialData }) 
 				toast.success('Создано')
 			}
 		} catch (error) {
-			const apiError = error as HigimoApiError
-			toast.error(apiError.message || 'Не получилось сохранить')
+			handleFormError(error, formMethods.setError)
+			handleApiError(error)
 		}
 	}
 
 	const handleRemove = (id: FaqType['id']) => async () => {
-		faqApi.delete(id)
+		try {
+			const res = await faqApi.delete(id)
+			if (!!res) {
+				toast.success(`Удалён [${id}]`)
+			}
+		} catch (error) {
+			handleApiError(error)
+		}
 	}
 
 	return (

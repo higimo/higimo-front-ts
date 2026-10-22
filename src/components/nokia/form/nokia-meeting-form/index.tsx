@@ -12,6 +12,7 @@ import { FromContainer } from 'components/form/form-container'
 import { MentionTextarea } from 'components/form/mention-textarea/mention-input'
 import { NokiaPersonTag } from 'components/nokia/nokia-person-tag'
 
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
 
@@ -25,11 +26,18 @@ interface NokiaMeetingFormContainerProps {
 	personList: NokiaPersonType[] | null
 }
 
-const handleRemove = (id: NokiaMeetingSimpleType['id']) => () => {
-	// TODO: [BACKEND] чо придёт?
-	meetingApi.delete(id)
-	toast.success('Удалено')
-	// TODO: [BACKEND] после удаления перекидывать в список встреч
+const handleRemove = (id: NokiaMeetingSimpleType['id']) => async () => {
+	try {
+		// TODO: [BACKEND] чо придёт?
+		const res = await meetingApi.delete(id)
+		if (!!res) {
+			toast.success(`Удалён [${id}]`)
+		}
+		toast.success('Удалено')
+		// TODO: [FEATURE] после удаления перекидывать в список встреч
+	} catch (error) {
+		handleApiError(error)
+	}
 }
 
 export const NokiaMeetingForm: FunctionComponent<NokiaMeetingFormContainerProps> = ({

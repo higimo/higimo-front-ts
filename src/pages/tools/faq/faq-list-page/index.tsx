@@ -8,17 +8,26 @@ import { FaqList } from 'components/info-service/faq/faq-list'
 import { Layout } from 'components/ui/layout/Layout'
 import { LoadSuspense } from 'components/ui/load-suspense'
 import { OnlyAdmin } from 'components/util/only-admin'
+import { TextContainer } from 'components/ui/text-container/TextContainer'
 
 import { faqApi } from 'repositories/faq-api.repository'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../faq-style.css'
-import { TextContainer } from 'components/ui/text-container/TextContainer'
 
-const onRemove = (id: FaqType['id']) => () => {
-	faqApi.delete(id)
+const onRemove = (id: FaqType['id']) => async () => {
+	try {
+		const res = await faqApi.delete(id)
+		if (!!res) {
+			toast.success(`Удалён [${id}]`)
+		}
+	} catch (error) {
+		handleApiError(error)
+	}
 }
 
 export const FaqListPage: FunctionComponent = () => {

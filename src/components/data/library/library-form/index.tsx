@@ -1,4 +1,3 @@
-import { HigimoApiError } from 'errors/higimo-api-error'
 import { FormScheme } from 'api-types/form.types'
 import { FunctionComponent } from 'preact'
 import { LibraryType } from 'api-types/library.types'
@@ -14,6 +13,8 @@ import { RenderFormScheme } from 'components/form/render-form-scheme'
 
 import { as } from 'utils/types/as'
 import { getDefaultUri, getPersistValue } from 'from-persist/index'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { handleFormError } from 'utils/api/handle-errors/handle-form-error'
 import { libApi } from 'repositories/lib-api.repository'
 import { toast } from 'toast'
 
@@ -51,14 +52,23 @@ export const LibraryForm: FunctionComponent<LibraryAdminPropsType> = ({
 				book = await libApi.create(values)
 			}
 			if (!book) {
+				toast.success(`Сохранено`)
 			}
 		} catch (error) {
-			toast.error((error as HigimoApiError).message || 'Не получилось сохранить')
+			handleFormError(error, formMethods.setError)
+			handleApiError(error)
 		}
 	}
 
 	const handleRemove = (id: LibraryType['id']) => async () => {
-		libApi.delete(id)
+		try {
+			const res = await libApi.delete(id)
+			if (!!res) {
+				toast.success(`Удалён [${id}]`)
+			}
+		} catch (error) {
+			handleApiError(error)
+		}
 	}
 
 	return (

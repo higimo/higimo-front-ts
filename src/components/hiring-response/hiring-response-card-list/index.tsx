@@ -9,9 +9,11 @@ import { HiringResponseCardForm } from 'components/hiring-response/hiring-respon
 import { OnlyAdmin } from 'components/util/only-admin'
 import { TextContainer } from 'components/ui/text-container/TextContainer'
 
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
 import { parseBrandId } from 'utils/types/parse-brand-id'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
+import { toast } from 'toast'
 import { todayStr } from 'utils/date/today-str'
 
 import { ANCHOR_LINK } from 'dic/route/ANCHOR_LINK'
@@ -46,8 +48,15 @@ export const HiringResponseCardList: FunctionComponent<HiringResponseCardListPro
 	}, [cards])
 
 	const handleDelete = useCallback((id: PasteApiType['id']) => async () => {
-		await pasteApi.delete(id)
-		await fetchUpdate()
+		try {
+			const res = await pasteApi.delete(id)
+			if (!!res) {
+				toast.success(`Удалён [${id}]`)
+			}
+			await fetchUpdate()
+		} catch (error) {
+			handleApiError(error)
+		}
 	}, [fetchUpdate])
 
 	return (

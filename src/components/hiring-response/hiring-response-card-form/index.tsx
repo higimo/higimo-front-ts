@@ -10,8 +10,11 @@ import { FormProvider } from 'react-hook-form'
 import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { handleFormError } from 'utils/api/handle-errors/handle-form-error'
 import { pasteApi } from 'repositories/paste-api.repository'
 import { smoothScroll } from 'utils/browser/smooth-scroll'
+import { toast } from 'toast'
 
 import { ANCHOR_LINK } from 'dic/route/ANCHOR_LINK'
 
@@ -33,13 +36,22 @@ export const HiringResponseCardForm: FunctionComponent<HiringResponseCardFormPro
 	})
 
 	const handleSubmit = async (values: FormValues) => {
-		if (as<PasteApiType>(values, ['id'])) {
-			await pasteApi.edit(values)
-		} else {
-			await pasteApi.create(values)
+		try {
+			let result
+			if (as<PasteApiType>(values, ['id'])) {
+				result = await pasteApi.edit(values)
+			} else {
+				result = await pasteApi.create(values)
+			}
+			if (!result) {
+				toast.success(`Сохранено`)
+			}
+			await fetchUpdate()
+			smoothScroll(ANCHOR_LINK.hiringResponseGallery)()
+		} catch (error) {
+			handleFormError(error, formMethods.setError)
+			handleApiError(error)
 		}
-		await fetchUpdate()
-		smoothScroll(ANCHOR_LINK.hiringResponseGallery)()
 	}
 
 	return (

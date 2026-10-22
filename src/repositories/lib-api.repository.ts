@@ -5,11 +5,6 @@ import { sendRequest } from 'utils/api/send-request'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 class LibApiRepository {
-	async getAll(): Promise<LibraryType[] | null> {
-		const data = await sendRequest<LibraryType[]>(API_ROUTE.lib)
-		return data.data
-	}
-
 	async create(
 		values: Partial<Omit<LibraryType, 'id'>>
 	): Promise<LibraryType | null> {

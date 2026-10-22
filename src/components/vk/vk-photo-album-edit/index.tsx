@@ -6,7 +6,7 @@ import { useCallback } from 'preact/hooks'
 
 import { debounce } from '@github/mini-throttle'
 import { getVkPhotosUrl } from 'utils/url-route/get-photos-url'
-import { toast } from 'toast'
+import { handleVkError } from 'utils/api/handle-errors/handle-vk-error'
 import { vkApi } from 'repositories/vk-api.repository'
 
 import { VK_DEBOUNCE_TIMEOUT_LOADING } from 'config/VK_DEBOUNCE_TIMEOUT_LOADING'
@@ -28,9 +28,10 @@ export const VkPhotoAlbumListEdit: FunctionComponent<VkPhotoAlbumEditPropsType> 
 		const debouncedEdit = debounce(
 			async (description: string) => {
 				if (description.length) {
-					const result = await vkApi.editPhoto(userId, photoId, description)
-					if (!result) {
-						toast.error('ВК отказал в изменении')
+					try {
+						await vkApi.editPhoto(userId, photoId, description)
+					} catch (error) {
+						handleVkError(error)
 					}
 				}
 			},

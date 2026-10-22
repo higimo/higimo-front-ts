@@ -16,6 +16,7 @@ import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 import { vkSession } from 'context/vk-signal'
 
 import { as } from 'utils/types/as'
+import { handleVkError } from 'utils/api/handle-errors/handle-vk-error'
 import { toast } from 'toast'
 import { vkApi } from 'repositories/vk-api.repository'
 
@@ -34,12 +35,16 @@ export const VkAlbumEditPage: FunctionComponent = () => {
 			return undefined
 		}
 
-		const loadedPhotos = await vkApi.getPhotos(ownerId, albumId)
-		if (!loadedPhotos) {
-			return undefined
-		}
+		try {
+			const loadedPhotos = await vkApi.getPhotos(ownerId, albumId)
+			if (!loadedPhotos) {
+				return undefined
+			}
 
-		setPhotoList(loadedPhotos)
+			setPhotoList(loadedPhotos)
+		} catch (error) {
+			handleVkError(error)
+		}
 	}, [photoList])
 
 	useEffect(() => {

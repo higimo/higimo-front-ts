@@ -1,17 +1,18 @@
-import { HigimoApiError } from 'errors/higimo-api-error'
 import { DateTimeInputType, ISOString } from 'utils.type'
 import { MentionSuggest } from 'components/form/mention-textarea/types'
 import { NokiaMeetingSimpleType, NokiaPersonSimpleType } from 'api-types/nokia.types'
 
 import { useCallback } from 'preact/hooks'
 import { useForm } from 'react-hook-form'
+import { useFormPersist } from 'from-persist/use-form-persist'
 
 import { as } from 'utils/types/as'
 import { createDateOnly } from 'utils/date/create-date-only'
+import { getDefaultUri, getPersistValue } from 'from-persist/index'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { handleFormError } from 'utils/api/handle-errors/handle-form-error'
 import { meetingApi } from 'repositories/meeting-api.repository'
 import { toast } from 'toast'
-import { useFormPersist } from 'from-persist/use-form-persist'
-import { getDefaultUri, getPersistValue } from 'from-persist/index'
 
 export type MeetingFormValues = NokiaMeetingSimpleType & {
 	persons: NokiaPersonSimpleType[]
@@ -83,14 +84,14 @@ export const useMeetingForm = ({
 				resultPerson = await meetingApi.syncPerson(meetingId, values.persons)
 			}
 
+			// TODO: [MIDDLE] что-то тут не так
 			formMethods.reset({
 				...(backendEntity || {}),
 				persons: resultPerson
 			}, { keepDefaultValues: true })
 		} catch (error) {
-			console.log('error', error)
-			const apiError = error as HigimoApiError
-			toast.error(apiError.message)
+			handleFormError(error, formMethods.setError)
+			handleApiError(error)
 		}
 	}, [meetingApi])
 
@@ -128,8 +129,15 @@ export const useMeetingForm = ({
 		)
 	}, [persons])
 
-	const handleRemoveMeeting = useCallback((id: NokiaMeetingSimpleType['id']) => () => {
-		meetingApi.delete(id)
+	const handleRemoveMeeting = useCallback((id: NokiaMeetingSimpleType['id']) => async () => {
+		try {
+			const res = await meetingApi.delete(id)
+			if (!!res) {
+				toast.success(`Удалён [${id}]`)
+			}
+		} catch (error) {
+			handleApiError(error)
+		}
 	}, [])
 
 	// useEffect(() => formMethods.reset(), [path, formMethods.reset])

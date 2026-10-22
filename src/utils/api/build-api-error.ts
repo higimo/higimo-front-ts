@@ -1,12 +1,11 @@
-import { HigimoApiError, LaravelErrorBody } from 'errors/higimo-api-error'
+import { LaravelErrorBody } from 'api-types/fetch-api.types'
+
+import { HigimoApiError } from 'errors/higimo-api-error'
 import { PolicyFailError } from 'errors/policy-fail-error'
 import { ServerFailError } from 'errors/server-fail-error'
 import { ValidationFailError } from 'errors/validation-fail-error'
-import { isLaravelErrorBody } from 'utils/types/is-laravel-error-body'
 
-// [LAST] мб их ловить в ErrorBoundary, раз он в роутере всё равно перехватывает их,
-// бизнес-логику обрабатывать в компонентах
-// через .catch — так вроде приятнее выглядит, чем try {} catch {}
+import { isLaravelErrorBody } from 'utils/types/is-laravel-error-body'
 
 /**
  * Создаёт ошибку ApiError с ошибками Laravel или другими параметрами

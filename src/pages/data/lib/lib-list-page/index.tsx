@@ -9,12 +9,21 @@ import { LibraryList } from 'components/data/library/library-list'
 import { LibraryHeader } from 'components/data/library/library-header'
 import { LoadSuspense } from 'components/ui/load-suspense'
 
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
 import { libApi } from 'repositories/lib-api.repository'
+import { toast } from 'toast'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
-const onRemove = (id: LibraryType['id']) => () => {
-	libApi.delete(id)
+const onRemove = (id: LibraryType['id']) => async () => {
+	try {
+		const res = await libApi.delete(id)
+		if (!!res) {
+			toast.success(`Удалён [${id}]`)
+		}
+	} catch (error) {
+		handleApiError(error)
+	}
 }
 
 export const LibListPage: FunctionComponent = () => {

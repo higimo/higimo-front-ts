@@ -13,7 +13,8 @@ import { VkError } from 'errors/vk-error'
 export const handleVkError = (error: unknown): boolean => {
 	if (error instanceof VkCaptchaError) {
 		toast.warning('Требуется ввод капчи')
-		// здесь можно открыть модалку с error.captcha_img и повторить запрос
+		// TODO: [MIDDLE] здесь можно открыть модалку с error.captcha_img и повторить запрос
+		// TODO: [MIDDLE] здесь и у соседей убрать return
 		return true
 	}
 

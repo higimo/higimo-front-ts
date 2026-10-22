@@ -1,10 +1,4 @@
-/**
- * Типизация ошибок от Laravel
- */
-export interface LaravelErrorBody {
-	message: string
-	errors?: Record<string, string[]>
-}
+import { LaravelErrorBody } from 'api-types/fetch-api.types'
 
 /**
  * Ошибка в API бекенда хомяка

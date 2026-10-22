@@ -1,4 +1,5 @@
-import { LaravelErrorBody } from 'errors/higimo-api-error'
+import { LaravelErrorBody } from 'api-types/fetch-api.types'
+
 import { isObject } from 'utils/types/is-object'
 
 /**

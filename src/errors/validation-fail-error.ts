@@ -1,4 +1,6 @@
-import { HigimoApiError, LaravelErrorBody } from 'errors/higimo-api-error'
+import { LaravelErrorBody } from 'api-types/fetch-api.types'
+
+import { HigimoApiError } from 'errors/higimo-api-error'
 
 /**
  * 400, 422 — ошибки валидации входных данных

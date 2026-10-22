@@ -6,6 +6,7 @@ import { extractEnvelope } from 'utils/api/extract-envelope'
 import { buildApiError } from 'utils/api/build-api-error'
 import { FetchError } from 'errors/fetch-error'
 import { JsonParseError } from 'errors/json-parse-error'
+import { isAbortError } from 'utils/types/is-abort-error'
 
 declare global {
 	interface ErrorConstructor {
@@ -55,8 +56,7 @@ export const sendRequest = async <T = unknown, M = MetaApiType>(
 			signal,
 		})
 	} catch (error) {
-		// AbortController — это не ошибка сети, пробрасываем как есть
-		if (error instanceof DOMException && error.name === 'AbortError') {
+		if (isAbortError(error)) {
 			throw error
 		}
 		throw new FetchError(

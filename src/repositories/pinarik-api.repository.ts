@@ -5,13 +5,6 @@ import { sendRequest } from 'utils/api/send-request'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 class PinarikApiRepository {
-	async get(
-		id: PinarikType['id']
-	): Promise<PinarikType[] | null> {
-		const data = await sendRequest<PinarikType[]>(API_ROUTE.pinarikSingle({ id }))
-		return data.data
-	}
-
 	async create(
 		values: Omit<PinarikType, 'id'>
 	): Promise<PinarikType | null> {

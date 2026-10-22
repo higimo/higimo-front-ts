@@ -4,12 +4,13 @@ import { VkQueueType, VkPhotosContentType } from 'api-types/vk.types'
 import { useQueue } from 'hook/use-queue'
 import { useState, useEffect, useCallback } from 'preact/hooks'
 
-import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'config/VK-CONST'
+import { handleVkError } from 'utils/api/handle-errors/handle-vk-error'
+import { toast } from 'toast'
+import { vkApi } from 'repositories/vk-api.repository'
 
 import { vkSession } from 'context/vk-signal'
 
-import { toast } from 'toast'
-import { vkApi } from 'repositories/vk-api.repository'
+import { ALBUM_MAX_COUNT, QUEUE_TIMER } from 'config/VK-CONST'
 
 export type UseVkDownloadType = () => {
 	onSubmit: (data: VkDownloadFormValuesType) => undefined
@@ -32,37 +33,47 @@ export const useVkDownload: UseVkDownloadType = () => {
 			if (!downloadId) {
 				return undefined
 			}
-			const albums = await vkApi.getAlbums(downloadId)
-			if (!albums) {
-				return undefined
-			}
-			albums.slice(0, ALBUM_MAX_COUNT).forEach(album => {
-				push({
-					type: 'album',
-					id: album.id,
-					title: album.title,
+			try {
+				const albums = await vkApi.getAlbums(downloadId)
+				if (!albums) {
+					return undefined
+				}
+				albums.slice(0, ALBUM_MAX_COUNT).forEach(album => {
+					push({
+						type: 'album',
+						id: album.id,
+						title: album.title,
+					})
 				})
-			})
+			} catch (error) {
+				handleVkError(error)
+			}
 		})()
 	}, [status, data, downloadId, push])
 
 	// получаем из альбомов уже фотки
 	useEffect(() => {
-		if (!size) return
+		if (!size) {
+			return
+		}
+
 		const headQueue = view()
 		if (headQueue && headQueue.type === 'album') {
 			toast.info(`Осталось скачать ${size} альбома`);
 
 			(async () => {
-				const albumPhotos = await vkApi.getPhotos(downloadId, headQueue.id)
-				if (!albumPhotos) return
-				setPhotos(prev => [
-					...prev,
-					{
-						title: headQueue.title,
-						photos: albumPhotos.map(item => item.orig_photo.url),
-					},
-				])
+				try {
+					const albumPhotos = await vkApi.getPhotos(downloadId, headQueue.id)
+					setPhotos(prev => [
+						...prev,
+						{
+							title: headQueue.title,
+							photos: albumPhotos?.map(item => item.orig_photo.url),
+						},
+					])
+				} catch (error) {
+					handleVkError(error)
+				}
 			})()
 		}
 		setTimeout(() => pull(), QUEUE_TIMER)

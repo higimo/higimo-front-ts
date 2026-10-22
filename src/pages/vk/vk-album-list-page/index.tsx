@@ -11,6 +11,7 @@ import { VkParagraph } from 'components/vk/vk-paragraph'
 import { VkPhotoAlbumList } from 'components/vk/vk-photo-album-list'
 import { VkSdkLoader } from 'components/vk/vk-sdk-loader'
 
+import { handleVkError } from 'utils/api/handle-errors/handle-vk-error'
 import { toast } from 'toast'
 import { vkApi } from 'repositories/vk-api.repository'
 import { vkSession } from 'context/vk-signal'
@@ -22,12 +23,16 @@ export const VkAlbumListPage: FunctionComponent = () => {
 	const [ albumList, setAlbumList ] = useState<VKAlbumType[]>([])
 
 	const fetchAlbums = useCallback(async (ownerId: string) => {
-		const albums = await vkApi.getAlbums(ownerId)
-		if (!albums) {
-			return undefined
-		}
+		try {
+			const albums = await vkApi.getAlbums(ownerId)
+			if (!albums) {
+				return undefined
+			}
 
-		setAlbumList(albums)
+			setAlbumList(albums)
+		} catch (error) {
+			handleVkError(error)
+		}
 	}, [setAlbumList])
 
 	useEffect(() => {

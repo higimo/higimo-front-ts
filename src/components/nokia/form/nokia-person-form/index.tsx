@@ -12,22 +12,10 @@ import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
 import { getDefaultUri, getPersistValue } from 'from-persist/index'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { handleFormError } from 'utils/api/handle-errors/handle-form-error'
 import { personApi } from 'repositories/person-api.repository'
 import { toast } from 'toast'
-
-const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {
-	let result: NokiaPersonSimpleType | null
-	if (as<NokiaPersonSimpleType>(data, ['id'])) {
-		result = await personApi.edit(data)
-	} else {
-		result = await personApi.create(data)
-	}
-	if (result) {
-		toast.success('Схоронил')
-	} else {
-		toast.warning('Не получилось')
-	}
-}
 
 type NokiaPersonFormContainerPropsType = {
 	initialData: NokiaPersonSimpleType | null
@@ -42,8 +30,34 @@ export const NokiaPersonForm: FunctionComponent<NokiaPersonFormContainerPropsTyp
 	})
 	useFormPersist(uri, formMethods)
 
+	const handlePersonSubmit = async (data: NokiaPersonSimpleType) => {
+		try {
+			let result: NokiaPersonSimpleType | null
+			if (as<NokiaPersonSimpleType>(data, ['id'])) {
+				result = await personApi.edit(data)
+			} else {
+				result = await personApi.create(data)
+			}
+			if (result) {
+				toast.success('Схоронил')
+			} else {
+				toast.warning('Не получилось')
+			}
+		} catch (error) {
+			handleFormError(error, formMethods.setError)
+			handleApiError(error)
+		}
+	}
+
 	const handleRemove = (id: NokiaPersonSimpleType['id']) => async () => {
-		personApi.delete(id)
+		try {
+			const res = await personApi.delete(id)
+			if (!!res) {
+				toast.success(`Удалён [${id}]`)
+			}
+		} catch (error) {
+			handleApiError(error)
+		}
 	}
 
 	return (

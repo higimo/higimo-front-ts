@@ -3,6 +3,7 @@ import { NestedListItemFullType, NestedListItemType } from 'api-types/listlist.t
 
 import { useAuth } from 'hook/fetch/use-auth'
 
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
 import { nestedListApi } from 'repositories/nested-list-api.repository'
 import { plural } from 'utils/plural'
 import { toast } from 'toast'
@@ -12,9 +13,13 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 import './style.css'
 
 const handleRemove = (id: NestedListItemType['id'], title: NestedListItemType['title']) => async () => {
-	const res = await nestedListApi.delete(id)
-	if (!!res) {
-		toast.success(`Удалён [${id}] ${title}`)
+	try {
+		const res = await nestedListApi.delete(id)
+		if (!!res) {
+			toast.success(`Удалён [${id}] ${title}`)
+		}
+	} catch (error) {
+		handleApiError(error)
 	}
 }
 

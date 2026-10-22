@@ -12,19 +12,15 @@ import { FromContainer } from 'components/form/form-container'
 
 import { as } from 'utils/types/as'
 import { getDefaultUri, getPersistValue } from 'from-persist/index'
+import { handleApiError } from 'utils/api/handle-errors/handle-api-error'
+import { handleFormError } from 'utils/api/handle-errors/handle-form-error'
 import { probbiApi } from 'repositories/probbi-api.repository'
+import { toast } from 'toast'
 
 import './style.css'
 
 type FormValues = PetProjectType
 
-const handlePetprojectSubmit = async (values: FormValues) => {
-	if (as<PetProjectType>(values, ['id'])) {
-		probbiApi.edit(values)
-	} else {
-		probbiApi.create(values)
-	}
-}
 
 type PetProjectFormPropsType = {
 	initialData: PetProjectType | null
@@ -40,6 +36,23 @@ export const PetProjectForm: FunctionComponent<PetProjectFormPropsType> = ({
 		defaultValues: getPersistValue<Partial<FormValues>>(uri, initialData, {}),
 	})
 	useFormPersist(uri, formMethods)
+
+	const handlePetprojectSubmit = async (values: FormValues) => {
+		try {
+			let res
+			if (as<PetProjectType>(values, ['id'])) {
+				res = await probbiApi.edit(values)
+			} else {
+				res = await probbiApi.create(values)
+			}
+			if (res) {
+				toast.success('Готово')
+			}
+		} catch (error) {
+			handleFormError(error, formMethods.setError)
+			handleApiError(error)
+		}
+	}
 
 	const handleRemove = (id: PetProjectType['id']) => () => {
 		console.log(`Хочу удалить ${id}`)

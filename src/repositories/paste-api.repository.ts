@@ -5,13 +5,6 @@ import { sendRequest } from 'utils/api/send-request'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 class PasteApiRepository {
-	async getByKey(
-		key: PasteApiType['key']
-	): Promise<PasteApiType[] | null> {
-		const data = await sendRequest<PasteApiType[]>(API_ROUTE.pasteSingle({ id: key }))
-		return data.data
-	}
-
 	async create(
 		values: Partial<Omit<PasteApiType, 'id'>>
 	): Promise<PasteApiType | null> {

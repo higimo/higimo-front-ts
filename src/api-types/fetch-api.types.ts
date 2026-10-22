@@ -64,3 +64,11 @@ export interface ApiResponse<T, M = MetaApiType> {
 	data: T
 	meta?: M
 }
+
+/**
+ * Типизация ошибок от Laravel
+ */
+export interface LaravelErrorBody {
+	message: string
+	errors?: Record<string, string[]>
+}

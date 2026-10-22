@@ -1,4 +1,6 @@
-import { HigimoApiError, LaravelErrorBody } from 'errors/higimo-api-error'
+import { LaravelErrorBody } from 'api-types/fetch-api.types'
+
+import { HigimoApiError } from 'errors/higimo-api-error'
 
 /**
  * 401, 403, 404, 405 и прочие 4xx (кроме 400/422) — нарушение правил/политик
