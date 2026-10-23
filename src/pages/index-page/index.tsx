@@ -17,6 +17,7 @@ import { ProjectListInvite } from 'components/invite/project-list-invite'
 import { TravelInvite } from 'components/invite/travel-invite'
 
 import { API_ROUTE } from 'dic/route/API_ROUTE'
+import { CharityInvite } from 'components/invite/carity-invite'
 
 // TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
@@ -32,6 +33,7 @@ export const IndexPage: FunctionComponent = () => {
 	return (
 		<Layout title="Разработчик и менеджер продукта — higimo">
 			<MainInvite />
+
 
 			<DonatInvite />
 
@@ -60,6 +62,8 @@ export const IndexPage: FunctionComponent = () => {
 			</LoadSuspense>
 
 			<BlogInvite />
+
+			<CharityInvite />
 		</Layout>
 	)
 }
