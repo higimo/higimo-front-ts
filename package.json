@@ -1,6 +1,7 @@
 {
 	"private": true,
 	"type": "module",
+	"version": "5.5.0",
 	"scripts": {
 		"post-install": "chmod +x scripts/setup-permissions.sh && bash scripts/setup-permissions.sh",
 		"dev": "vite",

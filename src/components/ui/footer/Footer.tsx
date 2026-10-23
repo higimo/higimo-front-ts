@@ -66,6 +66,8 @@ export const Footer: FunctionComponent = () => {
 				<span className="nowrap">
 					Сделал Хиги́мо с гордостью в{' '}
 					<img src={rfFlag} height={12} style={{ verticalAlign: 'middle', border: '1px solid #dedede'}} />
+					<br />
+					<span className="footer__version">v {import.meta.env.VITE_APP_VERSION}</span>
 				</span>
 			</div>
 		</footer>

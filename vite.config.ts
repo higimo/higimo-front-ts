@@ -3,6 +3,8 @@ import { defineConfig, HttpProxy } from 'vite'
 import preact from '@preact/preset-vite'
 import { analyzer } from 'vite-bundle-analyzer'
 
+import packageJson from './package.json'
+
 import { createHtmlPlugin } from 'vite-plugin-html'
 
 // HtmlTagDescriptor
@@ -138,6 +140,9 @@ export default defineConfig(
 					'routers':    path.resolve(__dirname, './src/routers'),
 					'from-persist': path.resolve(__dirname, './src/from-persist'),
 				}
+			},
+			define: {
+				'import.meta.env.VITE_APP_VERSION': JSON.stringify(packageJson.version),
 			},
 		}
 	}
