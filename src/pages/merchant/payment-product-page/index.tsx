@@ -3,8 +3,11 @@ import { FunctionComponent } from 'preact'
 import { useLocation } from 'preact-iso'
 import { useMerchant } from 'hook/data/use-merchant'
 
+import { EmptyData } from 'components/ui/empty-data'
 import { Layout } from 'components/ui/layout/Layout'
+import { LoadSuspense } from 'components/ui/load-suspense'
 import { MerchantPaymentForm } from 'components/merchant/merchant-payment-form'
+import { MerchantPolicyNavigation } from 'components/merchant/merchant-policy-navigation'
 import { MerchantProductBenefitList } from 'components/merchant/merchant-product-benefit-list'
 import { MerchantProductFeatureList } from 'components/merchant/merchant-product-feature-list'
 import { MerchantProductItem } from 'components/merchant/merchant-product-item'
@@ -17,8 +20,6 @@ import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../merchant-style.css'
 import './style.css'
-import { LoadSuspense } from 'components/ui/load-suspense'
-import { EmptyData } from 'components/ui/empty-data'
 
 export const PaymentProductPage: FunctionComponent = () => {
 	const state = useMerchant()
@@ -82,13 +83,8 @@ export const PaymentProductPage: FunctionComponent = () => {
 			{/* TODO: [LIGHT] вроде был компонент? */}
 			<TextContainer>
 				<h2>Дальше быстрым речитативом кому ты платишь</h2>
-				<ul>
-					<li><a href={ROUTE_LINK.merchantPaymentPolicy}>Порядок оплаты</a></li>
-					<li><a href={ROUTE_LINK.merchantPersonalPolicy}>Политика обработки ПД</a></li>
-					<li><a href={ROUTE_LINK.merchantPaymentOferta}>Оферта</a></li>
-					<li><a href={ROUTE_LINK.merchantDonationOferta}>Донатная оферта</a></li>
-				</ul>
 			</TextContainer>
+			<MerchantPolicyNavigation />
 		</Layout>
 	)
 }
