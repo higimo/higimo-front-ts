@@ -4,6 +4,7 @@ import { YaMapType } from 'api-types/yamap.types'
 
 import { useApi } from 'hook/fetch/use-api'
 import { useJsonApi } from 'hook/fetch/use-json-api'
+import { useMemo } from 'preact/hooks'
 
 import { Breadcrumps } from 'components/ui/breadcrumps'
 import { CityStarList } from 'components/tourism/city-star/city-star-list'
@@ -27,9 +28,8 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { ROUTE_LINK } from 'dic/route/ROUTE_LINK'
 
 import '../tourism-style.css'
-import { useMemo } from 'preact/hooks'
 
-// TODO: [FEATURE] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
+// TODO: [FEATURE_MAP] хотелось бы так оформить своё посещённое https://www.tema.ru/travel/
 export const TourismIndexPage: FunctionComponent = () => {
 	const [ yamapList ] = useApi<YaMapType[]>(API_ROUTE.yamap)
 	const [ cityListJsonData ] = useJsonApi<CityStarsType[]>('/json/city.json')

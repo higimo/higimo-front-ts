@@ -46,7 +46,7 @@ export const EXTERNAL_LINK = {
 	serviceDeploy: 'https://deploy-calendar.ru/',
 
 	// Хомяки
-	// TODO: [FEATURE] показать их структурой
+	// TODO: [CONTENT] показать их структурой
 	vatrikovsky: 'https://vatrikovsky.ru/',
 	lego:        'https://legostaev.ru/',
 	lepekhin:    'https://lepekhin.ru/',

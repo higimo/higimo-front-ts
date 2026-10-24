@@ -5,8 +5,10 @@ import { BlogItem } from 'components/blog/blog-item'
 
 import './style.css'
 
-// TODO: [FEATURE] Круто писать большие посты прямо на фасад, а короткие заметки рядом в подразделе /note
+// TODO: [FEATURE_BLOG] Круто писать большие посты прямо на фасад,
+// а короткие заметки рядом в подразделе /note
 // Получается, завести избранные из телеги и показывать их на фасад
+// см. https://legostaeff.ru/#books/rakovarnya
 
 type LastUpdatesPropsType = {
 	newsList: UpdateNewsType[]
