@@ -21,7 +21,7 @@ type NokiaStatisticPropsType = {
 export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ meetingStatistic }) => {
 	const viz = useRef<HTMLDivElement>(null)
 
-	// TODO: [USE_TAGS] useSmartTag как бы его внедрить?
+	// TODO: [BACKEND] использовать фильтрацию тегов на беке
 	const [ selectedYearTag, handleYearTagClick ] = useNokiaTags<number>([])
 	const [ selectedTypeTag, handleTypeTagClick ] = useNokiaTags<string>([])
 
@@ -51,6 +51,7 @@ export const NokiaStatistic: FunctionComponent<NokiaStatisticPropsType> = ({ mee
 	return (
 		<Fragment>
 			<TextContainer>
+				{/* TODO: [BACKEND] использовать общий ресурс тегов */}
 				<Tag active={selectedYearTag.length === 0} onClick={handleYearTagClick([])}>Убрать все</Tag>
 				<Tag
 					active={selectedYearTag.length === yearDataset.length}

@@ -63,6 +63,7 @@ export const AccordListPage: FunctionComponent = () => {
 		})
 	}, [accordList.data])
 
+	// TODO: [BACKEND] использовать фильтрацию тегов на беке
 	const {
 		selectedTagTitles,
 		toggleTag,
@@ -79,6 +80,7 @@ export const AccordListPage: FunctionComponent = () => {
 		<Layout title="Аккорды" className="accord-identity-page">
 			<TextContainer>
 				<h1>Аккорды</h1>
+				{/* TODO: [BACKEND] использовать общий ресурс тегов */}
 				<AccordTagList
 					toggleTag={toggleTag}
 					isSelected={isSelected}

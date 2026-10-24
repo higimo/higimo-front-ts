@@ -19,7 +19,7 @@ import { TravelInvite } from 'components/invite/travel-invite'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { CharityInvite } from 'components/invite/carity-invite'
 
-// TODO: [FEATURE] Можно писать, что ищу проекты, просто посылать нахуй не интересное
+// TODO: [CONTENT] Можно писать, что ищу проекты, просто посылать нахуй не интересное
 
 export const IndexPage: FunctionComponent = () => {
 	const [ logismItem, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)

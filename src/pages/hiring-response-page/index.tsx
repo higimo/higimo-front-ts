@@ -19,6 +19,7 @@ import { API_ROUTE } from 'dic/route/API_ROUTE'
 
 import './style.css'
 
+// TODO: [FEATURE] разделить на подстраницы
 export const HiringResponsePage: FunctionComponent = () => {
 	const [ pasteList, fetchUpdate ] = useApi<PasteApiType[]>(API_ROUTE.paste, {
 		filter: { key: 'send-resume*' }

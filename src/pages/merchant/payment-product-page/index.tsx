@@ -79,7 +79,7 @@ export const PaymentProductPage: FunctionComponent = () => {
 				<a href={ROUTE_LINK.index}>← На главную</a>
 			</TextContainer>
 
-			{/* TODO: вроде был компонент? */}
+			{/* TODO: [LIGHT] вроде был компонент? */}
 			<TextContainer>
 				<h2>Дальше быстрым речитативом кому ты платишь</h2>
 				<ul>

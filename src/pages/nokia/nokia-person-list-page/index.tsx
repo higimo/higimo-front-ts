@@ -20,6 +20,7 @@ const filterPersons = (person: NokiaPersonType, filter: NokiaTagType['id'] | nul
 	person.tags.find(tag => tag.id === filter)
 
 export const NokiaPersonListPage: FunctionComponent = () => {
+	// TODO: [BACKEND] использовать фильтрацию тегов на беке
 	const [ tagList ] = useApi<NokiaTagType[]>(API_ROUTE.nokiaTags)
 	const [ tagGroupList ] = useApi<NokiaTagGroupType[]>(API_ROUTE.nokiaTagGroup)
 	const [ personList ] = useApi<NokiaPersonType[]>(API_ROUTE.nokiaPerson)
@@ -45,6 +46,7 @@ export const NokiaPersonListPage: FunctionComponent = () => {
 			<TextContainer>
 				<LoadSuspense data={[tagGroupList, tagList]}>
 					<EmptyData data={[tagGroupList, tagList]}>
+						{/* TODO: [BACKEND] использовать общий ресурс тегов */}
 						<NokiaTagList
 							tagGroupList={tagGroupList.data ?? []}
 							tagList={tagList.data ?? []}

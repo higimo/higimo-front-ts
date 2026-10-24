@@ -58,6 +58,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 		[BAR_TAG_CATEGORY]
 	)
 
+	// TODO: [BACKEND] использовать фильтрацию тегов на беке
 	const {
 		selectedTagTitles,
 		toggleTag,
@@ -70,7 +71,6 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 		initialSelected: ['Любимый']
 	})
 
-	// TODO: [USE_TAGS] есть же хук useYearFilter(AND_GROUP_STRATEGY)
 	const filteredData = useMemo(
 		() => {
 			return filterTagAnyStrategy(normalizedTagsBarPoiMoscow, { all: selectedTagTitles })
@@ -103,6 +103,7 @@ export const TourismMoscowBarPage: FunctionComponent = () => {
 								iconColor: getBarColor(point.color),
 							})}
 						/>
+						{/* TODO: [BACKEND] использовать общий ресурс тегов */}
 						<TourismTagList
 							groups={tagGroups}
 							isSelected={isSelected}

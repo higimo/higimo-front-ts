@@ -5,8 +5,8 @@ import { useWindowSize } from 'hook/browser/use-window-size'
 
 import { Clusterer, FullscreenControl, Map, Placemark, Polyline, YMaps } from 'react-yandex-maps'
 
-// TODO: [FEATURE] посещение рек РФ
-// TODO: [FEATURE] мб, переехать на API3 https://yandex.ru/maps-api/docs/js-api/index.html
+// TODO: [FEATURE_MAP] посещение рек РФ
+// TODO: [FEATURE_MAP] мб, переехать на API3 https://yandex.ru/maps-api/docs/js-api/index.html
 
 const DEFAULT_ZOOM = 8
 const DEFAULT_CENTER = [55.73, 37.75] as Coord // Москва

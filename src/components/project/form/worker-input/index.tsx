@@ -19,10 +19,11 @@ import { toast } from 'toast'
 import { isObject } from 'utils/types/is-object'
 import { as } from 'utils/types/as'
 
-// TODO: [FEATURE] Анонсы. Портфолио таблицей как на хомяке Далера
-// TODO: [FEATURE] Анонсы. Показать людей, с которыми работал
-// TODO: [FEATURE] Анонсы. Взаимосвязи людей на графе
-// TODO: [FEATURE] пора переписать все формы на сайте
+// TODO: [FEATURE_PORTFOLIO] Анонсы. Портфолио таблицей как на хомяке Далера
+// https://aliyorov.com/projects/
+// TODO: [FEATURE_PORTFOLIO] Анонсы. Показать людей, с которыми работал
+// TODO: [FEATURE_PORTFOLIO] Анонсы. Взаимосвязи людей на графе
+// TODO: [FEATURE_PORTFOLIO] пора переписать все формы на сайте
 
 type WorkerInputPropsType = {
 	projectId: PortfolioProjectId

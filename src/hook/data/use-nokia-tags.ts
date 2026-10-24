@@ -2,11 +2,6 @@ import { useCallback, useState } from 'preact/hooks'
 
 type UseTagsType = <T,>(initialValue: T[]) => [T[], (newTagsList: T[]) => () => void]
 
-// TODO: [USE_TAGS] useTags принимает только примитивы, сложные объекты не умеет обрабатывать,
-// для этого кастомное сравнение надо пробрасывать
-// TODO: [USE_TAGS] useTags поддерживать режим «только один выбранный» (радио-кнопка)
-// TODO: [USE_TAGS] Добавить isActive
-
 /**
  * Работает с множественным выбором тегов, осторожно, когда не надо это — надо доработать хук.
  * Возвращает текущий список выбранных элементов и функцию-обработчик, которая реализует логику
@@ -40,6 +35,7 @@ type UseTagsType = <T,>(initialValue: T[]) => [T[], (newTagsList: T[]) => () => 
  * 4. Если `newTagsList.length === 1` — уже существующий удалит, ещё не добавленный добавит
  */
 export const useNokiaTags: UseTagsType = <T,>(initialValue: T[]): [T[], (newTagsList: T[]) => () => void] => {
+	// TODO: [BACKEND] использовать фильтрацию тегов на беке
 	const [selectedTags, setSelectedTags] = useState<T[]>(initialValue)
 
 	const handleTagClick = useCallback((newTagsList: T[]) => () => {

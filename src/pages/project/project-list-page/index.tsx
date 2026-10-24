@@ -14,9 +14,12 @@ import { TextContainer } from 'components/ui/text-container'
 import { API_ROUTE } from 'dic/route/API_ROUTE'
 import { PROJECT_FILTER } from 'dic/project/PROJECT_FILTER'
 
-// TODO: [FEATURE] Прикольно, наверно, будет отбивать ещё года релизов. А, может, и архивность проектов.
-// TODO: [FEATURE] Жаль, что есть огромный долг по публикациям. К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
-// TODO: [FEATURE] показать график когда публиковался на горизонтальном таймлайне, просто названиями
+// TODO: [FEATURE_PORTFOLIO] Прикольно, наверно, будет отбивать ещё года релизов.
+// А, может, и архивность (музей) проектов.
+// TODO: [FEATURE_PORTFOLIO] Жаль, что есть огромный долг по публикациям.
+// К примеру, даже эти обновления я пишу в ТГ, а не на сайте.
+// TODO: [FEATURE_PORTFOLIO] показать график когда публиковался на горизонтальном
+// таймлайне, просто названиями
 export const ProjectListPage: FunctionComponent = () => {
 	const { query } = useRoute()
 

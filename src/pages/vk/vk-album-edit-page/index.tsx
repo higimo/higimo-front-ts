@@ -24,7 +24,7 @@ import { DEFAULT_ID } from 'config/DEFAULT-ID'
 
 import '../vk-style.css'
 
-// TODO: [FEATURE] реализовать сортировку альбома
+// TODO: [FEATURE_PHOTO] реализовать сортировку альбома
 export const VkAlbumEditPage: FunctionComponent = () => {
 	const { status, data, error } = vkSession.value
 	const { params: { albumId = DEFAULT_ID } } = useRoute()

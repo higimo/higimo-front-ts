@@ -19,7 +19,7 @@ import '../nokia-style.css'
 export const NokiaMeetingListPage: FunctionComponent = () => {
 	const [ richMeetingList ] = useApi<NokiaRichMeetingType[]>(API_ROUTE.nokiaRichMeeting)
 
-	// TODO: [BACKEND] заменить на фильтрацию по тегам в бекенде
+	// TODO: [BACKEND] использовать фильтрацию тегов на беке
 	const meetingTags: NokiaTagType[] = useMemo(() => {
 		if (richMeetingList.status !== 'LOADED' || !richMeetingList.data) {
 			return []
@@ -63,6 +63,7 @@ export const NokiaMeetingListPage: FunctionComponent = () => {
 			<LoadSuspense data={richMeetingList}>
 				<EmptyData data={richMeetingList}>
 					<TextContainer>
+						{/* TODO: [BACKEND] использовать общий ресурс тегов */}
 						<MeetingTagList
 							tags={meetingTags}
 							selectedTag={selectedTag}
