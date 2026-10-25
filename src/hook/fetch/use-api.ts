@@ -21,7 +21,7 @@ const initialState = {
 // export type ApiUrlType = ValueOf<typeof API_ROUTE>
 export type ApiUrlType = ApiRouteType
 
-// TODO: [LAST] написать аналог для использования репозиториями — если это хорошая идея вообще, мб, в начале пагинацию продумать?
+// TODO: [CODE] написать аналог для использования репозиториями — если это хорошая идея вообще, мб, в начале пагинацию продумать?
 export const useApi = <T, M = Object>(
 	url: ApiUrlType,
 	values: ValuesOptions = {}

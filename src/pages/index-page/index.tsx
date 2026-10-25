@@ -23,7 +23,7 @@ import { CharityInvite } from 'components/invite/carity-invite'
 
 export const IndexPage: FunctionComponent = () => {
 	const [ logismItem, reload ] = useApi<LogismType>(API_ROUTE.logismSingle)
-	// TODO: [DATA] исправить обложки и размеры, сейчас грандиозные бывают normal
+	// TODO: [CONTENT] исправить обложки и размеры, сейчас грандиозные бывают normal
 	// TODO: [BACKEND] присылать определённое количество, чтобы дырка не появлялась
 	const [ highlightProjectList ] = useApi<PortfolioProjectFullType[], PortfolioMetaType>(API_ROUTE.projectProject, {
 		// filter: { cover_size: 'high'},

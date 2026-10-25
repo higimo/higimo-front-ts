@@ -29,7 +29,7 @@ export const VkSdkLoader: FunctionComponent = () => {
 			})
 		},
 		init: () => new Promise<VkSessionType>((resolve, reject) => {
-			// TODO: [LAST] пора переходить на VK ID, чтобы каждый раз не открывался попап авторизации
+			// TODO: [FEATURE] пора переходить на VK ID, чтобы каждый раз не открывался попап авторизации
 			VK.init({ apiId: VK_API_ID, apiVersion: VK_API_VERSION })
 			VK.Auth.login(({ status, session }: VkAuthResultType) => {
 				if (status === 'connected' && session) {

@@ -9,8 +9,6 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 
 // HtmlTagDescriptor
 
-// TODO: [CONFIG] подключить size-limit
-// https://vitejs.dev/config/
 export default defineConfig(
 	({ mode }) => {
 		const isProduction = mode === 'production'
